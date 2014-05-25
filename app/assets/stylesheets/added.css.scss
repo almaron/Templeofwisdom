@@ -1,0 +1,33 @@
+.debug_params {
+  margin-bottom: 20px;
+  padding: 5px;
+  background: image-url('bg-beige.png');
+  font-size:1.2em;
+}
+.admin_add_btn {
+   text-align: right;
+   margin-bottom: 10px;
+}
+
+.addnews {
+  padding: 20px;
+  background-image: image-url('bg-beige.png');
+  margin-bottom: 10px;
+}
+
+.any-form {
+  .form_close {
+    cursor: pointer;
+    float: right;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-right: -40px;
+  }
+}
+
+.blog_post_form {
+  textarea.inp {
+    width:90%;
+    height: 300px;
+  }
+}

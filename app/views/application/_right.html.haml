@@ -1,0 +1,46 @@
+.col
+  .block
+    %h3 Двор монастыря
+    %ul.sidemenu
+      %li
+        = link_to "Как начать игру", "#", remote: true
+      %li
+        %a{href: "#"} Способности
+      %li
+        %a{href: "#"} Навыки
+      %li
+        %a{href: "#"} Персонажи
+      %li
+        %a{href: "#"} Помощь по игре
+      %li
+        %a{href: "#"} Библиотека
+      %li
+        %a{href: "#"} Гостевой свиток
+      %li
+        %a{href: "blog_posts_path"} Блог Мастеров
+      %li
+        %a{href: "#"} Газета
+      %li
+        %a{href: "#"} Контакты
+  .block.weather.winter
+    %h3 Погода
+    .season Зима
+    Осадков все также не наблюдается. Продолжаем работать ручками. Всего +7.
+  .block.phrase
+    Еще не разогрелся огонь в лампе, а уже хочет спалить небо.
+  .block.newsshort
+    %h3 Новости
+    .news-single
+      .news-single-title{"ang-repeat"=>"news in wrapNews"}
+        %span.news-single-date
+        %span.news-single-date-title-text
+    .news-all
+      %a{href: "/news"} Все новости
+  .block.blogshort
+    %h3 Блог
+    .news-single{"ang-repeat"=>"post in wrapBlog"}
+      .news-single-title
+        %span.news-single-date
+        %span.news-single-date-title-text
+          %a{href: "/blog/{{post.id}}"}
+  .block.banners

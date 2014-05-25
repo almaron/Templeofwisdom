@@ -1,0 +1,16 @@
+ru:
+  messages:
+
+      notice:
+        registrations:
+          destroy:
+            success: "Ваша учетная запись успешно удалена"
+        sessions:
+          destroy:
+            success: "Вы успешно вышли из системы"
+          create:
+            success: "Вы успешно вошли в систему"
+      alert:
+        sessions:
+          create:
+            failure: "Неправильное имя пользователя или пароль."

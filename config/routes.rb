@@ -1,9 +1,34 @@
 Rails.application.routes.draw do
+
+
+  #OAuth routes
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/:provider" => "oauths#auth", :as => :auth_at_provider
+  delete "oauth/:id" => "oauths#destroy", as: :delete_auth
+
+  #Registration routes
+  get "register" => "registrations#new"
+  post "register" => "registrations#create"
+  get "activate_user" => "registrations#activate", as: :activate_user
+
+  #Session routes
+  get "login" => "sessions#new"
+  post "login" => "sessions#create"
+  get 'auth/current_user' => 'sessions#get_current_user'
+  match "logout" => "sessions#destroy", via: [:get, :delete]
+
+  # Page routes
+  resources :pages, :except => [:show]
+  get "pages/:url" => "pages#show", :as => "page_url"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
+
+  root 'pages#show', root: true
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

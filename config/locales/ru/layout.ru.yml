@@ -1,0 +1,15 @@
+ru:
+  pages:
+    show:
+      root: "Добро пожаловать в Линь Ян Шо"
+      pagetitle: "Заголовок страницы"
+
+  news:
+    index:
+      pagetitle: "Новости монастыря"
+
+  blog_posts:
+    index:
+      pagetitle: "Блог мастеров"
+    show:
+      pagetitle: "Блог мастеров"

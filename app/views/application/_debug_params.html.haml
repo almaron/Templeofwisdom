@@ -1,0 +1,15 @@
+- if Rails.env.development?
+  .debug_params
+    %div
+      Params: #{params}
+    %div
+      Session: #{session[:incomplete_user].inspect}
+    .rails_notice
+      Notice: #{notice}
+    .rails_alert
+      Alert: #{alert}
+    - unless flash.empty?
+      .flash
+        Flash:
+        - flash.each do |key,line|
+          = key.to_s+": "+line.to_s

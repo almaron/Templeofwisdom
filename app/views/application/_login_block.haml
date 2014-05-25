@@ -1,0 +1,39 @@
+.loginform{"ng-hide"=>"currentUser.id"}
+  .networks
+    %a{title: "Войти через Facebook", href: auth_at_provider_path(provider: :facebook)}
+      = image_tag "icons/facebook.png"
+      %b FB
+    %a{title: "Войти через Вконтакте", href: auth_at_provider_path(provider: :vk)}
+      = image_tag "icons/vkontakte.png"
+      %b VK
+    %a{title: "Войти через Google Mail", href: auth_at_provider_path(provider: :google)}
+      = image_tag "icons/gmail.png"
+      %b Google
+    %a{title: "Войти через Twitter", href: auth_at_provider_path(provider: :twitter)}
+      = image_tag "icons/twitter.png"
+      %b Twitter
+  = form_tag login_path, method: :post do
+    .loginform-one
+      .loginform-text Логин:
+      %input.inp.inp-standart{type: "text", name:"username"}/
+    .loginform-one
+      .loginform-text Пароль:
+      %input.inp.inp-standart{type: "password", name:"password"}/
+    %input.btn.btn-text{type: "submit", value: "Войти"}/
+
+.loginform.loggedin{"ng-show"=>"currentUser.id"}
+  .loggedin-name
+    Добро пожаловать,
+    = succeed "." do
+      %a{href: "/profile"} {{currentUser.name}}
+  .loggedin-icons
+    .loggedin-notification
+      %a{href: "/notifications", title: "Уведомления"}
+        Уведомления
+        %span {{currentUser.notifications}}
+    .loggedin-messages
+      %a{href: "/messages", title: "Личные сообщения"}
+        Личные сообщения
+        %span {{currentUser.messages}}
+  .loggedin-exit
+    = link_to "Выйти", logout_path, method: :delete

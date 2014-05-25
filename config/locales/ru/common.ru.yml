@@ -1,0 +1,10 @@
+ru:
+
+  common:
+    meta:
+      title: "Храм Мудрости"
+      description: ""
+      keywords: ""
+    buttons:
+      register: "Зарегистрироваться"
+      login: "Войти"
