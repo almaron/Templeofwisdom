@@ -1,0 +1,32 @@
+- if post == "newPost"
+  .admin_add_btn{"ng-if" => "currentUser.group == 'admin' "}
+    %button.btn.btn-standart{"ng-disabled"=>"currentUser.group != 'admin'","ng-click"=>"newPost.show = !newPost.show"}Новый пост
+.addnews{"ng-show" => "#{post}.show"}
+  .any-form.blog_post_form
+    .form_close
+      %span{"ng-click" => "#{post}.show = false"} X
+    %form{"ng-submit"=>(post == "newPost") ? "createPost(newPost)" : "updatePost(onePost)", name: "blog_form", "ng-model" => post, "novalidate"=>""}
+      %span.bold Заголовок поста:
+      %br/
+      %input.inp.inp-type2{name: "head", type: "text", "ng-model"=>"#{post}.head", "ng-required" => "true", "ng-minlength"=>"8"}
+      .clear
+      %span.bold Текст поста:
+      %br/
+      %textarea.inp.inp-type2{name: "text", "ng-model"=>"#{post}.text", "ng-required" => "true", "ng-minlength"=>"16"}
+      %br/
+      %span.bold Подпись:
+      %br/
+      %input.inp.inp-type2{name: "author", type: "text", "ng-model"=>"#{post}.author" }
+      .clear
+      %input.btn.btn-standart{type: "submit", value: "Отправить"} 
+  - if post == "newPost"
+    .addnews-hints-click.open{"ng-click" => "#{post}.showHint = !#{post}.showHint"} Вставка тегов
+    .addnews-hints{"ng-show"=>"#{post}.showHint"}
+      %div
+        %b Вставка ссылки:
+        %input.inp.no-form{type: "text", value: "<a href=\"ссылка\">текст ссылки</a>"}
+      %div
+        %b Вставка изображений:
+        %input.inp.no-form{type: "text", value: "<img src=\"ссылка на картинку\" />"}
+      .color-red
+        * Внимание! Данные теги чувствительны к регистру

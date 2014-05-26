@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>base_less.less - RDoc Documentation</title>
+
+<link href="../../../fonts.css" rel="stylesheet">
+<link href="../../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/navigation.js"></script>
+<script src="../../../js/search_index.js"></script>
+<script src="../../../js/search.js"></script>
+<script src="../../../js/searcher.js"></script>
+<script src="../../../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../Capfile.html">Capfile</a>
+  
+    <li><a href="../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../Guardfile.html">Guardfile</a>
+  
+    <li><a href="../../../README_rdoc.html">README</a>
+  
+    <li><a href="../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../app/assets/fonts/chinacyr-webfont_svg.html">chinacyr-webfont.svg</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/app_js_coffee.html">app.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/blogctrl_js_coffee.html">blogctrl.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/guestbookctrl_js_coffee.html">guestbookctrl.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/index_js.html">index.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/newsctrl_js_coffee.html">newsctrl.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/resources_js_coffee.html">resources.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../app/assets/stylesheets/added_css_scss.html">added.css.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/application_css.html">application.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/base_less_less.html">base_less.less</a>
+  
+    <li><a href="../../../app/assets/stylesheets/sizes_less.html">sizes.less</a>
+  
+    <li><a href="../../../app/assets/stylesheets/style_css_less.html">style.css.less</a>
+  
+    <li><a href="../../../app/views/application/_403_html_haml.html">_403.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_bottom_html_haml.html">_bottom.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_current_user_json_jbuilder.html">_current_user.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/application/_debug_params_html_haml.html">_debug_params.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_login_block_haml.html">_login_block.haml</a>
+  
+    <li><a href="../../../app/views/application/_message_block_html_haml.html">_message_block.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_right_html_haml.html">_right.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_top_html_haml.html">_top.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_comments/_blog_comment_html_haml.html">_blog_comment.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_comments/_blog_comment_json_jbuilder.html">_blog_comment.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/blog_comments/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/_blog_post_html_haml.html">_blog_post.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/_blog_post_json_jbuilder.html">_blog_post.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/blog_posts/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/_one_post_html_haml.html">_one_post.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/blog_posts/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../../../app/views/guest_posts/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../../../app/views/guest_posts/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../../../app/views/guest_posts/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/guest_posts/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/layouts/application_html_haml.html">application.html.haml</a>
+  
+    <li><a href="../../../app/views/news/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../../../app/views/news/_news_html_haml.html">_news.html.haml</a>
+  
+    <li><a href="../../../app/views/news/_news_json_jbuilder.html">_news.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/news/create_json_jbuilder.html">create.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/news/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../../../app/views/news/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../../../app/views/news/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/news/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/news/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/root_html_haml.html">root.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../../../app/views/registrations/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/sessions/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../config_ru.html">config.ru</a>
+  
+    <li><a href="../../../doc/ActiveRecord_html.html">ActiveRecord.html</a>
+  
+    <li><a href="../../../doc/AddNullToUserPassword_html.html">AddNullToUserPassword.html</a>
+  
+    <li><a href="../../../doc/AddUserIpToGuestPosts_html.html">AddUserIpToGuestPosts.html</a>
+  
+    <li><a href="../../../doc/AdminConfig_html.html">AdminConfig.html</a>
+  
+    <li><a href="../../../doc/ApplicationController_html.html">ApplicationController.html</a>
+  
+    <li><a href="../../../doc/ApplicationHelper_html.html">ApplicationHelper.html</a>
+  
+    <li><a href="../../../doc/Authentication_html.html">Authentication.html</a>
+  
+    <li><a href="../../../doc/AvatarUploader_html.html">AvatarUploader.html</a>
+  
+    <li><a href="../../../doc/BlogComment_html.html">BlogComment.html</a>
+  
+    <li><a href="../../../doc/BlogCommentsController_html.html">BlogCommentsController.html</a>
+  
+    <li><a href="../../../doc/BlogPost_html.html">BlogPost.html</a>
+  
+    <li><a href="../../../doc/BlogPostsController_html.html">BlogPostsController.html</a>
+  
+    <li><a href="../../../doc/Capfile_html.html">Capfile.html</a>
+  
+    <li><a href="../../../doc/Char_html.html">Char.html</a>
+  
+    <li><a href="../../../doc/CharDelegation_html.html">CharDelegation.html</a>
+  
+    <li><a href="../../../doc/CharGroup_html.html">CharGroup.html</a>
+  
+    <li><a href="../../../doc/CharProfile_html.html">CharProfile.html</a>
+  
+    <li><a href="../../../doc/CharStatus_html.html">CharStatus.html</a>
+  
+    <li><a href="../../../doc/CreateAdminConfigs_html.html">CreateAdminConfigs.html</a>
+  
+    <li><a href="../../../doc/CreateAuthentications_html.html">CreateAuthentications.html</a>
+  
+    <li><a href="../../../doc/CreateBlogComments_html.html">CreateBlogComments.html</a>
+  
+    <li><a href="../../../doc/CreateBlogPosts_html.html">CreateBlogPosts.html</a>
+  
+    <li><a href="../../../doc/CreateCharDelegations_html.html">CreateCharDelegations.html</a>
+  
+    <li><a href="../../../doc/CreateCharGroups_html.html">CreateCharGroups.html</a>
+  
+    <li><a href="../../../doc/CreateCharProfiles_html.html">CreateCharProfiles.html</a>
+  
+    <li><a href="../../../doc/CreateCharStatuses_html.html">CreateCharStatuses.html</a>
+  
+    <li><a href="../../../doc/CreateChars_html.html">CreateChars.html</a>
+  
+    <li><a href="../../../doc/CreateGuestPosts_html.html">CreateGuestPosts.html</a>
+  
+    <li><a href="../../../doc/CreateLogTypes_html.html">CreateLogTypes.html</a>
+  
+    <li><a href="../../../doc/CreateNews_html.html">CreateNews.html</a>
+  
+    <li><a href="../../../doc/CreatePages_html.html">CreatePages.html</a>
+  
+    <li><a href="../../../doc/CreateSeasonTimes_html.html">CreateSeasonTimes.html</a>
+  
+    <li><a href="../../../doc/CreateSeasons_html.html">CreateSeasons.html</a>
+  
+    <li><a href="../../../doc/CreateUserProfiles_html.html">CreateUserProfiles.html</a>
+  
+    <li><a href="../../../doc/EmailValidator_html.html">EmailValidator.html</a>
+  
+    <li><a href="../../../doc/File_html.html">File.html</a>
+  
+    <li><a href="../../../doc/Gemfile_html.html">Gemfile.html</a>
+  
+    <li><a href="../../../doc/Gemfile_lock_html.html">Gemfile_lock.html</a>
+  
+    <li><a href="../../../doc/Guardfile_html.html">Guardfile.html</a>
+  
+    <li><a href="../../../doc/GuestPost_html.html">GuestPost.html</a>
+  
+    <li><a href="../../../doc/GuestPostsController_html.html">GuestPostsController.html</a>
+  
+    <li><a href="../../../doc/IpValidator_html.html">IpValidator.html</a>
+  
+    <li><a href="../../../doc/Linyansho411_html.html">Linyansho411.html</a>
+  
+    <li><a href="../../../doc/Linyansho411/Application_html.html">Application.html</a>
+  
+    <li><a href="../../../doc/LogType_html.html">LogType.html</a>
+  
+    <li><a href="../../../doc/Logger_html.html">Logger.html</a>
+  
+    <li><a href="../../../doc/News_html.html">News.html</a>
+  
+    <li><a href="../../../doc/NewsController_html.html">NewsController.html</a>
+  
+    <li><a href="../../../doc/OauthsController_html.html">OauthsController.html</a>
+  
+    <li><a href="../../../doc/OauthsHelper_html.html">OauthsHelper.html</a>
+  
+    <li><a href="../../../doc/Object_html.html">Object.html</a>
+  
+    <li><a href="../../../doc/Page_html.html">Page.html</a>
+  
+    <li><a href="../../../doc/PagesController_html.html">PagesController.html</a>
+  
+    <li><a href="../../../doc/PagesHelper_html.html">PagesHelper.html</a>
+  
+    <li><a href="../../../doc/README_rdoc_html.html">README_rdoc.html</a>
+  
+    <li><a href="../../../doc/Rakefile_html.html">Rakefile.html</a>
+  
+    <li><a href="../../../doc/RegistrationsController_html.html">RegistrationsController.html</a>
+  
+    <li><a href="../../../doc/RegistrationsHelper_html.html">RegistrationsHelper.html</a>
+  
+    <li><a href="../../../doc/Season_html.html">Season.html</a>
+  
+    <li><a href="../../../doc/SeasonTime_html.html">SeasonTime.html</a>
+  
+    <li><a href="../../../doc/SessionsController_html.html">SessionsController.html</a>
+  
+    <li><a href="../../../doc/SessionsHelper_html.html">SessionsHelper.html</a>
+  
+    <li><a href="../../../doc/Sorcery_html.html">Sorcery.html</a>
+  
+    <li><a href="../../../doc/Sorcery/Controller_html.html">Controller.html</a>
+  
+    <li><a href="../../../doc/Sorcery/Controller/Submodules_html.html">Submodules.html</a>
+  
+    <li><a href="../../../doc/Sorcery/Controller/Submodules/External_html.html">External.html</a>
+  
+    <li><a href="../../../doc/Sorcery/Controller/Submodules/External/InstanceMethods_html.html">InstanceMethods.html</a>
+  
+    <li><a href="../../../doc/SorceryActivityLogging_html.html">SorceryActivityLogging.html</a>
+  
+    <li><a href="../../../doc/SorceryCore_html.html">SorceryCore.html</a>
+  
+    <li><a href="../../../doc/SorceryExternal_html.html">SorceryExternal.html</a>
+  
+    <li><a href="../../../doc/SorceryRememberMe_html.html">SorceryRememberMe.html</a>
+  
+    <li><a href="../../../doc/SorceryResetPassword_html.html">SorceryResetPassword.html</a>
+  
+    <li><a href="../../../doc/SorceryUserActivation_html.html">SorceryUserActivation.html</a>
+  
+    <li><a href="../../../doc/String_html.html">String.html</a>
+  
+    <li><a href="../../../doc/User_html.html">User.html</a>
+  
+    <li><a href="../../../doc/UserMailer_html.html">UserMailer.html</a>
+  
+    <li><a href="../../../doc/UserProfile_html.html">UserProfile.html</a>
+  
+    <li><a href="../../../doc/app/assets/fonts/chinacyr-webfont_svg_html.html">chinacyr-webfont_svg.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/app_js_coffee_html.html">app_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/blogctrl_js_coffee_html.html">blogctrl_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/guestbookctrl_js_coffee_html.html">guestbookctrl_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/index_js_html.html">index_js.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/newsctrl_js_coffee_html.html">newsctrl_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/resources_js_coffee_html.html">resources_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/application_js_html.html">application_js.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/added_css_scss_html.html">added_css_scss.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/application_css_html.html">application_css.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/base_less_less_html.html">base_less_less.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/sizes_less_html.html">sizes_less.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/style_css_less_html.html">style_css_less.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_403_html_haml_html.html">_403_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_bottom_html_haml_html.html">_bottom_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_current_user_json_jbuilder_html.html">_current_user_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_debug_params_html_haml_html.html">_debug_params_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_login_block_haml_html.html">_login_block_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_message_block_html_haml_html.html">_message_block_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_right_html_haml_html.html">_right_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_top_html_haml_html.html">_top_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_comments/_blog_comment_html_haml_html.html">_blog_comment_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_comments/_blog_comment_json_jbuilder_html.html">_blog_comment_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_comments/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/_blog_post_html_haml_html.html">_blog_post_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/_blog_post_json_jbuilder_html.html">_blog_post_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/_one_post_html_haml_html.html">_one_post_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/guest_posts/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/guest_posts/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/guest_posts/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/guest_posts/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/layouts/application_html_haml_html.html">application_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/_news_html_haml_html.html">_news_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/_news_json_jbuilder_html.html">_news_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/news/create_json_jbuilder_html.html">create_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/news/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/news/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/root_html_haml_html.html">root_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/registrations/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/sessions/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/config_ru_html.html">config_ru.html</a>
+  
+    <li><a href="../../../doc/fonts_css.html">fonts.css</a>
+  
+    <li><a href="../../../doc/index_html.html">index.html</a>
+  
+    <li><a href="../../../doc/js/darkfish_js.html">darkfish.js</a>
+  
+    <li><a href="../../../doc/js/jquery_js.html">jquery.js</a>
+  
+    <li><a href="../../../doc/js/search_js.html">search.js</a>
+  
+    <li><a href="../../../doc/log/development_log_html.html">development_log.html</a>
+  
+    <li><a href="../../../doc/rdoc_css.html">rdoc.css</a>
+  
+    <li><a href="../../../log/development_log.html">development.log</a>
+  
+    <li><a href="../../../log/production_log.html">production.log</a>
+  
+    <li><a href="../../../log/test_log.html">test.log</a>
+  
+    <li><a href="../../../public/404_html.html">404.html</a>
+  
+    <li><a href="../../../public/422_html.html">422.html</a>
+  
+    <li><a href="../../../public/500_html.html">500.html</a>
+  
+    <li><a href="../../../public/favicon_ico.html">favicon.ico</a>
+  
+    <li><a href="../../../public/robots_txt.html">robots</a>
+  
+    <li><a href="../../../tmp/pids/development_pid.html">development.pid</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page app/assets/stylesheets/base_less.less">
+
+<p>// ============================================================== //       
+ОБНУЛЕНИЕ И ОБЩИЕ //
+==============================================================</p>
+
+<p>html {</p>
+
+<pre>-webkit-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%;
+min-height:100%;
+padding: 0;
+margin: 0;</pre>
+
+<p>}</p>
+
+<p>article,aside,details,figure,footer,header,hgroup,nav,section{</p>
+
+<pre>display: block;</pre>
+
+<p>} a:hover, a:active, a:focus{</p>
+
+<pre>outline: 0;</pre>
+
+<p>}</p>
+
+<p>a {</p>
+
+<pre>color:@linkColor;
+
+&amp;:hover,&amp;:focus {
+      color:@hoverLink;
+      text-decoration: none;
+}
+
+&amp;.active {
+      color:@activeLink;
+}</pre>
+
+<p>}</p>
+
+<p>h1, h2, h3, h4, h5, h6{</p>
+
+<pre>margin: 0;
+font-weight: bold;
+text-rendering: optimizelegibility;</pre>
+
+<p>} img{</p>
+
+<pre>border: 0;</pre>
+
+<p>} ul,ol {</p>
+
+<pre>list-style: none;
+margin: 0;
+padding: 0;</pre>
+
+<p>} table {</p>
+
+<pre>border:0;
+border-collapse:separate;
+border-spacing:0;</pre>
+
+<p>}</p>
+
+<p>td, th{</p>
+
+<pre>padding:0;
+text-align: left;
+vertical-align: top;</pre>
+
+<p>}</p>
+
+<p>p {</p>
+
+<pre>margin: 0 0 15px 0;</pre>
+
+<p>}</p>
+
+<p>ol {</p>
+
+<pre>list-style: decimal;
+padding-left: 20px;</pre>
+
+<p>}</p>
+
+<p>// SELECTION</p>
+
+<pre>{
+@selection-bg:@color-green3;
+@selection-txt:@color-brown3;
+&amp;::selection {
+      background:@selection-bg;
+      color:@selection-txt;
+}
+&amp;::-moz-selection {
+      background:@selection-bg;
+      color:@selection-txt;
+}
+&amp;::-webkit-selection {
+      background:@selection-bg;
+      color:@selection-txt;
+}</pre>
+
+<p>}</p>
+
+<p>// Scrollbar .scrollbar {</p>
+
+<pre>&amp;::-webkit-scrollbar {
+  width: 10px;
+  .box-shadow(inset 1px 0px 3px rgba(50, 50, 50, 0.45));
+  background: @color-green6;
+}
+ Track   
+&amp;::-webkit-scrollbar-track {
+  -webkit-box-shadow: transparent;
+}
+ Handle   
+&amp;::-webkit-scrollbar-thumb {
+  .border-radius(2px);
+//background: @color-sc004;
+  background: @color-green3;
+}
+&amp;::-webkit-scrollbar-thumb:hover {
+//background: @color-sc004;
+  background: url(&quot;/img/scroll-over.png&quot;) top left repeat;
+}
+&amp;::-webkit-scrollbar-thumb:window-inactive {
+  background: @color-green6;
+}
+&amp;::-webkit-scrollbar-thumb:active {
+  background: @color-green6;
+}
+&amp;::-webkit-scrollbar-corner {
+  background-color: transparent;
+}}</pre>
+
+<p>// ============================================================== //       
+ШРИФТЫ // ==============================================================</p>
+
+<p>// FONTFACE: ChinaCyr</p>
+
+<p>@font-face {</p>
+
+<pre>font-family: &#39;chinacyrregular&#39;;
+src: font-url(&#39;chinacyr-webfont.eot&#39;);
+src: font-url(&#39;chinacyr-webfont.eot?#iefix&#39;) format(&#39;embedded-opentype&#39;),
+font-url(&#39;chinacyr-webfont.woff&#39;) format(&#39;woff&#39;),
+font-url(&#39;chinacyr-webfont.ttf&#39;) format(&#39;truetype&#39;),
+font-url(&#39;chinacyr-webfont.svg#chinacyrregular&#39;) format(&#39;svg&#39;);
+font-weight: normal;
+font-style: normal;</pre>
+
+<p>}</p>
+
+<p>// FONTFACE: Philosopher @import url(<a
+href="http://fonts.googleapis.com/css?family=Philosopher:400,700,400italic&subset=latin,cyrillic">fonts.googleapis.com/css?family=Philosopher:400,700,400italic&subset=latin,cyrillic</a>);</p>
+
+<p>/* СТИЛИ ДЛЯ ШРИФТОВ: */ .font {</p>
+
+<pre>.georgia {font-family: Georgia, &quot;Century Schoolbook L&quot;, Serif;}
+.palatino {font-family: &quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, Palatino, serif;}
+.philosopher {font-family: Philosopher, &quot;Book Antiqua&quot;, Palatino, serif;}
+.chinacyr {font-family: chinacyrregular;}</pre>
+
+<p>}</p>
+
+<p>// ============================================================== //       
+ВНУТРЕННИЕ СТИЛИ //
+==============================================================</p>
+
+<p>// ОСНОВНОЕ @basefontsize: 14px; @baseColor: @color-grey1; @linkColor:
+@color-grey1; @hoverLink: @color-brown2; @activeLink: @color-orange1;
+@lineHeight: 1.2em;</p>
+
+<p>// ЦВЕТА @color-green1: adab78; @color-green2: #757c52; @color-green3:
+#087100; @color-green4: #4a4940; @color-green5: #758a11; @color-green6:
+d5d395; @color-green7: e6e3b6; @color-green8: e0e57e; @color-brown1:
+b6a795; @color-brown2: #4b453e; @color-brown3: fbf5e8; @color-brown4:
+c2b9a1; @color-brown5: ede7d2; @color-orange1: bd6200; @color-orange2:
+#904b00; @color-orange3: e38700; @color-grey1: #373737;</p>
+
+<p>@color-grey: bfbfbf; @color-black: #000000; @color-brown: #72594e;
+@color-red: d20000; @color-orange: fb9c09; @color-gold: f2ca10;
+@color-yellow: faea00; @color-pistache: e8faa1; @color-brightgreen: c4fa00;
+@color-green: #34c400; @color-emerald: #2cc4b3; @color-cyan: #00fff9;
+@color-skyblue: #00eff3; @color-lightblue: #57dbf3; @color-blue: #099ff3;
+@color-indigo: #714df3; @color-violet: #9d2bf3; @color-pink: f378d4;</p>
+
+<p>// ФОНЫ КАРТИНКИ @bgimg-bg: image-url(&#39;bg.jpg&#39;); @bgimg-beige:
+image-url(&#39;bg-beige.png&#39;); @bgimg-green:
+image-url(&#39;bg-green.png&#39;);</p>
+
+<p>// РАЗМЕРЫ И ОТСТУПЫ @paddings-20:20px;</p>
+
+<p>// ============================================================== //       
+ПРОСТЕЙШИЕ ЭЛЕМЕНТЫ ДЛЯ ВНУТРЕННИХ //
+==============================================================</p>
+
+<p>// СТАНДАРТНЫЕ ФОНЫ .bg-grey {background-color: @color-grey;} .bg-black
+{background-color: @color-black;} .bg-brown {background-color:
+@color-brown;} .bg-red {background-color: @color-red;} .bg-orange
+{background-color: @color-orange;} .bg-gold {background-color:
+@color-gold;} .bg-yellow {background-color: @color-yellow;} .bg-pistache
+{background-color: @color-pistache;} .bg-brightgreen {background-color:
+@color-brightgreen;} .bg-green {background-color: @color-green;}
+.bg-emerald {background-color: @color-emerald;} .bg-cyan {background-color:
+@color-cyan;} .bg-skyblue {background-color: @color-skyblue;} .bg-lightblue
+{background-color: @color-lightblue;} .bg-blue {background-color:
+@color-blue;} .bg-indigo {background-color: @color-indigo;} .bg-violet
+{background-color: @color-violet;} .bg-pink {background-color:
+@color-pink;}</p>
+
+<p>// АНИМАЦИЯ .transition-1 {.transition(all 0.4s ease);} .transition-2
+{.transition(all 11s ease);} .transition-3 {.transition(all 2s ease);}</p>
+
+<p>// FONT SIZES .fontsize-original {font-size: @basefontsize;} .fontsize-12
+{font-size: 1.2em;}</p>
+
+<p>// ЦВЕТ .color-red {color:@color-red;}</p>
+
+<p>// МЕСТЕЧКОВЫЕ</p>
+
+<p>// Ширина левого столбца в таблицах адм .table-td-left {</p>
+
+<pre>width:190px;
+padding-right:0px;</pre>
+
+<p>}</p>
+
+<p>// ============================================================== //       
+ЗАГОТОВКИ // ==============================================================</p>
+
+<p>// Border Radius .border-radius(@radius: 5px) {</p>
+
+<pre>-webkit-border-radius: @radius;
+-moz-border-radius: @radius;
+border-radius: @radius;</pre>
+
+<p>}</p>
+
+<p>// Drop shadows</p>
+
+<pre>.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,0.25)) {
+-webkit-box-shadow: @shadow;
+-moz-box-shadow: @shadow;
+box-shadow: @shadow;</pre>
+
+<p>}</p>
+
+<p>// Transitions .transition(@transition) {</p>
+
+<pre>-webkit-transition: @transition;
+-moz-transition: @transition;
+-ms-transition: @transition;
+-o-transition: @transition;
+transition: @transition;</pre>
+
+<p>}</p>
+
+<p>// Transformations .rotate(@degrees) { //ex: -20deg</p>
+
+<pre>-webkit-transform: rotate(@degrees);
+-moz-transform: rotate(@degrees);
+-ms-transform: rotate(@degrees);
+-o-transform: rotate(@degrees);
+transform: rotate(@degrees);</pre>
+
+<p>} /*Растягивание: ширина, высота*/ .scale(@ratio: 1.5,@ratio2: 1) {</p>
+
+<pre>-webkit-transform: scale(@ratio,@ratio2);
+-moz-transform: scale(@ratio,@ratio2);
+-ms-transform: scale(@ratio,@ratio2);
+-o-transform: scale(@ratio,@ratio2);
+transform: scale(@ratio,@ratio2);</pre>
+
+<p>} /*Скосить: горизонталь, вертикаль*/ .skew(@skew: 20deg,@skew2: 40deg) {</p>
+
+<pre>transform:skew(@skew,@skew2);
+-o-transform:skew(@skew,@skew2); /* для Opera */
+-webkit-transform:skew(@skew,@skew2); /* для Chrome и Safari */
+-moz-transform:skew(@skew,@skew2); /*для Firefox */
+-ms-transform:skew(@skew,@skew2); /* для IE */</pre>
+
+<p>}</p>
+
+<p>// Opacity .opacity(@opacity: 100) {</p>
+
+<pre>opacity: @opacity / 100;
+filter: ~&quot;e(%(&#39;alpha(opacity=%d)&#39;, @opacity))&quot;;</pre>
+
+<p>}</p>
+
+<p>/* Clearfix */ .clearfix {</p>
+
+<pre> zoom: 1;
+&amp;:before,
+&amp;:after {
+      display: table;
+      content: &quot;&quot;;
+}
+&amp;:after {
+      clear: both;
+}</pre>
+
+<p>}</p>
+
+<p>// ============================================================== //       
+ИСПОЛЬЗУЕМЫЕ ЭЛЕМЕНТЫ //
+==============================================================</p>
+
+<p>.clear {</p>
+
+<pre>clear:both;
+font-size:0px;
+line-height:0px;
+padding:0px;</pre>
+
+<p>} div.hide {</p>
+
+<pre>display: none;</pre>
+
+<p>} .invisible {</p>
+
+<pre>visibility: hidden;</pre>
+
+<p>}</p>
+
+<p>// Подпись .sign {</p>
+
+<pre>text-align: right;
+font-style: italic;
+padding: 10px 0;</pre>
+
+<p>}</p>
+
+<p>// Разделитель hr {</p>
+
+<pre>height:1px;
+background: none;
+border: 0px;
+border-bottom-width: 1px;
+border-style: solid;
+clear:both;
+.clearfix;
+&amp;.separator {
+      border-color: @color-green1;
+}</pre>
+
+<p>}</p>
+
+<p>// Текст по центру .center, .align-center {</p>
+
+<pre>text-align: center;</pre>
+
+<p>}// ПО ЦЕНТРУ ТЕКСТ</p>
+
+<p>// Блок по центру .centered {</p>
+
+<pre>margin: 0 auto;</pre>
+
+<p>}</p>
+
+<p>// Жирный шрифт .bold {</p>
+
+<pre>font-weight: bold;</pre>
+
+<p>}</p>
+
+<p>// Картинка центрированная .img-center {</p>
+
+<pre>margin: 0 auto;
+display: block;</pre>
+
+<p>}</p>
+
+<p>// Картинка с бордером .img-border {</p>
+
+<pre>border: 1px solid @color-green1;
+padding: 5px;</pre>
+
+<p>}</p>
+
+<p>// ЗАГОЛОВКИ</p>
+
+<p>// Крупный, болд h1 {</p>
+
+<pre>font-size: 1.8em;
+padding-bottom: 15px;
+line-height:1.2em;
+
+span {
+      color:@color-brown1 - 50;
+}</pre>
+
+<p>}</p>
+
+<p>// Китайский, центрированный, болд h2 {</p>
+
+<pre>text-align: center;
+font-size: 1.5em;
+.font &gt; .chinacyr;
+padding: 0px 0 15px 0;
+line-height: 1.2em;</pre>
+
+<p>}</p>
+
+<p>// Китайский, центрированный, оранжевый h3 {</p>
+
+<pre>text-align: center;
+.font &gt; .chinacyr;
+margin-bottom: 10px;
+color:@color-orange1;</pre>
+
+<p>}</p>
+
+<p>// Зеленый центрированный h4 {</p>
+
+<pre>text-align: center;
+font-size: 1.4em;
+padding: 20px 0;
+color:@color-green5;</pre>
+
+<p>}</p>
+
+<p>// ============================================================== //       
+ФОРМЫ И КНОПКИ //
+==============================================================</p>
+
+<p>//      * ЧЕКБОКСЫ И РАДИО * //</p>
+
+<p>label{</p>
+
+<pre>cursor: pointer;</pre>
+
+<p>} <a href="type="checkbox"">input</a>, <a href="type="radio"">input</a>{</p>
+
+<pre>display: none;
+&amp;:disabled + label {
+}
+&amp; + label {
+      padding: 3px 0 3px 0px;
+      display: block;
+      line-height: 16px;
+      float: left;
+      .additional-info {
+        padding-left: 21px;
+        padding-top: 2px;
+      }
+}
+&amp; + label &gt; span {
+      background-image: image-url(&#39;checkradio.png&#39;);
+      background-repeat: no-repeat;
+      display: block;
+      width:17px;
+      height:16px;
+      float: left;
+      margin-right: 4px;
+}</pre>
+
+<p>}</p>
+
+<p>// — CHECKBOX ————————————————- <a href="type="checkbox"">input</a>{</p>
+
+<pre>&amp; + label &gt; span {background-position:0px 0;}
+&amp;:checked + label &gt; span {background-position: 0 -17px;}
+&amp;:disabled + label &gt; span {background-position: 0 -33px;}
+&amp;:disabled:checked + label &gt; span {background-position: 0 -50px;}</pre>
+
+<p>}</p>
+
+<p>// — RADIO —————————————————- <a href="type="radio"">input</a>{</p>
+
+<pre>&amp; + label &gt; span {background-position:-17px 0;}
+&amp;:checked + label &gt; span {background-position: -17px -17px;}
+&amp;:disabled + label &gt; span {background-position: -17px -33px;}
+&amp;:disabled:checked + label &gt; span {background-position: -17px -50px;}</pre>
+
+<p>}</p>
+
+<p>//      * ИНПУТЫ * //</p>
+
+<p>.inp {</p>
+
+<pre>.font &gt; .philosopher;
+.transition-1;
+border-width:1px;
+border-style:solid;
+border-color:@baseColor;
+&amp;.inp-standart {
+      background: none;
+      border-color:@color-brown1;
+      padding: 5px 0px;
+      font-size: 1.1em;
+      &amp;:focus {
+        border-color:@color-orange1;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>.inp-type2 {</p>
+
+<pre>border-color:@color-brown1;
+background: @color-brown3;
+padding:2px 5px;
+.transition-1;
+&amp;:focus {
+      background: @color-brown4 + 66;
+      .box-shadow(0px 0px 3px 1px rgba(0,0,0,0.3));
+}</pre>
+
+<p>}</p>
+
+<p>//      * КНОПКИ * //</p>
+
+<p>.btn {</p>
+
+<pre>cursor:pointer;
+.transition-1;
+font-family:inherit;
+
+&amp;.btn-text {
+      border: 0px;
+      background: none;
+      .font &gt; .chinacyr;
+      font-size: 1.5em;
+      color:@color-orange1;
+      font-weight: bold;
+      &amp;:hover {
+        color:@color-orange2;
+      }
+}
+
+&amp;.btn-mini {
+      background: @color-green6;
+      border:1px solid @color-green1;
+      font-family: inherit;
+      text-align: center;
+      font-weight: bold;
+      color:@color-green4;
+      display: block;
+      padding:2px 17px;
+      &amp;:hover {
+        background: @color-green1;
+        color:@color-grey1;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>.btn-green {</p>
+
+<pre>.transition-1;
+text-decoration: none;
+display: block;
+background: @color-green6;
+padding:10px;
+text-align: center;
+width: 110px;
+border: 1px solid @color-green1;
+
+&amp;:hover {
+      background: @color-green6 + 9;
+}</pre>
+
+<p>}</p>
+
+<p>.btn-standart {</p>
+
+<pre>background: @color-green8;
+border: 1px solid @color-brown1;
+padding:2px 5px;
+color:@color-green4;
+font-size:1.1em;
+&amp;:hover {
+      background: @color-green6;
+      color:@color-grey1;
+}</pre>
+
+<p>}</p>
+
+<p>//      * ТЕКСТАРЕА * //</p>
+
+<p>textarea {</p>
+
+<pre>resize:none;
+border:1px solid @color-grey1;
+font-family:inherit;
+font-size:1em;</pre>
+
+<p>}</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

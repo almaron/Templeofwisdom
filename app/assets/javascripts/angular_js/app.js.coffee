@@ -1,19 +1,16 @@
 @app = angular.module('templeApp',["ngResource", "ngSanitize"])
 
-#@app.factory "currentUser", ["$resource", ($resource) ->
-#  $resource "/current_user.json", {}
-#]
-
-@app.controller "WrapperCtrl", ["$scope", "currentUser", ($scope, currentUser) ->
+@app.controller "WrapperCtrl", ["$scope", "currentUser", "News", "BlogPost", ($scope, currentUser, News, BlogPost) ->
 
   $scope.currentUser = {}
 
   $scope.initWrapper = ->
    $scope.currentUser = currentUser.get()
-  #  $scope.wrapBlog = BlogPost.query {limit:4}
-  #  $scope.updateNews()
+   $scope.currentUser.default_char = {name:""} unless $scope.currentUser.default_char
+   $scope.wrapBlog = BlogPost.query {limit:4}
+   $scope.updateMainNews()
 
-  $scope.updateNews = ->
+  $scope.updateMainNews = ->
     $scope.wrapNews = News.query {limit:4}
 
 ]

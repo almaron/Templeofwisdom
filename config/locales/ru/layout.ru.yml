@@ -13,3 +13,7 @@ ru:
       pagetitle: "Блог мастеров"
     show:
       pagetitle: "Блог мастеров"
+
+  guest_posts:
+    index:
+      pagetitle: "Гостевой свиток"

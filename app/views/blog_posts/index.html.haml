@@ -1,0 +1,11 @@
+.blog{"ng-controller" => "BlogCtrl", "ng-init"=>"loadPosts(#{params[:page]})"}
+  %div{"ng-hide"=>"onePost.id"}
+    = render :partial => "form", locals: {post:"newPost"}
+    .paginator.align-center
+      = will_paginate @posts, :previous_label => t("will_paginate.previous_label"), :next_label => t("will_paginate.next_label")
+    = render "blog_post"
+    .paginator.align-center
+      = will_paginate @posts, :previous_label => t("will_paginate.previous_label"), :next_label => t("will_paginate.next_label")
+
+  .one_post{"ng-show"=>"onePost.id"}
+    = render "one_post"

@@ -1,0 +1,19 @@
+.blog-entry.blog-comment{"ng-repeat"=>"blog_comment in onePost.comments"}
+  .blog_comment_wrap{"ng-hide"=>"blog_comment.show"}
+    .blog-comment-title
+      .blog-comment-author.blog-author{} {{blog_comment.author}}
+      .blog-comment-date{} {{blog_comment.dateLine}}
+    .blog-comment-text{"ng-bind-html"=>"blog_comment.content"}
+    .block-adm
+      %span.delete{title: "Удалить", "ng-if" => "commentDeleteLink(blog_comment)", "ng-click" => "deleteComment(blog_comment)"} [&#21024;&#38500;]
+      %span.edit{title: "Редактировать","ng-if" => "commentEditLink(blog_comment)", "ng-click"=>"blog_comment.show = true"} [ &#21464;&#26356; ]
+    .addnews{"ng-show" => "blog_post.edit"}
+      .any-form
+        %form{name:"comment_form", novalidate:"", "ng-submit" => "updateComment(blog_comment)" }
+          %span.bold Текст комментария:
+          %br/
+          %textarea.inp.inp-type2{name:"comment", required:"", "ng-model"=>"blog_comment.comment"}
+          %br/
+          %input.btn.btn-standart{type: "submit", value: "Отправить"}
+
+  = render partial: "blog_comments/form", locals:{comment:"blog_comment"}

@@ -21,6 +21,14 @@ Rails.application.routes.draw do
   resources :pages, :except => [:show]
   get "pages/:url" => "pages#show", :as => "page_url"
 
+  resources :news
+
+  resources :blog_posts, :path => "blog" do
+    resources :comments, controller: :blog_comments, except: [:index, :show, :new]
+  end
+
+  resources :guest_posts, :path => "guestbook", :except => [:show]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

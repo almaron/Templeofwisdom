@@ -1,0 +1,21 @@
+%h3{} {{onePost.head}}
+.blog-entry{"ng-hide" => "onePost.show"}
+  .blog-entry-title
+    .blog-entry-date{} {{onePost.dateLine}}
+    .blog-entry-title-text{} {{onePost.head}}
+  .blog-text{"ng-bind-html"=>"onePost.content"}
+  %span.blog-author{} {{onePost.author}}
+  .block-adm
+    %span.delete{title: "Удалить", "ng-show" => "currentUser.group=='admin'", "ng-click" => "deletePost($index)"} [&#21024;&#38500;]
+    %span.edit{title: "Редактировать","ng-show" => "currentUser.group=='admin'", "ng-click"=>"onePost.show = !onePost.show"} [ &#21464;&#26356; ]
+= render partial: "form", locals: {post:"onePost"}
+.blog-back-link
+  %span{"ng-click" => "goBack()", "ng-show" => "posts.length > 0"}
+    &larr; Назад
+  = link_to "&larr; Назад".html_safe, blog_posts_path, {"ng-hide" => "posts.length > 0"}
+.blog-comments
+  = render "blog_comments/blog_comment"
+.blog-new-comment
+  .no_user{"ng-hide"=>"currentUser.id"}
+    Для того, чтобы оставлять комментарии, авторизуйтесь на сайте.
+  = render partial: "blog_comments/form", locals:{comment:"newComment"}

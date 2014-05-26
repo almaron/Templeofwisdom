@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525125753) do
+ActiveRecord::Schema.define(version: 20140526150056) do
+
+  create_table "admin_configs", force: true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_configs", ["name"], name: "index_admin_configs_on_name", unique: true, using: :btree
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -22,6 +31,103 @@ ActiveRecord::Schema.define(version: 20140525125753) do
   end
 
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", unique: true, using: :btree
+
+  create_table "blog_comments", force: true do |t|
+    t.integer  "blog_post_id", null: false
+    t.text     "comment"
+    t.integer  "user_id"
+    t.string   "author"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blog_posts", force: true do |t|
+    t.string   "head"
+    t.text     "text"
+    t.string   "author"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "char_delegations", force: true do |t|
+    t.integer  "char_id",                null: false
+    t.integer  "user_id",                null: false
+    t.date     "ending"
+    t.integer  "owner",      default: 0
+    t.integer  "default",    default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "char_delegations", ["user_id"], name: "index_char_delegations_on_user_id", using: :btree
+
+  create_table "char_groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "char_profiles", force: true do |t|
+    t.integer  "char_id",                null: false
+    t.string   "birth_date"
+    t.integer  "age"
+    t.integer  "season_id"
+    t.string   "place"
+    t.string   "beast"
+    t.text     "phisics"
+    t.text     "bio"
+    t.text     "look"
+    t.text     "character"
+    t.text     "items"
+    t.string   "person"
+    t.text     "comment"
+    t.integer  "points",     default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "char_statuses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "chars", force: true do |t|
+    t.string   "name"
+    t.integer  "group_id"
+    t.string   "status_line"
+    t.string   "avatar"
+    t.integer  "status_id"
+    t.integer  "open_player"
+    t.integer  "profile_topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guest_posts", force: true do |t|
+    t.string   "head"
+    t.text     "content"
+    t.text     "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user",       null: false
+    t.string   "ip",         null: false
+  end
+
+  create_table "log_types", force: true do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "news", force: true do |t|
+    t.string   "author"
+    t.string   "head"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pages", force: true do |t|
     t.string   "head"
@@ -43,6 +149,34 @@ ActiveRecord::Schema.define(version: 20140525125753) do
 
   add_index "pages", ["ancestry"], name: "index_pages_on_ancestry", using: :btree
   add_index "pages", ["page_alias"], name: "index_pages_on_page_alias", unique: true, using: :btree
+
+  create_table "season_times", force: true do |t|
+    t.integer  "season_id"
+    t.integer  "begins"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "season_times", ["begins"], name: "index_season_times_on_begins", using: :btree
+
+  create_table "seasons", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_profiles", force: true do |t|
+    t.integer  "user_id",                  null: false
+    t.string   "full_name"
+    t.date     "birth_date"
+    t.string   "icq"
+    t.string   "skype"
+    t.string   "contacts"
+    t.integer  "viewcontacts", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name",                                             null: false

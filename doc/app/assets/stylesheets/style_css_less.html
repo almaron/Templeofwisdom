@@ -1,0 +1,2417 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>style.css.less - RDoc Documentation</title>
+
+<link href="../../../fonts.css" rel="stylesheet">
+<link href="../../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/navigation.js"></script>
+<script src="../../../js/search_index.js"></script>
+<script src="../../../js/search.js"></script>
+<script src="../../../js/searcher.js"></script>
+<script src="../../../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../Capfile.html">Capfile</a>
+  
+    <li><a href="../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../Guardfile.html">Guardfile</a>
+  
+    <li><a href="../../../README_rdoc.html">README</a>
+  
+    <li><a href="../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../app/assets/fonts/chinacyr-webfont_svg.html">chinacyr-webfont.svg</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/app_js_coffee.html">app.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/blogctrl_js_coffee.html">blogctrl.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/guestbookctrl_js_coffee.html">guestbookctrl.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/index_js.html">index.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/newsctrl_js_coffee.html">newsctrl.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/angular_js/resources_js_coffee.html">resources.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../app/assets/stylesheets/added_css_scss.html">added.css.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/application_css.html">application.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/base_less_less.html">base_less.less</a>
+  
+    <li><a href="../../../app/assets/stylesheets/sizes_less.html">sizes.less</a>
+  
+    <li><a href="../../../app/assets/stylesheets/style_css_less.html">style.css.less</a>
+  
+    <li><a href="../../../app/views/application/_403_html_haml.html">_403.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_bottom_html_haml.html">_bottom.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_current_user_json_jbuilder.html">_current_user.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/application/_debug_params_html_haml.html">_debug_params.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_login_block_haml.html">_login_block.haml</a>
+  
+    <li><a href="../../../app/views/application/_message_block_html_haml.html">_message_block.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_right_html_haml.html">_right.html.haml</a>
+  
+    <li><a href="../../../app/views/application/_top_html_haml.html">_top.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_comments/_blog_comment_html_haml.html">_blog_comment.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_comments/_blog_comment_json_jbuilder.html">_blog_comment.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/blog_comments/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/_blog_post_html_haml.html">_blog_post.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/_blog_post_json_jbuilder.html">_blog_post.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/blog_posts/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/_one_post_html_haml.html">_one_post.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/blog_posts/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/blog_posts/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../../../app/views/guest_posts/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../../../app/views/guest_posts/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../../../app/views/guest_posts/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/guest_posts/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/layouts/application_html_haml.html">application.html.haml</a>
+  
+    <li><a href="../../../app/views/news/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../../../app/views/news/_news_html_haml.html">_news.html.haml</a>
+  
+    <li><a href="../../../app/views/news/_news_json_jbuilder.html">_news.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/news/create_json_jbuilder.html">create.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/news/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../../../app/views/news/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../../../app/views/news/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/news/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/news/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/root_html_haml.html">root.html.haml</a>
+  
+    <li><a href="../../../app/views/pages/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../../../app/views/registrations/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../app/views/sessions/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../../../config_ru.html">config.ru</a>
+  
+    <li><a href="../../../doc/ActiveRecord_html.html">ActiveRecord.html</a>
+  
+    <li><a href="../../../doc/AddNullToUserPassword_html.html">AddNullToUserPassword.html</a>
+  
+    <li><a href="../../../doc/AddUserIpToGuestPosts_html.html">AddUserIpToGuestPosts.html</a>
+  
+    <li><a href="../../../doc/AdminConfig_html.html">AdminConfig.html</a>
+  
+    <li><a href="../../../doc/ApplicationController_html.html">ApplicationController.html</a>
+  
+    <li><a href="../../../doc/ApplicationHelper_html.html">ApplicationHelper.html</a>
+  
+    <li><a href="../../../doc/Authentication_html.html">Authentication.html</a>
+  
+    <li><a href="../../../doc/AvatarUploader_html.html">AvatarUploader.html</a>
+  
+    <li><a href="../../../doc/BlogComment_html.html">BlogComment.html</a>
+  
+    <li><a href="../../../doc/BlogCommentsController_html.html">BlogCommentsController.html</a>
+  
+    <li><a href="../../../doc/BlogPost_html.html">BlogPost.html</a>
+  
+    <li><a href="../../../doc/BlogPostsController_html.html">BlogPostsController.html</a>
+  
+    <li><a href="../../../doc/Capfile_html.html">Capfile.html</a>
+  
+    <li><a href="../../../doc/Char_html.html">Char.html</a>
+  
+    <li><a href="../../../doc/CharDelegation_html.html">CharDelegation.html</a>
+  
+    <li><a href="../../../doc/CharGroup_html.html">CharGroup.html</a>
+  
+    <li><a href="../../../doc/CharProfile_html.html">CharProfile.html</a>
+  
+    <li><a href="../../../doc/CharStatus_html.html">CharStatus.html</a>
+  
+    <li><a href="../../../doc/CreateAdminConfigs_html.html">CreateAdminConfigs.html</a>
+  
+    <li><a href="../../../doc/CreateAuthentications_html.html">CreateAuthentications.html</a>
+  
+    <li><a href="../../../doc/CreateBlogComments_html.html">CreateBlogComments.html</a>
+  
+    <li><a href="../../../doc/CreateBlogPosts_html.html">CreateBlogPosts.html</a>
+  
+    <li><a href="../../../doc/CreateCharDelegations_html.html">CreateCharDelegations.html</a>
+  
+    <li><a href="../../../doc/CreateCharGroups_html.html">CreateCharGroups.html</a>
+  
+    <li><a href="../../../doc/CreateCharProfiles_html.html">CreateCharProfiles.html</a>
+  
+    <li><a href="../../../doc/CreateCharStatuses_html.html">CreateCharStatuses.html</a>
+  
+    <li><a href="../../../doc/CreateChars_html.html">CreateChars.html</a>
+  
+    <li><a href="../../../doc/CreateGuestPosts_html.html">CreateGuestPosts.html</a>
+  
+    <li><a href="../../../doc/CreateLogTypes_html.html">CreateLogTypes.html</a>
+  
+    <li><a href="../../../doc/CreateNews_html.html">CreateNews.html</a>
+  
+    <li><a href="../../../doc/CreatePages_html.html">CreatePages.html</a>
+  
+    <li><a href="../../../doc/CreateSeasonTimes_html.html">CreateSeasonTimes.html</a>
+  
+    <li><a href="../../../doc/CreateSeasons_html.html">CreateSeasons.html</a>
+  
+    <li><a href="../../../doc/CreateUserProfiles_html.html">CreateUserProfiles.html</a>
+  
+    <li><a href="../../../doc/EmailValidator_html.html">EmailValidator.html</a>
+  
+    <li><a href="../../../doc/File_html.html">File.html</a>
+  
+    <li><a href="../../../doc/Gemfile_html.html">Gemfile.html</a>
+  
+    <li><a href="../../../doc/Gemfile_lock_html.html">Gemfile_lock.html</a>
+  
+    <li><a href="../../../doc/Guardfile_html.html">Guardfile.html</a>
+  
+    <li><a href="../../../doc/GuestPost_html.html">GuestPost.html</a>
+  
+    <li><a href="../../../doc/GuestPostsController_html.html">GuestPostsController.html</a>
+  
+    <li><a href="../../../doc/IpValidator_html.html">IpValidator.html</a>
+  
+    <li><a href="../../../doc/Linyansho411_html.html">Linyansho411.html</a>
+  
+    <li><a href="../../../doc/Linyansho411/Application_html.html">Application.html</a>
+  
+    <li><a href="../../../doc/LogType_html.html">LogType.html</a>
+  
+    <li><a href="../../../doc/Logger_html.html">Logger.html</a>
+  
+    <li><a href="../../../doc/News_html.html">News.html</a>
+  
+    <li><a href="../../../doc/NewsController_html.html">NewsController.html</a>
+  
+    <li><a href="../../../doc/OauthsController_html.html">OauthsController.html</a>
+  
+    <li><a href="../../../doc/OauthsHelper_html.html">OauthsHelper.html</a>
+  
+    <li><a href="../../../doc/Object_html.html">Object.html</a>
+  
+    <li><a href="../../../doc/Page_html.html">Page.html</a>
+  
+    <li><a href="../../../doc/PagesController_html.html">PagesController.html</a>
+  
+    <li><a href="../../../doc/PagesHelper_html.html">PagesHelper.html</a>
+  
+    <li><a href="../../../doc/README_rdoc_html.html">README_rdoc.html</a>
+  
+    <li><a href="../../../doc/Rakefile_html.html">Rakefile.html</a>
+  
+    <li><a href="../../../doc/RegistrationsController_html.html">RegistrationsController.html</a>
+  
+    <li><a href="../../../doc/RegistrationsHelper_html.html">RegistrationsHelper.html</a>
+  
+    <li><a href="../../../doc/Season_html.html">Season.html</a>
+  
+    <li><a href="../../../doc/SeasonTime_html.html">SeasonTime.html</a>
+  
+    <li><a href="../../../doc/SessionsController_html.html">SessionsController.html</a>
+  
+    <li><a href="../../../doc/SessionsHelper_html.html">SessionsHelper.html</a>
+  
+    <li><a href="../../../doc/Sorcery_html.html">Sorcery.html</a>
+  
+    <li><a href="../../../doc/Sorcery/Controller_html.html">Controller.html</a>
+  
+    <li><a href="../../../doc/Sorcery/Controller/Submodules_html.html">Submodules.html</a>
+  
+    <li><a href="../../../doc/Sorcery/Controller/Submodules/External_html.html">External.html</a>
+  
+    <li><a href="../../../doc/Sorcery/Controller/Submodules/External/InstanceMethods_html.html">InstanceMethods.html</a>
+  
+    <li><a href="../../../doc/SorceryActivityLogging_html.html">SorceryActivityLogging.html</a>
+  
+    <li><a href="../../../doc/SorceryCore_html.html">SorceryCore.html</a>
+  
+    <li><a href="../../../doc/SorceryExternal_html.html">SorceryExternal.html</a>
+  
+    <li><a href="../../../doc/SorceryRememberMe_html.html">SorceryRememberMe.html</a>
+  
+    <li><a href="../../../doc/SorceryResetPassword_html.html">SorceryResetPassword.html</a>
+  
+    <li><a href="../../../doc/SorceryUserActivation_html.html">SorceryUserActivation.html</a>
+  
+    <li><a href="../../../doc/String_html.html">String.html</a>
+  
+    <li><a href="../../../doc/User_html.html">User.html</a>
+  
+    <li><a href="../../../doc/UserMailer_html.html">UserMailer.html</a>
+  
+    <li><a href="../../../doc/UserProfile_html.html">UserProfile.html</a>
+  
+    <li><a href="../../../doc/app/assets/fonts/chinacyr-webfont_svg_html.html">chinacyr-webfont_svg.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/app_js_coffee_html.html">app_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/blogctrl_js_coffee_html.html">blogctrl_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/guestbookctrl_js_coffee_html.html">guestbookctrl_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/index_js_html.html">index_js.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/newsctrl_js_coffee_html.html">newsctrl_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/angular_js/resources_js_coffee_html.html">resources_js_coffee.html</a>
+  
+    <li><a href="../../../doc/app/assets/javascripts/application_js_html.html">application_js.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/added_css_scss_html.html">added_css_scss.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/application_css_html.html">application_css.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/base_less_less_html.html">base_less_less.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/sizes_less_html.html">sizes_less.html</a>
+  
+    <li><a href="../../../doc/app/assets/stylesheets/style_css_less_html.html">style_css_less.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_403_html_haml_html.html">_403_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_bottom_html_haml_html.html">_bottom_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_current_user_json_jbuilder_html.html">_current_user_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_debug_params_html_haml_html.html">_debug_params_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_login_block_haml_html.html">_login_block_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_message_block_html_haml_html.html">_message_block_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_right_html_haml_html.html">_right_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/application/_top_html_haml_html.html">_top_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_comments/_blog_comment_html_haml_html.html">_blog_comment_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_comments/_blog_comment_json_jbuilder_html.html">_blog_comment_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_comments/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/_blog_post_html_haml_html.html">_blog_post_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/_blog_post_json_jbuilder_html.html">_blog_post_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/_one_post_html_haml_html.html">_one_post_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/blog_posts/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/guest_posts/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/guest_posts/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/guest_posts/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/guest_posts/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/layouts/application_html_haml_html.html">application_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/_news_html_haml_html.html">_news_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/_news_json_jbuilder_html.html">_news_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/news/create_json_jbuilder_html.html">create_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/news/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../../../doc/app/views/news/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/news/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/root_html_haml_html.html">root_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/pages/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/registrations/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/app/views/sessions/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../../../doc/config_ru_html.html">config_ru.html</a>
+  
+    <li><a href="../../../doc/fonts_css.html">fonts.css</a>
+  
+    <li><a href="../../../doc/index_html.html">index.html</a>
+  
+    <li><a href="../../../doc/js/darkfish_js.html">darkfish.js</a>
+  
+    <li><a href="../../../doc/js/jquery_js.html">jquery.js</a>
+  
+    <li><a href="../../../doc/js/search_js.html">search.js</a>
+  
+    <li><a href="../../../doc/log/development_log_html.html">development_log.html</a>
+  
+    <li><a href="../../../doc/rdoc_css.html">rdoc.css</a>
+  
+    <li><a href="../../../log/development_log.html">development.log</a>
+  
+    <li><a href="../../../log/production_log.html">production.log</a>
+  
+    <li><a href="../../../log/test_log.html">test.log</a>
+  
+    <li><a href="../../../public/404_html.html">404.html</a>
+  
+    <li><a href="../../../public/422_html.html">422.html</a>
+  
+    <li><a href="../../../public/500_html.html">500.html</a>
+  
+    <li><a href="../../../public/favicon_ico.html">favicon.ico</a>
+  
+    <li><a href="../../../public/robots_txt.html">robots</a>
+  
+    <li><a href="../../../tmp/pids/development_pid.html">development.pid</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page app/assets/stylesheets/style.css.less">
+
+<p>@import &#39;base_less&#39;;</p>
+
+<p>.pie {</p>
+
+<pre>behavior: url(&#39;../js/pie/PIE.htc&#39;);
+-pie-png-fix:true;</pre>
+
+<p>}</p>
+
+<p>body {</p>
+
+<pre>font-size: @basefontsize;
+line-height: @lineHeight;
+color:@baseColor;
+background-color: @color-green1;
+background-image: @bgimg-bg;
+.font &gt; .philosopher;
+position: relative;
+height: 100%;
+padding: 0;
+margin: 0;</pre>
+
+<p>}</p>
+
+<p>// МЕЛКИЕ ФИШКИ</p>
+
+<p>// Аська контакты .icq {</p>
+
+<pre>height:20px;
+padding-left: 25px;
+background: image-url(&#39;icons/icq.png&#39;) no-repeat 0 0;</pre>
+
+<p>}</p>
+
+<p>// Почта контакты .email {</p>
+
+<pre>height:20px;
+padding-left: 25px;
+background: image-url(&#39;icons/email.png&#39;) no-repeat 0 0;</pre>
+
+<p>}</p>
+
+<p>// ФОРМА ОТСЫЛКИ В ГОСТЕВОЙ</p>
+
+<p>.show-form {</p>
+
+<pre>padding: 10px 10px;
+border: 1px dashed @color-green1;
+margin-top: 20px;
+
+textarea {
+      width:100% - 5px;
+      height:60px;
+      padding: 5px;
+}</pre>
+
+<p>}</p>
+
+<p>// СТАНДАРТНАЯ ТАБЛИЦА</p>
+
+<p>.table-info {</p>
+
+<pre>border-collapse: collapse;
+border: 1px solid @color-grey1;
+td {
+      border: 1px solid @color-brown1;
+      padding:5px;
+}
+th {
+      border: 1px solid @color-brown1;
+      padding:5px;
+      text-align: center;
+      background: @color-brown4;
+   }</pre>
+
+<p>}</p>
+
+<p>// ФОНЫ:</p>
+
+<p>.top {</p>
+
+<pre>height: 708px;
+z-index: 2;
+position: absolute;
+top:0;
+left:0;
+width: 100%;
+background: image-url(&#39;top.jpg&#39;) repeat-x 50% 0px;</pre>
+
+<p>}</p>
+
+<p>.bottom {</p>
+
+<pre>height: 725px;
+z-index: 1;
+position: absolute;
+bottom:0;
+left:0;
+width: 100%;
+background: image-url(&#39;bottom.jpg&#39;) repeat-x 50% 0px;</pre>
+
+<p>}</p>
+
+<p>.wrapper {</p>
+
+<pre>z-index: 100;
+position: relative;
+margin: 0 auto;</pre>
+
+<p>}</p>
+
+<p>.header {</p>
+
+<pre>height:235px;
+position: relative;
+.clearfix;</pre>
+
+<p>}</p>
+
+<p>// Лого .logo {</p>
+
+<pre>display: block;
+height: 176px;
+width:176px;
+background: image-url(&#39;logo.png&#39;) no-repeat 0 0;
+position: absolute;
+left:100px;
+top:30px;</pre>
+
+<p>}</p>
+
+<p>// Линь Ян Шо надпись в заголовке .ljs-text {</p>
+
+<pre>display: block;
+width: 467px;
+height: 100px;
+background: image-url(&#39;ljs.png&#39;) no-repeat 0 0;
+position: absolute;
+left:300px;
+top:33px;
+font-size:0px;
+text-decoration: none;
+text-indent: -9999px;</pre>
+
+<p>}</p>
+
+<p>// Форма логина .loginform {</p>
+
+<pre>background-image: @bgimg-beige;
+width: 206px;
+padding: 10px 20px;
+padding-top: 15px;
+position: absolute;
+right:0px;
+top:40px;
+.box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
+
+.loginform-one {
+      .loginform-text {
+        .font &gt; .chinacyr;
+        font-size: 1.3em;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .inp-standart {
+        width: 100% - 7px;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-bottom: 5px;
+      }
+}
+
+.btn-text {
+      margin: 0 auto;
+      display: block;
+}
+
+.networks {
+  position:absolute;
+  right:20px;
+  top:-10px;
+  .clearfix;
+  span, a {
+    display: block;
+    position: relative;
+    float: left;
+    width:20px;
+    height:20px;
+    margin-left:2px;
+    .border-radius(20px);
+    border:1px solid @color-green2 + 60;
+    cursor:pointer;
+    &amp;:hover {
+      border:1px solid @color-green2;
+      width:22px;
+      height:22px;
+      margin-left:0px;
+      top:-1px;
+      right:-1px;
+      img {
+        width:22px;
+        height:22px;
+      }
+    }
+    b {
+      display: none;
+    }
+    img {
+      width:20px;
+      height:20px;
+    }
+  }
+}</pre>
+
+<p>}</p>
+
+<p>// Меню .menu {</p>
+
+<pre>position:relative;
+background-image: @bgimg-green;
+padding:5px;
+padding-top: 7px;
+border-top:1px solid @color-green2;
+
+ul {
+      padding: 0;
+      margin: 0;
+      padding-left:130px;
+
+      li {
+        display: inline;
+        padding-right:10px;
+
+        a {
+              text-decoration: none;
+              padding: 4px 5px;
+              .font &gt; .chinacyr;
+              font-weight: bold;
+              color:@color-green4;
+              .transition-1;
+              &amp;:hover {
+                color:@color-orange2;
+              }
+
+        }
+
+        &amp;.link-green {
+              a {
+                color:@color-green3;
+                &amp;:hover {
+                      color:@color-orange1;
+                }
+              }
+        }
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// РАЗМЕР ШРИФТА</p>
+
+<p>.textsize {</p>
+
+<pre>position: absolute;
+left:0px;
+top:0px;
+font-size: 1.1em;
+height:29px;
+background-color:@color-green2;
+cursor:default;
+.textsize-a {
+      font-weight: bold;
+      font-size: 1.5em;
+      float:left;
+      display: block;
+      height:18px;
+      padding:5px 2px 5px 5px;
+      cursor:pointer;
+      &amp;:hover {
+        color:@color-green5 + 30;
+      }
+      &amp;:active {
+        color:@color-green5;
+      }
+}
+.textsize-rulers {
+      float:right;
+      display:block;
+      span {
+        display: block;
+        height:14px;
+        font-weight: bold;
+        line-height: 14px;
+        font-size: 17px;
+        padding:0px;
+        cursor: pointer;
+        color:@color-green2 - 35;
+        .transition-1;
+        &amp;:hover {
+              color:@color-green5 + 30;
+        }
+        &amp;:active {
+              color:@color-green5;
+        }
+        &amp;.plus {
+              margin-bottom: 2px;
+        }
+        &amp;.minus {
+              line-height: 12px;
+        }
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// Основное</p>
+
+<p>.main {</p>
+
+<pre>.clearfix;
+background-image: @bgimg-beige;
+position: relative;</pre>
+
+<p>}</p>
+
+<p>// БЕЗ ПРАВОЙ КОЛОНКИ .only-content {</p>
+
+<pre> .col {
+       display: none;
+ }
+
+div.content {
+       width: auto;
+       padding-bottom: 100px;
+ }</pre>
+
+<p>}</p>
+
+<p>// РАЗБИЕНИЕ ПО КОЛОНКАМ .wrapper {</p>
+
+<pre>.col {
+      float: right;
+      border-color: @color-green1;
+      border-style: solid;
+      border-width: 0px;
+}
+
+.content {
+      float: left;
+}</pre>
+
+<p>}</p>
+
+<p>// SIMPLETEXT</p>
+
+<p>.text-simple {</p>
+
+<pre>line-height: 1.4em;
+.clearfix;</pre>
+
+<p>}</p>
+
+<p>// ЛЮБАЯ ФОРМА</p>
+
+<p>.any-form {</p>
+
+<pre>padding-right:50px;
+
+table {
+      width:100%;
+      .anyform-tt {
+        text-align: right;
+        padding-right: 20px;
+        padding-top: 22px;
+        vertical-align: top;
+        width:100px;
+      }
+
+      .anyform-inp {
+        padding-top: 20px;
+      }
+
+      .inp-type2 {
+        width: 100%;
+        &amp;.inp-short {
+              width:200px;
+        }
+      }
+
+      textarea {
+        height: 70px;
+      }
+
+      .capcha {
+        float: left;
+        background: @color-brown4;
+        padding:1px 10px 2px 10px;
+        border: 1px solid @color-green4;
+        margin-right: 20px;
+        letter-spacing: 2px;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// ЛЮБОЙ СПИСОК</p>
+
+<p>.any-list {</p>
+
+<pre>padding-left: 15px;
+li {
+      padding-bottom: 5px;
+      list-style: square;
+}</pre>
+
+<p>}</p>
+
+<p>// ПУТЬ</p>
+
+<p>.path {</p>
+
+<pre>padding: 0 0 0 10px;
+margin-bottom: 10px;
+font-size: 0.9em;
+color:@color-brown4 - 100;
+
+a {
+      text-decoration: none;
+      font-weight: bold;
+      &amp;:hover {
+        color:@color-orange1;
+      }
+}
+
+span {
+      color:@color-green5 - 60;
+}</pre>
+
+<p>}</p>
+
+<p>// НОВОСТНОЙ БЛОК НА ГЛАВНОЙ</p>
+
+<p>.newsblock {</p>
+
+<pre>padding: 20px;
+background-image: @bgimg-beige;
+
+.news-single {
+      padding-bottom: 15px;
+      padding-top: 10px;
+      border-bottom: 1px solid @color-brown1;
+
+      .author {
+        text-align: right;
+        color:@color-orange1;
+      }
+}
+
+.news-single-title {
+      padding-bottom: 10px;
+      position:relative;
+      padding-right:115px;
+
+      .news-single-date {
+        font-size: 1.1em;
+        color:@color-brown1;
+        position: absolute;
+        display: block;
+        right:0px;
+        top:0px;
+        width:110px;
+        text-align: right;
+      }
+
+      .news-single-date-title-text {
+        font-weight: bold;
+        font-size: 1.2em;
+        color:@color-green2;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// ВСПЛЫВУШКА В ДОБАВЛЕНИИ</p>
+
+<p>.overfly {</p>
+
+<pre>display:none;
+z-index:10000;
+position: fixed;
+right:20px;
+bottom:0px;
+width:280px;
+height:300px;
+background: @color-brown3 - 10;
+border: 2px solid @color-brown4;
+border-bottom:0px;
+padding:20px;
+.box-shadow(-40px 0px 110px 86px rgba(0,0,0,0.5));
+
+.falsepadding {}
+
+.close_edit {
+      position: absolute;
+      right:7px;
+      top:7px;
+      font-size:1.6em;
+      padding:3px;
+      font-weight: bold;
+      color:@color-orange1;
+      cursor: pointer;
+      &amp;:hover {
+        color:@color-red;
+      }
+}
+
+td {
+      padding:2px 0;
+}
+
+.skill_row {
+      padding: 5px 0;
+      display: block;
+      form {
+        display: inline;
+      }
+      [type=&quot;submit&quot;] {
+        border: none;
+        background: @color-green8;
+        padding:1px;
+        padding-bottom: 2px;
+        padding-top: 0px;
+        width:17px;
+        height:17px;
+        font-size:0.9em;
+        line-height: 19px;
+        position: relative;
+        cursor: pointer;
+        &amp;:hover {
+              background: @color-green8 - 10;
+        }
+      }
+}
+
+.div_edit textarea {
+      width:95%;
+      height: 90px;
+}</pre>
+
+<p>}</p>
+
+<p>// SIDE COL</p>
+
+<p>// Отдельный блок в боковой колонке .block {</p>
+
+<pre>border-bottom: 1px solid @color-green1;
+padding-bottom: 20px;
+padding-top: 15px;</pre>
+
+<p>}</p>
+
+<p>// Боковое меню .sidemenu {</p>
+
+<pre>text-align: center;
+font-size: 1.15em;
+
+li {
+      padding-bottom: 3px;
+
+      a {
+        .transition-1;
+        text-decoration: none;
+        padding: 2px 2px;
+        font-weight: bold;
+        &amp;:hover {
+              color:@color-green5;
+        }
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// Погода .weather {</p>
+
+<pre>text-align: center;
+background-position: 0px 0;
+background-repeat:no-repeat;
+
+.season {
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 1.1em;
+}
+
+&amp;.winter {background-image: image-url(&#39;weather-winter.png&#39;)}
+&amp;.summer {background-image: image-url(&#39;weather-summer.png&#39;)}
+&amp;.spring {background-image: image-url(&#39;weather-spring.png&#39;)}
+&amp;.autumn {background-image: image-url(&#39;weather-autumn.png&#39;)}</pre>
+
+<p>}</p>
+
+<p>// Фраза .phrase {</p>
+
+<pre>color:@color-orange2;</pre>
+
+<p>}</p>
+
+<p>// Мини-новости и Блог .newsshort, .blogshort {</p>
+
+<pre>.news-single {
+      padding-bottom: 5px;
+      padding-top: 5px;
+      font-size:0.9em;
+
+      .news-single-date {
+        color:@color-green1;
+        display: block;
+      }
+}
+
+.news-all {
+      text-align: right;
+      padding-top: 10px;
+      font-weight: bold;
+      font-size: 0.9em;
+
+      a {
+        color:@color-green1;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>.blog {</p>
+
+<pre>.one_post {
+  .blog-back-link {
+    span {
+      cursor: pointer;
+    }
+  }
+}</pre>
+
+<p>}</p>
+
+<p>// Баннеры .banners {</p>
+
+<pre>.opacity(50);
+.transition-1;
+&amp;:hover,&amp;:focus {
+      .opacity(100);
+}</pre>
+
+<p>}</p>
+
+<p>// Рыбы .fish {</p>
+
+<pre>position: absolute;
+right:-20px;
+bottom:-80px;
+width:264px;
+height:222px;
+background: image-url(&#39;fish.png&#39;) no-repeat 0 0;
+.transition-3;
+
+&amp;:hover {
+      .rotate(-1220deg);
+      .transition-2;
+}</pre>
+
+<p>}</p>
+
+<p>// Нижнее меню</p>
+
+<p>.bottommenu {</p>
+
+<pre>.clearfix;
+padding:20px;
+font-size:0.8em;
+
+ul {
+      float: left;
+      width:20%;
+}</pre>
+
+<p>}</p>
+
+<p>// Копирайт</p>
+
+<p>.copy {</p>
+
+<pre>position: absolute;
+bottom:0px;
+right:0px;
+width: 100%;
+text-align: right;
+padding-bottom: 20px;
+color:@color-green2;</pre>
+
+<p>}</p>
+
+<p>// ========================================= //                     
+ВНУТРЯКИ // =========================================</p>
+
+<p>// КОНТАКТЫ</p>
+
+<p>.person {</p>
+
+<pre>border: 1px dashed @color-green5;
+padding:10px;
+float: left;
+width:44%;
+margin: 0px 20px 20px 0;
+
+.person-name {
+      font-weight: bold;
+      font-size:1.3em;
+      color:@color-green5;
+      padding-bottom: 3px;
+}</pre>
+
+<p>}</p>
+
+<p>// СПИСОК ПЕРСОНАЖЕЙ</p>
+
+<p>.profile-list {</p>
+
+<pre>width: 100%;
+
+td {
+      width:24%;
+      padding-right: 10px;
+
+      ul {
+
+        li {
+        }
+
+        a {
+              .transition-1;
+              text-decoration: none;
+              display:block;
+              padding:5px 10px;
+              &amp;:hover {
+                background: @color-green6;
+              }
+        }
+
+      }
+}
+
+.profile-list-col-title {
+      background: @color-green1;
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+}</pre>
+
+<p>}</p>
+
+<p>// КАНОНЫ</p>
+
+<p>// Совет .advice {</p>
+
+<pre>background: @color-brown3 - 10;
+padding: 10px;</pre>
+
+<p>}</p>
+
+<p>// ОДНА АНКЕТА</p>
+
+<p>.profile {</p>
+
+<pre>width: 100%;
+
+.profile-col {
+      width:200px;
+      padding-right: 10px;
+}
+
+.profile-content {
+      padding-left: 10px;
+      border-left: 1px dashed @color-green5;
+}
+
+.profile-photo {
+      border-bottom: 1px dashed @color-green5;
+      padding-bottom: 10px;
+
+      img {
+        width:200px;
+        border: 1px solid @color-green1;
+        .box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
+        padding: 2px;
+        background: @color-brown3;
+      }
+}
+
+.profile-name {
+      padding: 10px 0 5px 0;
+      font-size: 1.3em;
+      font-weight: bold;
+      color:@color-green5;
+      text-align: center;
+}
+
+.profile-status {
+      text-align: center;
+      font-style: italic;
+      color:@color-green2;
+      padding-bottom: 10px;
+}
+
+.profile-element {
+      border-bottom: 1px dashed @color-green1;
+      padding-bottom: 5px;
+      padding-top: 5px;
+      position:relative;
+      &amp;:last-child {
+        border-bottom: 0px;
+      }
+      .edit {
+        position: absolute;
+        right:7px;
+        top:2px;
+        font-size:1.4em;
+        font-weight: bold;
+        cursor:pointer;
+        padding:3px;
+        &amp;:hover {
+              color:@color-orange3;
+        }
+      }
+
+      ul {
+        line-height: 1.4em;
+      }
+
+      b {
+        font-size: 1.1em;
+      }
+
+      .title {
+        color:@color-orange1;
+      }
+
+      .skill-name {
+        text-decoration: none;
+        border-bottom: 1px dashed;
+        &amp;:hover {
+              border-bottom: 1px solid;
+        }
+      }
+}
+
+.profile-content-one {
+      padding-bottom: 10px;
+      padding-top:10px;
+      border-bottom: 1px dashed @color-green5;
+      &amp;:first-child {padding-top: 0px;}
+      &amp;:last-child {
+        border-bottom: 0px;
+        .text {
+           display:none;
+        }
+      }
+
+      .title {
+        color:@color-orange1;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+}</pre>
+
+<p>// РОЛЕВКИ</p>
+
+<pre>.profile-rglist-open {
+      background: @color-brown3;
+      padding:5px;
+      width:150px;
+      text-align: center;
+      cursor: pointer;
+      border:1px solid @color-brown4;
+      &amp;:hover {
+        background: @color-green7;
+      }
+}
+
+.roll {
+      margin-top:5px;
+      margin-bottom:5px;
+      border-top:1px dashed @color-brown4;
+      padding:5px 10px;
+      &amp;:first-child {
+        border-top:none;
+      }
+      .rname {
+        font-weight:bold;
+        padding-right:5px;
+        a {
+              text-decoration: none;
+              &amp;:hover {
+                text-decoration: underline;
+              }
+        }
+      }
+      .rballs {
+        font-size:0.9em;
+        background: @color-green7 + 19;
+        padding:2px 5px;
+      }
+      .rskills {
+        display:block;
+        padding-top:5px;
+        span {
+              padding-right:10px;
+              &amp;.don {
+                color:@color-brown1 - 30;
+                text-decoration: line-through;
+              }
+        }
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// GUEST SCROLL</p>
+
+<p>.guestscroll {</p>
+
+<pre>.guestscroll-entry {
+      background-image: @bgimg-beige;
+      padding: 20px;
+      margin-bottom: 20px;
+      .clearfix;
+
+      .guestscroll-entry-title {
+        position: relative;
+        padding-right:50px;
+        .clearfix;
+
+        .guestscroll-entry-date {
+              position: absolute;
+              right:0px;
+              top:0px;
+              color:@color-orange1;
+        }
+        .guestscroll-entry-author {
+              float: left;
+              font-weight: bold;
+              font-size: 1.2em;
+              padding: 1px 5px;
+              background: @color-brown3;
+              margin-right: 5px;
+        }
+        .guestscroll-entry-title-text {
+              font-weight: bold;
+              padding-top: 2px;
+        }
+      }
+
+      .guestscroll-text {
+        padding: 10px 0;
+        line-height: 1.3em;
+      }
+
+      .guestscroll-answer {
+        padding: 10px;
+        position: relative;
+        color:@color-green3;
+        .clearfix;
+        background: @color-green7;
+
+        .guestscroll-answer-date {
+              float: left;
+              color:@color-green4;
+              font-weight:bold;
+              margin-right: 10px;
+              bottom: -1px;
+              position: relative;
+        }
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// BLOG</p>
+
+<p>.blog {}</p>
+
+<p>.blog-entry {</p>
+
+<pre>background-image: @bgimg-beige;
+padding: 20px;
+margin-bottom: 20px;
+position:relative;
+
+.blog-entry-title {
+      position: relative;
+      padding-right:50px;
+      .clearfix;
+
+      .blog-entry-date {
+        position: absolute;
+        right:0px;
+        top:0px;
+        color:@color-orange1;
+      }
+      .blog-entry-title-text {
+        font-weight: bold;
+        padding-top: 2px;
+      }
+}
+
+.blog-text {
+      padding: 10px 0;
+      line-height: 1.3em;
+}
+
+.blog-author {
+      font-weight: bold;
+      color:@color-orange1;
+      margin-right: 5px;
+}
+.blog-comments {
+      text-align: right;
+      position:absolute;
+      bottom:20px;
+      right:20px;
+  cursor: pointer;
+}
+
+&amp;.blog-comment {
+      background-color: @color-green7;
+}
+.blog-comment-title {
+      position: relative;
+      .blog-comment-author {
+        color:@color-green5;
+      }
+      .blog-comment-date {
+        position: absolute;
+        right:0px;
+        top:0px;
+        color:@color-orange1;
+      }
+}
+.blog-comment-text {
+      padding: 10px 0;
+      line-height: 1.3em;}</pre>
+
+<p>}</p>
+
+<p>// Блок админский .block-adm {</p>
+
+<pre>text-align:left;
+a, span {
+      cursor: pointer;
+      letter-spacing: -2px;
+      font-size: 1.2em;
+      .opacity(20);
+      .transition-1;
+      &amp;:hover,&amp;:focus {
+        .opacity(100);
+      }
+}
+.delete {
+      font-family:  KaiTi,simsun,Nsimsun,arial unicode MS, sans-serif,arial;
+      color:@color-red - 60;
+      &amp;:hover {
+        color:@color-red;
+      }
+}
+.edit {
+      font-family:  KaiTi,simsun,Nsimsun,arial unicode MS, sans-serif,arial;
+      color:@color-grey1 + 60;
+      letter-spacing: -7px;
+      &amp;:hover {
+        color:@color-green3;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>.write-new {</p>
+
+<pre>font-size: 1.2em;
+padding-bottom: 10px;
+font-weight: bold;
+
+a {
+      .btn-green;
+}</pre>
+
+<p>}</p>
+
+<p>// Монастырские хроники</p>
+
+<p>.mh {</p>
+
+<pre>.logo {
+      width: 70px;
+      height: 70px;
+      background: image-url(&#39;logo-mini.png&#39;);
+      left:20px;
+}
+
+.header {
+      height: 130px;
+}
+
+.paginator {
+      background: @bgimg-green;
+      text-align: right;
+      padding:10px;
+      padding-right: 20px;
+      font-size: 1.4em;
+}
+
+.col {
+      display: none;
+}
+
+h1 {
+      font-size: 30px;
+      .font &gt; .chinacyr;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      padding: 0;
+}
+
+.mh-newspaper {
+      padding: 20px 0;
+      .clearfix;
+}
+
+.mh-mainpic {
+      max-width: 90%;
+      margin: 0 auto;
+      display: block;
+}
+
+.mh-date {
+      text-align: right;
+      padding-right: 20px;
+}
+
+.img {
+      padding: 5px;
+      border: 1px solid @color-green2;
+      margin: 10px;
+      background: @color-brown3;
+      .box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
+
+}</pre>
+
+<p>}</p>
+
+<p>.mh-text {</p>
+
+<pre>background: image-url(&#39;mh.png&#39;) no-repeat 0 0;
+width:892px;
+height: 66px;
+position: absolute;
+left:110px;
+top:30px;</pre>
+
+<p>}</p>
+
+<p>// Таблица новичков в газете .newbe_tab {</p>
+
+<pre>border-collapse: collapse;
+width: 97%;
+margin:0px auto;
+
+td {
+      border: 1px dashed @color-green1;
+}
+
+.ava {
+      padding: 10px;
+      text-align: center;
+      width: 202px;
+
+      img {
+        width: 200px;
+        border: 1px solid @color-brown4;
+      }
+}
+
+.info {
+      text-align: left;
+      padding-left:20px;
+      font-size:1.2em;
+
+      h4 {
+        padding: 20px 0px 10px 0px;
+        text-align: left;
+      }
+
+      .param {
+        display: block;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// АНКЕТА</p>
+
+<p>.anketa {</p>
+
+<pre>table {
+      width:100%;
+}
+
+td {
+      padding-top: 5px;
+      padding-bottom: 5px;
+}
+
+.anketa-tt {
+      width:180px;
+      font-weight: bold;
+      padding-top:7px;
+      padding-right: 10px;
+      text-align:right;
+      font-size:1.2em;
+
+      .more {
+        font-weight: normal;
+        font-size:0.7em;
+        color:@color-brown2;
+      }
+}
+
+.inp-type2 {
+      width:90%;
+}
+
+.inp-short {
+      width:100px;
+}
+
+select.inp-short {
+      width:112px;
+}
+
+textarea {
+      height: 80px;
+}</pre>
+
+<p>}</p>
+
+<p>// БИБЛИОТЕКА</p>
+
+<p>.lib-entrance {</p>
+
+<pre>.clearfix;
+margin: 0 auto;
+width:424px;
+a {
+      display: block;
+      width:200px;
+      height:120px;
+      text-align: center;
+      float: left;
+      border: 1px solid @color-green2;
+      background-color: @color-brown1 + 40;
+      position: relative;
+      margin: 0px 5px 5px 0;
+      text-decoration: none;
+      .transition-1;
+      &amp;:hover {
+        background-color: @color-brown1;
+      }
+
+      .text {
+        .font &gt; .chinacyr;
+        display: block;
+        padding: 30px 5px;
+        font-size: 1.6em;
+        line-height: 1.5em;
+        font-weight: bold;
+        position: relative;
+      }
+
+      &amp;.lib-entrance-3 .text {padding-top: 40px;}
+      &amp;.lib-entrance-4 .text {padding-top: 45px;}
+      &amp;.lib-entrance-6 .text {padding-top: 30px; font-size: 1.2em; text-align: right; padding-right: 20px;}
+      &amp;.lib-entrance-7 .text {padding-top: 30px; font-size: 1.4em; text-align: right; padding-right: 20px;}
+      &amp;.lib-entrance-8 .text {padding-top: 40px;}
+
+      .img {
+        display: block;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        width:64px;
+        height: 64px;
+        position: absolute;
+        left:-6px;
+        bottom:-6px;
+      }
+
+      &amp;.lib-entrance-1 .img {background-image: url(&quot;../img/icons/go.png&quot;)}
+      &amp;.lib-entrance-2 .img {background-image: url(&quot;../img/icons/lily.png&quot;)}
+      &amp;.lib-entrance-3 .img {background-image: url(&quot;../img/icons/fire.png&quot;)}
+      &amp;.lib-entrance-4 .img {background-image: url(&quot;../img/icons/fan.png&quot;)}
+      &amp;.lib-entrance-5 .img {background-image: url(&quot;../img/icons/chinese.png&quot;)}
+      &amp;.lib-entrance-6 .img {background-image: url(&quot;../img/icons/guide.png&quot;)}
+      &amp;.lib-entrance-7 .img {background-image: url(&quot;../img/icons/gng.png&quot;)}
+      &amp;.lib-entrance-8 .img {background-image: url(&quot;../img/icons/scroll.png&quot;); bottom:-4px;}
+}</pre>
+
+<p>}</p>
+
+<p>.lib {</p>
+
+<pre>.lib-list {
+      ul {
+        list-style: square;
+        padding-left:20px;
+        li {
+              color:@color-green5;
+
+              a {
+                text-decoration: none;
+                &amp;:hover {
+                      text-decoration: underline;
+                      color:@color-green5;
+                }
+              }
+
+        }
+      }
+
+      &amp;.list-1 {
+        font-size:1.4em;
+
+        li {
+              padding-bottom: 5px;
+        }
+
+        a {
+              font-weight: bold;
+              &amp;:hover {
+                text-decoration: none;
+              }
+        }
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// ========================================================================
+//                              MASTER //
+========================================================================</p>
+
+<p>.master-list {</p>
+
+<pre>font-size: 1.5em;
+padding:20px 0;
+
+ul {
+      list-style: square;
+      padding-left: 20px;
+}
+
+li {
+      padding-bottom: 5px;
+}
+
+a {
+      text-decoration: none;
+      color:@color-green3;
+      &amp;:hover {
+        text-decoration: underline;
+        color:@color-green2;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// НОВОСТИ</p>
+
+<p>.addnews {</p>
+
+<pre>.bold {
+      color:@color-green5 - 20;
+      font-size: 1.3em;
+}
+
+.inp {
+      width:70%;
+      margin-top: 5px;
+      margin-bottom: 15px;
+  padding: 4px;
+}
+
+textarea {
+      height: 70px;
+}
+
+.addnews-hints-click {
+      padding: 10px 0px;
+      font-weight: bold;
+      color:@color-green5;
+      text-decoration:underline;
+      cursor:pointer;
+
+      &amp;:hover {
+        text-decoration: none;
+      }
+
+      &amp;.open {
+        text-decoration: none;
+        &amp;:after {
+              content: &quot;:&quot;;
+        }
+      }
+}
+
+// Подсказка
+.addnews-hints {
+//      display:none;
+      font-size: 0.9em;
+      .no-form {
+        background: none;
+        border: 0px;
+        margin: 0px 0px 5px 0;
+        color:@color-orange1;
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// РЕДАКТИРОВАНИЕ АНКЕТ</p>
+
+<p>.adm-profiles {</p>
+
+<pre>.adm-profiles-table {
+  width:100%;
+
+  .adm-profiles-col {
+        .table-td-left;
+
+    .up {
+      padding: 5px 5px 0px 0;
+      margin-bottom: 10px;
+
+      .income,.delete {
+        display: block;
+        font-weight: bold;
+        border-bottom: 1px solid @color-orange1;
+        font-size:1.2em;
+        padding:2px 0px 1px 5px;
+        margin-bottom: 8px;
+        cursor:pointer;
+        .transition-1;
+        &amp;:hover {
+          border-color:@color-orange3;
+        }
+        &amp;:active {
+        }
+      }
+      .income {color:@color-brown2;
+        &amp;:hover {color:@color-brown2 + 56}
+      }
+      .delete {color:@color-red;
+        &amp;:hover {color:@color-red + 56}
+      }
+
+      .list_head {
+        .transition-1;
+        background: @color-green7;
+        display: block;
+        cursor:pointer;
+        margin-top: 5px;
+        padding:2px 5px;
+        border: 1px solid @color-green6 - 20;
+        font-weight:bold;
+        font-size:1.2em;
+        &amp;:hover {
+          color:@color-grey1 + 50;
+        }
+        &amp;:active {
+          background: @color-brown3 + 1;
+        }
+      }
+
+      .a_list {
+       // display: block;
+        margin-bottom: 10px;
+        border: 1px solid @color-green6 - 20;
+        border-top:0px;
+        border-bottom:0px;
+        padding:0px 0;
+        //display: none;
+        .ank_span {
+          .transition-1;
+          display: block;
+          cursor: pointer;
+          padding: 2px 5px;
+          border-bottom: 1px solid @color-green6 - 30;
+          background: @color-brown5;
+          &amp;:hover {
+            background: @color-brown5 + 10;
+            color:@color-orange3;
+
+          }
+        }
+      }
+    }
+
+  }
+
+  .adm-profiles-main {
+    padding-left: 10px;
+    padding-top:10px;
+
+    .accept_tab {
+      border-collapse: collapse;
+      width: 100%;
+
+      td {
+        border: 1px solid @color-green5 + 40;
+        text-align: center;
+        vertical-align: middle;
+        padding:2px 5px;
+
+        label span {
+          margin: 0 auto;
+        }
+
+        .inp {
+          width:80%;
+        }
+      }
+
+      .head td {
+        background: @color-green6 + 20;
+        font-weight: bold;
+        padding:2px 0;
+      }
+    }
+
+    .buttons {
+      text-align: right;
+      padding-top:10px;
+
+      .btn {
+        padding:1px 15px!important;
+
+        &amp;.accept {
+          background: @color-green5 + 80;
+          margin-right: 10px;
+          &amp;:hover {
+            background: @color-green5 + 110;
+          }
+        }
+
+        &amp;.deny {
+          background: @color-orange3 + 30;
+          &amp;:hover {
+            background: @color-orange3 + 50;
+          }
+        }
+      }
+    }
+  }
+}</pre>
+
+<p>}</p>
+
+<p>.adm-profiles-fly {</p>
+
+<pre>width:650px;
+height:600px;
+overflow: auto;
+top:0px;
+left:50%;
+margin-left:-325px;</pre>
+
+<p>}</p>
+
+<p>// УДАЛЕНИЕ АНКЕТЫ</p>
+
+<p>.ank_delete {</p>
+
+<pre>background: @color-green1 + 40;
+padding:10px;
+border:1px solid @color-green2;
+
+.name {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.capi {
+  display: block;
+  font-size:1.5em;
+  padding-left:15px;
+  margin-bottom:10px;
+
+  .capcha {
+    background: @color-green1 + 60;
+    padding: 2px 10px;
+  }
+
+  .inp {
+    width:60px;
+    margin-left: 10px;
+  }
+}
+
+.submit {
+  display: block;
+  padding-left: 99px;
+}
+
+.urgent {
+  display: block;
+  color:@color-red;
+  font-size:1.4em;
+  padding: 10px 0;
+  text-align: center;
+  line-height: 1.1em;
+}</pre>
+
+<p>}</p>
+
+<p>// ДОБАВЛЕНИЕ РОЛЕВОК</p>
+
+<p>.roll_all_div {</p>
+
+<pre>.roll_common {
+  background: @color-green7;
+  padding:10px;
+  padding-bottom: 0px;
+  border:1px solid @color-green7 - 60;
+
+  .comm_option {
+    display: block;
+    position: relative;
+    padding-bottom: 10px;
+
+    .inp {
+      position: absolute;
+      left:130px;
+      top:0px;
+      width:300px;
+    }
+  }
+}
+
+.user_blocks {
+  .roll_user_div {
+    margin-bottom:10px;
+
+    .roll_user_tab {
+      border-collapse: collapse;
+      background: @color-brown5;
+      width:100%;
+      border: 1px solid @color-green2;
+
+      .rtd1 {
+        font-size:1.3em;
+        background: @color-green2 + 50;
+        padding:0 5px;
+        vertical-align: middle;
+        font-weight: bold;
+        .font &gt; .chinacyr;
+        border-right:1px solid @color-green2 + 70;
+      }
+      .rtd2 {
+        font-weight: bold;
+        padding:10px;
+        border-right:1px solid @color-green2;
+        width:200px;
+        select {
+          width:100%;
+          margin-bottom: 10px;
+          width:200px;
+        }
+        textarea {
+          width:188px;
+        }
+      }
+      .rtd3 {
+        border: 1px solid @color-green2;
+        padding:10px;
+        text-align:right;
+        font-weight:bold;
+        width:150px;
+
+        .inp {
+          width:30px;
+          text-align: center;
+          margin-bottom: 5px;
+        }
+      }
+      .rtd4 {
+        padding:10px;
+
+        select {
+          width:280px;
+        }
+        .sk_do_add {
+          font-size:1.8em;
+          cursor: pointer;
+          font-weight:bold;
+          &amp;:hover {
+            color:@color-green3;
+          }
+        }
+        .sk_add {
+          width:300px;
+          height:94px;
+        }
+      }
+    }
+
+  }
+}
+
+.all_comment {
+  background: @color-green7;
+  padding:10px 10px 10px 20px;
+  border:1px solid @color-green7 - 60;
+
+  span {
+    display: block;
+    font-size: 1.5em;
+  }
+
+  textarea {
+    margin-top: 10px;
+    width:600px;
+    height: 100px;
+  }
+}
+
+.roll_submit {
+  margin-top: 10px;
+  padding:2px 50px;
+  font-size:1.3em;
+}</pre>
+
+<p>}</p>
+
+<p>// ЛОГИ</p>
+
+<p>.logs {</p>
+
+<pre>.logs-table {
+      width:100%;
+
+      .logs-table-1 {
+        .table-td-left;
+
+        .llinks {
+              padding-right:10px;
+              font-size:1.2em;
+              a {
+                display: block;
+                text-decoration: none;
+                padding:2px 2px;
+                font-weight: bold;
+                border-top:1px solid @color-brown1;
+                &amp;:first-child {
+                      border: none;
+                }
+                &amp;:hover {
+                      color:@color-orange1;
+                }
+              }
+        }
+      }
+
+      .logs-table-2 {
+        .llinks {
+              padding-left: 10px;
+        }
+        .paginator {
+              font-size: 1.1em;
+              padding:0 0 10px 0;
+        }
+
+        .loggs_list {
+
+              .log {
+                border-bottom:1px dashed @color-brown1;
+                padding:0 0 10px 0;
+                margin-bottom:10px;
+                .date {
+                      color:@color-orange1;
+                      padding-right:10px;
+                      font-size:0.9em;
+                }
+                .name {
+                      font-weight: bold;
+                }
+                .text {
+                      display: block;
+                }
+              }
+
+        }
+      }
+}</pre>
+
+<p>}</p>
+
+<p>// HANDBOOK</p>
+
+<p>.handbook-list {</p>
+
+<pre>width:100%; 
+td { 
+  width:20%; 
+  padding-right:5px; 
+} 
+
+span { 
+  display: block; 
+} 
+
+.handbook-lit { 
+  font-weight: bold; 
+  font-size: 1.3em; 
+  color:@color-green2; 
+  background-color: @color-green6; 
+  padding:2px 0; 
+  text-align: center; 
+} 
+
+.handbook-line { 
+  padding: 2px 0; 
+} 
+
+.handbook-line+.handbook-lit { 
+  margin-top: 10px; 
+}</pre>
+
+<p>}</p>
+
+<p>.handbook-item {</p>
+
+<pre>width:100%; 
+
+.handbook-left { 
+  width:200px; 
+  padding-right:20px; 
+
+  h4 { 
+    margin: 0px; 
+    padding: 5px 0; 
+    margin-bottom: 10px; 
+    color:@color-green4; 
+    background-color: @color-brown3; 
+    font-size: 1.2em; 
+  } 
+
+  img { 
+    width:196px; 
+    border:1px solid @color-green5; 
+    padding:1px; 
+  } 
+} 
+
+.handbook-info { 
+  h4 { 
+    font-size:1.2em; 
+  } 
+} 
+
+.handbook-param { 
+  display: block; 
+  font-size:1.2em; 
+  line-height:1.4em; 
+
+  strong { 
+    color:@color-green5; 
+  } 
+
+  &amp;.handbook-onemore { 
+    background: @color-brown3; 
+    padding:10px; 
+    margin-top: 10px; 
+  } 
+}</pre>
+
+<p>}</p>
+
+<p>//LEVI</p>
+
+<p>.paper_photo_div {</p>
+
+<pre>display: inline-block;
+padding: 3px;</pre>
+
+<p>}</p>
+
+<p>.over {</p>
+
+<pre>position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index: 900;
+display:none;</pre>
+
+<p>}</p>
+
+<p>@import &#39;sizes&#39;;</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

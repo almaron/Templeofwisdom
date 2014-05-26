@@ -1,0 +1,29 @@
+.addnews{"ng-if" => "#{news}.show"}
+  .any-form
+    .form_close
+      %span{"ng-click" => "#{news}.show = false"} X
+    %form#news{"ng-submit"=>(news == "newNews") ? "createNews(newNews)" : "updateNews(oneNews)", name: "news_form", "ng-model" => news, "novalidate"=>""}
+      %span.bold Заголовок новости:
+      %br/
+      %input.inp.inp-type2{name: "head", type: "text", "ng-model"=>"#{news}.head", "ng-required" => "true", "ng-minlength"=>"8"}
+      .clear
+      %span.bold Текст сообщения:
+      %br/
+      %textarea.inp.inp-type2{name: "text", "ng-model"=>"#{news}.text", "ng-required" => "true", "ng-minlength"=>"16"}
+      %br/
+      %span.bold Подпись:
+      %br/
+      %input.inp.inp-type2{name: "author", type: "text", "ng-model"=>"#{news}.author" }
+      .clear
+      %input.btn.btn-standart{type: "submit", value: "Отправить"} 
+  - if news == "newNews"
+    .addnews-hints-click.open{"ng-click" => "#{news}.showHint = !#{news}.showHint"} Вставка тегов
+    .addnews-hints{"ng-show"=>"#{news}.showHint"}
+      %div
+        %b Вставка ссылки:
+        %input.inp.no-form{type: "text", value: "<a href=\"ссылка\">текст ссылки</a>"}
+      %div
+        %b Вставка изображений:
+        %input.inp.no-form{type: "text", value: "<img src=\"ссылка на картинку\" />"}
+      .color-red
+        * Внимание! Данные теги чувствительны к регистру

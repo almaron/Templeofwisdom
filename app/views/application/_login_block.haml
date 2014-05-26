@@ -15,10 +15,10 @@
   = form_tag login_path, method: :post do
     .loginform-one
       .loginform-text Логин:
-      %input.inp.inp-standart{type: "text", name:"username"}/
+      %input.inp.inp-standart{type: "text", name:"user_login"}/
     .loginform-one
       .loginform-text Пароль:
-      %input.inp.inp-standart{type: "password", name:"password"}/
+      %input.inp.inp-standart{type: "password", name:"user_password"}/
     %input.btn.btn-text{type: "submit", value: "Войти"}/
 
 .loginform.loggedin{"ng-show"=>"currentUser.id"}
@@ -30,10 +30,10 @@
     .loggedin-notification
       %a{href: "/notifications", title: "Уведомления"}
         Уведомления
-        %span {{currentUser.notifications}}
+        %span{} {{currentUser.notifications}}
     .loggedin-messages
       %a{href: "/messages", title: "Личные сообщения"}
         Личные сообщения
-        %span {{currentUser.messages}}
+        %span{} {{currentUser.messages}}
   .loggedin-exit
     = link_to "Выйти", logout_path, method: :delete

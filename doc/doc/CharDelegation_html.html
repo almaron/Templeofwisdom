@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>CharDelegation.html - RDoc Documentation</title>
+
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Capfile.html">Capfile</a>
+  
+    <li><a href="../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../Guardfile.html">Guardfile</a>
+  
+    <li><a href="../README_rdoc.html">README</a>
+  
+    <li><a href="../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../app/assets/fonts/chinacyr-webfont_svg.html">chinacyr-webfont.svg</a>
+  
+    <li><a href="../app/assets/javascripts/angular_js/app_js_coffee.html">app.js.coffee</a>
+  
+    <li><a href="../app/assets/javascripts/angular_js/blogctrl_js_coffee.html">blogctrl.js.coffee</a>
+  
+    <li><a href="../app/assets/javascripts/angular_js/guestbookctrl_js_coffee.html">guestbookctrl.js.coffee</a>
+  
+    <li><a href="../app/assets/javascripts/angular_js/index_js.html">index.js</a>
+  
+    <li><a href="../app/assets/javascripts/angular_js/newsctrl_js_coffee.html">newsctrl.js.coffee</a>
+  
+    <li><a href="../app/assets/javascripts/angular_js/resources_js_coffee.html">resources.js.coffee</a>
+  
+    <li><a href="../app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../app/assets/stylesheets/added_css_scss.html">added.css.scss</a>
+  
+    <li><a href="../app/assets/stylesheets/application_css.html">application.css</a>
+  
+    <li><a href="../app/assets/stylesheets/base_less_less.html">base_less.less</a>
+  
+    <li><a href="../app/assets/stylesheets/sizes_less.html">sizes.less</a>
+  
+    <li><a href="../app/assets/stylesheets/style_css_less.html">style.css.less</a>
+  
+    <li><a href="../app/views/application/_403_html_haml.html">_403.html.haml</a>
+  
+    <li><a href="../app/views/application/_bottom_html_haml.html">_bottom.html.haml</a>
+  
+    <li><a href="../app/views/application/_current_user_json_jbuilder.html">_current_user.json.jbuilder</a>
+  
+    <li><a href="../app/views/application/_debug_params_html_haml.html">_debug_params.html.haml</a>
+  
+    <li><a href="../app/views/application/_login_block_haml.html">_login_block.haml</a>
+  
+    <li><a href="../app/views/application/_message_block_html_haml.html">_message_block.html.haml</a>
+  
+    <li><a href="../app/views/application/_right_html_haml.html">_right.html.haml</a>
+  
+    <li><a href="../app/views/application/_top_html_haml.html">_top.html.haml</a>
+  
+    <li><a href="../app/views/blog_comments/_blog_comment_html_haml.html">_blog_comment.html.haml</a>
+  
+    <li><a href="../app/views/blog_comments/_blog_comment_json_jbuilder.html">_blog_comment.json.jbuilder</a>
+  
+    <li><a href="../app/views/blog_comments/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../app/views/blog_posts/_blog_post_html_haml.html">_blog_post.html.haml</a>
+  
+    <li><a href="../app/views/blog_posts/_blog_post_json_jbuilder.html">_blog_post.json.jbuilder</a>
+  
+    <li><a href="../app/views/blog_posts/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../app/views/blog_posts/_one_post_html_haml.html">_one_post.html.haml</a>
+  
+    <li><a href="../app/views/blog_posts/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../app/views/blog_posts/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../app/views/blog_posts/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../app/views/blog_posts/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../app/views/guest_posts/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../app/views/guest_posts/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../app/views/guest_posts/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../app/views/guest_posts/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../app/views/layouts/application_html_haml.html">application.html.haml</a>
+  
+    <li><a href="../app/views/news/_form_html_haml.html">_form.html.haml</a>
+  
+    <li><a href="../app/views/news/_news_html_haml.html">_news.html.haml</a>
+  
+    <li><a href="../app/views/news/_news_json_jbuilder.html">_news.json.jbuilder</a>
+  
+    <li><a href="../app/views/news/create_json_jbuilder.html">create.json.jbuilder</a>
+  
+    <li><a href="../app/views/news/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../app/views/news/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../app/views/news/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../app/views/news/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../app/views/news/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../app/views/pages/edit_html_haml.html">edit.html.haml</a>
+  
+    <li><a href="../app/views/pages/index_html_haml.html">index.html.haml</a>
+  
+    <li><a href="../app/views/pages/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../app/views/pages/root_html_haml.html">root.html.haml</a>
+  
+    <li><a href="../app/views/pages/show_html_haml.html">show.html.haml</a>
+  
+    <li><a href="../app/views/registrations/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../app/views/sessions/new_html_haml.html">new.html.haml</a>
+  
+    <li><a href="../config_ru.html">config.ru</a>
+  
+    <li><a href="../doc/ActiveRecord_html.html">ActiveRecord.html</a>
+  
+    <li><a href="../doc/AddNullToUserPassword_html.html">AddNullToUserPassword.html</a>
+  
+    <li><a href="../doc/AddUserIpToGuestPosts_html.html">AddUserIpToGuestPosts.html</a>
+  
+    <li><a href="../doc/AdminConfig_html.html">AdminConfig.html</a>
+  
+    <li><a href="../doc/ApplicationController_html.html">ApplicationController.html</a>
+  
+    <li><a href="../doc/ApplicationHelper_html.html">ApplicationHelper.html</a>
+  
+    <li><a href="../doc/Authentication_html.html">Authentication.html</a>
+  
+    <li><a href="../doc/AvatarUploader_html.html">AvatarUploader.html</a>
+  
+    <li><a href="../doc/BlogComment_html.html">BlogComment.html</a>
+  
+    <li><a href="../doc/BlogCommentsController_html.html">BlogCommentsController.html</a>
+  
+    <li><a href="../doc/BlogPost_html.html">BlogPost.html</a>
+  
+    <li><a href="../doc/BlogPostsController_html.html">BlogPostsController.html</a>
+  
+    <li><a href="../doc/Capfile_html.html">Capfile.html</a>
+  
+    <li><a href="../doc/Char_html.html">Char.html</a>
+  
+    <li><a href="../doc/CharDelegation_html.html">CharDelegation.html</a>
+  
+    <li><a href="../doc/CharGroup_html.html">CharGroup.html</a>
+  
+    <li><a href="../doc/CharProfile_html.html">CharProfile.html</a>
+  
+    <li><a href="../doc/CharStatus_html.html">CharStatus.html</a>
+  
+    <li><a href="../doc/CreateAdminConfigs_html.html">CreateAdminConfigs.html</a>
+  
+    <li><a href="../doc/CreateAuthentications_html.html">CreateAuthentications.html</a>
+  
+    <li><a href="../doc/CreateBlogComments_html.html">CreateBlogComments.html</a>
+  
+    <li><a href="../doc/CreateBlogPosts_html.html">CreateBlogPosts.html</a>
+  
+    <li><a href="../doc/CreateCharDelegations_html.html">CreateCharDelegations.html</a>
+  
+    <li><a href="../doc/CreateCharGroups_html.html">CreateCharGroups.html</a>
+  
+    <li><a href="../doc/CreateCharProfiles_html.html">CreateCharProfiles.html</a>
+  
+    <li><a href="../doc/CreateCharStatuses_html.html">CreateCharStatuses.html</a>
+  
+    <li><a href="../doc/CreateChars_html.html">CreateChars.html</a>
+  
+    <li><a href="../doc/CreateGuestPosts_html.html">CreateGuestPosts.html</a>
+  
+    <li><a href="../doc/CreateLogTypes_html.html">CreateLogTypes.html</a>
+  
+    <li><a href="../doc/CreateNews_html.html">CreateNews.html</a>
+  
+    <li><a href="../doc/CreatePages_html.html">CreatePages.html</a>
+  
+    <li><a href="../doc/CreateSeasonTimes_html.html">CreateSeasonTimes.html</a>
+  
+    <li><a href="../doc/CreateSeasons_html.html">CreateSeasons.html</a>
+  
+    <li><a href="../doc/CreateUserProfiles_html.html">CreateUserProfiles.html</a>
+  
+    <li><a href="../doc/EmailValidator_html.html">EmailValidator.html</a>
+  
+    <li><a href="../doc/File_html.html">File.html</a>
+  
+    <li><a href="../doc/Gemfile_html.html">Gemfile.html</a>
+  
+    <li><a href="../doc/Gemfile_lock_html.html">Gemfile_lock.html</a>
+  
+    <li><a href="../doc/Guardfile_html.html">Guardfile.html</a>
+  
+    <li><a href="../doc/GuestPost_html.html">GuestPost.html</a>
+  
+    <li><a href="../doc/GuestPostsController_html.html">GuestPostsController.html</a>
+  
+    <li><a href="../doc/IpValidator_html.html">IpValidator.html</a>
+  
+    <li><a href="../doc/Linyansho411_html.html">Linyansho411.html</a>
+  
+    <li><a href="../doc/Linyansho411/Application_html.html">Application.html</a>
+  
+    <li><a href="../doc/LogType_html.html">LogType.html</a>
+  
+    <li><a href="../doc/Logger_html.html">Logger.html</a>
+  
+    <li><a href="../doc/News_html.html">News.html</a>
+  
+    <li><a href="../doc/NewsController_html.html">NewsController.html</a>
+  
+    <li><a href="../doc/OauthsController_html.html">OauthsController.html</a>
+  
+    <li><a href="../doc/OauthsHelper_html.html">OauthsHelper.html</a>
+  
+    <li><a href="../doc/Object_html.html">Object.html</a>
+  
+    <li><a href="../doc/Page_html.html">Page.html</a>
+  
+    <li><a href="../doc/PagesController_html.html">PagesController.html</a>
+  
+    <li><a href="../doc/PagesHelper_html.html">PagesHelper.html</a>
+  
+    <li><a href="../doc/README_rdoc_html.html">README_rdoc.html</a>
+  
+    <li><a href="../doc/Rakefile_html.html">Rakefile.html</a>
+  
+    <li><a href="../doc/RegistrationsController_html.html">RegistrationsController.html</a>
+  
+    <li><a href="../doc/RegistrationsHelper_html.html">RegistrationsHelper.html</a>
+  
+    <li><a href="../doc/Season_html.html">Season.html</a>
+  
+    <li><a href="../doc/SeasonTime_html.html">SeasonTime.html</a>
+  
+    <li><a href="../doc/SessionsController_html.html">SessionsController.html</a>
+  
+    <li><a href="../doc/SessionsHelper_html.html">SessionsHelper.html</a>
+  
+    <li><a href="../doc/Sorcery_html.html">Sorcery.html</a>
+  
+    <li><a href="../doc/Sorcery/Controller_html.html">Controller.html</a>
+  
+    <li><a href="../doc/Sorcery/Controller/Submodules_html.html">Submodules.html</a>
+  
+    <li><a href="../doc/Sorcery/Controller/Submodules/External_html.html">External.html</a>
+  
+    <li><a href="../doc/Sorcery/Controller/Submodules/External/InstanceMethods_html.html">InstanceMethods.html</a>
+  
+    <li><a href="../doc/SorceryActivityLogging_html.html">SorceryActivityLogging.html</a>
+  
+    <li><a href="../doc/SorceryCore_html.html">SorceryCore.html</a>
+  
+    <li><a href="../doc/SorceryExternal_html.html">SorceryExternal.html</a>
+  
+    <li><a href="../doc/SorceryRememberMe_html.html">SorceryRememberMe.html</a>
+  
+    <li><a href="../doc/SorceryResetPassword_html.html">SorceryResetPassword.html</a>
+  
+    <li><a href="../doc/SorceryUserActivation_html.html">SorceryUserActivation.html</a>
+  
+    <li><a href="../doc/String_html.html">String.html</a>
+  
+    <li><a href="../doc/User_html.html">User.html</a>
+  
+    <li><a href="../doc/UserMailer_html.html">UserMailer.html</a>
+  
+    <li><a href="../doc/UserProfile_html.html">UserProfile.html</a>
+  
+    <li><a href="../doc/app/assets/fonts/chinacyr-webfont_svg_html.html">chinacyr-webfont_svg.html</a>
+  
+    <li><a href="../doc/app/assets/javascripts/angular_js/app_js_coffee_html.html">app_js_coffee.html</a>
+  
+    <li><a href="../doc/app/assets/javascripts/angular_js/blogctrl_js_coffee_html.html">blogctrl_js_coffee.html</a>
+  
+    <li><a href="../doc/app/assets/javascripts/angular_js/guestbookctrl_js_coffee_html.html">guestbookctrl_js_coffee.html</a>
+  
+    <li><a href="../doc/app/assets/javascripts/angular_js/index_js_html.html">index_js.html</a>
+  
+    <li><a href="../doc/app/assets/javascripts/angular_js/newsctrl_js_coffee_html.html">newsctrl_js_coffee.html</a>
+  
+    <li><a href="../doc/app/assets/javascripts/angular_js/resources_js_coffee_html.html">resources_js_coffee.html</a>
+  
+    <li><a href="../doc/app/assets/javascripts/application_js_html.html">application_js.html</a>
+  
+    <li><a href="../doc/app/assets/stylesheets/added_css_scss_html.html">added_css_scss.html</a>
+  
+    <li><a href="../doc/app/assets/stylesheets/application_css_html.html">application_css.html</a>
+  
+    <li><a href="../doc/app/assets/stylesheets/base_less_less_html.html">base_less_less.html</a>
+  
+    <li><a href="../doc/app/assets/stylesheets/sizes_less_html.html">sizes_less.html</a>
+  
+    <li><a href="../doc/app/assets/stylesheets/style_css_less_html.html">style_css_less.html</a>
+  
+    <li><a href="../doc/app/views/application/_403_html_haml_html.html">_403_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/application/_bottom_html_haml_html.html">_bottom_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/application/_current_user_json_jbuilder_html.html">_current_user_json_jbuilder.html</a>
+  
+    <li><a href="../doc/app/views/application/_debug_params_html_haml_html.html">_debug_params_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/application/_login_block_haml_html.html">_login_block_haml.html</a>
+  
+    <li><a href="../doc/app/views/application/_message_block_html_haml_html.html">_message_block_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/application/_right_html_haml_html.html">_right_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/application/_top_html_haml_html.html">_top_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/blog_comments/_blog_comment_html_haml_html.html">_blog_comment_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/blog_comments/_blog_comment_json_jbuilder_html.html">_blog_comment_json_jbuilder.html</a>
+  
+    <li><a href="../doc/app/views/blog_comments/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/blog_posts/_blog_post_html_haml_html.html">_blog_post_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/blog_posts/_blog_post_json_jbuilder_html.html">_blog_post_json_jbuilder.html</a>
+  
+    <li><a href="../doc/app/views/blog_posts/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/blog_posts/_one_post_html_haml_html.html">_one_post_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/blog_posts/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/blog_posts/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../doc/app/views/blog_posts/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/blog_posts/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/guest_posts/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/guest_posts/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/guest_posts/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../doc/app/views/guest_posts/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/layouts/application_html_haml_html.html">application_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/news/_form_html_haml_html.html">_form_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/news/_news_html_haml_html.html">_news_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/news/_news_json_jbuilder_html.html">_news_json_jbuilder.html</a>
+  
+    <li><a href="../doc/app/views/news/create_json_jbuilder_html.html">create_json_jbuilder.html</a>
+  
+    <li><a href="../doc/app/views/news/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/news/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/news/index_json_jbuilder_html.html">index_json_jbuilder.html</a>
+  
+    <li><a href="../doc/app/views/news/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/news/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/pages/edit_html_haml_html.html">edit_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/pages/index_html_haml_html.html">index_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/pages/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/pages/root_html_haml_html.html">root_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/pages/show_html_haml_html.html">show_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/registrations/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../doc/app/views/sessions/new_html_haml_html.html">new_html_haml.html</a>
+  
+    <li><a href="../doc/config_ru_html.html">config_ru.html</a>
+  
+    <li><a href="../doc/fonts_css.html">fonts.css</a>
+  
+    <li><a href="../doc/index_html.html">index.html</a>
+  
+    <li><a href="../doc/js/darkfish_js.html">darkfish.js</a>
+  
+    <li><a href="../doc/js/jquery_js.html">jquery.js</a>
+  
+    <li><a href="../doc/js/search_js.html">search.js</a>
+  
+    <li><a href="../doc/log/development_log_html.html">development_log.html</a>
+  
+    <li><a href="../doc/rdoc_css.html">rdoc.css</a>
+  
+    <li><a href="../log/development_log.html">development.log</a>
+  
+    <li><a href="../log/production_log.html">production.log</a>
+  
+    <li><a href="../log/test_log.html">test.log</a>
+  
+    <li><a href="../public/404_html.html">404.html</a>
+  
+    <li><a href="../public/422_html.html">422.html</a>
+  
+    <li><a href="../public/500_html.html">500.html</a>
+  
+    <li><a href="../public/favicon_ico.html">favicon.ico</a>
+  
+    <li><a href="../public/robots_txt.html">robots</a>
+  
+    <li><a href="../tmp/pids/development_pid.html">development.pid</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/CharDelegation.html">
+
+<p>&lt;!DOCTYPE html&gt;</p>
+
+<p>&lt;html&gt; &lt;head&gt; &lt;meta charset=“UTF-8”&gt;</p>
+
+<p>&lt;title&gt;class <a href="../CharDelegation.html">CharDelegation</a> -
+RDoc Documentation&lt;/title&gt;</p>
+
+<p>&lt;link href=“./fonts.css” rel=“stylesheet”&gt; &lt;link href=“./rdoc.css”
+rel=“stylesheet”&gt;</p>
+
+<p>&lt;script type=“text/javascript”&gt;</p>
+
+<pre>var rdoc_rel_prefix = &quot;./&quot;;</pre>
+
+<p>&lt;/script&gt;</p>
+
+<p>&lt;script src=“./js/jquery.js”&gt;&lt;/script&gt; &lt;script
+src=“./js/navigation.js”&gt;&lt;/script&gt; &lt;script
+src=“./js/search_index.js”&gt;&lt;/script&gt; &lt;script
+src=“./js/search.js”&gt;&lt;/script&gt; &lt;script
+src=“./js/searcher.js”&gt;&lt;/script&gt; &lt;script
+src=“./js/darkfish.js”&gt;&lt;/script&gt;</p>
+
+<p>&lt;body id=“top” role=“document” class=“class”&gt; &lt;nav
+role=“navigation”&gt;</p>
+
+<pre>&lt;div id=&quot;project-navigation&quot;&gt;
+  &lt;div id=&quot;home-section&quot; role=&quot;region&quot; title=&quot;Quick navigation&quot; class=&quot;nav-section&quot;&gt;
+&lt;h2&gt;
+  &lt;a href=&quot;./index.html&quot; rel=&quot;home&quot;&gt;Home&lt;/a&gt;
+&lt;/h2&gt;
+
+&lt;div id=&quot;table-of-contents-navigation&quot;&gt;
+  &lt;a href=&quot;./table_of_contents.html#pages&quot;&gt;Pages&lt;/a&gt;
+  &lt;a href=&quot;./table_of_contents.html#classes&quot;&gt;Classes&lt;/a&gt;
+  &lt;a href=&quot;./table_of_contents.html#methods&quot;&gt;Methods&lt;/a&gt;
+&lt;/div&gt;</pre>
+
+<p>&lt;/div&gt;</p>
+
+<pre>  &lt;div id=&quot;search-section&quot; role=&quot;search&quot; class=&quot;project-section initially-hidden&quot;&gt;
+&lt;form action=&quot;#&quot; method=&quot;get&quot; accept-charset=&quot;utf-8&quot;&gt;
+  &lt;div id=&quot;search-field-wrapper&quot;&gt;
+    &lt;input id=&quot;search-field&quot; role=&quot;combobox&quot; aria-label=&quot;Search&quot;
+           aria-autocomplete=&quot;list&quot; aria-controls=&quot;search-results&quot;
+           type=&quot;text&quot; name=&quot;search&quot; placeholder=&quot;Search&quot; spellcheck=&quot;false&quot;
+           title=&quot;Type to search, Up and Down to navigate, Enter to load&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;ul id=&quot;search-results&quot; aria-label=&quot;Search Results&quot;
+      aria-busy=&quot;false&quot; aria-expanded=&quot;false&quot;
+      aria-atomic=&quot;false&quot; class=&quot;initially-hidden&quot;&gt;&lt;/ul&gt;
+&lt;/form&gt;</pre>
+
+<p>&lt;/div&gt;</p>
+
+<pre>&lt;/div&gt;
+
+&lt;div id=&quot;class-metadata&quot;&gt;
+
+  &lt;div id=&quot;parent-class-section&quot; class=&quot;nav-section&quot;&gt;
+&lt;h3&gt;Parent&lt;/h3&gt;
+
+&lt;p class=&quot;link&quot;&gt;ActiveRecord::Base</pre>
+
+<p>&lt;/div&gt;</p>
+
+<pre>&lt;!-- Method Quickref --&gt;</pre>
+
+<p>&lt;div id=“method-list-section” class=“nav-section”&gt;</p>
+
+<pre>&lt;h3&gt;Methods&lt;/h3&gt;
+
+&lt;ul class=&quot;link-list&quot; role=&quot;directory&quot;&gt;
+
+  &lt;li &gt;&lt;a href=&quot;#method-i-user_name&quot;&gt;#user_name&lt;/a&gt;
+
+  &lt;li &gt;&lt;a href=&quot;#method-i-user_name-3D&quot;&gt;#user_name=&lt;/a&gt;
+
+&lt;/ul&gt;</pre>
+
+<p>&lt;/div&gt;</p>
+
+<pre>&lt;/div&gt;</pre>
+
+<p>&lt;/nav&gt;</p>
+
+<p>&lt;main role=“main” aria-labelledby=“class-CharDelegation”&gt;</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-identifier">h1</span> <span class="ruby-identifier">id</span>=<span class="ruby-string">&quot;class-CharDelegation&quot;</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;class&quot;</span><span class="ruby-operator">&gt;</span>
+  <span class="ruby-keyword">class</span> <span class="ruby-constant">CharDelegation</span>
+<span class="ruby-operator">&lt;</span><span class="ruby-regexp">/h1&gt;
+
+&lt;section class=&quot;description&quot;&gt;
+
+&lt;/se</span><span class="ruby-identifier">ction</span><span class="ruby-operator">&gt;</span>
+
+<span class="ruby-operator">&lt;</span><span class="ruby-identifier">section</span> <span class="ruby-identifier">id</span>=<span class="ruby-string">&quot;5Buntitled-5D&quot;</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;documentation-section&quot;</span><span class="ruby-operator">&gt;</span>
+
+   <span class="ruby-operator">&lt;</span><span class="ruby-identifier">section</span> <span class="ruby-identifier">id</span>=<span class="ruby-string">&quot;public-instance-5Buntitled-5D-method-details&quot;</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;method-section&quot;</span><span class="ruby-operator">&gt;</span>
+     <span class="ruby-operator">&lt;</span><span class="ruby-identifier">header</span><span class="ruby-operator">&gt;</span>
+       <span class="ruby-operator">&lt;</span><span class="ruby-identifier">h3</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">Public</span> <span class="ruby-constant">Instance</span> <span class="ruby-constant">Methods</span><span class="ruby-operator">&lt;</span><span class="ruby-regexp">/h3&gt;
+     &lt;/</span><span class="ruby-identifier">header</span><span class="ruby-operator">&gt;</span>
+
+    <span class="ruby-operator">&lt;</span><span class="ruby-identifier">div</span> <span class="ruby-identifier">id</span>=<span class="ruby-string">&quot;method-i-user_name&quot;</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;method-detail &quot;</span><span class="ruby-operator">&gt;</span>
+
+      <span class="ruby-operator">&lt;</span><span class="ruby-identifier">div</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;method-heading&quot;</span><span class="ruby-operator">&gt;</span>
+        <span class="ruby-operator">&lt;</span><span class="ruby-identifier">span</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;method-name&quot;</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">user_name</span><span class="ruby-operator">&lt;</span><span class="ruby-regexp">/span&gt;&lt;span
+          class=&quot;method-args&quot;&gt;()&lt;/s</span><span class="ruby-identifier">pan</span><span class="ruby-operator">&gt;</span>
+
+        <span class="ruby-operator">&lt;</span><span class="ruby-identifier">span</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;method-click-advice&quot;</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">click</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">toggle</span> <span class="ruby-identifier">source</span><span class="ruby-operator">&lt;</span><span class="ruby-regexp">/span&gt;
+
+      &lt;/</span><span class="ruby-identifier">div</span><span class="ruby-operator">&gt;</span>
+
+      <span class="ruby-operator">&lt;</span><span class="ruby-identifier">div</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;method-description&quot;</span><span class="ruby-operator">&gt;</span>
+
+        <span class="ruby-operator">&lt;</span><span class="ruby-identifier">div</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;method-source-code&quot;</span> <span class="ruby-identifier">id</span>=<span class="ruby-string">&quot;user_name-source&quot;</span><span class="ruby-operator">&gt;</span>
+          <span class="ruby-operator">&lt;</span><span class="ruby-identifier">pre</span><span class="ruby-operator">&gt;</span><span class="ruby-operator">&lt;</span><span class="ruby-identifier">span</span> <span class="ruby-identifier">class</span>=<span class="ruby-string">&quot;ruby-comment&quot;</span><span class="ruby-operator">&gt;</span><span class="ruby-comment"># File app/models/char_delegation.rb, line 13&lt;/span&gt;</span>
+</pre>
+
+<p>&lt;span class=“ruby-keyword”&gt;def&lt;/span&gt; &lt;span
+class=“ruby-identifier”&gt;user_name&lt;/span&gt;</p>
+
+<pre>&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;ruby-value&quot;&gt;:name&lt;/span&gt;)</pre>
+
+<p>&lt;span class=“ruby-keyword”&gt;end&lt;/span&gt;&lt;/pre&gt;</p>
+
+<pre>    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id=&quot;method-i-user_name-3D&quot; class=&quot;method-detail &quot;&gt;
+
+  &lt;div class=&quot;method-heading&quot;&gt;
+    &lt;span class=&quot;method-name&quot;&gt;user_name=&lt;/span&gt;&lt;span
+      class=&quot;method-args&quot;&gt;(name)&lt;/span&gt;
+
+    &lt;span class=&quot;method-click-advice&quot;&gt;click to toggle source&lt;/span&gt;
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;method-description&quot;&gt;
+
+    &lt;div class=&quot;method-source-code&quot; id=&quot;user_name-3D-source&quot;&gt;
+      &lt;pre&gt;&lt;span class=&quot;ruby-comment&quot;&gt;# File app/models/char_delegation.rb, line 17&lt;/span&gt;</pre>
+
+<p>&lt;span class=“ruby-keyword”&gt;def&lt;/span&gt; &lt;span
+class=“ruby-identifier”&gt;user_name=&lt;/span&gt;(&lt;span
+class=“ruby-identifier”&gt;name&lt;/span&gt;)</p>
+
+<pre>&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt; = &lt;span class=&quot;ruby-constant&quot;&gt;User&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;find_by&lt;/span&gt;(&lt;span class=&quot;ruby-value&quot;&gt;:name&lt;/span&gt; =&lt;span class=&quot;ruby-operator&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;name&lt;/span&gt;) &lt;span class=&quot;ruby-keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;name&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;present?&lt;/span&gt;</pre>
+
+<p>&lt;span class=“ruby-keyword”&gt;end&lt;/span&gt;&lt;/pre&gt;</p>
+
+<pre>        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/section&gt;
+
+&lt;/section&gt;</pre>
+
+<p>&lt;/main&gt;</p>
+
+<p>&lt;footer id=“validator-badges” role=“contentinfo”&gt;</p>
+
+<pre>&lt;p&gt;&lt;a href=&quot;http://validator.w3.org/check/referer&quot;&gt;Validate&lt;/a&gt;
+&lt;p&gt;Generated by &lt;a href=&quot;http://rdoc.rubyforge.org&quot;&gt;RDoc&lt;/a&gt; 4.1.1.
+&lt;p&gt;Based on &lt;a href=&quot;http://deveiate.org/projects/Darkfish-Rdoc/&quot;&gt;Darkfish&lt;/a&gt; by &lt;a href=&quot;http://deveiate.org&quot;&gt;Michael Granger&lt;/a&gt;.</pre>
+
+<p>&lt;/footer&gt;</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

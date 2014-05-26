@@ -1,0 +1,6 @@
+char:
+  groups: [apprentice, special]
+
+user:
+  providers: [google, vkontakte, twitter, facebook]
+

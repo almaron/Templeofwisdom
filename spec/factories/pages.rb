@@ -2,18 +2,11 @@
 
 FactoryGirl.define do
   factory :page do
-    head "MyString"
-    page_title "MyString"
-    page_alias "MyString"
-    ancestry "MyString"
-    content "MyText"
-    partial "MyString"
-    partial_params "MyString"
+    head "Sample page"
+    page_title "Sample_page"
+    page_alias "sample"
+    content "Sample_content"
     published 1
-    hide_menu 1
-    sorting 1
-    meta_title "MyString"
-    meta_description "MyString"
-    meta_keywords "MyString"
+    meta_title "Sample page title"
   end
 end

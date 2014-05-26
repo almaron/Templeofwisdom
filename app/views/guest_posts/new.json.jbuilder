@@ -1,0 +1,1 @@
+json.extract! @guest_post, :valid_captcha, :write_captcha

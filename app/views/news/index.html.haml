@@ -1,0 +1,10 @@
+.text-simple.hide{"ng-controller" => "NewsCtrl", "ng-init" => "loadNews(#{params[:page]})"}
+  .admin_add_btn{"ng-if" => "currentUser.group == 'admin' "}
+    %button.btn.btn-standart{"ng-disabled"=>"currentUser.group != 'admin'","ng-click"=>"newNews.show = !newNews.show"}Добавить новость
+  = render partial: "news/form", locals: {news:"newNews"}
+  .paginator.align-center
+    = will_paginate @news
+  .newsblock
+    = render "news/news"
+  .paginator.align-center
+    = will_paginate @news

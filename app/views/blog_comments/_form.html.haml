@@ -1,0 +1,10 @@
+.addnews{"ng-if" => (comment == "newComment") ? "currentUser.id" : "#{comment}.show"}
+  .any-form{}
+    .form_close{"ng-if"=>"#{comment}.id"}
+      %span{"ng-click" => "#{comment}.show = false"} X
+    %form{name:"comment_form", novalidate:"", "ng-submit" => (comment == "newComment") ? "addComment(#{comment})" : "updateComment(#{comment})" }
+      %span.bold Текст комментария:
+      %br/
+      %textarea.inp.inp-type2{name:"comment", required:"", "ng-model"=>"#{comment}.comment"}
+      %br/
+      %input.btn.btn-standart{type: "submit", value: "Отправить"}
