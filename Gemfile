@@ -48,6 +48,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 gem 'bb-ruby'
+gem 'rails_autolink'
 
 gem 'sidekiq'
 

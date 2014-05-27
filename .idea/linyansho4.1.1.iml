@@ -347,6 +347,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rack-livereload (v0.3.15, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.2, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v4.1.1, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails_autolink (v1.1.5, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.1.1, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="raindrops (v0.13.0, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.3.2, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />

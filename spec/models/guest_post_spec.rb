@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe GuestPost do
-  describe "captcha" do
 
-    before :all do
-      @post = build :guest_post
-    end
+  before :all do
+    @post = build :guest_post
+  end
+
+  describe "captcha" do
 
     it "shoud be set on initialize" do
       expect(@post.captcha).to be_present
@@ -26,4 +27,21 @@ describe GuestPost do
       expect(GuestPost.new).not_to be_valid
     end
   end
+
+  # describe "apply_answer" do
+  #   it "should apply an answer" do
+  #     @post.apply_answer "Some answer string"
+  #     expect(@post.answer).to eq("Some answer string")
+  #   end
+  #
+  #   it "autolinks urls" do
+  #     @post.apply_answer "Here is a url: http://link.com"
+  #     expect(@post.answer).to eq("Here is a url: <a href=\"http://link.com\" target=\"_blank\">ссылка</a>")
+  #   end
+  #
+  #   it "autolinks mails" do
+  #     @post.apply_answer "Here is a mail: alm@example.com"
+  #     expect(@post.answer).to eq("Here is a url: <a href=\"mailto:alm@example.com\">'этот адрес</a>")
+  #   end
+  # end
 end

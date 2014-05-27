@@ -12,6 +12,6 @@
       $scope.posts.unshift post
       $scope.resetPost()
     )
-  
+
 
 ]

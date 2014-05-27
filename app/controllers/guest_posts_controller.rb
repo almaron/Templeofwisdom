@@ -1,4 +1,6 @@
 class GuestPostsController < ApplicationController
+
+
   before_action :set_guest_post, only: [:edit, :update, :destroy]
   before_action :admin_access, only: [:edit, :update, :destroy]
 

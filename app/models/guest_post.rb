@@ -1,4 +1,5 @@
 class GuestPost < ActiveRecord::Base
+
   validates_presence_of :head, :content, :user
 
   attr_accessor :captcha, :valid_captcha

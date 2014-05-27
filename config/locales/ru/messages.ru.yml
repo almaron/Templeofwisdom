@@ -14,3 +14,6 @@ ru:
         sessions:
           create:
             failure: "Неправильное имя пользователя или пароль."
+  auto_link:
+    url_link: "ссылка"
+    email_link: "этот адрес"
