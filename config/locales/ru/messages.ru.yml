@@ -10,6 +10,11 @@ ru:
             success: "Вы успешно вышли из системы"
           create:
             success: "Вы успешно вошли в систему"
+        users:
+          destroy:
+            success: "Игрок успешно удален"
+          update:
+            success: "Данные игрока успешно изменены"
       alert:
         sessions:
           create:

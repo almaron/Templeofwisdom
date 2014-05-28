@@ -1,9 +1,9 @@
 .blog-entry{"ng-repeat" => "post in posts"}
   .blog-entry-title
-    .blog-entry-date {{post.dateLine}}
-    .blog-entry-title-text {{post.head}}
+    .blog-entry-date{} {{post.dateLine}}
+    .blog-entry-title-text{} {{post.head}}
   .blog-text{"ng-bind-html"=>"post.content"}
-  .blog-author {{post.author}}
+  .blog-author{} {{post.author}}
   .blog-comments
     %a{"ng-click"=>"showPost(post)"} Комментарии({{post.comments.length}})
   .block-adm

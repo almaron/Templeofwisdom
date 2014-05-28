@@ -8,6 +8,8 @@ class GuestPost < ActiveRecord::Base
 
   validates :captcha, with: :validate_captcha
 
+  default_scope { order(created_at: :desc) }
+
   def validate_captcha
     BCrypt::Password.new(@valid_captcha) == @captcha
   end

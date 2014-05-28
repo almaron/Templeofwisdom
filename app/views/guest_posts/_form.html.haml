@@ -1,0 +1,24 @@
+%form{name: "newPostForm", novalidate:true, "ng-model" => "newPost", "ng-submit"=>"createPost(newPost)"}
+  %table
+    %tr
+      %td.anyform-tt Имя
+      %td.anyform-inp
+        %input.inp.inp-type2{type: "text", name:"guest_post[user]", "ng-model"=>"newPost.user"}/
+    %tr
+      %td.anyform-tt Заголовок
+      %td.anyform-inp
+        %input.inp.inp-type2{type: "text", name: "guest_post[head]", "ng-model"=>"newPost.head", "ng-required"=>"true"}
+    %tr
+      %td.anyform-tt Сообщение
+      %td.anyform-inp
+        %textarea.textarea-2.inp-type2{ name: "guest_post[content]", "ng-model"=>"newPost.content", "ng-required"=>"true"}
+    %tr
+      %td.anyform-tt Введите строку
+      %td.anyform-inp
+        .capcha{} {{newPost.write_captcha}}
+        %input.inp.inp-type2.inp-short{type: "text",name: "guest_post[captcha]", "ng-model"=>"newPost.captcha", "ng-required"=>"true"}/
+        %input{type:"hidden", name: "guest_post[valid_captcha]", "ng-model"=>"newPost.valid_captcha"}
+    %tr
+      %td.anyform-tt  
+      %td.anyform-inp
+        %input.btn.btn-standart{type: "submit", value:"Отправить запрос"}

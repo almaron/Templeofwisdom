@@ -59,7 +59,7 @@ class GuestPostsController < ApplicationController
 
 
     def guest_post_params
-      params.require(:guest_post).permit(:head, :content, :user)
+      params.require(:guest_post).permit(:head, :content, :user, :captcha, :valid_captcha)
     end
 
     def guest_answer_params

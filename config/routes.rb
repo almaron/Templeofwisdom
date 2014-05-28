@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   #OAuth routes
   post "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#auth", :as => :auth_at_provider
@@ -28,6 +27,9 @@ Rails.application.routes.draw do
   end
 
   resources :guest_posts, :path => "guestbook", :except => [:show]
+
+  resources :users, except: [:new,:create]
+  resource :profile, only:[:show, :edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

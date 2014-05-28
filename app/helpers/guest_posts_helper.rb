@@ -1,0 +1,5 @@
+module GuestPostsHelper
+
+
+
+end

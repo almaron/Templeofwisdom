@@ -15,5 +15,5 @@
 ]
 
 @app.factory "GuestPost", ["$resource", ($resource) ->
-  $resource "/guestbook/:id.json", {}, {update: {method: "PUT"}, reset:{method: "GET", params:{id: "new"}}}
+  $resource("/guestbook/:id.json", {id:"@id"}, {update: {method: "PUT"}, reset:{method: "GET", params:{id: "new"}}})
 ]
