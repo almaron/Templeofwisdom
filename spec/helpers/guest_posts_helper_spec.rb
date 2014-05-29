@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe GuesPostsHelper do
+describe GuestPostsHelper do
 
 end

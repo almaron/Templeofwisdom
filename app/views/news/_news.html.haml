@@ -1,8 +1,8 @@
 .news-single{"ng-repeat"=>"oneNews in news"}
   .news_block{"ng-hide"=>"oneNews.show"}
     .news-single-title
-      %span.news-single-date {{oneNews.dateLine}}
-      %span.news-single-date-title-text {{oneNews.head}}
+      %span.news-single-date{} {{oneNews.dateLine}}
+      %span.news-single-date-title-text{} {{oneNews.head}}
     .news-single-text
       .text{"ng-bind-html"=>"oneNews.content"}
       .author

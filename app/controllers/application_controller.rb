@@ -16,7 +16,9 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_access
-    render partial: "application/403" unless current_user.is_in? :admin
+    if require_login
+      render partial: "application/403" unless current_user.is_in? :admin
+    end
   end
 
 end

@@ -17,4 +17,9 @@
     ind = $scope.posts.indexOf(post)
     $scope.posts[ind] = GuestPost.update({id:post.id, guest_post:post})
 
+  $scope.removePost = (post) ->
+    ind = $scope.posts.indexOf(post)
+    GuestPost.delete({id:post.id}, ->
+      $scope.posts.splice(ind,1)
+    )
 ]

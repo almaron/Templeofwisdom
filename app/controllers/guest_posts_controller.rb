@@ -49,7 +49,10 @@ class GuestPostsController < ApplicationController
 
   def destroy
     @guest_post.destroy
-    redirect_to guest_posts_path
+    respond_to do |f|
+      f.html { redirect_to guest_posts_path }
+      f.json { render nothing: true }
+    end
   end
 
   private

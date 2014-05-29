@@ -10,12 +10,16 @@
       .guestscroll-entry-title-text{} {{post.head}}
     .guestscroll-text
       {{post.content}}
+    .block-adm
+      %span.delete{title: "Удалить", "ng-click" => "removePost(post)", "ng-if" => "currentUser.group == 'admin'" } [&#21024;&#38500;]
     .guestscroll-answer{"ng-show"=>"post.hasAnswer"}
       .guestscroll-answer-date{} {{post.answerDate}}
       .guestscroll-answer-text
         {{post.answer}}
+      .block-adm{"ng-if" => "currentUser.group == 'admin'"}
+        %span.edit{title: "Редактировать", "ng-click" => "post.hasAnswer = !post.hasAnswer; post.getReply = true; post.editReply = true" } [ &#21464;&#26356; ]
     .guestscroll-write-answer{"ng-if"=>"currentUser.group == 'admin'", "ng-hide"=>"post.hasAnswer"}
-      %span.btn-green.bg-gold{"ng-click"=>"post.getReply = !post.getReply"} Ответить
+      %span.btn-green.bg-gold{"ng-click"=>"post.getReply = !post.getReply", "ng-hide"=>"post.editReply"} Ответить
       .show-form{"ng-show"=>"post.getReply"}
         %form{"ng-submit"=>"updatePost(post)", name: "reply_form", novalidate: true, "ng-model"=>"post"}
           %textarea.textarea-2.inp-type2{name:"answer", "ng-model"=>"post.answer", "ng-required" => "true"}
