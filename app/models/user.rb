@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications
 
-  validates_confirmation_of :password, :if => :password
+  validates_confirmation_of :password, :if => :password, message: I18n.t("activerecord.errors.models.user.attributes.password.confirmation")
   validates :name, :presence => true, :uniqueness => true
   validates :email, :presence => true, :email => true
 
@@ -31,6 +31,14 @@ class User < ActiveRecord::Base
 
   def default_char
     self.chars.where(char_delegations: {owner:1, default:1}).first
+  end
+
+  def own_chars
+    self.chars.where(char_delegations: {owner:1})
+  end
+
+  def delegated_chars
+    self.chars.where(char_delegations: {owner:0})
   end
 
 end

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   #OAuth routes
-  post "oauth/callback" => "oauths#callback"
+  match "oauth/callback" => "oauths#callback", via: [:get, :post]
+  match "oauth/delete/:provider" => "oauths#destroy", as: :delete_auth, via: [:get, :delete]
   get "oauth/:provider" => "oauths#auth", :as => :auth_at_provider
-  delete "oauth/:id" => "oauths#destroy", as: :delete_auth
+
 
   #Registration routes
   get "register" => "registrations#new"

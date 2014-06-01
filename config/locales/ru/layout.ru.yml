@@ -17,3 +17,7 @@ ru:
   guest_posts:
     index:
       pagetitle: "Гостевой свиток"
+
+  profiles:
+    show:
+      pagetitle: "Личный кабинет"

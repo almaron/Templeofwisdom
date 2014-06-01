@@ -6,7 +6,6 @@ FactoryGirl.define do
     email "test@sub.com"
     password "qwsazx"
     password_confirmation "qwsazx"
-    activation_state "active"
 
     factory :admin do
       group "admins"

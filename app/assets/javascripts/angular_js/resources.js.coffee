@@ -17,3 +17,11 @@
 @app.factory "GuestPost", ["$resource", ($resource) ->
   $resource("/guestbook/:id.json", {id:"@id"}, {update: {method: "PUT"}, reset:{method: "GET", params:{id: "new"}}})
 ]
+
+@app.factory "Profile", ["$resource", ($resource) ->
+  $resource("/profile.json", {}, {update: {method: "PUT"}})
+]
+
+@app.factory "User", ["$resource", ($resource) ->
+  $resource("/users/:id.json", {id:"@id"}, {update: {method: "PUT"}})
+]

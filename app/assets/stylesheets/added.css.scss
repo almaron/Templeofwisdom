@@ -31,3 +31,34 @@
     height: 300px;
   }
 }
+
+.profile_form_table{
+  tr {
+    vertical-align: middle;
+    td {
+      vertical-align: middle;
+      input[type=text], input[type=email], input[type=date], input[type=password] {
+        width:90%;
+      }
+      textarea {
+        width: 90%;
+        height:50px;
+      }
+      input[type=submit] {
+        cursor: pointer;
+      }
+      .act-line-escape {
+        text-align: right;
+        padding-right: 10%;
+      }
+    }
+  }
+}
+
+.form-errors {
+  color: red;
+  padding: 5px;
+  .error-line {
+
+  }
+}

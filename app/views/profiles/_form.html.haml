@@ -1,0 +1,78 @@
+.form-errors
+  %div.error-line{"ng-repeat"=>"error in user.errors"} &bull; {{error}}
+%form{name:"profileEdit", "ng-submit"=>"updateProfile()", novalidate:true, "ng-model"=>"user", class:"profile_form"}
+  %table{class:"profile_form_table"}
+    %tr
+      %td{width:"30%"}
+        .act-form-line
+          %span.bold
+            = t("activerecord.attributes.user_profile.full_name")+":"
+      %td
+        .act-form-line
+          %input{name:"full_name", "ng-model"=>"user.profile_attributes.full_name", class:"inp inp-type2", type: "text"}
+    %tr
+      %td
+        .act-form-line
+          %span.bold Email:
+      %td
+        .act-form-line
+          %input{type:"text", name:"full_name", "ng-model"=>"user.email", class:"inp inp-type2"}
+    %tr
+      %td
+        .act-form-line
+          %span.bold Дата Рождения:
+      %td
+        .act-form-line
+          %input{name:"birth_date", type: "text","ng-model"=>"user.profile_attributes.birth_date", class:"inp inp-type2"}
+    %tr
+      %td
+        .act-form-line
+          %span.bold ICQ:
+      %td
+        .act-form-line
+          %input{name:"icq", type: "text","ng-model"=>"user.profile_attributes.icq", class:"inp inp-type2"}
+    %tr
+      %td
+        .act-form-line
+          %span.bold Skype:
+      %td
+        .act-form-line
+          %input{name:"skype", type: "text","ng-model"=>"user.profile_attributes.skype", class:"inp inp-type2"}
+    %tr
+      %td
+        .act-form-line
+          %span.bold Контакты:
+      %td
+        .act-form-line
+          %textarea{name:"contacts","ng-model"=>"user.profile_attributes.contacts", class:"inp inp-type2"}
+    %tr
+      %td
+        .act-form-line
+          %span.bold Контакты открыты:
+      %td
+        .act-form-line
+          %input{name:"viewcontacts", type: "checkbox","ng-model"=>"user.profile_attributes.viewcontacts", class:"inp inp-type2", "ng-true-value"=>1, "ng-false-value"=>0, id:"viewcontacts"}
+          %label{for:"viewcontacts"}
+            %span
+    %tr
+      %td
+        .act-form-line
+          %span.bold Пароль:
+      %td
+        .act-form-line
+          %input{type:"password", "ng-model"=>"user.password", class: "inp inp-type2"}
+    %tr
+      %td
+        .act-form-line
+          %span.bold Подтверждение:
+      %td
+        .act-form-line
+          %input{type:"password", "ng-model"=>"user.password_confirmation", class: "inp inp-type2"}
+    %tr
+      %td
+        .act-form-line
+          %input{ type: "submit", value:"OK", class: "inp inp-type2"}
+      %td{}
+        .act-line.act-line-escape
+          %span.boldie{"ng-click"=>"user.editProfile=false"}
+            Отмена

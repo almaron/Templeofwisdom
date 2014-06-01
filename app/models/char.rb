@@ -25,4 +25,12 @@ class Char < ActiveRecord::Base
     self.char_delegations.find_by(:user_id => user_id).destroy
   end
 
+  def owned_by
+    self.users.where(char_delegations: {owner:1}).first
+  end
+
+  def delegated_to
+    self.users.where(char_delegations: {owner:0})
+  end
+
 end

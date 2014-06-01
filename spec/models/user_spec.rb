@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   context "creating a user" do
-    it "should create user and profile" do
+    it "should create user and profiles" do
       user = create :user
       expect(user.group).to eql "user"
       expect(user.profile).to be

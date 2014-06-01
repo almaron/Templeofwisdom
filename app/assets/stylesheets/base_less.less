@@ -476,6 +476,11 @@ input[type="radio"]{
   &:disabled:checked + label > span {background-position: -17px -50px;}
 }
 
+//---SUBMIT-------------------------------------------------------
+input[type=submit] {
+  cursor: pointer;
+}
+
 
 
 // 	* ИНПУТЫ * //
@@ -569,6 +574,21 @@ input[type="radio"]{
   &:hover {
 	background: @color-green6;
 	color:@color-grey1;
+  }
+}
+
+.btn-short {
+  border: 0px;
+  padding:3px 0px;
+  width:14px;
+  margin-top: 0px;
+  text-align: center;
+  font-size:0.9em;
+  display: inline!important;
+  background: none;
+  color:@color-green3;
+  &:hover {
+    color:@color-green3 - 200;
   }
 }
 

@@ -1,60 +1,45 @@
-.myaccount
+.myaccount{"ng-controller"=>"ProfileCtrl", "ng-init"=>"loadProfile()", "ng-show"=>"user"}
   .act-block
     .act-head Мои данные
     %table.myaccount-table
       %tr
         %td.left
-          .act-subhead Мои данные
-          .act-line
-            %span.bold Пользователь:
-            Vasyal1555
-          .act-line
-            %span.bold Email:
-            Vasyal1555@mailmail.com
-          .act-line
-            .bold Другие контакты:
-            %div
-              • Skype —
-              %input.inp.inp-type2{type: "text", value: "vasya.vasya"}/
-              %input.btn.btn-short{type: "submit", value: "✔"}/
-            %div • ICQ — 12345678901
-            %div
-              • VK —
-              %a{href: "http://vk.com/id3321312321"} id3321312321
-            %div
-              • FB —
-              %a{href: "http://facebook.com/vasya.sidorcev"} vasya.sidorcev
-            %div • Mail.Agent — vasya.sidorcev@mail.ru
-          .act-line
-            %span.bold Имя:
-            Тарашкин Петр
-          .act-line
-            %span.bold Дата рождения:
-            12.12.1990 (23)
-          .act-line
-            %a.bold{href: "#"} Редактировать данные
+          .act-subhead Контактная информация
+          %div{"ng-hide"=>"user.editProfile"}
+            .act-line
+              %span.bold Пользователь:
+              {{user.name}}
+            .act-line
+              %span.bold Email:
+              {{user.email}}
+            .act-line{"ng-if"=>"user.profile_attributes.icq"}
+              %span.bold ICQ:
+              {{user.profile_attributes.icq}}
+            .act-line{"ng-if"=>"user.profile_attributes.skype"}
+              %span.bold Skype
+              {{user.profile_attributes.skype}}
+            .act-line{"ng-if"=>"user.profile_attributes.contacts"}
+              .bold Другие контакты:
+              %div
+                {{user.profile_attributes.contacts}}
+            .act-line
+              %span.bold Имя:
+              {{user.profile_attributes.full_name}}
+            .act-line
+              %span.bold Дата рождения:
+              {{user.profile_attributes.birth_date}}
+            .act-line
+              %span.boldie{"ng-click"=>"user.editProfile = true"} Редактировать данные
+          %div{"ng-show"=>"user.editProfile"}
+            = render :partial => 'form'
         %td.right
           .act-subhead Социальные сети
+          .act-line{"ng-repeat"=>"provider in authProviders"}
+            %span.act-social{"ng-class"=>"user.authentications.indexOf(provider.provider)>=0 ? 'on' : 'off'"}
+              {{provider.name}}
+              %span{"ng-if"=>"user.authentications.indexOf(provider.provider)>=0", "ng-click"=> "removeAuth(provider.provider)"} отключить
+              %a{"ng-if"=>"user.authentications.indexOf(provider.provider)<0", href:"/oauth/{{provider.provider}}"} включить
           .act-line
-            %span.act-social.on
-              ВКонтакте
-              %span отключить
-          .act-line
-            %span.act-social.on
-              Facebook
-              %span отключить
-          .act-line
-            %span.act-social.off
-              Twitter
-              %span включить
-          .act-line
-            %span.act-social.off
-              Яndex.Почта
-              %span включить
-          .act-line
-            %span.act-social.off
-              Google Mail
-              %span включить
     .act-head Полезные ссылки
     %table.useful-links-table
       %tr

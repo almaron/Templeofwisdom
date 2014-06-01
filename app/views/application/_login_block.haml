@@ -25,7 +25,7 @@
   .loggedin-name
     Добро пожаловать,
     = succeed "." do
-      %a{href: "/profile"} {{currentUser.name}}
+      %a{href: profile_path} {{currentUser.name}}
   .loggedin-icons
     .loggedin-notification
       %a{href: "/notifications", title: "Уведомления"}

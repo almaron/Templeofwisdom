@@ -81,7 +81,7 @@ Rails.application.config.sorcery.configure do |config|
 
 
   # For information about LinkedIn API:
-  # - user info fields go to https://developer.linkedin.com/documents/profile-fields
+  # - user info fields go to https://developer.linkedin.com/documents/profiles-fields
   # - access permissions go to https://developer.linkedin.com/documents/authentication#granting
   #
   # config.linkedin.key = ""

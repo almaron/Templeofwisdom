@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    respond_to do |format|
+      format.html { @users = User.includes(:char_delegations).all }
+      format.json { @users = User.all }
+    end
+
   end
 
   def show
