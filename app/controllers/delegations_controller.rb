@@ -1,5 +1,7 @@
 class DelegationsController < ApplicationController
 
+  before_action :require_login
+
   def create
     @delegation = CharDelegation.create delegation_params
     respond_to do |format|

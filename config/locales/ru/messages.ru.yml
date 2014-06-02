@@ -15,10 +15,16 @@ ru:
             success: "Игрок успешно удален"
           update:
             success: "Данные игрока успешно изменены"
+        chars:
+          update:
+            success: "Персонаж успешно сохранен."
       alert:
         sessions:
           create:
             failure: "Неправильное имя пользователя или пароль."
+        chars:
+          edit:
+            not_editable: "Персонажа нельзя редактировать"
   auto_link:
     url_link: "ссылка"
     email_link: "этот адрес"
