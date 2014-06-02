@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to profile_path, notice: "Update success" }
-        format.json { render json: nil }
+        format.json {  }
       else
         format.html { redirect_to edit_profile_path, alert: "Update failed" }
         format.json { render json: {errors: @user.errors.full_messages} }

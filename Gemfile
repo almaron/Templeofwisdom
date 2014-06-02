@@ -28,7 +28,7 @@ gem 'jquery-turbolinks'
 gem 'modernizr-rails'
 
 #Additional jquery libraries for visual effects
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
 gem 'jquery-ui-rails'
 gem 'chosen-rails'
 gem "jquery-fileupload-rails"

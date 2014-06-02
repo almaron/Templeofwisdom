@@ -1,0 +1,23 @@
+.act-line
+  %span.bold Пользователь:
+  {{user.name}}
+.act-line
+  %span.bold Email:
+  {{user.email}}
+.act-line{"ng-if"=>"user.profile_attributes.icq"}
+  %span.bold ICQ:
+  {{user.profile_attributes.icq}}
+.act-line{"ng-if"=>"user.profile_attributes.skype"}
+  %span.bold Skype
+  {{user.profile_attributes.skype}}
+.act-line{"ng-if"=>"user.profile_attributes.contacts"}
+  .bold Другие контакты:
+  %div{"ng-bind-html"=>"htmlEmbed(user.profile_attributes.show_contacts)"}
+.act-line
+  %span.bold Имя:
+  {{user.profile_attributes.full_name}}
+.act-line
+  %span.bold Дата рождения:
+  {{user.profile_attributes.birth_date}}
+.act-line
+  %span.boldie{"ng-click"=>"user.editProfile = true"} Редактировать данные

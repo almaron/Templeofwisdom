@@ -6,39 +6,16 @@
         %td.left
           .act-subhead Контактная информация
           %div{"ng-hide"=>"user.editProfile"}
-            .act-line
-              %span.bold Пользователь:
-              {{user.name}}
-            .act-line
-              %span.bold Email:
-              {{user.email}}
-            .act-line{"ng-if"=>"user.profile_attributes.icq"}
-              %span.bold ICQ:
-              {{user.profile_attributes.icq}}
-            .act-line{"ng-if"=>"user.profile_attributes.skype"}
-              %span.bold Skype
-              {{user.profile_attributes.skype}}
-            .act-line{"ng-if"=>"user.profile_attributes.contacts"}
-              .bold Другие контакты:
-              %div
-                {{user.profile_attributes.contacts}}
-            .act-line
-              %span.bold Имя:
-              {{user.profile_attributes.full_name}}
-            .act-line
-              %span.bold Дата рождения:
-              {{user.profile_attributes.birth_date}}
-            .act-line
-              %span.boldie{"ng-click"=>"user.editProfile = true"} Редактировать данные
+            = render partial: "info"
           %div{"ng-show"=>"user.editProfile"}
             = render :partial => 'form'
         %td.right
           .act-subhead Социальные сети
           .act-line{"ng-repeat"=>"provider in authProviders"}
-            %span.act-social{"ng-class"=>"user.authentications.indexOf(provider.provider)>=0 ? 'on' : 'off'"}
+            %span.act-social{"ng-class"=>"authentications.indexOf(provider.provider)>=0 ? 'on' : 'off'"}
               {{provider.name}}
-              %span{"ng-if"=>"user.authentications.indexOf(provider.provider)>=0", "ng-click"=> "removeAuth(provider.provider)"} отключить
-              %a{"ng-if"=>"user.authentications.indexOf(provider.provider)<0", href:"/oauth/{{provider.provider}}"} включить
+              %span{"ng-if"=>"authentications.indexOf(provider.provider)>=0", "ng-click"=> "removeAuth(provider.provider)"} отключить
+              %a{"ng-if"=>"authentications.indexOf(provider.provider)<0", href:"/oauth/{{provider.provider}}"} включить
           .act-line
     .act-head Полезные ссылки
     %table.useful-links-table
@@ -56,94 +33,45 @@
     .act-head Меню Персонажа
     .act-line
       %a{href: "#"} Создать нового персонажа
-    .act-subhead Мои персонажи
+    .act-subhead
+      Мои персонажи
     .act-line
       %table.act-table
-        %tr
+        %tr{"ng-if"=>"own_chars.length<1"}
+          %td.nochars{}
+            Нет персонажей
+        %tr{"ng-repeat"=>"char in own_chars"}
           %td.act-name
-            %a{href: "#"} Василий Петрович
-          %td.act-date-create 12.12.2012
-          %td.act-status.accept
-            %span принят
+            %a{href: "{{char.char_url}}"} {{char.name}}
+          %td.act-date-create{} {{char.regDate}}
+          %td.act-status{"ng-class"=>"char.status_class"}
+            %span{} {{char.status}}
           %td.act-delegate
             Делегирован игрокам:
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: 12.11.2013"} Vasya223
-              %span.delete{title: "Отменить делегирование"} ×
-            |
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: бессрочно"} KILLER666!!!1
-              %span.delete{title: "Отменить делегирование"} ×
+            %span.italic{"ng-if"=>"char.delegated_to.length<1"} никому
+            %span.player-one{"ng-repeat"=>"user in char.delegated_to"}
+              %a{href: "#{users_path}/{{user.user_id}}", title: "Окончание делегирования: {{user.end_date}}", target:"_blank"} {{user.username}}
+              %span.delete{title: "Отменить делегирование", "ng-click"=>"removeDelegation(char, user)"} ×
               |
-        %tr
-          %td.act-name
-            %a{href: "#"} Чхан Лю Шан Дан Бао
-          %td.act-date-create 12.12.2012
-          %td.act-status.waiting
-            %span на одобрении
-          %td.act-delegate
-            Делегирован игрокам:
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: 12.11.2013"} Vasya223
-              %span.delete{title: "Отменить делегирование"} ×
-            |
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: бессрочно"} KILLER666!!!1
-              %span.delete{title: "Отменить делегирование"} ×
-              |
-        %tr
-          %td.act-name
-            %a{href: "#"} Чхан Лю Шан Дан Бао
-          %td.act-date-create 12.12.2012
-          %td.act-status.inactive
-            %span неактив
-          %td.act-delegate
-            Делегирован игрокам:
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: 12.11.2013"} Vasya223
-              %span.delete{title: "Отменить делегирование"} ×
-            |
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: бессрочно"} KILLER666!!!1
-              %span.delete{title: "Отменить делегирование"} ×
-              |
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: бессрочно"} K!!1
-              %span.delete{title: "Отменить делегирование"} ×
-              |
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: бессрочно"} KI
-              %span.delete{title: "Отменить делегирование"} ×
-              |
-            %span.player-one
-              %a{href: "#", title: "Окончание делегирования: бессрочно"} KILLER1
-              %span.delete{title: "Отменить делегирование"} ×
-              |
-        %tr
-          %td.act-name
-            %a{href: "#"} Чхан Лю Шан Дан Бао
-          %td.act-date-create 12.12.2012
-          %td.act-status.inactive
-            %span неактив
-          %td.act-delegate
-            Делегирован игрокам:
-            %span.italic не делегирован
+            %span{"ng-click"=>"newDelegation(char)", title:"Делегировать"}
+              +
+    %modal-dialog{show:"modalShown", head:"Делегирование персонажа", width:"600px"}
+      .new_delegation_form
+        .act-line
+          Делегировать персонажа {{newChar.name}} игроку
+          %select.chosen_select{"ng-model"=>"newChar.user_id", "ng-options" => "user.id as user.name for user in allUsers"}
+          %input{type:"submit", value:"ОК", "ng-click"=>"delegateChar(newChar)"}
     .act-subhead Переданные мне персонажи
     .act-line
       %table.act-table
-        %tr
+        %tr{"ng-if"=>"delegated_chars.length<1"}
+          %td.nochars{}
+            Нет персонажей
+        %tr{"ng-repeat"=>"char in delegated_chars"}
           %td.act-name
-            %a{href: "#"} Чхан Лю Шан Дан Бао
+            %a{href: "{{char.char_url}}"} {{char.name}}
             %span.owner
               (владелец:
               = succeed ")" do
-                %a{href: "#"} Vasya2324
-          %td.act-date-end-of Дата окончания делегирования: 12.12.2012
-        %tr
-          %td.act-name
-            %a{href: "#"} Чхан
-            %span.owner
-              (владелец:
-              = succeed ")" do
-                %a{href: "#"} 42343242Vasya2324
-          %td.act-date-end-of Дата окончания делегирования: бессрочно
+                %a{href: "#{users_path}/{{char.owner_id}}"} {{char.owner_name}}
+          %td.act-date-end-of{} Дата окончания делегирования: {{char.end_date}}

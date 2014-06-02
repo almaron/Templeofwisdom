@@ -21,3 +21,15 @@ ru:
   profiles:
     show:
       pagetitle: "Личный кабинет"
+
+
+
+
+  char_status:
+    name:
+      saved: "сохранен"
+      pending: "в очереди"
+      reviewing: "на рассмотрении"
+      approved: "одобрен"
+      active: "активен"
+      na: "неактив"

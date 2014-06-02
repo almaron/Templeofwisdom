@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+//= require lib/abstract-chosen
+//= require lib/select-parser
+//= require chosen.jquery
+
 //= require turbolinks
 
 //= require angular

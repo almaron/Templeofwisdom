@@ -16,7 +16,7 @@
           %span.bold Email:
       %td
         .act-form-line
-          %input{type:"text", name:"full_name", "ng-model"=>"user.email", class:"inp inp-type2"}
+          %input{type:"email", name:"email", "ng-model"=>"user.email", class:"inp inp-type2", required: true}
     %tr
       %td
         .act-form-line

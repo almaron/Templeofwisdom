@@ -312,7 +312,6 @@
     <orderEntry type="library" scope="PROVIDED" name="http_parser.rb (v0.6.0, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.6.9, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.0.7, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jquery-datatables-rails (v1.12.2@477e49, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-fileupload-rails (v0.4.1, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v3.1.0, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-turbolinks (v2.0.2, RVM: ruby-2.1.2 [temple]) [gem]" level="application" />
