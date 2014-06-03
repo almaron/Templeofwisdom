@@ -3,48 +3,53 @@
     %table
       %tr
         %td.anketa-tt
-          Имя:
+          #{f.label :name}:
         %td.anketa-ipt
-          %input.inp.inp-type2{type: "text"}/
+          = f.text_field :name, class: "inp inp-type2"
       %tr
         %td.anketa-tt
-          Аватар:
+          #{f.label :remote_avatar_url}:
         %td.anketa-ipt
-          %input.inp.inp-type2{type: "text"}/
+          = f.text_field :remote_avatar_url, class:"inp inp-type2"
+          -# TODO: add avatar show link
       %tr
         %td.anketa-tt
-          Желаемый статус
+          #{f.label :group}:
         %td.anketa-ipt
-          %select.inp.inp-type2.inp-short
-            %option Ученик
-            %option Мастер
-            %option Обитатель
+          %select.inp.inp-type2.inp-short{"ng-model"=>"char.group_id", "ng-options"=>"group.id as group.name for group in acessibleGroups"}
+          = f.hidden_field :group_id, "ng-model"=>"char.group_id"
     = f.fields_for :profile do |p|
       %table
         %tr
-        %td.anketa-tt
-          Дата рождения
-          %br/
-          %span.more (день и месяц, например: 25.08)
-        %td.anketa-ipt
-          = p.text_field :birth_date, class: "inp inp-type2 inp-short", "ng-model" => "char.profile.birth_date", "ng-change"=>"changeSeasonId()"
+          %td.anketa-tt
+            #{p.label :birth_date}:
+            %br/
+            %span.more (день и месяц, например: 25.08)
+          %td.anketa-ipt
+            = p.text_field :birth_date, class: "inp inp-type2 inp-short", "ng-model" => "char.profile.birth_date", "ng-change"=>"changeSeasonId()"
+            = p.hidden_field :season_id
         %tr
-        %td.anketa-tt
-          Возраст
-          %br/
-          %span.more (возраст Учеников: до 20 лет)
-        %td.anketa-ipt
-          = p.text_field :age, class: "inp inp-type2 inp-short"
+          %td.anketa-tt
+            #{p.label :real_age}:
+            %br/
+            %span.more (возраст Учеников: до 20 лет)
+          %td.anketa-ipt
+            = p.text_field :real_age, class: "inp inp-type2 inp-short"
         %tr
-        %td.anketa-tt
-          Звериный облик:
-        %td.anketa-ipt
-          %input.inp.inp-type2{type: "text"}/
+          %td.anketa-tt
+            #{p.label :beast}:
+          %td.anketa-ipt
+            = p.text_field :beast, class: "inp inp-type2"
         %tr
-        %td.anketa-tt
-          Физические данные:
-        %td.anketa-ipt
-          %textarea.inp-type2
+          %td.anketa-tt
+            #{p.label :place}:
+          %td.anketa-ipt
+            = p.text_field :place, class: "inp inp-type2"
+        %tr
+          %td.anketa-tt
+            #{p.label :phisics}:
+          %td.anketa-ipt
+            = p.text_area :phisics, class: "inp-type2"
         %tr
           %td.anketa-tt
             Магические способности:
@@ -92,36 +97,65 @@
               %a{href: "#", target: "_blank"}> список навыков
               )
           %td.anketa-ipt
-            %textarea.inp-type2
+            .skills-added
+              .skills-added-line
+                %span.skills-added-name Магия стихий: Вода
+                %span.skills-added-level Послушник
+                %span.skills-added-remove{title: "Удалить способность"} ×
+              .skills-added-line
+                %span.skills-added-name Магия стихий: Земля
+                %span.skills-added-level Младший Мастер
+                %span.skills-added-remove{title: "Удалить способность"} ×
+              %span.skills-added-line
+                %span.skills-added-name Офуда
+                %span.skills-added-level Наставник
+                %span.skills-added-remove{title: "Удалить способность"} ×
+            .skills-add-form
+              %form
+                %select.inp.inp-type2.skills-addform-name{title: "Выберите способность"}
+                  %option Магия стихия: Земля
+                  %option Магия стихия: Огонь
+                  %option Магия стихия: Вода
+                  %option Магия стихия: Еда
+                %select.inp.inp-type2.skills-addform-level{title: "Выберите уровень владения способностью"}
+                  %option Новичок
+                  %option Ученик
+                  %option Послушник
+                  %option Младший Мастер
+                  %option Мастер
+                  %option Старший Мастер
+                  %option Наставник
+                %input.btn.btn-add{title: "Добавить выбранную способность в свою анкету", type: "button", value: "➔"}/
         %tr
           %td.anketa-tt
-            Предметы:
+            #{p.label :items}:
             %br/
             %span.more (вещи, оружие, амулеты и пр.)
           %td.anketa-ipt
-            %textarea.inp-type2
+            = p.text_area :items, class: "inp-type2"
         %tr
           %td.anketa-tt
-            Биография:
+            #{p.label :bio}:
           %td.anketa-ipt
-            %textarea.inp-type2{style: "height:150px;"}
+            = p.text_area :bio, class:"inp-type2", style: "height:150px;"
         %tr
           %td.anketa-tt
-            Внешность:
+            #{p.label :look}:
           %td.anketa-ipt
-            %textarea.inp-type2
+            = p.text_area :look, class: "inp-type2"
         %tr
           %td.anketa-tt
-            Характер:
+            #{p.label :character}:
           %td.anketa-ipt
-            %textarea.inp-type2
+            = p.text_area :character, class: "inp-type2"
         %tr
           %td.anketa-tt
-            Прочее:
+            #{p.label :other}:
           %td.anketa-ipt
-            %textarea.inp-type2
-        %tr
-          %td.anketa-tt
-             
-          %td.anketa-ipt
-            %input.btn.btn-green{type: "submit", value: "Отправить"}/
+            = p.text_area :other, class: "inp-type2"
+    %table
+      %tr
+        %td.anketa-tt
+           
+        %td.anketa-ipt
+          = f.submit "Отправить", class: "btn btn-green"

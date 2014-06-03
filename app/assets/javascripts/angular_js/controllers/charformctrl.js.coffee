@@ -9,7 +9,8 @@
     $http.get(
       "/chars_engine.json", {}
     ).success((data) ->
-      $scope.phisic_skills = data.phisic_skills
-      $scope.magic_skills = data.magic_skills
+      $scope.phisicSkills = data.phisic_skills
+      $scope.magicSkills = data.magic_skills
+      $scope.acessibleGroups = data.accessible_groups
     )
 ]

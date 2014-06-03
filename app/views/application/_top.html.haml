@@ -17,7 +17,6 @@
       %a{href: "/forum"} Монастырь
     %li
       %a{href: "/pages/map"} Карта
-    //TODO alter this next link depending on the current_user
     - if current_user
       %li.link-green
         = link_to "Анкета", new_char_path

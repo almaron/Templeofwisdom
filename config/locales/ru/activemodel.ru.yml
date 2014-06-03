@@ -21,3 +21,12 @@ ru:
 
   char_delegation:
     ending_nil: "бессрочно"
+
+  char_groups:
+    names:
+     special: "Мастерские"
+     apprentice: "Ученик"
+     master: "Мастер"
+     dweller: "Обитатель"
+     qwest: "Квестовый"
+     additional: "Дополнительный"
