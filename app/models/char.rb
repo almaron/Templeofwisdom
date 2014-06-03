@@ -35,6 +35,7 @@ class Char < ActiveRecord::Base
 
   has_many :char_skills
   has_many :skills, through: :char_skills
+  accepts_nested_attributes_for :char_skills
 
   def phisic_skills
     self.char_skills.phisic

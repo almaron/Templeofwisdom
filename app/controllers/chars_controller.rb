@@ -48,7 +48,7 @@ class CharsController < ApplicationController
   def engine
     respond_to do |format|
       format.json {
-        @access_groups = CharGroup.accessible(current_user.group)
+        @access_groups = CharGroup.accessible_by(current_user.group)
       }
     end
   end

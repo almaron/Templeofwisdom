@@ -60,34 +60,17 @@
               )
           %td.anketa-ipt
             .skills-added
-              .skills-added-line
-                %span.skills-added-name Магия стихий: Вода
-                %span.skills-added-level Послушник
-                %span.skills-added-remove{title: "Удалить способность"} ×
-              .skills-added-line
-                %span.skills-added-name Магия стихий: Земля
-                %span.skills-added-level Младший Мастер
-                %span.skills-added-remove{title: "Удалить способность"} ×
-              %span.skills-added-line
-                %span.skills-added-name Офуда
-                %span.skills-added-level Наставник
-                %span.skills-added-remove{title: "Удалить способность"} ×
+              .skills-added-line{"ng-repeat"=>"char_skill in char.magic_skills"}
+                %span.skills-added-name{} {{char_skill.skill_name}}
+                %span.skills-added-level{} {{char_skill.level_name}}
+                %input{type:"hidden", "ng-model"=>"char_skill.skill_id", name:"char_skills[][skill_id]"}
+                %input{type:"hidden", "ng-model"=>"char_skill.level_id", name:"char_skills[][level_id]"}
+                %span.skills-added-remove{title: "Удалить способность", "ng-click"=>"removeSkill(char.magic_skills, char_skill)"} ×
             .skills-add-form
               %form
-                %select.inp.inp-type2.skills-addform-name{title: "Выберите способность"}
-                  %option Магия стихия: Земля
-                  %option Магия стихия: Огонь
-                  %option Магия стихия: Вода
-                  %option Магия стихия: Еда
-                %select.inp.inp-type2.skills-addform-level{title: "Выберите уровень владения способностью"}
-                  %option Новичок
-                  %option Ученик
-                  %option Послушник
-                  %option Младший Мастер
-                  %option Мастер
-                  %option Старший Мастер
-                  %option Наставник
-                %input.btn.btn-add{title: "Добавить выбранную способность в свою анкету", type: "button", value: "➔"}/
+                %select.inp.inp-type2.skills-addform-name{title: "Выберите способность", "ng-model"=>"newCharSkill.skill_id", "ng-options"=>"skill.id as skill.name for skill in magicSkills"}
+                %select.inp.inp-type2.skills-addform-level{title: "Выберите уровень владения способностью", "ng-model"=>"newCharSkill.level_id", "ng-options"=>"level.id as level.name for level in levels"}
+                %input.btn.btn-add{title: "Добавить выбранную способность в свою анкету", type: "button", value: "➔", "ng-click"=>"addMagicSkill(newCharSkill)"}/
         %tr
           %td.anketa-tt
             Навыки:
@@ -98,34 +81,17 @@
               )
           %td.anketa-ipt
             .skills-added
-              .skills-added-line
-                %span.skills-added-name Магия стихий: Вода
-                %span.skills-added-level Послушник
-                %span.skills-added-remove{title: "Удалить способность"} ×
-              .skills-added-line
-                %span.skills-added-name Магия стихий: Земля
-                %span.skills-added-level Младший Мастер
-                %span.skills-added-remove{title: "Удалить способность"} ×
-              %span.skills-added-line
-                %span.skills-added-name Офуда
-                %span.skills-added-level Наставник
-                %span.skills-added-remove{title: "Удалить способность"} ×
+              .skills-added-line{"ng-repeat"=>"char_skill in char.phisic_skills"}
+                %span.skills-added-name{} {{char_skill.skill_name}}
+                %span.skills-added-level{} {{char_skill.level_name}}
+                %input{type:"hidden", "ng-model"=>"char_skill.skill_id", name:"char_skills[][skill_id]"}
+                %input{type:"hidden", "ng-model"=>"char_skill.level_id", name:"char_skills[][level_id]"}
+                %span.skills-added-remove{title: "Удалить способность", "ng-click"=>"removeSkill(char.phisic_skills, char_skill)"} ×
             .skills-add-form
               %form
-                %select.inp.inp-type2.skills-addform-name{title: "Выберите способность"}
-                  %option Магия стихия: Земля
-                  %option Магия стихия: Огонь
-                  %option Магия стихия: Вода
-                  %option Магия стихия: Еда
-                %select.inp.inp-type2.skills-addform-level{title: "Выберите уровень владения способностью"}
-                  %option Новичок
-                  %option Ученик
-                  %option Послушник
-                  %option Младший Мастер
-                  %option Мастер
-                  %option Старший Мастер
-                  %option Наставник
-                %input.btn.btn-add{title: "Добавить выбранную способность в свою анкету", type: "button", value: "➔"}/
+                %select.inp.inp-type2.skills-addform-name{title: "Выберите способность", "ng-model"=>"newCharSkill.skill_id", "ng-options"=>"skill.id as skill.name for skill in phisicSkills"}
+                %select.inp.inp-type2.skills-addform-level{title: "Выберите уровень владения способностью", "ng-model"=>"newCharSkill.level_id", "ng-options"=>"level.id as level.name for level in levels"}
+                %input.btn.btn-add{title: "Добавить выбранную способность в свою анкету", type: "button", value: "➔", "ng-click"=>"addPhisicSkill(newCharSkill)"}/
         %tr
           %td.anketa-tt
             #{p.label :items}:
