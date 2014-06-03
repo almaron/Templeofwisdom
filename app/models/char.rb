@@ -33,4 +33,14 @@ class Char < ActiveRecord::Base
     self.users.where(char_delegations: {owner:0})
   end
 
+  has_many :char_skills
+  has_many :skills, through: :char_skills
+
+  def phisic_skills
+    self.char_skills.phisic
+  end
+
+  def magic_skills
+    self.char_skills.magic
+  end
 end

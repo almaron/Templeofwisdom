@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603053757) do
+ActiveRecord::Schema.define(version: 20140603075622) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(version: 20140603053757) do
     t.text     "other"
   end
 
+  create_table "char_skills", force: true do |t|
+    t.integer  "char_id",                null: false
+    t.integer  "skill_id",               null: false
+    t.integer  "level_id",   default: 1, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "char_skills", ["char_id"], name: "index_char_skills_on_char_id", using: :btree
+
   create_table "char_statuses", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -113,6 +123,10 @@ ActiveRecord::Schema.define(version: 20140603053757) do
     t.datetime "updated_at"
     t.string   "user",       null: false
     t.string   "ip",         null: false
+  end
+
+  create_table "levels", force: true do |t|
+    t.string "name", null: false
   end
 
   create_table "log_types", force: true do |t|
@@ -166,6 +180,16 @@ ActiveRecord::Schema.define(version: 20140603053757) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "skills", force: true do |t|
+    t.string   "name",                           null: false
+    t.text     "description"
+    t.string   "skill_type",  default: "phisic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "skills", ["skill_type"], name: "index_skills_on_skill_type", using: :btree
 
   create_table "user_profiles", force: true do |t|
     t.integer  "user_id",                  null: false
