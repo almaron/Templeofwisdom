@@ -2,5 +2,3 @@ ru:
   helpers:
     label:
       user:
-        name: "Имя игрока"
-        password: "Пароль"

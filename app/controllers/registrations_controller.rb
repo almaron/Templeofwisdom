@@ -1,12 +1,12 @@
 class RegistrationsController < ApplicationController
 
   def new
-    @user = session[:incomplete_user] ? User.new(session[:incomplete_user][:user_hash]) : User.new
+    @user = session[:incomplete_user] ? User.new(session[:incomplete_user]["user_hash"]) : User.new
   end
 
   def create
     if @user = User.create(user_params)
-      @user.authentications.create(session[:provider]) if session[:provider]
+      @user.authentications.create(session[:incomplete_user][:provider]) if session[:incomplete_user]
       reset_session
     else
       redirect_to register_path

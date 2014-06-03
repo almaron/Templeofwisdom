@@ -12,7 +12,7 @@ class OauthsController < ApplicationController
     else
       if @user = login_from(provider)
         redirect_to root_path, notice: t('messages.notice.sessions.create.success')
-      elsif current_user
+      else
         @user = new_from(provider)
         redirect_to register_path
       end

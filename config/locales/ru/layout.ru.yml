@@ -8,6 +8,14 @@ ru:
     index:
       pagetitle: "Новости монастыря"
 
+  registrations:
+    new:
+      pagetitle: "Регистрация"
+    create:
+      pagetitle: "Успешная регистрация"
+    activate:
+      pagetitle: "Игрок активирован"
+
   blog_posts:
     index:
       pagetitle: "Блог мастеров"

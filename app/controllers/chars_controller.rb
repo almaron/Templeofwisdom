@@ -45,6 +45,14 @@ class CharsController < ApplicationController
     end
   end
 
+  def engine
+    respond_to do |format|
+      format.json {
+        render json: {init:"hello"}
+      }
+    end
+  end
+
   private
 
   def get_char

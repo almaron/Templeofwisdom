@@ -1,2 +1,26 @@
-%h1 Registrations#new
-%p Find me in app/views/registrations/new.html.haml
+.new-registration
+  .any-form
+    = form_for @user, url: register_path, method: :post do |f|
+      .form-line
+        %span.form-label
+          #{f.label :name}:
+        %span.form-input
+          = f.text_field :name, class:"inp inp-type2"
+      .form-line
+        %span.form-label
+          #{f.label :email}:
+        %span.form-input
+          = f.text_field :email, class:"inp inp-type2"
+      .form-line
+        %span.form-label
+          #{f.label :password}:
+        %span.form-input
+          = f.password_field :password, class:"inp inp-type2"
+      .form-line
+        %span.form-label
+          #{f.label :password_confirmation}:
+        %span.form-input
+          = f.password_field :password_confirmation, class:"inp inp-type2"
+      .form-line
+        = f.submit t("common.buttons.register"), class:"inp inp-type2"
+

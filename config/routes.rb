@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :users, except: [:new,:create]
   resource :profile, only:[:show, :edit, :update]
   resources :chars
+  get "chars_engine" => "chars#engine", as: :chars_engine
   resources :delegations, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

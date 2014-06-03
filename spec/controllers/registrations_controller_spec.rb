@@ -19,7 +19,7 @@ describe RegistrationsController do
 
     describe "creating a user from oauth hash" do
       before :each do
-        session[:provider] = {provider:"twitter", uid:"234232"}
+        session[:incomplete_user] = {provider:{provider:"twitter", uid:"234232"}}
       end
 
       it "should create an authentication" do

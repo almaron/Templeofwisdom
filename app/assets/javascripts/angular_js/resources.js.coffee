@@ -29,3 +29,8 @@
 @app.factory "Delegation", ["$resource", ($resource) ->
   $resource "/delegations/:id.json", {id:"@id"}
 ]
+
+@app.factory "Char", ["$resource", ($resource) ->
+  $resource "/chars/:id.json", {id:"@id"}, {update: {method: "PUT"}}
+]
+

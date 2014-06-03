@@ -1163,45 +1163,98 @@ body {
 .anketa {
 
   table {
-	width:100%;
+    width:100%;
   }
 
   td {
-	padding-top: 5px;
-	padding-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .anketa-tt {
-	width:180px;
-	font-weight: bold;
-	padding-top:7px;
-	padding-right: 10px;
-	text-align:right;
-	font-size:1.2em;
+    width:180px;
+    font-weight: bold;
+    padding-top:7px;
+    padding-right: 10px;
+    text-align:right;
+    font-size:1.2em;
 
-	.more {
-	  font-weight: normal;
-	  font-size:0.7em;
-	  color:@color-brown2;
-	}
+    .more {
+      font-weight: normal;
+      font-size:0.7em;
+      color:@color-brown2;
+    }
   }
 
   .inp-type2 {
-	width:90%;
+    width:90%;
   }
 
   .inp-short {
-	width:100px;
+    width:100px;
   }
 
   select.inp-short {
-	width:112px;
+    width:112px;
   }
 
   textarea {
-	height: 80px;
+    height: 80px;
   }
 
+}
+
+.skills-added {
+
+  .skills-added-line {
+    padding-bottom: 5px;
+
+    .skills-added-name {
+      font-weight: bold;
+      color:@color-green5;
+    }
+
+    .skills-added-level {
+      font-style: italic;
+      &:before {
+        content: "— ";
+      }
+    }
+
+    .skills-added-remove {
+      position: relative;
+      top:3px;
+      color:@color-red;
+      padding:5px;
+      cursor: pointer;
+      font-size:19px;
+      line-height:10px;
+      &:hover {
+        color:@color-red + 110;
+      }
+    }
+  }
+
+}
+
+.skills-add-form {
+  padding:10px 0;
+  select {
+    width: 40%!important;
+  }
+}
+
+.btn-add {
+  background: none;
+  border: 0px;
+  font-size: 20px;
+  height: 30px;
+  padding: 2px 0;
+  vertical-align: bottom;
+  color:@color-green3;
+  &:hover {
+    color:@color-green2;
+  }
 }
 
 // БИБЛИОТЕКА
@@ -2778,6 +2831,27 @@ td.none,td.none:hover, tr:hover td.none {
   }
 }
 
+/*
+  Added form styling
+*/
+
+.any-form {
+  .form-line {
+    margin-bottom: 5px;
+    .form-label {
+      width:140px;
+      font-weight: 1.2em;
+      display: inline-block;
+      font-weight: bold;
+    }
+    input[type=submit] {
+      &:hover {
+        background: @color-brown4 + 66;
+        .box-shadow(0px 0px 3px 1px rgba(0,0,0,0.3));
+      }
+    }
+  }
+}
 
 /*
 

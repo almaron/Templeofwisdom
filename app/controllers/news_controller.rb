@@ -38,7 +38,7 @@ class NewsController < ApplicationController
         format.json { render partial: "news", locals: {news: @news} }
       else
         format.html { render :edit }
-        format.json {render json: nil}
+        format.json { render json: nil }
       end
     end
   end

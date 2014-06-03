@@ -6,7 +6,7 @@ ru:
 
     attributes:
       user:
-        name: "Имя пользователя"
+        name: "Имя"
         password: "Пароль"
         password_confirmation: "Подтверждение"
       user_profile:

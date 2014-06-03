@@ -3,9 +3,9 @@
 FactoryGirl.define do
   factory :char_profile do
     char_id 1
-    bdate "MyString"
-    age 1
-    season_id 1
+    birth_date "25.04"
+    real_age 45
+    season_id 2
     place "MyString"
     beast "MyString"
     phisics "MyText"
@@ -16,6 +16,6 @@ FactoryGirl.define do
     other "MyText"
     person "MyString"
     comment "MyText"
-    balls 1
+    points 40
   end
 end
