@@ -13,6 +13,9 @@ else
       json.set! field, @char.profile.send(field)
     end
   end
+  json.status do
+    json.(@char.status, :id, :name)
+  end
 end
 
 if current_user.is_in? [:admins] || @char.open_player

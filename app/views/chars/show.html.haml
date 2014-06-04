@@ -5,16 +5,16 @@
         .profile-photo
           %img{src: "{{char.avatar}}"}/
         .profile-name{} {{char.name}}
-        .profile-status Старший Мастер
+        .profile-status{} {{char.status_line || char.status}}
         .profile-element
           %b Дата рождения:
-          07.08
+          {{char.profile.birth_date}}
         .profile-element
           %b Возраст:
-          57
+          {{char.profile.real_age}}
         .profile-element
           %b Место рождения:
-          Покхара, Непал
+          {{char.profile.place}}
         .profile-element
           %b Контакты
           %br/
