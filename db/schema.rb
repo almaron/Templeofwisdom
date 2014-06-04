@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603075622) do
+ActiveRecord::Schema.define(version: 20140604061048) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20140603075622) do
     t.integer  "group_id"
     t.string   "status_line"
     t.string   "avatar"
-    t.integer  "status_id"
+    t.integer  "status_id",        default: 2
     t.integer  "open_player"
     t.integer  "profile_topic_id"
     t.datetime "created_at"

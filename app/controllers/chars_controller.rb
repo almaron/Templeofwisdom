@@ -20,6 +20,19 @@ class CharsController < ApplicationController
   end
 
   def create
+    @char = Char.new(char_params)
+    @char.creator = current_user
+    respond_to do |format|
+      if @char.save
+        format.html { redirect_to profile_path, notice: t("messages.notice.chars.create.success") }
+        format.js {render js: "window.location = '#{profile_path}'", notice: t("messages.notice.chars.create.success") }
+        format.json { render nothing: true }
+      else
+        format.html { render :new }
+        format.js   { render js: "$('span.form-errors').show();"}
+        format.json { render json: @char.errors.full_messages }
+      end
+    end
   end
 
   def edit
@@ -53,10 +66,29 @@ class CharsController < ApplicationController
     end
   end
 
+  def check_name
+    respond_to do |format|
+      format.json {
+        render json: Char.find_by(name:params[:name]) ? true : false
+      }
+    end
+  end
+
   private
 
   def get_char
     @char = Char.find(params[:id])
   end
 
+  def char_params
+    params.require(:char).permit(
+        :name, :remote_avatar_url, :group_id,
+        char_skills_attributes:[
+            :skill_id, :level_id
+        ],
+        profile_attributes: [
+            :birth_date, :real_age, :season_id, :beast, :place, :phisics, :look, :bio, :items, :character, :other
+        ]
+    )
+  end
 end

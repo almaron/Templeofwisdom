@@ -44,4 +44,16 @@ class Char < ActiveRecord::Base
   def magic_skills
     self.char_skills.magic
   end
+
+# Delegates the created char to a user, mentioned as :creator. Don't forget to set it in the controller
+  after_create :delegate_to_current_user
+  attr_accessor :creator
+
+  private
+
+  def delegate_to_current_user
+    if self.creator
+      self.creator.default_char ? self.delegate_to(self.creator, owner:1) : self.delegate_to(self.creator, owner:1, default:1)
+    end
+  end
 end

@@ -29,6 +29,11 @@ ru:
   profiles:
     show:
       pagetitle: "Личный кабинет"
+  chars:
+    new:
+      pagetitle: "Новый персонаж"
+    edit:
+      pagetitle: "Сохраненный персонаж"
 
 
 

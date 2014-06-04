@@ -9,11 +9,11 @@
     if char_id
       $scope.char = Char.get({id: char_id})
     else
-      $scope.char = {group_id:2, magic_skills:[],phisic_skills:[]}
+      $scope.char = {group_id:2, magic_skills:[],phisic_skills:[], profile_attributes: {}}
 
   $scope.loadSkills = ->
     $http.get(
-      "/chars_engine.json", {}
+      "/chars/engine.json", {}
     ).success((data) ->
       $scope.phisicSkills = data.phisic_skills
       $scope.magicSkills = data.magic_skills
@@ -45,4 +45,19 @@
 
   $scope.removeSkill = (skill_set, char_skill) ->
     skill_set.splice(skill_set.indexOf(char_skill),1)
+
+  $scope.changeSeasonId = ->
+    strip = $scope.char.profile_attributes.birth_date.split(".")
+    if strip.length > 1 && parseInt(strip[1]) > 0
+      month = parseInt(strip[1])
+      if month < 3 || month == 12
+        season = 1
+      else if month < 6
+        season = 2
+      else if month < 9
+        season = 3
+      else
+        season = 4
+    $scope.char.profile_attributes.season_id = season
+
 ]

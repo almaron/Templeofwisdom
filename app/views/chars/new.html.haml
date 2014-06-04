@@ -1,11 +1,11 @@
 .anketa{"ng-controller" => "CharFormCtrl", "ng-init"=>"formInit(#{@char.id})"}
-  = form_for @char do |f|
+  = form_for @char, remote: true do |f|
     %table
       %tr
         %td.anketa-tt
           #{f.label :name}:
         %td.anketa-ipt
-          = f.text_field :name, class: "inp inp-type2"
+          = f.text_field :name, class: "inp inp-type2", "ng-model"=>"char.name"
       %tr
         %td.anketa-tt
           #{f.label :remote_avatar_url}:
@@ -17,7 +17,7 @@
           #{f.label :group}:
         %td.anketa-ipt
           %select.inp.inp-type2.inp-short{"ng-model"=>"char.group_id", "ng-options"=>"group.id as group.name for group in acessibleGroups"}
-          = f.hidden_field :group_id, "ng-model"=>"char.group_id"
+          = f.hidden_field :group_id, "ng-value"=>"char.group_id"
     = f.fields_for :profile do |p|
       %table
         %tr
@@ -26,8 +26,8 @@
             %br/
             %span.more (день и месяц, например: 25.08)
           %td.anketa-ipt
-            = p.text_field :birth_date, class: "inp inp-type2 inp-short", "ng-model" => "char.profile.birth_date", "ng-change"=>"changeSeasonId()"
-            = p.hidden_field :season_id
+            = p.text_field :birth_date, class: "inp inp-type2 inp-short", "ng-model" => "char.profile_attributes.birth_date", "ng-change"=>"changeSeasonId()"
+            = p.hidden_field :season_id, "ng-value"=>"char.profile_attributes.season_id"
         %tr
           %td.anketa-tt
             #{p.label :real_age}:
@@ -63,8 +63,8 @@
               .skills-added-line{"ng-repeat"=>"char_skill in char.magic_skills"}
                 %span.skills-added-name{} {{char_skill.skill_name}}
                 %span.skills-added-level{} {{char_skill.level_name}}
-                %input{type:"hidden", "ng-model"=>"char_skill.skill_id", name:"char_skills[][skill_id]"}
-                %input{type:"hidden", "ng-model"=>"char_skill.level_id", name:"char_skills[][level_id]"}
+                %input{type:"hidden", "ng-value"=>"char_skill.skill_id", name:"char.char_skills_attributes[][skill_id]"}
+                %input{type:"hidden", "ng-value"=>"char_skill.level_id", name:"char.char_skills_attributes[][level_id]"}
                 %span.skills-added-remove{title: "Удалить способность", "ng-click"=>"removeSkill(char.magic_skills, char_skill)"} ×
             .skills-add-form
               %form
@@ -84,8 +84,8 @@
               .skills-added-line{"ng-repeat"=>"char_skill in char.phisic_skills"}
                 %span.skills-added-name{} {{char_skill.skill_name}}
                 %span.skills-added-level{} {{char_skill.level_name}}
-                %input{type:"hidden", "ng-model"=>"char_skill.skill_id", name:"char_skills[][skill_id]"}
-                %input{type:"hidden", "ng-model"=>"char_skill.level_id", name:"char_skills[][level_id]"}
+                %input{type:"hidden", "ng-value"=>"char_skill.skill_id", name:"char.char_skills_attributes[][skill_id]"}
+                %input{type:"hidden", "ng-value"=>"char_skill.level_id", name:"char.char_skills_attributes[][level_id]"}
                 %span.skills-added-remove{title: "Удалить способность", "ng-click"=>"removeSkill(char.phisic_skills, char_skill)"} ×
             .skills-add-form
               %form
@@ -125,3 +125,6 @@
            
         %td.anketa-ipt
           = f.submit "Отправить", class: "btn btn-green"
+          = f.submit "Сохранить", class: "btn btn-green"
+          %span.form-errors{style:"display:none;"}
+            Анкета пуста или имя персонажа уже занято
