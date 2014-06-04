@@ -7,7 +7,7 @@
 
   $scope.loadChar = (char_id = null) ->
     if char_id
-      $scope.char = Char.get({id: char_id})
+      $scope.char = Char.get({id: char_id, short:true})
     else
       $scope.char = {group_id:2, magic_skills:[],phisic_skills:[], profile_attributes: {}}
 

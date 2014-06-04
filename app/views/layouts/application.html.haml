@@ -30,11 +30,12 @@
     .wrapper{"ng-controller" => "WrapperCtrl", "ng-init" => "initWrapper()"}
       = render "top"
       .main{class: ("only-content" if @only_content)}
-        =render "right"
+        = render "right" unless @only_content
         .content
           = render "debug_params"
-          %h1
-            = content_for?(:pagetitle) ? yield(:pagetitle) : t("#{params[:controller]}.#{params[:action]}.pagetitle")
+          - unless @only_content
+            %h1
+              = content_for?(:pagetitle) ? yield(:pagetitle) : t("#{params[:controller]}.#{params[:action]}.pagetitle")
           = yield
         .fish
       = render "bottom"

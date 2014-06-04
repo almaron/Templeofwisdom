@@ -5,7 +5,7 @@ class Char < ActiveRecord::Base
   belongs_to :group, :class_name => CharGroup
   belongs_to :status, :class_name => CharStatus
 
-  has_one :profile, class_name: CharProfile
+  has_one :profile, class_name: CharProfile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
   mount_uploader :avatar, AvatarUploader
@@ -33,7 +33,7 @@ class Char < ActiveRecord::Base
     self.users.where(char_delegations: {owner:0})
   end
 
-  has_many :char_skills
+  has_many :char_skills, dependent: :destroy
   has_many :skills, through: :char_skills
   accepts_nested_attributes_for :char_skills
 

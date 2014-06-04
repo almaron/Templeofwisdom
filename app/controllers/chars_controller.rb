@@ -11,7 +11,11 @@ class CharsController < ApplicationController
   end
 
   def show
-
+    @only_content = true
+    respond_to do |format|
+      format.html { }
+      format.json { }
+    end
   end
 
   def new
@@ -38,16 +42,23 @@ class CharsController < ApplicationController
   def edit
     if @char.status_id > 1
       redirect_to profile_path, alert: t("messages.alert.chars.edit.not_editable")
+    else
+      render :new
     end
   end
 
   def update
-    if @char.status_id > 1
-      redirect_to profile_path, alert: t("messages.alert.chars.edit.not_editable")
-    elsif @char.update(char_attributes)
-      redirect_to profile_path, notice: t("messages.notice.chars.update.success")
-    else
-      render :edit
+    respond_to do |format|
+      if @char.status_id > 1
+        format.html { redirect_to profile_path, alert: t("messages.alert.chars.edit.not_editable") }
+        format.js { render js: "window.location = #{profile_path}", alert: t("messages.alert.chars.edit.not_editable")}
+      elsif @char.update(char_params)
+        format.html { redirect_to profile_path, notice: t("messages.notice.chars.update.success") }
+        format.js { render js: "window.location = #{profile_path}", alert: t("messages.alert.chars.edit.not_editable") }
+      else
+        format.html { render :new }
+        format.js { render js: "$('span.form-errors').show();" }
+      end
     end
   end
 

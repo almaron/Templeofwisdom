@@ -5,7 +5,7 @@
         %td.anketa-tt
           #{f.label :name}:
         %td.anketa-ipt
-          = f.text_field :name, class: "inp inp-type2", "ng-model"=>"char.name"
+          = f.text_field :name, class: "inp inp-type2"
       %tr
         %td.anketa-tt
           #{f.label :remote_avatar_url}:
@@ -63,8 +63,8 @@
               .skills-added-line{"ng-repeat"=>"char_skill in char.magic_skills"}
                 %span.skills-added-name{} {{char_skill.skill_name}}
                 %span.skills-added-level{} {{char_skill.level_name}}
-                %input{type:"hidden", "ng-value"=>"char_skill.skill_id", name:"char.char_skills_attributes[][skill_id]"}
-                %input{type:"hidden", "ng-value"=>"char_skill.level_id", name:"char.char_skills_attributes[][level_id]"}
+                %input{type:"hidden", "ng-value"=>"char_skill.skill_id", name:"char[char_skills_attributes][][skill_id]"}
+                %input{type:"hidden", "ng-value"=>"char_skill.level_id", name:"char[char_skills_attributes][][level_id]"}
                 %span.skills-added-remove{title: "Удалить способность", "ng-click"=>"removeSkill(char.magic_skills, char_skill)"} ×
             .skills-add-form
               %form
@@ -84,8 +84,8 @@
               .skills-added-line{"ng-repeat"=>"char_skill in char.phisic_skills"}
                 %span.skills-added-name{} {{char_skill.skill_name}}
                 %span.skills-added-level{} {{char_skill.level_name}}
-                %input{type:"hidden", "ng-value"=>"char_skill.skill_id", name:"char.char_skills_attributes[][skill_id]"}
-                %input{type:"hidden", "ng-value"=>"char_skill.level_id", name:"char.char_skills_attributes[][level_id]"}
+                %input{type:"hidden", "ng-value"=>"char_skill.skill_id", name:"char[char_skills_attributes][][skill_id]"}
+                %input{type:"hidden", "ng-value"=>"char_skill.level_id", name:"char[char_skills_attributes][][level_id]"}
                 %span.skills-added-remove{title: "Удалить способность", "ng-click"=>"removeSkill(char.phisic_skills, char_skill)"} ×
             .skills-add-form
               %form
@@ -122,9 +122,15 @@
     %table
       %tr
         %td.anketa-tt
+        %td.anketa.ipt
+          %input{type:"checkbox", id:"group_id", name:"char[group_id]", value:1}
+          %label{for:"group_id"}
+            %span
+          Сохранить персонажа, не отправлять на одобрение
+      %tr
+        %td.anketa-tt
            
         %td.anketa-ipt
           = f.submit "Отправить", class: "btn btn-green"
-          = f.submit "Сохранить", class: "btn btn-green"
           %span.form-errors{style:"display:none;"}
             Анкета пуста или имя персонажа уже занято
