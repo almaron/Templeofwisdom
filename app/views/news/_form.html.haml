@@ -2,14 +2,15 @@
   .any-form
     .form_close
       %span{"ng-click" => "#{news}.show = false"} X
-    %form#news{"ng-submit"=>(news == "newNews") ? "createNews(newNews)" : "updateNews(oneNews)", name: "news_form", "ng-model" => news, "novalidate"=>""}
+    %form#news{"ng-submit"=>(news == "newNews") ? "createNews()" : "updateNews(oneNews)", name: "news_form", "ng-model" => news, "novalidate"=>""}
       %span.bold Заголовок новости:
       %br/
-      %input.inp.inp-type2{name: "head", type: "text", "ng-model"=>"#{news}.head", "ng-required" => "true", "ng-minlength"=>"8"}
+      %input.inp.inp-type2{name: "head", type: "text", "ng-model"=>"#{news}.head", "ng-required" => "true"}
       .clear
       %span.bold Текст сообщения:
       %br/
-      %textarea.inp.inp-type2{name: "text", "ng-model"=>"#{news}.text", "ng-required" => "true", "ng-minlength"=>"16"}
+      %textarea.inp.inp-type2{name: "text", "ng-model"=>"#{news}.text", "ng-required" => "true"}
+      {{newNews.text}}
       %br/
       %span.bold Подпись:
       %br/

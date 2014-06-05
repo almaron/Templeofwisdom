@@ -4,10 +4,10 @@
   = render :partial => 'login_block'
 .menu
   .textsize{title: "Размер шрифта"}
-    %span.textsize-a A
+    %span.textsize-a{"ng-click"=>"dropFont()"} A
     %span.textsize-rulers
-      %span.plus{title: "Увеличить шрифт"} ▲
-      %span.minus{title: "Уменьшить шрифт"} ▼
+      %span.plus{title: "Увеличить шрифт", "ng-click"=>"incFont()"} ▲
+      %span.minus{title: "Уменьшить шрифт", "ng-click"=>"decFont()"} ▼
   %ul
     %li
       %a{href: "/"} Главная

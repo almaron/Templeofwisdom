@@ -123,13 +123,13 @@
       %tr
         %td.anketa-tt
         %td.anketa.ipt
-          %input{type:"checkbox", id:"group_id", name:"char[group_id]", value:1}
-          %label{for:"group_id"}
+          %input{type:"checkbox", id:"status_id", name:"char[status_id]", value:1, "ng-checked"=>"char.status_id==1"}
+          %label{for:"status_id"}
             %span
           Сохранить персонажа, не отправлять на одобрение
       %tr
         %td.anketa-tt
-           
+          = link_to "Удалить", char_path(@char), method: :delete, class:"" if @char.id
         %td.anketa-ipt
           = f.submit "Отправить", class: "btn btn-green"
           %span.form-errors{style:"display:none;"}

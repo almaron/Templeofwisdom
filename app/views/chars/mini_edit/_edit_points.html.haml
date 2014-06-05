@@ -1,0 +1,29 @@
+.char_edit_points{"ng-if"=>"char.adminEditable", "ng-show"=>"editChar=='points'"}
+  %h4 Баллы
+  %table{border: "0", cellpadding: "3", cellspacing: "0", width: "100%"}
+    %tbody
+      %tr
+        %td
+          %input#change-points-plus{name: "type", type: "radio", value: "1", "ng-model"=>"editForm.sign"}/
+          %label{for: "change-points-plus"}
+            %span>
+            Добавить баллы
+      %tr
+        %td
+          %input#change-points-minus{name: "type", type: "radio", value: "-1", "ng-model"=>"editForm.sign"}/
+          %label{for: "change-points-minus"}
+            %span>
+            Снять баллы
+      %tr
+        %td
+          %span Баллы:
+          %input.inp.inp-type2{name: "balls", "ng-model"=>"editForm.value", type:"number", min:0}/
+      %tr
+        %td
+          %span Комментарий:
+      %tr
+        %td
+          %textarea.inp.inp-type2{name: "comment", placeholder: "За что и почему?", "ng-model"=>"editForm.comment"}
+      %tr
+        %td
+          %input.btn.btn-standart{type: "submit", value: "Изменить", "ng-click"=>"updatePoints()"}/

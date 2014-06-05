@@ -1,14 +1,15 @@
-@app.controller 'NewsCtrl', ["$scope","News", ($scope, News) ->
+@app.controller 'NewsCtrl', ["$scope", "$location", "News", ($scope, $location, News) ->
 
   $scope.loadSomeNews = (number) ->
     $scope.news = News.query {limit: number}
 
-  $scope.loadNews = (page = 1) ->
-    $scope.news = News.query {page:page}, ->
-      $('.text-simple').removeClass('hide')
-      if $scope.currentUser.default_char then $scope.newNews.author = $scope.currentUser.default_char.name
-    $scope.newNews = {show:false}
+  $scope.pagination = { }
 
+  $scope.initNews = (page = 1) ->
+    $scope.pagination.cur = page
+    $scope.getTotal()
+    $scope.newNews = {show:false}
+    $scope.initNewNews()
 
 
   $scope.updateNews = (newNews) ->
@@ -21,15 +22,39 @@
     News.delete({id:news.id})
     $scope.news.splice($scope.news.indexOf(news),1)
     $scope.updateMainNews()
+    $scope.getTotal()
 
 
-  $scope.createNews = (newNews) ->
-    news = News.save {news: newNews}, ->
+  $scope.createNews = ->
+    news = News.save {news: $scope.newNews}, ->
       if news
         $scope.news.unshift news
-        $scope.newNews = {}
+        $scope.initNewNews()
         $scope.updateMainNews()
+        $scope.getTotal()
       else
         $scope.errors = news.errors
+
+  $scope.$watch 'pagination.cur', (newVal) ->
+    $scope.loadNews newVal
+    $location.path("/news").search({page:newVal})
+
+  $scope.$watch 'currentUser.default_char', (newVal) ->
+    $scope.newNews.author = newVal.name
+
+  # Private methods
+
+  $scope.getTotal = ->
+    data = News.get_total {}, ->
+      $scope.pagination.total = data.total
+
+  $scope.loadNews = (page) ->
+    $scope.news = News.query {page:page}
+
+  $scope.initNewNews = ->
+    $scope.newNews = {
+      show:false,
+      author: $scope.currentUser.default_char.name
+    }
 
 ]

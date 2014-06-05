@@ -14,8 +14,7 @@
       %span.delete{title: "Удалить", "ng-click" => "removePost(post)", "ng-if" => "currentUser.group == 'admin'" } [&#21024;&#38500;]
     .guestscroll-answer{"ng-show"=>"post.hasAnswer"}
       .guestscroll-answer-date{} {{post.answerDate}}
-      .guestscroll-answer-text
-        {{post.answer}}
+      .guestscroll-answer-text{"ng-bind-html"=>"post.answer|simpleFormat"}
       .block-adm{"ng-if" => "currentUser.group == 'admin'"}
         %span.edit{title: "Редактировать", "ng-click" => "post.hasAnswer = !post.hasAnswer; post.getReply = true; post.editReply = true" } [ &#21464;&#26356; ]
     .guestscroll-write-answer{"ng-if"=>"currentUser.group == 'admin'", "ng-hide"=>"post.hasAnswer"}

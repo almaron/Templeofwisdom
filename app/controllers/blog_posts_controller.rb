@@ -3,10 +3,18 @@ class BlogPostsController < ApplicationController
   before_action :get_post, only: [:edit, :update, :destroy]
 
   def index
-    nt = params[:limit] || app_configs[:news_per_page] || 5
     respond_to do |f|
-      f.html { @posts = BlogPost.paginate(:page => params[:page], :per_page => nt) }
-      f.json { @posts = BlogPost.includes(comments: [:user]).paginate(:page => params[:page], :per_page => nt) }
+      f.html { }
+      f.json {
+        nt = params[:limit] || app_configs[:news_per_page] || 5
+        if params[:get_total]
+          total = (BlogPost.count.to_f / nt).ceil
+          render json:{total:total} if params[:get_total]
+        else
+          @posts = BlogPost.includes(comments: [:user]).paginate(:page => params[:page], :per_page => nt)
+        end
+
+      }
     end
   end
 

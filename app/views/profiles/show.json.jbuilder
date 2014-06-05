@@ -7,7 +7,7 @@ json.authentications @user.authentications.map { |auth| auth.provider }
 json.own_chars @user.own_chars do |char|
   json.id char.id
   json.name char.name
-  json.char_url char_path(char.id)
+  json.char_url char.status_id == 1 ? edit_char_path(char) : char_path(char.id)
   json.regDate I18n.l(char.created_at)
   json.status I18n.t "char_status.name.#{char.status.name}"
   json.status_class char.status.name

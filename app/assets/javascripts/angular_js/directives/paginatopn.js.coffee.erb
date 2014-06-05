@@ -1,0 +1,67 @@
+@app.directive "uiPagination", ->
+    restrict: "EA"
+    replace: true
+    templateUrl: "<%= asset_path "pagination" %>"
+    scope:
+        cur: "="
+        total: "="
+        display: "@"
+
+    link: (scope, element, attrs) ->
+        calcPages = ->
+            display = +scope.display
+            delta = Math.floor(display / 2)
+            scope.start = scope.cur - delta
+            scope.start = 1  if scope.start < 1
+            scope.end = scope.start + display - 1
+            if scope.end > scope.total
+                scope.end = scope.total
+                scope.start = scope.end - (display - 1)
+                scope.start = 1  if scope.start < 1
+            scope.pages = []
+            i = scope.start
+
+            while i <= scope.end
+                scope.pages.push i
+                ++i
+            return
+
+        scope.$watch "cur", calcPages
+        scope.$watch "total", calcPages
+        scope.$watch "display", calcPages
+        scope.isCurrent = (index) ->
+            scope.cur is index
+
+        scope.setCurrent = (index) ->
+            scope.cur = index
+            return
+
+        scope.hasPrev = ->
+            scope.cur > 1
+
+        scope.prev = ->
+            scope.cur--  if scope.hasPrev()
+            return
+
+        scope.hasNext = ->
+            scope.cur < scope.total
+
+        scope.next = ->
+            scope.cur++  if scope.hasNext()
+            return
+
+        scope.firstPage = ->
+            scope.start is 1
+
+        scope.goToFirstPage = ->
+            scope.cur = 1  unless scope.firstPage()
+            return
+
+        scope.lastPage = ->
+            scope.end is scope.total
+
+        scope.goToLastPage = ->
+            scope.cur = scope.total  unless scope.lastPage()
+            return
+
+        return

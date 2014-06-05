@@ -1,0 +1,12 @@
+.pagination.paginator.align-center
+  %ul
+    %li.paginate-arrow.paginate-backward{"ng-class" => "{disabled: firstPage()}", "ng-click" => "goToFirstPage()"}
+      %a &larr; В начало
+    %li.paginate-arrow.paginate-backward{"ng-class" => "{disabled: !hasPrev()}", "ng-click" => "prev()"}
+      %a &larr; Назад
+    %li{"ng-class" => "{active: isCurrent(page)}", "ng-click" => "setCurrent(page)", "ng-repeat" => "page in pages"}
+      %a{} {{page}}
+    %li.paginate-arrow.paginate-forward{"ng-class" => "{disabled: !hasNext()}", "ng-click" => "next()"}
+      %a Вперед &rarr;
+    %li.paginate-arrow.paginate-forward{"ng-class" => "{disabled: lastPage()}", "ng-click" => "goToLastPage()"}
+      %a В конец &rarr;

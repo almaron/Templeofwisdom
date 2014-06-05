@@ -1,0 +1,8 @@
+.char_edit_person{"ng-if"=>"char.adminEditable", "ng-show"=>"editChar=='person'"}
+  %h4 Образ на аватаре
+  %div
+    %span.bold Укажите имя:
+    %input.inp.inp-type2{type:"text", "ng-model"=>"editForm.person"}
+    %br/
+    %br/
+    %input.btn.btn-standart{type:"submit", "ng-click"=>"updatePerson()", value:"Отправить"}

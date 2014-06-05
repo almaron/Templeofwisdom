@@ -1,0 +1,3 @@
+.profile-content-one
+  .title{"ng-click"=>"isVisible=!isVisible"} {{title}}
+  .text{"ng-bind-html"=>"content | simpleFormat", "ng-show" => "isVisible"}

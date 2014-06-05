@@ -37,7 +37,9 @@ Rails.application.routes.draw do
   resources :chars do
     collection do
       get :engine
-      post :check_name
+    end
+    member do
+      post :small_update
     end
   end
 

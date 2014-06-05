@@ -1,0 +1,7 @@
+.char_edit_comment{"ng-if"=>"char.adminEditable", "ng-show"=>"editChar=='comment'"}
+  %h4 Комментарий
+  %div
+    %textarea.inp.inp-type2{type:"text", "ng-model"=>"editForm.comment"}
+    %br/
+    %br/
+    %input.btn.btn-standart{type:"submit", "ng-click"=>"updateComment()", value:"Отправить"}

@@ -30,6 +30,8 @@ ru:
     show:
       pagetitle: "Личный кабинет"
   chars:
+    index:
+      pagetitle: "Персонажи"
     new:
       pagetitle: "Новый персонаж"
     edit:

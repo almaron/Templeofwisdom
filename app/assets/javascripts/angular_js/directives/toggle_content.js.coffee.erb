@@ -1,0 +1,10 @@
+@app.directive "toggleText", ->
+    restrict: "E"
+    transclude: false
+    replace: true
+    scope:
+        title: "@"
+        content: "="
+    templateUrl: "<%= asset_path 'toggle_text'%>"
+    link: (scope, element, attr) ->
+        scope.isVisible = attr.visible || true

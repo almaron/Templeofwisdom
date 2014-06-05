@@ -3,9 +3,19 @@ class NewsController < ApplicationController
   before_action :get_news, only: [:show, :edit, :update, :destroy]
 
   def index
-    nt = params[:limit] || app_configs[:news_per_page] || 5
-    @news = News.paginate(:page => params[:page], :per_page => nt)
-    #raise _layout.inspect
+    respond_to do |format|
+      format.html {}
+      format.json {
+        nt = params[:limit] || app_configs[:news_per_page] || 5
+        if params[:get_total]
+          total = (News.count.to_f / nt).ceil
+          render json:{total:total} if params[:get_total]
+        else
+          @news = News.paginate(:page => params[:page], :per_page => nt)
+        end
+      }
+    end
+
   end
 
   def show

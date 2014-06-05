@@ -1,16 +1,21 @@
 class CharsController < ApplicationController
 
   before_action :require_login, :except => [:index, :show]
-  before_action :get_char, only: [:show, :edit, :update, :destroy]
+  before_action :get_char, only: [:edit, :update, :destroy, :small_update]
 
   def index
     respond_to do |format|
-      format.html {}
+      format.html { @chars = Char.where("group_id IN (?)", [2,3,4,5]).where(status_id:5) }
       format.json { @chars = Char.includes(:profile).all }
     end
   end
 
   def show
+    if params[:short]
+      @char = Char.includes(:profile, :char_skills).find(params[:id])
+    else
+      @char = Char.includes(:profile, :char_skills, :status, :group, :users).find(params[:id])
+    end
     @only_content = true
     respond_to do |format|
       format.html { }
@@ -51,13 +56,16 @@ class CharsController < ApplicationController
     respond_to do |format|
       if @char.status_id > 1
         format.html { redirect_to profile_path, alert: t("messages.alert.chars.edit.not_editable") }
-        format.js { render js: "window.location = #{profile_path}", alert: t("messages.alert.chars.edit.not_editable")}
-      elsif @char.update(char_params)
-        format.html { redirect_to profile_path, notice: t("messages.notice.chars.update.success") }
-        format.js { render js: "window.location = #{profile_path}", alert: t("messages.alert.chars.edit.not_editable") }
+        format.js { render js: "window.location = '#{profile_path}'", alert: t("messages.alert.chars.edit.not_editable")}
       else
-        format.html { render :new }
-        format.js { render js: "$('span.form-errors').show();" }
+        @char.char_skills.destroy_all
+        if @char.update(char_params)
+          format.html { redirect_to profile_path, notice: t("messages.notice.chars.update.success") }
+          format.js { render js: "window.location = '#{profile_path}'", alert: t("messages.alert.chars.edit.not_editable") }
+        else
+          format.html { render :new }
+          format.js { render js: "$('span.form-errors').show();" }
+        end
       end
     end
   end
@@ -77,11 +85,21 @@ class CharsController < ApplicationController
     end
   end
 
-  def check_name
+  def small_update
+    value = case params[:field]
+      when "points"
+        @char.profile.points += params[:value]
+      when "person"
+        @char.profile.person = params[:person]
+      when "comment"
+        @char.profile.comment = params[:comment]
+      else
+        nil
+    end
+    @char.save
     respond_to do |format|
-      format.json {
-        render json: Char.find_by(name:params[:name]) ? true : false
-      }
+      format.json { render json: {value: value}}
+      format.js {}
     end
   end
 
@@ -102,4 +120,7 @@ class CharsController < ApplicationController
         ]
     )
   end
+
+
+
 end

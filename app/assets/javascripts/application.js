@@ -23,6 +23,7 @@
 //= require angular
 //= require angular-resource
 //= require angular-sanitize
+//= require angular-cookies
 
 //= require angular_js
 

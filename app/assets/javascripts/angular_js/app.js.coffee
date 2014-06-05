@@ -1,16 +1,7 @@
-@app = angular.module('templeApp',["ngResource", "ngSanitize"])
+@app = angular.module('templeApp',["ngResource", "ngSanitize", "ngCookies"])
 
-@app.controller "WrapperCtrl", ["$scope", "currentUser", "News", "BlogPost", ($scope, currentUser, News, BlogPost) ->
-
-  $scope.currentUser = {}
-
-  $scope.initWrapper = ->
-   $scope.currentUser = currentUser.get()
-   $scope.currentUser.default_char = {name:""} unless $scope.currentUser.default_char
-   $scope.wrapBlog = BlogPost.query {limit:4}
-   $scope.wrapNews = News.query {limit:4}
-
-]
+#@app.config ($locationProvider) ->
+#  $locationProvider.html5Mode(true)
 
 bootstrapAngular = ->
   angular.bootstrap("body", ["templeApp"])

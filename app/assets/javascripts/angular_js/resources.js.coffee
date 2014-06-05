@@ -1,9 +1,9 @@
 @app.factory "News", ["$resource", ($resource) ->
-  $resource("/news/:id.json",{id: '@id'}, {update: {method: "PUT"}})
+  $resource("/news/:id.json",{id: '@id'}, {update: {method: "PUT"}, get_total:{method:"GET", params:{get_total:true}}})
 ]
 
 @app.factory "BlogPost", ["$resource", ($resource) ->
-  $resource("/blog/:id.json",{id:"@id"},{update: {method: "PUT"}})
+  $resource("/blog/:id.json",{id:"@id"},{update: {method: "PUT"}, get_total:{method:"GET", params:{get_total:true}}})
 ]
 
 @app.factory "BlogComment", [ "$resource", ($resource) ->
