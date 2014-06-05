@@ -9,3 +9,12 @@
   (text) ->
     linky((text || '') + '', "_blank").replace(/\&#10;/g, "&#10;<br>")
 ]
+
+@app.filter "truncate",[() ->
+  (text, length, end) ->
+    length = 10  unless length
+    end = ""  unless end
+    return text  if text.length <= length
+    int = text.indexOf(".", length)
+    String(text).substring(0, int + 1) + end
+]

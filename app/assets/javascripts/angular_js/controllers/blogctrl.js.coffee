@@ -9,6 +9,10 @@
 
   $scope.newPost = {}
 
+  $scope.initOnePost = (id) ->
+    $scope.loadPost id
+    $scope.onlyPost = true
+
   $scope.loadPosts = (page) ->
     $scope.posts = BlogPost.query({page:page})
 
@@ -17,11 +21,11 @@
 
   $scope.showPost = (post) ->
     $scope.onePost = post
-#    $location.path('/blog/'+post.id).search({})
+    $location.path('/blog/'+post.id).search({})
 
   $scope.goBack = ->
     $scope.onePost = {}
-#    $location.path("/blog").search(page:$scope.pagination.cur)
+    $location.path('/blog').search(page:$scope.pagination.cur)
 
   $scope.createPost = (post) ->
     post = BlogPost.save({post:post}, ->
@@ -58,7 +62,7 @@
 
   $scope.$watch 'pagination.cur', (newVal) ->
     $scope.loadPosts newVal
-#    $location.path("/blog").search({page:newVal})
+    $location.search({page:newVal}) if newVal
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
     $scope.newPost.author = newVal.name
