@@ -2,7 +2,6 @@
   .blog-entry-title
     .blog-entry-date{} {{post.dateLine}}
     .blog-entry-title-text{} {{post.head}}
-  -#.blog-text{"ng-bind-html"=>"post.content"}
   .blog-text{"ng-bind-html"=>"post.content|truncate:400:' [...]'|trustHtml"}
   .blog-author{} {{post.author}}
   .blog-comments

@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
 
-  before_action :get_news, only: [:show, :edit, :update, :destroy]
+  before_action :get_news, only: [:edit, :update, :destroy]
 
   def index
     respond_to do |format|
@@ -19,6 +19,10 @@ class NewsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.json { @news = News.find params[:id] }
+      format.html { redirect_to news_path }
+    end
   end
 
   def new
