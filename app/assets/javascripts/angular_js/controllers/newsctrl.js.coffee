@@ -1,4 +1,4 @@
-@app.controller 'NewsCtrl', ["$scope", "$location", "News", ($scope, $location, News) ->
+@app.controller 'NewsCtrl', ["$scope", "$window", "News", ($scope, $window, News) ->
 
   $scope.loadSomeNews = (number) ->
     $scope.news = News.query {limit: number}
@@ -37,7 +37,7 @@
 
   $scope.$watch 'pagination.cur', (newVal) ->
     $scope.loadNews newVal
-    $location.path("/news").search({page:newVal})
+    $window.history.pushState({controller:"news", action:"index", page:newVal},"","/news?page="+newVal)
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
     $scope.newNews.author = newVal.name

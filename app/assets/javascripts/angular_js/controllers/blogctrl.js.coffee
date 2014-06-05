@@ -1,4 +1,4 @@
-@app.controller 'BlogCtrl', ["$scope", "$location", 'BlogPost', 'BlogComment', ($scope, $location, BlogPost, BlogComment) ->
+@app.controller 'BlogCtrl', ["$scope", "$window", 'BlogPost', 'BlogComment', ($scope, $window, BlogPost, BlogComment) ->
 
   $scope.pagination = { }
 
@@ -21,11 +21,11 @@
 
   $scope.showPost = (post) ->
     $scope.onePost = post
-    $location.path('/blog/'+post.id).search({})
+    $window.history.pushState({controller:"blogs", action:"show", post_id:"post_id"}, "", '/blog/'+post.id)
 
   $scope.goBack = ->
     $scope.onePost = {}
-    $location.path('/blog').search(page:$scope.pagination.cur)
+    $window.history.pushState({controller:"blogs", action:"index", page:$scope.pagination.cur}, "", '/blog?page='+$scope.pagination.cur)
 
   $scope.createPost = (post) ->
     post = BlogPost.save({post:post}, ->
@@ -62,7 +62,7 @@
 
   $scope.$watch 'pagination.cur', (newVal) ->
     $scope.loadPosts newVal
-    $location.search({page:newVal}) if newVal
+    $window.history.pushState({controller:"blogs", action:"index", page:newVal}, "", '/blog?page='+newVal)
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
     $scope.newPost.author = newVal.name
