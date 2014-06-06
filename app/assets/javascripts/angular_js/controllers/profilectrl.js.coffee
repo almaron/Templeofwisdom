@@ -58,8 +58,16 @@
   # Private methods
 
   filterUsers = (allUsers, char) ->
-    angular.forEach char.delegated_to, (user, index) ->
-      int = ArrayService.findIndex(allUsers, "id", user.user_id)
-      allUsers = allUsers.splice(int, 1) if int
-    allUsers
+    freeUsers = angular.copy allUsers
+    charUserIds = []
+    angular.forEach char.delegated_to, (item, index) ->
+      charUserIds.push(item.user_id)
+    len = freeUsers.length
+    while len--
+      freeUsers.splice(len,1) if charUserIds.indexOf(allUsers[len].id) >= 0
+    freeUsers
+#    delegatedIndex = _.indexBy(char.delegated_to, 'user_id')
+#    _.reject allUsers, (user) ->
+#       user.id in delegatedIndex
+
 ]
