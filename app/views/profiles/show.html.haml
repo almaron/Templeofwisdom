@@ -59,8 +59,8 @@
       .new_delegation_form
         .act-line
           Делегировать персонажа {{newChar.name}} игроку
-          %select.chosen_select{"ng-model"=>"newChar.user_id", "ng-options" => "user.id as user.name for user in allUsers"}
-          %input{type:"submit", value:"ОК", "ng-click"=>"delegateChar(newChar)"}
+          %select{"ng-model"=>"newChar.user_id", "ng-options" => "user.id as user.name for user in newChar.users", chosen:"", "data-placeholder"=>" "}
+          %input.btn.btn-standart{type:"submit", value:"ОК", "ng-click"=>"delegateChar(newChar)"}
     .act-subhead Переданные мне персонажи
     .act-line
       %table.act-table

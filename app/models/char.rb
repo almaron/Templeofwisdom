@@ -10,6 +10,8 @@ class Char < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  scope :active, ->{where(status_id:5)}
+
   has_many :char_delegations
   has_many :users, :through => :char_delegations
 
@@ -46,14 +48,15 @@ class Char < ActiveRecord::Base
   end
 
 # Delegates the created char to a user, mentioned as :creator. Don't forget to set it in the controller
-  after_create :delegate_to_current_user
+  after_create :delegate_to_creator
   attr_accessor :creator
 
   private
 
-  def delegate_to_current_user
+  def delegate_to_creator
     if self.creator
       self.creator.default_char ? self.delegate_to(self.creator, owner:1) : self.delegate_to(self.creator, owner:1, default:1)
     end
   end
+
 end

@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html { @users = User.includes(:char_delegations).all }
-      format.json { @users = User.all }
+      format.html { }
+      format.json { @users = params[:short] ? User.where("id != ?", current_user.id).where(activation_state:"active") : User.includes(:char_delegations, :profile).all }
     end
 
   end

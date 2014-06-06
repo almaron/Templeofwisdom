@@ -30,3 +30,13 @@ ru:
      dweller: "Обитатель"
      qwest: "Квестовый"
      additional: "Дополнительный"
+
+  users:
+    state:
+      pending: "Неактивен"
+      active: "Активен"
+      blocked: "Заблокирован"
+    groups:
+      user: "Игрок"
+      master: "Мастер"
+      admin: "Администратор"

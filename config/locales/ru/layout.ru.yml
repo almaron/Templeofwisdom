@@ -37,6 +37,10 @@ ru:
     edit:
       pagetitle: "Сохраненный персонаж"
 
+  users:
+    index:
+      pagetitle: "Список игроков"
+
 
 
 

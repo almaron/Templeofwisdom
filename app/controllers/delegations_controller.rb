@@ -3,10 +3,17 @@ class DelegationsController < ApplicationController
   before_action :require_login
 
   def create
-    @delegation = CharDelegation.create delegation_params
+    @delegation = CharDelegation.new delegation_params
     respond_to do |format|
-      format.html { redirect_to profile_path }
-      format.json { render partial: 'delegation', locals: {delegation: @delegation} }
+      if @delegation.user && @delegation.char
+        @delegation.save
+        format.html { redirect_to profile_path }
+        format.json { render partial: 'delegation', locals: {delegation: @delegation} }
+      else
+        format.html { redirect_to profile_path }
+        format.json { render nothing: true }
+      end
+
     end
   end
 

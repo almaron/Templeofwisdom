@@ -25,6 +25,7 @@
 //= require angular-resource
 //= require angular-sanitize
 //= require angular-cookies
+//= require ng-table
 
 //= require angular_js
 

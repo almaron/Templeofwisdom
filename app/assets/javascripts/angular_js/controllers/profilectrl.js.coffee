@@ -1,4 +1,4 @@
-@app.controller "ProfileCtrl", ["$scope", "Profile",  "User", "Delegation", "$http", "$sce", ($scope, Profile, User, Delegation, $http, $sce) ->
+@app.controller "ProfileCtrl", ["$scope", "Profile",  "User", "Delegation", "$http", "$sce", "ArrayService", ($scope, Profile, User, Delegation, $http, $sce, ArrayService) ->
 
   $scope.loadProfile = ->
     data = Profile.get({}, () ->
@@ -13,7 +13,7 @@
     $sce.trustAsHtml embeded
 
   $scope.getAllUsers = ->
-    users = User.query({all:true}, ->
+    users = User.query({all:true, short:true}, ->
       $scope.allUsers = users
     )
 
@@ -45,7 +45,7 @@
 
   $scope.newDelegation = (char) ->
     ind = $scope.own_chars.indexOf(char)
-    $scope.newChar = {char_id: char.id, name: char.name, char_index:ind}
+    $scope.newChar = {char_id: char.id, name: char.name, char_index:ind, users:filterUsers($scope.allUsers, char)}
     $scope.modalShown = true
 
   $scope.delegateChar = (newChar) ->
@@ -55,4 +55,11 @@
     )
     $scope.modalShown = false
 
+  # Private methods
+
+  filterUsers = (allUsers, char) ->
+    angular.forEach char.delegated_to, (user, index) ->
+      int = ArrayService.findIndex(allUsers, "id", user.user_id)
+      allUsers = allUsers.splice(int, 1) if int
+    allUsers
 ]

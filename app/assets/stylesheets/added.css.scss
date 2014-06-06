@@ -77,6 +77,28 @@
     }
   }
 }
+.chosen-container  {
+  a.chosen-single {
+    background: none repeat scroll 0 0 #FBF5E8;
+    border-color: #B6A795;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .chosen-drop {
+    background: none repeat scroll 0 0 #FFFBE3;
+  }
+}
+.chosen-container-active.chosen-with-drop {
+  a.chosen-single {
+    background: none repeat scroll 0 0 #FFFBE3;
+  }
+}
+
+.ng-modal-dialog {
+  .chosen-container {
+    width: 150px!important;
+  }
+}
 
 /*
   Профиль персонажа
