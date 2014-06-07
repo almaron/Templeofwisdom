@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604061048) do
+ActiveRecord::Schema.define(version: 20140606193822) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -111,6 +111,46 @@ ActiveRecord::Schema.define(version: 20140604061048) do
     t.integer  "status_id",        default: 2
     t.integer  "open_player"
     t.integer  "profile_topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forum_posts", force: true do |t|
+    t.integer  "topic_id"
+    t.text     "text"
+    t.integer  "char_id"
+    t.integer  "user_id"
+    t.string   "ip"
+    t.text     "comment"
+    t.string   "commenter"
+    t.datetime "commented_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forum_topics", force: true do |t|
+    t.integer  "forum_id"
+    t.string   "poster_name"
+    t.integer  "closed"
+    t.integer  "hidden"
+    t.integer  "last_post_id"
+    t.datetime "last_post_at"
+    t.string   "last_post_char_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forums", force: true do |t|
+    t.string   "name",                            null: false
+    t.string   "ancestry"
+    t.string   "image"
+    t.string   "description"
+    t.integer  "technical",           default: 0
+    t.integer  "hidden",              default: 0
+    t.integer  "last_post_id"
+    t.integer  "last_post_topic_id"
+    t.datetime "last_post_at"
+    t.string   "last_post_char_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
