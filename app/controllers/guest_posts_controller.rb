@@ -7,8 +7,18 @@ class GuestPostsController < ApplicationController
   skip_before_action :verify_authenticity_token, if: lambda{request.xhr?}
 
   def index
-    nt = params[:limit] || app_configs[:guest_posts_per_page] || 5
-    @posts = GuestPost.paginate(:page => params[:page], :per_page => nt)
+    respond_to do |format|
+      format.html {}
+      format.json {
+        nt = params[:limit] || app_configs[:guest_posts_per_page] || 5
+        if params[:get_total]
+          total = (GuestPost.count.to_f / nt).ceil
+          render json:{total:total} if params[:get_total]
+        else
+          @posts = GuestPost.paginate(:page => params[:page], :per_page => nt)
+        end
+      }
+    end
   end
 
 

@@ -1,15 +1,14 @@
-.guestscroll{"ng-controller"=>"GuestBookCtrl", "ng-init"=>"loadPosts(#{params[:page]})"}
+.guestscroll{"ng-controller"=>"GuestBookCtrl", "ng-init"=>"initPosts(#{params[:page]})"}
   .write-new
     %a{href: "#form"} Написать
   .paginator.align-center
-    = will_paginate @posts
+    %ui-pagination{cur:"guestPagination.cur", total:"guestPagination.total", display:"9"}
   .guestscroll-entry{"ng-repeat"=>"post in posts"}
     .guestscroll-entry-title
       .guestscroll-entry-date{} {{post.postDate}}
       .guestscroll-entry-author{} {{post.user}}
       .guestscroll-entry-title-text{} {{post.head}}
-    .guestscroll-text
-      {{post.content}}
+    .guestscroll-text{"ng-bind-html"=>"post.content|simpleFormat"}
     .block-adm
       %span.delete{title: "Удалить", "ng-click" => "removePost(post)", "ng-if" => "currentUser.group == 'admin'" } [&#21024;&#38500;]
     .guestscroll-answer{"ng-show"=>"post.hasAnswer"}

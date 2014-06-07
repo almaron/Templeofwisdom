@@ -1,9 +1,9 @@
 @app.controller 'BlogCtrl', ["$scope", "$window", 'BlogPost', 'BlogComment', ($scope, $window, BlogPost, BlogComment) ->
 
-  $scope.pagination = { }
+  $scope.blogPagination = { }
 
   $scope.initBlog = (page = 1) ->
-    $scope.pagination.cur = page
+    $scope.blogPagination.cur = page
     $scope.getTotal()
     $scope.initPost()
 
@@ -25,7 +25,7 @@
 
   $scope.goBack = ->
     $scope.onePost = {}
-    $window.history.pushState({controller:"blogs", action:"index", page:$scope.pagination.cur}, "", '/blog?page='+$scope.pagination.cur)
+    $window.history.pushState({controller:"blogs", action:"index", page:$scope.blogPagination.cur}, "", '/blog?page='+$scope.blogPagination.cur)
 
   $scope.createPost = (post) ->
     post = BlogPost.save({post:post}, ->
@@ -60,19 +60,20 @@
 
   # Private methods
 
-  $scope.$watch 'pagination.cur', (newVal) ->
-    $scope.loadPosts newVal
-    $window.history.pushState({controller:"blogs", action:"index", page:newVal}, "", '/blog?page='+newVal)
+  $scope.$watch 'blogPagination.cur', (newVal) ->
+    if angular.isDefined newVal
+      $scope.loadPosts newVal
+      $window.history.pushState({controller:"blogs", action:"index", page:newVal}, "", '/blog?page='+newVal)
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
-    $scope.newPost.author = newVal.name
+    $scope.newPost.author = newVal.name if angular.isDefined newVal && angular.isDefined $scope.newPost
 
   $scope.initPost = ->
     $scope.newPost = {author: $scope.currentUser.default_char.name}
 
   $scope.getTotal = ->
     data = BlogPost.get_total {}, ->
-      $scope.pagination.total = data.total
+      $scope.blogPagination.total = data.total
 
   $scope.commentEditLink = (comment) ->
     (comment.user_id == $scope.currentUser.id) && (comment == $scope.onePost.comments.slice(-1)[0])

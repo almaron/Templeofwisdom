@@ -1,6 +1,12 @@
-@app.controller "GuestBookCtrl", ["$scope","GuestPost", ($scope, GuestPost) ->
+@app.controller "GuestBookCtrl", ["$scope","$window","GuestPost", ($scope, $window, GuestPost) ->
 
-  $scope.loadPosts = (page=1) ->
+  $scope.guestPagination = {}
+
+  $scope.initPosts = (page=1) ->
+    $scope.guestPagination.cur = page
+    $scope.getTotal()
+
+  $scope.loadPosts = (page) ->
     $scope.posts = GuestPost.query({page:page})
     $scope.resetPost()
 
@@ -11,6 +17,7 @@
     post = GuestPost.save({guest_post:post}, ->
       $scope.posts.unshift post
       $scope.resetPost()
+      $scope.getTotal()
     )
 
   $scope.updatePost = (post) ->
@@ -22,4 +29,14 @@
     GuestPost.delete({id:post.id}, ->
       $scope.posts.splice(ind,1)
     )
+    $scope.getTotal()
+
+  $scope.$watch 'guestPagination.cur', (newVal) ->
+    if typeof newVal != 'undefined'
+      $scope.loadPosts newVal
+      $window.history.pushState({controller:"guestbook", action:"index", page:newVal},"","/guestbook?page="+newVal)
+
+  $scope.getTotal = ->
+    data = GuestPost.get_total {}, ->
+      $scope.guestPagination.total = data.total
 ]
