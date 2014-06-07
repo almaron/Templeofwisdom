@@ -4,6 +4,9 @@
     $scope.getUsers()
 
   $scope.getUsers = ->
-    $scope.users = User.query()
+    $scope.users = User.query({}, ->
+      console.log $scope.users.length
+    )
+
 
 ]

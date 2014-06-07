@@ -1,5 +1,14 @@
 @app.factory "News", ["$resource", ($resource) ->
-  $resource("/news/:id.json",{id: '@id'}, {update: {method: "PUT"}, get_total:{method:"GET", params:{get_total:true}}})
+  $resource(
+    "/news/:id.json",
+    {
+      id: '@id'
+    },
+    {
+      update: {method: "PUT"},
+      get_total:{method:"GET", params:{get_total:true}}
+    }
+  )
 ]
 
 @app.factory "BlogPost", ["$resource", ($resource) ->
@@ -15,7 +24,17 @@
 ]
 
 @app.factory "GuestPost", ["$resource", ($resource) ->
-  $resource("/guestbook/:id.json", {id:"@id"}, {update: {method: "PUT"}, reset:{method: "GET", params:{id: "new"}}})
+  $resource(
+    "/guestbook/:id.json",
+    {
+      id:"@id"
+    },
+    {
+      update: {method: "PUT"},
+      reset:{method: "GET", params:{id: "new"}},
+      get_total:{method:"GET", params:{get_total:true}}
+    }
+  )
 ]
 
 @app.factory "Profile", ["$resource", ($resource) ->

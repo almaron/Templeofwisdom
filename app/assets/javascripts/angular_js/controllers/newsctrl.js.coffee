@@ -3,10 +3,10 @@
   $scope.loadSomeNews = (number) ->
     $scope.news = News.query {limit: number}
 
-  $scope.pagination = { }
+  $scope.newsPagination = { }
 
   $scope.initNews = (page = 1) ->
-    $scope.pagination.cur = page
+    $scope.newsPagination.cur = page
     $scope.getTotal()
     $scope.newNews = {show:false}
     $scope.initNewNews()
@@ -35,18 +35,19 @@
       else
         $scope.errors = news.errors
 
-  $scope.$watch 'pagination.cur', (newVal) ->
-    $scope.loadNews newVal
-    $window.history.pushState({controller:"news", action:"index", page:newVal},"","/news?page="+newVal)
+  $scope.$watch 'newsPagination.cur', (newVal) ->
+    if angular.isDefined newVal
+      $scope.loadNews newVal
+      $window.history.pushState({controller:"news", action:"index", page:newVal},"","/news?page="+newVal)
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
-    $scope.newNews.author = newVal.name
+    $scope.newNews.author = newVal.name if angular.isDefined newVal && angular.isDefined $scope.newNews
 
   # Private methods
 
   $scope.getTotal = ->
     data = News.get_total {}, ->
-      $scope.pagination.total = data.total
+      $scope.newsPagination.total = data.total
 
   $scope.loadNews = (page) ->
     $scope.news = News.query {page:page}
