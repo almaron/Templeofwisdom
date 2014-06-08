@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608125048) do
+ActiveRecord::Schema.define(version: 20140608204255) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment"
   end
 
   add_index "admin_configs", ["name"], name: "index_admin_configs_on_name", unique: true, using: :btree

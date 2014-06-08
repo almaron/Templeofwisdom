@@ -1,0 +1,41 @@
+.configs-wrapper{"ng-controller"=>"ConfigsCtrl", "ng-init"=>"getConfigs()"}
+  .config-div.config-list
+    .config-line{"ng-repeat"=>"config in configs | orderBy:name"}
+      .config-info{"ng-hide"=>"config.edit"}
+        .config-field.config-name{title:"{{config.comment}}"}
+          {{config.name}}
+        .config-field.config-value
+          {{config.value}}
+        .config-field.config-comment
+          {{config.comment}}
+        .config-field.config-edit-btn
+          %input.btn.btn-standart{type:"submit",value:"Править", "ng-click"=>"editConfig(config)"}
+        .config-field.config-edit-btn
+          %input.btn.btn-standart{type:"submit",value:"Удалить", "ng-click"=>"removeConfig(config)"}
+      .config-edit{"ng-if"=>"config.edit"}
+        .config-field.config-name
+          %input.inp.inp-type2{"ng-model"=>"editConf.name"}
+        .config-field.config-value
+          %input.inp.inp-type2{"ng-model"=>"editConf.value"}
+        .config-field.config-comment
+          %input.inp.inp-type2{"ng-model"=>"editConf.comment"}
+        .config-field.config-btn
+          .config-submit
+            %input.btn.btn-standart{type:"submit", value:"OK", "ng-click"=>"updateConfig()"}
+        .config-field.config-btn
+          .config-reset
+            %input.btn.btn-standart{type:"submit", value:"Отмена", "ng-click"=>"resetConfig(config)"}
+  .config-div.new-config
+    .config-edit
+      .config-field.config-name
+        %input.inp.inp-type2{"ng-model"=>"newConfig.name"}
+      .config-field.config-value
+        %input.inp.inp-type2{"ng-model"=>"newConfig.value"}
+      .config-field.config-comment
+        %input.inp.inp-type2{"ng-model"=>"newConfig.comment"}
+      .config-field.config-btn
+        .config-submit
+          %input.btn.btn-standart{type:"submit", value:"OK", "ng-click"=>"createConfig()"}
+      .config-field.config-btn
+        .config-reset
+          %input.btn.btn-standart{type:"submit", value:"Отмена", "ng-click"=>"newConfig = {}"}

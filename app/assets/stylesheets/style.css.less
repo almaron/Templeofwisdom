@@ -2908,7 +2908,49 @@ td.none,td.none:hover, tr:hover td.none {
   }
 }
 
+/*
+   Системные настройки
+*/
 
+.configs-wrapper {
+  .config-div {
+    width: 100%;
+    margin-bottom: 10px;
+    .config-line {
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      border-bottom: 1px dashed #758A11;
+    }
+    .config-field {
+      display: inline-block;
+    }
+    .config-buttons {
+      margin-top: 3px;
+      div {
+        display: inline-block;
+      }
+    }
+    .config-info{
+      .config-name {
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        width:20%;
+      }
+      .config-value {
+        width:10%;
+      }
+      .config-comment {
+        font-style: italic;
+        color: @color-brown4;
+        width: 48%;
+      }
+      .config-edit-btn {
+        width:10%;
+      }
+    }
+  }
+}
 
 /*
 

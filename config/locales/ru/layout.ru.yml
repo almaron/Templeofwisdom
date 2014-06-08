@@ -41,6 +41,10 @@ ru:
     index:
       pagetitle: "Список игроков"
 
+  configs:
+    index:
+      pagetitle: "Системные настройки"
+
 
 
 
