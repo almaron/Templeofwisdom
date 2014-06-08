@@ -16,7 +16,7 @@ class ForumTopic < ActiveRecord::Base
   end
 
   def remove_post(post)
-    self.posts.any? ? update_last_post(self.posts.last) : self.destroy
+    self.posts.empty? ? self.destroy : update_last_post(self.posts.last)
     self.forum.remove_post(post) if self.forum
   end
 
