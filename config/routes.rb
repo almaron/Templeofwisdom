@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
 
-  #OAuth routes
+  # OAuth routes
   match "oauth/callback" => "oauths#callback", via: [:get, :post]
   match "oauth/delete/:provider" => "oauths#destroy", as: :delete_auth, via: [:get, :delete]
   get "oauth/:provider" => "oauths#auth", :as => :auth_at_provider
 
 
-  #Registration routes
+  # Registration routes
   get "register" => "registrations#new"
   post "register" => "registrations#create"
   get "activate_user" => "registrations#activate", as: :activate_user
 
-  #Session routes
+  # Session routes
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   get 'auth/current_user' => 'sessions#get_current_user'
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resource :profile, only:[:show, :edit, :update]
   resources :delegations, only: [:create, :destroy]
 
-  #Chars routes
+  # Chars routes
   resources :chars do
     collection do
       get :engine
@@ -43,6 +43,12 @@ Rails.application.routes.draw do
     end
   end
 
+  # Forum routes
+  resources :forums, path:"temple", only:[:index, :show] do
+    resources :topics, path: "t", controller: "forum_topics", except: :index do
+      resources :posts, path: "p", controller: "forum_posts", except: [:index, :show]
+    end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

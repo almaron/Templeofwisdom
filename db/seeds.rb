@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-if false
+if true
 CharGroup.create([
     {name: 'special'},
     {name: 'apprentice'},

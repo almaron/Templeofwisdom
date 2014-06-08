@@ -35,6 +35,11 @@ class Char < ActiveRecord::Base
     self.users.where(char_delegations: {owner:0})
   end
 
+  def delegated_to?(user)
+    user_id = user.is_a? User ? user.id : user
+    self.users.find(user_id)
+  end
+
   has_many :char_skills, dependent: :destroy
   has_many :skills, through: :char_skills
   accepts_nested_attributes_for :char_skills

@@ -21,4 +21,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def master_access
+    if require_login
+      render partial: "application/403" unless current_user.is_in? [:admin, :master]
+    end
+  end
+
 end
