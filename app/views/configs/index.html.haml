@@ -1,6 +1,6 @@
 .configs-wrapper{"ng-controller"=>"ConfigsCtrl", "ng-init"=>"getConfigs()"}
   .config-div.config-list
-    .config-line{"ng-repeat"=>"config in configs | orderBy:name"}
+    .config-line{"ng-repeat"=>"config in configs | orderBy : 'name'"}
       .config-info{"ng-hide"=>"config.edit"}
         .config-field.config-name{title:"{{config.comment}}"}
           {{config.name}}
@@ -9,9 +9,11 @@
         .config-field.config-comment
           {{config.comment}}
         .config-field.config-edit-btn
-          %input.btn.btn-standart{type:"submit",value:"Править", "ng-click"=>"editConfig(config)"}
+          %span.config-submit{"ng-click"=>"editConfig(config)"}
+            &rarr;
         .config-field.config-edit-btn
-          %input.btn.btn-standart{type:"submit",value:"Удалить", "ng-click"=>"removeConfig(config)"}
+          %span.config-delete{"ng-click"=>"removeConfig(config)"}
+            &times;
       .config-edit{"ng-if"=>"config.edit"}
         .config-field.config-name
           %input.inp.inp-type2{"ng-model"=>"editConf.name"}

@@ -2934,7 +2934,6 @@ td.none,td.none:hover, tr:hover td.none {
       .config-name {
         font-size: 1.1em;
         font-weight: bold;
-        cursor: pointer;
         width:20%;
       }
       .config-value {
@@ -2943,10 +2942,22 @@ td.none,td.none:hover, tr:hover td.none {
       .config-comment {
         font-style: italic;
         color: @color-brown4;
-        width: 48%;
+        width: 60%;
       }
       .config-edit-btn {
-        width:10%;
+        width:24px;
+        text-align: center;
+        span {
+          font-size: 1.5em;
+          font-weight: bold;
+          cursor: pointer;
+          &.config-submit {
+            color: @color-orange2;
+          }
+          &.config-delete {
+            color: @color-red;
+          }
+        }
       }
     }
   }
