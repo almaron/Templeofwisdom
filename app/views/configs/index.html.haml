@@ -9,11 +9,9 @@
         .config-field.config-comment
           {{config.comment}}
         .config-field.config-edit-btn
-          %span.config-submit{"ng-click"=>"editConfig(config)"}
-            &rarr;
+          %span.config-submit.fa.fa-pencil{"ng-click"=>"editConfig(config)"}
         .config-field.config-edit-btn
-          %span.config-delete{"ng-click"=>"removeConfig(config)"}
-            &times;
+          %span.config-delete.fa.fa-times{"ng-click"=>"removeConfig(config)"}
       .config-edit{"ng-if"=>"config.edit"}
         .config-field.config-name
           %input.inp.inp-type2{"ng-model"=>"editConf.name"}
@@ -23,10 +21,12 @@
           %input.inp.inp-type2{"ng-model"=>"editConf.comment"}
         .config-field.config-btn
           .config-submit
-            %input.btn.btn-standart{type:"submit", value:"OK", "ng-click"=>"updateConfig()"}
+            %button.btn.btn-standart{"ng-click"=>"updateConfig()"}
+              %span.fa.fa-check
         .config-field.config-btn
           .config-reset
-            %input.btn.btn-standart{type:"submit", value:"Отмена", "ng-click"=>"resetConfig(config)"}
+            %button.btn.btn-standart{"ng-click"=>"resetConfig(config)"}
+              %span.fa.fa-times
   .config-div.new-config
     .config-edit
       .config-field.config-name
@@ -37,7 +37,9 @@
         %input.inp.inp-type2{"ng-model"=>"newConfig.comment"}
       .config-field.config-btn
         .config-submit
-          %input.btn.btn-standart{type:"submit", value:"OK", "ng-click"=>"createConfig()"}
+          %button.btn.btn-standart{"ng-click"=>"createConfig()"}
+            %span.fa.fa-check
       .config-field.config-btn
         .config-reset
-          %input.btn.btn-standart{type:"submit", value:"Отмена", "ng-click"=>"newConfig = {}"}
+          %button.btn.btn-standart{"ng-click"=>"newConfig = {}"}
+            .span.fa.fa-times
