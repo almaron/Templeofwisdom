@@ -13,7 +13,7 @@
     $sce.trustAsHtml embeded
 
   $scope.getAllUsers = ->
-    users = User.query({all:true, short:true}, ->
+    users = User.query({scope:"short"}, ->
       $scope.allUsers = users
     )
 

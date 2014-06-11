@@ -1,0 +1,102 @@
+@import 'base_less';
+
+.users-wrapper {
+  .user-filter {
+    margin-bottom: 10px;
+    text-align: right;
+  }
+
+  .users-table {
+    width:100%;
+
+    .header {
+      height:auto;
+      padding-bottom: 7px;
+      font-size: 1.1em;
+      &.sortable {
+        cursor: pointer;
+        &.sort-asc, &.sort-desc {
+          color: @color-brown;
+        }
+      }
+    }
+    .user-line {
+      td {
+        padding: 3px 0;
+        vertical-align: middle;
+        .btn-standart {
+          margin: 0 2px;
+          font-size: 0.8em;
+        }
+      }
+      .user-edit, .user-name {
+        cursor: pointer;
+        font-size: 1.1em;
+      }
+    }
+    tfoot {
+      margin-top: 10px;
+    }
+    .ng-table-pagination {
+      margin-top: 10px;
+      li {
+        display: inline-block;
+        padding: 0 5px;
+        cursor: pointer;
+        a {
+          text-decoration: none;
+          &.page-arrow {
+            font-size: 1.1em;
+          }
+        }
+        &.disabled {
+          cursor: auto;
+          a {
+            color: @color-grey;
+            .one-page {
+              color: @color-brown2;
+              font-size: 1.2em;
+              cursor: auto;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    .ng-table-counts{
+      button {
+        margin-right: 5px;
+        &.active {
+          background-color: @color-pistache;
+        }
+      }
+    }
+  }
+
+  .edit-user-div {
+    background: @bgimg-beige;
+    padding: 10px;
+    margin-top: 20px;
+    .user-info-table {
+      .form-head {
+        font-weight: bold;
+        font-size:1.1em;
+      }
+    }
+  }
+
+  .edit-close {
+    float: right;
+    color: @color-red;
+    font-size: 1.4em;
+    margin-right: 2px;
+  }
+
+  .destroyed-users-wrap {
+    margin-top: 10px;
+    font-size: 0.9em;
+    .destroyed-user {
+      color: @color-green2;
+    }
+  }
+}

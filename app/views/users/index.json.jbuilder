@@ -1,4 +1,4 @@
-if params[:short]
+if params[:scope]
   json.array! @users do |user|
     json.(user, :id, :name)
   end

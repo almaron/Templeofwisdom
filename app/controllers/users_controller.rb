@@ -6,7 +6,16 @@ class UsersController < ApplicationController
   def index
     respond_to do |format|
       format.html { }
-      format.json { @users = params[:short] ? User.where("id != ?", current_user.id).where(activation_state:"active") : User.includes(:char_delegations, :profile).all }
+      format.json {
+        @users = case params[:scope]
+                   when "short"
+                     User.active.where("id != ?", current_user.id)
+                   when "destroyed"
+                     User.destroyed
+                   else
+                     User.includes(:char_delegations, :profile).present
+        end
+      }
     end
 
   end
@@ -21,7 +30,7 @@ class UsersController < ApplicationController
     respond_to do |f|
       if @user.update(user_params)
         f.html { redirect_to users_path, notice: t("messages.notice.users.update.success")}
-        f.json { render :show }
+        f.json { render partial: "user", locals: {user: @user} }
       else
         f.html { render :edit }
         f.json { render nothing: true }
@@ -30,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    @user.update(activation_state:"destroyed")
     respond_to do |f|
       f.html { redirect_to users_path, notice: t("messages.notice.users.destroy.success") }
       f.json { render nothing:true }

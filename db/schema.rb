@@ -130,15 +130,16 @@ ActiveRecord::Schema.define(version: 20140608125048) do
 
   create_table "forum_topics", force: true do |t|
     t.integer  "forum_id"
+    t.string   "head",                null: false
     t.string   "poster_name"
     t.integer  "closed"
     t.integer  "hidden"
     t.integer  "last_post_id"
     t.datetime "last_post_at"
     t.string   "last_post_char_name"
+    t.integer  "posts_count",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "head",                null: false
   end
 
   create_table "forums", force: true do |t|
@@ -152,6 +153,8 @@ ActiveRecord::Schema.define(version: 20140608125048) do
     t.integer  "last_post_topic_id"
     t.datetime "last_post_at"
     t.string   "last_post_char_name"
+    t.integer  "posts_count",         default: 0
+    t.integer  "topics_count",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sort_order",          default: 0

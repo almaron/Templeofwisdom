@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   end
 
   default_scope {order(:name)}
+  scope :present, ->{where("activation_state != 'destroyed'")}
+  scope :active, ->{where(activation_state: "active")}
+  scope :destroyed, ->{where(activation_state: "destroyed")}
 
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications

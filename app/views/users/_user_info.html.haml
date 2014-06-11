@@ -1,0 +1,56 @@
+%table.user-info-table{"ng-show"=>"!selectedUser.edit"}
+  %tr
+    %td
+      .info-wrap.any-form
+        .form-line
+          %span.form-head
+            Имя:
+          %span.form-input
+            {{selectedUser.name}}
+        .form-line
+          %span.form-head
+            Email:
+          %span.form-input
+            {{selectedUser.email}}
+        .form-line
+          %span.form-head
+            Полное имя:
+          %span.form-input
+            {{selectedUser.profile_attributes.full_name}}
+        .form-line
+          %span.form-head
+            Дата рождения:
+          %span.form-input
+            {{selectedUser.profile_attributes.birth_date}}
+        .form-line
+          %span.form-head
+            Группа:
+          %span.form-input
+            {{selectedUser.group}}
+        .form-line
+          %button.btn.btn-standart{"ng-click"=>"selectedUser.edit = true"} Редактировать
+    %td
+      .info-wrap.any-form
+        .form-line
+          %span.form-head
+            ICQ:
+          %span.form-input
+            {{selectedUser.profile_attributes.ICQ}}
+        .form-line
+          %span.form-head
+            Skype:
+          %span.form-input
+            {{selectedUser.profile_attributes.skype}}
+        .form-line
+          %span.form-head
+            Др.контакты:
+          %div.form-input{"ng-bind-html"=>"selectedUser.profile_attributes.contacts | simpleFormat"}
+    %td
+      .info-wrap.any-form
+        .form-line
+          %span.form-head
+            Персонажи:
+          .form-input
+            %ul
+              %li{"ng-repeat"=>"char in selectedUser.chars"}
+                %a{href:"/chars/{{char.id}}", target:"_blank"}{{char.name}}

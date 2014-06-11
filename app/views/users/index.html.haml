@@ -1,1 +1,21 @@
-.users-wrapper{"ng-controller"=>"UserCtrl", "ng-init"=>"initUsers()"}
+.users-wrapper{"ng-controller"=>"UserCtrl", "ng-init"=>""}
+  .user-filter
+    %input.form-control.inp.inp-type2{"ng-model" => "filter.$", type: "text", id:"user-filter"}
+    %label.fa.fa-search{for:"user-filter"} &nbsp;
+
+  = render :partial => 'user_ng_table'
+  .edit-user-div{"ng-show"=>"selectedUser.id"}
+    .edit-close
+      %span.fa.fa-times{"ng-click"=>"selectedUser = {}"}
+    = render :partial => 'user_info'
+    = render :partial => 'user_edit'
+
+  .destroyed-users-wrap{"ng-show"=>"destroyedUsers.length > 0"}
+    %span.mini-link{"ng-click"=>"showDestroyed=!showDestroyed"}
+      Удаленные пользователи:
+    %span.destroyed-user{"ng-repeat"=>"user in destroyedUsers", "ng-show"=>"showDestroyed"}
+      {{user.name}}
+
+%script{type:"text/ng-template", id:"custom/pager"}
+  = render :partial => 'ng_table_pager'
+

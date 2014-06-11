@@ -26,6 +26,7 @@
 //= require angular-sanitize
 //= require angular-cookies
 //= require ng-table
+//= require xeditable
 
 //= require angular_js
 

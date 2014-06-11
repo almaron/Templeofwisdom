@@ -1,0 +1,17 @@
+%table.users-table{"ng-table" => "tableParams", "template-pagination"=>"custom/pager"}
+  %tr.user-line{"ng-repeat" => "user in $data"}
+    %td{"data-title" => "'№'", sortable: "'id'"}
+      {{user.id}}
+    %td.user-name{"data-title" => "'Имя'", sortable: "'name'"}
+      %span{"ng-click"=>"editUser(user)"} {{user.name}}
+    %td{"data-title" => "'Email'", sortable: "'email'", "ng-bind-html"=>"user.email | linky"}
+    %td{"data-title" => "'Группа'", sortable: "'group_name'"}
+      {{user.group_name}}
+    %td{"data-title" => "'Статус'", sortable: "'state'"}
+      {{user.state}}
+    %td{"data-title" => "'Персонажей'", sortable: "'chars.length'"}
+      {{user.chars.length}}
+    %td.user-edit{}
+      %span.user-edit.fa.fa-pencil{"ng-click"=>"editUser(user)"}
+    %td.user-remove{}
+      %span.user-edit.fa.fa-times{"ng-click"=>"removeUser(user)"}

@@ -1,0 +1,36 @@
+.edit-user-form.any-form{"ng-show"=>"selectedUser.edit"}
+  .form-line
+    %span.form-label
+      %label{for:"user_name"}
+        Имя игрока:
+    %span.form-input
+      %input.inp.inp-type2{name:"name", id:"user_name", "ng-model"=>"selectedUser.name"}
+  .form-line
+    %span.form-label
+      %label{for:"user_email"}
+        EMail:
+    %span.form-input
+      %input.inp.inp-type2{name:"email", id:"user_email", "ng-model"=>"selectedUser.email"}
+  .form-line
+    %span.form-label
+      %label{for:"user_group"}
+        Права:
+    %span.form-input
+      %select.inp.inp-type2{name:"group", id:"user_group", "ng-model"=>"selectedUser.group", "ng-options"=>"group.name as group.title for group in userGroups"}
+  .form-line
+    %span.form-label
+      %label{for:"user_password"}
+        Новый пароль:
+    %span.form-input
+      %input.inp.inp-type2{type:"password",name:"password", "ng-model"=>"selectedUser.password", id:"user_password"}
+  .form-line
+    %span.form-label
+      %label{for:"user_password_confirmation"}
+        Подтверждение:
+    %span.form-input
+      %input.inp.inp-type2{type:"password",name:"password_confirmation", "ng-model"=>"selectedUser.password_confirmation", id:"user_password_confirmation"}
+  .form-line.form-buttons
+    %button.btn.btn-standart{"ng-click"=>"updateUser()"}
+      %span.fa.fa-check
+    %button.btn.btn-standart{"ng-click"=>"resetUser()"}
+      %span.fa.fa-times
