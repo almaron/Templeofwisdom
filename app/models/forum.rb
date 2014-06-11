@@ -11,6 +11,11 @@ class Forum < ActiveRecord::Base
                     last_post_char_name: post.char.name,
                     last_post_at: post.created_at
                 })
+    self.path.update_all("posts_count = posts_count + 1")
+  end
+
+  def add_topic
+    self_path.update_all("topics_count = topics_count + 1")
   end
 
   has_many :posts, through: :topics
@@ -19,8 +24,12 @@ class Forum < ActiveRecord::Base
     self.path.each { |f| f.update_last_post if post.id == f.last_post_id }
   end
 
+  def remove_topic
+    self_path.update_all("topics_count = topics_count - 1")
+  end
+
   def update_last_post
-    last_post = self.posts.last
+    last_post = ForumPost.joins(:topic).where(forum_topics: {forum_id: self.subtree_ids}).last
     self.update({
                     last_post_id: last_post.id,
                     last_post_topic_id: last_post.topic_id,

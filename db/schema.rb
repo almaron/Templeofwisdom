@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608125048) do
+ActiveRecord::Schema.define(version: 20140610115136) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment"
   end
 
   add_index "admin_configs", ["name"], name: "index_admin_configs_on_name", unique: true, using: :btree
@@ -138,7 +139,8 @@ ActiveRecord::Schema.define(version: 20140608125048) do
     t.string   "last_post_char_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "head",                null: false
+    t.string   "head",                            null: false
+    t.integer  "posts_count",         default: 0
   end
 
   create_table "forums", force: true do |t|
@@ -155,6 +157,8 @@ ActiveRecord::Schema.define(version: 20140608125048) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sort_order",          default: 0
+    t.integer  "topics_count",        default: 0
+    t.integer  "posts_count",         default: 0
   end
 
   create_table "guest_posts", force: true do |t|
