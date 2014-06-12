@@ -1,0 +1,148 @@
+@import 'base_less';
+@import 'sizes';
+
+
+.forum {
+  .clearfix;
+  position: relative;
+  background: @bgimg-beige;
+  padding: 10px;
+}
+
+// FORUM TABLE
+
+.forum-tab {
+  width:100%;
+  border-collapse: collapse;
+  .box-shadow(0px 0px 5px 1px rgba(117,124,82,0.8));
+  border:1px solid @color-green2;
+  &:after {
+	content:" ";
+	position: absolute;
+	right:17px;
+	top:39px;
+	display: block;
+	width:250px;
+	height:47px;
+//	background: image-url('leaves.png');
+  }
+
+  th {
+	vertical-align: middle;
+	background-color: @color-green2 + 50;
+	padding:5px 10px;
+	border:1px solid @color-green2;
+	text-align: center;
+
+	&.f-topics {width:40px;}
+	&.f-messages {width:80px;}
+	&.f-lastmessage {width:160px;}
+  }
+
+  td {
+	border-bottom:1px dashed @color-green2;
+	vertical-align: middle;
+	padding:5px 10px;
+
+	&.f-section-name {
+	  background: @bgimg-beige;
+	  position:relative;
+	  a {
+		font-weight: bold;
+		text-decoration: none;
+		&:hover {
+		  color:@color-green2;
+		}
+	  }
+	}
+
+	&.f-icon {
+	  span {
+		display: block;
+		width:38px;
+		height:38px;
+		background-position: center center;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+	  }
+	  &.f-icon-forum span {
+		background-image: image-url('forum/topic_unread.png');
+	  }
+	}
+
+	&.f-sections {
+	  line-height:1.2em;
+	  .f-topics-section-name {
+		font-size: 1.5em;
+		line-height:1.2em;
+		a {
+		  text-decoration: none;
+		  font-weight: bold;
+		}
+	  }
+	  .f-topics-subsections {
+		a {
+		  text-decoration: none;
+		  color:@color-green2 - 40;
+		}
+	  }
+	  a:hover {
+		text-decoration: underline;
+	  }
+	}
+
+	&.f-topics,
+	&.f-messages {
+	  text-align: center;
+	}
+
+	&.f-lastmessage {
+	  text-align: center;
+	  .f-lastmessage-date {
+		padding-bottom: 5px;
+	  }
+	  .f-lastmessage-link {
+		a {text-decoration: none;}
+		.f-lastmessage-author {
+		  color:@color-green2;
+		  font-weight: bold;
+		  &:hover {
+			text-decoration: underline;
+		  }
+		}
+		.f-lastmessage-goto {
+		  position: relative;
+		  bottom: -1px;
+		  font-weight: bold;
+		  color:@color-orange1 + 20;
+		  font-family: "Times New Roman";
+		  line-height:1.3em;
+		  font-size:1em;
+		  padding:1px 3px;
+		  &:hover {
+			color:@color-orange3;
+		  }
+		}
+	  }
+	}
+
+
+  }
+}
+
+/*
+
+
+					</td>
+					<td class="">161</td>
+					<td class="">2222</td>
+					<td class="">
+						<div class="">17 окт 2013, 01:55</div>
+						<div class="">
+							<a href="#" class="">Алкена</a>
+							<a href="#" class="">&#10139;</a>
+						</div>
+					</td>
+				</tr>
+
+*/
