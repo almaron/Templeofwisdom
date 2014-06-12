@@ -6,12 +6,21 @@ describe CharProfile do
 
     before :each do
       @conf = AdminConfig.create(name: "current_year", value: "3")
-      @profile = create :char_profile
+      @profile = build :char_profile
       @set = attributes_for :char_profile
     end
 
     it "should not change the age on create" do
       expect(@profile.real_age).to eql(@set[:real_age])
+    end
+
+    it "should set age properly" do
+      expect(@profile.real_age).to eql(@set[:real_age])
+    end
+
+    it "should set proper age direactly" do
+      @profile.real_age = 54
+      expect(@profile.real_age).to eql(54)
     end
 
     it "should change the age on aging" do

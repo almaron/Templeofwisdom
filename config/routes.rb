@@ -29,7 +29,12 @@ Rails.application.routes.draw do
 
   resources :guest_posts, :path => "guestbook", :except => [:show]
 
-  resources :users, except: [:new,:create]
+  scope "/admin" do
+    resources :users, except: [:new, :create, :show]
+    resources :chars, controller: :admin_chars, except: [:new, :create]
+  end
+
+  get "/users/:id" => "users#show", as: :show_user
   get "/user_groups" => "user_groups#index"
   resource :profile, only:[:show, :edit, :update]
   resources :delegations, only: [:create, :destroy]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608125048) do
+ActiveRecord::Schema.define(version: 20140612042813) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 20140608125048) do
 
   create_table "forum_topics", force: true do |t|
     t.integer  "forum_id"
-    t.string   "head",                null: false
+    t.string   "head",                            null: false
     t.string   "poster_name"
     t.integer  "closed"
     t.integer  "hidden"
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20140608125048) do
     t.datetime "last_post_at"
     t.string   "last_post_char_name"
     t.integer  "posts_count",         default: 0
-    t.integer  "topics_count",         default: 0
+    t.integer  "topics_count",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sort_order",          default: 0
@@ -209,6 +209,13 @@ ActiveRecord::Schema.define(version: 20140608125048) do
 
   add_index "pages", ["ancestry"], name: "index_pages_on_ancestry", using: :btree
   add_index "pages", ["page_alias"], name: "index_pages_on_page_alias", unique: true, using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "head"
+    t.text     "paths"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "season_times", force: true do |t|
     t.integer  "season_id"
