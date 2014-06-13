@@ -1,5 +1,8 @@
-@import 'base_less';
+@import 'variables';
 
+/*
+  User Admin
+*/
 .users-wrapper {
   .user-filter {
     margin-bottom: 10px;
@@ -98,5 +101,144 @@
     .destroyed-user {
       color: @color-green2;
     }
+  }
+}
+
+/*
+  Forum Admin
+*/
+
+.forum-admin {
+  #tree-root {
+    .forum-tree-btn {
+      float: right;
+      margin-left: 7px;
+      cursor: pointer;
+      &:hover {
+        color: @color-orange2;
+      }
+    }
+    .angular-ui-tree-node .new-item {
+      padding-bottom: 3px;
+      padding-left: 20px;
+      padding-top: 3px;
+    }
+    .new-form {
+      width: 100%;
+      height: 20px;
+      .form-block {
+        float: left;
+        margin-right: 4px;
+        padding-right: 4px;
+        border-right: 1px dashed @color-brown;
+      }
+    }
+    .tree-node-content {
+      .forum-hint {
+        font-weight: normal;
+        font-size:0.9em;
+        color: @color-brown;
+      }
+    }
+    .new-root {
+      margin-top: 15px;
+      padding: 7px;
+      background: @bgimg-beige;
+      .new-form-head {
+        padding-bottom: 5px;
+        font-weight: bold;
+      }
+    }
+
+    .edit-item {
+      background: @bgimg-beige;
+      padding: 7px;
+      .edit-form{
+        min-height: 20px;
+        .form-line {
+          margin-bottom: 4px;
+          .form-block {
+            border-right: 1px dashed #72594e;
+            float: left;
+            margin-right: 4px;
+            padding-right: 4px;
+          }
+          &.form-min-height{
+            min-height: 25px;
+          }
+          .text-area {
+            display: block;
+            width: 100%;
+            textarea {
+              width:90%;
+              height: 150px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .tree-save {
+    margin-top: 10px;
+  }
+}
+.tree-node {
+  &:hover {
+    background: @bgimg-beige;
+  }
+  .forum-tree-toggle {
+    cursor: pointer;
+  }
+}
+
+.angular-ui-tree-nodes{
+  display:block;
+  position:relative;
+  margin:0;
+  padding:0;
+  list-style:none;
+
+  &.hidden {
+    display: none;
+  }
+
+  .angular-ui-tree-nodes {
+    padding-left:20px
+  }
+}
+.angular-ui-tree-placeholder{
+  margin:5px 0;
+  padding:0;
+  min-height:30px;
+  width:auto;
+  border: 1px dashed @color-brown;
+}
+.angular-ui-tree-handle {
+  cursor: move;
+  text-decoration:none;
+  font-weight:700;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  min-height:20px;
+  line-height:20px;
+}
+.angular-ui-tree-node {
+  .angular-ui-tree-placeholder {
+    display:block;
+    position:relative;
+    margin:0;
+    padding:0;
+    min-height:20px;
+    line-height:20px;
+  }
+}
+.angular-ui-tree-drag {
+  position:absolute;
+  pointer-events:none;
+  z-index:999;
+  opacity:.8;
+  .forum-tree-btn {
+    display: none;
   }
 }

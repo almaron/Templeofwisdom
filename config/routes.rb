@@ -31,7 +31,12 @@ Rails.application.routes.draw do
 
   scope "/admin" do
     resources :users, except: [:new, :create, :show]
-    resources :chars, controller: :admin_chars, except: [:new, :create]
+    resources :chars, controller: "admin_chars", except: [:new, :create]
+    resources :forums, controller: "admin_forums" do
+      collection do
+        put "" => "admin_forums#save_tree"
+      end
+    end
   end
 
   get "/users/:id" => "users#show", as: :show_user
@@ -51,7 +56,7 @@ Rails.application.routes.draw do
 
   # Forum routes
   resources :forums, path:"temple", only:[:index, :show] do
-    resources :topics, path: "t", controller: "forum_topics", except: :index do
+    resources :topics, path: "t", controller: "forum_topics" do
       resources :posts, path: "p", controller: "forum_posts", except: [:index, :show]
     end
   end

@@ -4,6 +4,8 @@ class Forum < ActiveRecord::Base
 
   has_many :topics, class_name: ForumTopic
 
+  default_scope {order(:sort_order)}
+
   def add_post(post)
     self.path.update_all({
                     last_post_id: post.id,
@@ -36,6 +38,17 @@ class Forum < ActiveRecord::Base
                     last_post_char_name: last_post.char.name,
                     last_post_at: last_post.created_at
                 })
+  end
+
+  scope :categories, ->{where(is_category: 1)}
+  scope :forums, ->{where(is_category: 0)}
+
+  def child_categories
+    self.children.categories
+  end
+
+  def child_forums
+    self.children.forums
   end
 
 end

@@ -1,2 +1,50 @@
-%h1 Forums#show
-%p Find me in app/views/forums/show.html.haml
+.forum-ctrl{"ng-controller"=>"ForumsCtrl", "ng-init"=>"initForum(#{params[:id]}, #{params[:page] || 1})"}
+  .path
+    %span{"ng-repeat"=>"item in path"}
+      %a{href:"/temple/{{item.id}}"} {{item.name}}
+      %span.fa.fa-angle-double-right{"ng-if"=>"item.id != forum.id"}
+
+  %h1{} {{forum.name}}
+
+  .category-wrap{"ng-if"=>"forum.isCategory"}
+    = render partial: "forum_category"
+
+
+  .forum-wrap{"ng-if"=>"!forum.isCategory"}
+    %table.forum-tab.subforum-tab
+      %tbody
+        %tr{"ng-if"=>"forum.description"}
+          %td.topic-list-description{colspan: "{{moderation ? 7 : 6}}"}
+            .bold Описание локации:
+            .forum-description
+              .image{"ng-if"=>"forum.image"}
+                %img{src:"{{forum.image || ''}}"}
+              .text{"ng-bind-html"=>"forum.description | simpleFormat"}
+        %tr
+          %th.f-sections{colspan: "2"} Темы
+          %th.f-author Автор
+          %th.f-messages Постов
+          %th.f-messages Просмотров
+          %th.f-lastmessage Последнее сообщение
+          %th.f-moderate{"ng-if"=>"moderation"}
+            %input{"ng-click"=>"selectAll", id:"selectAll"}
+            %label{for:"selectAll"}
+              %span
+        %tr{"ng-repeat"=>"topic in topics"}
+          %td.f-icon.topic.unread
+            %span
+          %td.f-topic
+            .f-topic-name
+              %a{href: "t/{{topic.id}}"} {{topic.head}}
+            %pages-list{"base-url"=>"t/{{topic.id}}", total:"topic.posts_count"}
+          %td.f-author
+            %a{} {{topic.poster_name}}
+          %td.f-messages{} {{topic.posts_count}}
+          %td.f-messages{} {{topic.views_count}}
+          %td.f-lastmessage
+            .f-lastmessage-date{} {{topic.last_post_at}}
+            .f-lastmessage-link
+              %a.f-lastmessage-author{} {{topic.last_post_char_name}}
+              %a.f-lastmessage-goto{href: "t/{{topic.id}}?page=last&post={{topic.last_post_id}}"} ➜
+
+

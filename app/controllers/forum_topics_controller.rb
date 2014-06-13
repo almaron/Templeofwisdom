@@ -1,10 +1,21 @@
 class ForumTopicsController < ApplicationController
 
-  before_action :require_login, except: :show
-  before_action :get_topic, except: [:new, :create]
+  before_action :require_login, except: [:show, :index]
+  before_action :get_topic, except: [:new, :create, :index]
   before_action :master_access, only: :update, if: lambda{ params[:move].present }
   before_action :master_access, only: :destroy
 
+  def index
+    @forum = Forum.find(params[:forum_id])
+    #TODO change the clause for displaying hidden topics
+    @all_topics = current_user.is_in? :admin ? @forum.topics.all : @forum.topics.shown
+    @topics = @all_topics.paginate(page: params[:page], per_page: params[:per_page] || 10) if @all_topics
+    respond_to do |format|
+      format.html {}
+      format.json {}
+    end
+  end
+  
   def show
     respond_to do |format|
       format.html {

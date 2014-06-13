@@ -1,0 +1,45 @@
+.edit-item{"ng-if"=>"editForum.id == forum.id"}
+  .edit-form
+    .form-line.form-min-height
+      %span.form-block
+        %label{for:"forum_name"} Название:
+        %input.inp.inp-type2{name:"name", id:"forum_name", "ng-model"=>"editForum.name"}
+      %span.form-block
+        %input{type:"checkbox", id:"forum_category", "ng-model"=>"editForum.is_category", "ng-true-value"=>1, "ng-false-value"=>0}
+        %label{for:"forum_category"}
+          Категория
+          %span
+      %span.form-block
+        %input{type:"checkbox", id:"forum_technical", "ng-model"=>"editForum.technical", "ng-true-value"=>1, "ng-false-value"=>0}
+        %label{for:"forum_technical"}
+          Технический
+          %span
+      %span.form-block
+        %input{type:"checkbox", id:"forum_hidden", "ng-model"=>"editForum.hidden", "ng-true-value"=>1, "ng-false-value"=>0}
+        %label{for:"forum_hidden"}
+          Скрытый
+          %span
+      %span.form-btn{"ng-if"=>"editForum.is_category == '1'"}
+        %button.btn.btn-standart{"ng-click"=>"updateItem(this)"}
+          %span.fa.fa-check
+        %button.btn.btn-standart{"ng-click"=>"cancelEdit()"}
+          %span.fa.fa-times
+    .form-block{"ng-if"=>"editForum.is_category == '0'"}
+      .form-line
+        %span.label
+          %label{for:"remote_url"} Картинка:
+        %span.input
+          %input.inp.inp-type2{id:"remote_url", "ng-model"=>"editForum.remote_image_url"}
+        -#TODO add fancybox image link
+        %span.preview{"ng-if"=>"editForm.image"}
+          %span.fa.fa-eye
+      .form-line
+        %span.label
+          %label{} Описание:
+        %span.text-area
+          %textarea.inp.inp-type2{"ng-model"=>"editForum.description"}
+      .form-line.form-line.btn
+        %button.btn.btn-standart{"ng-click"=>"updateItem(this)"}
+          %span.fa.fa-check
+        %button.btn.btn-standart{"ng-click"=>"cancelEdit()"}
+          %span.fa.fa-times

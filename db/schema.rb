@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612042813) do
+ActiveRecord::Schema.define(version: 20140613152005) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 20140612042813) do
     t.string   "name",                            null: false
     t.string   "ancestry"
     t.string   "image"
-    t.string   "description"
+    t.text     "description"
     t.integer  "technical",           default: 0
     t.integer  "hidden",              default: 0
     t.integer  "last_post_id"
@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 20140612042813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sort_order",          default: 0
+    t.integer  "is_category",         default: 0
   end
 
   create_table "guest_posts", force: true do |t|

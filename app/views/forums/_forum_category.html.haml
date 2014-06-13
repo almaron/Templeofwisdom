@@ -1,0 +1,53 @@
+%table.forum-tab{"ng-if"=>"forum.child_categories.length > 0"}
+  %tbody{"ng-repeat"=>"cat in forum.child_categories"}
+    %tr
+      %th.f-sections{colspan: "2"} Форумы
+      %th.f-topics Темы
+      %th.f-messages Сообщения
+      %th.f-lastmessage Последнее сообщение
+    %tr
+      %td.f-section-name{colspan: "5"}
+        %a{href: "/temple/{{cat.id}}"} {{cat.name}}
+    %tr{"ng-repeat"=>"child in cat.children"}
+      %td.f-icon.iforum.read
+        %span
+      %td.f-sections
+        .f-topics-section-name
+          %a{href: "/temple/{{child.id}}"} {{child.name}}
+        .f-topics-subsections{"ng-if"=>"child.children"}
+          %span.bold Подфорумы:
+          %a{"ng-repeat"=>"ch in child.children", href: "/temple/{{ch.id}}"} {{ch.name}} ,
+      %td.f-topics{} {{child.topics_count}}
+      %td.f-messages{} {{child.posts_count}}
+      %td.f-lastmessage
+        .last_post-wrap{"ng-if"=>"child.last_post.id"}
+          .f-lastmessage-date{} {{child.last_post_at}}
+          .f-lastmessage-link
+            %a.f-lastmessage-author{} Алкена
+            %a.f-lastmessage-goto{href: "/temple/{{child.id}}/t/{{child.last_post_topic_id}}/?post={{child.last_post_id}}"} ➜
+
+
+%table.forum-tab{"ng-if"=>"forum.child_forums.length > 0"}
+  %tbody
+    %tr
+      %th.f-sections{colspan: "2"} Форумы
+      %th.f-topics Темы
+      %th.f-messages Сообщения
+      %th.f-lastmessage Последнее сообщение
+    %tr{"ng-repeat"=>"child in forum.child_forums"}
+      %td.f-icon.iforum.read
+        %span
+      %td.f-sections
+        .f-topics-section-name
+          %a{href: "/temple/{{child.id}}"} {{child.name}}
+        .f-topics-subsections{"ng-if"=>"child.children"}
+          %span.bold Подфорумы:
+          %a{"ng-repeat"=>"ch in child.children", href: "/temple/{{ch.id}}"} {{ch.name}} ,
+      %td.f-topics{} {{child.topics_count}}
+      %td.f-messages{} {{child.posts_count}}
+      %td.f-lastmessage
+        .last_post-wrap{"ng-if"=>"child.last_post.id"}
+          .f-lastmessage-date{} {{child.last_post_at}}
+          .f-lastmessage-link
+            %a.f-lastmessage-author{} Алкена
+            %a.f-lastmessage-goto{href: "/temple/{{child.id}}/t/{{child.last_post_topic_id}}/?post={{child.last_post_id}}"} ➜

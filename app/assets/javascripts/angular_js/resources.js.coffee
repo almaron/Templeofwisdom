@@ -56,3 +56,20 @@
 @app.factory "Config", ["$resource", ($resource) ->
   $resource "/configs/:id.json", {id:"@id"}, {update: {method: "PUT"}}
 ]
+
+@app.factory "Forum", ["$resource", ($resource) ->
+  $resource "/temple/:id.json", {id:"@id"}
+]
+
+@app.factory "AdminForum", ["$resource", ($resource) ->
+  $resource "/admin/forums/:id.json", {id:"@id"}, {update: {method: "PUT"}}
+]
+
+
+@app.factory "Topic", ["$resource", ($resource) ->
+  $resource "/temple/:forum_id/t/:id.json", {forum_id:"@forum_id", id:"@id"}, {update: {method: "PUT"}}
+]
+
+@app.factory "Post", ["$resource", ($resource) ->
+  $resource "/temple/:forum_id/t/:topic_id/p/:id.json", {forum_id:"@forum_id", topic_id:"@topic_id", id:"@id"}, {update: {method: "PUT"}}
+]

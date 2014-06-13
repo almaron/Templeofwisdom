@@ -27,6 +27,7 @@
 //= require angular-cookies
 //= require ng-table
 //= require xeditable
+//= require angular-ui-tree
 
 //= require angular_js
 

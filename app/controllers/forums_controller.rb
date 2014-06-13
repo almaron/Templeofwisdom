@@ -1,19 +1,22 @@
 class ForumsController < ApplicationController
 
+  layout "forum"
+
   def index
     respond_to do |format|
       format.html { }
-      forma.json {
+      format.json {
         @forums = Forum.roots
       }
     end
   end
 
   def show
-    @forum = Forum.includes(:topics).find(params[:id])
     respond_to do |format|
       format.html {}
-      format.json {}
+      format.json {
+        @forum = Forum.find(params[:id])
+      }
     end
   end
 

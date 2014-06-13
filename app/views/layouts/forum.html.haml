@@ -9,13 +9,9 @@
 
   %body
     .top
-    .bottom
     .wrapper{"ng-controller" => "WrapperCtrl", "ng-init" => "initWrapper()", style:"font-size:{{currentFont}}"}
       = render "top"
       .forum
         .forum-in
-          .path
-            = yield :path
           = yield
-
       = render "bottom"

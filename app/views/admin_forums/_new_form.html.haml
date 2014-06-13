@@ -1,0 +1,26 @@
+.new-item{"ng-if"=>"forum.addNew && newForum.parent_id == forum.id"}
+  .new-form
+    %span.form-block
+      %label{for:"forum_name"} Название:
+      %input.inp.inp-type2{name:"name", id:"forum_name", "ng-model"=>"newForum.name"}
+    %span.form-block
+      %input{type:"checkbox", id:"forum_category", "ng-model"=>"newForum.is_category", "ng-true-value"=>1, "ng-false-value"=>0}
+      %label{for:"forum_category"}
+        Категория
+        %span
+    %span.form-block
+      %input{type:"checkbox", id:"forum_technical", "ng-model"=>"newForum.technical", "ng-true-value"=>1, "ng-false-value"=>0}
+      %label{for:"forum_technical"}
+        Технический
+        %span
+    %span.form-block
+      %input{type:"checkbox", id:"forum_hidden", "ng-model"=>"newForum.hidden", "ng-true-value"=>1, "ng-false-value"=>0}
+      %label{for:"forum_hidden"}
+        Скрытый
+        %span
+    %span.form-btn
+      %button.btn.btn-standart{"ng-click"=>"addItem(this)"}
+        %span.fa.fa-check
+      %button.btn.btn-standart{"ng-click"=>"closeAddForm(this)"}
+        %span.fa.fa-times
+

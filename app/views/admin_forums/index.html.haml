@@ -1,0 +1,53 @@
+.forum-admin{"ng-controller"=>"AdminForumsCtrl", "ng-init"=>"loadForums()"}
+  #tree-root{"ui-tree" => "forumsTreeOptions"}
+    %ol{"ng-model" => "forums", "ui-tree-nodes" => ""}
+      %li{"ng-include" => "'nodes_renderer.html'", "ng-repeat" => "forum in forums", "ui-tree-node" => ""}
+    .new-item.new-root{"ng-if"=>"!newForum.parent_id"}
+      .new-form-head
+        Добавить корневой раздел
+      .new-form
+        %span.form-block
+          %label{for:"forum_name"} Название:
+          %input.inp.inp-type2{name:"name", id:"forum_name", "ng-model"=>"newForum.name"}
+        %span.form-block
+          %input{type:"checkbox", id:"forum_category", "ng-model"=>"newForum.is_category", "ng-true-value"=>1, "ng-false-value"=>0}
+          %label{for:"forum_category"}
+            Категория
+            %span
+        %span.form-block
+          %input{type:"checkbox", id:"forum_technical", "ng-model"=>"newForum.technical", "ng-true-value"=>1, "ng-false-value"=>0}
+          %label{for:"forum_technical"}
+            Технический
+            %span
+        %span.form-block
+          %input{type:"checkbox", id:"forum_hidden", "ng-model"=>"newForum.hidden", "ng-true-value"=>1, "ng-false-value"=>0}
+          %label{for:"forum_hidden"}
+            Скрытый
+            %span
+        %span.form-btn
+          %button.btn.btn-standart{"ng-click"=>"addRootItem()"}
+            %span.fa.fa-check
+  .tree-save
+    %span.btn.btn-standart{"ng-click"=>"levelTree();"} Сохранить структуру
+    %span.level-success{"ng-if"=>"level_success"} Сохранено успешно
+
+
+%script{id: "nodes_renderer.html", type: "text/ng-template"}
+  .tree-node.tree-node-content{"ui-tree-handle" => ""}
+    %a.forum-tree-toggle{"data-nodrag" => "", "ng-click" => "toggle(this)", "ng-show"=>"forum.children.length > 0"}
+      %span.fa{"ng-class" => "{'fa-chevron-right': collapsed, 'fa-chevron-down': !collapsed}"}
+    {{forum.name}}
+    %span.forum-hint{}
+      ({{forum.id}})
+      %span.fa.fa-eye{"ng-if"=>"forum.hidden>0"}
+      %span.fa.fa-wrench{"ng-if"=>"forum.technical>0"}
+    %a.forum-tree-btn{"data-nodrag" => "", "ng-click" => "removeItem(this)"}
+      %span.fa.fa-times
+    %a.forum-tree-btn{"data-nodrag" => "", "ng-click" => "openAddForm(this)", "ng-show"=>"this.forum.isCategory"}
+      %span.fa.fa-plus
+    %a.forum-tree-btn{"data-nodrag" => "", "ng-click" => "editItem(this)"}
+      %span.fa.fa-pencil
+  = render :partial => 'edit_form'
+  %ol{"ng-class" => "{hidden: collapsed}", "ng-model" => "forum.children", "ui-tree-nodes" => ""}
+    %li{"ng-include" => "'nodes_renderer.html'", "ng-repeat" => "forum in forum.children", "ui-tree-node" => ""}
+  = render :partial => 'new_form'

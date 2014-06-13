@@ -4,6 +4,8 @@ class ForumTopic < ActiveRecord::Base
 
   belongs_to :forum
 
+  scope :shown, ->{where(hidden:0)}
+
   def add_post(post)
     update_last_post post
     forum.add_post post
