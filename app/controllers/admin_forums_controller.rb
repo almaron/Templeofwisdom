@@ -54,7 +54,7 @@ class AdminForumsController < ApplicationController
   end
 
   def forum_params
-    params.require(:forum).permit(:name, :parent_id, :ancestry, :image, :description, :technical, :hidden, :is_category, :sort_order)
+    params.require(:forum).permit(:name, :parent_id, :ancestry, :remote_image_url, :description, :technical, :hidden, :is_category, :sort_order)
   end
 
 end

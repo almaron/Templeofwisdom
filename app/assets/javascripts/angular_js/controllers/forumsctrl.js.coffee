@@ -2,13 +2,13 @@
 
   $scope.forumPagination = {}
 
+
   $scope.loadRoot = ->
     $scope.forums = Forum.query()
     
   $scope.initForum = (forum_id, page) ->
     $scope.forum_id = forum_id
     $scope.loadForum(forum_id, page)
-
 
   $scope.loadForum = (id, page) ->
     data = Forum.get {id:id}, ->
@@ -24,5 +24,9 @@
     $http.get("/temple/"+$scope.forum_id+"/t.json?page="+page).success (data)->
       $scope.topics = data.topics
       $scope.forumPagination.total = data.total
+
+  $scope.clickModerate = ->
+    $scope.moderateOn = !$scope.moderateOn
+
 
 ]

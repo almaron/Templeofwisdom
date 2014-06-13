@@ -1,5 +1,7 @@
 class ForumTopicsController < ApplicationController
 
+  layout "forum"
+
   before_action :require_login, except: [:show, :index]
   before_action :get_topic, except: [:new, :create, :index]
   before_action :master_access, only: :update, if: lambda{ params[:move].present }

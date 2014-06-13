@@ -7,6 +7,10 @@
   position: relative;
   background: @bgimg-beige;
   padding: 10px;
+
+  .path {
+    background: @bgimg-beige;
+  }
 }
 
 // FORUM TABLE
@@ -37,6 +41,12 @@
 	&.f-topics {width:40px;}
 	&.f-messages {width:80px;}
 	&.f-lastmessage {width:160px;}
+    &.f-moderate {
+      width:20px;
+      label {
+        padding: 0;
+      }
+    }
   }
 
   td {
@@ -127,23 +137,27 @@
 	  }
 	}
 
+    &.no-topics {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.1em;
+    }
 
   }
 }
 
-/*
-
-
-					</td>
-					<td class="">161</td>
-					<td class="">2222</td>
-					<td class="">
-						<div class="">17 окт 2013, 01:55</div>
-						<div class="">
-							<a href="#" class="">Алкена</a>
-							<a href="#" class="">&#10139;</a>
-						</div>
-					</td>
-				</tr>
-
-*/
+.forum-wrap {
+  .forum-wrap-btn {
+    margin-bottom: 10px;
+    text-align: right;
+    min-height: 25px;
+    a {
+      padding: 3px 17px;
+      text-decoration: none;
+    }
+    .forum-btn {
+      float: right;
+      margin-left: 5px;
+    }
+  }
+}
