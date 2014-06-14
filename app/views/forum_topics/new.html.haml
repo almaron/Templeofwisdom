@@ -1,2 +1,47 @@
-%h1 ForumTopics#new
-%p Find me in app/views/forum_topics/new.html.haml
+.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initNewTopic(#{params[:forum_id]})"}
+  .path
+    %span{"ng-repeat"=>"item in path"}
+      %a{href:"/temple/{{item.id}}"} {{item.name}}
+      %span.fa.fa-angle-double-right{"ng-if"=>"$index < path.length-1"}
+
+  %h1{}
+    = I18n.t("forum_topics.show.pagetitle")
+
+  .new-topic-wrap
+    .topic-form.any-form
+      %form{name:"NewTopic", novalidate:"", "ng-model"=>"newTopic"}
+        %table.form-tab
+          %tr
+            %td.label
+            %td.input
+              .form-errors
+                .error-line{"ng-repeat"=>"error in errors"}
+                  {{error}}
+          %tr
+            %td.label
+              %label{for:"topic_head"} Заголовок:
+            %td.input.input-head
+              %input.inp.inp-type2{name:"topic_head", id:"topic_head", "ng-model"=>"newTopic.head", required:""}
+          %tr
+            %td.label
+            %td.input.input-textarea
+              %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:""}
+          %tr
+            %td.label
+              %label{for:"char_name"} Персонаж:
+            %td.input.input-char
+              %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
+          %tr
+            %td.label{} Настройки:
+            %td.input
+              %input{type:"checkbox", "ng-model"=>"newTopic.hidden", "ng-true-value"=>1, "ng-false-value"=>0}
+              %label{for:"check-hidden"}
+                %span
+                Спрятать тему
+          %tr
+            %td.label
+            %td.input.input-btn
+              %button.btn.btn-mini.forum-btn{"ng-click"=>"createTopic()", "ng-disabled"=>"newTopic.create_disabled", "ng-class"=>"newTopic.create_disabled ? 'disabled' : ''"}
+                %span
+                  Создать тему
+              %a.btn.btn-mini.forum-btn{href:"/temple/{{forumId}}/"} Назад

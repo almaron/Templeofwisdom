@@ -17,7 +17,9 @@ class ForumsController < ApplicationController
       format.html {
         #TODO add proper redirection for hidden forums
       }
-      format.json {}
+      format.json {
+
+      }
     end
   end
 

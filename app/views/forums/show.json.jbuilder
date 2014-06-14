@@ -18,6 +18,3 @@ json.path @forum.path do |forum|
   json.(forum, :id, :name)
 end
 
-json.topics @topics do |topic|
-
-end

@@ -1,7 +1,21 @@
 class ForumPostsController < ApplicationController
 
-  before_action :require_login
-  before_action :get_post, only: [:edit, :update, :destroy]
+  before_action :require_login, except: [:index, :show]
+  before_action :get_post, only: [:edit, :update, :destroy, :show]
+
+  def index
+    per_page = 15
+    @posts = ForumPost.where(topic_id: params[:topic_id]).paginate(page:params[:page], per_page: per_page)
+    respond_to do |format|
+      format.json{}
+    end
+  end
+
+  def show
+    respond_to do |format|
+     format.json{}
+    end
+  end
 
   def new
     @post = ForumPost.new(topic_id:params[:topic_id])
@@ -12,10 +26,14 @@ class ForumPostsController < ApplicationController
   end
 
   def create
-    @post = ForumPost.create(post_params)
     respond_to do |format|
-      format.html { redirect_to_topic }
-      format.json { }
+      if @post = ForumPost.create(post_params)
+        format.html { redirect_to_topic }
+        format.json { render partial: "post", locals: {post:@post}}
+      else
+        format.html { redirect_to_topic }
+        format.json { render json: {errors: @post.errors.full_messages}, status: 500 }
+      end
     end
   end
 

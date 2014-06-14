@@ -65,6 +65,9 @@
 
   }
 }
+.inp.ng-dirty.ng-invalid {
+  border-color: red;
+}
 
 .anketa {
   .btn-green {

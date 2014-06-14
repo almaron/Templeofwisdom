@@ -1,0 +1,69 @@
+.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{params[:forum_id]},#{params[:id]},#{params[:page] || 1})"}
+
+  .path
+    %span{"ng-repeat"=>"item in path"}
+      %a{href:"/temple/{{item.id}}"} {{item.name}}
+      %span.fa.fa-angle-double-right{"ng-if"=>"$index < path.length-1"}
+
+  %h1
+    = @topic.head
+
+  .topic-list-description{"ng-if"=>"topic.description"}
+    .bold Описание локации:
+    %div{"ng-bind-html"=>"topic.description | simpleFormat"}
+
+  %table.forum-tab.one-message-tab
+    %tr
+      %th.f-message-author Автор
+      %th.f-message-content Пост
+  %table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts"}
+    %tr
+      %td.f-message-author
+        .message-author-name{} {{post.char.name}}
+        .message-author-category{} {{post.char.status}}
+        .message-author-avatar{"ng-bind-html"=>"post.char.avatar_img | trustHtml"}
+        .message-author-onoff.offline
+        .message-author-count
+      %td.f-message-content
+        .message-date{} {{post.posted_at}}
+        .message-text{"ng-bind-html"=>"post.show_text"}
+        .message-comment{"ng-if"=>"post.commented_at"}
+          .bold
+            {{post.commenter}}:
+          {{post.comment | simpleFormat}}
+          .date{} {{post.commented_at}}
+    -#    TODO: add buttons for post edit && destroy
+    %tr
+      %td.f-message-more
+        .message-author{"ng-if"=>"currentUser.group == 'admin'"}
+          %span.message-user{}
+          %a{href:"/users/{{post.user.id}}"} {{post.user.name}}
+          %span.message-ip{} {{post.ip}}
+      %td.f-message-options
+        .message-options-div
+          %a.opt-sendmessage{href: "#", title: "Отправить личное сообщение"} ЛС
+          %a.opt-profile{href: "#", title: "Посмотреть анкету персонажа"} Анкета
+          %a.opt-toadmin{href: "#", title: "Информировать мастера игры о посте (попросить отыграть реакцию или пожаловаться на сообщение)"} ❢
+          %a.opt-commentary{href: "#", title: "Комментировать от Мастера игры"} Комментировать
+          %a.opt-quote{href: "#", title: "Процитировать сообщение"}
+            “”
+
+  .topic-form.topic-reply-form
+    %table.forum-tab.one-message-tab.form-tab
+      %tr
+        %td.label
+          .select-char
+            %label{for:"char_name"} Персонаж:
+            %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
+            {{newPost.char_id}}
+          .send-notifications
+            Отправка уведомлений
+        %td.input.input-textarea
+          %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:""}
+      %tr
+        %td.label
+        %td.input.input-btn
+          %button.btn.btn-mini{"ng-click"=>"addReply()"}
+            Ответить
+
+

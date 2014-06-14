@@ -25,6 +25,9 @@ ru:
         chars:
           edit:
             not_editable: "Персонажа нельзя редактировать"
+      errors:
+        forum:
+          topic_create: "Заголовок темы или текст поста пуст!"
   auto_link:
     url_link: "ссылка"
     email_link: "этот адрес"

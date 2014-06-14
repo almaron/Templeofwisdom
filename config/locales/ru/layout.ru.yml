@@ -3,11 +3,9 @@ ru:
     show:
       root: "Добро пожаловать в Линь Ян Шо"
       pagetitle: "Заголовок страницы"
-
   news:
     index:
       pagetitle: "Новости монастыря"
-
   registrations:
     new:
       pagetitle: "Регистрация"
@@ -15,17 +13,14 @@ ru:
       pagetitle: "Успешная регистрация"
     activate:
       pagetitle: "Игрок активирован"
-
   blog_posts:
     index:
       pagetitle: "Блог мастеров"
     show:
       pagetitle: "Блог мастеров"
-
   guest_posts:
     index:
       pagetitle: "Гостевой свиток"
-
   profiles:
     show:
       pagetitle: "Личный кабинет"
@@ -36,16 +31,15 @@ ru:
       pagetitle: "Новый персонаж"
     edit:
       pagetitle: "Сохраненный персонаж"
-
   users:
     index:
       pagetitle: "Список игроков"
-
   configs:
     index:
       pagetitle: "Системные настройки"
-
-
+  admin_forums:
+    index:
+      pagetitle: "Администрирование форумов"
 
 
   char_status:
@@ -56,3 +50,6 @@ ru:
       approved: "одобрен"
       active: "активен"
       na: "неактив"
+  forum_topics:
+    show:
+      pagetitle: "Новая тема"

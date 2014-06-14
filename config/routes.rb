@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   # Forum routes
   resources :forums, path:"temple", only:[:index, :show] do
     resources :topics, path: "t", controller: "forum_topics" do
-      resources :posts, path: "p", controller: "forum_posts", except: [:index, :show]
+      resources :posts, path: "p", controller: "forum_posts"
     end
   end
 

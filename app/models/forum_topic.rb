@@ -1,6 +1,9 @@
 class ForumTopic < ActiveRecord::Base
 
+  validates_presence_of :head
+
   has_many :posts, class_name: ForumPost, foreign_key: :topic_id
+  accepts_nested_attributes_for :posts
 
   belongs_to :forum
 
@@ -11,11 +14,6 @@ class ForumTopic < ActiveRecord::Base
     forum.add_post post
   end
 
-  def create_first_post(params)
-    unless self.posts.any?
-      self.posts.create params
-    end
-  end
 
   def remove_post(post)
     self.posts.empty? ? self.destroy : update_last_post(self.posts.last)

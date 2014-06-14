@@ -10,8 +10,9 @@ class ForumTopicsController < ApplicationController
   def index
     @forum = Forum.find(params[:forum_id])
     #TODO change the clause for displaying hidden topics
-    @all_topics = current_user.is_in? :admin ? @forum.topics.all : @forum.topics.shown
-    @topics = @all_topics.paginate(page: params[:page], per_page: params[:per_page] || 10) if @all_topics
+    @all_topics = (current_user.is_in? :admin) ? @forum.topics : @forum.topics.shown
+    per_page = params[:per_page] || 10
+    @topics = @all_topics.paginate(page: params[:page], per_page: per_page) if @all_topics
     respond_to do |format|
       format.html {}
       format.json {}
@@ -21,7 +22,7 @@ class ForumTopicsController < ApplicationController
   def show
     respond_to do |format|
       format.html {
-        redirect_to forum_topic_path(@topic.forum_id, @topic.id) unless params[:forum_id] == @topic.forum_id
+        # redirect_to forum_topic_path(@topic.forum_id, @topic.id) unless params[:forum_id] == @topic.forum_id
         #TODO add redirects when topic is hidden and user does not have valid permissions
       }
       format.json { }
@@ -29,19 +30,29 @@ class ForumTopicsController < ApplicationController
   end
 
   def new
-    @topic = ForumTopic.new
-    @post = @topic.posts.new
+    @forum = Forum.find(params[:forum_id])
+    #TODO add the validations for hidden forums and playable chars
+    respond_to do |format|
+      format.html {}
+      format.json {
+        @topic = @forum.topics.new
+        @post = @topic.posts.new
+        @chars = @forum.technical > 0 ? current_user.chars.where("status_id IN (3,4,5)") : current_user.chars.where("status_id = 5")
+      }
+    end
   end
 
   def create
     respond_to do |format|
-      if @topic = ForumTopic.create(topic_params)
-        @topic.create_first_post post_params
+      @topic = ForumTopic.new(topic_params)
+      @post = @topic.posts.new post_params
+      @topic.poster_name = @post.char.name
+      if @topic.save
         format.html { redirect_to forum_topic_path(params[:forum_id], @topic.id) }
-        format.json { render :show }
+        format.json { render json: {redirect: forum_topic_path(@topic.forum_id, @topic.id)} }
       else
         format.html { render :new }
-        format.json { render json: {errors: @topic.errors.full_messages} }
+        format.json { render json: {errors: [t("messages.errors.forum.topic_create")]}, status: 500 }
       end
     end
   end
@@ -87,7 +98,7 @@ class ForumTopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:forum_topic).permit(:head, :hidden, :closed, :poster_name).merge!(forum_id:params[:forum_id])
+    params.require(:topic).permit(:head, :hidden, :closed, :poster_name).merge!(forum_id:params[:forum_id])
   end
 
   def post_params

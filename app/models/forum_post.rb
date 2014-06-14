@@ -1,5 +1,7 @@
 class ForumPost < ActiveRecord::Base
 
+  validates_presence_of :char_id, :ip, :text
+
   belongs_to :topic, class_name: ForumTopic, foreign_key: :topic_id
   belongs_to :char
   belongs_to :user

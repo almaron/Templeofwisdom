@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613152005) do
+ActiveRecord::Schema.define(version: 20140614053637) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 20140613152005) do
     t.string   "head",                            null: false
     t.string   "poster_name"
     t.integer  "closed"
-    t.integer  "hidden"
+    t.integer  "hidden",              default: 0
     t.integer  "last_post_id"
     t.datetime "last_post_at"
     t.string   "last_post_char_name"
