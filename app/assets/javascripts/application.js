@@ -31,4 +31,8 @@
 
 //= require angular_js
 
+//= require markItUp/markItUp-main
+//= require markItUp/settings
+//= require markItUp/user_set
+
 //= require jquery.turbolinks

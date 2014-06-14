@@ -59,7 +59,11 @@
           .send-notifications
             Отправка уведомлений
         %td.input.input-textarea
-          %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:""}
+          %textarea.inp.inp-type2.markitup{name:"post_text", "ng-model"=>"newPost.text", required:''}
+      %tr
+        %td.label
+        %td.input
+          {{newPost.text}}
       %tr
         %td.label
         %td.input.input-btn
