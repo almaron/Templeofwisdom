@@ -48,7 +48,7 @@ class ForumPostsController < ApplicationController
     @post.update(post_params) if post_editable(@post)
     respond_to do |format|
       format.html { redirect to  }
-      format.json { render :create }
+      format.json { render partial: "post", locals: {post:@post} }
     end
   end
 
@@ -74,10 +74,21 @@ class ForumPostsController < ApplicationController
   end
   helper_method :post_deletable
 
+  def post_commentable
+    current_user.is_in? [:admin, :master]
+  end
+  helper_method :post_commentable
+
   private
 
   def post_params
-    params.require(:post).permit(:char_id,:text).merge!(topic_id:params[:topic_id], user_id: current_user.id, ip: request.remote_ip)
+    if !params[:post][:comment].nil? && current_user.is_in?([:admin, :master])
+      p_params = params.require(:post).permit(:comment, :commenter)
+      p_params[:commented_at] = params[:post][:comment].present? ? DateTime.now : nil
+      p_params
+    else
+      params.require(:post).permit(:char_id,:text).merge!(topic_id:params[:topic_id], user_id: current_user.id, ip: request.remote_ip)
+    end
   end
 
   def get_post

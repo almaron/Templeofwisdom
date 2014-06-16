@@ -20,6 +20,14 @@ class ForumTopic < ActiveRecord::Base
     self.forum.remove_post(post) if self.forum
   end
 
+  def is_available?(user)
+    self.hidden == 0 || (user && user.is_in?([:admin, :master]))
+  end
+
+  def is_editable?(user)
+    user && (user.is_in?([:admin, :master]) || self.posts.first.char.delegated_to?(user))
+  end
+
   private
 
   def update_last_post(post)

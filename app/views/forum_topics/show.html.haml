@@ -5,8 +5,14 @@
       %a{href:"/temple/{{item.id}}"} {{item.name}}
       %span.fa.fa-angle-double-right{"ng-if"=>"$index < path.length-1"}
 
-  %h1
-    = @topic.head
+  %h1.forum-topic-head
+    %span.h1{"editable-text"=>"topic.head", "e-form"=>"headForm", onaftersave:"updateTopic()"} {{topic.head}}
+    %span.block-adm.forum-topic-edit{"ng-show"=>"topic.editable"}
+      %span.fa.fa-pencil{"ng-click"=>"headForm.$show()", "ng-hide"=>"headForm.$visible"}
+    %span.block-adm.forum-topic-edit{}
+      %span.fa.fa-eye-slash{"ng-show"=>"topic.isHidden && !topic.editable"}
+      %span.fa.fa-eye{"ng-if"=>"topic.editable && !topic.isHidden", "ng-click"=>"toggleTopic(true)"}
+      %span.fa.fa-eye-slash{"ng-if"=>"topic.editable && topic.isHidden", "ng-click"=>"toggleTopic(false)"}
 
   .topic-list-description{"ng-if"=>"topic.description"}
     .bold Описание локации:
@@ -19,7 +25,7 @@
       %th.f-message-author Автор
       %th.f-message-content Пост
   %table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts", id:"{{post.id}}"}
-    %tr
+    %tr{"ng-hide"=>"selectedPost.id==post.id"}
       %td.f-message-author
         .message-author-name{} {{post.char.name}}
         .message-author-category{} {{post.char.status}}
@@ -28,19 +34,35 @@
         .message-author-count
       %td.f-message-content
         .message-date{} {{post.posted_at}}
-        .message-text{"ng-bind-html"=>"post.show_text"}
-        .message-comment{"ng-if"=>"post.commented_at"}
-          .bold
-            {{post.commenter}}:
-          {{post.comment | simpleFormat}}
-          .date{} {{post.commented_at}}
-        -#TODO: add buttons for post edit && destroy
+        .message-text
+          %div{"ng-bind-html"=>"post.show_text"}
+          .message-comment{"ng-if"=>"post.commented_at", "ng-hide"=>"post.editComment"}
+            .bold
+              {{post.commenter}}:
+            {{post.comment | simpleFormat}}
+            .date{} {{post.commented_at}}
+          .message-comment-edit{"ng-show"=>"post.editComment"}
+            .comment-form.any-form
+              .form-line
+                %label{for:"commenter"} От кого:
+                %input.inp.inp-type2{id:"commenter", "ng-model"=>"post.commenter"}
+              .form-line
+                %textarea.inp.inp-type2{"ng-model"=>"post.comment"}
+              .form-line.input-btn
+                %button.btn.btn-mini{"ng-click"=>"commentPost(post)"}
+                  %span.fa.fa-check
+                    Отправить
+                %button.btn.btn-mini{"ng-click"=>"post.editComment = false"}
+                  %span.fa.fa-times
+                    Отменить
         .message-buttons.block-adm
+          .message-comment{"ng-if"=>"post.commentable"}
+            %span.fa.fa-comment{"ng-click"=>"post.editComment = true"}
           .message-edit{"ng-if"=>"post.editable"}
-            %span.fa.fa-pencil{"ng-click"=>"edit(post)"}
+            %span.fa.fa-pencil{"ng-click"=>"editPost(post)"}
           .message-destroy{"ng-if"=>"post.deletable"}
             %span.fa.fa-times{"ng-click"=>"removePost(post)"}
-    %tr
+    %tr{"ng-hide"=>"selectedPost.id==post.id"}
       %td.f-message-more
         .message-author{"ng-if"=>"currentUser.group == 'admin'"}
           %span.message-user{}
@@ -51,14 +73,27 @@
           %a.opt-sendmessage{href: "#", title: "Отправить личное сообщение"} ЛС
           %a.opt-profile{href: "#", title: "Посмотреть анкету персонажа"} Анкета
           %a.opt-toadmin{href: "#", title: "Информировать мастера игры о посте (попросить отыграть реакцию или пожаловаться на сообщение)"} ❢
-          %a.opt-commentary{href: "#", title: "Комментировать от Мастера игры"} Комментировать
           %a.opt-quote{href: "#", title: "Процитировать сообщение"}
             “”
+    %tr.post-edit.inline-edit{"ng-if"=>"post.id == selectedPost.id"}
+      %td.label
+        .select-char
+          %label{for:"char_name"} Персонаж:
+          %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
+          {{selectedPost.char_id}}
+      %td.input.input-textarea
+        %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"selectedPost.text", required:'', "mark-it-up"=>""}
+        .input-btn
+          %button.btn.btn-mini{"ng-click"=>"updatePost()"}
+            Отправить
+          %button.btn.btn-mini{"ng-click"=>"cancelEdit()"}
+            Отменить
+
   .forum-pagination
     %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
-  .topic-form.topic-reply-form
+  .topic-form.topic-reply-form{"ng-if"=>"!topic.isClosed && !selectedPost.id"}
     %table.forum-tab.one-message-tab.form-tab
-      %tr
+      %tr.post-edit
         %td.label
           .select-char
             %label{for:"char_name"} Персонаж:
@@ -68,11 +103,9 @@
             Отправка уведомлений
         %td.input.input-textarea
           %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:'', "mark-it-up"=>""}
-          %div{}
-      %tr
-        %td.label
-        %td.input.input-btn
-          %button.btn.btn-mini{"ng-click"=>"addReply()"}
-            Ответить
+          .input-btn
+            %button.btn.btn-mini{"ng-click"=>"addReply()"}
+              Ответить
+
 
 

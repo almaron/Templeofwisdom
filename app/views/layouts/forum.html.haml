@@ -12,6 +12,7 @@
     .wrapper{"ng-controller" => "WrapperCtrl", "ng-init" => "initWrapper()", style:"font-size:{{currentFont}}"}
       = render "top"
       .forum
+        = render "debug_params"
         .forum-in
           = yield
       = render "bottom"

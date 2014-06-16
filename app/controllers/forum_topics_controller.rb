@@ -21,11 +21,17 @@ class ForumTopicsController < ApplicationController
   
   def show
     respond_to do |format|
-      format.html {
-        # redirect_to forum_topic_path(@topic.forum_id, @topic.id) unless params[:forum_id] == @topic.forum_id
-        #TODO add redirects when topic is hidden and user does not have valid permissions
-      }
-      format.json { }
+      if @topic.is_available?(current_user) && topic_in_place
+        format.html { }
+        format.json {
+          @chars = @topic.forum.technical > 0 ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where('status_id = 5')
+        }
+      else
+        format.json { render json: {redirect: forum_topic_path(@topic.forum_id, @topic.id), param_forum_id: params[:forum_id], topic_forum_id: @topic.forum_id}, status: 500}
+        format.html {
+          redirect_to forum_topic_path(@topic.forum_id, @topic.id)
+        }
+      end
     end
   end
 
@@ -67,14 +73,14 @@ class ForumTopicsController < ApplicationController
 
   def update
     respond_to do |format|
-      if params[:move]
+      if params[:move] && current_user.is_in?(:admin, :master)
         @topic.update(forum_id:params[:move])
         format.html {}
         format.json { render json: {moved: true} }
       else
         if current_user.is_in? [:admin, :master] || @topic.char.delegated_to?(current_user)
           @topic.update topic_params
-          @topic.posts.first.update post_params
+          @topic.posts.first.update post_params if params[:post]
         end
         format.html { redirect_to forum_topic_path(@topic.forum_id, @topic.id)}
         format.json { render :show }
@@ -94,7 +100,12 @@ class ForumTopicsController < ApplicationController
 
   def get_topic
     @topic = ForumTopic.find(params[:id])
-    redirect_to forum_path(params[:forum_id]) unless @topic
+    unless @topic
+      respond_to do |format|
+        format.html { redirect_to forum_path(params[:forum_id]) }
+        format.json { render json: {redirect: forum_path(params[:forum_id])}, status: 500 }
+      end
+    end
   end
 
   def topic_params
@@ -103,6 +114,10 @@ class ForumTopicsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:char_id, :text).merge!(user_id: current_user.id, ip: request.remote_ip)
+  end
+
+  def topic_in_place
+    @topic.forum_id == params[:forum_id].to_i
   end
 
 end

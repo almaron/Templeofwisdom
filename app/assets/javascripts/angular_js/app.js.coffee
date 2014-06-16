@@ -14,8 +14,8 @@ $(document).on 'ready page:load', bootstrapAngular
     inputTpl: ""
     errorTpl: "<div class=\"editable-error help-block\" ng-show=\"$error\" ng-bind=\"$error\"></div>"
     buttonsTpl: "<span class=\"editable-buttons\"></span>"
-    submitTpl: "<button type=\"submit\" class=\"btn btn-standart\"><span class=\"fa fa-check\"></span></button>"
-    cancelTpl: "<button type=\"button\" class=\"btn btn-standart\" ng-click=\"$form.$cancel()\">" + "<span class=\"fa fa-times\"></span>" + "</button>"
+    submitTpl: "<button type=\"submit\"><span class=\"fa fa-check\"></span></button>"
+    cancelTpl: "<button type=\"button\" ng-click=\"$form.$cancel()\">" + "<span class=\"fa fa-times\"></span>" + "</button>"
     buttonsClass: ""
     inputClass: "inp inp-type2"
     postrender: ->

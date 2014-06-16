@@ -193,19 +193,19 @@
           width:auto;
         }
       }
-      &.input-btn {
-        text-align: center;
-        a {
-          text-decoration: none;
-          width:96px;
-          height: 19px;
-        }
-        .forum-btn {
-          display: inline-block;
-          margin: 0 7px;
-          &.disabled {
+    }
+    .input-btn {
+      text-align: center;
+      a {
+        text-decoration: none;
+        width:96px;
+        height: 19px;
+      }
+      .forum-btn {
+        display: inline-block;
+        margin: 0 7px;
+        &.disabled {
 
-          }
         }
       }
     }
@@ -253,6 +253,18 @@
       }
       .message-text {
         min-height: 280px;
+        .message-comment-edit {
+          .form-line {
+            textarea {
+              width:90%;
+              height:100px;
+            }
+            button {
+              display: inline-block;
+              margin-right: 5px;
+            }
+          }
+        }
       }
       .message-buttons {
         margin-top: 20px;
@@ -277,10 +289,8 @@
       }
     }
   }
-}
-.topic-reply-form {
-  margin-top: 15px;
-  .one-message-tab.form-tab {
+
+  tr.post-edit {
     td {
       vertical-align: middle;
       &.input {
@@ -288,11 +298,61 @@
         textarea {
           width: 95%;
         }
+        .input-btn {
+          margin-top: 5px;
+          button, a {
+            display: inline-block;
+            margin: 2px 5px;
+          }
+        }
       }
       &.label {
         vertical-align: top;
         text-align: left;
+        width:200px;
       }
     }
+    &.inline-edit {
+      td {
+        textarea {
+          height:300px;
+        }
+      }
+    }
+  }
+}
+.forum-ctrl {
+  h1 {
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
+    &.forum-topic-head {
+      span.h1 {
+        color: @baseColor;
+      }
+      .editable-controls {
+        input {
+          font-size: 0.9em;
+        }
+        button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: @color-brown1;
+          &:hover {
+            color: @baseColor;
+          }
+        }
+      }
+    }
+    .forum-topic-edit {
+      font-size: 0.5em;
+      margin-left: 7px;
+    }
+  }
+}
+
+.topic-reply-form {
+  margin-top: 15px;
+  .one-message-tab.form-tab {
+
   }
 }

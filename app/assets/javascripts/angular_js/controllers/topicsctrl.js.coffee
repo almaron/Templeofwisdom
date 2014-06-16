@@ -3,7 +3,7 @@
   # Topic New
   $scope.newPost = {}
 
-  $scope.topicInitNewTopic = (forum_id) ->
+  $scope.initNewTopic = (forum_id) ->
     $http.get("/temple/"+forum_id+"/t/new.json").success (data) ->
       $scope.path = data.path
       $scope.newTopic = data.topic
@@ -79,4 +79,29 @@
     Post.delete {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: post.id}, ->
       $scope.posts.splice($scope.posts.indexOf(post),1)
       $scope.loadTopic true
+
+  $scope.updateTopic = ->
+    Topic.update {forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id, topic:{ head:$scope.topic.head }}
+
+  $scope.editPost = (post) ->
+    $scope.selectedPost = angular.copy post
+
+  $scope.cancelEdit = ->
+    $scope.selectedPost = {}
+
+  $scope.updatePost = ->
+    Post.update({forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: $scope.selectedPost.id, post: $scope.selectedPost})
+    $scope.cancelEdit()
+    $scope.loadPosts $scope.postPagination.cur
+
+  $scope.toggleTopic = (hidden) ->
+    Topic.update {forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id, topic:{ hidden:hidden }}
+    $scope.topic.isHidden = hidden
+
+  $scope.commentPost = (post) ->
+    comment = {comment: post.comment, commenter: post.commenter}
+    getPost = Post.update({forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: post.id, post: comment}, ->
+     $scope.posts[$scope.posts.indexOf(post)] = getPost
+    )
+
 ]
