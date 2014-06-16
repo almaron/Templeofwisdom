@@ -18,6 +18,7 @@
 //= require lib/abstract-chosen
 //= require lib/select-parser
 //= require chosen.jquery
+//= require markItUp
 
 //= require functions
 
@@ -31,8 +32,6 @@
 
 //= require angular_js
 
-//= require markItUp/markItUp-main
-//= require markItUp/settings
-//= require markItUp/user_set
+
 
 //= require jquery.turbolinks

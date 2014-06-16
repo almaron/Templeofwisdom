@@ -11,10 +11,33 @@ describe User do
 
     it "should place user in group :admins" do
       user = build_stubbed :admin
-      expect(user.is_in?(:admins)).to eql true
-      expect(user.is_in?(:admins, :masters)).to eql true
-      expect(user.is_in?(:users)).to eql false
+      expect(user.is_in? :admin).to eql true
+      expect(user.is_in? [:admin, :master]).to eql true
+      expect(user.is_in? :user ).to eql false
     end
+  end
+
+  describe "is_in?" do
+    before :all do
+      @user = build_stubbed :admin
+    end
+
+    it "should return true if the user belongs to the group" do
+      expect(@user.is_in? :admin).to eql true
+    end
+
+    it "should return false if the user does not belong to the group" do
+      expect(@user.is_in? :user).to eql false
+    end
+
+    it "should return true if the user belongs to one of the groups" do
+      expect(@user.is_in? [:admin, :master]).to eql true
+    end
+
+    it "should return false if the user does not belong to any of the groups" do
+      expect(@user.is_in? [:user, :master]).to eql false
+    end
+
   end
 
   describe "default_char" do

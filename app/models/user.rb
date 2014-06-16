@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
   after_create {self.create_profile}
 
-  def is_in?(*groups)
+  def is_in?(groups)
+    groups = groups.is_a?(Array) ? groups : [groups]
     groups.include? self.group.to_sym
   end
 

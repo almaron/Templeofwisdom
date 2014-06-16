@@ -8,7 +8,7 @@ FactoryGirl.define do
     password_confirmation "qwsazx"
 
     factory :admin do
-      group "admins"
+      group "admin"
     end
   end
 end

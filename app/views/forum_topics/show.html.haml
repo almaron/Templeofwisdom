@@ -1,4 +1,4 @@
-.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{params[:forum_id]},#{params[:id]},#{params[:page] || 1})"}
+.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{params[:forum_id]},#{params[:id]},#{params[:page] || 1},#{params[:post_id] || -1})"}
 
   .path
     %span{"ng-repeat"=>"item in path"}
@@ -12,11 +12,13 @@
     .bold Описание локации:
     %div{"ng-bind-html"=>"topic.description | simpleFormat"}
 
+  .forum-pagination
+    %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
   %table.forum-tab.one-message-tab
     %tr
       %th.f-message-author Автор
       %th.f-message-content Пост
-  %table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts"}
+  %table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts", id:"{{post.id}}"}
     %tr
       %td.f-message-author
         .message-author-name{} {{post.char.name}}
@@ -32,7 +34,12 @@
             {{post.commenter}}:
           {{post.comment | simpleFormat}}
           .date{} {{post.commented_at}}
-    -#    TODO: add buttons for post edit && destroy
+        -#TODO: add buttons for post edit && destroy
+        .message-buttons.block-adm
+          .message-edit{"ng-if"=>"post.editable"}
+            %span.fa.fa-pencil{"ng-click"=>"edit(post)"}
+          .message-destroy{"ng-if"=>"post.deletable"}
+            %span.fa.fa-times{"ng-click"=>"removePost(post)"}
     %tr
       %td.f-message-more
         .message-author{"ng-if"=>"currentUser.group == 'admin'"}
@@ -47,7 +54,8 @@
           %a.opt-commentary{href: "#", title: "Комментировать от Мастера игры"} Комментировать
           %a.opt-quote{href: "#", title: "Процитировать сообщение"}
             “”
-
+  .forum-pagination
+    %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
   .topic-form.topic-reply-form
     %table.forum-tab.one-message-tab.form-tab
       %tr
@@ -59,11 +67,8 @@
           .send-notifications
             Отправка уведомлений
         %td.input.input-textarea
-          %textarea.inp.inp-type2.markitup{name:"post_text", "ng-model"=>"newPost.text", required:''}
-      %tr
-        %td.label
-        %td.input
-          {{newPost.text}}
+          %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:'', "mark-it-up"=>""}
+          %div{}
       %tr
         %td.label
         %td.input.input-btn

@@ -9,7 +9,7 @@
   padding: 10px;
 
   .path {
-    background: @bgimg-beige;
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
   }
 }
 
@@ -54,7 +54,7 @@
 
   td {
 	border-bottom:1px dashed @color-green2;
-//	vertical-align: middle;
+	vertical-align: middle;
 	padding:5px 10px;
 
 	&.f-section-name {
@@ -211,10 +211,78 @@
     }
   }
 }
+
+.topic-list-description {
+  margin-bottom: 10px;
+//  background: @bgimg-beige;
+  .box-shadow(0px 0px 5px 1px rgba(117,124,82,0.8));
+  padding: 6px;
+  border: 1px solid @color-brown1;
+  font-size: 1.1em;
+}
+
+.one-message-tab {
+  td {
+    vertical-align: top;
+    &.f-message-author {
+      .message-author-name {
+        font-family: ChinaCyrregular;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-bottom: 5px;
+        margin-top: 7px;
+        text-align: center;
+        text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
+      }
+
+      .message-author-category {
+        font-size: 1.1em;
+        font-style: italic;
+        text-align: center;
+        text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
+      }
+    }
+    &.f-message-content {
+      .message-date {
+        text-align: right;
+        color: @color-brown1;
+        &:hover {
+          color:@color-brown2;
+          font-size: 1.1em;
+        }
+      }
+      .message-text {
+        min-height: 280px;
+      }
+      .message-buttons {
+        margin-top: 20px;
+        text-align: right;
+        div {
+          display: inline-block;
+          margin-left: 2px;
+          padding: 5px;
+          &.message-edit {
+            &:hover {
+              color: @color-green3;
+              text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
+            }
+          }
+          &.message-destroy {
+            &:hover {
+              color: @color-red;
+              text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
+            }
+          }
+        }
+      }
+    }
+  }
+}
 .topic-reply-form {
   margin-top: 15px;
   .one-message-tab.form-tab {
     td {
+      vertical-align: middle;
       &.input {
         padding-left: 15px;
         textarea {

@@ -45,7 +45,7 @@ class ForumPostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
+    @post.update(post_params) if post_editable(@post)
     respond_to do |format|
       format.html { redirect to  }
       format.json { render :create }
@@ -53,14 +53,26 @@ class ForumPostsController < ApplicationController
   end
 
   def destroy
-    if @post == @post.topic.last_post && (current_user.is_in? [:admin, :master] || @post.char.delegated_to?(current_user))
-      @post.destroy
-      respond_to do |format|
+    respond_to do |format|
+      if post_deletable @post
+        @post.destroy
         format.html { redirect_to_topic }
-        format.json { render js: true }
+        format.json { render json: true }
+      else
+        format.json { render json: false }
       end
     end
   end
+
+  def post_editable(post)
+    current_user.is_in? [:admin, :master] || post.char.delegated_to?(current_user)
+  end
+  helper_method :post_editable
+
+  def post_deletable(post)
+    current_user.is_in? :admin || (post.id == post.topic.last_post_id && post_editable(post))
+  end
+  helper_method :post_deletable
 
   private
 
@@ -75,5 +87,7 @@ class ForumPostsController < ApplicationController
   def redirect_to_topic
     redirect_to forum_topic_path(params[:forum_id], @post.topic_id)
   end
+
+
 
 end

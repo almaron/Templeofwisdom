@@ -9,6 +9,9 @@ json.char do
   json.avatar_img image_tag(post.char.avatar_url(:thumb)) if post.char.avatar?
 end
 
+json.editable post_editable post
+json.deletable post_deletable post
+
 json.user do
   json.(post.user, :id, :name)
 end
