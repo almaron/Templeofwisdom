@@ -19,6 +19,7 @@
 //= require lib/select-parser
 //= require chosen.jquery
 //= require markItUp
+//= require fancybox
 
 //= require functions
 

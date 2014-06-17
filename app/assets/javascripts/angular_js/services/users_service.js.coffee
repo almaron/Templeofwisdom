@@ -1,4 +1,4 @@
-@app.service "UsersService", ["$filter", "User", ($filter, User) ->
+@app.service "UsersService", ["$filter", "AdminUser", ($filter, User) ->
 
   filterData = (data, filter) ->
     $filter('filter')(data, filter)

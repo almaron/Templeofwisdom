@@ -1,6 +1,6 @@
 .header
   = link_to "", root_path, class: "logo", title: "На главную"
-  = link_to "Линь Ян Шо", "#forum_path", class: "ljs-text", title: "В Монастырь"
+  = link_to "Линь Ян Шо", "/temple", class: "ljs-text", title: "В Монастырь"
   = render :partial => 'login_block'
 .menu
   .textsize{title: "Размер шрифта"}
@@ -14,7 +14,7 @@
     %li
       %a{href: "/pages/about"} О проекте
     %li
-      %a{href: "/forum"} Монастырь
+      %a{href: "/temple"} Монастырь
     %li
       %a{href: "/pages/map"} Карта
     - if current_user

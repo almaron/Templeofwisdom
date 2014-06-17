@@ -49,13 +49,13 @@
               %a{href: "/temple/{{forum.id}}/t/{{topic.id}}"} {{topic.head}}
             %pages-list{"base-url"=>"/temple/{{forum.id}}/t/{{topic.id}}", total:"topic.posts_count"}
           %td.f-author
-            %a{} {{topic.poster_name}}
+            %a{href:"/chars/{{topic.char_id}}"} {{topic.poster_name}}
           %td.f-messages{} {{topic.posts_count}}
           %td.f-messages{} {{topic.views_count}}
           %td.f-lastmessage
             .f-lastmessage-date{} {{topic.last_post_at}}
             .f-lastmessage-link
-              %a.f-lastmessage-author{} {{topic.last_post_char_name}}
-              %a.f-lastmessage-goto{href: "/temple/{{forum.id}}/t/{{topic.id}}?page=last&post={{topic.last_post_id}}"} ➜
+              %a.f-lastmessage-author{href:"/chars/{{topic.last_post_char_id}}"} {{topic.last_post_char_name}}
+              %a.f-lastmessage-goto{href: "/temple/{{forum.id}}/t/{{topic.id}}?page=1000&post={{topic.last_post_id}}"} ➜
 
 

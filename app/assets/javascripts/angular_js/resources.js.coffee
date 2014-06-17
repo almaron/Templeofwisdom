@@ -45,6 +45,10 @@
   $resource("/users/:id.json", {id:"@id"}, {update: {method: "PUT"}})
 ]
 
+@app.factory "AdminUser", ["$resource", ($resource) ->
+  $resource("/admin/users/:id.json", {id:"@id"}, {update: {method: "PUT"}})
+]
+
 @app.factory "Delegation", ["$resource", ($resource) ->
   $resource "/delegations/:id.json", {id:"@id"}
 ]

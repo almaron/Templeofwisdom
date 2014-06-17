@@ -1,5 +1,5 @@
 .anketa{"ng-controller" => "CharFormCtrl", "ng-init"=>"formInit(#{@char.id})"}
-  = form_for @char, remote: true do |f|
+  = form_for @char, remote: true, authenticity_token: true, html:{multipart:true} do |f|
     %table
       %tr
         %td.anketa-tt
@@ -10,8 +10,15 @@
         %td.anketa-tt
           #{f.label :remote_avatar_url}:
         %td.anketa-ipt
-          = f.text_field :remote_avatar_url, class:"inp inp-type2"
-          -# TODO: add avatar show link
+          .input-line
+            = f.text_field :remote_avatar_url, class:"inp inp-type2", placeholder:"Avatar link"
+          .input-line
+            = f.file_field :avatar, class:"inp inp-type2", placeholder:"Avatar file"
+          - if @char.avatar?
+            .show_avatar
+              %span.show-avatar{href:@char.avatar_url, fancybox:''}
+                %span.fa.fa-eye
+                Show avatar
       %tr
         %td.anketa-tt
           #{f.label :group}:

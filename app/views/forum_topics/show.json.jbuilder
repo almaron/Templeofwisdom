@@ -11,3 +11,7 @@ json.topic do
   json.description @topic.forum.description
   json.pages_count (@topic.posts.count.to_f / 15).ceil
 end
+
+json.chars @chars do |char|
+  json.(char, :id, :name)
+end

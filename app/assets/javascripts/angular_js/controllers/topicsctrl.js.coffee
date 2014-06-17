@@ -1,4 +1,4 @@
-@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "$anchorScroll", "Topic", "Post", ($scope, $http, $window, $anchorScroll, Topic, Post) ->
+@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "Topic", "Post", ($scope, $http, $window, Topic, Post) ->
 
   # Topic New
   $scope.newPost = {}
@@ -44,6 +44,7 @@
       else
         $scope.topic = data.topic
         $scope.path = data.path
+        $scope.chars = data.chars
         $scope.postPagination.total = data.topic.pages_count
         $scope.loadPosts($scope.postPagination.cur) if load_posts
     )
@@ -56,6 +57,7 @@
 
   $scope.loadPosts = (page) ->
     posts = Post.query {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, page: page}, ->
+      console.log posts.length
       if posts.length == 0
         $scope.postPagination.cur = $scope.postPagination.total
       else

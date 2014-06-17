@@ -27,7 +27,8 @@
   %table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts", id:"{{post.id}}"}
     %tr{"ng-hide"=>"selectedPost.id==post.id"}
       %td.f-message-author
-        .message-author-name{} {{post.char.name}}
+        .message-author-name{}
+          %a{href:"/chars/{{post.char_id}}"} {{post.char.name}}
         .message-author-category{} {{post.char.status}}
         .message-author-avatar{"ng-bind-html"=>"post.char.avatar_img | trustHtml"}
         .message-author-onoff.offline
@@ -37,10 +38,10 @@
         .message-text
           %div{"ng-bind-html"=>"post.show_text"}
           .message-comment{"ng-if"=>"post.commented_at", "ng-hide"=>"post.editComment"}
+            .date{} {{post.commented_at}}
             .bold
               {{post.commenter}}:
-            {{post.comment | simpleFormat}}
-            .date{} {{post.commented_at}}
+            .comment{"ng-bind-html"=>"post.comment | simpleFormat"}
           .message-comment-edit{"ng-show"=>"post.editComment"}
             .comment-form.any-form
               .form-line
@@ -51,10 +52,10 @@
               .form-line.input-btn
                 %button.btn.btn-mini{"ng-click"=>"commentPost(post)"}
                   %span.fa.fa-check
-                    Отправить
+                  Отправить
                 %button.btn.btn-mini{"ng-click"=>"post.editComment = false"}
                   %span.fa.fa-times
-                    Отменить
+                  Отменить
         .message-buttons.block-adm
           .message-comment{"ng-if"=>"post.commentable"}
             %span.fa.fa-comment{"ng-click"=>"post.editComment = true"}
@@ -80,7 +81,6 @@
         .select-char
           %label{for:"char_name"} Персонаж:
           %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
-          {{selectedPost.char_id}}
       %td.input.input-textarea
         %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"selectedPost.text", required:'', "mark-it-up"=>""}
         .input-btn
@@ -91,14 +91,14 @@
 
   .forum-pagination
     %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
-  .topic-form.topic-reply-form{"ng-if"=>"!topic.isClosed && !selectedPost.id"}
+
+  .topic-form.topic-reply-form{"ng-if"=>"!topic.isClosed && !selectedPost.id && chars.length > 0"}
     %table.forum-tab.one-message-tab.form-tab
       %tr.post-edit
         %td.label
           .select-char
             %label{for:"char_name"} Персонаж:
             %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
-            {{newPost.char_id}}
           .send-notifications
             Отправка уведомлений
         %td.input.input-textarea

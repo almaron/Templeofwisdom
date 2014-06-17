@@ -11,6 +11,7 @@ class Forum < ActiveRecord::Base
                     last_post_id: post.id,
                     last_post_topic_id: post.topic_id,
                     last_post_char_name: post.char.name,
+                    last_post_char_id: post.char_id,
                     last_post_at: post.created_at
                 })
     self.path.update_all("posts_count = posts_count + 1")
@@ -36,6 +37,7 @@ class Forum < ActiveRecord::Base
                     last_post_id: last_post.id,
                     last_post_topic_id: last_post.topic_id,
                     last_post_char_name: last_post.char.name,
+                    last_post_char_id: last_post.char_id,
                     last_post_at: last_post.created_at
                 })
   end

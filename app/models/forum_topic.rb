@@ -28,12 +28,14 @@ class ForumTopic < ActiveRecord::Base
     user && (user.is_in?([:admin, :master]) || self.posts.first.char.delegated_to?(user))
   end
 
+
   private
 
   def update_last_post(post)
     self.update({
                     last_post_id: post.id,
                     last_post_char_name: post.char.name,
+                    last_post_char_id: post.char_id,
                     last_post_at: post.created_at
                 })
   end

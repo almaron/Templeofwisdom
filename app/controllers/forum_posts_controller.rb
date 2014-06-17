@@ -64,18 +64,19 @@ class ForumPostsController < ApplicationController
     end
   end
 
+  #TODO Move this logic into ForumPost
   def post_editable(post)
-    current_user.is_in? [:admin, :master] || post.char.delegated_to?(current_user)
+    current_user && (current_user.is_in?([:admin, :master]) || post.char.delegated_to?(current_user))
   end
   helper_method :post_editable
 
   def post_deletable(post)
-    current_user.is_in? :admin || (post.id == post.topic.last_post_id && post_editable(post))
+    current_user && (current_user.is_in? :admin || (post.id == post.topic.last_post_id && post_editable(post)))
   end
   helper_method :post_deletable
 
   def post_commentable
-    current_user.is_in? [:admin, :master]
+    current_user && (current_user.is_in? [:admin, :master])
   end
   helper_method :post_commentable
 

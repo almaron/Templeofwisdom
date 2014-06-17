@@ -11,16 +11,22 @@ describe ForumTopic do
 
   describe "add_post" do
 
-    it "should update topic" do
+    before :each do
       @post = @topic.posts.new(@post_params)
+    end
+
+    it "should update topic" do
       @topic.add_post @post
       expect(@topic.last_post_id).to eql(100)
     end
 
     it "should send add_post to forum" do
-      @post = @topic.posts.new(@post_params)
       expect(@forum).to receive(:add_post)
       @topic.add_post @post
+    end
+
+    it "should increase the postscount" do
+      expect{@topic.add_post @post}.to change{@topic.posts_count}.by 1
     end
 
   end
@@ -50,6 +56,12 @@ describe ForumTopic do
       @post.topic_id = 5
       expect(@forum).to receive(:remove_post).with(@post)
       @topic.remove_post @post
+    end
+
+    it "should decrease the postscount" do
+      @topic.posts_count = 5
+      @topic.posts.new @post_params
+      expect(@topic.posts_count).to eql(4)
     end
 
   end

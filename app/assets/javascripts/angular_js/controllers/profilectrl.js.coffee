@@ -1,4 +1,4 @@
-@app.controller "ProfileCtrl", ["$scope", "Profile",  "User", "Delegation", "$http", "$sce", "ArrayService", ($scope, Profile, User, Delegation, $http, $sce, ArrayService) ->
+@app.controller "ProfileCtrl", ["$scope", "Profile",  "AdminUser", "Delegation", "$http", "$sce", "ArrayService", ($scope, Profile, User, Delegation, $http, $sce, ArrayService) ->
 
   $scope.loadProfile = ->
     data = Profile.get({}, () ->

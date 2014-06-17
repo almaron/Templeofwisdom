@@ -6,7 +6,8 @@ if params[:short]
   end
 else
   json.(@char, :id, :name, :status_line, :status_id, :open_player)
-  json.avatar @char.avatar_url(:thumb) if @char.avatar?
+  json.avatar image_tag(@char.avatar_url(:thumb)) if @char.avatar?
+  json.avatar? @char.avatar?
   json.profile do
     json.(@char.profile, :real_age, :birth_date, :place, :beast, :person, :points, :phisics, :look,:bio, :character, :items, :other, :comment)
   end
@@ -15,12 +16,12 @@ else
     json.name I18n.t("char_groups.names.#{@char.group.name}")
   end
 
-  if current_user.is_in? :admin || @char.open_player > 0 || @char.owned_by == current_user
+  if (@char.open_player && @char.open_player > 0) || (current_user && (current_user.is_in? :admin || @char.owned_by == current_user))
     json.owner { json.(@char.owned_by, :id, :name) }
   end
 
   json.userEditable @char.owned_by == current_user
-  json.adminEditable current_user.is_in? :admin, :master
+  json.adminEditable current_user && current_user.is_in?([:admin, :master])
 
 end
 

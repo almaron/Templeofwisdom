@@ -36,8 +36,8 @@ class Char < ActiveRecord::Base
   end
 
   def delegated_to?(user)
-    user_id = user.is_a? User ? user.id : user
-    self.users.find(user_id)
+    user_id = user.is_a?(User) ? user.id : user
+    self.char_delegations.where(user_id:user_id).any?
   end
 
   has_many :char_skills, dependent: :destroy

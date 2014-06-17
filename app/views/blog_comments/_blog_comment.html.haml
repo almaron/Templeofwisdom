@@ -5,8 +5,8 @@
       .blog-comment-date{} {{blog_comment.dateLine}}
     .blog-comment-text{"ng-bind-html"=>"blog_comment.content"}
     .block-adm
-      %span.delete{title: "Удалить", "ng-if" => "commentDeleteLink(blog_comment)", "ng-click" => "deleteComment(blog_comment)"} [&#21024;&#38500;]
-      %span.edit{title: "Редактировать","ng-if" => "commentEditLink(blog_comment)", "ng-click"=>"blog_comment.show = true"} [ &#21464;&#26356; ]
+      %span.fa.fa-times{title: "Удалить", "ng-if" => "commentDeleteLink(blog_comment)", "ng-click" => "deleteComment(blog_comment)"}
+      %span.fa.fa-pencil{title: "Редактировать","ng-if" => "commentEditLink(blog_comment)", "ng-click"=>"blog_comment.show = true"}
     .addnews{"ng-show" => "blog_post.edit"}
       .any-form
         %form{name:"comment_form", novalidate:"", "ng-submit" => "updateComment(blog_comment)" }

@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614053637) do
+ActiveRecord::Schema.define(version: 20140616181443) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment"
   end
 
   add_index "admin_configs", ["name"], name: "index_admin_configs_on_name", unique: true, using: :btree
@@ -130,16 +131,18 @@ ActiveRecord::Schema.define(version: 20140614053637) do
 
   create_table "forum_topics", force: true do |t|
     t.integer  "forum_id"
-    t.string   "head",                            null: false
     t.string   "poster_name"
-    t.integer  "closed"
+    t.integer  "closed",              default: 0
     t.integer  "hidden",              default: 0
     t.integer  "last_post_id"
     t.datetime "last_post_at"
     t.string   "last_post_char_name"
-    t.integer  "posts_count",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "head",                            null: false
+    t.integer  "posts_count",         default: 0
+    t.integer  "char_id"
+    t.integer  "last_post_char_id"
   end
 
   create_table "forums", force: true do |t|
@@ -153,12 +156,13 @@ ActiveRecord::Schema.define(version: 20140614053637) do
     t.integer  "last_post_topic_id"
     t.datetime "last_post_at"
     t.string   "last_post_char_name"
-    t.integer  "posts_count",         default: 0
-    t.integer  "topics_count",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sort_order",          default: 0
+    t.integer  "topics_count",        default: 0
+    t.integer  "posts_count",         default: 0
     t.integer  "is_category",         default: 0
+    t.integer  "last_post_char_id"
   end
 
   create_table "guest_posts", force: true do |t|

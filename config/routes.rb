@@ -29,16 +29,6 @@ Rails.application.routes.draw do
 
   resources :guest_posts, :path => "guestbook", :except => [:show]
 
-  scope "/admin" do
-    resources :users, except: [:new, :create, :show]
-    resources :chars, controller: "admin_chars", except: [:new, :create]
-    resources :forums, controller: "admin_forums" do
-      collection do
-        put "" => "admin_forums#save_tree"
-      end
-    end
-  end
-
   get "/users/:id" => "users#show", as: :show_user
   get "/user_groups" => "user_groups#index"
   resource :profile, only:[:show, :edit, :update]
@@ -63,6 +53,16 @@ Rails.application.routes.draw do
 
   # Config routes
   resources :configs, except: [:show, :new, :edit]
+
+  scope "/admin" do
+    resources :users, except: [:new, :create, :show]
+    resources :chars, controller: "admin_chars", except: [:new, :create], as: :admin_chars
+    resources :forums, controller: "admin_forums" do
+      collection do
+        put "" => "admin_forums#save_tree"
+      end
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -3,25 +3,25 @@
     %h3 Двор монастыря
     %ul.sidemenu
       %li
-        = link_to "Как начать игру", "#", remote: true
+        = link_to "Как начать игру", "/pages/how_to_start"
       %li
-        %a{href: "#"} Способности
+        %a{href: "/skills/magic"} Способности
       %li
-        %a{href: "#"} Навыки
+        %a{href: "/skills/phisic"} Навыки
       %li
-        %a{href: "#"} Персонажи
+        %a{href: "/chars"} Персонажи
       %li
-        %a{href: "#"} Помощь по игре
+        %a{href: "/pages/game_help"} Помощь по игре
       %li
-        %a{href: "#"} Библиотека
+        %a{href: "/pages/library"} Библиотека
       %li
         %a{href: "#{guest_posts_path}"} Гостевой свиток
       %li
         %a{href: "#{blog_posts_path}"} Блог Мастеров
       %li
-        %a{href: "#"} Газета
+        %a{href: "/journals"} Газета
       %li
-        %a{href: "#"} Контакты
+        %a{href: "/pages/contacts"} Контакты
   .block.weather.winter
     %h3 Погода
     .season Зима
