@@ -1,5 +1,8 @@
 .forum-ctrl{"ng-controller"=>"ForumsCtrl", "ng-init"=>"initForum(#{params[:id]}, #{params[:page] || 1})"}
   .path
+    %span
+      %a{href:"/temple"} Список форумов
+      %span.fa.fa-angle-double-right
     %span{"ng-repeat"=>"item in path"}
       %a{href:"/temple/{{item.id}}"} {{item.name}}
       %span.fa.fa-angle-double-right{"ng-if"=>"item.id != forum.id"}

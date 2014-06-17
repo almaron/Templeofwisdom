@@ -102,11 +102,11 @@ class ForumTopicsController < ApplicationController
   private
 
   def get_topic
-    @topic = ForumTopic.find(params[:id])
+    @topic = ForumTopic.find_by(id:params[:id])
     unless @topic
       respond_to do |format|
         format.html { redirect_to forum_path(params[:forum_id]) }
-        format.json { render json: {redirect: forum_path(params[:forum_id])}, status: 500 }
+        format.json { render json: {redirect: forum_path(params[:forum_id])} }
       end
     end
   end

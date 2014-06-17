@@ -16,7 +16,7 @@ class ForumTopic < ActiveRecord::Base
 
 
   def remove_post(post)
-    self.posts.empty? ? self.destroy : update_last_post(self.posts.last)
+    self.posts.empty? ? self.destroy : update_last_post(self.posts.last, -1)
     self.forum.remove_post(post) if self.forum
   end
 
@@ -28,15 +28,28 @@ class ForumTopic < ActiveRecord::Base
     user && (user.is_in?([:admin, :master]) || self.posts.first.char.delegated_to?(user))
   end
 
+  after_destroy :remove_topic
+
+  def remove_topic
+    self.forum.remove_topic self, self.posts.count
+  end
+
+  after_create :add_topic
+
+  def add_topic
+    self.forum.add_topic
+  end
+
 
   private
 
-  def update_last_post(post)
+  def update_last_post(post, inc=1)
     self.update({
                     last_post_id: post.id,
                     last_post_char_name: post.char.name,
                     last_post_char_id: post.char_id,
-                    last_post_at: post.created_at
+                    last_post_at: post.created_at,
+                    posts_count: self.posts_count + inc
                 })
   end
 

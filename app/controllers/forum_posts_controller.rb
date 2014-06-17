@@ -71,7 +71,7 @@ class ForumPostsController < ApplicationController
   helper_method :post_editable
 
   def post_deletable(post)
-    current_user && (current_user.is_in? :admin || (post.id == post.topic.last_post_id && post_editable(post)))
+    current_user && (current_user.is_in?(:admin) || (post.id == post.topic.last_post_id && post.char.delegated_to?(current_user)))
   end
   helper_method :post_deletable
 

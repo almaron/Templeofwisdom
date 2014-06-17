@@ -20,7 +20,7 @@
     $http.post("/temple/"+$scope.forumId+"/t.json",
       {post:$scope.newPost, topic:$scope.newTopic}
     ).success((data) ->
-      $window.location.href data.redirect
+      $window.location.assign data.redirect
     ).error((data) ->
       $scope.errors = data.errors
     )
@@ -40,7 +40,7 @@
   $scope.loadTopic = (load_posts=false) ->
     data = Topic.get({forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id}, ->
       if data.redirect
-        $window.location.href data.redirect
+        $window.location.assign data.redirect
       else
         $scope.topic = data.topic
         $scope.path = data.path
@@ -53,7 +53,7 @@
     if angular.isDefined newVal && newVal
       $scope.loadPosts newVal
       $window.history.pushState({},"",$scope.currentPath+"?page="+newVal)
-      $anchorScroll()
+#      $anchorScroll()
 
   $scope.loadPosts = (page) ->
     posts = Post.query {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, page: page}, ->

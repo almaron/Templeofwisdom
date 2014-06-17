@@ -16,14 +16,14 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_access
-    if require_login
-      render partial: "application/403" unless current_user.is_in? :admin
+    unless current_user && current_user.is_in?(:admin)
+      redirect_to root_path, alert: t("messages.alert.general.error_403")
     end
   end
 
   def master_access
-    if require_login
-      render partial: "application/403" unless current_user.is_in? [:admin, :master]
+    unless current_user && current_user.is_in?([:admin, :master])
+      redirect_to root_path, alert: t("messages.alert.general.error_403")
     end
   end
 

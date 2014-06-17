@@ -58,9 +58,10 @@ describe ForumTopic do
       @topic.remove_post @post
     end
 
-    it "should decrease the postscount" do
+    it "should decrease the posts_count" do
       @topic.posts_count = 5
-      @topic.posts.new @post_params
+      @post = @topic.posts.new @post_params
+      @topic.remove_post @post
       expect(@topic.posts_count).to eql(4)
     end
 

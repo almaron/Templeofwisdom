@@ -31,13 +31,24 @@ describe Forum do
     end
 
     it "should increate the posts_count" do
-      expect{@forum.add_post @post}.to change{@forum.posts_count}.by(1)
+      @forum.add_post @post
+      @forum.reload
+      expect(@forum.posts_count).to eql(1)
     end
 
   end
 
   describe :remove_post do
+    before :each do
+      @forum = create :forum
+      @forum.update(posts_count: 5)
+    end
 
+    it 'should decrease the forums posts_count' do
+      @forum.remove_post ForumPost.new
+      @forum.reload
+      expect(@forum.posts_count).to eql(4)
+    end
   end
 
   describe :add_topic do
@@ -47,12 +58,16 @@ describe Forum do
     end
 
     it "should increase topics_count" do
-      expect{@forum.add_topic}.to change{@forum.topics_count}.by 1
+      @forum.add_topic
+      @forum.reload
+      expect(@forum.topics_count).to eql(1)
     end
 
     it "should increase the parents' topics_count" do
-      second_forum = @forum.children.create(attributes_for :forum)
-      expect{second_forum.add_topic}.to change{@forum.topics_count}.by 1
+      second_forum = @forum.children.create(name:"Second")
+      second_forum.add_topic
+      @forum.reload
+      expect(@forum.topics_count).to eql(1)
     end
 
   end
@@ -60,16 +75,20 @@ describe Forum do
   describe :remove_topic do
     before :each do
       @forum = create :forum
-      @forum.topics_count = 5
+      @forum.update topics_count: 5
     end
 
     it "should decrease the topics_count" do
-       expect{@forum.remove_topic}.to change{@forum.topics_count}.by -1
+       @forum.remove_topic
+       @forum.reload
+       expect(@forum.topics_count).to eql(4)
     end
 
     it "should decrease the parents' topics_count" do
-      second_forum = @forum.children.create(attributes_for :forum)
-      expect{second_forum.remove_topic}.to change{@forum.topics_count}.by -1
+      second_forum = @forum.children.create(name:"Second line")
+      second_forum.remove_topic
+      @forum.reload
+      expect(@forum.topics_count).to eql(4)
     end
   end
 

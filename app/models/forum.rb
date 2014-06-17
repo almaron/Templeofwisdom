@@ -18,28 +18,42 @@ class Forum < ActiveRecord::Base
   end
 
   def add_topic
-    self_path.update_all("topics_count = topics_count + 1")
+    self.path.update_all("topics_count = topics_count + 1")
   end
 
-  has_many :posts, through: :topics
 
   def remove_post(post)
     self.path.each { |f| f.update_last_post if post.id == f.last_post_id }
+    self.path.update_all("posts_count = posts_count - 1")
   end
 
-  def remove_topic
-    self_path.update_all("topics_count = topics_count - 1")
+  def remove_topic(topic = nil, posts_count=0)
+    self.path.update_all("topics_count = topics_count - 1")
+    if topic
+      self.path.each { |f| f.update_last_post if topic.id == f.last_post_topic_id }
+    end
+    self.path.update_all("posts_count = posts_count - #{posts_count}") if posts_count > 0
   end
 
   def update_last_post
     last_post = ForumPost.joins(:topic).where(forum_topics: {forum_id: self.subtree_ids}).last
-    self.update({
+    if last_post
+      self.update({
                     last_post_id: last_post.id,
                     last_post_topic_id: last_post.topic_id,
                     last_post_char_name: last_post.char.name,
                     last_post_char_id: last_post.char_id,
                     last_post_at: last_post.created_at
                 })
+    else
+      self.update({
+                      last_post_id: nil,
+                      last_post_topic_id: nil,
+                      last_post_char_name: nil,
+                      last_post_char_id: nil,
+                      last_post_at: nil,
+                  })
+    end
   end
 
   scope :categories, ->{where(is_category: 1)}

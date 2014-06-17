@@ -21,10 +21,13 @@
     %table.useful-links-table
       %tr
         %td
-          .act-line
-            %a{href: "#"} Список тем
-          .act-line
-            %a{href: "#"} Заявка на проверку ролевки
+          - if current_user && current_user.is_in?(:admin)
+            .act-line
+              %a{href: "/admin/chars"} Админка персонажей
+            .act-line
+              %a{href: "/admin/users"} Админка игроков
+            .act-line
+              %a{href:"/admin/forums"} Админка форумов
         %td
           .act-line
             %a{href: "#"} Список тем
@@ -32,7 +35,7 @@
             %a{href: "#"} Заявка на проверку ролевки
     .act-head Меню Персонажа
     .act-line
-      %a{href: "#"} Создать нового персонажа
+      %a{href: new_char_path} Создать нового персонажа
     .act-subhead
       Мои персонажи
     .act-line

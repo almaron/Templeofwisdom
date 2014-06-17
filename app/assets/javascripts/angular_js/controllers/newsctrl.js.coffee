@@ -41,7 +41,7 @@
       $window.history.pushState({controller:"news", action:"index", page:newVal},"","/news?page="+newVal)
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
-    $scope.newNews.author = newVal.name if angular.isDefined newVal && angular.isDefined $scope.newNews
+    $scope.newNews.author = newVal.name if (angular.isDefined(newVal) && angular.isDefined($scope.newNews))
 
   # Private methods
 
