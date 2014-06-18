@@ -1,0 +1,20 @@
+%table.users-table.ngtable{'ng-table' => 'tableParams', 'template-pagination'=>'custom/pager'}
+  %tr.one-line{'ng-repeat' => 'char in $data'}
+    %td{'data-title' => "'№'", sortable: "'id'"}
+      {{char.id}}
+    %td.line-name{'data-title' => "'Имя'", sortable: "'name'"}
+      %span{'ng-click'=>'showChar(char)'} {{char.name}}
+    %td{'data-title' => "'Владелец'", sortable: "'owner.name'"}
+      %a{href:'/users/{{char.owner.id}}'} {{char.owner.name}}
+    %td{'data-title' => "'Группа'", sortable: "'group_name'"}
+      {{char.group_name}}
+    %td{'data-title' => "'Статус'", sortable: "'status_name'"}
+      {{char.status_name}}
+    %td{'data-title' => "'Зарегистрирован'", sortable: "'createdAt'"}
+      {{char.createdAt}}
+    %td{'data-title' => "'Баллов'", sortable: "'points'"}
+      {{char.points}}
+    %td.line-edit{}
+      %span.user-edit.fa.fa-pencil{'ng-click'=>'editChar(char)'}
+    %td.line-remove{}
+      %span.user-edit.fa.fa-times{'ng-click'=>'removeChar(char)'}

@@ -30,6 +30,7 @@ class Char < ActiveRecord::Base
   def owned_by
     self.users.where(char_delegations: {owner:1}).first
   end
+  alias_method :owner, :owned_by
 
   def delegated_to
     self.users.where(char_delegations: {owner:0})
@@ -55,6 +56,8 @@ class Char < ActiveRecord::Base
 # Delegates the created char to a user, mentioned as :creator. Don't forget to set it in the controller
   after_create :delegate_to_creator
   attr_accessor :creator
+
+  has_many :posts, class_name: ForumPost
 
   private
 

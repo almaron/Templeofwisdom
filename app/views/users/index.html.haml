@@ -1,9 +1,9 @@
-.users-wrapper{"ng-controller"=>"UserCtrl", "ng-init"=>""}
+.admin-wrapper{"ng-controller"=>"UserCtrl", "ng-init"=>""}
   .user-filter
     %input.form-control.inp.inp-type2{"ng-model" => "filter.$", type: "text", id:"user-filter"}
     %label.fa.fa-search{for:"user-filter"} &nbsp;
 
-  = render :partial => 'user_ng_table'
+  = render :partial => 'user_ng_tabel'
   .edit-user-div{"ng-show"=>"selectedUser.id"}
     .edit-close
       %span.fa.fa-times{"ng-click"=>"selectedUser = {}"}
