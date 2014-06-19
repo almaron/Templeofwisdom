@@ -56,7 +56,11 @@ Rails.application.routes.draw do
 
   scope "/admin" do
     resources :users, except: [:new, :create, :show]
-    resources :chars, controller: "admin_chars", except: [:new, :create], as: :admin_chars
+    resources :chars, controller: "admin_chars", except: [:new, :create], as: :admin_chars do
+      put :accept
+      put :approve
+      put :decline
+    end
     resources :forums, controller: "admin_forums" do
       collection do
         put "" => "admin_forums#save_tree"

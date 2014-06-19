@@ -33,4 +33,5 @@
   $scope.loadChars = () ->
     $scope.pendingChars = $scope.loadBlock 'pending'
     $scope.reviedChars = $scope.loadBlock 'on_review'
+    $scope.savedChars = $scope.loadBlock 'saved'
 ]

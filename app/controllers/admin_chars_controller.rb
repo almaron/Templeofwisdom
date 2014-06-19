@@ -1,7 +1,7 @@
 class AdminCharsController < ApplicationController
 
   before_action :admin_access
-  before_action :get_char, only: [:update, :destroy]
+  before_action :get_char, only: [:update, :destroy, :accept, :approve, :decline]
   # before_action :set_only_content
 
   def index
@@ -38,7 +38,41 @@ class AdminCharsController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @char.update char_params
+        format.html {  }
+        format.json {  }
+        format.js   {  }
+      else
+        format.html {  }
+        format.json {  }
+        format.js   {  }
+      end
+    end
+  end
 
+  def accept
+    @char.accept current_user
+    respond_to do |f|
+      f.html { redirect_to admin_chars_path }
+      f.json { render :json => {success: true} }
+    end
+  end
+
+  def approve
+    @char.approve current_user
+    respond_to do |f|
+      f.html { redirect_to admin_chars_path }
+      f.json { render :json => {success: true} }
+    end
+  end
+
+  def decline
+    @char.decline
+    respond_to do |f|
+      f.html { redirect_to admin_chars_path }
+      f.json { render :json => {success: true} }
+    end
   end
 
   def destroy
@@ -52,7 +86,8 @@ class AdminCharsController < ApplicationController
   private
 
   def get_char
-    @char = Char.find(params[:id])
+    id = params[:id] || params[:admin_char_id]
+    @char = Char.find id
   end
 
   def char_params

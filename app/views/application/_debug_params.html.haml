@@ -4,6 +4,9 @@
       Params: #{params}
     %div
       Session: #{session[:incomplete_user].inspect}
+    %div
+      - if current_user
+        Current user: #{current_user.id} - #{current_user.name} - #{current_user.current_ip}
     .rails_notice
       Notice: #{notice}
     .rails_alert

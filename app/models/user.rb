@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications
 
+  attr_accessor :current_ip
+
   validates_confirmation_of :password, :if => :password, message: I18n.t("activerecord.errors.models.user.attributes.password.confirmation")
   validates :name, :presence => true, :uniqueness => true
   validates :email, :presence => true, :email => true

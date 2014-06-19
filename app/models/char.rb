@@ -59,12 +59,61 @@ class Char < ActiveRecord::Base
 
   has_many :posts, class_name: ForumPost
 
+  # Char admin methods
+
+  def accept(user=nil)
+    if self.status_id == 2
+      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: create_profile_topic(user))
+      #   TODO send notification and email
+    end
+  end
+
+  def approve(user=nil)
+    if self.status_id == 3
+      self.update(status_id: 5)
+      #   TODO send notification and email
+    end
+  end
+
+  def decline
+
+  end
+
   private
 
   def delegate_to_creator
     if self.creator
       self.creator.default_char ? self.delegate_to(self.creator, owner:1) : self.delegate_to(self.creator, owner:1, default:1)
     end
+  end
+
+  def create_profile_topic(user)
+    topic = ForumTopic.create accept_post_params(user)
+    topic.id
+  end
+
+  def get_char_forum_id
+    AdminConfig.find_by(name: "char_profile_forum_id_#{self.group_id}").value.to_i
+  end
+
+  def get_accept_master_id
+    AdminConfig.find_by(name: 'accept_master_id').value.to_i
+  end
+
+  def accept_post_params(user)
+    {
+        head: self.name,
+        forum_id: get_char_forum_id,
+        char_id: self.id,
+        posts_attributes: [
+            {
+                char_id: get_accept_master_id,
+                user_id: user.id,
+                ip: user.current_ip,
+                text: render_to_string(partial: 'admin_chars/posts/profile_post')
+            }
+        ]
+    }
   end
 
 end
