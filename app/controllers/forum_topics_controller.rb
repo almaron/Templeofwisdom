@@ -28,6 +28,9 @@ class ForumTopicsController < ApplicationController
            @chars = @topic.forum.technical > 0 ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where('status_id = 5')
           end
         }
+      elsif !topic_in_place
+        format.json { render json: { redirect: forum_topic_path(@topic.forum_id, @topic.id) }, status: 500 }
+        format.html { redirect_to "#{forum_topic_path(@topic.forum_id, @topic.id)}?page=#{params[:page]}&post=#{params[:post]}" }
       else
         format.json { render json: {redirect: forum_path(@topic.forum_id), param_forum_id: params[:forum_id], topic_forum_id: @topic.forum_id}, status: 500}
         format.html {
