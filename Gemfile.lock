@@ -223,6 +223,8 @@ GEM
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
     ref (1.0.5)
+    render_anywhere (0.0.9)
+      rails (>= 3.0.7)
     rmagick (2.13.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
@@ -342,6 +344,7 @@ DEPENDENCIES
   rack-livereload
   rails (= 4.1.1)
   rb-inotify (~> 0.9)
+  render_anywhere
   rmagick
   rspec-rails
   sass-rails (~> 4.0.3)

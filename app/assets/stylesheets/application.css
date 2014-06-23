@@ -17,7 +17,7 @@
  *= require font-awesome
  *= require markItUp
  *
- * require style
+ *= require style
  *= require admin
  *= require forum
  *= require added

@@ -62,7 +62,7 @@
 ]
 
 @app.factory "Config", ["$resource", ($resource) ->
-  $resource "/configs/:id.json", {id:"@id"}, {update: {method: "PUT"}}
+  $resource "/admin/configs/:id.json", {id:"@id"}, {update: {method: "PUT"}}
 ]
 
 @app.factory "Forum", ["$resource", ($resource) ->

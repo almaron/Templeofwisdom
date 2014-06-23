@@ -1,0 +1,117 @@
+.char-edit-form.any-form{'ng-controller'=>'AdminCharFormCtrl'}
+  %table.char-edit
+    %tr.form-line
+      %td.label
+        %label{for:'char_name'} Имя:
+      %td.input
+        %input.inp.inp-type2{'ng-model'=>'editedChar.name', id:'char_name'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_avatar'} Аватар:
+      %td.input
+        %input.inp.inp-type2{'ng-model'=>'editedChar.remote_avatar_url', id:'char_avatar'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_group'}
+          Группа:
+      %td.input
+        %select.inp.inp-type2.inp-short{'ng-model'=>'editedChar.group_id', 'ng-options'=>'group.id as group.name for group in acessibleGroups', id:'char_group'}
+    %tr.form-line
+      %td.label
+        %label{for:'profile_birth_date'}
+          Дата рождения:
+      %td.input
+        %input.inp.inp-type2.inp-short{'ng-model'=>'editedChar.profile_attributes.birth_date', id:'profile_birth_date', 'ng-change'=>'changeSeasonId()'}
+    %tr.form-line
+      %td.label
+        %label{for:'profile_real_age'}
+          Возраст:
+      %td.input
+        %input.inp.inp-type2.inp-short{'ng-model'=>'editedChar.profile_attributes.real_age', id:'profile_real_age'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_place'}
+          Место рождения:
+      %td.input
+        %input.inp.inp-type2{id:'char_place', 'ng-model'=>'editedChar.profile_attributes.place'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_beast'}
+          Зверь:
+      %td.input
+        %input.inp.inp-type2{id:'char_beast', 'ng-model'=>'editedChar.profile_attributes.beast'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_beast'}
+          Физические данные:
+      %td.input
+        %textarea.inp.inp-type2{id:'char_phisics', 'ng-model'=>'editedChar.profile_attributes.phisics'}
+    %tr.form-line
+      %td.label
+        %label{}
+          Способности:
+      %td.input
+        .skills-added
+          .skills-added-line{'ng-repeat'=>'ch in editedChar.magic_skills'}
+            %span.skills-added-name{} {{ch.skill_name}}
+            %span.skills-added-level{} {{ch.level_name}}
+            %span.skills-added-remove.fa.fa-times{title:'Удалить способность', 'ng-click'=>'removeSkill(editedChar.magic_skills, ch)'}
+        .skills-add-form
+          %select.inp.inp-type2.skills-addform-name{title: "Выберите способность", "ng-model"=>"newCharSkill.skill_id", "ng-options"=>"skill.id as skill.name for skill in magicSkills"}
+          %select.inp.inp-type2.skills-addform-level{title: "Выберите уровень владения способностью", "ng-model"=>"newCharSkill.level_id", "ng-options"=>"level.id as level.name for level in levels"}
+          %input.btn.btn-add{title: "Добавить выбранную способность в свою анкету", type: "button", value: "➔", "ng-click"=>"addMagicSkill(newCharSkill)"}
+    %tr.form-line
+      %td.label
+        %label{}
+          Навыки:
+      %td.input
+        .skills-added
+          .skills-added-line{'ng-repeat'=>'ch in editedChar.phisic_skills'}
+            %span.skills-added-name{} {{ch.skill_name}}
+            %span.skills-added-level{} {{ch.level_name}}
+            %span.skills-added-remove.fa.fa-times{title:'Удалить способность', 'ng-click'=>'removeSkill(editedChar.phisic_skills, ch)'}
+        .skills-add-form
+          %select.inp.inp-type2.skills-addform-name{title: "Выберите способность", "ng-model"=>"newCharSkill.skill_id", "ng-options"=>"skill.id as skill.name for skill in magicSkills"}
+          %select.inp.inp-type2.skills-addform-level{title: "Выберите уровень владения способностью", "ng-model"=>"newCharSkill.level_id", "ng-options"=>"level.id as level.name for level in levels"}
+          %input.btn.btn-add{title: "Добавить выбранную способность в свою анкету", type: "button", value: "➔", "ng-click"=>"addPhisicSkill(newCharSkill)"}
+    %tr.form-line
+      %td.label
+        %label{for:'char_items'}
+          Предметы:
+      %td.input
+        %textarea.inp.inp-type2{id:'char_items', 'ng-model'=>'editedChar.profile_attributes.items'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_bio'}
+          Биография:
+      %td.input
+        %textarea.inp.inp-type2.inp-bio{id:'char_bio', 'ng-model'=>'editedChar.profile_attributes.bio'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_look'}
+          Внешность:
+      %td.input
+        %textarea.inp.inp-type2{id:'char_look', 'ng-model'=>'editedChar.profile_attributes.look'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_character'}
+          Характер:
+      %td.input
+        %textarea.inp.inp-type2{id:'char_character', 'ng-model'=>'editedChar.profile_attributes.character'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_other'}
+          Прочее:
+      %td.input
+        %textarea.inp.inp-type2{id:'char_other', 'ng-model'=>'editedChar.profile_attributes.other'}
+    %tr.form-line
+      %td.label
+        %label{for:'char_person'}
+          Персона на аватаре:
+      %td.input
+        %input.inp.inp-type2{id:'char_person', 'ng-model'=>'editedChar.profile_attributes.person'}
+    %tr.form-line
+      %td.label
+      %td.input.input-btn
+        %button.btn.btn-standart{'ng-click'=>'updateChar()'}
+          Сохранить

@@ -13,7 +13,7 @@ class AdminCharsController < ApplicationController
                     {status_id: 5}
                   when 'pending'
                     {status_id: 2}
-                  when 'on_review'
+                  when 'reviewed'
                     {status_id: [3,4]}
                   when 'saved'
                     {status_id: 1}
@@ -37,15 +37,17 @@ class AdminCharsController < ApplicationController
 
   end
 
+  # noinspection RubyResolve
   def update
+    @char.char_skills.destroy_all
     respond_to do |format|
       if @char.update char_params
-        format.html {  }
-        format.json {  }
+        format.html { redirect_to admin_chars_path }
+        format.json { render json: {success:true}  }
         format.js   {  }
       else
-        format.html {  }
-        format.json {  }
+        format.html { redirect_to admin_chars_path }
+        format.json { render json: {success:false}  }
         format.js   {  }
       end
     end
@@ -76,7 +78,7 @@ class AdminCharsController < ApplicationController
   end
 
   def destroy
-    @char.posts.any? ? @char.destroy : @char.update(status_id: 0)
+    @char.remove
     respond_to do |format|
       format.html { redirect_to admin_chars_path }
       format.json { render json: {success: true} }
@@ -93,6 +95,8 @@ class AdminCharsController < ApplicationController
   def char_params
     params.require(:char).permit(:name, :group_id, :status_line, :status_id, :avatar, :remote_avatar_url, :open_player, profile_attributes:[:birth_date, :age, :real_age, :season_id, :place, :beast, :phisics, :bio, :look, :character, :items, :person, :comment, :points, :other], char_skills_attributes:[:skill_id, :level_id])
   end
+
+
 
   def set_only_content
     @only_content = true

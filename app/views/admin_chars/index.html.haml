@@ -29,85 +29,29 @@
         %span{'ng-show'=>'sChar.delegations.length == 0'}
           никому
 
-  .pending-wrap
-    %h4 Новые анкеты
-    %table.penting-chars-tab.chars-tab.ngtable
-      %thead
-        %tr.char-head
-          %th.char-id №
-          %th.char-name Имя
-          %th.char-owner Игрок
-          %th.char-group Группа
-          %th.char-created Создан
-          %th.char-btn
-      %tbody
-        %tr.one-line{'ng-repeat'=>'char in pendingChars'}
-          %td.char-id{}
-            {{char.id}}
-          %td.char-name{}
-            %span{'ng-click'=>'showFull(char)'} {{char.name}}
-          %td.char-owner
-            %a{href:'/users/{{char.owner.id}}', target:'_blank'} {{char.owner.name}}
-          %td.char-group
-            {{char.group_name}}
-          %td.char-created
-            {{char.createdAt}}
-          %td.char-btn
-            %span.fa.fa-check{title:"Принять", 'ng-click'=>'acceptChar(char)'}
-            %span.fa.fa-times{title:'Отклонить', 'ng-click'=>'declineChar(char)'}
+  = render :partial => 'admin_chars/tables/pending_chars'
 
-  .pending-wrap
-    %h4 В очереди на одобрение
-    %table.penting-chars-tab.chars-tab.ngtable
-      %thead
-        %tr.char-head
-          %th.char-id №
-          %th.char-name Имя
-          %th.char-owner Игрок
-          %th.char-group Группа
-          -#%th.char-status Статус
-          %th.char-created Создан
-          %th.char-btn
-      %tbody
-        %tr.one-line{'ng-repeat'=>'char in reviewedChars'}
-          %td.char-id{}
-            {{char.id}}
-          %td.char-name{}
-            %span{'ng-click'=>'showFull(char)'} {{char.name}}
-          %td.char-owner
-            %a{href:'/users/{{char.owner.id}}', target:'_blank'} {{char.owner.name}}
-          %td.char-group
-            {{char.group_name}}
-          -#%td.char-status
-          -#  {{char.status_name}}
-          %td.char-created
-            {{char.createdAt}}
-          %td.char-btn
-            %span.fa.fa-check{title:"Одобрить", 'ng-click'=>'approveChar(char)'}
-            %span.fa.fa-times{title:'Удалить', 'ng-click'=>'removeChar(char)'}
+  = render :partial => 'admin_chars/tables/reviewed_chars'
             
-  .pending-wrap
-    %h4 Не опубликованные
-    %table.penting-chars-tab.chars-tab.ngtable
-      %thead
-        %tr.char-head
-          %th.char-id №
-          %th.char-name Имя
-          %th.char-owner Игрок
-          %th.char-group Группа
-          %th.char-created Создан
-      %tbody
-        %tr.one-line{'ng-repeat'=>'char in savedChars'}
-          %td.char-id{}
-            {{char.id}}
-          %td.char-name{}
-            %span{'ng-click'=>'showFull(char)'} {{char.name}}
-          %td.char-owner
-            %a{href:'/users/{{char.owner.id}}', target:'_blank'} {{char.owner.name}}
-          %td.char-group
-            {{char.group_name}}
-          %td.char-created
-            {{char.createdAt}}
+  = render :partial => 'admin_chars/tables/saved_chars'
+
+  .ng-modal{'ng-show'=>'showedChar.id || editedChar.id'}
+    .ng-modal-overlay{'ng-click'=>'closeModal()'}
+    .ng-modal-dialog
+      .ng-modal-close
+        %span.fa.fa-times{'ng-click'=>'closeModal()'}
+      .modal-one.modal-edit{'ng-show'=>'editedChar.id'}
+        .ng-modal-head
+          %h4
+            = t 'admin_chars.edit.pagetitle'
+        .modal-content
+          = render partial: 'edit_form'
+      .modal-one.modal-show{'ng-show'=>'showedChar.id'}
+        .ng-modal-head
+          %h4
+            {{showedChar.name}}
+        .ng-modal-content
+          = render partial: 'show_pending_profile'
 
 
 %script{type:'text/ng-template', id:'custom/pager'}

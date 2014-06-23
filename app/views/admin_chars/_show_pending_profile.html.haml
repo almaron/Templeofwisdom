@@ -1,0 +1,66 @@
+.profile_show
+  .form-line
+    %span.bold
+      Имя:
+    %span
+      {{showedChar.name}}
+  .form-line
+    %span.bold
+      Группа:
+    %span
+      {{showedChar.group_name}}
+  .form-line{'ng-show'=>'showedChar.avatar_url'}
+    %span.bold
+      Аватар:
+      %span.fa.fa-eye{href:'{{showedChar.avatar_url}}', fancybox:''}
+  .form-line
+    %span.bold
+      Дата рождения:
+    %span
+      {{profile_attributes.birth_date}}
+  .form-line
+    %span.bold
+      Место рождения:
+    %span
+      {{showedChar.profile_attributes.place}}
+  .form-line
+    %span.bold
+      Звериный облик:
+    %span
+      {{showedChar.profile_attributes.beast}}
+  .form-line
+    %span.bold
+      Физические данные:
+    %div{'ng-bind-html'=>'showedChar.profile_attributes.phisics | simpleFormat'}
+  .form-line
+    %span.bold
+      Навыки:
+    %div
+      %div.line{'ng-repeat'=>'skill in showedChar.phisic_skills'}
+        {{skill.skill_name}} - {{skill.level_name}}
+  .form-line
+    %span.bold
+      Способности:
+    %div
+      %div.line{'ng-repeat'=>'skill in showedChar.magick_skills'}
+        {{skill.skill_name}} - {{skill.level_name}}
+  .form-line
+    %span.bold
+      Биография:
+    %div{'ng-bind-html'=>'showedChar.profile_attributes.bio | simpleFormat'}
+  .form-line
+    %span.bold
+      Внешность:
+    %div{'ng-bind-html'=>'showedChar.profile_attributes.look | simpleFormat'}
+  .form-line
+    %span.bold
+      Характер:
+    %div{'ng-bind-html'=>'showedChar.profile_attributes.character | simpleFormat'}
+  .form-line
+    %span.bold
+      Предметы:
+    %div{'ng-bind-html'=>'showedChar.profile_attributes.items | simpleFormat'}
+  .form-line
+    %span.bold
+      Прочее:
+    %div{'ng-bind-html'=>'showedChar.profile_attributes.other | simpleFormat'}

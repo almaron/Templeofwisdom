@@ -1,0 +1,35 @@
+[b]Имя: [/b] <%= char.name %>
+
+[b]Аватар: [/b] [url=<%= char.avatar_url %>]<%= char.avatar_url %>[/url]
+[b]Группа: [/b] <%= t "char_groups.names.#{char.group.name}" %>
+
+[b]Дата рождения: [/b] <%= char.profile.birth_date%>
+[b]Возраст: [/b] <%= char.profile.real_age %>
+[b]Место рождения: [/b] <%= char.profile.place %>
+[b]Звериный облик: [/b] <%= char.profile.beast %>
+
+[b]Физические данные: [/b]
+<%= char.profile.phisics %>
+
+[b]Навыки: [/b]
+ <% char.phisic_skills.each do |chs| %> <%= chs.skill.name %> - <%= chs.level.name %>
+ <% end %>
+
+[b]Способности: [/b]
+<% char.magic_skills.each do |chs| %> <%= chs.skill.name %> - <%= chs.level.name %>
+<% end %>
+
+[b]Предметы: [/b]
+<%= char.profile.items %>
+
+[b]Биография: [/b]
+<%= char.profile.bio %>
+
+[b]Внешность: [/b]
+<%= char.profile.look %>
+
+[b]Характер: [/b]
+<%= char.profile.character %>
+
+[b]Прочее: [/b]
+<%= char.profile.other %>

@@ -1,36 +1,36 @@
 Rails.application.routes.draw do
 
   # OAuth routes
-  match "oauth/callback" => "oauths#callback", via: [:get, :post]
-  match "oauth/delete/:provider" => "oauths#destroy", as: :delete_auth, via: [:get, :delete]
-  get "oauth/:provider" => "oauths#auth", :as => :auth_at_provider
+  match 'oauth/callback' => 'oauths#callback', via: [:get, :post]
+  match 'oauth/delete/:provider' => 'oauths#destroy', as: :delete_auth, via: [:get, :delete]
+  get 'oauth/:provider' => 'oauths#auth', :as => :auth_at_provider
 
 
   # Registration routes
-  get "register" => "registrations#new"
-  post "register" => "registrations#create"
-  get "activate_user" => "registrations#activate", as: :activate_user
+  get 'register' => 'registrations#new'
+  post 'register' => 'registrations#create'
+  get 'activate_user' => 'registrations#activate', as: :activate_user
 
   # Session routes
-  get "login" => "sessions#new"
-  post "login" => "sessions#create"
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
   get 'auth/current_user' => 'sessions#get_current_user'
-  match "logout" => "sessions#destroy", via: [:get, :delete]
+  match 'logout' => 'sessions#destroy', via: [:get, :delete]
 
   # Page routes
   resources :pages, :except => [:show]
-  get "pages/:url" => "pages#show", :as => "page_url"
+  get 'pages/:url' => 'pages#show', :as => 'page_url'
 
   resources :news
 
-  resources :blog_posts, :path => "blog" do
+  resources :blog_posts, :path => 'blog' do
     resources :comments, controller: :blog_comments, except: [:index, :show, :new]
   end
 
-  resources :guest_posts, :path => "guestbook", :except => [:show]
+  resources :guest_posts, :path => 'guestbook', :except => [:show]
 
-  get "/users/:id" => "users#show", as: :show_user
-  get "/user_groups" => "user_groups#index"
+  get '/users/:id' => 'users#show', as: :show_user
+  get '/user_groups' => 'user_groups#index'
   resource :profile, only:[:show, :edit, :update]
   resources :delegations, only: [:create, :destroy]
 
@@ -45,27 +45,28 @@ Rails.application.routes.draw do
   end
 
   # Forum routes
-  resources :forums, path:"temple", only:[:index, :show] do
-    resources :topics, path: "t", controller: "forum_topics" do
-      resources :posts, path: "p", controller: "forum_posts"
+  resources :forums, path: 'temple', only:[:index, :show] do
+    resources :topics, path: 't', controller: 'forum_topics' do
+      resources :posts, path: 'p', controller: 'forum_posts'
     end
   end
 
   # Config routes
-  resources :configs, except: [:show, :new, :edit]
 
-  scope "/admin" do
+
+  scope '/admin' do
     resources :users, except: [:new, :create, :show]
-    resources :chars, controller: "admin_chars", except: [:new, :create], as: :admin_chars do
+    resources :chars, controller: 'admin_chars', except: [:new, :create], as: :admin_chars do
       put :accept
       put :approve
       put :decline
     end
-    resources :forums, controller: "admin_forums" do
+    resources :forums, controller: 'admin_forums' do
       collection do
-        put "" => "admin_forums#save_tree"
+        put '' => 'admin_forums#save_tree'
       end
     end
+    resources :configs, except: [:show, :new, :edit]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
