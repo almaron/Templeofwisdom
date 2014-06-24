@@ -61,13 +61,12 @@
           .profile-rglist-open{"ng-hide"=>"showRolls", "ng-click"=>"showRolls = !showRolls"} Посмотреть список ↓
           .profile-rglist-open{"ng-show"=>"showRolls", "ng-click"=>"showRolls = !showRolls"} Свернуть список ↑
           .text{"ng-show"=>"showRolls"}
-            .roll
+            .roll{'ng-repeat'=>'role in char.roles'}
               %span.rname
-                %a{href: "http://templeofwisdom.ru/temple/viewtopic.php?f=67&t=159", target: "_blank"} Возвращение домой
-              %span.rballs Баллы - 30
-              %span#r146.rskills
-                %span.don Магия Огня
-                %span Врачевание
+                %a{href: "/roles/{{role.role_id}}", target: "_blank"} {{role.head}}
+              %span.rballs Баллы - {{role.points}}
+              %span.rskills
+                %span{'ng-repeat'=>'skill in role.role_skills', 'ng-class'=>'"don" : skill.done > 0'} {{skill.skill_name}}
 
   .over-wrapper{"ng-show"=>"editChar"}
     .over-top{"ng-click"=>"editChar = false"}

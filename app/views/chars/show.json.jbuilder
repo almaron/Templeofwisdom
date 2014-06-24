@@ -20,6 +20,15 @@ else
     json.owner { json.(@char.owned_by, :id, :name) }
   end
 
+  json.roles @char.char_roles do |char_role|
+    json.(char_role, :role_id, :points)
+    json.head char_role.role.head
+    json.role_skills char_role.role_skills do |skill|
+      json.done skill.done
+      json.skill_name skill.skill.name
+    end
+  end
+
   json.userEditable @char.owned_by == current_user
   json.adminEditable current_user && current_user.is_in?([:admin, :master])
 
