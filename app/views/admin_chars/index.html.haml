@@ -1,8 +1,8 @@
-.admin-wrapper{"ng-controller"=>"AdminCharsCtrl", "ng-init"=>"loadChars()"}
+.admin-wrapper.hide{"ng-controller"=>"AdminCharsCtrl", "ng-init"=>"loadChars()"}
   .user-filter
     %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}
     %label.fa.fa-search{for:'user-filter'} &nbsp;
-  = render partial: 'char_ng_tabel'
+  = render partial: 'ng_table'
 
   .edit-user-div{'ng-show'=>'sChar.id'}
     .edit-close

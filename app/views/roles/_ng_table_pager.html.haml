@@ -1,0 +1,15 @@
+.ng-cloak.ng-table-pager
+  .ng-table-counts.btn-group.pull-right{'ng-if' => 'params.settings().counts.length'}
+    Записей на страницу:
+    %button.btn.btn-standart{'ng-class' => "{'active':params.count()==count}", 'ng-click' => 'params.count(count)', 'ng-repeat' => 'count in params.settings().counts', type: 'button', value:''} {{count}}
+  %ul.pagination.ng-table-pagination
+    %li{'ng-class' => "{'disabled': !page.active}", 'ng-repeat' => 'page in pages', 'ng-switch' => 'page.type'}
+      %a.page-arrow.page-prev.fa.fa-arrow-circle-o-left{href: '', 'ng-click' => 'params.page(page.number)', 'ng-switch-when' => 'prev'}
+      %a{href: '', 'ng-click' => 'params.page(page.number)', 'ng-switch-when' => 'first'}
+        %span.one-page{'ng-bind' => 'page.number'}
+      %a{href: '', 'ng-click' => 'params.page(page.number)', 'ng-switch-when' => 'page'}
+        %span.one-page{'ng-bind' => 'page.number'}
+      %a{href: '', 'ng-click' => 'params.page(page.number)', 'ng-switch-when' => 'more'} …
+      %a{href: '', 'ng-click' => 'params.page(page.number)', 'ng-switch-when' => 'last'}
+        %span.one-page{'ng-bind' => 'page.number'}
+      %a.page-arrow.page-next.fa.fa-arrow-circle-o-right{href: '', 'ng-click' => 'params.page(page.number)', 'ng-switch-when' => 'next'}

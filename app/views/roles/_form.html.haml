@@ -1,0 +1,44 @@
+.role-form-wrap
+  .main-role-info.any-form
+    %table.form-tab
+      %tr
+        %td.label
+          %label{for:'role_head'}
+            Название:
+        %td.input
+          %input.inp.inp-type2{'ng-model'=>'role.head', id:'role_head'}
+      %tr
+        %td.label
+          %label{for:'role_paths'}
+            Ссылки:
+        %td.input
+          %textarea.inp.inp-type2{id:'role_paths', 'ng-model'=>'role.paths'}
+  .subhead-wrap
+    %h4
+      Участники
+    .add-char-role-form
+      %span.label
+        Добавить участника:
+      %span.select
+        %select{'ng-model'=>'sChar', 'ng-options'=>'char as char.name for char in allChars', chosen:'', 'data-placeholder'=>'Выберите персонажа...'}
+          %option{value:''}
+      %span.btn
+        %button.btn.btn-standart{'ng-click'=>'addCharRole(sChar); sChar = {}'}
+          %span.fa.fa-arrow-circle-right
+
+  .char_roles_wrap
+    .one-char-role{'ng-repeat'=>'char_role in role.char_roles_attributes | filter:{_destroy:0}'}
+      = render partial: 'one_char_role'
+
+  .comment-wrap{'ng-hide'=>'role.id'}
+    %span.bold
+      Общий комментарий:
+    .input
+      %textarea.inp.inp-type2{'ng-model'=>'role.comment'}
+
+  .button-wrap
+    %button.btn.btn-standart{'ng-hide'=>'role.id', 'ng-click'=>'createRole()'}
+      Отправить
+    %button.btn.btn-standart{'ng-show'=>'role.id', 'ng-click'=>'updateRole()'}
+      Сохранить
+

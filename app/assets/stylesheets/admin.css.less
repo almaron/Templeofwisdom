@@ -342,3 +342,130 @@
     display: none;
   }
 }
+
+.role-form-wrap {
+  .main-role-info {
+    background: none repeat scroll 0 0 @color-green7;
+    border: 1px solid #aaa77a;
+    padding: 10px 10px 0;
+
+    .form-tab {
+      td {
+        vertical-align: middle;
+        padding: 3px 0;
+        &.label {
+          width:80px;
+        }
+      }
+    }
+    .inp {
+      width: 300px;
+    }
+  }
+  .add-char-role-form {
+    text-align: right;
+    margin: 7px 0;
+    button {
+      margin-right: 0;
+    }
+    select {
+      width:200px;
+    }
+    .select{
+      text-align: left;
+    }
+  }
+  .char_roles_wrap {
+    .one-char-role {
+      margin-bottom: 10px;
+      .char-role-remove {
+        float:right;
+        font-size: 1.1em;
+        padding: 6px;
+      }
+      .roll_user_tab {
+        background: none repeat scroll 0 0 #ede7d2;
+        border: 1px solid #757c52;
+        border-collapse: collapse;
+        width: 100%;
+        .rtd1 {
+          background: none repeat scroll 0 0 #a7ae84;
+          border-right: 1px solid #bbc298;
+          font-family: ChinaCyrregular;
+          font-size: 1.3em;
+          font-weight: bold;
+          padding: 0 5px;
+          vertical-align: middle;
+        }
+        .rtd2 {
+          border-right: 1px solid #757c52;
+          font-weight: bold;
+          padding: 10px;
+          width: 200px;
+          textarea {
+            width: 188px;
+            height: 70px;
+          }
+        }
+        .rtd3 {
+          border: 1px solid #757c52;
+          font-weight: bold;
+          padding: 10px;
+          text-align: right;
+          width: 150px;
+          .inp {
+            margin-bottom: 5px;
+            text-align: center;
+            width: 30px;
+          }
+        }
+        .rtd4 {
+          padding: 10px;
+          select {
+            width: 280px;
+          }
+          .sk_do_add {
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+          }
+          .sk_do_add:hover {
+            color: #087100;
+          }
+          .char-role-skills{
+            margin-top: 5px;
+            .skill-line {
+              padding-bottom: 3px;
+              .skill {
+                font-style: italic;
+                cursor: pointer;
+                &.done {
+                  color: @color-brown1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .comment-wrap {
+    background: none repeat scroll 0 0 #e6e3b6;
+    border: 1px solid #aaa77a;
+    padding: 10px 10px 10px 20px;
+    span {
+      display: block;
+      font-size: 1.5em;
+    }
+    textarea {
+      height: 100px;
+      margin-top: 10px;
+      width: 600px;
+    }
+  }
+  .button-wrap {
+    font-size: 1.3em;
+    margin-top: 10px;
+    padding: 2px 50px;
+  }
+}

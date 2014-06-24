@@ -1,0 +1,43 @@
+.char-role-wrap{}
+  .char-role-remove
+    %span.fa.fa-times{'ng-click'=>'removeCharRole(char_role)'}
+  %table.roll_user_tab
+    %tbody
+      %tr
+        %td.rtd1
+          {{$index+1}}
+        %td.rtd2
+          .char-name
+            {{char_role.char_name}}
+          .char_comment{'ng-if'=>'!role.id'}
+            Комментарий:
+            %br/
+            %textarea.char_comment.inp.inp-type2{'mg-model'=>'char_role.comment'}
+        %td.rtd3
+          Баллы
+          %br/
+          Логика:
+          %input.inp.inp-type2{'ng-model'=>'char_role.logic_points'}
+          %br/
+          Стиль:
+          %input.inp.inp-type2{'ng-model'=>'char_role.style_points'}
+          %br/
+          Способности:
+          %input.inp.inp-type2{'ng-model'=>'char_role.skill_points'}
+          %br/
+          Объем:
+          %input.inp.inp-type2{'ng-model'=>'char_role.volume_points'}
+          %br/
+          Доп. баллы:
+          %input.inp.inp-type2{'ng-model'=>'char_role.added_points'}
+        %td.rtd4
+          %select.inp.inp-type2{'ng-model'=>'newSkill', 'ng-options'=>'skill as skill.name for skill in skills', chosen:'', 'data-placeholder'=>'Способность/Навык'}
+            %option{value:''}
+          %span.sk_do_add{'ng-click'=>'addRoleSkill(char_role, newSkill); newSkill = {}'}
+            %span.fa.fa-arrow-circle-right
+          .char-role-skills
+            .skill-line{'ng-repeat'=>'role_skill in char_role.role_skills_attributes | filter:{_destroy:0}', 'ng-hide'=>'role_skill._destroy>0'}
+              %span.skill{'ng-click'=>'setDone(role_skill)','ng-class'=>'{"done": role_skill.done > 0}'}
+                {{role_skill.skill_name}}
+              %span.remove-skill{'ng-click'=>'removeRoleSkill(char_role,role_skill)'}
+                %span.fa.fa-times

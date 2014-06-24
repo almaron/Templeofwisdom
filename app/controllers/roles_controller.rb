@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
 
-  before_action :master_access
+  before_action :master_access, :except => :show
   before_action :get_role, only: [:show, :edit, :update, :destroy]
 
 
@@ -22,7 +22,14 @@ class RolesController < ApplicationController
     @role = Role.new
     respond_to do |format|
       format.html {}
-      format.json {}
+      format.json {
+        if params[:get_chars]
+          @chars = Char.where(status_id: 5).where('group_id != ?', 1).order(name: :asc)
+          render :new
+        else
+          render :show
+        end
+      }
     end
   end
 
@@ -65,6 +72,7 @@ class RolesController < ApplicationController
     end
   end
 
+
   private
 
   def get_role
@@ -72,7 +80,7 @@ class RolesController < ApplicationController
   end
 
   def role_params
-    params.require(:role).permit(:head, :paths, char_roles_attributes: [:char_id, :comment, :logic_points, :style_points, :skill_points, :volume_points, :added_points, :_destroy, role_skill_attributes: [:skill_id, :done, :_destroy]])
+    params.require(:role).permit(:head, :paths, char_roles_attributes: [:id, :char_id, :comment, :logic_points, :style_points, :skill_points, :volume_points, :added_points, :_destroy, role_skills_attributes: [:id, :skill_id, :done, :_destroy]])
   end
 
 end
