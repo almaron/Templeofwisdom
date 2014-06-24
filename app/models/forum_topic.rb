@@ -31,7 +31,7 @@ class ForumTopic < ActiveRecord::Base
   after_destroy :remove_topic
 
   def remove_topic
-    self.forum.remove_topic self, self.posts.count
+    self.forum.remove_topic self
   end
 
   after_create :add_topic

@@ -27,7 +27,7 @@
     %tr
       %th.f-message-author Автор
       %th.f-message-content Пост
-  %table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts", id:"{{post.id}}"}
+  %table.forum-tab.one-message-tab{"ng-repeat"=>"post in system_posts", id:"{{post.id}}"}
     %tr{"ng-hide"=>"selectedPost.id==post.id"}
       %td.f-message-author
         .message-author-name{}

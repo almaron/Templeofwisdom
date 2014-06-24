@@ -1,8 +1,8 @@
-%div{"ng-controller"=>"ShowCharCtrl", "ng-init"=>"loadChar(#{@char.id})", style:"width:100%;"}
+%div{'ng-controller'=>'ShowCharCtrl', 'ng-init'=>"loadChar(#{@char.id})", style:'width:100%;'}
   %table.profile
     %tr
       %td.profile-col
-        .profile-photo{"ng-bind-html"=>"char.avatar"}
+        .profile-photo{'ng-bind-html'=>'char.avatar'}
         .profile-name{} {{char.name}}
         .profile-status{} {{char.status_line || char.group.name}}
         .profile-element
@@ -14,67 +14,67 @@
         .profile-element
           %b Место рождения:
           {{char.profile.place}}
-        .profile-element{"ng-show"=>"char.owner"}
+        .profile-element{'ng-show'=>'char.owner'}
           %b Игрок:
-          %a{href:"#{users_path}/{{char.owner.id}}", target:"_blank"} {{char.owner.name}}
+          %a{href:"#{users_path}/{{char.owner.id}}", target:'_blank'} {{char.owner.name}}
         .profile-element
-          .edit{"ng-if"=>"char.adminEditable", "ng-show"=>"char.adminEditable", "ng-click"=>"openEditChar('points')"} &#10548;
+          .edit{'ng-if'=>'char.adminEditable', 'ng-show'=>'char.adminEditable', 'ng-click'=>"openEditChar('points')"} &#10548;
           %b Баллы:
           {{char.profile.points}}
         .profile-element
           %b Животное:
           {{char.profile.beast}}
         .profile-element.skills
-          .edit{"ng-if"=>"char.userEditable"} &#10548;
+          .edit{'ng-if'=>'char.userEditable'} &#10548;
           %b.title Навыки:
           %ul
-            %li{"ng-repeat"=>"skill in char.phisic_skills"}
-              %a.skill-name{href: "#"} {{skill.skill_name}}
+            %li{'ng-repeat'=>'skill in char.phisic_skills'}
+              %a.skill-name{href: '#'} {{skill.skill_name}}
               — {{skill.level_name}}
         .profile-element.skills
-          .edit{"ng-if"=>"char.userEditable"} &#10548;
+          .edit{'ng-if'=>'char.userEditable'} &#10548;
           %b.title Способности:
           %ul
-            %li{"ng-repeat"=>"skill in char.magic_skills"}
-              %a.skill-name{href: "#"} {{skill.skill_name}}
+            %li{'ng-repeat'=>'skill in char.magic_skills'}
+              %a.skill-name{href: '#'} {{skill.skill_name}}
               — {{skill.level_name}}
         .profile-element
           %b.title Образ на аватаре:
-          .edit{"ng-if"=>"char.adminEditable", "ng-show"=>"char.adminEditable", "ng-click"=>"openEditChar('person')"} &#10548;
+          .edit{'ng-if'=>'char.adminEditable', 'ng-show'=>'char.adminEditable', 'ng-click'=>"openEditChar('person')"} &#10548;
           %br/
           {{char.profile.person}}
         .profile-element
-          .edit{"ng-if"=>"char.adminEditable", "ng-show"=>"char.adminEditable", "ng-click"=>"openEditChar('comment')"} &#10548;
+          .edit{'ng-if'=>'char.adminEditable', 'ng-show'=>'char.adminEditable', 'ng-click'=>"openEditChar('comment')"} &#10548;
           %b.title Комментарии:
-          %span{"ng-bind-html"=>"char.profile.comment | simpleFormat"}
+          %span{'ng-bind-html'=>'char.profile.comment | simpleFormat'}
         .profile-element
-          %a{href: "#"} ← Правила РПГ
+          %a{href: '#'} ← Правила РПГ
       %td.profile-content
-        %toggle-text{title:"Биография", content:"char.profile.bio"}
-        %toggle-text{title:"Физические данные", content:"char.profile.phisics"}
-        %toggle-text{title:"Внешность", content:"char.profile.look"}
-        %toggle-text{title:"Характер", content:"char.profile.character"}
-        %toggle-text{title:"Предметы", content:"char.profile.items"}
-        %toggle-text{title:"Прочее", content:"char.profile.other"}
+        %toggle-text{title:'Биография', content:'char.profile.bio'}
+        %toggle-text{title:'Физические данные', content:'char.profile.phisics'}
+        %toggle-text{title:'Внешность', content:'char.profile.look'}
+        %toggle-text{title:'Характер', content:'char.profile.character'}
+        %toggle-text{title:'Предметы', content:'char.profile.items'}
+        %toggle-text{title:'Прочее', content:'char.profile.other'}
         .profile-content-one.profile-rglist
           .title Ролевые игры
-          .profile-rglist-open{"ng-hide"=>"showRolls", "ng-click"=>"showRolls = !showRolls"} Посмотреть список ↓
-          .profile-rglist-open{"ng-show"=>"showRolls", "ng-click"=>"showRolls = !showRolls"} Свернуть список ↑
-          .text{"ng-show"=>"showRolls"}
+          .profile-rglist-open{'ng-hide'=>'showRolls', 'ng-click'=>'showRolls = !showRolls'} Посмотреть список ↓
+          .profile-rglist-open{'ng-show'=>'showRolls', 'ng-click'=>'showRolls = !showRolls'} Свернуть список ↑
+          .text{'ng-show'=>'showRolls'}
             .roll{'ng-repeat'=>'role in char.roles'}
               %span.rname
-                %a{href: "/roles/{{role.role_id}}", target: "_blank"} {{role.head}}
+                %a{href: '/roles/{{role.role_id}}', target: '_blank'} {{role.head}}
               %span.rballs Баллы - {{role.points}}
               %span.rskills
                 %span{'ng-repeat'=>'skill in role.role_skills', 'ng-class'=>'"don" : skill.done > 0'} {{skill.skill_name}}
 
-  .over-wrapper{"ng-show"=>"editChar"}
-    .over-top{"ng-click"=>"editChar = false"}
+  .over-wrapper{'ng-show'=>'editChar'}
+    .over-top{'ng-click'=>'editChar = false'}
     .over-fly
       .falsepadding
         .over-content.div_edit
-          %span.close_edit{"ng-click"=>"editChar = false"} &times;
-          = render partial: "chars/mini_edit/edit_points"
-          = render partial: "chars/mini_edit/edit_person"
-          = render partial: "chars/mini_edit/edit_comment"
+          %span.close_edit{'ng-click'=>'editChar = false'} &times;
+          = render partial: 'chars/mini_edit/edit_points'
+          = render partial: 'chars/mini_edit/edit_person'
+          = render partial: 'chars/mini_edit/edit_comment'
 

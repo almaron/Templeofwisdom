@@ -1,7 +1,6 @@
-require 'render_anywhere'
 class Char < ActiveRecord::Base
 
-  include RenderAnywhere
+
 
   validates :name, :uniqueness => true, :presence => true
 
@@ -68,7 +67,7 @@ class Char < ActiveRecord::Base
 
   def accept(user=nil)
     if self.status_id == 2
-      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: create_profile_topic(user))
+      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: Forum.create_char_profile_topic(self, user))
       #   TODO send notification and email
       true
     end
@@ -77,7 +76,7 @@ class Char < ActiveRecord::Base
   def approve(user=nil)
     if self.status_id == 3
       self.update(status_id: 5)
-      add_approve_post user
+      Forum.add_approve_post self, user
       #   TODO send notification and email
     end
   end
@@ -106,44 +105,8 @@ class Char < ActiveRecord::Base
     end
   end
 
-  def create_profile_topic(user)
-    topic = ForumTopic.create accept_post_params(user)
-    topic.id
-  end
 
-  def add_approve_post(user)
-    ForumPost.create topic_id: self.profile_topic_id, char_id: get_approve_master_id, user_id: user.id, ip: user.current_ip, text: I18n.t("messages.char.approve")
-  end
 
-  def get_char_forum_id
-    AdminConfig.find_by(name: "char_profile_forum_id_#{self.group_id}").value.to_i
-  end
-
-  def get_accept_master
-    i = AdminConfig.find_by(name: 'accept_master_id').value.to_i
-    Char.find_by(id: i) || Char.new(name:"Master")
-  end
-
-  def get_approve_master_id
-    AdminConfig.find_by(name: 'approve_master_id').value.to_i
-  end
-
-  def accept_post_params(user)
-    {
-        head: self.name,
-        forum_id: get_char_forum_id,
-        char_id: self.id,
-        poster_name: get_accept_master.name,
-        posts_attributes: [
-            {
-                char_id: get_accept_master.id,
-                user_id: user.id,
-                ip: user.current_ip,
-                text: render(partial: 'admin_chars/posts/profile_post', locals:{char:self})
-            }
-        ]
-    }
-  end
 
 
 end

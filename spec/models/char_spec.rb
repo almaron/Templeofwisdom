@@ -22,9 +22,11 @@ describe Char do
     before :each do
       @char = create :char
       @user = User.new(id:1,name:'Malk', current_ip:'127.0.01')
-      AdminConfig.create name: 'char_profile_forum_id_3', value:"3"
-      AdminConfig.create name: 'accept_master_id', value: "1"
-      AdminConfig.create name: 'approve_master_id', value: '1'
+      @forum = Forum.create(name:'AdminChars')
+      AdminConfig.create name: 'char_profile_forum_id_3', value: @forum.id.to_s
+      AdminConfig.create name: 'accept_master_id', value: @char.id.to_s
+      AdminConfig.create name: 'approve_master_id', value: @char.id.to_s
+      CharGroup.create(id:3, name:'look')
     end
 
     describe :accept do
@@ -58,6 +60,8 @@ describe Char do
 
       before :each do
         @char.status_id = 3
+        @topic = @forum.topics.create(head:'Approve Topic')
+        @char.profile_topic_id = @topic.id
       end
 
       it "should change the status_id to 5" do

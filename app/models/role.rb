@@ -21,5 +21,9 @@ class Role < ActiveRecord::Base
     self.topic_ids.split(',').inject([]) { |posts, topic_id| posts + ForumPost.where(topic_id:topic_id) }
   end
 
+  def create_post(user)
+    Forum.add_role_check_post(self, user)
+  end
+
 
 end

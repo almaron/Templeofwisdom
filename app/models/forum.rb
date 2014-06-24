@@ -1,4 +1,7 @@
+require 'render_anywhere'
 class Forum < ActiveRecord::Base
+
+  include RenderAnywhere
 
   has_ancestry
 
@@ -27,12 +30,11 @@ class Forum < ActiveRecord::Base
     self.path.update_all("posts_count = posts_count - 1")
   end
 
-  def remove_topic(topic = nil, posts_count=0)
+  def remove_topic(topic = nil)
     self.path.update_all("topics_count = topics_count - 1")
     if topic
       self.path.each { |f| f.update_last_post if topic.id == f.last_post_topic_id }
     end
-    self.path.update_all("posts_count = posts_count - #{posts_count}") if posts_count > 0
   end
 
   def update_last_post
@@ -66,5 +68,50 @@ class Forum < ActiveRecord::Base
   def child_forums
     self.children.forums
   end
+
+
+  # System forum topics and system_posts creation
+
+  def self.create_char_profile_topic(char, user)
+    topic = ForumTopic.create char_profile_topic_params(char, user)
+    topic.id if topic
+  end
+
+  def self.add_approve_post(char,user)
+    ForumPost.create topic_id: char.profile_topic_id, char_id: admin_config('approve_master_id'), user_id: user.id, ip: user.current_ip, text: I18n.t("messages.char.approve")
+  end
+
+  def self.add_role_check_post(role, user)
+    ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: admin_config('role_master_id'), user_id: user.id, ip: user.current_ip, text: render(partial:'forums/system_posts/role_check_post', locals:{role:role})
+  end
+
+  private
+
+  def self.char_profile_topic_params(char, user)
+    {
+        head: self.name,
+        forum_id: admin_config('char_profile_forum_id_'+char.group_id.to_s),
+        char_id: char.id,
+        poster_name: get_accept_master.name,
+        posts_attributes: [
+            {
+                char_id: get_accept_master.id,
+                user_id: user.id,
+                ip: user.current_ip,
+                text: render(partial: 'forums/system_posts/profile_post', locals:{char:char})
+            }
+        ]
+    }
+  end
+
+  def self.admin_config(config)
+    AdminConfig.find_by(name:config).value.to_i
+  end
+
+  def self.get_accept_master
+    Char.find_by(id: admin_config('accept_master_id')) || Char.new(name:"Master")
+  end
+
+
 
 end

@@ -7,7 +7,7 @@ class CharRole < ActiveRecord::Base
   accepts_nested_attributes_for :role_skills, allow_destroy: true
   has_many :skills, through: :role_skills
 
-  attr_accessor :logic_points, :style_points, :skill_points, :volume_points, :added_points, :comment
+  attr_accessor :logic_points, :style_points, :skill_points, :volume_points, :added_points, :comment, :staged_points
 
   before_save :calculate_points
 
@@ -22,7 +22,17 @@ class CharRole < ActiveRecord::Base
      self.logic_points = self.style_points = self.skill_points = 10
      self.volume_points = 20
      self.added_points = 0
+    else
+      self.staged_points = self.points
     end
+  end
+
+  after_update :recalculate_points
+
+  def recalculate_points
+    profile = CharProfile.find_by(char_id:self.char_id)
+    diff_points = profile.points + self.points - self.staged_points
+    profile.update(points: diff_points)
   end
 
 
