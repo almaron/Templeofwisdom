@@ -13,7 +13,7 @@ class RolesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html {  }
+      format.html {  @only_content = true }
       format.json {  }
     end
   end

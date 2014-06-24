@@ -1,0 +1,15 @@
+%h1
+  = @role.head
+
+.rol
+  .rol-all
+    - @role.all_posts.each do |post|
+      .rol-one
+        .rol-left
+          %b.rol-name
+            = post.char.name
+          = image_tag(post.char.avatar_url(:thumb), class:'rol-ava') if post.char.avatar?
+          .rol-count Символов: #{post.text.length}
+        .rol-right
+          = simple_format(post.text.bbcode_to_html)
+          .rol-post-number #{post.id}
