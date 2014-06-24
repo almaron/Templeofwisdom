@@ -48,7 +48,7 @@ class Char < ActiveRecord::Base
 
   has_many :char_skills, dependent: :destroy
   has_many :skills, through: :char_skills
-  accepts_nested_attributes_for :char_skills
+  accepts_nested_attributes_for :char_skills, allow_destroy: true
 
   def phisic_skills
     self.char_skills.phisic
@@ -92,6 +92,11 @@ class Char < ActiveRecord::Base
   def remove
     self.posts.any? ? self.update(status_id:0) : self.destroy;
   end
+
+  # Char roles
+
+  has_many :char_roles
+  has_many :role_skills, :through => :char_roles
 
   private
 

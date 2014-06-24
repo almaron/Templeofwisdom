@@ -1,0 +1,37 @@
+.admin-wrapper{'ng-controller'=>'RolesCtrl'}
+
+  .add-role
+    %a.btn.btn-standart{href:'/admin/roles/new'} Добавить ролевку
+
+  .user-filter
+    %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}
+    %label.fa.fa-search{for:'user-filter'} &nbsp;
+  = render partial: 'ng_table'
+
+  .edit-user-div{'ng-show'=>'sRole.id'}
+    .edit-close
+      %span.fa.fa-times{"ng-click"=>"sRole = {}"}
+    .info-wrap
+      .line.role-head
+        %span.bold
+          Название:
+        {{sRole.head}}
+      .line
+        .bold
+          %a{href:"/roles/{{sRole.id}}"}Читать всю
+    .info-wrap
+      .line.one-char-line{'ng-repeat'=>'char in sRole.char_roles_attributes'}
+        .line
+          %span.bold
+            {{char.char_name}}
+        .line
+          %span.bold
+            Баллы:
+          {{char.points}}
+        .line
+          %span.bold
+            Способности:
+          {{char.skill_list || 'нет'}}
+
+%script{type:'text/ng-template', id:'custom/pager'}
+  = render :partial => 'ng_table_pager'

@@ -1,0 +1,13 @@
+%table.users-table.ngtable{'ng-table' => 'tableParams', 'template-pagination'=>'custom/pager'}
+  %tr.one-line{'ng-repeat' => 'role in $data'}
+    %td.line-name{'data-title' => "'Название'", sortable: "'name'"}
+      %span{'ng-click'=>'showRole(role)'} {{role.head}}
+    %td{'data-title' => "'Участники'", sortable: "'group_name'"}
+      {{role.chars_list}}
+    %td{'data-title' => "'Дата проверки'", sortable: "'status_name'"}
+      {{role.createdAt}}
+    %td.line-edit{}
+      %a.user-edit{href:'/admin/roles/{{role.id}}/edit'}
+        %span.fa.fa-pencil{}
+    %td.line-remove{}
+      %span.user-edit.fa.fa-times{'ng-click'=>'removeRole(role)'}

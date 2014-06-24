@@ -41,10 +41,17 @@ ru:
     index:
       pagetitle: "Администрирование форумов"
   admin_chars:
-    index:
-      pagetitle: "Управление персонажами"
-    edit:
-      pagetitle: "Редактирование персонажа"
+      index:
+        pagetitle: "Управление персонажами"
+      edit:
+        pagetitle: "Редактирование персонажа"
+  roles:
+      index:
+        pagetitle: "Администрирование ролевых"
+      new:
+        pagetitle: "Новая ролевка"
+      edit:
+        pagetitle: "Редактирование ролевки"
 
 
   char_status:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616181443) do
+ActiveRecord::Schema.define(version: 20140624150244) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -86,6 +86,22 @@ ActiveRecord::Schema.define(version: 20140616181443) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "other"
+  end
+
+  create_table "char_role_skills", force: true do |t|
+    t.integer  "char_role_id"
+    t.integer  "skill_id"
+    t.integer  "done",         default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "char_roles", force: true do |t|
+    t.integer  "role_id"
+    t.integer  "char_id"
+    t.integer  "points",     default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "char_skills", force: true do |t|
@@ -220,6 +236,7 @@ ActiveRecord::Schema.define(version: 20140616181443) do
     t.text     "paths"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "topic_ids"
   end
 
   create_table "season_times", force: true do |t|

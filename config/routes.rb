@@ -51,9 +51,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # Config routes
+  get '/roles/:id' => 'roles#show', as: :show_role
 
-
+# Administration block
   scope '/admin' do
     resources :users, except: [:new, :create, :show]
     resources :chars, controller: 'admin_chars', except: [:new, :create], as: :admin_chars do
@@ -67,6 +67,7 @@ Rails.application.routes.draw do
       end
     end
     resources :configs, except: [:show, :new, :edit]
+    resources :roles
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

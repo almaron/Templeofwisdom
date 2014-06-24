@@ -1,4 +1,4 @@
-@app.service "CharsService", ["$filter", "AdminChar", ($filter, Char) ->
+@app.service "RolesService", ["$filter", "$http", ($filter, $http) ->
 
   filterData = (data, filter) ->
     $filter('filter')(data, filter)
@@ -22,19 +22,19 @@
         params.total filteredData.length
         $defer.resolve transformedData
       else
-        chars = Char.query {}, () ->
-          angular.copy chars, service.cachedData
-          params.total chars.length
-          filteredData = $filter("filter")(chars, filter)
-          transformedData = transformData(chars, filter, params)
+        $http.get("/admin/roles.json").success (roles) ->
+          angular.copy roles, service.cachedData
+          params.total roles.length
+          filteredData = $filter("filter")(roles, filter)
+          transformedData = transformData(roles, filter, params)
           $defer.resolve transformedData
           return
     emptyData: ->
       service.cachedData = []
       return
-    reload: (params)->
+    reload: (params) ->
       service.emptyData()
-      params.reload()
+      params.reload
   }
 
 ]
