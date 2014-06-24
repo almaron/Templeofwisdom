@@ -40,6 +40,11 @@ ru:
   admin_forums:
     index:
       pagetitle: "Администрирование форумов"
+  admin_chars:
+    index:
+      pagetitle: "Управление персонажами"
+    edit:
+      pagetitle: "Редактирование персонажа"
 
 
   char_status:
