@@ -40,7 +40,13 @@ ru:
   admin_forums:
     index:
       pagetitle: "Администрирование форумов"
-
+  roles:
+    index:
+      pagetitle: "Администрирование ролевых"
+    new:
+      pagetitle: "Новая ролевка"
+    edit:
+      pagetitle: "Редактирование ролевки"
 
   char_status:
     name:
