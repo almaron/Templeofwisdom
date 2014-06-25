@@ -30,10 +30,10 @@
     .loggedin-notification
       %a{href: "/notifications", title: "Уведомления"}
         Уведомления
-        %span{} {{currentUser.notifications}}
+        %span{'ng-show'=>'currentUser.notificationsCount > 0'} {{currentUser.notificationsCount}}
     .loggedin-messages
       %a{href: "/messages", title: "Личные сообщения"}
         Личные сообщения
-        %span{} {{currentUser.messages}}
+        %span{'ng-show'=>'currentUser.messagesCount > 0'} {{currentUser.messagesCount}}
   .loggedin-exit
     = link_to "Выйти", logout_path, method: :delete

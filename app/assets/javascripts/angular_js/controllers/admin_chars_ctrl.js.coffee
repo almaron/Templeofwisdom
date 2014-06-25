@@ -38,7 +38,7 @@
     $scope.loadBlock 'pending'
     $scope.loadBlock 'reviewed'
     $scope.loadBlock 'saved'
-    $('.admin-wrapper').removeClass('hide')
+    $scope.showAll = true
 
   $scope.acceptChar = (char) ->
     $http.put('/admin/chars/'+char.id+'/accept.json', {accept_char_id: char.id}).success (data) ->

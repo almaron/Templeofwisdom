@@ -56,6 +56,25 @@ class User < ActiveRecord::Base
   has_many :messages, dependent: :destroy
   has_many :message_receivers, dependent: :destroy
 
+  def unread_messages_count
+    self.message_receivers.where(read:0).group(:message_id).to_a.size
+  end
+
+  def delete_message(message)
+    mid = message.is_a? Message ? message.id : message
+    self.receivers.where(message_id:mid).destroy_all
+  end
+
+  def read_message(message)
+    mid = message.is_a? Message ? message.id : message
+    self.receivers.where(message_id:mid).update_all(read:1)
+  end
+
+  has_many :notifications
+
+  def unread_notifications_count
+    self.notifications.where(read:0).count
+  end
 
 
 end
