@@ -67,7 +67,7 @@ class Char < ActiveRecord::Base
 
   def accept(user=nil)
     if self.status_id == 2
-      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: Forum.create_char_profile_topic(self, user))
+      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: ForumService.new.create_char_profile_topic(self, user))
       #   TODO send notification and email
       true
     end
@@ -76,7 +76,7 @@ class Char < ActiveRecord::Base
   def approve(user=nil)
     if self.status_id == 3
       self.update(status_id: 5)
-      Forum.add_approve_post self, user
+      ForumService.new.add_approve_post self, user
       #   TODO send notification and email
     end
   end

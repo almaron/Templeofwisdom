@@ -17,7 +17,7 @@ class Role < ActiveRecord::Base
   end
 
   def create_post(user)
-    Forum.add_role_check_post(self, user)
+    ForumService.new.add_role_check_post(self, user)
   end
 
   def self.build_from_app(app_id)
