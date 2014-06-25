@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   def default_char=(char)
     char_id = char.is_a?(Char) ? char.id : char
-    if cd = self.char_delegations.where(owner:1, char_id:char_id)
+    if (cd = self.char_delegations.where(owner:1, char_id:char_id))
       self.char_delegations.update_all(default:nil)
       cd.first.update(default:1)
     end
@@ -50,5 +50,12 @@ class User < ActiveRecord::Base
   end
 
   has_many :role_apps
+
+  #Messages
+
+  has_many :messages, dependent: :destroy
+  has_many :message_receivers, dependent: :destroy
+
+
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625062955) do
+ActiveRecord::Schema.define(version: 20140625143727) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(version: 20140625062955) do
     t.datetime "updated_at"
   end
 
+  add_index "char_skills", ["char_id"], name: "index_char_skills_on_char_id", using: :btree
+
   create_table "char_statuses", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -196,6 +198,25 @@ ActiveRecord::Schema.define(version: 20140625062955) do
   create_table "log_types", force: true do |t|
     t.string   "name"
     t.string   "ancestry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_receivers", force: true do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.integer  "char_id"
+    t.integer  "read",       default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "char_id"
+    t.string   "head"
+    t.text     "text"
+    t.integer  "deleted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
