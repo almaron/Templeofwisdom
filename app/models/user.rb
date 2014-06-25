@@ -49,4 +49,6 @@ class User < ActiveRecord::Base
     self.chars.where(char_delegations: {owner:0})
   end
 
+  has_many :role_apps
+
 end
