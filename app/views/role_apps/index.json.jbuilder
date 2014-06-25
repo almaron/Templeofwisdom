@@ -1,0 +1,1 @@
+json.partial! 'role_app', collection: @role_apps, as: :role_app

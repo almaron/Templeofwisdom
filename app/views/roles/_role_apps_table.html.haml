@@ -1,0 +1,23 @@
+.role-apps-table
+  %table.role-apps-tab
+    %thead
+      %th.app-head
+        Заголовок
+      %th.app-user
+        Игрок
+      %th.app-date
+        Дата
+      %th.app-btn
+
+    %tbody
+      - @role_apps.each do |app|
+        %tr.line
+          %td.app-head
+            = link_to app.head, app, target: '_blank'
+          %td.app-user
+            = link_to app.user.name, user_path(app.user_id)
+          %td.app-date
+            = I18n.l app.created_at
+          %td.app-btn
+            = link_to 'Оценить', new_role_path(role_app_id:app.id), class:'btn btn-standart'
+            = link_to 'Удалить', role_app_path(app), method: :delete, class:'btn btn-standart'

@@ -85,6 +85,15 @@ class Forum < ActiveRecord::Base
     ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: admin_config('role_master_id'), user_id: user.id, ip: user.current_ip, text: render(partial:'forums/system_posts/role_check_post', locals:{role:role})
   end
 
+  def self.create_role_app_post(role_app, user)
+    post = ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: role_app.char_id, user_id: user.id, ip: user.current_ip, text: render(partial:'forums/system_posts/role_app', locals:{role_app:role_app})
+    post.id if post
+  end
+
+  def self.update_role_app_post(role_app)
+    ForumPost.find(role_app.post_id).update(text: render(partial:'forums/system_posts/role_app', locals:{role_app:role_app}))
+  end
+
   private
 
   def self.char_profile_topic_params(char, user)

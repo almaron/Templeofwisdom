@@ -94,6 +94,12 @@
       vertical-align: top;
       .line {
         margin-bottom: 3px;
+        &.one-char-line {
+          margin-bottom: 10px;
+        }
+        .char-name {
+          font-size: 1.2em;
+        }
       }
     }
 
@@ -198,6 +204,24 @@
           textarea {
             height:150px;
           }
+        }
+      }
+    }
+  }
+
+  .role-apps-wrap {
+    margin-top: 30px;
+    .role-apps-tab {
+      width: 100%;
+      th {
+        font-size:1.1em;
+        padding-bottom: 10px;
+      }
+      td {
+        vertical-align: middle;
+        padding: 7px 0;
+        &.app-head {
+          font-size: 1.1em;
         }
       }
     }
@@ -345,7 +369,7 @@
 
 .role-form-wrap {
   .main-role-info {
-    background: none repeat scroll 0 0 @color-green7;
+    background: @color-green7;
     border: 1px solid #aaa77a;
     padding: 10px 10px 0;
 
@@ -467,5 +491,73 @@
     font-size: 1.3em;
     margin-top: 10px;
     padding: 2px 50px;
+  }
+}
+.role_apps_wrap {
+  .new-role-app-wrap {
+    margin-bottom: 15px;
+    .new-app-btn {
+      text-align: right;
+      button {
+        margin-right: 0;
+      }
+    }
+    .role-app-form-wrap {
+      background: @color-green7;
+      border: 1px solid #aaa77a;
+      padding: 10px 10px 0;
+      margin: 10px 0;
+    }
+  }
+  .role_apps_tab {
+    width:100%;
+    th {
+      font-weight: bold;
+      font-size: 1.1em;
+      padding-bottom: 5px;
+      border-bottom: 1px dashed @color-brown;
+    }
+    td {
+      padding: 10px 0;
+      border-bottom: 1px dashed @color-brown;
+      vertical-align: middle;
+    }
+    .app-head {
+      width:30%;
+    }
+    .app-paths {
+      width:50%
+    }
+    .app-date {
+      width:15%;
+    }
+    .app-btn {
+      text-align: right;
+      span {
+        margin-left: 5px;
+        cursor: pointer;
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .role-app-form-wrap {
+    input {
+      width:300px;
+    }
+    textarea {
+      width:90%;
+      height:100px;
+    }
+    select {
+      width:200px;
+    }
+    .form-btn {
+      margin-top: 10px;
+      button {
+        margin: 0 10px 0 0;
+      }
+    }
   }
 }

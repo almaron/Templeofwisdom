@@ -6,7 +6,7 @@
 
   $scope.initRole = (app_id = 0) ->
     if app_id > 0
-      url = '?role_app_id?='+app_id
+      url = '?role_app_id='+app_id
     else
       url = ''
     $http.get('/admin/roles/new.json'+url).success (data) ->

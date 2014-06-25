@@ -1,0 +1,32 @@
+.role_apps_wrap{'ng-controller'=>'RoleAppsCtrl'}
+
+  .new-role-app-wrap
+    .new-app-btn
+      %button.btn.btn-standart{'ng-click'=>'newFormShow = !newFormShow'}
+        Создать заявку
+    .new-app-form{'ng-hide'=>'sApp.id || !newFormShow'}
+      = render :partial => 'form'
+
+  %table.form-tab.role_apps_tab
+    %tbody
+      %th.app-head
+        Заголовок
+      %th.app-paths
+        Ссылки
+      %th.app-date
+        Дата
+      %th.app-btn
+    %tbody{'ng-repeat'=>'roleApp in roleApps'}
+      %tr.line{'ng-hide'=>'sApp.id == roleApp.id'}
+        %td.app-head
+          {{roleApp.head}}
+        %td.app-paths{'ng-bind-html'=>'roleApp.paths | simpleFormat'}
+        %td.app-date
+          {{roleApp.createdAt}}
+        %td.app-btn
+          %span.fa.fa-pencil{title:'Редактировать', 'ng-click'=>'editApp(roleApp)'}
+          %span.fa.fa-times{title:'Удалить', 'ng-click'=>'removeApp(roleApp)'}
+      %tr.line{'ng-if'=>'sApp.id == roleApp.id'}
+        %td.app-form{colspan:4}
+          = render :partial => 'form'
+

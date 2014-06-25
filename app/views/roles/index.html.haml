@@ -22,7 +22,7 @@
     .info-wrap
       .line.one-char-line{'ng-repeat'=>'char in sRole.char_roles_attributes'}
         .line
-          %span.bold
+          %span.bold.char-name
             {{char.char_name}}
         .line
           %span.bold
@@ -32,6 +32,12 @@
           %span.bold
             Способности:
           {{char.skill_list || 'нет'}}
+
+  - if @role_apps.any?
+    .role-apps-wrap
+      %h4
+        Заявки на проверку ролевок
+      = render partial: 'role_apps_table'
 
 %script{type:'text/ng-template', id:'custom/pager'}
   = render :partial => 'ng_table_pager'

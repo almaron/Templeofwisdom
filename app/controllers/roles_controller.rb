@@ -6,7 +6,7 @@ class RolesController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html {}
+      format.html { @role_apps = RoleApp.all }
       format.json { @roles = Role.includes(char_roles:[:char]).all }
     end
   end
@@ -19,7 +19,7 @@ class RolesController < ApplicationController
   end
 
   def new
-    @role = Role.new
+    @role = params[:role_app_id] ? Role.build_from_app(params[:role_app_id]) : Role.new
     respond_to do |format|
       format.html {}
       format.json {

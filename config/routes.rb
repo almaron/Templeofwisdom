@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   end
 
   get '/roles/:id' => 'roles#show', as: :show_role
+  resources :role_apps
 
 # Administration block
   scope '/admin' do
