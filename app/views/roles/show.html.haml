@@ -2,6 +2,15 @@
   = @role.head
 
 .rol
+  .summary
+    %b
+      Участники (#{@role.char_roles.size})
+      %ul
+        - @role.char_roles.each do |ch|
+          %li
+            %a{href:"/chars/#{ch.char_id}", target:'_blank'} #{ch.char.name}
+    %div
+      %b Количество постов: #{@role.all_posts.size}
   .rol-all
     - @role.all_posts.each do |post|
       .rol-one

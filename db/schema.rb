@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624150244) do
+ActiveRecord::Schema.define(version: 20140625060105) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -111,8 +111,6 @@ ActiveRecord::Schema.define(version: 20140624150244) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "char_skills", ["char_id"], name: "index_char_skills_on_char_id", using: :btree
 
   create_table "char_statuses", force: true do |t|
     t.string   "name"
@@ -233,7 +231,6 @@ ActiveRecord::Schema.define(version: 20140624150244) do
 
   create_table "roles", force: true do |t|
     t.string   "head"
-    t.text     "paths"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "topic_ids"
