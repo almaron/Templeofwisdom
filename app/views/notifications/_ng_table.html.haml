@@ -1,0 +1,9 @@
+%table.users-table.ngtable{'ng-table' => 'tableParams', 'template-pagination'=>'custom/pager'}
+  %tr.one-line{'ng-repeat' => 'note in $data', 'ng-class'=>'{"unread": !note.read, "read" : note.read }'}
+    %td.message-date{'data-title' => "'Дата'"}
+      {{note.createdAt}}
+    %td.message-subject{'data-title' => "'Заголовок'", 'ng-class'=>'"subject-"+note.priority'}
+      %span &nbsp;
+      %a{'ng-click'=>'showNote(note)'} {{note.head}}
+    %td.line-remove{}
+      %span.user-edit.fa.fa-times{'ng-click'=>'removeNote(note)'}

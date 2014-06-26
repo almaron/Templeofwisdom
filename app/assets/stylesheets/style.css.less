@@ -2890,7 +2890,53 @@ td.none,td.none:hover, tr:hover td.none {
 
 /*
 
-  */
+  Notifications
 
+*/
+.notifications {
+  .ngtable {
+    .one-line {
+      td {
+        &.message-date {
+          width:130px;
+          text-align: center;
+        }
+        &.line-remove {
+          width:50px;
+          text-align: center;
+        }
+        &.message-subject {
+          a {
+            color:@color-brown2!important;
+            cursor: pointer;
+          }
+          span {
+            display: block;
+            float: left;
+            width:16px;
+            height:16px;
+            margin-right:5px;
+            .border-radius(16px);
+          }
+          &.subject-1 span {background-color: @color-red + 50;}
+          &.subject-2 span {background-color: @color-green;}
+          &.subject-3 span {background-color: #3ea2e2;}
+        }
+        .read .message-subject span {
+          .opacity(30);
+        }
+      }
+
+      &.unread td {
+        background: @color-brown1 + 90;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/*
+
+*/
 @import 'sizes';
 

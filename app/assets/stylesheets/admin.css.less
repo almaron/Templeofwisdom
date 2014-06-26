@@ -12,7 +12,16 @@
 
   .ngtable {
     width:100%;
-
+    border-collapse: collapse;
+    th {
+      border: 1px solid @color-green6;
+      background: @color-green6;
+      vertical-align: middle;
+      padding:5px;
+      &.center {
+        text-align: center;
+      }
+    }
     .header {
       height:auto;
       padding-bottom: 7px;
@@ -26,16 +35,31 @@
     }
     .one-line {
       td {
-        padding: 5px 0;
         vertical-align: middle;
+        border: 1px solid @color-brown1;
+        padding:5px;
+        background:@bgimg-beige;
+        &.center {
+          text-align: center;
+        }
         .btn-standart {
           margin: 0 2px;
           font-size: 0.8em;
+        }
+        &.line-remove {
+          span {
+            &:hover {
+              color: @color-red;
+            }
+          }
         }
       }
       .line-edit, .line-name {
         cursor: pointer;
         font-size: 1.1em;
+      }
+      &:hover td {
+        .box-shadow(0px 0px 9px -1px rgba(0,0,0,0.5));
       }
     }
     tfoot {
@@ -216,12 +240,16 @@
       th {
         font-size:1.1em;
         padding-bottom: 10px;
+        padding-left: 10px;
       }
       td {
         vertical-align: middle;
-        padding: 7px 0;
+        padding: 7px 0 7px 10px;
         &.app-head {
           font-size: 1.1em;
+        }
+        .btn-standart {
+          font-size: 1em;
         }
       }
     }

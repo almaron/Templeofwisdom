@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   get '/roles/:id' => 'roles#show', as: :show_role
   resources :role_apps
 
+  resources :notifications, only: [:index, :show, :destroy]
+
 # Administration block
   scope '/admin' do
     resources :users, except: [:new, :create, :show]

@@ -1,5 +1,5 @@
 .role-apps-table
-  %table.role-apps-tab
+  %table.role-apps-tab.ngtable
     %thead
       %th.app-head
         Заголовок
@@ -11,7 +11,7 @@
 
     %tbody
       - @role_apps.each do |app|
-        %tr.line
+        %tr.one-line
           %td.app-head
             = link_to app.head, app, target: '_blank'
           %td.app-user
