@@ -1,6 +1,7 @@
-@app.controller "AdminCharsCtrl", ['$scope', '$http', 'AdminChar', "CharsService", "ngTableParams", ($scope, $http, Char, CharsService, ngTableParams)->
+@app.controller "AdminCharsCtrl", ['$scope', '$http', 'AdminChar', "ngTableService", "ngTableParams", ($scope, $http, Char, Service, ngTableParams)->
 
-  data = CharsService.cachedData
+  data = Service.cachedData
+  Service.setUrl '/admin/chars.json'
   $scope.chars = []
   $scope.showedChar = {}
   $scope.editedChar = {}
@@ -13,7 +14,7 @@
   ,
     total: 0
     getData: ($defer, params) ->
-      CharsService.getData $defer, params, $scope.filter
+      Service.getData $defer, params, $scope.filter
       return
   )
 
@@ -27,7 +28,7 @@
   $scope.removeChar = (char) ->
     if confirm("Точно удалить?")
       Char.delete({id:char.id}, ->
-        CharsService.reload($scope.tableParams)
+        Service.reload($scope.tableParams)
         $scope.loadBlock 'reviewed'
       )
 
@@ -48,7 +49,7 @@
   $scope.approveChar = (char) ->
     $http.put('/admin/chars/'+char.id+'/approve.json', {approve_char_id: char.id}).success (data) ->
       $scope.loadBlock 'reviewed'
-      CharsService.reload($scope.tableParams)
+      Service.reload($scope.tableParams)
 
   $scope.declineChar = (char) ->
     $http.put('/admin/chars/'+char.id+'/decline.json', {approve_char_id: char.id}).success (data) ->
@@ -69,7 +70,7 @@
     $scope.editedChar.char_skills_attributes = $scope.editedChar.magic_skills.concat $scope.editedChar.phisic_skills
     $scope.editedChar.phisic_skills = $scope.editedChar.magic_skills = null
     Char.update({id:$scope.editedChar.id, char:$scope.editedChar}, ->
-      CharsService.reload $scope.tableParams
+      Service.reload $scope.tableParams
       $scope.loadBlock 'reviewed'
       $scope.editedChar = {}
     )

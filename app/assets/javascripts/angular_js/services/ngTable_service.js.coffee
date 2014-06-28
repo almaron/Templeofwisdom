@@ -1,4 +1,4 @@
-@app.service "RolesService", ["$filter", "$http", ($filter, $http) ->
+@app.service "ngTableService", ["$filter", "$http", ($filter, $http) ->
 
   filterData = (data, filter) ->
     $filter('filter')(data, filter)
@@ -13,20 +13,22 @@
     sliceData orderData(filterData(data, filter), params), params
 
   service = {
-    cachedData: []
+    cachedData: [],
+    data_url: '',
+    setUrl: (data_url) ->
+      service.data_url = data_url
     getData: ($defer, params, filter) ->
       if service.cachedData.length > 0
-        console.log "using cached data"
         filteredData = filterData(service.cachedData, filter)
         transformedData = sliceData(orderData(filteredData, params), params)
         params.total filteredData.length
         $defer.resolve transformedData
       else
-        $http.get("/admin/roles.json").success (roles) ->
-          angular.copy roles, service.cachedData
-          params.total roles.length
-          filteredData = $filter("filter")(roles, filter)
-          transformedData = transformData(roles, filter, params)
+        $http.get(service.data_url).success (items) ->
+          angular.copy items, service.cachedData
+          params.total items.length
+          filteredData = $filter("filter")(items, filter)
+          transformedData = transformData(items, filter, params)
           $defer.resolve transformedData
           return
     emptyData: ->
@@ -34,7 +36,7 @@
       return
     reload: (params) ->
       service.emptyData()
-      params.reload
+      params.reload()
   }
 
 ]

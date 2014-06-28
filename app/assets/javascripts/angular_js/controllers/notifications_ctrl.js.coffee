@@ -1,6 +1,7 @@
-@app.controller 'NotificationsCtrl', ['$scope','$http','NoteService', 'ngTableParams', ($scope, $http, NoteService, ngTableParams) ->
+@app.controller 'NotificationsCtrl', ['$scope','$http','ngTableService', 'ngTableParams', ($scope, $http, Service, ngTableParams) ->
 
-  data = NoteService.cachedData
+  data = Service.cachedData
+  Service.setUrl '/notifications.json'
 
   $scope.tableParams = new ngTableParams(
     page: 1
@@ -8,15 +9,17 @@
   ,
     total: 0
     getData: ($defer, params) ->
-      NoteService.getData $defer, params, $scope.filter
+      Service.getData $defer, params, $scope.filter
       return
   )
 
   $scope.removeNote = (note) ->
-    NoteService.removeNote(note, $scope.tableParams)
+    $http.delete('/notifications/'+note.id+'.json').success ->
+      Service.reload($scope.tableParams)
 
   $scope.showNote = (note) ->
     $http.get('/notifications/'+note.id+'.json').success (data) ->
+      Service.cachedData[Service.cachedData.indexOf(note)].read = true
       $scope.sNote = data
-      NoteService.readNote note
+
 ]

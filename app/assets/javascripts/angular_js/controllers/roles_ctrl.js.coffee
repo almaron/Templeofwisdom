@@ -1,6 +1,7 @@
-@app.controller 'RolesCtrl', ['$scope', '$http', 'RolesService', 'ngTableParams', ($scope, $http, Service, ngTableParams) ->
+@app.controller 'RolesCtrl', ['$scope', '$http', 'ngTableService', 'ngTableParams', ($scope, $http, Service, ngTableParams) ->
 
   data = Service.cachedData
+  Service.setUrl '/admin/roles.json'
 
   $scope.tableParams = new ngTableParams(
     page: 1

@@ -1,8 +1,9 @@
-@app.controller "UserCtrl",["$scope", "$http", "$filter", "UsersService", "ngTableParams", ($scope, $http, $filter, UsersService, ngTableParams)->
+@app.controller "UserCtrl",["$scope", "$http", "$filter", "ngTableService", 'AdminUser', "ngTableParams", ($scope, $http, $filter, Service, User, ngTableParams)->
 
-  data = UsersService.cachedData
+  data = Service.cachedData
+  Service.setUrl '/admin/users.json'
 
-  $scope.destroyedUsers = UsersService.destroyedUsers()
+  $scope.destroyedUsers = User.query({scope:"destroyed"})
   $scope.selectedUser = {}
 
   $http.get("/user_groups.json").success (data) ->
@@ -16,12 +17,12 @@
   ,
     total: 0 # length of data
     getData: ($defer, params) ->
-      UsersService.getData $defer, params, $scope.filter
+      Service.getData $defer, params, $scope.filter
       return
   )
 
   $scope.$watch "filter.$", (newVal, oldVal) ->
-    $scope.tableParams.reload()  if (typeof oldVal != "undefined") && (typeof newVal != "undefined")
+    $scope.tableParams.reload()  if angular.isDefined newVal
     return
 
   $scope.editUser = (user) ->
@@ -32,10 +33,12 @@
     $scope.editUser user[0]
 
   $scope.updateUser = ->
-    $scope.selectedUser = UsersService.updateUser($scope.selectedUser, $scope.tableParams)
+    $scope.selectedUser = User.update {id:$scope.selectedUser.id, user:$scope.selectedUser}, ->
+      Service.reload($scope.tableParams)
 
   $scope.removeUser = (user) ->
-    UsersService.removeUser(user,$scope.tableParams)
+    User.delete {id:user.id}, ->
+      Service.reload($scope.tableParams)
     $scope.destroyedUsers.push user
 
 
