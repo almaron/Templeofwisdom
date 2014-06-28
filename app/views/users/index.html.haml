@@ -16,6 +16,5 @@
     %span.destroyed-user{"ng-repeat"=>"user in destroyedUsers", "ng-show"=>"showDestroyed"}
       {{user.name}}
 
-%script{type:"text/ng-template", id:"custom/pager"}
-  = render :partial => 'ng_table_pager'
+= render 'application/ng_table_pager'
 

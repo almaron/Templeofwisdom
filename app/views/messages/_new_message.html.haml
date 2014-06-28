@@ -1,0 +1,25 @@
+%form
+  %span.close{'ng-click'=>'closeForm()'}
+    %span.fa.fa-times
+  %table
+    %tbody
+      %tr
+        %td.wm-td1 Отправить от:
+        %td.wm-td2
+          %select.inp.inp-type2{'ng-model'=>'nMsg.char_id', 'ng-options'=>'char.id as char.name for char in currentUser.chars'}
+      %tr
+        %td.wm-td1 Кому:
+        %td.wm-td2
+          %select.inp.inp-type2{'ng-model'=>'nMsg.char_ids', 'ng-options'=>'char.id as char.name for char in allChars', multiple:true, chosen:'', 'data-placeholder'=>'Выберите адресатов'}
+      %tr
+        %td.wm-td1 Тема:
+        %td.wm-td2
+          %input.inp-type2.inp{'ng-model'=>'nMsg.head'}
+      %tr
+        %td.wm-td1 Сообщение:
+        %td.wm-td2
+          %textarea.inp.inp-type2{'ng-model'=>'nMsg.text', 'mark-it-up'=>''}
+      %tr
+        %td.wm-td1  
+        %td.wm-td2
+          %input.btn.btn-standart{type: "submit", value: "Отправить", 'ng-click'=>'sendMsg()'}/

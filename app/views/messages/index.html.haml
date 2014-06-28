@@ -1,0 +1,28 @@
+.messages.admin-wrapper{'ng-controller'=>'MsgCtrl'}
+
+  .message-btn
+    %span.btn.btn-standart{'ng-click'=>'messageShowInbox()', 'ng-class'=>'{"active" : !showOutbox}'}
+      Входящие
+    %span.btn.btn-standart{'ng-click'=>'messageShowOutbox()', 'ng-class'=>'{"active" : showOutbox}'}
+      Исходящие
+    %span.btn.btn-standart{'ng-click'=>'newMessage()', 'ng-class'=>'{"active" : showNew}'}
+      Написать ЛС
+
+  .messages-list{'ng-hide'=>'showNew'}
+    .user-filter
+      %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}
+      %label.fa.fa-search{for:'user-filter'} &nbsp;
+
+    .inbox-messages{'ng-hide'=>'showNew'}
+      = render 'inbox_ngTable'
+
+    -#.outbox-messages{'ng-show'=>'showOutbox'}
+      -#= render 'outbox_ngTable'
+
+    .received-message{'ng-show'=>'sMsg.id'}
+      = render 'show_message'
+
+  .write-message{'ng-show'=>'showNew'}
+    = render 'new_message'
+
+= render 'application/ng_table_pager'

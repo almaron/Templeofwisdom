@@ -19,7 +19,7 @@
 
   $scope.showNote = (note) ->
     $http.get('/notifications/'+note.id+'.json').success (data) ->
-      Service.cachedData[Service.cachedData.indexOf(note)].read = true
+      Service.reload($scope.tableParams)
       $scope.sNote = data
 
 ]

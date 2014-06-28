@@ -2294,39 +2294,48 @@ th.sort-by {
 }
 
 .messages {
-  table {
-    border: 1px solid @color-brown1;
-    border-collapse: collapse;
-    width:100%;
-    background:@bgimg-beige;
-    cursor:default;
 
-    th {
-      border: 1px solid @color-brown1;
+  .message-btn {
+    .active {
       background: @color-green6;
-      vertical-align: middle;
-      padding:5px;
+      color:@color-grey1;
     }
+  }
 
+  table {
+//    border: 1px solid @color-brown1;
+//    border-collapse: collapse;
+//    width:100%;
+//    background:@bgimg-beige;
+//    cursor:default;
+//
+//    th {
+//      border: 1px solid @color-brown1;
+//      background: @color-green6;
+//      vertical-align: middle;
+//      padding:5px;
+//    }
+//
     td {
-      border: 1px solid @color-brown1;
-      vertical-align: middle;
-      padding:5px;
-      .transition-1;
-    }
-
-    tr:hover td {
-      .box-shadow(0px 0px 9px -1px rgba(0,0,0,0.5));
-    }
-
-    .unread td {
-      background: @color-brown1 + 90;
-      font-weight: bold;
-
-      &.message-subject a {
-        color:@color-red;
+//      border: 1px solid @color-brown1;
+//      vertical-align: middle;
+//      padding:5px;
+//      .transition-1;
+      &.message-subject {
+        font-weight: bold;
+        cursor: pointer;
+        //        color:@color-red;
       }
     }
+
+//    tr:hover td {
+//      .box-shadow(0px 0px 9px -1px rgba(0,0,0,0.5));
+//    }
+
+//    .unread td {
+//      background: @color-brown1 + 90;
+//      font-weight: bold;
+//    }
 
     td.message-rulers {
       width:50px;
@@ -2346,7 +2355,7 @@ th.sort-by {
     }
 
     td.message-date {
-      width:100px;
+      width:130px;
       text-align: center;
     }
 
@@ -2409,6 +2418,12 @@ th.sort-by {
     select.inp {width:262px;}
     textarea.inp {width:100%; height:150px;}
   }
+  .close {
+    float:right;
+    font-size: 1.3em;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
 }
 
 
@@ -2418,7 +2433,13 @@ th.sort-by {
   padding:10px;
   background:@bgimg-beige;
   border:1px solid @color-brown1;
+  margin-top: 20px;
 
+  .close {
+    float: right;
+    font-size: 1.3em;
+    margin: 5px 10px 0 0;
+  }
   table {
     width:100%;
     cursor:default;
@@ -2935,6 +2956,22 @@ td.none,td.none:hover, tr:hover td.none {
   }
 }
 
+.chosen-container-multi {
+  .chosen-choices {
+    border-color: @color-brown1;
+    background: @color-brown3;
+    li {
+      &.search-choice {
+        background: @color-brown5;
+      }
+    }
+  }
+  &.chosen-container-active {
+    .chosen-choices {
+      background: @color-brown4 + 66;
+    }
+  }
+}
 /*
 
 */

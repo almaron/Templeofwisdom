@@ -5,3 +5,6 @@ json.default_char user.default_char ? user.default_char : Char.new
 json.activeChars user.chars.where(status_id:5) do |char|
   json.(char, :id, :name)
 end
+json.chars user.own_chars do |char|
+  json.(char, :id, :name)
+end

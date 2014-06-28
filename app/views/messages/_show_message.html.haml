@@ -1,0 +1,25 @@
+%form
+  %span.close{'ng-click'=>'sMsg = {}'}
+    %span.fa.fa-times
+  %table
+    %tbody
+      %tr
+        %td.td1 От:
+        %td.td2
+          %a{} {{sMsg.author}}
+      %tr
+        %td.td1 Кому:
+        %td.td2
+          %a{} {{sMsg.receive_list}}
+      %tr
+        %td.td1 Дата:
+        %td.td2
+          {{sMsg.createdAt}}
+      %tr
+        %td.td1 Тема:
+        %td.td2.subject
+          {{sMsg.head}}
+  .received-message-text{'ng-bind-html'=>'sMsg.content'}
+  .received-message-answer
+    %input.btn.btn-standart{type: "submit", value: "Ответить", 'ng-hide'=>'sMsg.user_id == currentUser.id', 'ng-click'=>'replyMsg(sMsg)'}/
+    %span.delete{'ng-click'=>'removeMsg(sMsg)'} Удалить письмо

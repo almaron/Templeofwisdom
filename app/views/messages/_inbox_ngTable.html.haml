@@ -1,0 +1,13 @@
+%table.users-table.ngtable{'ng-table' => 'tableParams', 'template-pagination'=>'custom/pager'}
+  %tr.one-line{'ng-repeat' => 'msg in $data', 'ng-class'=>'{"unread": !msg.read, "read" : msg.read }'}
+    %td.message-date{'data-title' => "'Дата'", 'data-header-class'=>'message-date'}
+      %span{'ng-click'=>'showMessage(msg)'}{{msg.createdAt}}
+    %td.message-from{'data-title' => "'От кого:'", 'data-header-class'=>'message-from'}
+      %span{'ng-click'=>'showMsg(msg)'} {{msg.author}}
+    %td.message-to{'data-title' => "'Кому:'", 'data-header-class'=>'message-to'}
+      {{msg.receive_list}}
+    %td.message-subject{'data-title' => "'Тема'", 'data-header-class'=>'message-subject'}
+      %span{'ng-click'=>'showMessage(msg)'}{{msg.head}}
+    %td.message-rulers{'data-title' => "'Удалить'", 'data-header-class'=>'message-rulers'}
+      %span.user-edit.fa.fa-times{'ng-click'=>'removeMsg(msg, !showOutbox)'}
+

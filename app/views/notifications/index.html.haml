@@ -11,12 +11,10 @@
       %span.fa.fa-times{'ng-click'=>'sNote = {}'}
     .show-note
       .line.note-head{'ng-class'=>'"note-head-"+sNote.priority'}
-        {{note.head}}
+        {{sNote.head}}
       .line.note-date
-        {{note.createdAt}}
-      .line.note-text{'ng-bind-html'=>'note.text'}
+        {{sNote.createdAt}}
+      .line.note-text{'ng-bind-html'=>'sNote.text'}
 
 
-
-%script{type:'text/ng-template', id:'custom/pager'}
-  = render :partial => 'ng_table_pager'
+= render 'application/ng_table_pager'

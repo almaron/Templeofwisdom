@@ -1,0 +1,1 @@
+json.(@message, :char_id, :head, :text, :char_ids)

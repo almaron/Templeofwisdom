@@ -17,6 +17,8 @@ class AdminCharsController < ApplicationController
                     {status_id: [3,4]}
                   when 'saved'
                     {status_id: 1}
+                  when 'messagable'
+                    'status_id > 1'
                   else
                     {status_id:[5,6]}
                 end

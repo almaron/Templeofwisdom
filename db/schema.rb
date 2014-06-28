@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625182724) do
+ActiveRecord::Schema.define(version: 20140628205452) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -216,9 +216,10 @@ ActiveRecord::Schema.define(version: 20140625182724) do
     t.integer  "char_id"
     t.string   "head"
     t.text     "text"
-    t.integer  "deleted"
+    t.integer  "deleted",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "receive_list"
   end
 
   create_table "news", force: true do |t|
