@@ -55,6 +55,15 @@ Rails.application.routes.draw do
   resources :role_apps
 
   resources :notifications, only: [:index, :show, :destroy]
+  resources :messages do
+    collection do
+      get :outbox
+      get 'inbox'=>'messages#index', as: :inbox
+    end
+    member do
+      get :reply
+    end
+  end
 
 # Administration block
   scope '/admin' do
