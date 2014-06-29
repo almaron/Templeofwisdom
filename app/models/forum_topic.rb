@@ -4,6 +4,7 @@ class ForumTopic < ActiveRecord::Base
 
   has_many :posts, class_name: ForumPost, foreign_key: :topic_id
   accepts_nested_attributes_for :posts
+  has_many :chars, through: :posts
 
   belongs_to :forum
 
@@ -40,6 +41,9 @@ class ForumTopic < ActiveRecord::Base
     self.forum.add_topic
   end
 
+  def play_chars
+    self.chars.where('group_id > 1').uniq
+  end
 
   private
 
