@@ -55,6 +55,12 @@ ru:
   role_apps:
     index:
       pagetitle: "Заявки на проверку ролевок"
+  notifications:
+    index:
+      pagetitle: "Уведомления"
+  messages:
+    index:
+      pagetitle: 'Личные сообщения'
 
 
   char_status:
