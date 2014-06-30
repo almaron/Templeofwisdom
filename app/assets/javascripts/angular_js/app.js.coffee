@@ -1,4 +1,4 @@
-@app = angular.module('templeApp',["ngResource", "ngSanitize", "ngCookies","ngTable","xeditable","ui.tree"])
+@app = angular.module('templeApp',["ngResource", "ngSanitize", "ngCookies","ngTable","xeditable","ui.tree",'duScroll'])
 
 bootstrapAngular = ->
   angular.bootstrap("body", ["templeApp"])

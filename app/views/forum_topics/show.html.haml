@@ -1,4 +1,4 @@
-.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{params[:forum_id]},#{params[:id]},#{params[:page] || 1},#{params[:post_id] || -1})"}
+.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{params[:forum_id]},#{params[:id]},#{params[:page] || 1},#{params[:post] || -1})"}
 
   .path
     %span
@@ -21,94 +21,19 @@
     .bold Описание локации:
     %div{"ng-bind-html"=>"topic.description | simpleFormat"}
 
+  .ooo
+    postId: {{postId}}
+    %br/
+    initial: {{initial}}
   .forum-pagination
     %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
   %table.forum-tab.one-message-tab
     %tr
       %th.f-message-author Автор
       %th.f-message-content Пост
-  %table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts", id:"{{post.id}}"}
-    %tr{"ng-hide"=>"selectedPost.id==post.id"}
-      %td.f-message-author
-        .message-author-name{}
-          %a{href:"/chars/{{post.char_id}}"} {{post.char.name}}
-        .message-author-category{} {{post.char.status}}
-        .message-author-avatar{"ng-bind-html"=>"post.char.avatar_img | trustHtml"}
-        .message-author-onoff.offline
-        .message-author-count
-      %td.f-message-content
-        .message-date{} {{post.posted_at}}
-        .message-text
-          %div{"ng-bind-html"=>"post.show_text"}
-          .message-comment{"ng-if"=>"post.commented_at", "ng-hide"=>"post.editComment"}
-            .date{} {{post.commented_at}}
-            .bold
-              {{post.commenter}}:
-            .comment{"ng-bind-html"=>"post.comment | simpleFormat"}
-          .message-comment-edit{"ng-show"=>"post.editComment"}
-            .comment-form.any-form
-              .form-line
-                %label{for:"commenter"} От кого:
-                %input.inp.inp-type2{id:"commenter", "ng-model"=>"post.commenter"}
-              .form-line
-                %textarea.inp.inp-type2{"ng-model"=>"post.comment"}
-              .form-line.input-btn
-                %button.btn.btn-mini{"ng-click"=>"commentPost(post)"}
-                  %span.fa.fa-check
-                  Отправить
-                %button.btn.btn-mini{"ng-click"=>"post.editComment = false"}
-                  %span.fa.fa-times
-                  Отменить
-        .message-buttons.block-adm
-          .message-comment{"ng-if"=>"post.commentable"}
-            %span.fa.fa-comment{"ng-click"=>"post.editComment = true"}
-          .message-edit{"ng-if"=>"post.editable"}
-            %span.fa.fa-pencil{"ng-click"=>"editPost(post)"}
-          .message-destroy{"ng-if"=>"post.deletable"}
-            %span.fa.fa-times{"ng-click"=>"removePost(post)"}
-    %tr{"ng-hide"=>"selectedPost.id==post.id"}
-      %td.f-message-more
-        .message-author{"ng-if"=>"currentUser.group == 'admin'"}
-          %span.message-user{}
-          %a{href:"/users/{{post.user.id}}"} {{post.user.name}}
-          %span.message-ip{} {{post.ip}}
-      %td.f-message-options
-        .message-options-div
-          %a.opt-sendmessage{href: "#", title: "Отправить личное сообщение"} ЛС
-          %a.opt-profile{href: "#", title: "Посмотреть анкету персонажа"} Анкета
-          %a.opt-toadmin{href: "#", title: "Информировать мастера игры о посте (попросить отыграть реакцию или пожаловаться на сообщение)"} ❢
-          %a.opt-quote{href: "#", title: "Процитировать сообщение"}
-            “”
-    %tr.post-edit.inline-edit{"ng-if"=>"post.id == selectedPost.id"}
-      %td.label
-        .select-char
-          %label{for:"char_name"} Персонаж:
-          %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
-      %td.input.input-textarea
-        %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"selectedPost.text", required:'', "mark-it-up"=>""}
-        .input-btn
-          %button.btn.btn-mini{"ng-click"=>"updatePost()"}
-            Отправить
-          %button.btn.btn-mini{"ng-click"=>"cancelEdit()"}
-            Отменить
+  = render :partial => 'posts_table'
 
   .forum-pagination
     %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
 
-  .topic-form.topic-reply-form{"ng-if"=>"!topic.isClosed && !selectedPost.id && chars.length > 0"}
-    %table.forum-tab.one-message-tab.form-tab
-      %tr.post-edit
-        %td.label
-          .select-char
-            %label{for:"char_name"} Персонаж:
-            %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
-          .send-notifications
-            Отправка уведомлений
-        %td.input.input-textarea
-          %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:'', "mark-it-up"=>""}
-          .input-btn
-            %button.btn.btn-mini{"ng-click"=>"addReply()"}
-              Ответить
-
-
-
+  = render :partial => 'new_post_form'

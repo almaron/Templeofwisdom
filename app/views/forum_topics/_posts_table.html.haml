@@ -1,0 +1,65 @@
+%table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts", id:"pid_{{post.id}}", 'ng-class'=>'{active : post.id == postId, last : $last}'}
+  %tr{"ng-hide"=>"selectedPost.id==post.id"}
+    %td.f-message-author
+      %a{name:"p{{post.id}}"}
+      .message-author-name{}
+        %a{href:"/chars/{{post.char_id}}"} {{post.char.name}}
+      .message-author-category{} {{post.char.status}}
+      .message-author-avatar{"ng-bind-html"=>"post.char.avatar_img | trustHtml"}
+      .message-author-onoff.offline
+      .message-author-count
+    %td.f-message-content
+      .message-date{} {{post.posted_at}}
+      .message-text
+        %div{"ng-bind-html"=>"post.show_text"}
+        .message-comment{"ng-if"=>"post.commented_at", "ng-hide"=>"post.editComment"}
+          .date{} {{post.commented_at}}
+          .bold
+            {{post.commenter}}:
+          .comment{"ng-bind-html"=>"post.comment | simpleFormat"}
+        .message-comment-edit{"ng-show"=>"post.editComment"}
+          .comment-form.any-form
+            .form-line
+              %label{for:"commenter"} От кого:
+              %input.inp.inp-type2{id:"commenter", "ng-model"=>"post.commenter"}
+            .form-line
+              %textarea.inp.inp-type2{"ng-model"=>"post.comment"}
+            .form-line.input-btn
+              %button.btn.btn-mini{"ng-click"=>"commentPost(post)"}
+                %span.fa.fa-check
+                Отправить
+              %button.btn.btn-mini{"ng-click"=>"post.editComment = false"}
+                %span.fa.fa-times
+                Отменить
+      .message-buttons.block-adm
+        .message-comment{"ng-if"=>"post.commentable"}
+          %span.fa.fa-comment{"ng-click"=>"post.editComment = true"}
+        .message-edit{"ng-if"=>"post.editable"}
+          %span.fa.fa-pencil{"ng-click"=>"editPost(post)"}
+        .message-destroy{"ng-if"=>"post.deletable"}
+          %span.fa.fa-times{"ng-click"=>"removePost(post)"}
+  %tr{"ng-hide"=>"selectedPost.id==post.id"}
+    %td.f-message-more
+      .message-author{"ng-if"=>"currentUser.group == 'admin'"}
+        %span.message-user{}
+        %a{href:"/users/{{post.user.id}}"} {{post.user.name}}
+        %span.message-ip{} {{post.ip}}
+    %td.f-message-options
+      .message-options-div
+        %a.opt-sendmessage{href: "#", title: "Отправить личное сообщение"} ЛС
+        %a.opt-profile{href: "#", title: "Посмотреть анкету персонажа"} Анкета
+        %a.opt-toadmin{href: "#", title: "Информировать мастера игры о посте (попросить отыграть реакцию или пожаловаться на сообщение)"} ❢
+        %a.opt-quote{href: "#", title: "Процитировать сообщение"}
+          “”
+  %tr.post-edit.inline-edit{"ng-if"=>"post.id == selectedPost.id"}
+    %td.label
+      .select-char
+        %label{for:"char_name"} Персонаж:
+        %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
+    %td.input.input-textarea
+      %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"selectedPost.text", required:'', "mark-it-up"=>""}
+      .input-btn
+        %button.btn.btn-mini{"ng-click"=>"updatePost()"}
+          Отправить
+        %button.btn.btn-mini{"ng-click"=>"cancelEdit()"}
+          Отменить

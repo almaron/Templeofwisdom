@@ -32,6 +32,15 @@ ru:
       char:
         approve: "Анкета принимается. Добро пожаловать в Линь Ян Шо. Приятной игры."
 
+  notifications:
+    system:
+      head:
+        notify_post: "Получен ответ в теме"
+        notify_post_master: 'Запрос на отыгрыш событий'
+        notify_char_accept: 'Ваш персонаж принят'
+        notify_char_approve: 'Ваш персонаж одобрен'
+        notify_char_decline: 'Ваш персонаж отклонен'
+
   auto_link:
     url_link: "ссылка"
     email_link: "этот адрес"

@@ -5,7 +5,7 @@ class ForumPostsController < ApplicationController
 
   def index
     per_page = 15
-    @posts = ForumPost.where(topic_id: params[:topic_id]).paginate(page:params[:page], per_page: per_page)
+    @posts = ForumPost.includes(:char,:user).where(topic_id: params[:topic_id]).paginate(page:params[:page], per_page: per_page)
     respond_to do |format|
       format.json{}
     end
@@ -28,8 +28,10 @@ class ForumPostsController < ApplicationController
   def create
     respond_to do |format|
       if @post = ForumPost.create(post_params)
+        NoteService.new.notify_post params[:inform], @post.topic, @post
+        NoteService.new.notify_post_master @post.topic, @post if params[:inform_master]
         format.html { redirect_to_topic }
-        format.json { render partial: "post", locals: {post:@post}}
+        format.json { render partial: 'post', locals: {post:@post}}
       else
         format.html { redirect_to_topic }
         format.json { render json: {errors: @post.errors.full_messages}, status: 500 }
@@ -83,12 +85,12 @@ class ForumPostsController < ApplicationController
   private
 
   def post_params
-    if !params[:post][:comment].nil? && current_user.is_in?([:admin, :master])
+    if params[:post][:comment] && current_user.is_in?([:admin, :master])
       p_params = params.require(:post).permit(:comment, :commenter)
       p_params[:commented_at] = params[:post][:comment].present? ? DateTime.now : nil
       p_params
     else
-      params.require(:post).permit(:char_id,:text).merge!(topic_id:params[:topic_id], user_id: current_user.id, ip: request.remote_ip)
+      params.require(:post).permit(:char_id, :text).merge(topic_id:params[:topic_id], user_id: current_user.id, ip: current_user.current_ip)
     end
   end
 

@@ -45,6 +45,10 @@ class ForumTopic < ActiveRecord::Base
     self.chars.where('group_id > 1').uniq
   end
 
+  def other_chars(user)
+    play_chars - user.own_chars
+  end
+
   private
 
   def update_last_post(post, inc=1)

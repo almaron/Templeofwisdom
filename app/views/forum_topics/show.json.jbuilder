@@ -10,7 +10,7 @@ json.topic do
   json.editable @topic.is_editable?(current_user)
   json.description @topic.forum.description
   json.pages_count (@topic.posts.count.to_f / 15).ceil
-  json.chars @topic.play_chars do |char|
+  json.chars @topic.other_chars(current_user) do |char|
     json.(char, :id, :name)
   end
 end

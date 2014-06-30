@@ -1,4 +1,4 @@
-@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "Topic", "Post", ($scope, $http, $window, Topic, Post) ->
+@app.controller "TopicsCtrl", ["$scope", "$http", "$window", '$document', "Topic", "Post", ($scope, $http, $window, $document, Topic, Post) ->
 
   # Topic New
   $scope.newPost = {}
@@ -28,10 +28,13 @@
   # Topic Show
 
   $scope.postPagination = {}
+  $scope.informMaster = false
+  $scope.informChars = []
 
   $scope.initTopic = (forum_id, topic_id, page, post_id) ->
     $scope.topicInit = {forum_id: forum_id, topic_id:topic_id}
     $scope.postId = post_id if post_id >= 0
+    $scope.initial = true
     $scope.currentPath = "/temple/"+$scope.topicInit.forum_id+"/t/"+$scope.topicInit.topic_id
     $scope.postPagination.cur = page
     $scope.loadTopic()
@@ -53,7 +56,7 @@
     if angular.isDefined newVal && newVal
       $scope.loadPosts newVal
       $window.history.pushState({},"",$scope.currentPath+"?page="+newVal)
-#      $anchorScroll()
+      $document.scrollTo(0,270,270)
 
   $scope.loadPosts = (page) ->
     posts = Post.query {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, page: page}, ->
@@ -62,10 +65,13 @@
         $scope.postPagination.cur = $scope.postPagination.total
       else
         $scope.posts = posts
+        if $scope.initial
+#          $document.scrollTo angular.element('#pid_'+$scope.postId)
+          $scope.initial = false
 
 
   $scope.addReply = ->
-    $http.post($scope.currentPath+"/p.json", {post:$scope.newPost}
+    $http.post($scope.currentPath+"/p.json", {post:$scope.newPost, inform:$scope.informChars, inform_master: $scope.informMaster}
     ).success((newPost) ->
       if $scope.postPagination.cur == $scope.postPagination.total
         $scope.posts.push newPost
@@ -106,4 +112,13 @@
      $scope.posts[$scope.posts.indexOf(post)] = getPost
     )
 
+  $scope.toggleInform = (cid) ->
+    idx = $scope.informChars.indexOf(cid)
+    if idx < 0
+      $scope.informChars.push(cid)
+    else
+      $scope.informChars.splice(idx,1)
+
+  $scope.toggleInformMaster = () ->
+    $scope.informMaster = !$scope.informMaster
 ]
