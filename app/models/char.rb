@@ -79,7 +79,7 @@ class Char < ActiveRecord::Base
       self.update(status_id: 5)
       ForumService.new.add_approve_post self, user
       NoteService.new.notify_char_approve self
-      #   TODO send notification and email
+      #   TODO send  email
     end
   end
 
@@ -87,7 +87,7 @@ class Char < ActiveRecord::Base
     if self.status_id == 2
       self.destroy
       NoteService.new.notify_char_decline self
-    #  TODO send notification and email
+    #  TODO send  email
     end
   end
 

@@ -38,7 +38,7 @@
   $scope.$watch 'newsPagination.cur', (newVal) ->
     if angular.isDefined newVal
       $scope.loadNews newVal
-      $window.history.pushState({controller:"news", action:"index", page:newVal},"","/news?page="+newVal)
+#      $window.history.pushState({controller:"news", action:"index", page:newVal},"","/news?page="+newVal)
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
     $scope.newNews.author = newVal.name if (angular.isDefined(newVal) && angular.isDefined($scope.newNews))

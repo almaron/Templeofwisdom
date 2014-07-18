@@ -1,4 +1,4 @@
-@app.controller "TopicsCtrl", ["$scope", "$http", "$window", '$document', "Topic", "Post", ($scope, $http, $window, $document, Topic, Post) ->
+@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "$location", "$anchorScroll", "Topic", "Post", ($scope, $http, $window, $location, $anchorScroll,Topic, Post) ->
 
   # Topic New
   $scope.newPost = {}
@@ -36,11 +36,10 @@
     $scope.postId = post_id if post_id >= 0
     $scope.initial = true
     $scope.currentPath = "/temple/"+$scope.topicInit.forum_id+"/t/"+$scope.topicInit.topic_id
-    $scope.postPagination.cur = page
-    $scope.loadTopic()
+    $scope.loadTopic(page)
 
 
-  $scope.loadTopic = (load_posts=false) ->
+  $scope.loadTopic = (page = 1, load_posts=false) ->
     data = Topic.get({forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id}, ->
       if data.redirect
         $window.location.assign data.redirect
@@ -49,25 +48,31 @@
         $scope.path = data.path
         $scope.chars = data.chars
         $scope.postPagination.total = data.topic.pages_count
+        if page == 'last' || page > data.topic.pages_count
+          $scope.postPagination.cur = data.topic.pages_count
+        else
+          $scope.postPagination.cur = page
         $scope.loadPosts($scope.postPagination.cur) if load_posts
     )
 
-  $scope.$watch "postPagination.cur", (newVal) ->
-    if angular.isDefined newVal && newVal
+  $scope.$watch "postPagination.cur", (newVal, oldVal) ->
+    if angular.isDefined(newVal) && newVal && (newVal != oldVal)
+#      $window.history.pushState({page: newVal, prev:oldVal},"",$scope.currentPath+"?page="+newVal)
       $scope.loadPosts newVal
-      $window.history.pushState({},"",$scope.currentPath+"?page="+newVal)
-      $document.scrollTo(0,270,270)
 
   $scope.loadPosts = (page) ->
     posts = Post.query {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, page: page}, ->
-      console.log posts.length
       if posts.length == 0
         $scope.postPagination.cur = $scope.postPagination.total
       else
         $scope.posts = posts
-        if $scope.initial
-#          $document.scrollTo angular.element('#pid_'+$scope.postId)
+        if $scope.initial && $scope.postId
+          $location.hash 'p'+$scope.postId
+          $anchorScroll()
+#          $window.scrollToElement 0, angular.element('#pid_'+$scope.postId).offset().top
           $scope.initial = false
+        else
+          $window.scrollTo(0,270,270)
 
 
   $scope.addReply = ->
@@ -86,7 +91,7 @@
   $scope.removePost = (post) ->
     Post.delete {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: post.id}, ->
       $scope.posts.splice($scope.posts.indexOf(post),1)
-      $scope.loadTopic true
+      $scope.loadTopic $scope.postPagination.cur, true
 
   $scope.updateTopic = ->
     Topic.update {forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id, topic:{ head:$scope.topic.head }}

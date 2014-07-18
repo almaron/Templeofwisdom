@@ -63,7 +63,7 @@
   $scope.$watch 'blogPagination.cur', (newVal) ->
     if angular.isDefined newVal
       $scope.loadPosts newVal
-      $window.history.pushState({controller:"blogs", action:"index", page:newVal}, "", '/blog?page='+newVal)
+#      $window.history.pushState({controller:"blogs", action:"index", page:newVal}, "", '/blog?page='+newVal)
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
     $scope.newPost.author = newVal.name if angular.isDefined newVal && angular.isDefined $scope.newPost

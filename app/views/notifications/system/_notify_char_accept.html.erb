@@ -1,0 +1,4 @@
+Анкета вашего персонажа [b]<%= char.name %>[/b] была принята к рассмотрению.
+<% cfp = "char_profile_forum_id_#{char.group_id}".to_sym%>
+Вы можете посмотреть замечания к анкете в [url=/temple/<%= app_configs[cfp] %>/t/<%= char.profile_topic_id%>]этой теме[/url].
+

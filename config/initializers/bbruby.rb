@@ -10,16 +10,16 @@ module BBRuby
                             ],
                             'OOC' => [
                                 /\[ooc\](.*?)\[\/ooc\]/mi,
-                                '<div class="ooc">\2</div>',
+                                '<div class="ooc">\1</div>',
                                 'OOC text',
                                 '[ooc]OOC Text[/ooc]',
                                 :ooc
                             ],
                             'More' => [
-                                /\[more=(.*?)\](.*?)\[\/reply\]/mi,
+                                /\[more=(.*?)\](.*?)\[\/more\]/mi,
                                 '<div class="more"><b>\2</b>\3</div>',
                                 'Reply text',
-                                '[reply=date|person]Original Text[/reply]',
+                                '[more=cut]Original Text[/more]',
                                 :more
                             ],
                         })

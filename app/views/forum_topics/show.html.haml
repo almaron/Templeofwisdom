@@ -1,5 +1,5 @@
-.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{params[:forum_id]},#{params[:id]},#{params[:page] || 1},#{params[:post] || -1})"}
-
+- page = params[:page]=='last' ? '"last"' : (params[:page] || 1)
+.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{params[:forum_id]},#{params[:id]},#{page},#{params[:post] || -1})"}
   .path
     %span
       %a{href:"/temple"} Список форумов
@@ -21,10 +21,6 @@
     .bold Описание локации:
     %div{"ng-bind-html"=>"topic.description | simpleFormat"}
 
-  .ooo
-    postId: {{postId}}
-    %br/
-    initial: {{initial}}
   .forum-pagination
     %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
   %table.forum-tab.one-message-tab
