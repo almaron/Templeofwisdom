@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Char do
 
@@ -39,7 +39,7 @@ describe Char do
 
       it "should not accept char if it's not pending" do
         @char.status_id = 5
-        expect(@char.accept(@user)).to be_false
+        expect(@char.accept(@user)).to eq false
       end
 
       it "should create a topic with the chars profile" do
@@ -73,7 +73,7 @@ describe Char do
 
       it 'should not change the char if it\'s not on review' do
         @char.status_id = 2
-        expect(@char.approve @user).to be_false
+        expect(@char.approve @user).to eq false
       end
 
       it 'should add a final post to the topic' do
@@ -101,7 +101,7 @@ describe Char do
 
       it 'should not decline a char that is not pending' do
         @char.status_id = 5
-        expect(@char.decline).to be_false
+        expect(@char.decline).to eq false
       end
 
       it 'should send an email' do
