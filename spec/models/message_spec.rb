@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Message do
+describe Message, :type => :model do
 
   describe 'destruct' do
 
@@ -20,7 +20,7 @@ describe Message do
     it 'should set the attribute instead of deleting the record' do
       @message.receivers.create attributes_for(:message_receiver)
       @message.destruct
-      expect(Message.find(@message.id).deleted?).to be_true
+      expect(Message.find(@message.id).deleted?).to be_truthy
     end
 
   end
@@ -29,7 +29,7 @@ describe Message do
 
     it 'should return true if the message is marked as deleted' do
       @message = Message.new(deleted:1)
-      expect(@message.deleted?).to be_true
+      expect(@message.deleted?).to be_truthy
     end
 
   end

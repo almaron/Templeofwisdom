@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe NotificationsController do
+describe NotificationsController, :type => :controller do
 
 end

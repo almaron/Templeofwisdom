@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe RoleApp do
+describe RoleApp, :type => :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

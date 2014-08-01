@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe CharSkill do
+describe CharSkill, :type => :model do
 
 end

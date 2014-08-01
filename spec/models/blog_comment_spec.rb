@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe BlogComment do
+describe BlogComment, :type => :model do
 
 end

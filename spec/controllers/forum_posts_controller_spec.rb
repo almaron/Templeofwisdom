@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ForumPostsController do
+describe ForumPostsController, :type => :controller do
 
   describe 'UPDATE' do
 

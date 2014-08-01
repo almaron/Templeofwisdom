@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RoleAppsController do
+describe RoleAppsController, :type => :controller do
 
 
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe User, :type => :model do
 
   context "creating a user" do
     it "should create user and profiles" do

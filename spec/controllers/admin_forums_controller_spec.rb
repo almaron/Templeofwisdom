@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe AdminForumsController do
+describe AdminForumsController, :type => :controller do
 
 end

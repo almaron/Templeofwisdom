@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CharGroup do
+describe CharGroup, :type => :model do
 
   # describe "accessible_by(group)" do
   #

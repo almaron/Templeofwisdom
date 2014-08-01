@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ForumPost do
+describe ForumPost, :type => :model do
   describe "after create" do
 
     it "should trigger a topic touch" do

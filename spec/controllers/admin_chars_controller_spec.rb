@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe AdminCharsController do
+describe AdminCharsController, :type => :controller do
 
 end

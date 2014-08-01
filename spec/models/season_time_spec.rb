@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe SeasonTime do
+describe SeasonTime, :type => :model do
 
 end

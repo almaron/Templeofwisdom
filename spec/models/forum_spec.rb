@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Forum do
+describe Forum, :type => :model do
 
   describe :add_post do
 

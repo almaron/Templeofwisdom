@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe DelegationsController do
+describe DelegationsController, :type => :controller do
 
 end

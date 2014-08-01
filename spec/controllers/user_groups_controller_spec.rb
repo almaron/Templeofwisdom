@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe UserGroupsController do
+describe UserGroupsController, :type => :controller do
 
 end
