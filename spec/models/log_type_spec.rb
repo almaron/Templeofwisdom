@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe LogType do
+describe LogType, :type => :model do
 
 end

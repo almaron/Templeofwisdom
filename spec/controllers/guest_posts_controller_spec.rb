@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe GuestPostsController do
+describe GuestPostsController, :type => :controller do
 
 end

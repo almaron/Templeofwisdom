@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe CharRole do
+describe CharRole, :type => :model do
 
 end

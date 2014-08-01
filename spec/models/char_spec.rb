@@ -1,6 +1,6 @@
-require 'rails_helper'
+require 'spec_helper'
 
-describe Char do
+describe Char, :type => :model do
 
   describe 'delegate_to and undelegate' do
     it 'delegates and undelegates' do
@@ -39,7 +39,7 @@ describe Char do
 
       it "should not accept char if it's not pending" do
         @char.status_id = 5
-        expect(@char.accept(@user)).to eq false
+        expect(@char.accept(@user)).to be_falsey
       end
 
       it "should create a topic with the chars profile" do
@@ -47,9 +47,7 @@ describe Char do
         @char.accept @user
       end
 
-      it "should send an email" do
-        pending "Implement"
-      end
+      it "should send an email"
 
       it 'should send a notification' do
         expect(Notification).to receive(:create)
@@ -73,7 +71,7 @@ describe Char do
 
       it 'should not change the char if it\'s not on review' do
         @char.status_id = 2
-        expect(@char.approve @user).to eq false
+        expect(@char.approve @user).to be_falsey
       end
 
       it 'should add a final post to the topic' do
@@ -81,9 +79,7 @@ describe Char do
         @char.approve @user
       end
 
-      it 'should send an email' do
-        pending 'Implement'
-      end
+      it 'should send an email'
 
       it 'should send a notification' do
         expect(Notification).to receive(:create)
@@ -101,12 +97,10 @@ describe Char do
 
       it 'should not decline a char that is not pending' do
         @char.status_id = 5
-        expect(@char.decline).to eq false
+        expect(@char.decline).to be_falsey
       end
 
-      it 'should send an email' do
-        pending 'Implement'
-      end
+      it 'should send an email'
 
       it 'should send a notification' do
         expect(Notification).to receive(:create)

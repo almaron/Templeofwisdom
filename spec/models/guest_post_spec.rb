@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GuestPost do
+describe GuestPost, :type => :model do
 
   before :all do
     @post = build :guest_post
@@ -14,7 +14,7 @@ describe GuestPost do
     end
 
     it "should be valid" do
-      expect(@post.validate_captcha).to be_true
+      expect(@post.validate_captcha).to be_truthy
     end
 
     it "should validate with the post" do

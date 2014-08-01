@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe Level do
+describe Level, :type => :model do
 
 end

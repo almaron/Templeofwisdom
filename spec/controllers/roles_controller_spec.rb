@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe RolesController do
+describe RolesController, :type => :controller do
 
 end

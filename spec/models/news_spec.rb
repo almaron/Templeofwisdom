@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe News do
+describe News, :type => :model do
 
   it "should be valid" do
     news = build_stubbed :news

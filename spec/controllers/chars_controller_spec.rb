@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CharsController do
+describe CharsController, :type => :controller do
 
 
 end

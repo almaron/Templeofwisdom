@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CharProfile do
+describe CharProfile, :type => :model do
 
   describe "real_age" do
 

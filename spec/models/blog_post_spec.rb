@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe BlogPost do
+describe BlogPost, :type => :model do
 
 end

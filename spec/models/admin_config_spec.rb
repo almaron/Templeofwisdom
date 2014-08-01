@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe AdminConfig do
+describe AdminConfig, :type => :model do
   it "should assemble configuration" do
     create :admin_config
     create :int_config

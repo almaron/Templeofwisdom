@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ForumTopicsController do
+describe ForumTopicsController, :type => :controller do
 
 
 end

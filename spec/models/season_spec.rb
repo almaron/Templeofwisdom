@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe Season do
+describe Season, :type => :model do
 
 end

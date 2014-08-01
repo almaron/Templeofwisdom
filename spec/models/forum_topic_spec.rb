@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ForumTopic do
+describe ForumTopic, :type => :model do
 
   before :each do
     @forum = create :forum

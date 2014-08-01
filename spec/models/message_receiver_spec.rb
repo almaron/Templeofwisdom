@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe MessageReceiver do
+describe MessageReceiver, :type => :model do
 
   it 'should be sent to char\'s owner' do
     user = create :user
