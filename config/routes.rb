@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # OAuth routes
   match 'oauth/callback' => 'oauths#callback', via: [:get, :post]
   match 'oauth/delete/:provider' => 'oauths#destroy', as: :delete_auth, via: [:get, :delete]
@@ -65,6 +66,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/skills/:id' => 'skills#show', as: :skill, id: /\d+/
+  get '/skills/:skill_type' => 'skills#public_index', as: :skills_list, skill_type: /magic|phisic/
+
 # Administration block
   scope '/admin' do
     resources :users, except: [:new, :create, :show]
@@ -80,6 +84,7 @@ Rails.application.routes.draw do
     end
     resources :configs, except: [:show, :new, :edit]
     resources :roles
+    resources :skills, except:[:show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -29,10 +29,11 @@ class NoteService
   end
 
   def notify_char_accept(char)
+    char_forum_id = AdminConfig.find_by(name: "char_profile_forum_id_#{char.group_id}").value
     Notification.create({
       user_id: char.owner.id,
       head: I18n.t('notifications.system.head.notify_char_accept'),
-      text: render(partial: 'notifications/system/notify_char_accept', locals: {char: char})
+      text: render(partial: 'notifications/system/notify_char_accept', locals: {char: char, forum_id: char_forum_id})
     })
   end
 
