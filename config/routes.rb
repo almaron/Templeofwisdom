@@ -66,7 +66,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/skills/:id' => 'skills#show', as: :skill, id: /\d+/
+  get '/skills/:id' => 'skills#show', as: :skill_show, id: /\d+/
   get '/skills/:skill_type' => 'skills#public_index', as: :skills_list, skill_type: /magic|phisic/
 
 # Administration block
@@ -84,7 +84,7 @@ Rails.application.routes.draw do
     end
     resources :configs, except: [:show, :new, :edit]
     resources :roles
-    resources :skills, except:[:show]
+    resources :skills, except:[:show, :edit, :new]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
