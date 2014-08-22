@@ -4,7 +4,7 @@
 .text-simple
   - if @skill.description.present?
     .skill_description
-      = @skill.description.bbcode_to_html_with_formatting
+      = raw @skill.description.bbcode_to_html_with_formatting
   - if @skill.advice.present?
     %p.advice
       Совет по игре: #{@skill.advice}
@@ -13,13 +13,13 @@
       %a{name: skl.level_id}
       %h4
         = skl.level.name
-      = skl.description
+      = raw skl.description
       - if skl.techniques.present?
         %p
           %strong
             %em
               Способности:
-        = skl.techniques.bbcode_to_html_with_formatting
+        = raw skl.techniques.bbcode_to_html_with_formatting
       - if skl.advice.present?
         %p.advice
           Совет по игре: #{skl.advice}

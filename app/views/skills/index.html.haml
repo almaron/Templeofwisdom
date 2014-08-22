@@ -1,2 +1,88 @@
-%h1 Skills#index
-%p Find me in app/views/skills/index.html.haml
+= content_for :pagetitle do
+  Навыки и способности
+
+.skills-wrapper{'ng-controller'=>'SkillsCtrl'}
+  .skill-list-wrap{'ng-hide'=>'editedSkill.id'}
+    {{someSkill}}
+    %br
+    {{updated}}
+    %ol.skills-list
+      %li{'ng-repeat'=>'skill in skills'}
+        %a{href:'/skills/{{skill.id}}'} {{skill.name}}
+        %span.skill-edit{'ng-click'=>'editSkill(skill)'}
+          %span.fa.fa-pencil
+        %span.skill-del{'ng-click'=>'deleteSkill(skill)'}
+          %span.fa.fa-times
+    %form{}
+      %h4 Новый навык/способность
+      %label{for:'new_skill_name'} Название:
+      %input.inp.inp-type2{'ng-model'=>'newSkill.name', id:'new_skill_name'}
+      %label{for:'new_skill_type'} Тип:
+      %select.inp.inp-type2{'ng-model'=>'newSkill.skill_type', id:'new_skill_type'}
+        %option{value:'phisic'}Навык
+        %option{value:'magic'} Способность
+      %span.accept.btn.btn-standart{'ng-click'=>'addSkill()'}
+        %span.fa.fa-check
+
+  .skill-edit-wrap{'ng-show'=>'editedSkill.id'}
+    .edit-skill-form-wrap
+      %span.close
+        %span.fa.fa-times{'ng-click'=>'closeEdit()'}
+      %a{name:'head'}
+      %h4 Редактирование навыка/способности
+      .edit-skill-form.any-form
+        %form{name:'SkillEditForm'}
+          %table.form-tab
+            %tr.form-line
+              %td.label
+                %label{for:'skill_name'}Название:
+              %td.input
+                %input.inp.inp-type2{"ng-model"=>"editedSkill.name", id:'skill_name'}
+            %tr.form-line
+              %td.label
+                %label{for:'skill_type'}Тип:
+              %td.input
+                %select.inp.inp-type2{"ng-model"=>"editedSkill.skill_type", id:'skill_type'}
+                  %option{value:'phisic'}Навык
+                  %option{value:'magic'}Способность
+            %tr.form-line
+              %td.label
+                %label{for:'skill_description'}Описание:
+              %td.input
+                %textarea.inp.inp-type2{"ng-model"=>"editedSkill.description", id:'skill_description', 'mark-it-up'=>''}
+            %tr.form-line
+              %td.label
+                %label{for:'skill_advice'}Совет по игре:
+              %td.input
+                %textarea.inp.inp-type2{"ng-model"=>"editedSkill.advice", id:'skill_advice'}
+            %tr.form-line
+              %td.label
+                %label{for:'skill_discount'}Скидка от:
+              %td.input
+                %select.inp.inp-type2{"ng-model"=>"editedSkill.discount_array", id:'skill_discount', 'ng-options'=>'skill.id as skill.name for skill in skills | orderBy:name', chosen:'', multiple:true}
+          .skl-div{'ng-repeat'=>'skl in editedSkill.skill_levels'}
+            %h4{'ng-click'=>'skl.showTab = !skl.showTab'} {{skl.level.name}}
+            %table.form-tab{'ng-show'=>'skl.showTab'}
+              %tr.form-line
+                %td.label
+                  %label{for:'skl_description_{{skl.level_id}}'}Описание:
+                %td.input
+                  %textarea.inp.inp-type2{"ng-model"=>"skl.description", id:'skl_description_{{skl.level_id}}', 'mark-it-up'=>''}
+              %tr.form-line
+                %td.label
+                  %label{for:'skl_techniques_{{skl.level_id}}'}Техники:
+                %td.input
+                  %textarea.inp.inp-type2{"ng-model"=>"skl.techniques", id:'skl_techniques_{{skl.level_id}}', 'mark-it-up'=>''}
+              %tr.form-line
+                %td.label
+                  %label{for:'skl_advice_{{skl.level_id}}'}Совет по игре:
+                %td.input
+                  %textarea.inp.inp-type2{"ng-model"=>"skl.advice", id:'skl_advice_{{skl.level_id}}'}
+          %table.form-tab
+            %tr.form-line
+              %td.label
+              %td.input
+                %button.btn.btn-standart{'ng-click'=>'updateSkill()'}
+                  Отправить
+
+
