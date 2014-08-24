@@ -25,11 +25,12 @@ class ForumPost < ActiveRecord::Base
   after_update :set_topic_char
 
   def set_topic_char
-    self.topic.update({char_id: self.char_id, poster_name: self.char.name}) if self.char_id_changed? && ForumPost.first_post(self.topic_id).id == self.id
+    self.topic.update({char_id: self.char_id, poster_name: self.char.name}) if char_id_changed? && is_first_post?
   end
 
-  def self.first_post(topic_id)
-    self.where(topic_id:topic_id).first
+  def is_first_post?
+    self.class.where(topic_id:topic_id).first == id
   end
+
 
 end

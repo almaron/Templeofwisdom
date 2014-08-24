@@ -32,6 +32,11 @@ ru:
       char:
         approve: "Анкета принимается. Добро пожаловать в Линь Ян Шо. Приятной игры."
 
+      forum:
+        commenter: "Мастер"
+        accept_skill_request: "Проставлено"
+        decline_skill_request: "Отклонено"
+
   notifications:
     system:
       head:

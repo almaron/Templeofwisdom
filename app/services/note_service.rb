@@ -53,4 +53,12 @@ class NoteService
                         })
   end
 
+  def notify_skill_request(request, message="accept")
+    Notification.create({
+                            user_id: request.user_id,
+                            head: I18n.t("notifications.system.head.notify_skill_request.#{message}"),
+                            text: render(partial: "notifications/system/notify_skill_request_#{message}", locals: {request: request})
+                        })
+  end
+
 end

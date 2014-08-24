@@ -46,7 +46,7 @@ class Char < ActiveRecord::Base
   end
 
   has_many :char_skills, dependent: :destroy
-  has_many :skills, through: :char_skills
+  has_many :skills, through: :char_skills, dependent: :destroy
   accepts_nested_attributes_for :char_skills, allow_destroy: true
 
   def phisic_skills
@@ -97,14 +97,40 @@ class Char < ActiveRecord::Base
 
   # Char roles
 
-  has_many :char_roles
+  has_many :char_roles, dependent: :destroy
   has_many :role_skills, :through => :char_roles
 
-  private
+  #Skill Requests
+
+  def has_enough_points?(amount)
+    profile.points >= amount
+  end
+
+  def has_enough_role_skills?(skill_id, amount)
+    role_skills.where(skill_id:skill_id, done:0).count >= amount
+  end
+
+  def add_points(amount)
+    profile.update(points: profile.points+amount)
+  end
+
+  def remove_points(amount)
+    profile.update(points: profile.points-amount)
+  end
+
+  def master_skills
+    skills.where("level_id >= ?", 5)
+  end
+
+  def master_skill_ids
+    master_skills.map {|skill| skill.id}
+  end
+
+  protected
 
   def delegate_to_creator
-    if self.creator
-      self.creator.default_char ? self.delegate_to(self.creator, owner:1) : self.delegate_to(self.creator, owner:1, default:1)
+    if creator
+      creator.default_char ? delegate_to(creator, owner:1) : delegate_to(creator, owner:1, default:1)
     end
   end
 

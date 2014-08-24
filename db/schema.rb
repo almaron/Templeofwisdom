@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818185849) do
+ActiveRecord::Schema.define(version: 20140824161938) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -192,7 +192,13 @@ ActiveRecord::Schema.define(version: 20140818185849) do
   end
 
   create_table "levels", force: true do |t|
-    t.string "name", null: false
+    t.string  "name",                   null: false
+    t.integer "phisic_roles"
+    t.integer "magic_roles"
+    t.integer "phisic_points"
+    t.integer "phisic_points_discount"
+    t.integer "magic_points"
+    t.integer "magic_points_discount"
   end
 
   create_table "log_types", force: true do |t|
@@ -304,6 +310,20 @@ ActiveRecord::Schema.define(version: 20140818185849) do
   end
 
   add_index "skill_levels", ["skill_id"], name: "index_skill_levels_on_skill_id", using: :btree
+
+  create_table "skill_requests", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "char_id"
+    t.integer  "skill_id"
+    t.integer  "level_id"
+    t.integer  "forum_post_id"
+    t.integer  "points"
+    t.integer  "roles"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "skill_requests", ["char_id"], name: "index_skill_requests_on_char_id", using: :btree
 
   create_table "skills", force: true do |t|
     t.string   "name",                           null: false

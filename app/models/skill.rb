@@ -15,6 +15,7 @@ class Skill < ActiveRecord::Base
     search_discount(skill_ids)
   end
 
+
   private
 
   def search_discount(skill_ids)
