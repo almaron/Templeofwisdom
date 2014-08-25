@@ -1,7 +1,5 @@
 class Char < ActiveRecord::Base
 
-
-
   validates :name, :uniqueness => true, :presence => true
 
   belongs_to :group, :class_name => CharGroup
@@ -103,7 +101,7 @@ class Char < ActiveRecord::Base
   #Skill Requests
 
   def has_enough_points?(amount)
-    profile.points >= amount
+    self.profile.points >= amount
   end
 
   def has_enough_role_skills?(skill_id, amount)

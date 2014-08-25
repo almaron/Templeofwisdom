@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824161938) do
+ActiveRecord::Schema.define(version: 20140825194904) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -332,7 +332,7 @@ ActiveRecord::Schema.define(version: 20140824161938) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "advice"
-    t.string   "discount"
+    t.string   "discount",    default: ""
   end
 
   add_index "skills", ["skill_type"], name: "index_skills_on_skill_type", using: :btree

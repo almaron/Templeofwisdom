@@ -11,7 +11,7 @@ class Skill < ActiveRecord::Base
   scope :phisic, ->{where(skill_type: "phisic")}
 
   def has_discount?(skill_ids)
-    return false if discount.empty? || skill_ids.empty?
+    return false if discount.blank? || skill_ids.empty?
     search_discount(skill_ids)
   end
 

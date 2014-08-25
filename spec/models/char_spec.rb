@@ -1,8 +1,19 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Char, :type => :model do
+RSpec.describe Char, :type => :model do
 
-  describe 'delegate_to and undelegate' do
+  context 'basic setup' do
+    before do
+      @char = create :char
+    end
+
+    it 'has profile' do
+      expect(@char.profile).to be_a(CharProfile)
+    end
+  end
+
+
+  context 'delegate_to and undelegate' do
     it 'delegates and undelegates' do
       user = create :user
       char = build_stubbed :char
@@ -17,7 +28,7 @@ describe Char, :type => :model do
     end
   end
 
-  describe 'admin methods' do
+  context 'admin methods' do
 
     before :each do
       @char = create :char
@@ -56,7 +67,7 @@ describe Char, :type => :model do
 
     end
 
-    describe :approve do
+    context :approve do
 
       before :each do
         @char.status_id = 3
@@ -88,7 +99,7 @@ describe Char, :type => :model do
 
     end
 
-    describe :decline do
+    context :decline do
 
       it "should remove the char" do
         expect(@char).to receive(:destroy)
@@ -107,6 +118,28 @@ describe Char, :type => :model do
         @char.decline
       end
 
+    end
+
+  end
+
+  context "add and remove points" do
+
+    before do
+      @char = create :char
+    end
+
+    it 'increases the char\'s points by the value' do
+      expect{@char.add_points(30)}.to change{@char.profile.points}.by(30)
+    end
+
+    it 'decreases the char\'s points by the value' do
+      expect{@char.remove_points(30)}.to change{@char.profile.points}.by(-30)
+    end
+
+    it "calculates if the char has enough points" do
+      @char.add_points 400
+      expect(@char.has_enough_points? 400).to eq true
+      expect(@char.has_enough_points? 600).to eq false
     end
 
   end

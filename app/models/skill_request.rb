@@ -8,7 +8,7 @@ class SkillRequest < ActiveRecord::Base
   belongs_to :level
   belongs_to :forum_post
 
-  before_save :calculate_points_and_roles
+  after_initialize :calculate_points_and_roles, if: ->{new_record?}
 
   def acceptable?
     char.has_enough_points?(points) && char.has_enough_role_skills?(skill_id, roles)
