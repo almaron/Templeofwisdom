@@ -48,11 +48,15 @@ class Char < ActiveRecord::Base
   accepts_nested_attributes_for :char_skills, allow_destroy: true
 
   def phisic_skills
-    self.char_skills.phisic
+    char_skills.phisic
   end
 
   def magic_skills
-    self.char_skills.magic
+    char_skills.magic
+  end
+
+  def get_char_skill(skill_id)
+    char_skills.find_or_initialize_by(skill_id: skill_id)
   end
 
 # Delegates the created char to a user, mentioned as :creator. Don't forget to set it in the controller
@@ -101,7 +105,8 @@ class Char < ActiveRecord::Base
   #Skill Requests
 
   def has_enough_points?(amount)
-    self.profile.points >= amount
+    prof = CharProfile.find_or_create_by char_id: self.id
+    prof.points >= amount
   end
 
   def has_enough_role_skills?(skill_id, amount)
@@ -124,6 +129,10 @@ class Char < ActiveRecord::Base
     master_skills.map {|skill| skill.id}
   end
 
+  def mark_skill_done(skill_id, number)
+    role_skills.where(skill_id:skill_id).order(:id).limit(number).update_all(done:1)
+  end
+
   protected
 
   def delegate_to_creator
@@ -131,9 +140,5 @@ class Char < ActiveRecord::Base
       creator.default_char ? delegate_to(creator, owner:1) : delegate_to(creator, owner:1, default:1)
     end
   end
-
-
-
-
 
 end

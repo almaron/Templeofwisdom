@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :forum_topic do
-    name "Some topic"
+    head  "Some topic"
   end
 end

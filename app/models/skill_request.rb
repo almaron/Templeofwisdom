@@ -38,10 +38,11 @@ class SkillRequest < ActiveRecord::Base
   private
 
   def set_char_skill
-    char_skill = char.char_skills.find_or_initialize_by(skill_id:skill_id)
+    char_skill = char.get_char_skill skill_id
+    char_skill.level_id = level_id
     transaction do
-      char.role_skills.where(skill_id:skill_id, done:0).limit(roles).update_all(done:1)
-      char_skill.update(level_id: level_id)
+      char.mark_skill_done skill_id, roles
+      char_skill.save
       char.remove_points points
     end
   end

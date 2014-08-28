@@ -9,5 +9,6 @@ FactoryGirl.define do
     status_id 2
     open_player ""
     profile_topic_id 1
+    # profile_attributes {[age: 20, birth_date: "20.01"]}
   end
 end

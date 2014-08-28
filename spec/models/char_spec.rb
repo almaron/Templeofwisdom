@@ -126,6 +126,9 @@ RSpec.describe Char, :type => :model do
 
     before do
       @char = create :char
+      @char.profile.age = 20
+      @char.profile.birth_date = '20.01'
+      @char.save
     end
 
     it 'increases the char\'s points by the value' do
@@ -143,5 +146,60 @@ RSpec.describe Char, :type => :model do
     end
 
   end
+  context 'skill and role methods' do
+
+    before do
+      @char = create :char
+      @skill = create :skill
+      @level = Level.create(id:1, name:'Level1', phisic_roles:1, phisic_points: 400, phisic_points_discount: 200)
+    end
+
+    context :get_char_skill do
+
+      context 'withought the skill' do
+
+        it 'returns a new record if it does not exist' do
+          expect(@char.get_char_skill(@skill.id)).to be_new_record
+        end
+
+        it "returns a new record with a set skill_id" do
+          expect(@char.get_char_skill(@skill.id).skill_id).to eq @skill.id
+        end
+
+      end
+
+      context 'having the skill' do
+
+        before do
+          @char_skill = @char.char_skills.create(skill_id:@skill.id, level_id:@level.id)
+        end
+
+        it 'returns the needed char_skill' do
+          expect(@char.get_char_skill(@skill.id)).to eq @char_skill
+        end
+      end
+
+    end
+
+    context :mark_char_roles do
+
+      before do
+        (1..5).each {|i| Role.create(attributes_for(:role).merge(char_roles_attributes:[char_id: @char.id, points:400, role_skills_attributes:[skill_id:@skill.id]])) }
+      end
+
+      it 'updates the char_role' do
+        @char.mark_skill_done(@skill.id, 1)
+        expect(@char.role_skills.first.done).to eq 1
+      end
+
+      it 'marks the needed number of role_skills' do
+        @char.mark_skill_done @skill.id, 3
+        expect(@char.role_skills.where(done:1).count).to eq 3
+      end
+
+
+    end
+  end
+
 
 end

@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.describe SkillRequest, :type => :model do
 
   before do
-    @char = Char.create attributes_for(:char)
-    @char.create_profile
+    @char = create :char
+    @char.profile.age = 20
+    @char.profile.birth_date = '20.01'
+    @char.save
+
     @char.add_points 400
     @skill = create :skill
     @level = Level.create(id:1, name:'Level1', phisic_roles:1, phisic_points: 400, phisic_points_discount: 200)
@@ -29,7 +32,8 @@ RSpec.describe SkillRequest, :type => :model do
 
     it "should be acceptable if the character has enough" do
       request = SkillRequest.new char_id:@char.id, user_id:1, skill_id: @skill.id, level_id: 1
-      expect(request).to be_acceptable
+      # expect(request).to be_acceptable
+      expect(@char.profile).to be_valid
     end
 
     it "should not be acceptable if requires more points" do
@@ -47,11 +51,27 @@ RSpec.describe SkillRequest, :type => :model do
 
   context :accept do
 
-    it "sets the char skill"
+    before do
+      @forum = create :forum
+      @topic = @forum.topics.create attributes_for(:forum_topic)
+      @post = @topic.posts.create(char_id:@char.id, user_id:1, text:'Request post', ip:'127.0.0.1')
+      @request = SkillRequest.create char_id:@char.id, user_id:1, skill_id: @skill.id, level_id: 1, forum_post_id: @post.id
+      @request.accept
+    end
 
-    it "removes the points from the char"
+    it "sets the char skill" do
+      expect(@char.char_skills.find_by(skill_id:@skill.id).level_id).to eq(@level.id)
+      expect(@request.points).to eq(400)
+    end
 
-    it "marks the role skills on the char"
+    it "removes the points from the char" do
+      @char.reload
+      expect(@char.profile.points).to eq 0
+    end
+
+    it "marks the role skills on the char" do
+      expect(@char.role_skills.where(done:1).count).to eq 1
+    end
 
     it "updates the request post"
   end

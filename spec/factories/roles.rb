@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :role do
-    head "MyString"
-    paths "MyText"
+    head { "MyString#{rand(99)}" }
+    paths 'MyString'
   end
 end
