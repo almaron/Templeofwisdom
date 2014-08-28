@@ -59,6 +59,10 @@ class Char < ActiveRecord::Base
     char_skills.find_or_initialize_by(skill_id: skill_id)
   end
 
+  def get_skill_level(skill_id)
+    char_skills.find_by(skill_id:skill_id).try(:level_id) || 0
+  end
+
 # Delegates the created char to a user, mentioned as :creator. Don't forget to set it in the controller
   after_create :delegate_to_creator
   attr_accessor :creator
@@ -69,7 +73,7 @@ class Char < ActiveRecord::Base
 
   def accept(user=nil)
     if self.status_id == 2
-      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: ForumService.new.create_char_profile_topic(self, user))
+      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: ForumService.new(user).create_char_profile_topic(self))
       NoteService.new.notify_char_accept self
       #   TODO send notification and email
       true
@@ -79,7 +83,7 @@ class Char < ActiveRecord::Base
   def approve(user=nil)
     if self.status_id == 3
       self.update(status_id: 5)
-      ForumService.new.add_approve_post self, user
+      ForumService.new(user).add_approve_post self
       NoteService.new.notify_char_approve self
       #   TODO send  email
     end

@@ -181,6 +181,21 @@ RSpec.describe Char, :type => :model do
 
     end
 
+    context :get_skill_level do
+      before do
+        @char.char_skills.create(skill_id:@skill.id, level_id:@level.id)
+      end
+
+      it 'returns 0 if skill not present' do
+        expect(@char.get_skill_level(@skill.id+1)).to eq 0
+      end
+
+      it 'returns the level if skill present' do
+        expect(@char.get_skill_level(@skill.id)).to eq @level.id
+      end
+
+    end
+
     context :mark_char_roles do
 
       before do
@@ -199,6 +214,7 @@ RSpec.describe Char, :type => :model do
 
 
     end
+
   end
 
 

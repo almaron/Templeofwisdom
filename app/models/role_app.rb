@@ -10,7 +10,7 @@ class RoleApp < ActiveRecord::Base
   after_update :update_post
 
   def create_post(user)
-    self.update(post_id: ForumService.new.create_role_app_post(self,user))
+    self.update(post_id: ForumService.new(user).create_role_app_post(self))
   end
 
   def update_post

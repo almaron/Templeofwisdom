@@ -76,5 +76,6 @@ class User < ActiveRecord::Base
     self.notifications.where(read:0).count
   end
 
+  has_many :skill_requests
 
 end

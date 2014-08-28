@@ -49,6 +49,46 @@ RSpec.describe SkillRequest, :type => :model do
     end
   end
 
+  context :initiate! do
+
+    before do
+      @forum = create :forum
+      @topic = @forum.topics.create attributes_for(:forum_topic)
+      AdminConfig.create(name: 'skill_requests_topic_id', value:@topic.id)
+      @request = SkillRequest.new char_id:@char.id, user_id:1, skill_id: @skill.id, level_id: 1
+      @user = create :user
+      @user.current_ip = '127.0.0.1'
+    end
+
+    context 'if acceptable' do
+
+      it 'saves the request' do
+        expect{@request.initiate!(@user)}.to change{@request.new_record?}.from(true).to(false)
+      end
+
+      it 'creates a forum post for the request' do
+        expect{@request.initiate! @user}.to change{@topic.posts.count}.by(1)
+      end
+
+    end
+
+    context 'if not acceptable' do
+      before do
+        @char.remove_points 200
+      end
+
+      it 'returns nil' do
+        expect(@request.initiate! @user).to eq nil
+      end
+
+      it 'does not create a ForumPost' do
+        expect{@request.initiate! @user}.not_to change{@topic.posts.count}
+      end
+
+    end
+
+  end
+
   context :accept do
 
     before do

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # OAuth routes
   match 'oauth/callback' => 'oauths#callback', via: [:get, :post]
   match 'oauth/delete/:provider' => 'oauths#destroy', as: :delete_auth, via: [:get, :delete]
@@ -32,7 +31,9 @@ Rails.application.routes.draw do
 
   get '/users/:id' => 'users#show', as: :show_user
   get '/user_groups' => 'user_groups#index'
-  resource :profile, only:[:show, :edit, :update]
+  resource :profile, only:[:show, :edit, :update] do
+    get 'skill_requests' => 'skill_requests#user_index', as: :skill_requests
+  end
   resources :delegations, only: [:create, :destroy]
 
   # Chars routes
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
     end
     member do
       post :small_update
+      post "request_skill/:skill_id" => "skill_requests#create", as: :skill_request
     end
   end
 
@@ -84,7 +86,8 @@ Rails.application.routes.draw do
     end
     resources :configs, except: [:show, :new, :edit]
     resources :roles
-    resources :skills, except:[:show, :edit, :new]
+    resources :skills, except: [:show, :edit, :new]
+    resources :skill_requests, only: [:index, :update, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

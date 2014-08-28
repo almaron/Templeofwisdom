@@ -10,8 +10,25 @@ class SkillRequest < ActiveRecord::Base
 
   after_initialize :calculate_points_and_roles, if: ->{new_record?}
 
+  ['char','skill','user','level'].each do |item|
+    define_method "#{item}_name" do
+      self.send(item).name
+    end
+  end
+
   def acceptable?
     char.has_enough_points?(points) && char.has_enough_role_skills?(skill_id, roles)
+  end
+
+  def initiate!(user)
+    if acceptable? && (post_id = ForumService.new(user).create_skill_request_post self)
+      self.forum_post_id = post_id
+      save
+    end
+  end
+
+  def add_new?
+    level_id == 1
   end
 
   def accept
@@ -27,6 +44,7 @@ class SkillRequest < ActiveRecord::Base
   def decline
     update_request_post "decline"
     send_notification_to_user "decline"
+    self.destroy
   end
 
   def calculate_points_and_roles(save=false)

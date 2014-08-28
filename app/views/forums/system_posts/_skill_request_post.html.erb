@@ -1,0 +1,3 @@
+Персонажу [b]<%= request.char_name %>[/b] <%= request.add_new? ? 'добавить' : 'поднять' %> <%= request.skill.skill_type=='phisic' ? 'Навык' : 'Способность' %> [b]<%= request.skill_name %>[/b]<%= "до уровня [b]#{request.level_name}[/b]" unless request.add_new? %>
+
+Текущее количество баллов: [b]<%= request.char.profile.points %>[/b]
