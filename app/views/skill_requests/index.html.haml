@@ -1,2 +1,15 @@
-%h1 SkillRequests#index
-%p Find me in app/views/skill_requests/index.html.haml
+.skill-request-wrapper
+  %ul.request-list
+    - @requests.each do |request|
+      %li{id:"request-#{request.id}"}
+        %strong.request-date{class:"#{'acceptable' if request.acceptable?}"}
+        %strong.request-char{}
+          #{request.char.name}
+        \-
+        %strong.request-skill
+          #{request.skill.name}
+        \-
+        %strong.request-level
+          #{request.level.name}
+        ( #{request.points} очков и #{request.roles} ролевок)
+

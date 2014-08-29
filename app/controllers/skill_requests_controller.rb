@@ -1,15 +1,14 @@
 class SkillRequestsController < ApplicationController
 
+  before_action :master_access, only: [:index, :update, :destroy]
+
   def index
     @requests = SkillRequest.includes(:char, :skill, :level).all
-    respond_to do |format|
-      format.html {}
-      format.json {}
-    end
   end
 
   def user_index
     @requests = current_user.skill_requests.includes(:char, :skill, :level).all
+    render :index
   end
 
   def create
@@ -27,12 +26,12 @@ class SkillRequestsController < ApplicationController
 
   def update
     SkillRequest.find(params[:id]).accept
-    render nothing: true
+    render js: "$('request-#{params[:id]}').remove()"
   end
 
   def destroy
     SkillRequest.find(params[:id]).decline
-    render nothing: true
+    render js: "$('request-#{params[:id]}').remove()"
   end
 
 end

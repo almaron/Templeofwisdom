@@ -61,7 +61,11 @@ ru:
   messages:
     index:
       pagetitle: 'Личные сообщения'
-
+  skill_requests:
+    index:
+      pagetitle: 'Заявки на способности'
+    user_index:
+      pagetitle: 'Мои заявки'
 
   char_status:
     name:
