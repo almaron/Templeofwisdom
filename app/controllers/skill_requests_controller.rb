@@ -12,7 +12,7 @@ class SkillRequestsController < ApplicationController
   end
 
   def create
-    char = Char.find(params[:char_id])
+    char = Char.find(params[:id])
     level = char.get_skill_level(params[:skill_id]) + 1
     @request = SkillRequest.new(char_id: char.id, user_id: char.owner.id, skill_id: params[:skill_id], level_id: level)
     respond_to do |format|

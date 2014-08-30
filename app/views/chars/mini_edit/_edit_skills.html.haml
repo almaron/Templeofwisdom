@@ -1,0 +1,14 @@
+.char_edit_skills{"ng-if"=>"char.userEditable", "ng-show"=>"editChar=='skills'"}
+   %h4{}
+      {{skillForm.head}}
+   .skill_up
+      %span.skill_row{'ng-repeat'=>'skl in skillForm.skills'}
+         {{skl.skill_name}} - {{skl.level_name}}
+         %span.btn.btn-short{'ng-if'=>'skl.level_id<7', 'ng-click'=>'upSkill(skl.skill_id)'}
+            %span.fa.fa-share.fa-rotate-270.fa-flip-vertical
+   .skill_add
+      %select.inp.inp-type2{'ng-model'=>'skillForm.addSkill', 'ng-options'=>'skill.id as skill.name for skill in skillForm.addSkills'}
+      %br/
+      %br/
+      %button.btn.btn-standart{'ng-click'=>'addSkill()'}
+         Добавить

@@ -39,4 +39,28 @@
       $scope.editForm = {}
       $scope.editChar = null
 
+  $scope.editSkills = (skill_type) ->
+    if skill_type == 'phisic'
+      $scope.skillForm = {head: "Навыки"}
+      $scope.skillForm.skills = $scope.char.phisic_skills
+    else
+      $scope.skillForm = {head: "Способности"}
+      $scope.skillForm.skills = $scope.char.magic_skills
+    $http.get('/skills/'+skill_type+'.json?char_id='+$scope.char.id).success (data) ->
+      $scope.skillForm.addSkills = data
+      $scope.editChar = 'skills'
+
+  $scope.addSkill = ->
+    $http.post('/chars/'+$scope.char.id+'/request_skill/'+$scope.skillForm.addSkill+'.json').success(
+      (data) ->
+        $scope.modalText = data.success
+        $scope.modalClass = 'accept'
+        $scope.modalShown = true
+    ).error(
+      (data) ->
+        $scope.modalText = data.failure
+        $scope.modalClass = 'decline'
+        $scope.modalShown = true
+    )
+
 ]

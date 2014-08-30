@@ -12,7 +12,14 @@ class SkillsController < ApplicationController
   end
 
   def public_index
-    @skills = Skill.select(:id, :name).where(skill_type: params[:skill_type])
+    respond_to do |format|
+      format.html { @skills = Skill.select(:id, :name).where(skill_type: params[:skill_type]) }
+      format.json {
+        ids = CharSkill.select(:skill_id).where(char_id:params[:char_id]).pluck :skill_id
+        @skills = Skill.where(skill_type: params[:skill_type]).where('id NOT IN (?)', ids.join(','))
+        render json: @skills, only: [:id, :name]
+      }
+    end
   end
 
   def show

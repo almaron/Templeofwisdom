@@ -25,14 +25,14 @@
           %b Животное:
           {{char.profile.beast}}
         .profile-element.skills
-          .edit{'ng-if'=>'char.userEditable'} &#10548;
+          .edit{'ng-if'=>'char.userEditable', 'ng-click'=>'editSkills("phisic")'} &#10548;
           %b.title Навыки:
           %ul
             %li{'ng-repeat'=>'skill in char.phisic_skills'}
               %a.skill-name{href: '#'} {{skill.skill_name}}
               — {{skill.level_name}}
         .profile-element.skills
-          .edit{'ng-if'=>'char.userEditable'} &#10548;
+          .edit{'ng-if'=>'char.userEditable', 'ng-click'=>'editSkills("magic")'} &#10548;
           %b.title Способности:
           %ul
             %li{'ng-repeat'=>'skill in char.magic_skills'}
@@ -66,7 +66,7 @@
                 %a{href: '/roles/{{role.role_id}}', target: '_blank'} {{role.head}}
               %span.rballs Баллы - {{role.points}}
               %span.rskills
-                %span{'ng-repeat'=>'skill in role.role_skills', 'ng-class'=>'"don" : skill.done > 0'} {{skill.skill_name}}
+                %span{'ng-repeat'=>'skill in role.role_skills', 'ng-class'=>'{"don": skill.done > 0}'} {{skill.skill_name}}
 
   .over-wrapper{'ng-show'=>'editChar'}
     .over-top{'ng-click'=>'editChar = false'}
@@ -77,4 +77,8 @@
           = render partial: 'chars/mini_edit/edit_points'
           = render partial: 'chars/mini_edit/edit_person'
           = render partial: 'chars/mini_edit/edit_comment'
+          = render partial: 'chars/mini_edit/edit_skills'
+  %modal-dialog{show:"modalShown", head:"Запрос на добавление/повышение", width:"600px"}
+    .skill_requests{class:'modalClass'}
+      {{modalText}}
 
