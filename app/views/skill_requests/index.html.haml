@@ -3,13 +3,22 @@
     - @requests.each do |request|
       %li{id:"request-#{request.id}"}
         %strong.request-date{class:"#{'acceptable' if request.acceptable?}"}
+          = l request.created_at
+        %span.separator{} -
         %strong.request-char{}
           #{request.char.name}
-        \-
+        %span.separator{} -
         %strong.request-skill
           #{request.skill.name}
-        \-
+        %span.separator{} -
         %strong.request-level
           #{request.level.name}
-        ( #{request.points} очков и #{request.roles} ролевок)
+        ( Очков: #{request.points}, Ролевок: #{request.roles} )
+        - if params[:action] == 'index'
+          %span.separator{} -
+          %span.request-button
+            = link_to content_tag(:span, '', class: 'fa fa-check'), skill_request_path(request), method: :put, remote: true, class: 'request-btn'
+            = link_to content_tag(:span, '', class: 'fa fa-times'), skill_request_path(request), method: :delete, remote: true, class: 'request-btn'
+
+
 

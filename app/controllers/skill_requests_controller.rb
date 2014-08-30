@@ -26,12 +26,12 @@ class SkillRequestsController < ApplicationController
 
   def update
     SkillRequest.find(params[:id]).accept
-    render js: "$('request-#{params[:id]}').remove()"
+    render js: "$('#request-#{params[:id]}').remove()"
   end
 
   def destroy
     SkillRequest.find(params[:id]).decline
-    render js: "$('request-#{params[:id]}').remove()"
+    render js: "$('#request-#{params[:id]}').remove()"
   end
 
 end

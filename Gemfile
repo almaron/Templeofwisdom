@@ -72,7 +72,7 @@ gem "puma", group: :development
 gem 'render_anywhere', :require => false
 #gem 'rack-mini-profiler'
 gem 'quiet_assets', group: :development
-#gem 'debugger', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
 
 group :development, :test do
   gem "rspec-rails"

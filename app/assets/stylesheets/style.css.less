@@ -3051,6 +3051,44 @@ td.none,td.none:hover, tr:hover td.none {
     }
   }
 }
+
+/*
+  Skill requests
+*/
+
+.skill-request-wrapper {
+  .request-list {
+    li {
+      padding: 5px;
+      &:hover {
+      background-image: @bgimg-beige;
+      }
+      strong {
+        &.request-date {
+          color: @color-red;
+          &.acceptable {
+            color: @color-green3;
+          }
+        }
+      }
+      span.separator {
+        width: 15px;
+        display: inline-block;
+        text-align: center;
+      }
+      span.request-button {
+        font-size: 1.1em;
+        .fa-check:hover {
+          color: @color-green3;
+        }
+        .fa-times:hover {
+          color: @color-red;
+        }
+      }
+    }
+  }
+}
+
 /*
 
 */

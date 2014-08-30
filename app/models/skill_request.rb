@@ -81,9 +81,11 @@ class SkillRequest < ActiveRecord::Base
     "#{skill.skill_type}_roles"
   end
 
+  # noinspection RailsParamDefResolve
   def recalculate_requests
     if level_id >= 5
-      Skill.where("discount LIKE '%,:skill_id%' OR discount LIKE '%:skill_id,%'", {:skill_id => skill_id})
+      skill_ids = Skill.where("discount LIKE '%,:skill_id%' OR discount LIKE '%:skill_id,%'", {:skill_id => skill_id}).pluck :id
+      char.skill_requests.where(skill_id:skill_ids).each {|request| request.calculate_points_and_roles(true)}
     end
   end
 
