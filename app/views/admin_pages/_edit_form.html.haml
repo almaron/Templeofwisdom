@@ -1,0 +1,21 @@
+.edit-item{"ng-if"=>"editPage.id == page.id"}
+  .edit-form
+    .form-line.form-min-height
+      %span.form-block
+        %label{for:"page_head"} Название:
+        %input.inp.inp-type2{name:"head", id:"page_head", "ng-model"=>"editPage.head"}
+      %span.form-block
+        %label{for:"page_alias"} URL:
+        %input.inp.inp-type2{name:"page_alias", id:"page_alias", "ng-model"=>"editPage.page_alias"}
+      %span.form-block
+        %input{type:"checkbox", id:"page_published", "ng-model"=>"editPage.published", "ng-true-value"=>1, "ng-false-value"=>0}
+        %label{for:"page_published"}
+          Публиковать
+          %span
+      %span.form-btn{}
+        %button.btn.btn-standart{"ng-click"=>"fullEdit(page)"}
+          %span.fa.fa-edit
+        %button.btn.btn-standart{"ng-click"=>"updateItem()"}
+          %span.fa.fa-check
+        %button.btn.btn-standart{"ng-click"=>"cancelEdit()"}
+          %span.fa.fa-times

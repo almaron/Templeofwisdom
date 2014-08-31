@@ -1,2 +1,46 @@
-%h1 AdminPages#index
-%p Find me in app/views/admin_pages/index.html.haml
+.forum-admin{'ng-controller'=>'AdminPagesCtrl'}
+  #tree-root{"ui-tree" => "PageTreeOptions", 'ng-hide'=>'editPage.fullEdit'}
+    %ol{"ng-model" => "pages", "ui-tree-nodes" => ""}
+      %li{"ng-include" => "'nodes_renderer.html'", "ng-repeat" => "page in pages", "ui-tree-node" => ""}
+    .new-item.new-root{"ng-if"=>"!newPage.parent_id"}
+      .new-form-head
+        Добавить корневой раздел
+      .new-form
+        %span.form-block
+          %label{for:"page_head"} Название:
+          %input.inp.inp-type2{name:"head", id:"page_head", "ng-model"=>"newPage.head"}
+        %span.form-block
+          %label{for:"page_alias"} URL:
+          %input.inp.inp-type2{name:"page_alias", id:"page_alias", "ng-model"=>"newPage.page_alias"}
+        %span.form-block
+          %input{type:"checkbox", id:"page_published", "ng-model"=>"newPage.published", "ng-true-value"=>1, "ng-false-value"=>0}
+          %label{for:"page_published"}
+            Публиковать
+            %span
+        %span.form-btn
+          %button.btn.btn-standart{"ng-click"=>"addRootItem()"}
+            %span.fa.fa-check
+  .tree-save{ 'ng-hide'=>'editPage.fullEdit'}
+    %span.btn.btn-standart{"ng-click"=>"levelTree();"} Сохранить структуру
+    %span.level-success{"ng-if"=>"level_success"} Сохранено успешно
+  = render 'full_edit_form'
+
+
+%script{id: "nodes_renderer.html", type: "text/ng-template"}
+  .tree-node.tree-node-content{"ui-tree-handle" => ""}
+    %a.forum-tree-toggle{"data-nodrag" => "", "ng-click" => "toggle(this)", "ng-show"=>"forum.children.length > 0"}
+      %span.fa{"ng-class" => "{'fa-chevron-right': collapsed, 'fa-chevron-down': !collapsed}"}
+    {{page.head}}
+    %span.forum-hint{}
+      ({{page.page_alias}})
+      %span.fa.fa-eye{"ng-if"=>"!page.isPublished"}
+    %a.forum-tree-btn{"data-nodrag" => "", "ng-click" => "removeItem(this)"}
+      %span.fa.fa-times
+    %a.forum-tree-btn{"data-nodrag" => "", "ng-click" => "openAddForm(this)"}
+      %span.fa.fa-plus
+    %a.forum-tree-btn{"data-nodrag" => "", "ng-click" => "editItem(this)"}
+      %span.fa.fa-pencil
+  = render :partial => 'edit_form'
+  %ol{"ng-class" => "{hidden: collapsed}", "ng-model" => "page.children", "ui-tree-nodes" => ""}
+    %li{"ng-include" => "'nodes_renderer.html'", "ng-repeat" => "page in page.children", "ui-tree-node" => ""}
+  = render :partial => 'new_form'

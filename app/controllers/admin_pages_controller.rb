@@ -1,15 +1,15 @@
 class AdminPagesController < ApplicationController
 
   before_action :admin_access
-  before_action :set_page, except: :index
+  before_action :set_page, except: [:index, :create, :save_tree]
 
   def index
-    @pages = Page.all
+    @pages = Page.roots if request.format.json?
   end
 
   def create
     @page = Page.create page_params
-    render json: @page
+    render partial: 'page', locals: {page: @page}
   end
 
   def show
@@ -21,6 +21,15 @@ class AdminPagesController < ApplicationController
     render json: @page
   end
 
+  def save_tree
+    tree_array = params[:tree]
+    byebug
+    tree_array.each { |item| Page.find(item[:id]).update(item.permit(:sort_order, :parent_id)) }
+    respond_to do |format|
+      format.json {render json:{success:true} }
+    end
+  end
+
   def destroy
     @page.deplete!
     render json:'ok', status: :ok
@@ -29,12 +38,12 @@ class AdminPagesController < ApplicationController
   private
 
   def set_page
-    @page = Page.find_by id: params[:page]
+    @page = Page.find_by id: params[:id]
     render json: {} unless @page
   end
 
   def page_params
-    params.require(:page).permit(:head, :page_title, :page_alias, :content, :partial, :partial_params, :published, :hide_menu, :sorting, :meta_title, :meta_description, :meta_keywords, :ancestry, :parent)
+    params.require(:page).permit(:head, :page_title, :page_alias, :content, :parent_id, :partial, :partial_params, :published, :hide_menu, :sort_order, :meta_title, :meta_description, :meta_keywords, :ancestry, :parent)
   end
 
 end

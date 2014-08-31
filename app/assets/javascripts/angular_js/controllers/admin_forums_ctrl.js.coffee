@@ -12,7 +12,6 @@
       return (ttt == "undefined") || destNodesScope.forum.isCategory
     dropped: (event) ->
       event.source.nodeScope.$modelValue.sort_order = event.dest.index
-      console.log "" + event.source.nodeScope.$modelValue.name + ": " + event.dest.index
     dragStart: (event) ->
       $scope.editForum = {}
   }

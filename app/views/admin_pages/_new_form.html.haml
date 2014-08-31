@@ -1,0 +1,19 @@
+.new-item{"ng-if"=>"page.addNew && newPage.parent_id == page.id"}
+  .new-form
+    %span.form-block
+      %label{for:"page_head"} Название:
+      %input.inp.inp-type2{name:"head", id:"page_head", "ng-model"=>"newPage.head"}
+    %span.form-block
+      %label{for:"page_alias"} URL:
+      %input.inp.inp-type2{name:"page_alias", id:"page_alias", "ng-model"=>"newPage.page_alias"}
+    %span.form-block
+      %input{type:"checkbox", id:"page_published", "ng-model"=>"newPage.published", "ng-true-value"=>1, "ng-false-value"=>0}
+      %label{for:"page_published"}
+        Публиковать
+        %span
+    %span.form-btn
+      %button.btn.btn-standart{"ng-click"=>"addItem(this)"}
+        %span.fa.fa-check
+      %button.btn.btn-standart{"ng-click"=>"closeAddForm(this)"}
+        %span.fa.fa-times
+

@@ -96,7 +96,9 @@ Rails.application.routes.draw do
     resources :skills, except: [:show, :edit, :new]
     resources :skill_requests, only: [:index, :update, :destroy]
     resources :ips, only: :index
-    resources :pages, controller: :admin_pages, only: [:index, :show, :update, :destroy]
+    resources :pages, controller: :admin_pages, only: [:index, :create, :show, :update, :destroy] do
+      put '' => 'admin_pages#save_tree', on: :collection
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

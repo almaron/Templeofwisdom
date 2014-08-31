@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831091919) do
+ActiveRecord::Schema.define(version: 20140831154317) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -256,7 +256,7 @@ ActiveRecord::Schema.define(version: 20140831091919) do
     t.string   "partial_params"
     t.integer  "published",        default: 0
     t.integer  "hide_menu",        default: 0
-    t.integer  "sorting",          default: 0
+    t.integer  "sort_order",       default: 0
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
@@ -265,6 +265,7 @@ ActiveRecord::Schema.define(version: 20140831091919) do
   end
 
   add_index "pages", ["ancestry"], name: "index_pages_on_ancestry", using: :btree
+  add_index "pages", ["page_alias"], name: "index_pages_on_page_alias", unique: true, using: :btree
 
   create_table "role_apps", force: true do |t|
     t.string   "head"
