@@ -1,2 +1,4 @@
-%h1 Pages#show
-%p Find me in app/views/pages/show.html.haml
+- content_for :pagetitle do
+  = @page.page_title
+
+= raw @page.content

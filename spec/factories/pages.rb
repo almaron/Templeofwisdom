@@ -2,11 +2,9 @@
 
 FactoryGirl.define do
   factory :page do
-    head "Sample page"
-    page_title "Sample_page"
-    page_alias "sample"
+    sequence(:head, aliases:[:page_title]) {|n| "Sample page #{n}"}
+    sequence(:page_alias) {|n| "page_#{n}" }
     content "Sample_content"
     published 1
-    meta_title "Sample page title"
   end
 end

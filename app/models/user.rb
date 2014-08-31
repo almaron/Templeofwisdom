@@ -25,7 +25,6 @@ class User < ActiveRecord::Base
 
   def add_ip(ip)
     ips.find_or_create_by!(ip:ip)
-    ip
   end
 
   def is_in?(groups)

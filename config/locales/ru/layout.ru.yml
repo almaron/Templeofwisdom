@@ -66,6 +66,9 @@ ru:
       pagetitle: 'Заявки на способности'
     user_index:
       pagetitle: 'Мои заявки'
+  ips:
+    index:
+      pagetitle: 'Поиск по ip'
 
   char_status:
     name:

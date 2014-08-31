@@ -3,20 +3,15 @@ class PagesController < ApplicationController
   before_action :get_page, only: [:edit, :update, :destroy]
   before_action :require_login, except: :show
 
-  def index
-    @pages = Page.all
-  end
-
   def show
     if params[:root]
       render :root
     else
-      @page = Page.find_by(:page_alias => params[:url])
+      @page = Page.find_by(:page_alias => params[:url].split('/')[-1])
+      unless @page && @page.published?
+        render 'application/error_404'
+      end
     end
-  end
-
-  def new
-    @page = Page.new parent: (params[:parent] || nil)
   end
 
   def create
@@ -48,13 +43,5 @@ class PagesController < ApplicationController
   end
 
 
-  private
 
-  def get_page
-    @page = Page.find params[:page]
-  end
-
-  def page_params
-    params.require(:page).permit(:head, :page_title, :page_alias, :content, :partial, :partial_params, :published, :hide_menu, :sorting, :meta_title, :meta_description, :meta_keywords, :ancestry, :parent)
-  end
 end
