@@ -35,7 +35,7 @@
 
         scope.setCurrent = (index) ->
             scope.cur = index
-            scope.onset()
+            scope.onset({page:index})
             return
 
         scope.hasPrev = ->

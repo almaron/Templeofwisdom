@@ -4,10 +4,11 @@
       %input.inp.inp-type2{id:'user-search', type:"text", 'ng-model'=>'userSearch', 'ng-change'=>'filterUsers(userSearch)'}
       %label{for:'user-search'}
         %span.fa.fa-search
-  %ui-pagination{cur:"ipPage.cur", total:"ipPage.total", display:"9", onset:"setPage()"}
+  %ui-pagination{cur:"ipPage.cur", total:"ipPage.total", display:"9", onset:"setPage(page)"}
   .ips-list-wrap
-    .ips-list-line{'ng-repeat'=>'user in users'}
+    .ips-list-line{'ng-repeat'=>'user in data'}
       %span.ip-user-name{'ng-class'=>'{"active":markActive(user.name, userSearch)}'}
         %a{href:"/users/{{user.id}}", target:"_blank"} {{user.name}}
       %span.ip-user-ips
         %span{'ng-repeat'=>'ip in user.ips', 'ng-class'=>'{"active":markActive(ip, userSearch)}', 'ng-click'=>'selectIp(ip)'} {{ip}}
+
