@@ -2799,7 +2799,15 @@ td.none,td.none:hover, tr:hover td.none {
     }
 
     .ng-modal-content {
-
+      .skill_requests {
+        margin-top: 5px;
+        &.decline {
+          color: @color-red;
+        }
+        &.accept {
+          color: @color-green3;
+        }
+      }
     }
   }
 }
