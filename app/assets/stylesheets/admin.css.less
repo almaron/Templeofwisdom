@@ -258,6 +258,43 @@
       }
     }
   }
+
+  .ips-list-wrap {
+    .ips-list-line {
+      margin: 2px 0;
+      padding: 3px;
+      &:hover {
+        background-image: @bgimg-beige;
+      }
+      span {
+        display: inline-block;
+      }
+      .ip-user-name {
+        font-size: 1.1em;
+        padding-right: 9px;
+        min-width: 200px;
+        a {
+          text-decoration: none;
+        }
+        &.active {
+          font-weight: bold;
+        }
+      }
+      .ip-user-ips {
+        span {
+          padding-right: 8px;
+          cursor:pointer;
+          &:hover {
+            color: @color-orange2;
+          }
+          &.active {
+            font-weight:bold;
+            cursor: auto;
+          }
+        }
+      }
+    }
+  }
 }
 
 /*

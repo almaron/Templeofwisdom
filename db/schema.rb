@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825194904) do
+ActiveRecord::Schema.define(version: 20140831091919) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -265,7 +265,6 @@ ActiveRecord::Schema.define(version: 20140825194904) do
   end
 
   add_index "pages", ["ancestry"], name: "index_pages_on_ancestry", using: :btree
-  add_index "pages", ["page_alias"], name: "index_pages_on_page_alias", unique: true, using: :btree
 
   create_table "role_apps", force: true do |t|
     t.string   "head"
@@ -336,6 +335,14 @@ ActiveRecord::Schema.define(version: 20140825194904) do
   end
 
   add_index "skills", ["skill_type"], name: "index_skills_on_skill_type", using: :btree
+
+  create_table "user_ips", force: true do |t|
+    t.integer "user_id"
+    t.string  "ip"
+  end
+
+  add_index "user_ips", ["ip"], name: "index_user_ips_on_ip", using: :btree
+  add_index "user_ips", ["user_id"], name: "index_user_ips_on_user_id", using: :btree
 
   create_table "user_profiles", force: true do |t|
     t.integer  "user_id",                  null: false

@@ -88,6 +88,7 @@ Rails.application.routes.draw do
     resources :roles
     resources :skills, except: [:show, :edit, :new]
     resources :skill_requests, only: [:index, :update, :destroy]
+    resources :ips, only: :index
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

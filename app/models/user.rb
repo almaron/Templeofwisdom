@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :email => true
 
   has_one :profile, class_name: UserProfile, dependent: :destroy
+  has_many :ips, class_name: UserIp
   accepts_nested_attributes_for :profile
   after_create {self.create_profile}
 

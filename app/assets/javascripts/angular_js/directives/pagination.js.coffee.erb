@@ -6,6 +6,7 @@
         cur: "="
         total: "="
         display: "@"
+        onset: '&'
 
     link: (scope, element, attrs) ->
         calcPages = ->
@@ -34,6 +35,7 @@
 
         scope.setCurrent = (index) ->
             scope.cur = index
+            scope.onset()
             return
 
         scope.hasPrev = ->
