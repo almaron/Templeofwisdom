@@ -23,6 +23,7 @@
         .form-line.text-area
           .text-area
             =f.text_area :content, class: "inp inp-type2 tinymce"
+        -#TODO add all the other page fields
         .form-line
           = f.submit raw("Сохранить"), class:"btn btn-standart"
           %button.btn.btn-standart{onclick:'window.location.assign("/admin/pages")'}
