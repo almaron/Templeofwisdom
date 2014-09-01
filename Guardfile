@@ -12,7 +12,7 @@ end
 
 guard 'rails' do
   watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*\.rb})
+  watch(%r{^(config|lib)/.*\.(rb|yml)})
 end
 
 

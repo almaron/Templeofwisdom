@@ -1,10 +1,16 @@
 skin: 'temple'
 menu: []
 toolbar:
-  - styleselect | bold italic | link image | undo redo
-  - table | fullscreen | anchor | code
+  - styleselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | link unlink anchor image | undo redo
+  - searchreplace | bullist numlist | outdent indent blockquote | table | hr removeformat | subscript superscript | fullscreen | code
 plugins:
   - table
   - fullscreen
   - anchor
   - code
+  - autolink
+  - lists
+  - link
+  - image
+  - hr
+  - searchreplace

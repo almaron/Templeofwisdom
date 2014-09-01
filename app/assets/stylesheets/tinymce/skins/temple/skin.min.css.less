@@ -38,10 +38,11 @@
 @prefix:                         mce;
 
 // Default font
-@font-family:                    "Helvetica Neue", Helvetica, Arial, sans-serif;
+//@font-family:                    "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family:                    Philosopher, "Book Antiqua", Palatino, serif;
 @font-size:                      14px;
 @line-height:                    20px;
-@has-gradients:                  true;
+@has-gradients:                  false;
 @has-radius:                     true;
 @has-boxshadow:                  true;
 
@@ -66,16 +67,16 @@
 @btn-box-shadow-active:          inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05);
 @btn-box-disabled-opacity:       0.4;
 @btn-bg:                         white;
-@btn-bg-hlight:                  #D9D9D9;
+@btn-bg-hlight:                  @color-green8;//#D9D9D9;
 @btn-bg-hover:                   darken(@btn-bg, 5%);
 @btn-bg-hlight-hover:            darken(@btn-bg-hlight, 5%);
 
-@btn-primary-bg:                 #0088cc;
-@btn-primary-bg-hlight:          #0044cc;
+@btn-primary-bg:                 @color-green8;//#0088cc;
+@btn-primary-bg-hlight:          @color-green8;//#0044cc;
 @btn-primary-bg-hover:           darken(@btn-primary-bg, 5%);
 @btn-primary-bg-hover-hlight:    darken(@btn-primary-bg-hlight, 5%);
-@btn-primary-text:               #fff;
-@btn-primary-text-shadow:        #333;
+@btn-primary-text:               @baseColor;//#fff;
+@btn-primary-text-shadow:        none;//#333;
 @btn-primary-border-top:         mix(@btn-border-top, @btn-primary-bg, 50%);
 @btn-primary-border-right:       mix(@btn-border-right, @btn-primary-bg, 50%);
 @btn-primary-border-bottom:      mix(@btn-border-bottom, @btn-primary-bg, 50%);
@@ -102,7 +103,7 @@
 
 // Panel
 @panel-border:                   #9E9E9E;
-@panel-bg:                       #FDFDFD;
+@panel-bg:                       @color-green7;//#FDFDFD;
 @panel-bg-hlight:                #DDD;
 
 // Tabs
@@ -160,7 +161,7 @@
 @textbox-border-focus:           rgba(82, 168, 236, .8);
 
 // Throbber
-@throbber-bg:                    #fff url('img/loader.gif') no-repeat center center;
+@throbber-bg:                    #fff image-url('loader.gif') no-repeat center center;
 
 // Combobox
 @combobox-border:                @textbox-border;
@@ -457,6 +458,27 @@ div.@{prefix}-tinymce-inline {
 .@{prefix}-floatpanel {
 	position: absolute;
 	.box-shadow(@floatpanel-box-shadow);
+
+     .@{prefix}-reset, .@{prefix}-foot {
+       background: @bgimg-beige;
+     }
+
+  .@{prefix}-window-head .@{prefix}-close {
+    &:hover {
+      color: @baseColor;
+    }
+
+  }
+  textarea {
+    background: none repeat scroll 0 0 #fbf5e8;
+    border-color: #b6a795;
+    padding: 2px 5px;
+    transition: all 0.4s ease 0s;
+    &:focus, &:hover {
+      background: @color-brown4 + 66;
+      .box-shadow(0px 0px 3px 1px rgba(0,0,0,0.3));
+    }
+  }
 }
 
 .@{prefix}-floatpanel.@{prefix}-fixed {

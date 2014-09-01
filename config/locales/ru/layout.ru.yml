@@ -69,6 +69,11 @@ ru:
   ips:
     index:
       pagetitle: 'Поиск по ip'
+  admin_pages:
+    index:
+      pagetitle: "Страницы сайта"
+    edit:
+      pagetitle: "Редактирование страницы"
 
   char_status:
     name:

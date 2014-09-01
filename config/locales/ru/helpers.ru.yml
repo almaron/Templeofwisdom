@@ -1,4 +1,8 @@
 ru:
   helpers:
     label:
-      user:
+
+      page:
+        head: "Название"
+        page_title: "Заголовок"
+        page_alias: "URL"
