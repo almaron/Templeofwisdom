@@ -20,6 +20,7 @@
 //= require chosen.jquery
 //= require markItUp
 //= require fancybox
+// require tinymce-jquery
 
 //= require functions
 

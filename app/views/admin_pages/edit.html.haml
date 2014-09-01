@@ -1,0 +1,32 @@
+= tinymce_assets
+.forum-admin.admin-wrapper
+  .edit-item
+    = form_for @page, remote: true do |f|
+      .edit-form
+        .form-line.form-min-height
+          %span.form-block
+            = f.label :head
+            = f.text_field :head, class: "inp inp-type2"
+          %span.form-block
+            = f.label :page_alias
+            = f.text_field :page_alias, class: "inp inp-type2"
+          %span.form-block
+            = f.check_box :published
+            = f.label :published, raw("Публиковать<span></span>")
+          %span.form-block
+            = f.check_box :hide_menu
+            = f.label :hide_menu, raw("Скрыть в меню<span></span>")
+        %hr
+        .form-line
+          = f.label :page_title
+          = f.text_field :page_title, class: "inp inp-type2 tinymce"
+        .form-line.text-area
+          = f.label :content
+          .text-area
+            =f.text_area :content, class: "inp inp-type2 tinymce"
+        .form-line
+          = f.submit raw("Сохранить"), class:"btn btn-standart"
+          %button.btn.btn-standart{onclick:'window.location.assign("/admin/pages")'}
+            Назад
+
+= tinymce

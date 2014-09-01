@@ -16,6 +16,10 @@ class AdminPagesController < ApplicationController
     render json: @page
   end
 
+  def edit
+
+  end
+
   def update
     @page.update page_params
     render json: @page

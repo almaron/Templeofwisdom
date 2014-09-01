@@ -54,11 +54,7 @@
     $scope.editPage.published = "" + $scope.editPage.published
 
   $scope.fullEdit = (page) ->
-    $http.get('/admin/pages/'+page.id+'.json').success (data) ->
-      $scope.editPage = data
-      $scope.editPage.published = "" + $scope.editPage.published
-      $scope.editPage.fullEdit = true
-
+    window.location.assign('/admin/pages/'+page.id+'/edit')
 
   $scope.cancelEdit = () ->
     $scope.editPage = {}

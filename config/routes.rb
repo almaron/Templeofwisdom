@@ -96,7 +96,7 @@ Rails.application.routes.draw do
     resources :skills, except: [:show, :edit, :new]
     resources :skill_requests, only: [:index, :update, :destroy]
     resources :ips, only: :index
-    resources :pages, controller: :admin_pages, only: [:index, :create, :show, :update, :destroy] do
+    resources :pages, controller: :admin_pages, except: [:new] do
       put '' => 'admin_pages#save_tree', on: :collection
     end
   end
