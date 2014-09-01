@@ -1,6 +1,10 @@
+skin: 'temple'
+menu: []
 toolbar:
   - styleselect | bold italic | link image | undo redo
-  - table | fullscreen | source
+  - table | fullscreen | anchor | code
 plugins:
   - table
   - fullscreen
+  - anchor
+  - code
