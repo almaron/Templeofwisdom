@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831154317) do
+ActiveRecord::Schema.define(version: 20140902164539) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -190,6 +190,38 @@ ActiveRecord::Schema.define(version: 20140831154317) do
     t.string   "user",       null: false
     t.string   "ip",         null: false
   end
+
+  create_table "journal_images", force: true do |t|
+    t.integer  "page_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "journal_images", ["page_id"], name: "index_journal_images_on_page_id", using: :btree
+
+  create_table "journal_pages", force: true do |t|
+    t.integer  "journal_id"
+    t.string   "head"
+    t.string   "page_type"
+    t.integer  "sort_index"
+    t.text     "content_text"
+    t.string   "content_line"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "journal_pages", ["journal_id", "sort_index"], name: "index_journal_pages_on_journal_id_and_sort_index", using: :btree
+
+  create_table "journals", force: true do |t|
+    t.string   "head"
+    t.string   "cover"
+    t.datetime "publish_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "journals", ["publish_date"], name: "index_journals_on_publish_date", using: :btree
 
   create_table "levels", force: true do |t|
     t.string  "name",                   null: false
