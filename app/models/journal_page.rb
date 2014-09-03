@@ -8,11 +8,11 @@ class JournalPage < ActiveRecord::Base
   end
 
   def content_blocks
-    content.split('||separator||')
+    content_text.present? ? content_text.split(separator).reject(&:blank?) : []
   end
 
   def content_blocks=(blocks)
-    self.content = blocks.join('||separator||')
+    self.content_text = blocks.reject(&:blank?).join(separator)
   end
 
   def get_blocks_content
@@ -26,6 +26,10 @@ class JournalPage < ActiveRecord::Base
 
   def image_url(index)
     images[index] && images[index].image? ? images[index].image_url : nil
+  end
+
+  def separator
+    "|&|"
   end
 
 end
