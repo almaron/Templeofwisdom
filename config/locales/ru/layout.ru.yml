@@ -74,6 +74,12 @@ ru:
       pagetitle: "Страницы сайта"
     edit:
       pagetitle: "Редактирование страницы"
+  journals:
+    index:
+      pagetitle: "Выпуски газеты"
+  admin_journals:
+    index:
+      pagetitle: "Список выпусков"
 
   char_status:
     name:

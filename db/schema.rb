@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902164539) do
+ActiveRecord::Schema.define(version: 20140904192133) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -216,12 +216,11 @@ ActiveRecord::Schema.define(version: 20140902164539) do
   create_table "journals", force: true do |t|
     t.string   "head"
     t.string   "cover"
-    t.datetime "publish_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "published",   default: false
+    t.string   "description"
   end
-
-  add_index "journals", ["publish_date"], name: "index_journals_on_publish_date", using: :btree
 
   create_table "levels", force: true do |t|
     t.string  "name",                   null: false

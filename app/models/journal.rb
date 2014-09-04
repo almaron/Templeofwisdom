@@ -5,13 +5,16 @@ class Journal < ActiveRecord::Base
   after_initialize :set_default
   mount_uploader :cover, CoverUploader
 
-  scope :published, -> {where('publish_date <= ?', DateTime.now)}
+  scope :published, -> {where(published: true)}
 
   private
 
   def set_default
-    self.head ||= "Journal"
-    self.publish_date ||= DateTime.now
+    self.head ||= "Journal #{self.class.get_new_id}"
+  end
+
+  def self.get_new_id
+    self.last.nil? ? 1 : self.last.id+1
   end
 
 
