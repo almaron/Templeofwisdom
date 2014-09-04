@@ -1,0 +1,4 @@
+%ol
+  - @journals.each do |journal|
+    %li
+      = link_to journal.head, journal, target: '_blank'

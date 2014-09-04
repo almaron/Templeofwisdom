@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'admin_pages/index'
-
-  get 'admin_pages/show'
-
-  get 'admin_pages/update'
-
-  get 'admin_pages/destroy'
-
   # OAuth routes
   match 'oauth/callback' => 'oauths#callback', via: [:get, :post]
   match 'oauth/delete/:provider' => 'oauths#destroy', as: :delete_auth, via: [:get, :delete]
@@ -77,6 +69,12 @@ Rails.application.routes.draw do
 
   get '/skills/:id' => 'skills#show', as: :skill_show, id: /\d+/
   get '/skills/:skill_type' => 'skills#public_index', as: :skills_list, skill_type: /magic|phisic/
+
+  resources :journals, only: [:index, :show] do
+    member do
+      get '/p/:page_id' => :page, as: :page
+    end
+  end
 
 # Administration block
   scope '/admin' do

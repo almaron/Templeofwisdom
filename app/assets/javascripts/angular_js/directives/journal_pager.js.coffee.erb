@@ -1,0 +1,31 @@
+@app.directive 'journalPager', ->
+    restrict: "E"
+    scope:
+      journal: "=",
+      onset: "&"
+    templateUrl: "<%= asset_path "journal_pager" %>"
+    replace: true
+    transclude: false
+    link: (scope, element, attrs) ->
+
+        setPages = ->
+            scope.pages = []
+            i = 0
+
+            while i+1 <= scope.journal.page_count
+                scope.pages.push i
+                ++i
+            return
+
+        scope.$watch "journal.page_count", setPages
+
+        scope.isCurrent = (index) ->
+            scope.journal.current_page is index
+
+        scope.setCurrent = (index) ->
+            scope.journal.current_page = index
+            if index >= 0
+                scope.onset({page:index})
+            return
+
+        return

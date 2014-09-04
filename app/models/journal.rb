@@ -5,6 +5,8 @@ class Journal < ActiveRecord::Base
   after_initialize :set_default
   mount_uploader :cover, CoverUploader
 
+  scope :published, -> {where('publish_date <= ?', DateTime.now)}
+
   private
 
   def set_default

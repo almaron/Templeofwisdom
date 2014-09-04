@@ -1,0 +1,40 @@
+.page-wrapper{'ng-controller'=>'JournalCtrl', 'ng-init'=>"initJournal(#{params[:id]}, #{params[:page] ? params[:page].to_i-1 : -1})"}
+  %journal-pager{journal:"journal", onset:'getPage(page)'}
+  .main
+    .col
+      &nbsp;
+    .mh-content{'ng-hide'=>'journal.current_page >= 0'}
+      %h1{} {{journal.head}}
+      .mh-newspaper
+        %img.mh-mainpic{'ng-src'=>'{{journal.cover}}', 'ng-if'=>'journal.cover'}
+    .mh-content{'ng-show'=>'journal.current_page >= 0'}
+      %h1{} {{current_page.head}}
+      .mh-newspaper
+        %div{'ng-if'=>'current_page.page_type=="article"'}
+          %img.img{align:"left", 'ng-src'=>'{{current_page.image_url}}', 'ng-if'=>'current_page.image_url'}
+          %div{"ng-bind-html" => "current_page.content"}}
+          .article-author
+            {{current_page.content_line}}
+        %div.newbe{'ng-if'=>'current_page.page_type=="newbies"'}
+          %table.newbe_tab{}
+            %tr{'ng-repeat'=>'char in current_page.newbies'}
+              %td.ava
+                %img{'ng-src'=>"{{char.avatar}}", 'ng-if'=>'char.avatar'}
+              %td.info
+                %h4{} {{char.name}}
+                %span.param{} {{char.group}}
+                %span.param{} {{char.place}}
+        %div.mh-blocks-wrapper{'ng-if'=>'current_page.page_type=="blocks"'}
+          %span.one-block{'ng-repeat'=>'block in current_page.content_blocks', 'ng-class-odd' => '"block-left"', 'ng-class-even'=>'"block-right"'}
+            %span.img-block{'ng-if'=>'block.image_url'}
+              %img.img{'ng-src'=>'{{block.image_url}}'}
+            %span.text-block{'ng-if'=>'block.content', 'ng-bind-html'=>'block.content'}
+        %div.mh-gallery-wrapper{'ng-if'=>'current_page.page_type=="gallery"'}
+          .content{'ng-bind-html'=>'current_page.content'}
+          .gallery
+            .one-img{'ng-repeat'=>'image in current_page.images'}
+              %a{href:'{{image.path}}', fancybox:"", rel:'gallery'}
+                %img.img{'ng-src'=>'{{image.thumb}}'}
+
+  %journal-pager{journal:"journal", onset:'getPage(page)'}
+

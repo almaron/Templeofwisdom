@@ -1,0 +1,5 @@
+.paginator
+  %span.cover_link{'ng-click'=>'setCurrent(-1)',"ng-class" => "{active: isCurrent(-1)}"}
+    Выпуск №{{journal.id}}
+  &nbsp; Страницы:
+  %span{'ng-repeat'=>'page in pages', "ng-class" => "{active: isCurrent(page)}", "ng-click" => "setCurrent(page)"}{{page+1}}

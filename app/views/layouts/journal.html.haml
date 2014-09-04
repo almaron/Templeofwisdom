@@ -1,0 +1,18 @@
+!!!
+/[if IE 7 ] <html lang="ru" class="no-js ie7" ng-app="templeApp">
+/[if IE 8 ] <html lang="ru" class="no-js ie8" ng-app="templeApp">
+/[if IE 9 ] <html lang="ru" class="no-js ie9" ng-app="templeApp">
+/ [if (gt IE 9)|!(IE)]><!
+%html.no-js{lang: "ru"}
+  / <![endif]
+  = render :partial => 'head'
+
+  %body
+    .top
+    .wrapper.mh
+      .header
+        %a.logo{:href => "/", :title => "На главную"}
+        %a.mh-text{:href => "/journal", :title => "Монастырские хроники"}
+      .journal-wrapper
+        = yield
+      = render partial: 'bottom'

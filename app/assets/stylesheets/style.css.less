@@ -1086,6 +1086,16 @@ body {
 	padding:10px;
 	padding-right: 20px;
 	font-size: 1.4em;
+    span {
+      cursor: pointer;
+      padding: 0 5px;
+      &.active {
+        cursor: auto;
+          font-weight: bold;
+          background-color: @color-green5 + 60;
+          .border-radius(5px);
+      }
+    }
   }
 
   .col {
@@ -1105,6 +1115,27 @@ body {
   .mh-newspaper {
 	padding: 20px 0;
 	.clearfix;
+  }
+
+  .mh-blocks-wrapper {
+    span.one-block {
+      display: inline;
+      text-align: justify;
+      &.block-left .img-block {
+        float: left;
+      }
+      &.block-right .img-block {
+        float: right;
+      }
+    }
+  }
+
+  .mh-gallery-wrapper {
+    .gallery {
+      .one-img {
+        float: left;
+      }
+    }
   }
 
   .mh-mainpic {
