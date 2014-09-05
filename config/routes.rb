@@ -97,6 +97,9 @@ Rails.application.routes.draw do
     resources :pages, controller: :admin_pages, except: [:new] do
       put '' => 'admin_pages#save_tree', on: :collection
     end
+    resources :journals, controller: :admin_journals, except: [:new, :edit], as: :admin_journals do
+      resources :pages, controller: :admin_journal_pages, except: [:index, :new, :edit]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

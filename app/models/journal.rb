@@ -1,6 +1,6 @@
 class Journal < ActiveRecord::Base
 
-  has_many :pages, class_name: JournalPage
+  has_many :pages, class_name: JournalPage, dependent: :destroy
 
   after_initialize :set_default
   mount_uploader :cover, CoverUploader

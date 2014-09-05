@@ -1,7 +1,8 @@
 class JournalPage < ActiveRecord::Base
 
   belongs_to :journal
-  has_many :images, class_name: JournalImage, foreign_key: :page_id
+  has_many :images, class_name: JournalImage, foreign_key: :page_id, dependent: :destroy
+  accepts_nested_attributes_for :images
 
   default_scope ->{ order(:sort_index, :id)}
 
