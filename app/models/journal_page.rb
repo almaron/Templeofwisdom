@@ -3,6 +3,7 @@ class JournalPage < ActiveRecord::Base
   belongs_to :journal
   has_many :images, class_name: JournalImage, foreign_key: :page_id, dependent: :destroy
   accepts_nested_attributes_for :images
+  after_initialize :set_defaults
 
   default_scope ->{ order(:sort_index, :id)}
 
@@ -26,8 +27,8 @@ class JournalPage < ActiveRecord::Base
 
   def get_blocks_content
     blocks = []
-    content_blocks.each_with_index do |block, index |
-      blocks << {content: block, image:image_url(index)}
+    (0..([2, content_blocks.size-1,images.size-1].max)).each do |i|
+      blocks << {content: content_blocks[i] || "", image:image_url(i)}
     end
     blocks
   end
@@ -48,5 +49,14 @@ class JournalPage < ActiveRecord::Base
   def separator
     "|&|"
   end
+
+  def set_defaults
+    self.content_text ||= ''
+    images.build  if self.is_article? && images.count == 0
+  end
+
+end
+
+class PageBlock < Struct.new(:content, :image)
 
 end

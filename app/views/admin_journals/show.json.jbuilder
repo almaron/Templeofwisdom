@@ -1,4 +1,4 @@
-json.(@journal, :id, :head, :description)
+json.(@journal, :id, :head, :description, :published)
 json.cover_url @journal.cover_url if @journal.cover?
 
 json.pages @journal.pages do |page|

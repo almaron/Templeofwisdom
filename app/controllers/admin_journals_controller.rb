@@ -8,7 +8,7 @@ class AdminJournalsController < ApplicationController
       f.html {}
       f.json {
         @journals = Journal.all
-        render json: @journals, only: [:id, :head, :published]
+        render json: @journals, only: [:id, :head, :published, :description]
       }
     end
   end
@@ -18,13 +18,20 @@ class AdminJournalsController < ApplicationController
   end
 
   def create
-    @journal = Journal.create journal_params
-    render json: @journal, only: [:id, :head, :published]
+    if (@journal = Journal.create journal_params)
+      render :show
+    else
+      render json: {}, status: :unprocessable_entity
+    end
+    # render json: @journal, only: [:id, :head, :published, :description]
   end
 
   def update
-    @journal.update(journal_params)
-    render :show
+    if @journal.update(journal_params)
+      render json: {success: true}
+    else
+      render json: {}, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -39,7 +46,7 @@ class AdminJournalsController < ApplicationController
   end
 
   def journal_params
-    params.require(:journal).permit(:head, :description, :remote_cover_url, :cover, :published)
+    params.require(:journal).permit(:head, :description, :remote_cover_url, :published)
   end
 
 end

@@ -28,7 +28,7 @@ class AdminJournalPagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:id, :journal_id, :head, :content_text, :content_line, :page_type, :content_blocks, images_attributes:[:image, :remote_image_url, :id, :_destroy])
+    params.require(:page).permit(:id, :journal_id, :head, :content_text, :content_line, :page_type, :content_blocks, images_attributes:[:remote_image_url, :id, :_destroy])
   end
 
 end

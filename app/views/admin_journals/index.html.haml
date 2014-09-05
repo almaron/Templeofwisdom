@@ -1,2 +1,93 @@
-%h1 AdminJournals#index
-%p Find me in app/views/admin_journals/index.html.haml
+.admin-wrapper.admin-journal{'ng-controller'=>'AdminJournalCtrl'}
+  .main-list-wrapper{'ng-hide'=>'current_journal.id'}
+    .new-journal.any-form
+      %span.field
+        %label{for:'new_head'}Заголовок:
+        %input.inp.inp-type2{'ng-model'=>'newJ.head', id: 'new_head'}
+      %span.field
+        %label{for:'new_description'}Описание:
+        %input.inp.inp-type2{'ng-model'=>'newJ.description', id:'new_description'}
+      %span.field
+        %button.btn.btn-standart{'ng-click'=>'createJournal()'}
+          %span.fa.fa-check
+          Новый выпуск
+    .journal-list
+      %ol
+        %li{'ng-repeat'=>'journal in journals'}
+          %span.head{'ng-click'=>'editJournal(journal, $index)'}
+            {{journal.head}}
+          %span.description
+            {{journal.description}}
+          %span.fa.fa-eye{'ng-if'=>'!journal.published'}
+  .journal-edit-wrapp{'ng-show'=>'current_journal.id && !current_page.id'}
+    %span.close{'ng-click'=>'closeJournal()'}
+      %span.fa.fa-times
+    .journal-edit-form.any-form
+      .form-line
+        %span.field
+          %label{for:'current_journal_head'}Заголовок:
+          %input.inp.inp-type2{'ng-model'=>'current_journal.head', id: 'current_journal_head'}
+        %span.field
+          %label{for:'current_journal_description'}Описание:
+          %input.inp.inp-type2{'ng-model'=>'current_journal.description', id:'current_journal_description'}
+        %span.field
+          %input{id: "current_journal_published", type:'checkbox', "ng-model"=>"current_journal.published" }
+          %label{for:"current_journal_published"}
+            Опубликован
+            %span
+      .form-line
+        %span
+          %label{for:'current_journal_cover'}Обложка:
+          %input.inp.inp-type2{'ng-model'=>'current_journal.remote_cover_url', id:'current_journal_cover'}
+        %span.show-cover{'ng-if'=>'current_journal.cover_url'}
+          %a{href:"{{current_journal.cover_url}}", fancybox:true}
+            %span.fa.fa-search
+        %span.submit
+          %button.btn.btn-standart{'ng-click'=>'updateJournal()'}
+            %span.fa.fa-check
+            Сохранить
+    %hr
+    .pages-list
+      %h4 Страницы
+      .new-page-form
+        %span.field
+          %label{for:'new_page_head'}Заголовок:
+          %input.inp.inp-type2{'ng-model'=>'newPage.head', id:'new_page_head'}
+        %span.field
+          %label{for:'new_page_type'}Тип:
+          %select.inp.inp-type2{'ng-model'=>'newPage.page_type', id:'new_page_type','ng-options'=>'type.alias as type.name for type in types'}
+        %span.field
+          %button.btn.btn-standart{'ng-click'=>'createPage()'}
+            %span.fa.fa-check
+            Добавить страницу
+      %ol
+        %li{'ng-repeat'=>'page in current_journal.pages'}
+          %span.head{'ng-click'=>'editPage(page, $index)'} {{page.head}}
+          %span.page_type{} ({{page.type_line}})
+
+  .page-edit-wrap{'ng-show'=>'current_page.id'}
+    %span.close{'ng-click'=>'closePage()'}
+      %span.fa.fa-times
+    .page-edit-form.any-form
+      .form-line
+        %span.field
+          %label{for:'page_head'}Заголовок:
+          %input.inp.inp-type2{'ng-model'=>'current_page.head', id:'page_head'}
+        %span.field
+          %label{for:'page_type'}Тип:
+          %select.inp.inp-type2{'ng-model'=>'current_page.page_type', id:'page_type','ng-options'=>'type.alias as type.name for type in types'}
+      .form-block.article-form{'ng-show'=>'current_page.page_type == "article"'}
+        .form-line
+          %textarea.inp.inp-type2{'ng-model'=>'current_page.content_text', 'mark-it-up'=>true}
+        .form-line
+          %span.field
+            %label{for:'page_image_url'}Картинка:
+            %input.inp.inp-type2{'ng-model'=>'current_page.images_attributes[0].remote_image_url', id:'page_image_url'}
+            %a{href:"{{current_page.images_attributes[0]}}"}
+          %span.field
+            %label{for:'page_content_author'}Автор:
+            %input.inp.inp-type2{'ng-model'=>'current_page.content_line', id:'page_content_author'}
+
+
+
+
