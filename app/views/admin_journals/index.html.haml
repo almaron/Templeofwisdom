@@ -19,6 +19,7 @@
           %span.description
             {{journal.description}}
           %span.fa.fa-eye{'ng-if'=>'!journal.published'}
+
   .journal-edit-wrapp{'ng-show'=>'current_journal.id && !current_page.id'}
     %span.close{'ng-click'=>'closeJournal()'}
       %span.fa.fa-times
@@ -62,7 +63,7 @@
             Добавить страницу
       %ol
         %li{'ng-repeat'=>'page in current_journal.pages'}
-          %span.head{'ng-click'=>'editPage(page, $index)'} {{page.head}}
+          %span.head{'ng-click'=>'editPage(page)'} {{page.head}}
           %span.page_type{} ({{page.type_line}})
 
   .page-edit-wrap{'ng-show'=>'current_page.id'}
@@ -75,18 +76,71 @@
           %input.inp.inp-type2{'ng-model'=>'current_page.head', id:'page_head'}
         %span.field
           %label{for:'page_type'}Тип:
-          %select.inp.inp-type2{'ng-model'=>'current_page.page_type', id:'page_type','ng-options'=>'type.alias as type.name for type in types'}
+          %select.inp.inp-type2{'ng-model'=>'current_page.page_type', id:'page_type','ng-options'=>'type.alias as type.name for type in types', 'ng-change'=>'resetPage()'}
+
       .form-block.article-form{'ng-show'=>'current_page.page_type == "article"'}
         .form-line
           %textarea.inp.inp-type2{'ng-model'=>'current_page.content_text', 'mark-it-up'=>true}
         .form-line
           %span.field
             %label{for:'page_image_url'}Картинка:
-            %input.inp.inp-type2{'ng-model'=>'current_page.images_attributes[0].remote_image_url', id:'page_image_url'}
-            %a{href:"{{current_page.images_attributes[0]}}"}
+            %input.inp.inp-type2{'ng-model'=>'current_page.images_attributes[0].remote_url', id:'page_image_url'}
+            %a{href:"{{current_page.images_attributes[0].image_url}}", 'ng-if'=>'current_page.images_attributes[0].image_url', fancybox:true}
+              %span.fa.fa-search
           %span.field
             %label{for:'page_content_author'}Автор:
             %input.inp.inp-type2{'ng-model'=>'current_page.content_line', id:'page_content_author'}
+
+      .form-block.newbies-form{'ng-show'=>'current_page.page_type == "newbies"'}
+        .form-line
+          %span.field
+            %label{for:'page_newbies'}Список новичков:
+            %input.inp.inp-type2{'ng-model'=>'current_page.content_line', id:'page_newbies'}
+
+      .form-block.blocks-form{'ng-show'=>'current_page.page_type == "blocks"'}
+        .add_block
+          %button.btn.btn-standart{'ng-click'=>'addPageBlock()'}
+            %span.fa.fa-plus
+        .blocks-wrap
+          .one-block{'ng-repeat'=>'block in current_page.content_blocks track by $index'}
+            .form-line
+              %label{for:'block_image_{{$index}}'}
+                Картинка
+                %span.hint
+                  (для удаления вписать !!!)
+                \:
+              %input.inp.inp-type2{'ng-model'=>'current_page.images_attributes[$index].remote_url', id:'block_image_{{$index}}'}
+              %a{href:"{{current_page.images_attributes[$index].image_url}}", "ng-if"=>"current_page.images_attributes[$index].image_url", fancybox: true}
+                %span.fa.fa-search
+              %span.delete{'ng-click'=>'removePageBlock($index)'}
+                %span.fa.fa-times
+            .form-line
+              %textarea.inp.inp-type2{'ng-model'=>'current_page.content_blocks[$index]', 'mark-it-up'=>true}
+
+      .form-block.gallery-form{'ng-show'=>'current_page.page_type == "gallery"'}
+        .form-line
+          %textarea.inp.inp-type2{'ng-model'=>'current_page.content_text', 'mark-it-up'=>true}
+        .form-line.gallery-urls
+          .add_block
+            %button.btn.btn-standart{'ng-click'=>'addImage()'}
+              %span.fa.fa-plus
+          .list
+            %ol
+              %li{'ng-repeat'=>'image in current_page.images_attributes'}
+                %label{for:"add_image{{$index}}"} URL:
+                %input.inp.inp-type2{'ng-model'=>'image.remote_image_url', id:'add_image{{$index}}'}
+        .form-line.gallery-images
+          .one-img{'ng-repeat'=>'image in current_page.images'}
+            %a{href:"{{image.url}}",fancybox:true}
+              {{image.name}}
+            %span.delete{'ng-click'=>'removeImage(image)'}
+              %span.fa.fa-times
+
+      .form-line
+        %button.btn.btn-standart{'ng-click'=>'updatePage()'}
+          %span.fa.fa-check
+          Сохранить
+        {{save_status}}
 
 
 

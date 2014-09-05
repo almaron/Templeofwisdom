@@ -25,10 +25,10 @@ class JournalPage < ActiveRecord::Base
     self.content_text = blocks.reject(&:blank?).join(separator)
   end
 
-  def get_blocks_content
+  def blocks_content
     blocks = []
     (0..([2, content_blocks.size-1,images.size-1].max)).each do |i|
-      blocks << {content: content_blocks[i] || "", image:image_url(i)}
+      blocks << ContentBlock.new(content_blocks[i] || "", image_url(i))
     end
     blocks
   end
@@ -38,11 +38,16 @@ class JournalPage < ActiveRecord::Base
   end
 
   def image_url(index)
-    images[index] && images[index].image? ? images[index].image_url : nil
+    images[index] && images[index].image? ? images[index].image_url : images.build().image_url
   end
 
   def add_image(url)
     images.create(remote_url:url) if url.present?
+  end
+
+  def reset(new_page_type)
+    self.update(content_line: "", page_type: new_page_type, content_text:"")
+    self.images.destroy_all
   end
 
   private
@@ -52,11 +57,9 @@ class JournalPage < ActiveRecord::Base
 
   def set_defaults
     self.content_text ||= ''
-    images.build  if self.is_article? && images.count == 0
+    self.images.build  if self.is_article? && images.empty?
+    self.blocks_content if self.is_blocks?
   end
 
 end
 
-class PageBlock < Struct.new(:content, :image)
-
-end

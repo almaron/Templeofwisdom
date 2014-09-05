@@ -7,9 +7,9 @@ end
 json.cached true
 
 if @page.is_blocks?
-  json.content_blocks @page.get_blocks_content do |block|
-    json.content block[:content].bbcode_to_html_with_formatting
-    json.image_url block[:image]
+  json.content_blocks @page.blocks_content do |block|
+    json.content block.content.bbcode_to_html_with_formatting
+    json.image_url block.image_url
   end
 end
 

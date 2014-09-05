@@ -98,7 +98,10 @@ Rails.application.routes.draw do
       put '' => 'admin_pages#save_tree', on: :collection
     end
     resources :journals, controller: :admin_journals, except: [:new, :edit], as: :admin_journals do
-      resources :pages, controller: :admin_journal_pages, except: [:index, :new, :edit]
+      resources :pages, controller: :admin_journal_pages, except: [:index, :new, :edit] do
+        delete ':image_id' => :destroy_image
+        post :reset
+      end
     end
   end
 
