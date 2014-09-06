@@ -58,17 +58,17 @@
   $scope.updatePage = ->
     $http.put('/admin/journals/'+$scope.current_journal.id+'/pages/'+$scope.current_page.id+'.json', {page: $scope.current_page}).success (data) ->
       $scope.editJournal($scope.current_journal)
+      $scope.closePage()
 
   $scope.addPageBlock = ->
-    $scope.current_page.content_blocks.push ""
-    $scope.current_page.images_attributes.push {remote_url:""}
+    $scope.current_page.blocks_attributes.push {content:"", remote_url:""}
 
-  $scope.removePageBlock = (index) ->
-   $scope.current_page.content_blocks.splice(index, 1)
-   if $scope.current_page.images_attributes[index].id
-     image_id = $scope.current_page.images_attributes[index].id
-     $http.delete('/admin/journals/'+$scope.current_journal.id+'/pages/'+$scope.current_page.id+'/'+image_id+'.json')
-   $scope.current_page.images_attributes.splice(index,1)
+  $scope.removePageBlock = (block) ->
+    index = $scope.current_page.blocks_attributes.indexOf block
+    if block.id
+      block._destroy = true
+    else
+      $scope.current_page.blocks_attributes.splice(index, 1)
 
   $scope.addImage = ->
     $scope.current_page.images_attributes.push {remote_image_url:""}

@@ -25,7 +25,7 @@
                 %span.param{} {{char.group}}
                 %span.param{} {{char.place}}
         %div.mh-blocks-wrapper{'ng-if'=>'current_page.page_type=="blocks"'}
-          %span.one-block{'ng-repeat'=>'block in current_page.content_blocks', 'ng-class-odd' => '"block-left"', 'ng-class-even'=>'"block-right"'}
+          %span.one-block{'ng-repeat'=>'block in current_page.blocks', 'ng-class-odd' => '"block-left"', 'ng-class-even'=>'"block-right"'}
             %span.img-block{'ng-if'=>'block.image_url'}
               %img.img{'ng-src'=>'{{block.image_url}}'}
             %span.text-block{'ng-if'=>'block.content', 'ng-bind-html'=>'block.content'}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905110217) do
+ActiveRecord::Schema.define(version: 20140906173226) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -190,6 +190,16 @@ ActiveRecord::Schema.define(version: 20140905110217) do
     t.string   "user",       null: false
     t.string   "ip",         null: false
   end
+
+  create_table "journal_blocks", force: true do |t|
+    t.integer  "page_id"
+    t.text     "content"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "journal_blocks", ["page_id"], name: "index_journal_blocks_on_page_id", using: :btree
 
   create_table "journal_images", force: true do |t|
     t.integer  "page_id"
