@@ -44,3 +44,11 @@ ru:
   role:
     paths:
       dafault: "Предыдущие ссылки сохранены, введите новые для изменения."
+
+  journal:
+    pages:
+      page_type:
+        article: 'Статья'
+        blocks: 'Блочная'
+        newbies: 'Новички'
+        gallery: 'Галерея'
