@@ -1,3 +1,9 @@
+- content_for :path do
+  = link_to "Личный кабинет", profile_path
+  %span.fa.fa-arrow-circle-right
+  %span
+    Управление форумами
+
 .forum-admin{"ng-controller"=>"AdminForumsCtrl", "ng-init"=>"loadForums()"}
   #tree-root{"ui-tree" => "forumsTreeOptions"}
     %ol{"ng-model" => "forums", "ui-tree-nodes" => ""}

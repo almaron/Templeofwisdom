@@ -1,3 +1,9 @@
+- content_for :path do
+  = link_to "Личный кабинет", profile_path
+  %span.fa.fa-arrow-circle-right
+  %span
+    Верстка газеты
+
 .admin-wrapper.admin-journal{'ng-controller'=>'AdminJournalCtrl'}
   .main-list-wrapper{'ng-hide'=>'current_journal.id'}
     .new-journal.any-form
@@ -12,6 +18,7 @@
           %span.fa.fa-check
           Новый выпуск
     .journal-list
+      %h4 Список выпусков
       %ol
         %li{'ng-repeat'=>'journal in journals'}
           %span.head{'ng-click'=>'editJournal(journal, $index)'}

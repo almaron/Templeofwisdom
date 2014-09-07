@@ -1,3 +1,9 @@
+- content_for :path do
+  = link_to "Личный кабинет", profile_path
+  %span.fa.fa-arrow-circle-right
+  %span
+    Уведомления
+
 .admin-wrapper.notifications{'ng-controller' =>'NotificationsCtrl'}
 
   .user-filter

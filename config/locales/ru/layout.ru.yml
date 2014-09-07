@@ -79,7 +79,7 @@ ru:
       pagetitle: "Выпуски газеты"
   admin_journals:
     index:
-      pagetitle: "Список выпусков"
+      pagetitle: "Верстка газеты"
 
   char_status:
     name:

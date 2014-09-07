@@ -1,3 +1,9 @@
+- content_for :path do
+  = link_to "Личный кабинет", profile_path
+  %span.fa.fa-arrow-circle-right
+  %span
+    Настройки системы
+
 .configs-wrapper{"ng-controller"=>"ConfigsCtrl", "ng-init"=>"getConfigs()"}
   .config-div.config-list
     .config-line{"ng-repeat"=>"config in configs | orderBy : 'name'"}

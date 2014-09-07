@@ -1,3 +1,9 @@
+- content_for :path do
+  = link_to "Личный кабинет", profile_path
+  %span.fa.fa-arrow-circle-right
+  %span
+    Редактирование страниц
+
 .forum-admin{'ng-controller'=>'AdminPagesCtrl'}
   #tree-root{"ui-tree" => "PageTreeOptions", 'ng-hide'=>'editPage.fullEdit'}
     %ol{"ng-model" => "pages", "ui-tree-nodes" => ""}

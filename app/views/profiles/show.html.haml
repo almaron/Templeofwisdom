@@ -23,16 +23,16 @@
         %td
           - if current_user && current_user.is_in?(:admin)
             .act-line
-              %a{href: "/admin/chars"} Админка персонажей
+              %a{href: "/admin/chars"} Управление персонажами
             .act-line
-              %a{href: "/admin/users"} Админка игроков
+              %a{href: "/admin/users"} Управление игроками
             .act-line
-              %a{href:"/admin/forums"} Админка форумов
+              %a{href:"/admin/forums"} Настройка форумов
         %td
           .act-line
             %a{href: '/admin/pages'} Редактирование страниц
           .act-line
-            %a{href: '/admin/journals'} Газета
+            %a{href: '/admin/journals'} Верстка газеты
           .act-line
             %a{href: '/admin/skill_requests'} Заявки на навыки/способности
     .act-head Меню Персонажа
