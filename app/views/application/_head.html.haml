@@ -13,6 +13,7 @@
     = content_for?(:title) ? yield(:title) : t('common.meta.title')+params.to_json
   = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
   = javascript_include_tag "application", "data-turbolinks-track" => true
+  = yield :admin_assets if content_for?(:admin_assets)
   = csrf_meta_tags
   %meta{:content => (content_for?(:meta_description) ? yield(:meta_description) : t("common.meta.description")), :type => "description"}/
   %meta{:content => (content_for?(:meta_keywords) ? yield(:meta_keywords) : t("common.meta.keywords")), :type => "keywords"}/
