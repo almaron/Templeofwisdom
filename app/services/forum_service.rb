@@ -13,20 +13,20 @@ class ForumService
   end
 
   def add_approve_post(char)
-    ForumPost.create topic_id: char.profile_topic_id, char_id: admin_config('approve_master_id'), user_id: @user.id, ip: @user.current_ip, text: I18n.t("messages.char.approve")
+    ForumPost.create topic_id: char.profile_topic_id, char_id: admin_config('approve_master_id'), user_id: @user.id, ip: @user.current_ip, text: I18n.t("messages.char.approve") if char.profile_topic_id
   end
 
   def add_role_check_post(role)
-    ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: admin_config('role_master_id'), user_id: @user.id, ip: @user.current_ip, text: render(partial:'forums/system_posts/role_check_post', locals:{role:role})
+    ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: admin_config('role_master_id'), user_id: @user.id, ip: @user.current_ip, text: render(partial:'forums/system_posts/role_check_post', locals:{role:role}) if admin_config('roles_apps_topic_id')
   end
 
   def create_role_app_post(role_app)
-    post = ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: role_app.char_id, user_id: @user.id, ip: @user.current_ip, text: render(partial:'forums/system_posts/role_app', locals:{role_app:role_app})
-    post.id if post
+    post = ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: role_app.char_id, user_id: @user.id, ip: @user.current_ip, text: render(partial:'forums/system_posts/role_app', locals:{role_app:role_app}) if admin_config('roles_apps_topic_id')
+    post.try(:id)
   end
 
   def update_role_app_post(role_app)
-    ForumPost.find(role_app.post_id).update(text: render(partial:'forums/system_posts/role_app', locals:{role_app:role_app}))
+    ForumPost.find(role_app.post_id).update(text: render(partial:'forums/system_posts/role_app', locals:{role_app:role_app})) if role_app.post_id
   end
 
   def create_skill_request_post(request)

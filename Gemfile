@@ -81,6 +81,7 @@ group :development, :test do
   gem "capybara"
   gem "guard-rspec"
   gem "guard-rails"
+  gem 'guard-sidekiq'
   gem "guard-livereload"
   gem "rack-livereload"
 end

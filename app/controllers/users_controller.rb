@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @chars = @user.own_chars.active.where(open_player: 1)
   end
 
   def edit

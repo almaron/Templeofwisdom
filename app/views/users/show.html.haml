@@ -1,0 +1,22 @@
+= content_for :pagetitle  do
+  = @user.name
+
+.myaccount
+  .act-block
+    .act-head Контактная информация
+    %table.myaccount-table
+      %tr
+        %td
+          = render 'show_info'
+    .act-head Персонажи
+    %table.act-table
+      - if @chars.empty?
+        %tr
+          %td.nochars{}
+            Нет персонажей
+      - @chars.each do |char|
+        %tr
+          %td.act-name
+            = link_to char.name, char, target: '_blank'
+          %td
+            = t "char_groups.names.#{char.group.name}"

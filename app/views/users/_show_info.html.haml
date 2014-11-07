@@ -1,0 +1,21 @@
+.act-line
+  %span.bold Имя:
+  = @user.profile.full_name || @user.name
+.act-line
+  %span.bold Дата рождения:
+  = l @user.profile.birth_date
+- if @user.profile.viewcontacts? || current_user.is_in?(:admin)
+  .act-line
+    %span.bold Email:
+    = @user.email
+  .act-line
+    %span.bold ICQ:
+    = @user.profile.icq
+  .act-line
+    %span.bold Skype
+    = @user.profile.skype
+  .act-line{"ng-if"=>"user.profile_attributes.contacts"}
+    .bold Другие контакты:
+    %div
+      = simple_format @user.profile.contacts
+.act-line
