@@ -58,13 +58,13 @@ describe User, :type => :model do
       it "should get the default char" do
         expect(@user.default_char).to eq(@char)
       end
-
-    end
+                
+    end     
 
     it "should return nil on none" do
       user = create :user
       expect(user.default_char).to be_nil
     end
-  end
+  end 
 
 end

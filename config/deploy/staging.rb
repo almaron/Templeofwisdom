@@ -1,22 +1,10 @@
-# Simple Role Syntax
-# ==================
-# Supports bulk-adding hosts to roles, the primary server in each group
-# is considered to be the first unless any hosts have the primary
-# property set.  Don't declare `role :all`, it's a meta role.
+set :branch, fetch(:branch, `git rev-parse --abbrev-ref HEAD`.rstrip)
 
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
+server '198.211.107.171', user: 'malk', roles: %w{web app db}, primary: true
 
+set :nginx_server_name, 's.templeofwisdom.ru'
 
-# Extended Server Syntax
-# ======================
-# This can be used to drop a more detailed server definition into the
-# server list. The second argument is a, or duck-types, Hash and is
-# used to set extended properties on the server.
-
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
-
+set :deploy_to, "/home/malk/rails/temple_stage"
 
 # Custom SSH Options
 # ==================
