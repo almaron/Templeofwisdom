@@ -58,7 +58,6 @@ RSpec.describe Char, :type => :model do
         @char.accept @user
       end
 
-      it "should send an email"
 
       it 'should send a notification' do
         expect(Notification).to receive(:create)
@@ -89,8 +88,6 @@ RSpec.describe Char, :type => :model do
         expect(ForumPost).to receive(:create)
         @char.approve @user
       end
-
-      it 'should send an email'
 
       it 'should send a notification' do
         expect(Notification).to receive(:create)
