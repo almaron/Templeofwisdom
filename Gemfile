@@ -8,7 +8,7 @@ gem 'mysql2'
 
 gem 'sorcery'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+# gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails'
 gem 'less-rails'
 gem "compass-rails"
