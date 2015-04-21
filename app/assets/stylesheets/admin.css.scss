@@ -14,8 +14,8 @@
     width:100%;
     border-collapse: collapse;
     th {
-      border: 1px solid @color-green6;
-      background: @color-green6;
+      border: 1px solid $color-green6;
+      background: $color-green6;
       vertical-align: middle;
       padding:5px;
       &.center {
@@ -29,16 +29,16 @@
       &.sortable {
         cursor: pointer;
         &.sort-asc, &.sort-desc {
-          color: @color-brown;
+          color: $color-brown;
         }
       }
     }
     .one-line {
       td {
         vertical-align: middle;
-        border: 1px solid @color-brown1;
+        border: 1px solid $color-brown1;
         padding:5px;
-        background:@bgimg-beige;
+        background:$bgimg-beige;
         &.center {
           text-align: center;
         }
@@ -49,7 +49,7 @@
         &.line-remove {
           span {
             &:hover {
-              color: @color-red;
+              color: $color-red;
             }
           }
         }
@@ -59,10 +59,10 @@
         font-size: 1.1em;
       }
       &:hover td {
-        .box-shadow(0px 0px 9px -1px rgba(0,0,0,0.5));
+        @include box-shadow(0px 0px 9px -1px rgba(0,0,0,0.5));
       }
       &.unread td {
-        background: @color-brown1 + 90;
+        background: $color-brown1 + 90;
         font-weight: bold;
       }
     }
@@ -84,9 +84,9 @@
         &.disabled {
           cursor: auto;
           a {
-            color: @color-grey;
+            color: $color-grey;
             .one-page {
-              color: @color-brown2;
+              color: $color-brown2;
               font-size: 1.2em;
               cursor: auto;
               font-weight: bold;
@@ -99,14 +99,14 @@
       button {
         margin-right: 5px;
         &.active {
-          background-color: @color-pistache;
+          background-color: $color-pistache;
         }
       }
     }
   }
 
   .edit-user-div {
-    background: @bgimg-beige;
+    background: $bgimg-beige;
     padding: 10px;
     margin-top: 20px;
     .user-info-table {
@@ -135,7 +135,7 @@
 
   .edit-close {
     float: right;
-    color: @color-red;
+    color: $color-red;
     font-size: 1.4em;
     margin-right: 2px;
   }
@@ -144,7 +144,7 @@
     margin-top: 10px;
     font-size: 0.9em;
     .destroyed-user {
-      color: @color-green2;
+      color: $color-green2;
     }
   }
 
@@ -161,7 +161,7 @@
     th {
       font-size: 1.1em;
       font-weight: bold;
-      border-bottom: 1px dashed @color-brown2;
+      border-bottom: 1px dashed $color-brown2;
       padding-bottom: 5px;
     }
     tr.one-line {
@@ -264,7 +264,7 @@
       margin: 2px 0;
       padding: 3px;
       &:hover {
-        background-image: @bgimg-beige;
+        background-image: $bgimg-beige;
       }
       span {
         display: inline-block;
@@ -285,7 +285,7 @@
           padding-right: 8px;
           cursor:pointer;
           &:hover {
-            color: @color-orange2;
+            color: $color-orange2;
           }
           &.active {
             font-weight:bold;
@@ -306,7 +306,7 @@
     float: right;
     padding: 5px;
     &:hover {
-      color: @color-brown2;
+      color: $color-brown2;
     }
   }
 
@@ -322,7 +322,7 @@
   ol {
     li {
       &:hover {
-        background: @color-brown5;
+        background: $color-brown5;
       }
       span.head {
         font-size: 1.1em;
@@ -330,7 +330,7 @@
         cursor: pointer;
       }
       span.description, span.page_type {
-        color: @color-orange1;
+        color: $color-orange1;
       }
     }
   }
@@ -338,16 +338,16 @@
   .fa-search {
     cursor: pointer;
     &:hover {
-      color: @color-orange3;
+      color: $color-orange3;
     }
   }
 
   .main-list-wrapper {
     .new-journal {
       margin-bottom: 10px;
-      background: @color-green6;
+      background: $color-green6;
       padding: 7px;
-      border: 1px solid @color-green1;
+      border: 1px solid $color-green1;
     }
     .journal-list {
 
@@ -355,9 +355,9 @@
   }
   .journal-edit-wrapp {
     .journal-edit-form {
-      background: @color-green6;
+      background: $color-green6;
       padding: 7px;
-      border: 1px solid @color-green1;
+      border: 1px solid $color-green1;
 
       .form-line {
         height:25px;
@@ -368,9 +368,9 @@
     }
     .pages-list {
       .new-page-form {
-        background: @color-green6;
+        background: $color-green6;
         padding: 7px;
-        border: 1px solid @color-green1;
+        border: 1px solid $color-green1;
         margin-bottom: 10px;
       }
     }
@@ -379,9 +379,9 @@
   .page-edit-wrap {
     .page-edit-form {
       .base-block {
-        background: @color-green6;
+        background: $color-green6;
         padding: 7px;
-        border: 1px solid @color-green1;
+        border: 1px solid $color-green1;
         margin-bottom: 10px;
       }
       .add_block {
@@ -389,17 +389,17 @@
       }
       .hint {
         font-size:0.9em;
-        color: @color-orange2;
+        color: $color-orange2;
       }
       .one-block {
         padding: 5px 0;
         margin: 5px 0;
-        border-bottom: 1px dashed @color-brown2;
+        border-bottom: 1px dashed $color-brown2;
         span.delete {
           float: right;
           padding: 5px;
           &:hover {
-            color: @color-red;
+            color: $color-red;
           }
         }
       }
@@ -407,7 +407,7 @@
         .form-line {
           padding: 5px 0;
           margin: 5px 0;
-          border-bottom: 1px dashed @color-brown2;
+          border-bottom: 1px dashed $color-brown2;
         }
         .gallery-urls {
           ol {
@@ -424,11 +424,11 @@
               display: block;
               text-align: center;
               cursor: pointer;
-              background: @color-green6;
-              border: 1px solid @color-green1;
+              background: $color-green6;
+              border: 1px solid $color-green1;
               &:hover {
-                color: @color-red;
-                background: @color-green8;
+                color: $color-red;
+                background: $color-green8;
               }
             }
           }
@@ -454,7 +454,7 @@
       margin-left: 7px;
       cursor: pointer;
       &:hover {
-        color: @color-orange2;
+        color: $color-orange2;
       }
     }
     .angular-ui-tree-node .new-item {
@@ -469,20 +469,20 @@
         float: left;
         margin-right: 4px;
         padding-right: 4px;
-        border-right: 1px dashed @color-brown;
+        border-right: 1px dashed $color-brown;
       }
     }
     .tree-node-content {
       .forum-hint {
         font-weight: normal;
         font-size:0.9em;
-        color: @color-brown;
+        color: $color-brown;
       }
     }
     .new-root {
       margin-top: 15px;
       padding: 7px;
-      background: @bgimg-beige;
+      background: $bgimg-beige;
       .new-form-head {
         padding-bottom: 5px;
         font-weight: bold;
@@ -490,7 +490,7 @@
     }
   }
   .edit-item {
-    background: @bgimg-beige;
+    background: $bgimg-beige;
     padding: 7px;
     .edit-form{
       min-height: 20px;
@@ -530,7 +530,7 @@
 
 .tree-node {
   &:hover {
-    background: @bgimg-beige;
+    background: $bgimg-beige;
   }
   .forum-tree-toggle {
     cursor: pointer;
@@ -557,7 +557,7 @@
   padding:0;
   min-height:30px;
   width:auto;
-  border: 1px dashed @color-brown;
+  border: 1px dashed $color-brown;
 }
 .angular-ui-tree-handle {
   cursor: move;
@@ -591,7 +591,7 @@
 
 .role-form-wrap {
   .main-role-info {
-    background: @color-green7;
+    background: $color-green7;
     border: 1px solid #aaa77a;
     padding: 10px 10px 0;
 
@@ -686,7 +686,7 @@
                 font-style: italic;
                 cursor: pointer;
                 &.done {
-                  color: @color-brown1;
+                  color: $color-brown1;
                 }
               }
             }
@@ -725,7 +725,7 @@
       }
     }
     .role-app-form-wrap {
-      background: @color-green7;
+      background: $color-green7;
       border: 1px solid #aaa77a;
       padding: 10px 10px 0;
       margin: 10px 0;
@@ -737,11 +737,11 @@
       font-weight: bold;
       font-size: 1.1em;
       padding-bottom: 5px;
-      border-bottom: 1px dashed @color-brown;
+      border-bottom: 1px dashed $color-brown;
     }
     td {
       padding: 10px 0;
-      border-bottom: 1px dashed @color-brown;
+      border-bottom: 1px dashed $color-brown;
       vertical-align: middle;
     }
     .app-head {

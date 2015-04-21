@@ -18,15 +18,15 @@ a:hover, a:active, a:focus{
 }
 
 a {
-  color:@linkColor;
+  color:$linkColor;
 
   &:hover,&:focus {
-	color:@hoverLink;
+	color:$hoverLink;
 	text-decoration: none;
   }
 
   &.active {
-	color:@activeLink;
+	color:$activeLink;
   }
 }
 
@@ -67,19 +67,19 @@ ol {
 
 // SELECTION
 * {
-  @selection-bg:@color-green3;
-  @selection-txt:@color-brown3;
+  $selection-bg:$color-green3;
+  $selection-txt:$color-brown3;
   &::selection {
-	background:@selection-bg;
-	color:@selection-txt;
+	background:$selection-bg;
+	color:$selection-txt;
   }
   &::-moz-selection {
-	background:@selection-bg;
-	color:@selection-txt;
+	background:$selection-bg;
+	color:$selection-txt;
   }
   &::-webkit-selection {
-	background:@selection-bg;
-	color:@selection-txt;
+	background:$selection-bg;
+	color:$selection-txt;
   }
 }
 
@@ -87,8 +87,8 @@ ol {
 .scrollbar {
   &::-webkit-scrollbar {
     width: 10px;
-    .box-shadow(inset 1px 0px 3px rgba(50, 50, 50, 0.45));
-    background: @color-green6;
+    @include box-shadow(inset 1px 0px 3px rgba(50, 50, 50, 0.45));
+    background: $color-green6;
   }
 /* Track */
   &::-webkit-scrollbar-track {
@@ -96,19 +96,19 @@ ol {
   }
 /* Handle */
   &::-webkit-scrollbar-thumb {
-    .border-radius(2px);
-  //background: @color-sc004;
-    background: @color-green3;
+    @include border-radius(2px);
+  //background: $color-sc004;
+    background: $color-green3;
   }
   &::-webkit-scrollbar-thumb:hover {
-  //background: @color-sc004;
+  //background: $color-sc004;
     background: url("scroll-over.png") top left repeat;
   }
   &::-webkit-scrollbar-thumb:window-inactive {
-    background: @color-green6;
+    background: $color-green6;
   }
   &::-webkit-scrollbar-thumb:active {
-    background: @color-green6;
+    background: $color-green6;
   }
   &::-webkit-scrollbar-corner {
     background-color: transparent;
@@ -136,72 +136,74 @@ ol {
 @import url(http://fonts.googleapis.com/css?family=Philosopher:400,700,400italic&subset=latin,cyrillic);
 
 /* СТИЛИ ДЛЯ ШРИФТОВ: */
-.font {
-  .georgia {font-family: Georgia, "Century Schoolbook L", Serif;}
-  .palatino {font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;}
-  .philosopher {font-family: Philosopher, "Book Antiqua", Palatino, serif;}
-  .chinacyr {font-family: chinacyrregular;}
-}
+
+  @mixin font-georgia {font-family: Georgia, "Century Schoolbook L", Serif;}
+  @mixin font-palatino {font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;}
+  @mixin font-philosopher {font-family: Philosopher, "Book Antiqua", Palatino, serif;}
+  @mixin font-chinacyr {font-family: chinacyrregular;}
+
 
 
 // ==============================================================
 // 					ВНУТРЕННИЕ СТИЛИ
 // ==============================================================
-// ОСНОВНОЕ
-@basefontsize: 14px;
-@baseColor: @color-grey1;
-@linkColor: @color-grey1;
-@hoverLink: @color-brown2;
-@activeLink: @color-orange1;
-@lineHeight: 1.2em;
+
 
 // ЦВЕТА
-@color-green1: #adab78;
-@color-green2: #757c52;
-@color-green3: #087100;
-@color-green4: #4a4940;
-@color-green5: #758a11;
-@color-green6: #d5d395;
-@color-green7: #e6e3b6;
-@color-green8: #e0e57e;
-@color-brown1: #b6a795;
-@color-brown2: #4b453e;
-@color-brown3: #fbf5e8;
-@color-brown4: #c2b9a1;
-@color-brown5: #ede7d2;
-@color-orange1: #bd6200;
-@color-orange2: #904b00;
-@color-orange3: #e38700;
-@color-grey1: #373737;
+$color-green1: #adab78;
+$color-green2: #757c52;
+$color-green3: #087100;
+$color-green4: #4a4940;
+$color-green5: #758a11;
+$color-green6: #d5d395;
+$color-green7: #e6e3b6;
+$color-green8: #e0e57e;
+$color-brown1: #b6a795;
+$color-brown2: #4b453e;
+$color-brown3: #fbf5e8;
+$color-brown4: #c2b9a1;
+$color-brown5: #ede7d2;
+$color-orange1: #bd6200;
+$color-orange2: #904b00;
+$color-orange3: #e38700;
+$color-grey1: #373737;
 
-@color-grey: #bfbfbf;
-@color-black: #000000;
-@color-brown: #72594e;
-@color-red: #d20000;
-@color-orange: #fb9c09;
-@color-gold: #f2ca10;
-@color-yellow: #faea00;
-@color-pistache: #e8faa1;
-@color-brightgreen: #c4fa00;
-@color-green: #34c400;
-@color-emerald: #2cc4b3;
-@color-cyan: #00fff9;
-@color-skyblue: #00eff3;
-@color-lightblue: #57dbf3;
-@color-blue: #099ff3;
-@color-indigo: #714df3;
-@color-violet: #9d2bf3;
-@color-pink: #f378d4;
+$color-grey: #bfbfbf;
+$color-black: #000000;
+$color-brown: #72594e;
+$color-red: #d20000;
+$color-orange: #fb9c09;
+$color-gold: #f2ca10;
+$color-yellow: #faea00;
+$color-pistache: #e8faa1;
+$color-brightgreen: #c4fa00;
+$color-green: #34c400;
+$color-emerald: #2cc4b3;
+$color-cyan: #00fff9;
+$color-skyblue: #00eff3;
+$color-lightblue: #57dbf3;
+$color-blue: #099ff3;
+$color-indigo: #714df3;
+$color-violet: #9d2bf3;
+$color-pink: #f378d4;
 
-@color-beage: #F5E7DA;
+$color-beage: #F5E7DA;
 
 // ФОНЫ КАРТИНКИ
-@bgimg-bg: image-url('bg.jpg');
-@bgimg-beige: image-url('bg-beige.png');
-@bgimg-green: image-url('bg-green.png');
+$bgimg-bg: image-url('bg.jpg');
+$bgimg-beige: image-url('bg-beige.png');
+$bgimg-green: image-url('bg-green.png');
 
 // РАЗМЕРЫ И ОТСТУПЫ
-@paddings-20:20px;
+$paddings-20:20px;
+
+// ОСНОВНОЕ
+$basefontsize: 14px;
+$baseColor: $color-grey1;
+$linkColor: $color-grey1;
+$hoverLink: $color-brown2;
+$activeLink: $color-orange1;
+$lineHeight: 1.2em;
 
 
 // ==============================================================
@@ -210,36 +212,36 @@ ol {
 
 
 // СТАНДАРТНЫЕ ФОНЫ
-.bg-grey {background-color: @color-grey;}
-.bg-black {background-color: @color-black;}
-.bg-brown {background-color: @color-brown;}
-.bg-red {background-color: @color-red;}
-.bg-orange {background-color: @color-orange;}
-.bg-gold {background-color: @color-gold;}
-.bg-yellow {background-color: @color-yellow;}
-.bg-pistache {background-color: @color-pistache;}
-.bg-brightgreen {background-color: @color-brightgreen;}
-.bg-green {background-color: @color-green;}
-.bg-emerald {background-color: @color-emerald;}
-.bg-cyan {background-color: @color-cyan;}
-.bg-skyblue {background-color: @color-skyblue;}
-.bg-lightblue {background-color: @color-lightblue;}
-.bg-blue {background-color: @color-blue;}
-.bg-indigo {background-color: @color-indigo;}
-.bg-violet {background-color: @color-violet;}
-.bg-pink {background-color: @color-pink;}
+@mixin bg-grey {background-color: $color-grey;}
+@mixin bg-black {background-color: $color-black;}
+@mixin bg-brown {background-color: $color-brown;}
+@mixin bg-red {background-color: $color-red;}
+@mixin bg-orange {background-color: $color-orange;}
+@mixin bg-gold {background-color: $color-gold;}
+@mixin bg-yellow {background-color: $color-yellow;}
+@mixin bg-pistache {background-color: $color-pistache;}
+@mixin bg-brightgreen {background-color: $color-brightgreen;}
+@mixin bg-green {background-color: $color-green;}
+@mixin bg-emerald {background-color: $color-emerald;}
+@mixin bg-cyan {background-color: $color-cyan;}
+@mixin bg-skyblue {background-color: $color-skyblue;}
+@mixin bg-lightblue {background-color: $color-lightblue;}
+@mixin bg-blue {background-color: $color-blue;}
+@mixin bg-indigo {background-color: $color-indigo;}
+@mixin bg-violet {background-color: $color-violet;}
+@mixin bg-pink {background-color: $color-pink;}
 
 // АНИМАЦИЯ
-.transition-1 {.transition(all 0.4s ease);}
-.transition-2 {.transition(all 11s ease);}
-.transition-3 {.transition(all 2s ease);}
+@mixin transition-1 {.transition(all 0.4s ease);}
+@mixin transition-2 {.transition(all 11s ease);}
+@mixin transition-3 {.transition(all 2s ease);}
 
 // FONT SIZES
-.fontsize-original {font-size: @basefontsize;}
-.fontsize-12 {font-size: 1.2em;}
+@mixin fontsize-original {font-size: $basefontsize;}
+@mixin fontsize-12 {font-size: 1.2em;}
 
 // ЦВЕТ
-.color-red {color:@color-red;}
+@mixin color-red {color:$color-red;}
 
 // МЕСТЕЧКОВЫЕ
 
@@ -254,57 +256,56 @@ ol {
 // ==============================================================
 
 // Border Radius
-.border-radius(@radius: 5px) {
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-  border-radius: @radius;
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
 }
 
 // Drop shadows
-.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,0.25)) {
-  -webkit-box-shadow: @shadow;
-  -moz-box-shadow: @shadow;
-  box-shadow: @shadow;
+@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,0.25)) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
 }
 
 // Transitions
-.transition(@transition) {
-  -webkit-transition: @transition;
-  -moz-transition: @transition;
-  -ms-transition: @transition;
-  -o-transition: @transition;
-  transition: @transition;
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
 }
 
 // Transformations
-.rotate(@degrees) { //ex: -20deg
-  -webkit-transform: rotate(@degrees);
-  -moz-transform: rotate(@degrees);
-  -ms-transform: rotate(@degrees);
-  -o-transform: rotate(@degrees);
-  transform: rotate(@degrees);
+@mixin rotate($degrees) { //ex: -20deg
+  -webkit-transform: rotate($degrees);
+  -moz-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  -o-transform: rotate($degrees);
+  transform: rotate($degrees);
 }
 /*Растягивание: ширина, высота*/
-.scale(@ratio: 1.5,@ratio2: 1) {
-  -webkit-transform: scale(@ratio,@ratio2);
-  -moz-transform: scale(@ratio,@ratio2);
-  -ms-transform: scale(@ratio,@ratio2);
-  -o-transform: scale(@ratio,@ratio2);
-  transform: scale(@ratio,@ratio2);
+@mixin scale($ratio: 1.5,$ratio2: 1) {
+  -webkit-transform: scale($ratio,$ratio2);
+  -moz-transform: scale($ratio,$ratio2);
+  -ms-transform: scale($ratio,$ratio2);
+  -o-transform: scale($ratio,$ratio2);
+  transform: scale($ratio,$ratio2);
 }
 /*Скосить: горизонталь, вертикаль*/
-.skew(@skew: 20deg,@skew2: 40deg) {
-  transform:skew(@skew,@skew2);
-  -o-transform:skew(@skew,@skew2); /* для Opera */
-  -webkit-transform:skew(@skew,@skew2); /* для Chrome и Safari */
-  -moz-transform:skew(@skew,@skew2); /*для Firefox */
-  -ms-transform:skew(@skew,@skew2); /* для IE */
+@mixin skew($skew: 20deg,$skew2: 40deg) {
+  transform:skew($skew,$skew2);
+  -o-transform:skew($skew,$skew2); /* для Opera */
+  -webkit-transform:skew($skew,$skew2); /* для Chrome и Safari */
+  -moz-transform:skew($skew,$skew2); /*для Firefox */
+  -ms-transform:skew($skew,$skew2); /* для IE */
 }
 
 // Opacity
-.opacity(@opacity: 100) {
-  opacity: @opacity / 100;
-  filter: ~"e(%('alpha(opacity=%d)', @opacity))";
+@mixin opacity($opacity: 100) {
+  opacity: $opacity / 100;
 }
 
 /* Clearfix */
@@ -317,6 +318,18 @@ ol {
   }
   &:after {
 	clear: both;
+  }
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+  display: table;
+  content: "";
+  }
+  &:after {
+  clear: both;
   }
 }
 
@@ -353,9 +366,9 @@ hr {
   border-bottom-width: 1px;
   border-style: solid;
   clear:both;
-  .clearfix;
+  @include clearfix;
   &.separator {
-	border-color: @color-green1;
+	border-color: $color-green1;
   }
 }
 
@@ -382,7 +395,7 @@ hr {
 
 // Картинка с бордером
 .img-border {
-  border: 1px solid @color-green1;
+  border: 1px solid $color-green1;
   padding: 5px;
 }
 
@@ -395,7 +408,7 @@ h1 {
   line-height:1.2em;
 
   span {
-	color:@color-brown1 - 50;
+	color:$color-brown1 - 50;
   }
 }
 
@@ -403,7 +416,7 @@ h1 {
 h2 {
   text-align: center;
   font-size: 1.5em;
-  .font > .chinacyr;
+  @include font-chinacyr;
   padding: 0px 0 15px 0;
   line-height: 1.2em;
 }
@@ -411,9 +424,9 @@ h2 {
 // Китайский, центрированный, оранжевый
 h3 {
   text-align: center;
-  .font > .chinacyr;
+  @include font-chinacyr;
   margin-bottom: 10px;
-  color:@color-orange1;
+  color:$color-orange1;
 }
 
 // Зеленый центрированный
@@ -421,7 +434,7 @@ h4 {
   text-align: center;
   font-size: 1.4em;
   padding: 20px 0;
-  color:@color-green5;
+  color:$color-green5;
 }
 
 // ==============================================================
@@ -485,30 +498,30 @@ input[type=submit] {
 // 	* ИНПУТЫ * //
 
 .inp {
-  .font > .philosopher;
-  .transition-1;
+  @include font-philosopher;
+  @include transition-1;
   border-width:1px;
   border-style:solid;
-  border-color:@baseColor;
+  border-color:$baseColor;
   &.inp-standart {
 	background: none;
-	border-color:@color-brown1;
+	border-color:$color-brown1;
 	padding: 5px 0px;
 	font-size: 1.1em;
 	&:focus {
-	  border-color:@color-orange1;
+	  border-color:$color-orange1;
 	}
   }
 }
 
 .inp-type2 {
-  border-color:@color-brown1;
-  background: @color-brown3;
+  border-color:$color-brown1;
+  background: $color-brown3;
   padding:2px 5px;
-  .transition-1;
+  @include transition-1;
   &:focus, &:hover {
-	background: @color-brown4 + 66;
-	.box-shadow(0px 0px 3px 1px rgba(0,0,0,0.3));
+	background: $color-brown4 + 66;
+	@include box-shadow(0px 0px 3px 1px rgba(0,0,0,0.3));
   }
 }
 
@@ -518,33 +531,33 @@ input[type=submit] {
 
 .btn {
   cursor:pointer;
-  .transition-1;
+  @include transition-1;
   font-family:inherit;
 
   &.btn-text {
 	border: 0px;
 	background: none;
-	.font > .chinacyr;
+	@include font-chinacyr;
 	font-size: 1.5em;
-	color:@color-orange1;
+	color:$color-orange1;
 	font-weight: bold;
 	&:hover {
-	  color:@color-orange2;
+	  color:$color-orange2;
 	}
   }
 
   &.btn-mini {
-	background: @color-green6;
-	border:1px solid @color-green1;
+	background: $color-green6;
+	border:1px solid $color-green1;
 	font-family: inherit;
 	text-align: center;
 	font-weight: bold;
-	color:@color-green4;
+	color:$color-green4;
 	display: block;
 	padding:2px 17px;
 	&:hover {
-	  background: @color-green1;
-	  color:@color-grey1;
+	  background: $color-green1;
+	  color:$color-grey1;
 	}
   }
 }
@@ -555,30 +568,30 @@ a.btn {
 }
 
 .btn-green {
-  .transition-1;
+  @include transition-1;
   text-decoration: none;
   display: block;
-  background: @color-green6;
+  background: $color-green6;
   padding:10px;
   text-align: center;
   width: 110px;
-  border: 1px solid @color-green1;
+  border: 1px solid $color-green1;
 
   &:hover {
-	background: @color-green6 + 9;
+	background: $color-green6 + 9;
   }
 }
 
 .btn-standart {
-  background: @color-green8;
-  border: 1px solid @color-brown1;
+  background: $color-green8;
+  border: 1px solid $color-brown1;
   padding:2px 5px;
-  color:@color-green4;
+  color:$color-green4;
   font-size:1.1em;
   margin: 0 5px;
   &:hover {
-	background: @color-green6;
-	color:@color-grey1;
+	background: $color-green6;
+	color:$color-grey1;
   }
 }
 
@@ -591,9 +604,9 @@ a.btn {
   font-size:0.9em;
   display: inline!important;
   background: none;
-  color:@color-green3;
+  color:$color-green3;
   &:hover {
-    color:@color-green3 - 200;
+    color:$color-green3 - 200;
   }
 }
 
@@ -602,7 +615,7 @@ a.btn {
 
 textarea {
   resize:none;
-  border:1px solid @color-grey1;
+  border:1px solid $color-grey1;
   font-family:inherit;
   font-size:1em;
 }

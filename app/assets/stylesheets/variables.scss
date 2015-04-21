@@ -1,0 +1,132 @@
+// ==============================================================
+// 					ВНУТРЕННИЕ СТИЛИ
+// ==============================================================
+
+
+
+// ЦВЕТА
+$color-green1: #adab78;
+$color-green2: #757c52;
+$color-green3: #087100;
+$color-green4: #4a4940;
+$color-green5: #758a11;
+$color-green6: #d5d395;
+$color-green7: #e6e3b6;
+$color-green8: #e0e57e;
+$color-brown1: #b6a795;
+$color-brown2: #4b453e;
+$color-brown3: #fbf5e8;
+$color-brown4: #c2b9a1;
+$color-brown5: #ede7d2;
+$color-orange1: #bd6200;
+$color-orange2: #904b00;
+$color-orange3: #e38700;
+$color-grey1: #373737;
+
+$color-grey: #bfbfbf;
+$color-black: #000000;
+$color-brown: #72594e;
+$color-red: #d20000;
+$color-orange: #fb9c09;
+$color-gold: #f2ca10;
+$color-yellow: #faea00;
+$color-pistache: #e8faa1;
+$color-brightgreen: #c4fa00;
+$color-green: #34c400;
+$color-emerald: #2cc4b3;
+$color-cyan: #00fff9;
+$color-skyblue: #00eff3;
+$color-lightblue: #57dbf3;
+$color-blue: #099ff3;
+$color-indigo: #714df3;
+$color-violet: #9d2bf3;
+$color-pink: #f378d4;
+
+$color-beage: #F5E7DA;
+
+// ФОНЫ КАРТИНКИ
+$bgimg-bg: image-url('bg.jpg');
+$bgimg-beige: image-url('bg-beige.png');
+$bgimg-green: image-url('bg-green.png');
+
+// РАЗМЕРЫ И ОТСТУПЫ
+$paddings-20:20px;
+
+// ОСНОВНОЕ
+$basefontsize: 14px;
+$baseColor: $color-grey1;
+$linkColor: $color-grey1;
+$hoverLink: $color-brown2;
+$activeLink: $color-orange1;
+$lineHeight: 1.2em;
+
+
+// ==============================================================
+// 					ЗАГОТОВКИ
+// ==============================================================
+
+// Border Radius
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// Drop shadows
+@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,0.25)) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+// Transitions
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+// Transformations
+@mixin rotate($degrees) { //ex: -20deg
+  -webkit-transform: rotate($degrees);
+  -moz-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  -o-transform: rotate($degrees);
+  transform: rotate($degrees);
+}
+/*Растягивание: ширина, высота*/
+@mixin scale($ratio: 1.5,$ratio2: 1) {
+  -webkit-transform: scale($ratio,$ratio2);
+  -moz-transform: scale($ratio,$ratio2);
+  -ms-transform: scale($ratio,$ratio2);
+  -o-transform: scale($ratio,$ratio2);
+  transform: scale($ratio,$ratio2);
+}
+/*Скосить: горизонталь, вертикаль*/
+@mixin skew($skew: 20deg,$skew2: 40deg) {
+  transform:skew($skew,$skew2);
+  -o-transform:skew($skew,$skew2); /* для Opera */
+  -webkit-transform:skew($skew,$skew2); /* для Chrome и Safari */
+  -moz-transform:skew($skew,$skew2); /*для Firefox */
+  -ms-transform:skew($skew,$skew2); /* для IE */
+}
+
+// Opacity
+@mixin opacity($opacity: 100) {
+  opacity: $opacity / 100;
+}
+
+/* Clearfix */
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+  display: table;
+  content: "";
+  }
+  &:after {
+  clear: both;
+  }
+}

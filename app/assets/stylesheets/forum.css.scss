@@ -3,9 +3,9 @@
 @import 'style';
 
 .forum {
-  .clearfix;
+  @include clearfix;
   position: relative;
-  background: @bgimg-beige;
+  background: $bgimg-beige;
   padding: 10px;
 
   .path {
@@ -18,8 +18,8 @@
 .forum-tab {
   width:100%;
   border-collapse: collapse;
-  .box-shadow(0px 0px 5px 1px rgba(117,124,82,0.8));
-  border:1px solid @color-green2;
+  @include box-shadow(0px 0px 5px 1px rgba(117,124,82,0.8));
+  border:1px solid $color-green2;
   &:after {
 	content:" ";
 	position: absolute;
@@ -33,9 +33,9 @@
 
   th {
 	vertical-align: middle;
-	background-color: @color-green2 + 50;
+	background-color: $color-green2 + 50;
 	padding:5px 10px;
-	border:1px solid @color-green2;
+	border:1px solid $color-green2;
 	text-align: center;
 
 	&.f-topics {width:40px;}
@@ -53,18 +53,18 @@
   }
 
   td {
-	border-bottom:1px dashed @color-green2;
+	border-bottom:1px dashed $color-green2;
 	vertical-align: middle;
 	padding:5px 10px;
 
 	&.f-section-name {
-	  background: @bgimg-beige;
+	  background: $bgimg-beige;
 	  position:relative;
 	  a {
 		font-weight: bold;
 		text-decoration: none;
 		&:hover {
-		  color:@color-green2;
+		  color:$color-green2;
 		}
 	  }
 	}
@@ -97,7 +97,7 @@
 	  .f-topics-subsections {
 		a {
 		  text-decoration: none;
-		  color:@color-green2 - 40;
+		  color:$color-green2 - 40;
 		}
 	  }
 	  a:hover {
@@ -118,7 +118,7 @@
 	  .f-lastmessage-link {
 		a {text-decoration: none;}
 		.f-lastmessage-author {
-		  color:@color-green2;
+		  color:$color-green2;
 		  font-weight: bold;
 		  &:hover {
 			text-decoration: underline;
@@ -128,13 +128,13 @@
 		  position: relative;
 		  bottom: -1px;
 		  font-weight: bold;
-		  color:@color-orange1 + 20;
+		  color:$color-orange1 + 20;
 		  font-family: "Times New Roman";
 		  line-height:1.3em;
 		  font-size:1em;
 		  padding:1px 3px;
 		  &:hover {
-			color:@color-orange3;
+			color:$color-orange3;
 		  }
 		}
 	  }
@@ -170,7 +170,7 @@
 }
 
 .forum-btn.disabled {
-  color: @color-grey;
+  color: $color-grey;
 }
 
 .topic-form {
@@ -214,10 +214,10 @@
 
 .topic-list-description {
   margin-bottom: 10px;
-//  background: @bgimg-beige;
-  .box-shadow(0px 0px 5px 1px rgba(117,124,82,0.8));
+//  background: $bgimg-beige;
+  @include box-shadow(0px 0px 5px 1px rgba(117,124,82,0.8));
   padding: 6px;
-  border: 1px solid @color-brown1;
+  border: 1px solid $color-brown1;
   font-size: 1.1em;
 }
 
@@ -245,9 +245,9 @@
     &.f-message-content {
       .message-date {
         text-align: right;
-        color: @color-brown1;
+        color: $color-brown1;
         &:hover {
-          color:@color-brown2;
+          color:$color-brown2;
           font-size: 1.1em;
         }
       }
@@ -255,13 +255,13 @@
         min-height: 280px;
         .message-comment {
           padding-left: 30px;
-          color: @color-orange2;
+          color: $color-orange2;
           .bold {
             margin-top: 20px;
             margin-bottom: 3px;
           }
           .date {
-            color: @color-brown1;
+            color: $color-brown1;
             float: right;
           }
         }
@@ -287,13 +287,13 @@
           padding: 5px;
           &.message-edit {
             &:hover {
-              color: @color-green3;
+              color: $color-green3;
               text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
             }
           }
           &.message-destroy {
             &:hover {
-              color: @color-red;
+              color: $color-red;
               text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
             }
           }
@@ -333,7 +333,7 @@
     }
   }
   &.active {
-    background: @color-beage;
+    background: $color-beage;
   }
 }
 .forum-ctrl {
@@ -341,7 +341,7 @@
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.7);
     &.forum-topic-head {
       span.h1 {
-        color: @baseColor;
+        color: $baseColor;
       }
       .form-inline.editable-wrap {
         display: inline-block;
@@ -356,9 +356,9 @@
           background: none;
           border: none;
           cursor: pointer;
-          color: @color-brown1;
+          color: $color-brown1;
           &:hover {
-            color: @baseColor;
+            color: $baseColor;
           }
         }
       }

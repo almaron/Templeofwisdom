@@ -266,7 +266,7 @@
 	background: #b6b397;
 	z-index:1000!important;
 	padding:2px!important;
-	.border-radius(0px 0px 10px 0);
+	@include border-radius(0px 0px 10px 0);
 	.textsize-a {
 	  font-size: 1.1em!important;
 	  height:15px;
@@ -296,7 +296,7 @@
 		a {
 		  padding: 4px 4px;
 		  font-size: 0.9em!important;
-		  .font > .philosopher;
+		  @include font-philosopher;
 		  font-weight: bold;
 		  text-transform: uppercase;
 		  color:#040500;
@@ -492,7 +492,7 @@
   .logs-table {
 	.logs-table-1 {
 	  width:105px!important;
-	  .table-td-left;
+	  @extend table-td-left;
 	  .llinks {
 		padding-right:10px;
 		font-size:1em!important;
@@ -627,7 +627,7 @@
 		a {
 		  padding: 5px 2px!important;
 		  font-size: 1em!important;
-		  .font > .philosopher;
+		  @include font-philosopher;
 		  font-weight: bold;
 		  text-transform: uppercase;
 		  color:#040500;
@@ -658,14 +658,14 @@
 	height: 70px!important;
 	font-size:40px!important;
 	text-indent: 0px!important;
-	.font > .chinacyr;
+	@include font-chinacyr;
   }
 // Форма логина
   .loginform {
 	width: 400px!important;
 	top:76px!important;
 	left:20px!important;
-	.box-shadow(0px 0px 0px 0px rgba(0,0,0,0));
+	@include box-shadow(0px 0px 0px 0px rgba(0,0,0,0));
 	background: #ede7d2;
 	padding:5px!important;
 
@@ -848,7 +848,7 @@
 			border-left: 0px!important;
 			border-right: 0px!important;
 			color:#758a11;
-			.rotate(-90deg);
+			@include rotate(-90deg);
 			font-size:1.2em!important;
 		  }
           &:nth-child(3){
@@ -964,7 +964,7 @@
   .logs-table {
 	.logs-table-1 {
 	  width:105px!important;
-	  .table-td-left;
+	  @include table-td-left;
 	  .llinks {
 		padding-right:10px;
 		font-size:1em!important;
@@ -999,7 +999,7 @@
   }
 
   .lib-entrance {
-    .clearfix;
+    @include clearfix;
     margin: 0 auto;
     width:280px;
     a {
@@ -1096,43 +1096,6 @@
 	}
   }
 
-
-  /*
-
-						<td class="adm-profiles-main">
-									<form name="income" action="service/serve_ank/income_accept.html" method="post">
-										<table class="accept_tab" cellspasing="0" cellpadding="3" border="1">
-											<tbody>
-												<tr class="head">
-													<td>&nbsp;</td>
-													<td>№</td>
-													<td>Имя Персонажа</td>
-													<td>E-mail</td>
-													<td>IP</td>
-													<td>Ссылка на анкету</td>
-												</tr>
-												<tr>
-													<td>
-														<input type="checkbox" name="in[1208]" value="1" id="inco1">
-                                                        <label for="inco1"><span></span></label>
-													</td>
-													<td>1208</td>
-													<td>
-														<span class="in_name" rel="1208">Тестовый Вася</span>
-													</td>
-													<td>erisa@pochta.ru</td>
-													<td>["195.239.199.190"]</td>
-													<td><input name="link[1208]" class="inp inp-type2"></td>
-												</tr>
-											</tbody>
-										</table>
-										<div class="buttons">
-											<input type="submit" name="go" value="Принять" class="btn btn-standart accept">
-											<input type="submit" name="decline" value="Отказать" class="btn btn-standart deny">
-										</div>
-									</form>
-
-  */
 
 
 }

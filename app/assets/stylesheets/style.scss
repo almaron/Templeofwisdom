@@ -6,12 +6,12 @@
 }
 
 body {
-  font-size: @basefontsize;
-  line-height: @lineHeight;
-  color:@baseColor;
-  background-color: @color-green1;
-  background-image: @bgimg-bg;
-  .font > .philosopher;
+  font-size: $basefontsize;
+  line-height: $lineHeight;
+  color:$baseColor;
+  background-color: $color-green1;
+  background-image: $bgimg-bg;
+  @include font-philosopher;
   position: relative;
   height: 100%;
   padding: 0;
@@ -39,7 +39,7 @@ body {
 
 .show-form {
   padding: 10px 10px;
-  border: 1px dashed @color-green1;
+  border: 1px dashed $color-green1;
   margin-top: 20px;
 
   textarea {
@@ -53,16 +53,16 @@ body {
 
 .table-info {
   border-collapse: collapse;
-  border: 1px solid @color-grey1;
+  border: 1px solid $color-grey1;
   td {
-	border: 1px solid @color-brown1;
+	border: 1px solid $color-brown1;
 	padding:5px;
   }
   th {
-	border: 1px solid @color-brown1;
+	border: 1px solid $color-brown1;
 	padding:5px;
 	text-align: center;
-	background: @color-brown4;
+	background: $color-brown4;
      }
 }
 
@@ -97,7 +97,7 @@ body {
 .header {
   height:235px;
   position: relative;
-  .clearfix;
+  @include clearfix;
 }
 
 // Лого
@@ -127,18 +127,18 @@ body {
 
 // Форма логина
 .loginform {
-  background-image: @bgimg-beige;
+  background-image: $bgimg-beige;
   width: 206px;
   padding: 10px 20px;
   padding-top: 15px;
   position: absolute;
   right:0px;
   top:40px;
-  .box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
+  @include box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
 
   .loginform-one {
 	.loginform-text {
-	  .font > .chinacyr;
+	  @include font-chinacyr;
 	  font-size: 1.3em;
 	  padding-top: 5px;
 	  padding-bottom: 5px;
@@ -161,7 +161,7 @@ body {
     position:absolute;
     right:20px;
     top:-10px;
-    .clearfix;
+    @include clearfix;
     span, a {
       display: block;
       position: relative;
@@ -169,11 +169,11 @@ body {
       width:20px;
       height:20px;
       margin-left:2px;
-      .border-radius(20px);
-      border:1px solid @color-green2 + 60;
+      @include border-radius(20px);
+      border:1px solid $color-green2 + 60;
       cursor:pointer;
       &:hover {
-        border:1px solid @color-green2;
+        border:1px solid $color-green2;
         width:22px;
         height:22px;
         margin-left:0px;
@@ -198,10 +198,10 @@ body {
 // Меню
 .menu {
   position:relative;
-  background-image: @bgimg-green;
+  background-image: $bgimg-green;
   padding:5px;
   padding-top: 7px;
-  border-top:1px solid @color-green2;
+  border-top:1px solid $color-green2;
 
   ul {
 	padding: 0;
@@ -215,21 +215,21 @@ body {
 	  a {
 		text-decoration: none;
 		padding: 4px 5px;
-		.font > .chinacyr;
+		@include font-chinacyr;
 		font-weight: bold;
-		color:@color-green4;
-		.transition-1;
+		color:$color-green4;
+		@include transition-1;
 		&:hover {
-		  color:@color-orange2;
+		  color:$color-orange2;
 		}
 
 	  }
 
 	  &.link-green {
 		a {
-		  color:@color-green3;
+		  color:$color-green3;
 		  &:hover {
-			color:@color-orange1;
+			color:$color-orange1;
 		  }
 		}
 	  }
@@ -246,7 +246,7 @@ body {
   top:0px;
   font-size: 1.1em;
   height:29px;
-  background-color:@color-green2;
+  background-color:$color-green2;
   cursor:default;
   .textsize-a {
 	font-weight: bold;
@@ -257,10 +257,10 @@ body {
 	padding:5px 2px 5px 5px;
 	cursor:pointer;
 	&:hover {
-	  color:@color-green5 + 30;
+	  color:$color-green5 + 30;
 	}
 	&:active {
-	  color:@color-green5;
+	  color:$color-green5;
 	}
   }
   .textsize-rulers {
@@ -274,13 +274,13 @@ body {
 	  font-size: 17px;
 	  padding:0px;
 	  cursor: pointer;
-	  color:@color-green2 - 35;
-	  .transition-1;
+	  color:$color-green2 - 35;
+	  @include transition-1;
 	  &:hover {
-		color:@color-green5 + 30;
+		color:$color-green5 + 30;
 	  }
 	  &:active {
-		color:@color-green5;
+		color:$color-green5;
 	  }
 	  &.plus {
 		margin-bottom: 2px;
@@ -295,8 +295,8 @@ body {
 // Основное
 
 .main {
-  .clearfix;
-  background-image: @bgimg-beige;
+  @include clearfix;
+  background-image: $bgimg-beige;
   position: relative;
 }
 
@@ -316,7 +316,7 @@ body {
 .wrapper {
   .col {
 	float: right;
-	border-color: @color-green1;
+	border-color: $color-green1;
 	border-style: solid;
 	border-width: 0px;
   }
@@ -331,7 +331,7 @@ body {
 
 .text-simple {
   line-height: 1.4em;
-  .clearfix;
+  @include clearfix;
 }
 
 // ЛЮБАЯ ФОРМА
@@ -366,9 +366,9 @@ body {
 
 	.capcha {
 	  float: left;
-	  background: @color-brown4;
+	  background: $color-brown4;
 	  padding:1px 10px 2px 10px;
-	  border: 1px solid @color-green4;
+	  border: 1px solid $color-green4;
 	  margin-right: 20px;
 	  letter-spacing: 2px;
 	}
@@ -392,19 +392,19 @@ body {
   padding: 0 0 0 10px;
   margin-bottom: 10px;
   font-size: 1em;
-  color:@color-brown4 - 100;
-  background: @bgimg-beige;
+  color:$color-brown4 - 100;
+  background: $bgimg-beige;
 
   a {
 	text-decoration: none;
 	font-weight: bold;
 	&:hover {
-	  color:@color-orange1;
+	  color:$color-orange1;
 	}
   }
 
   span {
-	color:@color-green5 - 60;
+	color:$color-green5 - 60;
   }
 }
 
@@ -412,16 +412,16 @@ body {
 
 .newsblock {
   padding: 20px;
-  background-image: @bgimg-beige;
+  background-image: $bgimg-beige;
 
   .news-single {
 	padding-bottom: 15px;
 	padding-top: 10px;
-	border-bottom: 1px solid @color-brown1;
+	border-bottom: 1px solid $color-brown1;
 
 	.author {
 	  text-align: right;
-	  color:@color-orange1;
+	  color:$color-orange1;
 	}
   }
 
@@ -432,7 +432,7 @@ body {
 
 	.news-single-date {
 	  font-size: 1.1em;
-	  color:@color-brown1;
+	  color:$color-brown1;
 	  position: absolute;
 	  display: block;
 	  right:0px;
@@ -444,7 +444,7 @@ body {
 	.news-single-date-title-text {
 	  font-weight: bold;
 	  font-size: 1.2em;
-	  color:@color-green2;
+	  color:$color-green2;
 	}
   }
 }
@@ -459,7 +459,7 @@ body {
   left:0;
   width:100%;
   height:100%;
-  background:@bgimg-beige;
+  background:$bgimg-beige;
   opacity: 0.4;
 }
 
@@ -470,11 +470,11 @@ body {
   bottom:0px;
   width:280px;
   height:300px;
-  background: @color-brown3 - 10;
-  border: 2px solid @color-brown4;
+  background: $color-brown3 - 10;
+  border: 2px solid $color-brown4;
   border-bottom:0px;
   padding:20px;
-  .box-shadow(-40px 0px 110px 86px rgba(0,0,0,0.5));
+  @include box-shadow(-40px 0px 110px 86px rgba(0,0,0,0.5));
 
   .falsepadding {}
 
@@ -485,10 +485,10 @@ body {
 	font-size:1.6em;
 	padding:3px;
 	font-weight: bold;
-	color:@color-orange1;
+	color:$color-orange1;
 	cursor: pointer;
 	&:hover {
-	  color:@color-red;
+	  color:$color-red;
 	}
   }
 
@@ -504,7 +504,7 @@ body {
 	}
 	[type="submit"] {
 	  border: none;
-	  background: @color-green8;
+	  background: $color-green8;
 	  padding:1px;
 	  padding-bottom: 2px;
 	  padding-top: 0px;
@@ -515,7 +515,7 @@ body {
 	  position: relative;
 	  cursor: pointer;
 	  &:hover {
-		background: @color-green8 - 10;
+		background: $color-green8 - 10;
 	  }
 	}
   }
@@ -530,7 +530,7 @@ body {
 
 // Отдельный блок в боковой колонке
 .block {
-  border-bottom: 1px solid @color-green1;
+  border-bottom: 1px solid $color-green1;
   padding-bottom: 20px;
   padding-top: 15px;
 }
@@ -544,12 +544,12 @@ body {
 	padding-bottom: 3px;
 
 	a {
-	  .transition-1;
+	  @include transition-1;
 	  text-decoration: none;
 	  padding: 2px 2px;
 	  font-weight: bold;
 	  &:hover {
-		color:@color-green5;
+		color:$color-green5;
 	  }
 	}
   }
@@ -576,7 +576,7 @@ body {
 
 // Фраза
 .phrase {
-  color:@color-orange2;
+  color:$color-orange2;
 }
 
 // Мини-новости и Блог
@@ -587,7 +587,7 @@ body {
 	font-size:0.9em;
 
 	.news-single-date {
-	  color:@color-green1;
+	  color:$color-green1;
 	  display: block;
 	}
   }
@@ -599,7 +599,7 @@ body {
 	font-size: 0.9em;
 
 	a {
-	  color:@color-green1;
+	  color:$color-green1;
 	}
   }
 }
@@ -616,10 +616,10 @@ body {
 
 // Баннеры
 .banners {
-  .opacity(50);
-  .transition-1;
+  @include opacity(50);
+  @include transition-1;
   &:hover,&:focus {
-	.opacity(100);
+	@include opacity(100);
   }
 }
 
@@ -631,18 +631,18 @@ body {
   width:264px;
   height:222px;
   background: image-url('fish.png') no-repeat 0 0;
-  .transition-3;
+  @include transition-3;
 
   &:hover {
-	.rotate(-1220deg);
-	.transition-2;
+	@include rotate(-1220deg);
+	@include transition-2;
   }
 }
 
 // Нижнее меню
 
 .bottommenu {
-  .clearfix;
+  @include clearfix;
   padding:20px;
   font-size:0.8em;
 
@@ -661,7 +661,7 @@ body {
   width: 100%;
   text-align: right;
   padding-bottom: 20px;
-  color:@color-green2;
+  color:$color-green2;
 }
 
 
@@ -672,7 +672,7 @@ body {
 // КОНТАКТЫ
 
 .person {
-  border: 1px dashed @color-green5;
+  border: 1px dashed $color-green5;
   padding:10px;
   float: left;
   width:44%;
@@ -681,7 +681,7 @@ body {
   .person-name {
 	font-weight: bold;
 	font-size:1.3em;
-	color:@color-green5;
+	color:$color-green5;
 	padding-bottom: 3px;
   }
 }
@@ -702,12 +702,12 @@ body {
 	  }
 
 	  a {
-		.transition-1;
+		@include transition-1;
 		text-decoration: none;
 		display:block;
 		padding:5px 10px;
 		&:hover {
-		  background: @color-green6;
+		  background: $color-green6;
 		}
 	  }
 
@@ -715,7 +715,7 @@ body {
   }
 
   .profile-list-col-title {
-	background: @color-green1;
+	background: $color-green1;
 	padding: 5px 10px;
 	margin-bottom: 10px;
 	font-weight: bold;
@@ -728,7 +728,7 @@ body {
 
 // Совет
 .advice {
-  background: @color-brown3 - 10;
+  background: $color-brown3 - 10;
   padding: 10px;
 }
 
@@ -744,19 +744,19 @@ body {
 
   .profile-content {
 	padding-left: 10px;
-	border-left: 1px dashed @color-green5;
+	border-left: 1px dashed $color-green5;
   }
 
   .profile-photo {
-	border-bottom: 1px dashed @color-green5;
+	border-bottom: 1px dashed $color-green5;
 	padding-bottom: 10px;
 
 	img {
 	  width:200px;
-	  border: 1px solid @color-green1;
-	  .box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
+	  border: 1px solid $color-green1;
+	  @include box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
 	  padding: 2px;
-	  background: @color-brown3;
+	  background: $color-brown3;
 	}
   }
 
@@ -764,19 +764,19 @@ body {
 	padding: 10px 0 5px 0;
 	font-size: 1.3em;
 	font-weight: bold;
-	color:@color-green5;
+	color:$color-green5;
 	text-align: center;
   }
 
   .profile-status {
 	text-align: center;
 	font-style: italic;
-	color:@color-green2;
+	color:$color-green2;
 	padding-bottom: 10px;
   }
 
   .profile-element {
-	border-bottom: 1px dashed @color-green1;
+	border-bottom: 1px dashed $color-green1;
 	padding-bottom: 5px;
 	padding-top: 5px;
 	position:relative;
@@ -792,7 +792,7 @@ body {
 	  cursor:pointer;
 	  padding:3px;
 	  &:hover {
-		color:@color-orange3;
+		color:$color-orange3;
 	  }
 	}
 
@@ -805,7 +805,7 @@ body {
 	}
 
 	.title {
-	  color:@color-orange1;
+	  color:$color-orange1;
 	}
 
 	.skill-name {
@@ -820,7 +820,7 @@ body {
   .profile-content-one {
 	padding-bottom: 10px;
 	padding-top:10px;
-	border-bottom: 1px dashed @color-green5;
+	border-bottom: 1px dashed $color-green5;
 	&:first-child {padding-top: 0px;}
 	&:last-child {
 	  border-bottom: 0px;
@@ -830,7 +830,7 @@ body {
         }
 
 	.title {
-	  color:@color-orange1;
+	  color:$color-orange1;
 	  font-weight: bold;
 	  font-size: 1.2em;
 	  margin-bottom: 10px;
@@ -849,21 +849,21 @@ body {
 // РОЛЕВКИ
 
   .profile-rglist-open {
-	background: @color-brown3;
+	background: $color-brown3;
 	padding:5px;
 	width:150px;
 	text-align: center;
 	cursor: pointer;
-	border:1px solid @color-brown4;
+	border:1px solid $color-brown4;
 	&:hover {
-	  background: @color-green7;
+	  background: $color-green7;
 	}
   }
 
   .roll {
 	margin-top:5px;
 	margin-bottom:5px;
-	border-top:1px dashed @color-brown4;
+	border-top:1px dashed $color-brown4;
 	padding:5px 10px;
 	&:first-child {
 	  border-top:none;
@@ -880,7 +880,7 @@ body {
 	}
 	.rballs {
 	  font-size:0.9em;
-	  background: @color-green7 + 19;
+	  background: $color-green7 + 19;
 	  padding:2px 5px;
 	}
 	.rskills {
@@ -889,7 +889,7 @@ body {
 	  span {
 		padding-right:10px;
 		&.don {
-		  color:@color-brown1 - 30;
+		  color:$color-brown1 - 30;
 		  text-decoration: line-through;
 		}
 	  }
@@ -902,28 +902,28 @@ body {
 .guestscroll {
 
   .guestscroll-entry {
-	background-image: @bgimg-beige;
+	background-image: $bgimg-beige;
 	padding: 20px;
 	margin-bottom: 20px;
-	.clearfix;
+	@include clearfix;
 
 	.guestscroll-entry-title {
 	  position: relative;
 	  padding-right:50px;
-	  .clearfix;
+	  @include clearfix;
 
 	  .guestscroll-entry-date {
 		position: absolute;
 		right:0px;
 		top:0px;
-		color:@color-orange1;
+		color:$color-orange1;
 	  }
 	  .guestscroll-entry-author {
 		float: left;
 		font-weight: bold;
 		font-size: 1.2em;
 		padding: 1px 5px;
-		background: @color-brown3;
+		background: $color-brown3;
 		margin-right: 5px;
 	  }
 	  .guestscroll-entry-title-text {
@@ -940,13 +940,13 @@ body {
 	.guestscroll-answer {
 	  padding: 10px;
 	  position: relative;
-	  color:@color-green3;
-	  .clearfix;
-	  background: @color-green7;
+	  color:$color-green3;
+	  @include clearfix;
+	  background: $color-green7;
 
 	  .guestscroll-answer-date {
 		float: left;
-		color:@color-green4;
+		color:$color-green4;
 		font-weight:bold;
 		margin-right: 10px;
 		bottom: -1px;
@@ -964,7 +964,7 @@ body {
 .blog {}
 
 .blog-entry {
-  background-image: @bgimg-beige;
+  background-image: $bgimg-beige;
   padding: 20px;
   margin-bottom: 20px;
   position:relative;
@@ -972,13 +972,13 @@ body {
   .blog-entry-title {
 	position: relative;
 	padding-right:50px;
-	.clearfix;
+	@include clearfix;
 
 	.blog-entry-date {
 	  position: absolute;
 	  right:0px;
 	  top:0px;
-	  color:@color-orange1;
+	  color:$color-orange1;
 	}
 	.blog-entry-title-text {
 	  font-weight: bold;
@@ -993,7 +993,7 @@ body {
 
   .blog-author {
 	font-weight: bold;
-	color:@color-orange1;
+	color:$color-orange1;
 	margin-right: 5px;
   }
   .blog-comments {
@@ -1005,18 +1005,18 @@ body {
   }
 
   &.blog-comment {
-	background-color: @color-green7;
+	background-color: $color-green7;
   }
   .blog-comment-title {
 	position: relative;
 	.blog-comment-author {
-	  color:@color-green5;
+	  color:$color-green5;
 	}
 	.blog-comment-date {
 	  position: absolute;
 	  right:0px;
 	  top:0px;
-	  color:@color-orange1;
+	  color:$color-orange1;
 	}
   }
   .blog-comment-text {
@@ -1031,25 +1031,25 @@ body {
 	cursor: pointer;
 	letter-spacing: -2px;
 	font-size: 1.2em;
-	.opacity(20);
-	.transition-1;
+	@include opacity(20);
+	@include transition-1;
 	&:hover,&:focus {
-	  .opacity(100);
+	  @include opacity(100);
 	}
   }
   .delete {
 	font-family:  KaiTi,simsun,Nsimsun,arial unicode MS, sans-serif,arial;
-	color:@color-red - 60;
+	color:$color-red - 60;
 	&:hover {
-	  color:@color-red;
+	  color:$color-red;
 	}
   }
   .edit {
 	font-family:  KaiTi,simsun,Nsimsun,arial unicode MS, sans-serif,arial;
-	color:@color-grey1 + 60;
+	color:$color-grey1 + 60;
 	letter-spacing: -7px;
 	&:hover {
-	  color:@color-green3;
+	  color:$color-green3;
 	}
   }
 }
@@ -1061,7 +1061,7 @@ body {
   font-weight: bold;
 
   a {
-	.btn-green;
+	@include btn-green;
   }
 }
 
@@ -1082,7 +1082,7 @@ body {
   }
 
   .paginator {
-	background: @bgimg-green;
+	background: $bgimg-green;
 	text-align: right;
 	padding:10px;
 	padding-right: 20px;
@@ -1093,8 +1093,8 @@ body {
       &.active {
         cursor: auto;
           font-weight: bold;
-          background-color: @color-green5 + 60;
-          .border-radius(5px);
+          background-color: $color-green5 + 60;
+          @include border-radius(5px);
       }
     }
   }
@@ -1105,7 +1105,7 @@ body {
 
   h1 {
 	font-size: 30px;
-	.font > .chinacyr;
+	@include font-chinacyr;
 	display: block;
 	margin: 0 auto;
 	text-align: center;
@@ -1115,7 +1115,7 @@ body {
 
   .mh-newspaper {
 	padding: 20px 0;
-	.clearfix;
+	@include clearfix;
   }
 
   .mh-blocks-wrapper {
@@ -1152,10 +1152,10 @@ body {
 
   .img {
 	padding: 5px;
-	border: 1px solid @color-green2;
+	border: 1px solid $color-green2;
 	margin: 10px;
-	background: @color-brown3;
-	.box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
+	background: $color-brown3;
+	@include box-shadow(0px 0px 10px 1px rgba(0,0,0,0.3));
 
   }
 
@@ -1177,7 +1177,7 @@ body {
   margin:0px auto;
 
   td {
-	border: 1px dashed @color-green1;
+	border: 1px dashed $color-green1;
   }
 
   .ava {
@@ -1187,7 +1187,7 @@ body {
 
 	img {
 	  width: 200px;
-	  border: 1px solid @color-brown4;
+	  border: 1px solid $color-brown4;
 	}
   }
 
@@ -1231,15 +1231,15 @@ body {
     .more {
       font-weight: normal;
       font-size:0.7em;
-      color:@color-brown2;
+      color:$color-brown2;
     }
     .char-delete {
-      color: @color-red;
+      color: $color-red;
       display: block;
       margin-top: 5px;
       text-decoration: none;
       &:hover{
-        color: @color-orange;
+        color: $color-orange;
       }
     }
   }
@@ -1280,7 +1280,7 @@ body {
 
     .skills-added-name {
       font-weight: bold;
-      color:@color-green5;
+      color:$color-green5;
     }
 
     .skills-added-level {
@@ -1293,13 +1293,13 @@ body {
     .skills-added-remove {
       position: relative;
       top:3px;
-      color:@color-red;
+      color:$color-red;
       padding:5px;
       cursor: pointer;
       font-size:19px;
       line-height:10px;
       &:hover {
-        color:@color-red + 110;
+        color:$color-red + 110;
       }
     }
   }
@@ -1320,16 +1320,16 @@ body {
   height: 30px;
   padding: 2px 0;
   vertical-align: bottom;
-  color:@color-green3;
+  color:$color-green3;
   &:hover {
-    color:@color-green2;
+    color:$color-green2;
   }
 }
 
 // БИБЛИОТЕКА
 
 .lib-entrance {
-  .clearfix;
+  @include clearfix;
   margin: 0 auto;
   width:424px;
   a {
@@ -1338,18 +1338,18 @@ body {
 	height:120px;
 	text-align: center;
 	float: left;
-	border: 1px solid @color-green2;
-	background-color: @color-brown1 + 40;
+	border: 1px solid $color-green2;
+	background-color: $color-brown1 + 40;
 	position: relative;
 	margin: 0px 5px 5px 0;
 	text-decoration: none;
-	.transition-1;
+	@include transition-1;
 	&:hover {
-	  background-color: @color-brown1;
+	  background-color: $color-brown1;
 	}
 
 	.text {
-	  .font > .chinacyr;
+	  @include font-chinacyr;
 	  display: block;
 	  padding: 30px 5px;
 	  font-size: 1.6em;
@@ -1393,13 +1393,13 @@ body {
 	  list-style: square;
 	  padding-left:20px;
 	  li {
-		color:@color-green5;
+		color:$color-green5;
 
 		a {
 		  text-decoration: none;
 		  &:hover {
 			text-decoration: underline;
-			color:@color-green5;
+			color:$color-green5;
 		  }
 		}
 
@@ -1443,10 +1443,10 @@ body {
 
   a {
 	text-decoration: none;
-	color:@color-green3;
+	color:$color-green3;
 	&:hover {
 	  text-decoration: underline;
-	  color:@color-green2;
+	  color:$color-green2;
 	}
   }
 }
@@ -1456,7 +1456,7 @@ body {
 
 .addnews {
   .bold {
-	color:@color-green5 - 20;
+	color:$color-green5 - 20;
 	font-size: 1.3em;
   }
 
@@ -1474,7 +1474,7 @@ body {
   .addnews-hints-click {
 	padding: 10px 0px;
 	font-weight: bold;
-	color:@color-green5;
+	color:$color-green5;
 	text-decoration:underline;
 	cursor:pointer;
 
@@ -1498,7 +1498,7 @@ body {
 	  background: none;
 	  border: 0px;
 	  margin: 0px 0px 5px 0;
-	  color:@color-orange1;
+	  color:$color-orange1;
 	}
   }
 }
@@ -1512,7 +1512,7 @@ body {
     width:100%;
 
     .adm-profiles-col {
-	  .table-td-left;
+	  @extend .table-td-left;
 
       .up {
         padding: 5px 5px 0px 0;
@@ -1521,61 +1521,61 @@ body {
         .income,.delete {
           display: block;
           font-weight: bold;
-          border-bottom: 1px solid @color-orange1;
+          border-bottom: 1px solid $color-orange1;
           font-size:1.2em;
           padding:2px 0px 1px 5px;
           margin-bottom: 8px;
           cursor:pointer;
-          .transition-1;
+          @include transition-1;
           &:hover {
-            border-color:@color-orange3;
+            border-color:$color-orange3;
           }
           &:active {
           }
         }
-        .income {color:@color-brown2;
-          &:hover {color:@color-brown2 + 56}
+        .income {color:$color-brown2;
+          &:hover {color:$color-brown2 + 56}
         }
-        .delete {color:@color-red;
-          &:hover {color:@color-red + 56}
+        .delete {color:$color-red;
+          &:hover {color:$color-red + 56}
         }
 
         .list_head {
-          .transition-1;
-          background: @color-green7;
+          @include transition-1;
+          background: $color-green7;
           display: block;
           cursor:pointer;
           margin-top: 5px;
           padding:2px 5px;
-          border: 1px solid @color-green6 - 20;
+          border: 1px solid $color-green6 - 20;
           font-weight:bold;
           font-size:1.2em;
           &:hover {
-            color:@color-grey1 + 50;
+            color:$color-grey1 + 50;
           }
           &:active {
-            background: @color-brown3 + 1;
+            background: $color-brown3 + 1;
           }
         }
 
         .a_list {
          // display: block;
           margin-bottom: 10px;
-          border: 1px solid @color-green6 - 20;
+          border: 1px solid $color-green6 - 20;
           border-top:0px;
           border-bottom:0px;
           padding:0px 0;
           //display: none;
           .ank_span {
-            .transition-1;
+            @include transition-1;
             display: block;
             cursor: pointer;
             padding: 2px 5px;
-            border-bottom: 1px solid @color-green6 - 30;
-            background: @color-brown5;
+            border-bottom: 1px solid $color-green6 - 30;
+            background: $color-brown5;
             &:hover {
-              background: @color-brown5 + 10;
-              color:@color-orange3;
+              background: $color-brown5 + 10;
+              color:$color-orange3;
 
             }
           }
@@ -1594,7 +1594,7 @@ body {
         width: 100%;
 
         td {
-          border: 1px solid @color-green5 + 40;
+          border: 1px solid $color-green5 + 40;
           text-align: center;
           vertical-align: middle;
           padding:2px 5px;
@@ -1609,7 +1609,7 @@ body {
         }
 
         .head td {
-          background: @color-green6 + 20;
+          background: $color-green6 + 20;
           font-weight: bold;
           padding:2px 0;
         }
@@ -1623,17 +1623,17 @@ body {
           padding:1px 15px!important;
 
           &.accept {
-            background: @color-green5 + 80;
+            background: $color-green5 + 80;
             margin-right: 10px;
             &:hover {
-              background: @color-green5 + 110;
+              background: $color-green5 + 110;
             }
           }
 
           &.deny {
-            background: @color-orange3 + 30;
+            background: $color-orange3 + 30;
             &:hover {
-              background: @color-orange3 + 50;
+              background: $color-orange3 + 50;
             }
           }
         }
@@ -1655,9 +1655,9 @@ body {
 // УДАЛЕНИЕ АНКЕТЫ
 
 .ank_delete {
-  background: @color-green1 + 40;
+  background: $color-green1 + 40;
   padding:10px;
-  border:1px solid @color-green2;
+  border:1px solid $color-green2;
 
   .name {
     display: block;
@@ -1671,7 +1671,7 @@ body {
     margin-bottom:10px;
 
     .capcha {
-      background: @color-green1 + 60;
+      background: $color-green1 + 60;
       padding: 2px 10px;
     }
 
@@ -1688,7 +1688,7 @@ body {
 
   .urgent {
     display: block;
-    color:@color-red;
+    color:$color-red;
     font-size:1.4em;
     padding: 10px 0;
     text-align: center;
@@ -1702,10 +1702,10 @@ body {
 .roll_all_div {
 
   .roll_common {
-    background: @color-green7;
+    background: $color-green7;
     padding:10px;
     padding-bottom: 0px;
-    border:1px solid @color-green7 - 60;
+    border:1px solid $color-green7 - 60;
 
     .comm_option {
       display: block;
@@ -1727,23 +1727,23 @@ body {
 
       .roll_user_tab {
         border-collapse: collapse;
-        background: @color-brown5;
+        background: $color-brown5;
         width:100%;
-        border: 1px solid @color-green2;
+        border: 1px solid $color-green2;
 
         .rtd1 {
           font-size:1.3em;
-          background: @color-green2 + 50;
+          background: $color-green2 + 50;
           padding:0 5px;
           vertical-align: middle;
           font-weight: bold;
-          .font > .chinacyr;
-          border-right:1px solid @color-green2 + 70;
+          @include font-chinacyr;
+          border-right:1px solid $color-green2 + 70;
         }
         .rtd2 {
           font-weight: bold;
           padding:10px;
-          border-right:1px solid @color-green2;
+          border-right:1px solid $color-green2;
           width:200px;
           select {
             width:100%;
@@ -1755,7 +1755,7 @@ body {
           }
         }
         .rtd3 {
-          border: 1px solid @color-green2;
+          border: 1px solid $color-green2;
           padding:10px;
           text-align:right;
           font-weight:bold;
@@ -1778,7 +1778,7 @@ body {
             cursor: pointer;
             font-weight:bold;
             &:hover {
-              color:@color-green3;
+              color:$color-green3;
             }
           }
           .sk_add {
@@ -1792,9 +1792,9 @@ body {
   }
 
   .all_comment {
-    background: @color-green7;
+    background: $color-green7;
     padding:10px 10px 10px 20px;
-    border:1px solid @color-green7 - 60;
+    border:1px solid $color-green7 - 60;
 
     span {
       display: block;
@@ -1825,7 +1825,7 @@ body {
 	width:100%;
 
 	.logs-table-1 {
-	  .table-td-left;
+	  @extend .table-td-left;
 
 	  .llinks {
 		padding-right:10px;
@@ -1835,12 +1835,12 @@ body {
 		  text-decoration: none;
 		  padding:2px 2px;
 		  font-weight: bold;
-		  border-top:1px solid @color-brown1;
+		  border-top:1px solid $color-brown1;
 		  &:first-child {
 			border: none;
 		  }
 		  &:hover {
-			color:@color-orange1;
+			color:$color-orange1;
 		  }
 		}
 	  }
@@ -1858,11 +1858,11 @@ body {
 	  .loggs_list {
 
 		.log {
-		  border-bottom:1px dashed @color-brown1;
+		  border-bottom:1px dashed $color-brown1;
 		  padding:0 0 10px 0;
 		  margin-bottom:10px;
 		  .date {
-			color:@color-orange1;
+			color:$color-orange1;
 			padding-right:10px;
 			font-size:0.9em;
 		  }
@@ -1880,82 +1880,82 @@ body {
 
 }
 
-// HANDBOOK 
-  
-.handbook-list { 
-  width:100%; 
-  td { 
-    width:20%; 
-    padding-right:5px; 
-  } 
-  
-  span { 
-    display: block; 
-  } 
-  
-  .handbook-lit { 
-    font-weight: bold; 
-    font-size: 1.3em; 
-    color:@color-green2; 
-    background-color: @color-green6; 
-    padding:2px 0; 
-    text-align: center; 
-  } 
-  
-  .handbook-line { 
-    padding: 2px 0; 
-  } 
-  
-  .handbook-line+.handbook-lit { 
-    margin-top: 10px; 
-  } 
-} 
-  
-.handbook-item { 
-  width:100%; 
-  
-  .handbook-left { 
-    width:200px; 
-    padding-right:20px; 
-  
-    h4 { 
-      margin: 0px; 
-      padding: 5px 0; 
-      margin-bottom: 10px; 
-      color:@color-green4; 
-      background-color: @color-brown3; 
-      font-size: 1.2em; 
-    } 
-  
-    img { 
-      width:196px; 
-      border:1px solid @color-green5; 
-      padding:1px; 
-    } 
-  } 
-  
-  .handbook-info { 
-    h4 { 
-      font-size:1.2em; 
-    } 
-  } 
-  
-  .handbook-param { 
-    display: block; 
-    font-size:1.2em; 
-    line-height:1.4em; 
-  
-    strong { 
-      color:@color-green5; 
-    } 
-  
-    &.handbook-onemore { 
-      background: @color-brown3; 
-      padding:10px; 
-      margin-top: 10px; 
-    } 
-  } 
-} 
+// HANDBOOK
+
+.handbook-list {
+  width:100%;
+  td {
+    width:20%;
+    padding-right:5px;
+  }
+
+  span {
+    display: block;
+  }
+
+  .handbook-lit {
+    font-weight: bold;
+    font-size: 1.3em;
+    color:$color-green2;
+    background-color: $color-green6;
+    padding:2px 0;
+    text-align: center;
+  }
+
+  .handbook-line {
+    padding: 2px 0;
+  }
+
+  .handbook-line+.handbook-lit {
+    margin-top: 10px;
+  }
+}
+
+.handbook-item {
+  width:100%;
+
+  .handbook-left {
+    width:200px;
+    padding-right:20px;
+
+    h4 {
+      margin: 0px;
+      padding: 5px 0;
+      margin-bottom: 10px;
+      color:$color-green4;
+      background-color: $color-brown3;
+      font-size: 1.2em;
+    }
+
+    img {
+      width:196px;
+      border:1px solid $color-green5;
+      padding:1px;
+    }
+  }
+
+  .handbook-info {
+    h4 {
+      font-size:1.2em;
+    }
+  }
+
+  .handbook-param {
+    display: block;
+    font-size:1.2em;
+    line-height:1.4em;
+
+    strong {
+      color:$color-green5;
+    }
+
+    &.handbook-onemore {
+      background: $color-brown3;
+      padding:10px;
+      margin-top: 10px;
+    }
+  }
+}
 
 
 //LEVI
@@ -1992,8 +1992,8 @@ body {
   .handbook-lit {
     font-weight: bold;
     font-size: 1.3em;
-    color:@color-green2;
-    background-color: @color-green6;
+    color:$color-green2;
+    background-color: $color-green6;
     padding:2px 0;
     text-align: center;
   }
@@ -2018,14 +2018,14 @@ body {
       margin: 0px;
       padding: 5px 0;
       margin-bottom: 10px;
-      color:@color-green4;
-      background-color: @color-brown3;
+      color:$color-green4;
+      background-color: $color-brown3;
       font-size: 1.2em;
     }
 
     img {
       width:196px;
-      border:1px solid @color-green5;
+      border:1px solid $color-green5;
       padding:1px;
     }
   }
@@ -2042,11 +2042,11 @@ body {
     line-height:1.4em;
 
     strong {
-      color:@color-green5;
+      color:$color-green5;
     }
 
     &.handbook-onemore {
-      background: @color-brown3;
+      background: $color-brown3;
       padding:10px;
       margin-top: 10px;
     }
@@ -2057,12 +2057,12 @@ body {
 
 .loggedin-name {
   a {
-    color:@color-green3;
+    color:$color-green3;
   }
 }
 
 .loggedin-icons {
-  .clearfix;
+  @include clearfix;
   padding: 6px 0;
   height:30px;
   a {
@@ -2074,7 +2074,7 @@ body {
     height:26px;
     text-decoration: none;
     font-size:2px;
-    color:@color-brown5;
+    color:$color-brown5;
     text-indent:-110px;
 
     span {
@@ -2083,10 +2083,10 @@ body {
       position: absolute;
       width:15px;
       height:15px;
-      background-color: @color-red + 30;
+      background-color: $color-red + 30;
       text-align: center;
-      color:@color-brown3;
-      .border-radius(15px);
+      color:$color-brown3;
+      @include border-radius(15px);
       font-size: 12px;
       font-weight: bold;
       right:-2px;
@@ -2094,7 +2094,7 @@ body {
     }
 
     &:hover span {
-      background-color: @color-red + 100;
+      background-color: $color-red + 100;
     }
   }
 
@@ -2129,14 +2129,14 @@ body {
 .myaccount {}
 
 .act-block {
-  border-left:1px solid @color-green1;
-  border-right:1px solid @color-green1;
+  border-left:1px solid $color-green1;
+  border-right:1px solid $color-green1;
 
   .act-head {
-    background-color:@color-green6 + 50;
+    background-color:$color-green6 + 50;
     padding:10px 5px;
-    border-top: 1px solid @color-green6 - 20;
-    border-bottom: 1px solid @color-green6 - 20;
+    border-top: 1px solid $color-green6 - 20;
+    border-bottom: 1px solid $color-green6 - 20;
     font-size:1.3em;
     text-transform: uppercase;
     font-weight: bold;
@@ -2144,14 +2144,14 @@ body {
 
   .act-subhead {
     padding:5px 5px;
-    background-color:@color-brown4 + 20;
-    border-top: 1px solid @color-green6 - 20;
-    border-bottom: 1px solid @color-green6 - 20;
+    background-color:$color-brown4 + 20;
+    border-top: 1px solid $color-green6 - 20;
+    border-bottom: 1px solid $color-green6 - 20;
   }
 
   .act-line {
     padding: 5px 20px 5px 20px;
-    border-bottom: 1px solid @color-brown4;
+    border-bottom: 1px solid $color-brown4;
   }
 
   .act-form-line {
@@ -2175,19 +2175,19 @@ body {
       text-decoration: none;
       font-weight: bold;
       cursor: pointer;
-      color:@color-brown1 - 20!important;
+      color:$color-brown1 - 20!important;
       &:hover {
-        color:@color-brown1 - 50!important;
+        color:$color-brown1 - 50!important;
       }
     }
 
     &.on {
-      color:@color-green3;
+      color:$color-green3;
       font-weight: bold;
     }
 
     &.off {
-      color:@color-brown1;
+      color:$color-brown1;
     }
   }
 
@@ -2196,14 +2196,14 @@ body {
   .act-table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid @color-brown4;
+    border: 1px solid $color-brown4;
 
     .player-one {
       white-space: nowrap;
     }
 
     td {
-      border: 1px solid @color-brown4;
+      border: 1px solid $color-brown4;
       border-bottom: 0px;
       padding:5px 5px;
       vertical-align: middle;
@@ -2215,19 +2215,19 @@ body {
     .act-date-create {
       width:60px;
       text-align: center;
-      color:@color-brown1 - 30;
+      color:$color-brown1 - 30;
     }
     .act-status {
       text-align: center;
       width:100px;
 
       &.waiting {
-        background-color: @color-brown5;
+        background-color: $color-brown5;
       }
 
       &.inactive {
-        background-color:@color-brown1 + 30;
-        color:@color-brown1 - 20;
+        background-color:$color-brown1 + 30;
+        color:$color-brown1 - 20;
         font-style: italic;
       }
     }
@@ -2235,12 +2235,12 @@ body {
     .act-delegate {
       font-size: 0.9em;
       .delete {
-        color:@color-red;
+        color:$color-red;
         padding:5px 5px 5px 2px;
         cursor: pointer;
         font-weight: bold;
         &:hover {
-          color:@color-red + 40;
+          color:$color-red + 40;
         }
       }
     }
@@ -2250,16 +2250,16 @@ body {
       font-weight: bold;
       .owner {
         font-weight: normal;
-        color:@color-brown1 - 50;
+        color:$color-brown1 - 50;
         padding-left: 10px;
         a {
-          color:@color-brown2 + 50;
+          color:$color-brown2 + 50;
         }
       }
     }
 
     .act-date-end-of {
-      color:@color-brown1 - 50;
+      color:$color-brown1 - 50;
       width:275px;
     }
   }
@@ -2273,7 +2273,7 @@ body {
   width: 100%;
   td {
     &.left {
-      border-right:1px solid @color-brown4;
+      border-right:1px solid $color-brown4;
     }
     &.right {
       width:30%;
@@ -2291,7 +2291,7 @@ body {
     }
 
     .act-line span.boldie, .act-form-line span.boldie {
-      color:@color-green5;
+      color:$color-green5;
       cursor: pointer;
       font-weight: bold;
     }
@@ -2303,7 +2303,7 @@ body {
   width:100%;
   td {
     &+td {
-      border-left: 1px solid @color-brown4;
+      border-left: 1px solid $color-brown4;
     }
     .act-line {
       &:last-child {
@@ -2329,45 +2329,18 @@ th.sort-by {
 
   .message-btn {
     .active {
-      background: @color-green6;
-      color:@color-grey1;
+      background: $color-green6;
+      color:$color-grey1;
     }
   }
 
   table {
-//    border: 1px solid @color-brown1;
-//    border-collapse: collapse;
-//    width:100%;
-//    background:@bgimg-beige;
-//    cursor:default;
-//
-//    th {
-//      border: 1px solid @color-brown1;
-//      background: @color-green6;
-//      vertical-align: middle;
-//      padding:5px;
-//    }
-//
     td {
-//      border: 1px solid @color-brown1;
-//      vertical-align: middle;
-//      padding:5px;
-//      .transition-1;
       &.message-subject {
         font-weight: bold;
         cursor: pointer;
-        //        color:@color-red;
       }
     }
-
-//    tr:hover td {
-//      .box-shadow(0px 0px 9px -1px rgba(0,0,0,0.5));
-//    }
-
-//    .unread td {
-//      background: @color-brown1 + 90;
-//      font-weight: bold;
-//    }
 
     td.message-rulers {
       width:50px;
@@ -2378,10 +2351,10 @@ th.sort-by {
         font-size: 25px;
         line-height: 20px;
         cursor: pointer;
-        color:@color-red;
+        color:$color-red;
         font-weight:normal!important;
         &:hover {
-          color:@color-red + 40;
+          color:$color-red + 40;
         }
       }
     }
@@ -2407,13 +2380,13 @@ th.sort-by {
 .btn-search {
   background: none;
   border: 0;
-  color:@color-orange1;
+  color:$color-orange1;
   height:24px;
   padding:0px;
   font-size:20px;
   line-height: 20px;
   &:hover {
-    color:@color-orange2;
+    color:$color-orange2;
   }
 }
 
@@ -2423,9 +2396,9 @@ th.sort-by {
   margin-bottom:20px;
   table {
     cursor:default;
-    background: @bgimg-beige;
+    background: $bgimg-beige;
     margin-top:10px;
-    border:1px solid @color-brown1;
+    border:1px solid $color-brown1;
     width:100%;
 
     td {
@@ -2463,8 +2436,8 @@ th.sort-by {
 
 .received-message {
   padding:10px;
-  background:@bgimg-beige;
-  border:1px solid @color-brown1;
+  background:$bgimg-beige;
+  border:1px solid $color-brown1;
   margin-top: 20px;
 
   .close {
@@ -2487,7 +2460,7 @@ th.sort-by {
 
     a {
       text-decoration: none;
-      color:@color-green5;
+      color:$color-green5;
       &:hover {
         text-decoration: underline;
       }
@@ -2499,25 +2472,25 @@ th.sort-by {
   }
 
   .received-message-text {
-    background: @color-brown3;
+    background: $color-brown3;
     padding:10px;
 
     .quoted {
       font-style: italic;
       padding: 0px 5px 5px 10px;
-      border-left:1px solid @color-green6;
+      border-left:1px solid $color-green6;
 
       .quoted {
         padding-top: 10px;
       }
 
       b {
-        color:@color-green2;
+        color:$color-green2;
         display: block;
         font-style: normal;
       }
     }
-    .quoted:first-child {margin-top: 20px;}
+    // @extend .quoted:first-child {margin-top: 20px;}
   }
 
   .received-message-answer {
@@ -2528,7 +2501,7 @@ th.sort-by {
     }
 
     .delete {
-      color:@color-red;
+      color:$color-red;
       cursor: pointer;
       text-decoration: underline;
       &:hover {
@@ -2541,7 +2514,7 @@ th.sort-by {
 .alerts {
   .message-subject {
     a {
-      color:@color-brown2!important;
+      color:$color-brown2!important;
     }
     span {
       display: block;
@@ -2549,14 +2522,14 @@ th.sort-by {
       width:16px;
       height:16px;
       margin-right:5px;
-      .border-radius(16px);
+      @include border-radius(16px);
     }
-    &.subject-1 span {background-color: @color-red + 50;}
-    &.subject-2 span {background-color: @color-green;}
+    &.subject-1 span {background-color: $color-red + 50;}
+    &.subject-2 span {background-color: $color-green;}
     &.subject-3 span {background-color: #3ea2e2;}
   }
   .read .message-subject span {
-    .opacity(30);
+    @include opacity(30);
   }
 }
 
@@ -2570,41 +2543,41 @@ th.sort-by {
 
 .table-type1 {
   width:100%;
-  border:1px solid @color-brown1;
+  border:1px solid $color-brown1;
   border-collapse:collapse;
 
   th {
-    border:1px solid @color-brown1;
-    background: @color-brown1 + 30;
+    border:1px solid $color-brown1;
+    background: $color-brown1 + 30;
     padding:5px;
     vertical-align: middle;
   }
 
   td {
-    border:1px solid @color-brown1;
+    border:1px solid $color-brown1;
     padding:8px 5px;
     vertical-align: middle;
     cursor: default;
   }
 
   tr:hover td {
-    .box-shadow(inset 0px 0px 1px 30px rgba(255,255,255,0.1));
+    @include box-shadow(inset 0px 0px 1px 30px rgba(255,255,255,0.1));
   }
 
   .inactive td {
-    color:@color-brown2 + 40;
+    color:$color-brown2 + 40;
     font-style: italic;
-    background-color: @color-brown2 + 120;
+    background-color: $color-brown2 + 120;
 
     a {
-      color:@color-brown2 + 30;
+      color:$color-brown2 + 30;
     }
   }
 
   .waiting td {
-    color:@color-green3;
-    background-color: @color-green1 + 50;
-    a {color:@color-green3;}
+    color:$color-green3;
+    background-color: $color-green1 + 50;
+    a {color:$color-green3;}
   }
 
 }
@@ -2618,15 +2591,15 @@ th.sort-by {
 td.none,td.none:hover, tr:hover td.none {
   text-align: center;
   font-style: italic;
-  .box-shadow(inset 0px 1px 1px 1px rgba(0,0,0,0));
-  color:@color-brown4 - 80;
+  @include box-shadow(inset 0px 1px 1px 1px rgba(0,0,0,0));
+  color:$color-brown4 - 80;
 }
 
-.char-edit {width:22px; text-align: center;}
+@include char-edit {width:22px; text-align: center;}
 .rolmore {
   font-size:1.1em;
   line-height: 1.3em;
-  background-color:@color-brown3;
+  background-color:$color-brown3;
   padding:10px!important;
 
   .comrol {
@@ -2652,32 +2625,32 @@ td.none,td.none:hover, tr:hover td.none {
 
 .edit {
   cursor: pointer;
-  color:@color-green5;
+  color:$color-green5;
   font-size: 1.4em;
   font-style:normal;
   &:hover {
-    color:@color-green5 - 40;
+    color:$color-green5 - 40;
   }
 }
 
 .accept {
   cursor: pointer;
-  color:@color-green3;
+  color:$color-green3;
   font-style:normal;
   text-decoration:underline;
   &:hover {
-    color:@color-green3 - 40;
+    color:$color-green3 - 40;
     text-decoration: none;
   }
 }
 
 .deny {
   cursor: pointer;
-  color:@color-red;
+  color:$color-red;
   font-style:normal;
   text-decoration:underline;
   &:hover {
-    color:@color-red - 40;
+    color:$color-red - 40;
     text-decoration: none;
   }
 }
@@ -2695,17 +2668,17 @@ td.none,td.none:hover, tr:hover td.none {
 .rol {
   .summary {
     padding:10px;
-    border-bottom:1px solid @color-brown1;
+    border-bottom:1px solid $color-brown1;
 
     b {
-      color:@color-green5;
+      color:$color-green5;
     }
 
     ul {
       list-style:square;
       padding-left:15px;
       li {
-        color:@color-brown1 - 40;
+        color:$color-brown1 - 40;
         a {
           text-decoration: none;
           font-weight:bold;
@@ -2725,10 +2698,10 @@ td.none,td.none:hover, tr:hover td.none {
     width:80%;
 
     .rol-one {
-      .clearfix;
+      @include clearfix;
       position: relative;
       padding-top: 20px;
-      border-bottom: 1px solid @color-brown1;
+      border-bottom: 1px solid $color-brown1;
     }
 
     .rol-post-number {
@@ -2736,7 +2709,7 @@ td.none,td.none:hover, tr:hover td.none {
       right:0px;
       bottom:1px;
       padding:1px 5px;
-      color: @color-brown4 - 10;
+      color: $color-brown4 - 10;
       line-height: 15px;
       font-size:0.8em;
       text-align: center;
@@ -2760,7 +2733,7 @@ td.none,td.none:hover, tr:hover td.none {
         display: block;
         width:80%;
         padding:2px;
-        background: @color-brown1;
+        background: $color-brown1;
         margin-bottom: 10px;
       }
 
@@ -2771,7 +2744,7 @@ td.none,td.none:hover, tr:hover td.none {
 
 
         &.rol-count-not {
-          background-color:@color-orange;
+          background-color:$color-orange;
           padding-left: 10px;
           padding-right: 10px;
           left:-10px;
@@ -2798,7 +2771,7 @@ td.none,td.none:hover, tr:hover td.none {
     left:0;
     width:100%;
     height:100%;
-    background:@bgimg-beige;
+    background:$bgimg-beige;
     opacity: 0.5;
   }
 
@@ -2813,9 +2786,9 @@ td.none,td.none:hover, tr:hover td.none {
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
 
-    background:@color-beage;
-    border: 1px solid @color-orange2;
-    box-shadow: 4px 4px 80px @color-grey;
+    background:$color-beage;
+    border: 1px solid $color-orange2;
+    box-shadow: 4px 4px 80px $color-grey;
     padding: 7px;
 
     .ng-modal-close {
@@ -2834,10 +2807,10 @@ td.none,td.none:hover, tr:hover td.none {
       .skill_requests {
         margin-top: 5px;
         &.decline {
-          color: @color-red;
+          color: $color-red;
         }
         &.accept {
-          color: @color-green3;
+          color: $color-green3;
         }
       }
     }
@@ -2859,8 +2832,8 @@ td.none,td.none:hover, tr:hover td.none {
     }
     input[type=submit] {
       &:hover {
-        background: @color-brown4 + 66;
-        .box-shadow(0px 0px 3px 1px rgba(0,0,0,0.3));
+        background: $color-brown4 + 66;
+        @include box-shadow(0px 0px 3px 1px rgba(0,0,0,0.3));
       }
     }
   }
@@ -2885,7 +2858,7 @@ td.none,td.none:hover, tr:hover td.none {
       &.disabled {
         cursor: auto;
         a {
-          color: @color-grey;
+          color: $color-grey;
         }
       }
     }
@@ -2928,7 +2901,7 @@ td.none,td.none:hover, tr:hover td.none {
       }
       .config-comment {
         font-style: italic;
-        color: @color-brown4;
+        color: $color-brown4;
         width: 56%;
       }
       .config-edit-btn {
@@ -2938,10 +2911,10 @@ td.none,td.none:hover, tr:hover td.none {
           font-size: 1.5em;
           cursor: pointer;
           &.config-submit {
-            color: @color-orange2;
+            color: $color-orange2;
           }
           &.config-delete {
-            color: @color-red;
+            color: $color-red;
           }
         }
       }
@@ -2968,7 +2941,7 @@ td.none,td.none:hover, tr:hover td.none {
         }
         &.message-subject {
           a {
-            color:@color-brown2!important;
+            color:$color-brown2!important;
             cursor: pointer;
           }
           span {
@@ -2977,19 +2950,19 @@ td.none,td.none:hover, tr:hover td.none {
             width:16px;
             height:16px;
             margin-right:5px;
-            .border-radius(16px);
+            @include border-radius(16px);
           }
-          &.subject-1 span {background-color: @color-red + 50;}
-          &.subject-2 span {background-color: @color-green;}
+          &.subject-1 span {background-color: $color-red + 50;}
+          &.subject-2 span {background-color: $color-green;}
           &.subject-3 span {background-color: #3ea2e2;}
         }
         .read .message-subject span {
-          .opacity(30);
+          @include opacity(30);
         }
       }
 
       &.unread td {
-        background: @color-brown1 + 90;
+        background: $color-brown1 + 90;
         font-weight: bold;
       }
     }
@@ -2998,23 +2971,23 @@ td.none,td.none:hover, tr:hover td.none {
 
 .chosen-container-multi {
   .chosen-choices {
-    border-color: @color-brown1;
-    background: @color-brown3;
+    border-color: $color-brown1;
+    background: $color-brown3;
     li {
       &.search-choice {
-        background: @color-brown5;
+        background: $color-brown5;
       }
     }
   }
   &.chosen-container-active {
     .chosen-choices {
-      background: @color-brown4 + 66;
+      background: $color-brown4 + 66;
     }
   }
 }
 
 .show-note-wrap {
-  background: @bgimg-beige;
+  background: $bgimg-beige;
   margin-top: 20px;
   padding: 15px;
   .show-close {
@@ -3031,7 +3004,7 @@ td.none,td.none:hover, tr:hover td.none {
         font-weight: bold;
       }
       &.note-date {
-        color: @color-brown4;
+        color: $color-brown4;
       }
     }
   }
@@ -3046,7 +3019,7 @@ td.none,td.none:hover, tr:hover td.none {
         padding-right: 7px;
         cursor: pointer;
         &.active {
-          color: @color-orange2;
+          color: $color-orange2;
         }
       }
     }
@@ -3061,7 +3034,7 @@ td.none,td.none:hover, tr:hover td.none {
           padding-right: 3px;
           cursor: pointer;
           &:hover {
-            color: @color-orange3;
+            color: $color-orange3;
           }
         }
       }
@@ -3080,7 +3053,7 @@ td.none,td.none:hover, tr:hover td.none {
         }
       }
       .form-tab {
-        border-bottom: 1px dashed @color-brown;
+        border-bottom: 1px dashed $color-brown;
         tr {
           td {
             vertical-align: middle;
@@ -3101,13 +3074,13 @@ td.none,td.none:hover, tr:hover td.none {
     li {
       padding: 5px;
       &:hover {
-      background-image: @bgimg-beige;
+      background-image: $bgimg-beige;
       }
       strong {
         &.request-date {
-          color: @color-red;
+          color: $color-red;
           &.acceptable {
-            color: @color-green3;
+            color: $color-green3;
           }
         }
       }
@@ -3119,10 +3092,10 @@ td.none,td.none:hover, tr:hover td.none {
       span.request-button {
         font-size: 1.1em;
         .fa-check:hover {
-          color: @color-green3;
+          color: $color-green3;
         }
         .fa-times:hover {
-          color: @color-red;
+          color: $color-red;
         }
       }
     }
@@ -3133,4 +3106,3 @@ td.none,td.none:hover, tr:hover td.none {
 
 */
 @import 'sizes';
-
