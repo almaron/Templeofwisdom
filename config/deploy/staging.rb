@@ -1,4 +1,4 @@
-set :branch, fetch(:branch, `git rev-parse --abbrev-ref HEAD`.rstrip)
+set :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 server '198.211.107.171', user: 'malk', roles: %w{web app db}, primary: true
 
