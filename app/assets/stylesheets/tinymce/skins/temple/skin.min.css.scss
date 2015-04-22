@@ -1,5 +1,150 @@
 @import "base_less";
 
+// Variables
+// Syntax: <control>-(<sub control>)-<bg|border|text>-(<state>)-(<extra>);
+// Example: $btn-primary-bg-hover-hlight;
+
+
+// Default font
+//$font-family:                    "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family:                    Philosopher, "Book Antiqua", Palatino, serif;
+$font-size:                      14px;
+$line-height:                    20px;
+
+// Text colors
+$text:                           #333;
+$text-inverse:                   white;
+$text-disabled:                  #aaa;
+$text-shadow:                    0 1px 1px hsla(hue($text-inverse), saturation($text-inverse), lightness($text-inverse), 0.75);
+$text-error:                     #aa0000;
+
+// Panel
+$panel-border:                   #9E9E9E;
+$panel-bg:                       $color-green7;//#FDFDFD;
+$panel-bg-hlight:                #DDD;
+
+// Window
+$window-bg:                      #FFF;
+$window-border:                  #c5c5c5;
+$window-head-border:             $window-border;
+$window-head-close:              mix($text, $window-bg, 60%);
+$window-head-close-hover:        mix($text, $window-bg, 40%);
+$window-foot-border:             $window-border;
+$window-foot-bg:                 $window-bg;
+$window-fullscreen-bg:           #FFF;
+$window-modalblock-bg:           #000;
+$window-modalblock-opacity:      0.3;
+$window-box-shadow:              0 3px 7px rgba(0, 0, 0, 0.3);
+$window-title-font-size:         20px;
+
+// Button
+$btn-text:                       $text;
+$btn-text-shadow:                $text-inverse;
+$btn-border-top:                 rgba(0, 0, 0, .1);
+$btn-border-right:               rgba(0, 0, 0, .1);
+$btn-border-bottom:              fadein(rgba(0, 0, 0, .1), 15%);
+$btn-border-left:                fadein(rgba(0, 0, 0, .1), 15%);
+$btn-split-border:               #bdbdbd;
+$btn-caret-border:               $btn-text;
+$btn-text-disabled:              $text-disabled;
+$btn-box-shadow:                 inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+$btn-box-shadow-active:          inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05);
+$btn-box-disabled-opacity:       0.4;
+$btn-bg:                         white;
+$btn-bg-hlight:                  $color-green8;//#D9D9D9;
+$btn-bg-hover:                   darken($btn-bg, 5%);
+$btn-bg-hlight-hover:            darken($btn-bg-hlight, 5%);
+
+$btn-primary-bg:                 $color-green8;//#0088cc;
+$btn-primary-bg-hlight:          $color-green8;//#0044cc;
+$btn-primary-bg-hover:           darken($btn-primary-bg, 5%);
+$btn-primary-bg-hover-hlight:    darken($btn-primary-bg-hlight, 5%);
+$btn-primary-text:               $baseColor;//#fff;
+$btn-primary-text-shadow:        none;//#333;
+$btn-primary-border-top:         mix($btn-border-top, $btn-primary-bg, 50%);
+$btn-primary-border-right:       mix($btn-border-right, $btn-primary-bg, 50%);
+$btn-primary-border-bottom:      mix(rgba(0, 0, 0, .1), $btn-primary-bg, 50%);
+$btn-primary-border-left:        mix(rgba(0, 0, 0, .1), $btn-primary-bg, 50%);
+
+// Tabs
+$tab-border:                     #c5c5c5;
+$tab-bg:                         #e3e3e3;
+$tab-bg-hover:                   #FDFDFD;
+$tab-bg-active:                  #FDFDFD;
+
+// Menu
+$menuitem-text:                  $text;
+$menu-bg:                        #fff;
+$menu-border:                    rgba(0, 0, 0, 0.2);
+$menubar-border:                 mix($panel-border, $panel-bg, 60%);
+$menuitem-text-inverse:          $text-inverse;
+$menubar-bg-active:              darken($btn-bg, 10%);
+$menuitem-bg-hover:              #0081C2;
+$menuitem-bg-selected:           #08C;
+$menuitem-bg-selected-hlight:    #0077B3;
+$menuitem-bg-disabled:           #CCC;
+$menuitem-caret:                 $menuitem-text;
+$menuitem-caret-selected:        $menuitem-text-inverse;
+$menuitem-separator-top:         #CBCBCB;
+$menuitem-separator-bottom:      $menu-bg;
+$menuitem-bg-active:             #C8DEF4;
+$menuitem-text-active:           $text;
+$menuitem-preview-border-active: #aaa;
+
+// Tooltip
+$tooltip-bg:                     #000;
+$tooltip-text:                   white;
+$tooltip-font-size:              11px;
+
+// Popover
+$popover-bg:                     $window-bg;
+$popover-arrow-width:            10px;
+$popover-arrow:                  $window-bg;
+$popover-arrow-outer-width:      $popover-arrow-width + 1;
+$popover-arrow-outer:            rgba(0, 0, 0, 0.25);
+
+// Floatpanel
+$floatpanel-box-shadow:          0 5px 10px rgba(0, 0, 0, .2);
+
+// Checkbox
+$checkbox-bg:                    $btn-bg;
+$checkbox-bg-hlight:             $btn-bg-hlight;
+$checkbox-box-shadow:            inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+$checkbox-border:                #c5c5c5;
+$checkbox-border-focus:          rgba(82, 168, 236, .8);
+
+// Path
+$path-text:                      $text;
+$path-bg-focus:                  #666;
+$path-text-focus:                #fff;
+
+// Textbox
+$textbox-text-placeholder:       #aaa;
+$textbox-box-shadow:             inset 0 1px 1px rgba(0, 0, 0, 0.075);
+$textbox-bg:                     #fff;
+$textbox-border:                 #c5c5c5;
+$textbox-border-focus:           rgba(82, 168, 236, .8);
+
+// Throbber
+$throbber-bg:                    #fff image-url('loader.gif') no-repeat center center;
+
+// Combobox
+$combobox-border:                $textbox-border;
+
+// Colorpicker
+$colorpicker-border:             $textbox-border;
+$colorpicker-hue-bg:             #fff;
+$colorpicker-hue-border:         #333;
+
+// Grid
+$grid-bg-active:                 $menuitem-bg-active;
+$grid-border-active:             #a1a1a1;
+$grid-border:                    #d6d6d6;
+
+// Misc
+$colorbtn-backcolor-bg:          #BBB;
+$iframe-border:                  $panel-border;
+
 // Reset
 
 .mce-container, .mce-container *, .mce-widget, .mce-widget *, .mce-reset {
@@ -32,163 +177,16 @@
 	-o-user-select: none;
 	user-select: none;
 }
-// Variables
-// Syntax: <control>-(<sub control>)-<bg|border|text>-(<state>)-(<extra>);
-// Example: $btn-primary-bg-hover-hlight;
 
-
-// Default font
-//$font-family:                    "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family:                    Philosopher, "Book Antiqua", Palatino, serif;
-$font-size:                      14px;
-$line-height:                    20px;
-$has-gradients:                  false;
-$has-radius:                     true;
-$has-boxshadow:                  true;
-
-// Text colors
-$text:                           #333;
-$text-inverse:                   white;
-$text-disabled:                  #aaa;
-$text-shadow:                    0 1px 1px hsla(hue($text-inverse), saturation($text-inverse), lightness($text-inverse), 0.75);
-$text-error:                     #aa0000;
-
-// Button
-$btn-text:                       $text;
-$btn-text-shadow:                $text-inverse;
-$btn-border-top:                 rgba(0, 0, 0, @include 1);
-$btn-border-right:               rgba(0, 0, 0, @include 1);
-$btn-border-bottom:              fadein(rgba(0, 0, 0, @include 1), 15%);
-$btn-border-left:                fadein(rgba(0, 0, 0, @include 1), 15%);
-$btn-split-border:               #bdbdbd;
-$btn-caret-border:               $btn-text;
-$btn-text-disabled:              $text-disabled;
-$btn-box-shadow:                 inset 0 1px 0 rgba(255, 255, 255, @include 2), 0 1px 2px rgba(0, 0, 0, .05);
-$btn-box-shadow-active:          inset 0 2px 4px rgba(0, 0, 0, @include 15), 0 1px 2px rgba(0, 0, 0, .05);
-$btn-box-disabled-opacity:       0.4;
-$btn-bg:                         white;
-$btn-bg-hlight:                  $color-green8;//#D9D9D9;
-$btn-bg-hover:                   darken($btn-bg, 5%);
-$btn-bg-hlight-hover:            darken($btn-bg-hlight, 5%);
-
-$btn-primary-bg:                 $color-green8;//#0088cc;
-$btn-primary-bg-hlight:          $color-green8;//#0044cc;
-$btn-primary-bg-hover:           darken($btn-primary-bg, 5%);
-$btn-primary-bg-hover-hlight:    darken($btn-primary-bg-hlight, 5%);
-$btn-primary-text:               $baseColor;//#fff;
-$btn-primary-text-shadow:        none;//#333;
-$btn-primary-border-top:         mix($btn-border-top, $btn-primary-bg, 50%);
-$btn-primary-border-right:       mix($btn-border-right, $btn-primary-bg, 50%);
-$btn-primary-border-bottom:      mix($btn-border-bottom, $btn-primary-bg, 50%);
-$btn-primary-border-left:        mix($btn-border-left, $btn-primary-bg, 50%);
-
-// Menu
-$menuitem-text:                  $text;
-$menu-bg:                        #fff;
-$menu-border:                    rgba(0, 0, 0, 0.2);
-$menubar-border:                 mix($panel-border, $panel-bg, 60%);
-$menuitem-text-inverse:          $text-inverse;
-$menubar-bg-active:              darken($btn-bg, 10%);
-$menuitem-bg-hover:              #0081C2;
-$menuitem-bg-selected:           #08C;
-$menuitem-bg-selected-hlight:    #0077B3;
-$menuitem-bg-disabled:           #CCC;
-$menuitem-caret:                 $menuitem-text;
-$menuitem-caret-selected:        $menuitem-text-inverse;
-$menuitem-separator-top:         #CBCBCB;
-$menuitem-separator-bottom:      $menu-bg;
-$menuitem-bg-active:             #C8DEF4;
-$menuitem-text-active:           $text;
-$menuitem-preview-border-active: #aaa;
-
-// Panel
-$panel-border:                   #9E9E9E;
-$panel-bg:                       $color-green7;//#FDFDFD;
-$panel-bg-hlight:                #DDD;
-
-// Tabs
-$tab-border:                     #c5c5c5;
-$tab-bg:                         #e3e3e3;
-$tab-bg-hover:                   #FDFDFD;
-$tab-bg-active:                  #FDFDFD;
-
-// Tooltip
-$tooltip-bg:                     #000;
-$tooltip-text:                   white;
-$tooltip-font-size:              11px;
-
-// Window
-$window-border:                  #c5c5c5;
-$window-head-border:             $window-border;
-$window-head-close:              mix($text, $window-bg, 60%);
-$window-head-close-hover:        mix($text, $window-bg, 40%);
-$window-foot-border:             $window-border;
-$window-foot-bg:                 $window-bg;
-$window-fullscreen-bg:           #FFF;
-$window-modalblock-bg:           #000;
-$window-modalblock-opacity:      0.3;
-$window-box-shadow:              0 3px 7px rgba(0, 0, 0, 0.3);
-$window-bg:                      #FFF;
-$window-title-font-size:         20px;
-
-// Popover
-$popover-bg:                     $window-bg;
-$popover-arrow-width:            10px;
-$popover-arrow:                  $window-bg;
-$popover-arrow-outer-width:      $popover-arrow-width + 1;
-$popover-arrow-outer:            rgba(0, 0, 0, 0.25);
-
-// Floatpanel
-$floatpanel-box-shadow:          0 5px 10px rgba(0, 0, 0, @include 2);
-
-// Checkbox
-$checkbox-bg:                    $btn-bg;
-$checkbox-bg-hlight:             $btn-bg-hlight;
-$checkbox-box-shadow:            inset 0 1px 0 rgba(255, 255, 255, @include 2), 0 1px 2px rgba(0, 0, 0, .05);
-$checkbox-border:                #c5c5c5;
-$checkbox-border-focus:          rgba(82, 168, 236, @include 8);
-
-// Path
-$path-text:                      $text;
-$path-bg-focus:                  #666;
-$path-text-focus:                #fff;
-
-// Textbox
-$textbox-text-placeholder:       #aaa;
-$textbox-box-shadow:             inset 0 1px 1px rgba(0, 0, 0, 0.075);
-$textbox-bg:                     #fff;
-$textbox-border:                 #c5c5c5;
-$textbox-border-focus:           rgba(82, 168, 236, @include 8);
-
-// Throbber
-$throbber-bg:                    #fff image-url('loader.gif') no-repeat center center;
-
-// Combobox
-$combobox-border:                $textbox-border;
-
-// Colorpicker
-$colorpicker-border:             $textbox-border;
-$colorpicker-hue-bg:             #fff;
-$colorpicker-hue-border:         #333;
-
-// Grid
-$grid-bg-active:                 $menuitem-bg-active;
-$grid-border-active:             #a1a1a1;
-$grid-border:                    #d6d6d6;
-
-// Misc
-$colorbtn-backcolor-bg:          #BBB;
-$iframe-border:                  $panel-border;
 // Mixins
 
 @mixin opacity($opacity) {
 	opacity: $opacity;
 	$opacityie: $opacity * 100;
-	filter: ~"alpha(opacity=${opacityie})";
 	zoom: 1;
 }
 
-@mixin vertical-gradient($startColor, $endColor) when ($has-gradients = true) {
+@mixin vertical-gradient($startColor, $endColor) {
 	background-color: mix($startColor, $endColor, 60%);
 	background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
@@ -196,32 +194,13 @@ $iframe-border:                  $panel-border;
 	background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
 	background-image: linear-gradient(to bottom, $startColor, $endColor); // Standard, IE10
 	background-repeat: repeat-x;
-	// filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)", argb($startColor), argb($endColor)));
 	zoom: 1;
 }
 
-@mixin vertical-gradient($startColor, $endColor) when ($has-gradients = false) {
+@mixin vertical-gradient-nogradient($startColor, $endColor) {
 	background-color: mix($startColor, $endColor, 60%);
 }
 
-@mixin border-radius($radius) when ($has-radius = true) {
-	-webkit-border-radius: $radius;
-	-moz-border-radius: $radius;
-	border-radius: $radius;
-}
-
-@mixin box-shadow($shadowA, $shadowB:X, ...) when ($has-boxshadow = true) {
-	// Multiple shadow solution from http://toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
-	$props: ~`"${arguments}".replace(/[\[\]]|\,\sX/g, '')`;
-	-webkit-box-shadow: $props;
-	-moz-box-shadow: $props;
-	box-shadow: $props;
-}
-
-@mixin transition($transition) {
-	-webkit-transition: $transition;
-	transition: $transition;
-}
 
 @mixin inline-block() {
 	display: inline-block;
@@ -230,7 +209,6 @@ $iframe-border:                  $panel-border;
 }
 
 @mixin reset-gradient() {
-	filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 	background: transparent;
 }
 // Animations
@@ -427,7 +405,7 @@ div.mce-tinymce-inline {
 	position: absolute;
 	background-color: #000;
 	border: 1px solid #888;
-	border-color: rgba(85, 85, 85, @include 6);
+	border-color: rgba(85, 85, 85, .6);
 	width: 5px;
 	height: 100%;
 	@include border-radius(7px);
@@ -451,7 +429,7 @@ div.mce-tinymce-inline {
 
 .mce-panel {
 	border: 0 solid $panel-border;
-	@include vertical-gradient($panel-bg, $panel-bg-hlight);
+	@include vertical-gradient-nogradient($panel-bg, $panel-bg-hlight);
 }
 // FloatPanel
 
@@ -822,11 +800,11 @@ body .mce-abs-layout-item, .mce-abs-end {
 	@include inline-block();
 	@include border-radius(3px);
 	@include box-shadow($btn-box-shadow);
-	@include vertical-gradient($btn-bg, $btn-bg-hlight);
+	@include vertical-gradient-nogradient($btn-bg, $btn-bg-hlight);
 
 	&:hover, &:focus {
 		color: $btn-text;
-		@include vertical-gradient(darken($btn-bg, 5%), darken($btn-bg-hlight, 5%));
+		@include vertical-gradient-nogradient(darken($btn-bg, 5%), darken($btn-bg-hlight, 5%));
 	}
 
 	&.mce-disabled button, &.mce-disabled:hover button {
@@ -836,12 +814,12 @@ body .mce-abs-layout-item, .mce-abs-end {
 	}
 
 	&.mce-active, &.mce-active:hover {
-		@include vertical-gradient(darken($btn-bg, 10%), darken($btn-bg-hlight, 10%));
+		@include vertical-gradient-nogradient(darken($btn-bg, 10%), darken($btn-bg-hlight, 10%));
 		@include box-shadow($btn-box-shadow-active);
 	}
 
 	&:active {
-		@include vertical-gradient(darken($btn-bg, 10%), darken($btn-bg-hlight, 10%));
+		@include vertical-gradient-nogradient(darken($btn-bg, 10%), darken($btn-bg-hlight, 10%));
 		@include box-shadow($btn-box-shadow-active);
 	}
 }
@@ -873,10 +851,10 @@ body .mce-abs-layout-item, .mce-abs-end {
 	color: $btn-primary-text;
 	border: 1px solid mix(rgb(red($btn-border-right), green($btn-border-right), blue($btn-border-right)), $panel-bg, 30%);
 	border-color: $btn-border-top $btn-border-right $btn-border-bottom $btn-border-left;
-	@include vertical-gradient($btn-primary-bg, $btn-primary-bg-hlight);
+	@include vertical-gradient-nogradient($btn-primary-bg, $btn-primary-bg-hlight);
 
 	&:hover, &:focus {
-		@include vertical-gradient(darken($btn-primary-bg, 5%), darken($btn-primary-bg-hlight, 5%));
+		@include vertical-gradient-nogradient(darken($btn-primary-bg, 5%), darken($btn-primary-bg-hlight, 5%));
 	}
 
 	&.mce-disabled button, &.mce-disabled:hover button {
@@ -886,7 +864,7 @@ body .mce-abs-layout-item, .mce-abs-end {
 	}
 
 	&.mce-active, &.mce-active:hover, &:not(.mce-disabled):active {
-		@include vertical-gradient(darken($btn-primary-bg, 10%), darken($btn-primary-bg-hlight, 10%));
+		@include vertical-gradient-nogradient(darken($btn-primary-bg, 10%), darken($btn-primary-bg-hlight, 10%));
 		@include box-shadow($btn-box-shadow-active);
 	}
 }
@@ -977,13 +955,13 @@ body .mce-abs-layout-item, .mce-abs-end {
 }
 
 .mce-btn-group .mce-first {
-	border-left: 1px solid mix(rgb(red($btn-border-left), green($btn-border-left), blue($btn-border-left)), $panel-bg, 30%);
+	// border-left: 1px solid mix(rgb(red($btn-border-left), green($btn-border-left), blue($btn-border-left)), $panel-bg, 30%);
 	border-left: 1px solid $btn-border-left;
 	@include border-radius(3px 0 0 3px);
 }
 
 .mce-btn-group .mce-last {
-	border-right: 1px solid mix(rgb(red($btn-border-right), green($btn-border-right), blue($btn-border-right)), $panel-bg, 30%);
+	// border-right: 1px solid mix(rgb(red($btn-border-right), green($btn-border-right), blue($btn-border-right)), $panel-bg, 30%);
 	border-right: 1px solid $btn-border-right;
 	@include border-radius(0 3px 3px 0);
 }
@@ -1006,7 +984,7 @@ i.mce-i-checkbox {
 	border: 1px solid $checkbox-border;
 	@include border-radius(3px);
 	@include box-shadow($checkbox-box-shadow);
-	@include vertical-gradient($checkbox-bg, $checkbox-bg-hlight);
+	@include vertical-gradient-nogradient($checkbox-bg, $checkbox-bg-hlight);
 	text-indent: -10em;
 	*font-size: 0;
 	*line-height: 0;
@@ -1023,7 +1001,7 @@ i.mce-i-checkbox {
 
 .mce-checkbox:focus i.mce-i-checkbox, .mce-checkbox.mce-focus i.mce-i-checkbox {
 	border: 1px solid $checkbox-border-focus;
-	@include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px fadeout($checkbox-border-focus, 15%));
+	// @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px fadeout($checkbox-border-focus, 15%));
 }
 
 .mce-checkbox.mce-disabled .mce-label, .mce-checkbox.mce-disabled i.mce-i-checkbox {
@@ -1569,7 +1547,7 @@ i.mce-i-checkbox {
 .mce-menu-item:hover, .mce-menu-item.mce-selected, .mce-menu-item:focus {
 	text-decoration: none;
 	color: $menuitem-text-inverse;
-	@include vertical-gradient($menuitem-bg-selected, $menuitem-bg-selected-hlight);
+	@include vertical-gradient-nogradient($menuitem-bg-selected, $menuitem-bg-selected-hlight);
 }
 
 div.mce-menu .mce-menu-item-sep, .mce-menu-item-sep:hover {
@@ -1691,7 +1669,7 @@ i.mce-i-resize {
 }
 
 .mce-splitbtn .mce-open.mce-active {
-	@include box-shadow(inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0 ,.05));
+	// @include box-shadow(inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0 ,.05));
 }
 
 .mce-splitbtn.mce-btn-small .mce-open {
@@ -1766,7 +1744,7 @@ i.mce-i-resize {
 	@include border-radius(3px);
 	@include box-shadow($textbox-box-shadow);
 	display: inline-block;
-	@include transition(~"border linear .2s, box-shadow linear .2s");
+	@include transition("border linear .2s, box-shadow linear .2s");
 	height: 28px;
 	resize: none;
 	padding: 0 4px 0 4px;
@@ -1777,7 +1755,7 @@ i.mce-i-resize {
 
 .mce-textbox:focus, .mce-textbox.mce-focus {
 	border-color: $textbox-border-focus;
-	@include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px fadeout($textbox-border-focus, 15%));
+	// @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px fadeout($textbox-border-focus, 15%));
 }
 
 .mce-placeholder .mce-textbox {

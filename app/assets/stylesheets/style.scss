@@ -43,7 +43,7 @@ body {
   margin-top: 20px;
 
   textarea {
-	width:100% - 5px;
+	width:100%;
 	height:60px;
 	padding: 5px;
   }
@@ -145,7 +145,7 @@ body {
 	}
 
 	.inp-standart {
-	  width: 100% - 7px;
+	  width: 100%;
 	  padding-left: 5px;
 	  padding-right: 5px;
 	  margin-bottom: 5px;
@@ -1061,7 +1061,7 @@ body {
   font-weight: bold;
 
   a {
-	@include btn-green;
+	@extend .btn-green;
   }
 }
 
@@ -2595,7 +2595,7 @@ td.none,td.none:hover, tr:hover td.none {
   color:$color-brown4 - 80;
 }
 
-@include char-edit {width:22px; text-align: center;}
+.char-edit {width:22px; text-align: center;}
 .rolmore {
   font-size:1.1em;
   line-height: 1.3em;

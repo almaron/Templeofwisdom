@@ -730,15 +730,15 @@
           border:0px!important;
         }
 		td.rtd1 {
-          .displayed-td;
+                          @extend .displayed-td;
 		  font-size:1.3em!important;
 		  padding:5px 5px!important;
-          text-align: center;
+                          text-align: center;
 		}
 		td.rtd2 {
-          .displayed-td;
+                          @extend .displayed-td;
 		  padding:10px 5px!important;
-          border-bottom:1px solid #c2b9a1!important;
+                          border-bottom:1px solid #c2b9a1!important;
 		  select {
 			margin-bottom: 10px;
 			width:370px!important;
@@ -747,12 +747,12 @@
 		  textarea {
 			font-size:1em!important;
 			width:358px!important;
-            height:90px!important;
+                                    height:90px!important;
 		  }
 		}
 		td.rtd3 {
-          .displayed-td;
-          border-bottom:1px solid #c2b9a1!important;
+                          @extend  .displayed-td;
+                          border-bottom:1px solid #c2b9a1!important;
 		  padding:10px 35px 10px 5px!important;
 		  font-size:1.3em!important;
 
@@ -764,7 +764,7 @@
 		  }
 		}
 		.rtd4 {
-          .displayed-td;
+                          @extend .displayed-td;
 		  padding:10px 5px!important;
 
 		  select {
@@ -773,7 +773,7 @@
 		  }
 		  .sk_do_add {
 			font-size:2.2em!important;
-            padding:5px 10px!important;
+                                    padding:5px 10px!important;
 		  }
 		  .sk_add {
 			width:385px!important;
@@ -964,7 +964,7 @@
   .logs-table {
 	.logs-table-1 {
 	  width:105px!important;
-	  @include table-td-left;
+	  @extend .table-td-left;
 	  .llinks {
 		padding-right:10px;
 		font-size:1em!important;
