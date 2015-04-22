@@ -17,3 +17,4 @@
 /public/uploads/*
 /config/secrets.yml
 config/settings.yml
+config/database.yml
