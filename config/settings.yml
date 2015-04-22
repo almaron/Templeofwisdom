@@ -1,0 +1,44 @@
+defaults: &defaults
+    oauth:
+        google:
+            cid:    "27951874285.apps.googleusercontent.com"
+            secret: "xBuUQivFy9P6HDytjkQM0qf1"
+            callback: "http://lvh.me:3000/oauth/callback?provider=google"
+        twitter:
+            cid:    "VTqEQP0rYPhrWwXxytwdQ"
+            secret: "X5mZhZCzwQtTy8wjhXfK69y7GHgqISbnJBK95Brk8k"
+            callback: "http://lvh.me:3000/oauth/callback?provider=twitter"
+        facebook:
+            cid:    "182409995203342"
+            secret: "c7c6932bfc45ad7dbf2f4b3d7065ae1a"
+            callback: "http://lvh.me:3000/oauth/callback?provider=facebook"
+        vk:
+            cid:    "2907135"
+            secret: "uNv5Zc8Ku2FEuxTX39TL"
+            callback: "http://lvh.me:3000/oauth/callback?provider=vk"
+
+    mail:
+
+
+development:
+    <<: *defaults
+
+test:
+    <<: *defaults
+
+staging:
+    <<: *defaults
+    oauth:
+        google:
+            cid:    "27951874285-3of7d5g9p6237lqjm09cr1kefcoi2r63.apps.googleusercontent.com"
+            secret: "oAWHivBZc847Iz6xJ8l86NfR"
+            callback: "https://s.templeofwisdom.ru/oauth/callback?provider=google"
+
+
+production:
+    <<: *defaults
+    oauth:
+        google:
+            cid:    "27951874285-or576tnlmegsm8fuc86gvt3lj5ueeil0.apps.googleusercontent.com"
+            secret: "vbU_KWkdBlKdvzaM3wsqILNz"
+            callback: "http://templeofwisdom.ru/oauth/callback?provider=google"

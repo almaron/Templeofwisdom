@@ -104,14 +104,14 @@ Rails.application.config.sorcery.configure do |config|
   # Twitter wil not accept any requests nor redirect uri containing localhost,
   # make sure you use 0.0.0.0:3000 to access your app in development
   #
-  config.twitter.key = "VTqEQP0rYPhrWwXxytwdQ"
-  config.twitter.secret = "X5mZhZCzwQtTy8wjhXfK69y7GHgqISbnJBK95Brk8k"
-  config.twitter.callback_url = "http://lvh.me:3000/oauth/callback?provider=twitter"
+  config.twitter.key = Settings.oauth.twitter.cid
+  config.twitter.secret = Settings.oauth.twitter.secret
+  config.twitter.callback_url = Settings.oauth.twitter.callback
   config.twitter.user_info_mapping = {:name => "screen_name"}
   #
-  config.facebook.key = "182409995203342"
-  config.facebook.secret = "c7c6932bfc45ad7dbf2f4b3d7065ae1a"
-  config.facebook.callback_url = "http://lvh.me:3000/oauth/callback?provider=facebook"
+  config.facebook.key = Settings.oauth.facebook.cid
+  config.facebook.secret = Settings.oauth.facebook.secret
+  config.facebook.callback_url = Settings.oauth.facebook.callback
   config.facebook.user_info_mapping = {:email => "email", :name => "username"}
   # config.facebook.access_permissions = ["email", "publish_stream"]
   #
@@ -120,14 +120,14 @@ Rails.application.config.sorcery.configure do |config|
   # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
   # config.github.user_info_mapping = {:email => "name"}
   #
-  config.google.key = "27951874285.apps.googleusercontent.com"
-  config.google.secret = "xBuUQivFy9P6HDytjkQM0qf1"
-  config.google.callback_url = "http://lvh.me:3000/oauth/callback?provider=google"
+  config.google.key = Settings.oauth.google.cid
+  config.google.secret = Settings.oauth.google.secret
+  config.google.callback_url = Settings.oauth.google.callback
   config.google.user_info_mapping = {:email => "email"}
   #
-  config.vk.key = "2907135"
-  config.vk.secret = "uNv5Zc8Ku2FEuxTX39TL"
-  config.vk.callback_url = "http://lvh.me:3000/oauth/callback?provider=vk"
+  config.vk.key = Settings.oauth.vk.cid
+  config.vk.secret = Settings.oauth.vk.secret
+  config.vk.callback_url = Settings.oauth.vk.callback
   config.vk.user_info_mapping = {:login => "domain", :name => "full_name"}
   #
   # To use liveid in development mode you have to replace mydomain.com with
