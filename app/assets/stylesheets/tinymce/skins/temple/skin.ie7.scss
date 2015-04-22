@@ -1,8 +1,6 @@
-$prefix:                         mce;
-
 // Reset
 
-.${prefix}-container, .${prefix}-container *, .${prefix}-widget, .${prefix}-widget *, .${prefix}-reset {
+.mce-container, .mce-container *, .mce-widget, .mce-widget *, .mce-reset {
 	margin: 0; padding: 0; border: 0; outline: 0;
 	vertical-align: top; background: transparent;
 	text-decoration: none; color: $text;
@@ -20,13 +18,13 @@ $prefix:                         mce;
 	max-width: none;
 }
 
-.${prefix}-widget button {
+.mce-widget button {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-.${prefix}-container *[unselectable] {
+.mce-container *[unselectable] {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -232,70 +230,70 @@ $iframe-border:                  $panel-border;
 }
 // Animations
 
-.${prefix}-fade {
+.mce-fade {
 	opacity: 0;
 	@include transition(opacity .15s linear);
 
-	&.${prefix}-in {
+	&.mce-in {
 		opacity: 1;
 	}
 }
-.${prefix}-tinymce {
+.mce-tinymce {
 	// Avoid FOUC
 	visibility: inherit !important;
 	position: relative;
 }
 
-.${prefix}-fullscreen {
+.mce-fullscreen {
 	border: 0; padding: 0; margin: 0;
 	overflow: hidden;
 	height: 100%;
 	z-index: 100;
 }
 
-div.${prefix}-fullscreen {
+div.mce-fullscreen {
 	position: fixed;
 	top: 0; left: 0;
 	width: 100%;
 	height: auto;
 }
 
-.${prefix}-tinymce {
+.mce-tinymce {
 	display: block;
 	@include border-radius(2px);
 }
 
-.${prefix}-wordcount {
+.mce-wordcount {
 	position: absolute;
 	top: 0;
 	right: 0;
 	padding: 8px;
 }
 
-div.${prefix}-edit-area {
+div.mce-edit-area {
 	background: #FFF;
 	filter: none;
 }
 
-.${prefix}-statusbar {
+.mce-statusbar {
 	position: relative;
 }
 
-.${prefix}-statusbar .${prefix}-container-body {
+.mce-statusbar .mce-container-body {
 	position: relative;
 }
 
-.${prefix}-fullscreen .${prefix}-resizehandle {
+.mce-fullscreen .mce-resizehandle {
 	display: none;
 }
 
 // Charmap
 
-.${prefix}-charmap {
+.mce-charmap {
 	border-collapse: collapse;
 }
 
-.${prefix}-charmap td {
+.mce-charmap td {
 	cursor: default;
 	border: 1px solid $panel-border;
 	width: 20px;
@@ -306,15 +304,15 @@ div.${prefix}-edit-area {
 	padding: 2px;
 }
 
-.${prefix}-charmap td div {
+.mce-charmap td div {
 	text-align: center;
 }
 
-.${prefix}-charmap td:hover {
+.mce-charmap td:hover {
 	background: $btn-bg-hlight;
 }
 
-.${prefix}-grid td.${prefix}-grid-cell div {
+.mce-grid td.mce-grid-cell div {
 	border: 1px solid $grid-border;
 	width: 15px; height: 15px;
 	margin: 0px;
@@ -329,7 +327,7 @@ div.${prefix}-edit-area {
 	}
 }
 
-.${prefix}-grid {
+.mce-grid {
 	border-spacing: 2px;
 	border-collapse: separate;
 
@@ -343,7 +341,7 @@ div.${prefix}-edit-area {
 	}
 }
 
-.${prefix}-grid-border {
+.mce-grid-border {
 	margin: 0 4px 0 4px;
 
 	a {
@@ -351,22 +349,22 @@ div.${prefix}-edit-area {
 		width: 13px; height: 13px;
 	}
 
-	a:hover, a.${prefix}-active {
+	a:hover, a.mce-active {
 		border-color: $grid-border-active;
 		background: $grid-bg-active;
 	}
 }
 
-.${prefix}-text-center {
+.mce-text-center {
 	text-align: center;
 }
 
-div.${prefix}-tinymce-inline {
+div.mce-tinymce-inline {
 	width: 100%;
 	@include box-shadow(none);
 }
 
-.${prefix}-colorbtn-trans div {
+.mce-colorbtn-trans div {
 	text-align: center;
 	vertical-align: middle;
 	font-weight: bold;
@@ -377,32 +375,32 @@ div.${prefix}-tinymce-inline {
 
 // Reduce double margins between toolbar rows
 
-.${prefix}-toolbar-grp {
+.mce-toolbar-grp {
 	padding-bottom: 2px;
 }
 
-.${prefix}-toolbar-grp .${prefix}-flow-layout-item {
+.mce-toolbar-grp .mce-flow-layout-item {
 	margin-bottom: 0;
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-wordcount {
+.mce-rtl .mce-wordcount {
 	left: 0;
 	right: auto;
 }
 // Container
 
-.${prefix}-container, .${prefix}-container-body {
+.mce-container, .mce-container-body {
 	display: block;
 }
 
-.${prefix}-autoscroll {
+.mce-autoscroll {
 	overflow: hidden;
 }
 // Scrollbar
 
-.${prefix}-scrollbar {
+.mce-scrollbar {
 	position: absolute;
 	width: 7px;
 	height: 100%;
@@ -411,7 +409,7 @@ div.${prefix}-tinymce-inline {
 	@include opacity(0.4);
 }
 
-.${prefix}-scrollbar-h {
+.mce-scrollbar-h {
 	top: auto;
 	right: auto;
 	left: 2px;
@@ -420,7 +418,7 @@ div.${prefix}-tinymce-inline {
 	height: 7px;
 }
 
-.${prefix}-scrollbar-thumb {
+.mce-scrollbar-thumb {
 	position: absolute;
 	background-color: #000;
 	border: 1px solid #888;
@@ -430,41 +428,41 @@ div.${prefix}-tinymce-inline {
 	@include border-radius(7px);
 }
 
-.${prefix}-scrollbar-h .${prefix}-scrollbar-thumb {
+.mce-scrollbar-h .mce-scrollbar-thumb {
 	width: 100%;
 	height: 5px;
 }
 
-.${prefix}-scrollbar:hover, .${prefix}-scrollbar.${prefix}-active {
+.mce-scrollbar:hover, .mce-scrollbar.mce-active {
 	background-color: #AAA;
 	@include opacity(0.6);
 	@include border-radius(7px);
 }
 
-.${prefix}-scroll {
+.mce-scroll {
 	position: relative;
 }
 // Panel
 
-.${prefix}-panel {
+.mce-panel {
 	border: 0 solid $panel-border;
 	@include vertical-gradient($panel-bg, $panel-bg-hlight);
 }
 // FloatPanel
 
-.${prefix}-floatpanel {
+.mce-floatpanel {
 	position: absolute;
 	@include box-shadow($floatpanel-box-shadow);
 }
 
-.${prefix}-floatpanel.${prefix}-fixed {
+.mce-floatpanel.mce-fixed {
 	position: fixed;
 }
 
 // Popover panel
 
-.${prefix}-floatpanel .${prefix}-arrow,
-.${prefix}-floatpanel .${prefix}-arrow:after {
+.mce-floatpanel .mce-arrow,
+.mce-floatpanel .mce-arrow:after {
 	position: absolute;
 	display: block;
 	width: 0;
@@ -473,16 +471,16 @@ div.${prefix}-tinymce-inline {
 	border-style: solid;
 }
 
-.${prefix}-floatpanel .${prefix}-arrow {
+.mce-floatpanel .mce-arrow {
 	border-width: $popover-arrow-outer-width;
 }
 
-.${prefix}-floatpanel .${prefix}-arrow:after {
+.mce-floatpanel .mce-arrow:after {
 	border-width: $popover-arrow-width;
 	content: "";
 }
 
-.${prefix}-floatpanel.${prefix}-popover {
+.mce-floatpanel.mce-popover {
 	@include reset-gradient();
 	@include border-radius(6px);
 	@include box-shadow($floatpanel-box-shadow);
@@ -492,11 +490,11 @@ div.${prefix}-tinymce-inline {
 	border: 1px solid $panel-border;
 	border: 1px solid $popover-arrow-outer;
 
-	&.${prefix}-bottom {
+	&.mce-bottom {
 		margin-top: $popover-arrow-width;
 		*margin-top: 0;
 
-		& > .${prefix}-arrow {
+		& > .mce-arrow {
 			left: 50%;
 			margin-left: -$popover-arrow-outer-width;
 			border-top-width: 0;
@@ -512,27 +510,27 @@ div.${prefix}-tinymce-inline {
 			}
 		}
 
-		&.${prefix}-start { margin-left: -22px; }
-		&.${prefix}-start > @include ${prefix}-arrow { left: 20px; }
+		&.mce-start { margin-left: -22px; }
+		&.mce-start > @include mce-arrow { left: 20px; }
 
-		&.${prefix}-end { margin-left: 22px; }
-		&.${prefix}-end > @include ${prefix}-arrow { right: 10px; left: auto; }
+		&.mce-end { margin-left: 22px; }
+		&.mce-end > @include mce-arrow { right: 10px; left: auto; }
 	}
 }// Window
 
-.${prefix}-fullscreen {
+.mce-fullscreen {
 	border: 0; padding: 0; margin: 0;
 	overflow: hidden;
 	background: $window-fullscreen-bg;
 	height: 100%;
 }
 
-div.${prefix}-fullscreen {
+div.mce-fullscreen {
 	position: fixed;
 	top: 0; left: 0;
 }
 
-#${prefix}-modal-block {
+#mce-modal-block {
 	@include opacity(0);
 	position: fixed;
 	left: 0; top: 0;
@@ -540,15 +538,15 @@ div.${prefix}-fullscreen {
 	background: $window-modalblock-bg;
 }
 
-#${prefix}-modal-block.${prefix}-in {
+#mce-modal-block.mce-in {
 	@include opacity($window-modalblock-opacity);
 }
 
-.${prefix}-window-move {
+.mce-window-move {
 	cursor: move;
 }
 
-.${prefix}-window {
+.mce-window {
 	@include border-radius(6px);
 	@include box-shadow($window-box-shadow);
 	@include reset-gradient();
@@ -559,17 +557,17 @@ div.${prefix}-fullscreen {
 	@include transition(opacity 150ms ease-in);
 }
 
-.${prefix}-window.${prefix}-in {
+.mce-window.mce-in {
 	opacity: 1;
 }
 
-.${prefix}-window-head {
+.mce-window-head {
 	padding: 9px 15px;
 	border-bottom: 1px solid $window-head-border;
 	position: relative;
 }
 
-.${prefix}-window-head .${prefix}-close {
+.mce-window-head .mce-close {
 	position: absolute;
 	right: 15px;
 	top: 9px;
@@ -584,11 +582,11 @@ div.${prefix}-fullscreen {
 	overflow: hidden;
 }
 
-.${prefix}-close:hover {
+.mce-close:hover {
 	color: $window-head-close-hover;
 }
 
-.${prefix}-window-head .${prefix}-title {
+.mce-window-head .mce-title {
 	line-height: 20px;
 	font-size: $window-title-font-size;
 	font-weight: bold;
@@ -596,18 +594,18 @@ div.${prefix}-fullscreen {
 	padding-right: 10px;
 }
 
-.${prefix}-window .${prefix}-container-body {
+.mce-window .mce-container-body {
 	display: block;
 }
 
-.${prefix}-foot {
+.mce-foot {
 	display: block;
 	background-color: $window-foot-bg;
 	border-top: 1px solid $window-foot-border;
 	@include border-radius(0 0 6px 6px);
 }
 
-.${prefix}-window-head .${prefix}-dragh {
+.mce-window-head .mce-dragh {
 	position: absolute;
 	top: 0; left: 0;
 	cursor: move;
@@ -615,58 +613,58 @@ div.${prefix}-fullscreen {
 	height: 100%;
 }
 
-.${prefix}-window iframe {
+.mce-window iframe {
 	width: 100%;
 	height: 100%;
 }
 
-.${prefix}-window.${prefix}-fullscreen, .${prefix}-window.${prefix}-fullscreen .${prefix}-foot {
+.mce-window.mce-fullscreen, .mce-window.mce-fullscreen .mce-foot {
 	@include border-radius(0);
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-window-head .${prefix}-close {
+.mce-rtl .mce-window-head .mce-close {
 	position: absolute;
 	right: auto;
 	left: 15px;
 }
 
-.${prefix}-rtl .${prefix}-window-head .${prefix}-dragh {
+.mce-rtl .mce-window-head .mce-dragh {
 	left: auto;
 	right: 0;
 }
 
-.${prefix}-rtl .${prefix}-window-head .${prefix}-title {
+.mce-rtl .mce-window-head .mce-title {
 	direction: rtl;
 	text-align: right;
 }
 // AbsoluteLayout
 
-.${prefix}-abs-layout {
+.mce-abs-layout {
 	position: relative;
 }
 
-body .${prefix}-abs-layout-item, .${prefix}-abs-end {
+body .mce-abs-layout-item, .mce-abs-end {
 	position: absolute;
 }
 
-.${prefix}-abs-end {
+.mce-abs-end {
 	width: 1px; height: 1px;
 }
 
-.${prefix}-container-body.${prefix}-abs-layout {
+.mce-container-body.mce-abs-layout {
 	overflow: hidden;
 }
 // Tooltip
 
-.${prefix}-tooltip {
+.mce-tooltip {
 	position: absolute;
 	padding: 5px;
 	@include opacity(0.8);
 }
 
-.${prefix}-tooltip-inner {
+.mce-tooltip-inner {
 	font-size: $tooltip-font-size;
 	background-color: $tooltip-bg;
 	color: $tooltip-text;
@@ -676,15 +674,15 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	white-space: normal;
 }
 
-.${prefix}-tooltip-inner {
+.mce-tooltip-inner {
 	@include border-radius(3px);
 }
 
-.${prefix}-tooltip-inner {
+.mce-tooltip-inner {
 	@include box-shadow(0 0 5px $tooltip-bg);
 }
 
-.${prefix}-tooltip-arrow {
+.mce-tooltip-arrow {
 	position: absolute;
 	width: 0;
 	height: 0;
@@ -692,27 +690,27 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	border: 5px dashed $tooltip-bg;
 }
 
-.${prefix}-tooltip-arrow-n {
+.mce-tooltip-arrow-n {
 	border-bottom-color: $tooltip-bg;
 }
 
-.${prefix}-tooltip-arrow-s {
+.mce-tooltip-arrow-s {
 	border-top-color: $tooltip-bg;
 }
 
-.${prefix}-tooltip-arrow-e {
+.mce-tooltip-arrow-e {
 	border-left-color: $tooltip-bg;
 }
 
-.${prefix}-tooltip-arrow-w {
+.mce-tooltip-arrow-w {
 	border-right-color: $tooltip-bg;
 }
 
-.${prefix}-tooltip-nw, .${prefix}-tooltip-sw {
+.mce-tooltip-nw, .mce-tooltip-sw {
 	margin-left: -14px;
 }
 
-.${prefix}-tooltip-n .${prefix}-tooltip-arrow {
+.mce-tooltip-n .mce-tooltip-arrow {
 	top: 0px;
 	left: 50%;
 	margin-left: -5px;
@@ -722,7 +720,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	border-right-color: transparent;
 }
 
-.${prefix}-tooltip-nw .${prefix}-tooltip-arrow {
+.mce-tooltip-nw .mce-tooltip-arrow {
 	top: 0;
 	left: 10px;
 	border-bottom-style: solid;
@@ -731,7 +729,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	border-right-color: transparent;
 }
 
-.${prefix}-tooltip-ne .${prefix}-tooltip-arrow {
+.mce-tooltip-ne .mce-tooltip-arrow {
 	top: 0;
 	right: 10px;
 	border-bottom-style: solid;
@@ -740,7 +738,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	border-right-color: transparent;
 }
 
-.${prefix}-tooltip-s .${prefix}-tooltip-arrow {
+.mce-tooltip-s .mce-tooltip-arrow {
 	bottom: 0;
 	left: 50%;
 	margin-left: -5px;
@@ -750,7 +748,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	border-right-color: transparent;
 }
 
-.${prefix}-tooltip-sw .${prefix}-tooltip-arrow {
+.mce-tooltip-sw .mce-tooltip-arrow {
 	bottom: 0;
 	left: 10px;
 	border-top-style: solid;
@@ -759,7 +757,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	border-right-color: transparent;
 }
 
-.${prefix}-tooltip-se .${prefix}-tooltip-arrow {
+.mce-tooltip-se .mce-tooltip-arrow {
 	bottom: 0;
 	right: 10px;
 	border-top-style: solid;
@@ -768,7 +766,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	border-right-color: transparent;
 }
 
-.${prefix}-tooltip-e .${prefix}-tooltip-arrow {
+.mce-tooltip-e .mce-tooltip-arrow {
 	right: 0;
 	top: 50%;
 	margin-top: -5px;
@@ -778,7 +776,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	border-bottom-color: transparent;
 }
 
-.${prefix}-tooltip-w .${prefix}-tooltip-arrow {
+.mce-tooltip-w .mce-tooltip-arrow {
 	left: 0;
 	top: 50%;
 	margin-top: -5px;
@@ -789,7 +787,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 }
 // Button
 
-.${prefix}-btn {
+.mce-btn {
 	border: 1px solid mix(rgb(red($btn-border-right), green($btn-border-right), blue($btn-border-right)), $panel-bg, 30%);
 	border-color: $btn-border-top $btn-border-right $btn-border-bottom $btn-border-left;
 	position: relative;
@@ -805,13 +803,13 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 		@include vertical-gradient(darken($btn-bg, 5%), darken($btn-bg-hlight, 5%));
 	}
 
-	&.${prefix}-disabled button, &.${prefix}-disabled:hover button {
+	&.mce-disabled button, &.mce-disabled:hover button {
 		cursor: default;
 		@include box-shadow(none);
 		@include opacity($btn-box-disabled-opacity);
 	}
 
-	&.${prefix}-active, &.${prefix}-active:hover {
+	&.mce-active, &.mce-active:hover {
 		@include vertical-gradient(darken($btn-bg, 10%), darken($btn-bg-hlight, 10%));
 		@include box-shadow($btn-box-shadow-active);
 	}
@@ -822,7 +820,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	}
 }
 
-.${prefix}-btn button {
+.mce-btn button {
 	padding: 4px 10px;
 	font-size: $font-size;
 	line-height: $line-height;
@@ -840,11 +838,11 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	}
 }
 
-.${prefix}-btn i {
+.mce-btn i {
 	text-shadow: 1px 1px $btn-text-shadow;
 }
 
-.${prefix}-primary {
+.mce-primary {
 	min-width: 50px;
 	color: $btn-primary-text;
 	border: 1px solid mix(rgb(red($btn-border-right), green($btn-border-right), blue($btn-border-right)), $panel-bg, 30%);
@@ -855,57 +853,57 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 		@include vertical-gradient(darken($btn-primary-bg, 5%), darken($btn-primary-bg-hlight, 5%));
 	}
 
-	&.${prefix}-disabled button, &.${prefix}-disabled:hover button {
+	&.mce-disabled button, &.mce-disabled:hover button {
 		cursor: default;
 		@include box-shadow(none);
 		@include opacity($btn-box-disabled-opacity);
 	}
 
-	&.${prefix}-active, &.${prefix}-active:hover, &:not(.${prefix}-disabled):active {
+	&.mce-active, &.mce-active:hover, &:not(.mce-disabled):active {
 		@include vertical-gradient(darken($btn-primary-bg, 10%), darken($btn-primary-bg-hlight, 10%));
 		@include box-shadow($btn-box-shadow-active);
 	}
 }
 
-.${prefix}-primary button, .${prefix}-primary button i {
+.mce-primary button, .mce-primary button i {
 	color: $btn-primary-text;
 	text-shadow: 1px 1px $btn-primary-text-shadow;
 }
 
-.${prefix}-btn-large button {
+.mce-btn-large button {
 	padding: 9px 14px;
 	font-size: $font-size + 2px;
 	line-height: normal;
 	@include border-radius(5px);
 }
 
-.${prefix}-btn-large i {
+.mce-btn-large i {
 	margin-top: 2px;
 }
 
-.${prefix}-btn-small button {
+.mce-btn-small button {
 	padding: 1px 5px;
 	font-size: $font-size - 2px;
 	*padding-bottom: 2px;
 }
 
-.${prefix}-btn-small i {
+.mce-btn-small i {
 	line-height: 20px;
 	vertical-align: top;
 	*line-height: 18px;
 }
 
-.${prefix}-btn .${prefix}-caret {
+.mce-btn .mce-caret {
 	margin-top: 8px;
 	margin-left: 0;
 }
 
-.${prefix}-btn-small .${prefix}-caret {
+.mce-btn-small .mce-caret {
 	margin-top: 8px;
 	margin-left: 0;
 }
 
-.${prefix}-caret {
+.mce-caret {
 	@include inline-block();
 	width: 0; height: 0;
 	vertical-align: top;
@@ -915,16 +913,16 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	content: "";
 }
 
-.${prefix}-disabled .${prefix}-caret {
+.mce-disabled .mce-caret {
 	border-top-color: $text-disabled;
 }
 
-.${prefix}-caret.${prefix}-up {
+.mce-caret.mce-up {
 	border-bottom: 4px solid $btn-caret-border;
 	border-top: 0;
 }
 
-.${prefix}-btn-flat {
+.mce-btn-flat {
 	border: 0;
 	background: transparent;
 	@include border-radius(0);
@@ -932,7 +930,7 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 	filter: none;
 }
 
-.${prefix}-btn-flat:hover, .${prefix}-btn-flat.${prefix}-active, .${prefix}-btn-flat:focus, .${prefix}-btn-flat:active {
+.mce-btn-flat:hover, .mce-btn-flat.mce-active, .mce-btn-flat:focus, .mce-btn-flat:active {
 	border: 0;
 	background: $menubar-bg-active;
 	filter: none;
@@ -941,43 +939,43 @@ body .${prefix}-abs-layout-item, .${prefix}-abs-end {
 
 // RTL
 
-.${prefix}-rtl .${prefix}-btn button {
+.mce-rtl .mce-btn button {
 	direction: rtl;
 }
 // ButtonGroup
 
-.${prefix}-btn-group .${prefix}-btn {
+.mce-btn-group .mce-btn {
 	border-width: 1px 0 1px 0;
 	margin: 0;
 	@include border-radius(0);
 }
 
-.${prefix}-btn-group .${prefix}-first {
+.mce-btn-group .mce-first {
 	border-left: 1px solid mix(rgb(red($btn-border-left), green($btn-border-left), blue($btn-border-left)), $panel-bg, 30%);
 	border-left: 1px solid $btn-border-left;
 	@include border-radius(3px 0 0 3px);
 }
 
-.${prefix}-btn-group .${prefix}-last {
+.mce-btn-group .mce-last {
 	border-right: 1px solid mix(rgb(red($btn-border-right), green($btn-border-right), blue($btn-border-right)), $panel-bg, 30%);
 	border-right: 1px solid $btn-border-right;
 	@include border-radius(0 3px 3px 0);
 }
 
-.${prefix}-btn-group .${prefix}-first.${prefix}-last {
+.mce-btn-group .mce-first.mce-last {
 	@include border-radius(3px);
 }
 
-.${prefix}-btn-group .${prefix}-btn.${prefix}-flow-layout-item {
+.mce-btn-group .mce-btn.mce-flow-layout-item {
 	margin: 0;
 }
 // Checkbox
 
-.${prefix}-checkbox {
+.mce-checkbox {
 	cursor: pointer;
 }
 
-i.${prefix}-i-checkbox {
+i.mce-i-checkbox {
 	margin: 0 3px 0 0;
 	border: 1px solid $checkbox-border;
 	@include border-radius(3px);
@@ -990,91 +988,91 @@ i.${prefix}-i-checkbox {
 	overflow: hidden;
 }
 
-.${prefix}-checked i.${prefix}-i-checkbox {
+.mce-checked i.mce-i-checkbox {
 	color: $btn-text;
 	font-size: 16px;
 	line-height: 16px;
 	text-indent: 0;
 }
 
-.${prefix}-checkbox:focus i.${prefix}-i-checkbox, .${prefix}-checkbox.${prefix}-focus i.${prefix}-i-checkbox {
+.mce-checkbox:focus i.mce-i-checkbox, .mce-checkbox.mce-focus i.mce-i-checkbox {
 	border: 1px solid $checkbox-border-focus;
 	@include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px fadeout($checkbox-border-focus, 15%));
 }
 
-.${prefix}-checkbox.${prefix}-disabled .${prefix}-label, .${prefix}-checkbox.${prefix}-disabled i.${prefix}-i-checkbox {
+.mce-checkbox.mce-disabled .mce-label, .mce-checkbox.mce-disabled i.mce-i-checkbox {
 	color: mix($text, $panel-bg, 40%);
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-checkbox {
+.mce-rtl .mce-checkbox {
 	direction: rtl;
 	text-align: right;
 }
 
-.${prefix}-rtl i.${prefix}-i-checkbox {
+.mce-rtl i.mce-i-checkbox {
 	margin: 0 0 0 3px;
 }
 // ComboBox
 
-.${prefix}-combobox {
+.mce-combobox {
 	@include inline-block();
 	@include border-radius(3px);
 	@include box-shadow($textbox-box-shadow);
 	*height: 32px;
 }
 
-.${prefix}-combobox input {
+.mce-combobox input {
 	border: 1px solid $textbox-border;
 	border-right-color: $combobox-border;
 	height: 28px;
 }
 
-.${prefix}-combobox.${prefix}-disabled input {
+.mce-combobox.mce-disabled input {
 	color: mix($text, $textbox-bg, 40%);
 }
 
-.${prefix}-combobox.${prefix}-has-open input {
+.mce-combobox.mce-has-open input {
 	@include border-radius(4px 0 0 4px);
 }
 
-.${prefix}-combobox .${prefix}-btn {
+.mce-combobox .mce-btn {
 	border-left: 0;
 	@include border-radius(0 4px 4px 0);
 }
 
-.${prefix}-combobox button {
+.mce-combobox button {
 	padding-right: 8px;
 	padding-left: 8px;
 }
 
-.${prefix}-combobox.${prefix}-disabled .${prefix}-btn button {
+.mce-combobox.mce-disabled .mce-btn button {
 	cursor: default;
 	@include box-shadow(none);
 	@include opacity($btn-box-disabled-opacity);
 }
 // ColorBox
 
-.${prefix}-colorbox i {
+.mce-colorbox i {
 	border: 1px solid $textbox-border;
 	width: 14px; height: 14px;
 }
 // ColorButton
 
-.${prefix}-colorbutton .${prefix}-ico {
+.mce-colorbutton .mce-ico {
 	position: relative;
 }
 
-.${prefix}-colorbutton-grid {
+.mce-colorbutton-grid {
 	margin: 4px;
 }
 
-.${prefix}-colorbutton button {
+.mce-colorbutton button {
 	padding-right: 4px;
 }
 
-.${prefix}-colorbutton .${prefix}-preview {
+.mce-colorbutton .mce-preview {
 	padding-right: 3px;
 	display: block;
 	position: absolute;
@@ -1088,65 +1086,65 @@ i.${prefix}-i-checkbox {
 	overflow: hidden;
 }
 
-.${prefix}-colorbutton.${prefix}-btn-small .${prefix}-preview {
+.mce-colorbutton.mce-btn-small .mce-preview {
 	margin-left: -16px;
 	padding-right: 0;
 	width: 16px;
 }
 
-.${prefix}-colorbutton .${prefix}-open {
+.mce-colorbutton .mce-open {
 	padding-left: 4px;
 	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
 }
 
-.${prefix}-colorbutton:hover .${prefix}-open {
+.mce-colorbutton:hover .mce-open {
 	border-left-color: $btn-split-border;
 	border-right-color: $btn-split-border;
 }
 
-.${prefix}-colorbutton.${prefix}-btn-small .${prefix}-open {
+.mce-colorbutton.mce-btn-small .mce-open {
 	padding: 0 3px 0 3px;
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-colorbutton {
+.mce-rtl .mce-colorbutton {
 	direction: rtl;
 }
 
-.${prefix}-rtl .${prefix}-colorbutton .${prefix}-preview {
+.mce-rtl .mce-colorbutton .mce-preview {
 	margin-left: 0;
 	padding-right: 0;
 	padding-left: 4px;
 	margin-right: -14px;
 }
 
-.${prefix}-rtl .${prefix}-colorbutton.${prefix}-btn-small .${prefix}-preview {
+.mce-rtl .mce-colorbutton.mce-btn-small .mce-preview {
 	margin-left: 0;
 	padding-right: 0;
 	margin-right: -17px;
 	padding-left: 0;
 }
 
-.${prefix}-rtl .${prefix}-colorbutton button {
+.mce-rtl .mce-colorbutton button {
 	padding-right: 10px;
 	padding-left: 10px;
 }
 
-.${prefix}-rtl .${prefix}-colorbutton .${prefix}-open {
+.mce-rtl .mce-colorbutton .mce-open {
 	padding-left: 4px;
 	padding-right: 4px;
 }
 // ColorPicker
 
-.${prefix}-colorpicker {
+.mce-colorpicker {
 	position: relative;
 	width: 250px;
 	height: 220px;
 }
 
-.${prefix}-colorpicker-sv {
+.mce-colorpicker-sv {
 	position: absolute;
 	top: 0; left: 0;
 	width: 90%;
@@ -1156,11 +1154,11 @@ i.${prefix}-i-checkbox {
 	overflow: hidden;
 }
 
-.${prefix}-colorpicker-h-chunk {
+.mce-colorpicker-h-chunk {
 	width: 100%;
 }
 
-.${prefix}-colorpicker-overlay1, .${prefix}-colorpicker-overlay2 {
+.mce-colorpicker-overlay1, .mce-colorpicker-overlay2 {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -1168,19 +1166,19 @@ i.${prefix}-i-checkbox {
 	left: 0;
 }
 
-.${prefix}-colorpicker-overlay1 {
+.mce-colorpicker-overlay1 {
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#ffffff', endColorstr='#00ffffff');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#ffffff', endColorstr='#00ffffff')";
 	background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
 }
 
-.${prefix}-colorpicker-overlay2 {
+.mce-colorpicker-overlay2 {
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#00000000', endColorstr='#000000');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#00000000', endColorstr='#000000')";
 	background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
 }
 
-.${prefix}-colorpicker-selector1 {
+.mce-colorpicker-selector1 {
 	background: none;
 	position: absolute;
 	width: 12px;
@@ -1190,7 +1188,7 @@ i.${prefix}-i-checkbox {
 	border-radius: 50%;
 }
 
-.${prefix}-colorpicker-selector2 {
+.mce-colorpicker-selector2 {
 	position: absolute;
 	width: 10px;
 	height: 10px;
@@ -1198,7 +1196,7 @@ i.${prefix}-i-checkbox {
 	border-radius: 50%;
 }
 
-.${prefix}-colorpicker-h {
+.mce-colorpicker-h {
 	position: absolute;
 	top: 0; right: 0;
 	width: 6.5%;
@@ -1207,7 +1205,7 @@ i.${prefix}-i-checkbox {
 	cursor: crosshair;
 }
 
-.${prefix}-colorpicker-h-marker {
+.mce-colorpicker-h-marker {
 	margin-top: -4px;
 	position: absolute;
 	top: 0;
@@ -1220,147 +1218,147 @@ i.${prefix}-i-checkbox {
 }
 // Path
 
-.${prefix}-path {
+.mce-path {
 	@include inline-block();
 	padding: 8px;
 	white-space: normal;
 }
 
-.${prefix}-path .${prefix}-txt {
+.mce-path .mce-txt {
 	display: inline-block;
 	padding-right: 3px;
 }
 
-.${prefix}-path .${prefix}-path-body {
+.mce-path .mce-path-body {
 	display: inline-block;
 }
 
-.${prefix}-path-item {
+.mce-path-item {
 	@include inline-block();
 	cursor: pointer;
 	color: $path-text;
 }
 
-.${prefix}-path-item:hover {
+.mce-path-item:hover {
 	text-decoration: underline;
 }
 
-.${prefix}-path-item:focus {
+.mce-path-item:focus {
 	background: $path-bg-focus;
 	color: $path-text-focus;
 }
 
-.${prefix}-path .${prefix}-divider {
+.mce-path .mce-divider {
 	display: inline;
 }
 
-.${prefix}-disabled .${prefix}-path-item {
+.mce-disabled .mce-path-item {
 	color: $text-disabled;
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-path {
+.mce-rtl .mce-path {
 	direction: rtl;
 }
 // FieldSet
 
-.${prefix}-fieldset {
+.mce-fieldset {
 	border: 0 solid #9E9E9E;
 	@include border-radius(3px);
 }
 
-.${prefix}-fieldset > .${prefix}-container-body {
+.mce-fieldset > .mce-container-body {
 	margin-top: -15px;
 }
 
-.${prefix}-fieldset-title {
+.mce-fieldset-title {
 	margin-left: 5px;
 	padding: 0 5px 0 5px;
 }// FitLayout
 
-.${prefix}-fit-layout {
+.mce-fit-layout {
 	@include inline-block();
 }
 
-.${prefix}-fit-layout-item {
+.mce-fit-layout-item {
 	position: absolute;
 }
 // FlowLayout
 
-.${prefix}-flow-layout-item {
+.mce-flow-layout-item {
 	@include inline-block();
 }
 
-.${prefix}-flow-layout-item {
+.mce-flow-layout-item {
 	margin: 2px 0 2px 2px;
 }
 
-.${prefix}-flow-layout-item.${prefix}-last {
+.mce-flow-layout-item.mce-last {
 	margin-right: 2px;
 }
 
-.${prefix}-flow-layout {
+.mce-flow-layout {
 	white-space: normal;
 }
 
-.${prefix}-tinymce-inline .${prefix}-flow-layout {
+.mce-tinymce-inline .mce-flow-layout {
 	white-space: nowrap;
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-flow-layout {
+.mce-rtl .mce-flow-layout {
 	text-align: right;
 	direction: rtl;
 }
 
-.${prefix}-rtl .${prefix}-flow-layout-item {
+.mce-rtl .mce-flow-layout-item {
 	margin: 2px 2px 2px 0;
 }
 
-.${prefix}-rtl .${prefix}-flow-layout-item.${prefix}-last {
+.mce-rtl .mce-flow-layout-item.mce-last {
 	margin-left: 2px;
 }
 // Iframe
 
-.${prefix}-iframe {
+.mce-iframe {
 	border: 0 solid $iframe-border;
 	width: 100%; height: 100%;
 }
 // Label
 
-.${prefix}-label {
+.mce-label {
 	@include inline-block();
 	text-shadow: $text-shadow;
 	overflow: hidden;
 }
 
-.${prefix}-label.${prefix}-autoscroll {
+.mce-label.mce-autoscroll {
 	overflow: auto;
 }
 
-.${prefix}-label.${prefix}-disabled {
+.mce-label.mce-disabled {
 	color: $text-disabled;
 }
 
-.${prefix}-label.${prefix}-multiline {
+.mce-label.mce-multiline {
 	white-space: pre-wrap;
 }
 
-.${prefix}-label.${prefix}-error {
+.mce-label.mce-error {
 	color: $text-error;
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-label {
+.mce-rtl .mce-label {
 	text-align: right;
 	direction: rtl;
 }
 /* MenuBar */
 
-.${prefix}-menubar .${prefix}-menubtn {
+.mce-menubar .mce-menubtn {
 	border-color: transparent;
 	background: transparent;
 	@include border-radius(0);
@@ -1368,19 +1366,19 @@ i.${prefix}-i-checkbox {
 	filter: none;
 }
 
-.${prefix}-menubar {
+.mce-menubar {
 	border: 1px solid $menubar-border;
 }
 
-.${prefix}-menubar .${prefix}-menubtn button span {
+.mce-menubar .mce-menubtn button span {
 	color: $text;
 }
 
-.${prefix}-menubar .${prefix}-caret {
+.mce-menubar .mce-caret {
 	border-top-color: $text;
 }
 
-.${prefix}-menubar .${prefix}-menubtn:hover, .${prefix}-menubar .${prefix}-menubtn.${prefix}-active, .${prefix}-menubar .${prefix}-menubtn:focus {
+.mce-menubar .mce-menubtn:hover, .mce-menubar .mce-menubtn.mce-active, .mce-menubar .mce-menubtn:focus {
 	border-color: transparent;
 	background: $menubar-bg-active;
 	filter: none;
@@ -1388,47 +1386,47 @@ i.${prefix}-i-checkbox {
 }
 /* MenuButton */
 
-.${prefix}-menubtn span {
+.mce-menubtn span {
 	color: $btn-text;
 	margin-right: 2px;
 	line-height: $line-height;
 	*line-height: $line-height - 4px;
 }
 
-.${prefix}-menubtn.${prefix}-btn-small span {
+.mce-menubtn.mce-btn-small span {
 	font-size: $font-size - 2px;
 }
 
-.${prefix}-menubtn.${prefix}-fixed-width span {
+.mce-menubtn.mce-fixed-width span {
 	display: inline-block;
 	overflow-x: hidden;
 	text-overflow: ellipsis;
 	width: 90px;
 }
 
-.${prefix}-menubtn.${prefix}-fixed-width.${prefix}-btn-small span {
+.mce-menubtn.mce-fixed-width.mce-btn-small span {
 	width: 70px;
 }
 
-.${prefix}-menubtn .${prefix}-caret {
+.mce-menubtn .mce-caret {
 	*margin-top: 6px;
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-menubtn button {
+.mce-rtl .mce-menubtn button {
 	direction: rtl;
 	text-align: right;
 }
 // ListBox
 
-.${prefix}-listbox button {
+.mce-listbox button {
 	text-align: left;
 	padding-right: 20px;
 	position: relative;
 }
 
-.${prefix}-listbox .${prefix}-caret {
+.mce-listbox .mce-caret {
 	position: absolute;
 	margin-top: -2px;
 	right: 8px;
@@ -1437,18 +1435,18 @@ i.${prefix}-i-checkbox {
 
 // RTL
 
-.${prefix}-rtl .${prefix}-listbox .${prefix}-caret {
+.mce-rtl .mce-listbox .mce-caret {
 	right: auto;
 	left: 8px;
 }
 
-.${prefix}-rtl .${prefix}-listbox button {
+.mce-rtl .mce-listbox button {
 	padding-right: 10px;
 	padding-left: 20px;
 }
 // MenuItem
 
-.${prefix}-menu-item {
+.mce-menu-item {
 	display: block;
 	padding: 6px 15px 6px 12px;
 	clear: both;
@@ -1462,41 +1460,41 @@ i.${prefix}-i-checkbox {
 	margin-bottom: 1px;
 }
 
-.${prefix}-menu-item .${prefix}-ico, .${prefix}-menu-item .${prefix}-text {
+.mce-menu-item .mce-ico, .mce-menu-item .mce-text {
 	color: $menuitem-text;
 }
 
-.${prefix}-menu-item.${prefix}-disabled .${prefix}-text, .${prefix}-menu-item.${prefix}-disabled .${prefix}-ico {
+.mce-menu-item.mce-disabled .mce-text, .mce-menu-item.mce-disabled .mce-ico {
 	color: mix($menuitem-text, $menu-bg, 40%);
 }
 
-.${prefix}-menu-item:hover .${prefix}-text, .${prefix}-menu-item.${prefix}-selected .${prefix}-text, .${prefix}-menu-item:focus .${prefix}-text {
+.mce-menu-item:hover .mce-text, .mce-menu-item.mce-selected .mce-text, .mce-menu-item:focus .mce-text {
 	color: $menuitem-text-inverse;
 }
 
-.${prefix}-menu-item:hover .${prefix}-ico, .${prefix}-menu-item.${prefix}-selected .${prefix}-ico, .${prefix}-menu-item:focus .${prefix}-ico {
+.mce-menu-item:hover .mce-ico, .mce-menu-item.mce-selected .mce-ico, .mce-menu-item:focus .mce-ico {
 	color: $menuitem-text-inverse;
 }
 
-.${prefix}-menu-item.${prefix}-disabled:hover {
+.mce-menu-item.mce-disabled:hover {
 	background: $menuitem-bg-disabled;
 }
 
-.${prefix}-menu-shortcut {
+.mce-menu-shortcut {
 	display: inline-block;
 	color: mix($menuitem-text, $menu-bg, 40%);
 }
 
-.${prefix}-menu-shortcut {
+.mce-menu-shortcut {
 	@include inline-block();
 	padding: 0 15px 0 20px;
 }
 
-.${prefix}-menu-item:hover .${prefix}-menu-shortcut, .${prefix}-menu-item.${prefix}-selected .${prefix}-menu-shortcut, .${prefix}-menu-item:focus .${prefix}-menu-shortcut {
+.mce-menu-item:hover .mce-menu-shortcut, .mce-menu-item.mce-selected .mce-menu-shortcut, .mce-menu-item:focus .mce-menu-shortcut {
 	color: $menuitem-text-inverse;
 }
 
-.${prefix}-menu-item .${prefix}-caret {
+.mce-menu-item .mce-caret {
 	margin-top: 4px;
 	*margin-top: 3px;
 	margin-right: 6px;
@@ -1505,50 +1503,50 @@ i.${prefix}-i-checkbox {
 	border-left: 4px solid $menuitem-caret;
 }
 
-.${prefix}-menu-item.${prefix}-selected .${prefix}-caret, .${prefix}-menu-item:focus .${prefix}-caret, .${prefix}-menu-item:hover .${prefix}-caret {
+.mce-menu-item.mce-selected .mce-caret, .mce-menu-item:focus .mce-caret, .mce-menu-item:hover .mce-caret {
 	border-left-color: $menuitem-caret-selected;
 }
 
-.${prefix}-menu-align .${prefix}-menu-shortcut {
+.mce-menu-align .mce-menu-shortcut {
 	*margin-top: -2px;
 }
 
-.${prefix}-menu-align .${prefix}-menu-shortcut, .${prefix}-menu-align .${prefix}-caret {
+.mce-menu-align .mce-menu-shortcut, .mce-menu-align .mce-caret {
 	position: absolute;
 	right: 0;
 }
 
-.${prefix}-menu-item.${prefix}-active i {
+.mce-menu-item.mce-active i {
 	visibility: visible;
 }
 
-.${prefix}-menu-item-normal.${prefix}-active {
+.mce-menu-item-normal.mce-active {
 	background-color: $menuitem-bg-active;
 }
 
-.${prefix}-menu-item-preview.${prefix}-active {
+.mce-menu-item-preview.mce-active {
 	border-left: 5px solid $menuitem-preview-border-active;
 }
 
-.${prefix}-menu-item-normal.${prefix}-active .${prefix}-text {
+.mce-menu-item-normal.mce-active .mce-text {
 	color: $menuitem-text-active;
 }
 
-.${prefix}-menu-item-normal.${prefix}-active:hover .${prefix}-text, .${prefix}-menu-item-normal.${prefix}-active:hover .${prefix}-ico {
+.mce-menu-item-normal.mce-active:hover .mce-text, .mce-menu-item-normal.mce-active:hover .mce-ico {
 	color: $menuitem-text-inverse;
 }
 
-.${prefix}-menu-item-normal.${prefix}-active:focus .${prefix}-text, .${prefix}-menu-item-normal.${prefix}-active:focus .${prefix}-ico {
+.mce-menu-item-normal.mce-active:focus .mce-text, .mce-menu-item-normal.mce-active:focus .mce-ico {
 	color: $menuitem-text-inverse;
 }
 
-.${prefix}-menu-item:hover, .${prefix}-menu-item.${prefix}-selected, .${prefix}-menu-item:focus {
+.mce-menu-item:hover, .mce-menu-item.mce-selected, .mce-menu-item:focus {
 	text-decoration: none;
 	color: $menuitem-text-inverse;
 	@include vertical-gradient($menuitem-bg-selected, $menuitem-bg-selected-hlight);
 }
 
-div.${prefix}-menu .${prefix}-menu-item-sep, .${prefix}-menu-item-sep:hover {
+div.mce-menu .mce-menu-item-sep, .mce-menu-item-sep:hover {
 	border: 0;
 	padding: 0;
 	height: 1px;
@@ -1562,35 +1560,35 @@ div.${prefix}-menu .${prefix}-menu-item-sep, .${prefix}-menu-item-sep:hover {
 
 // RTL
 
-.${prefix}-menu.${prefix}-rtl {
+.mce-menu.mce-rtl {
 	direction: rtl;
 }
 
-.${prefix}-rtl .${prefix}-menu-item {
+.mce-rtl .mce-menu-item {
 	text-align: right;
 	direction: rtl;
 	padding: 6px 12px 6px 15px;
 }
 
-.${prefix}-menu-align.${prefix}-rtl .${prefix}-menu-shortcut, .${prefix}-menu-align.${prefix}-rtl .${prefix}-caret {
+.mce-menu-align.mce-rtl .mce-menu-shortcut, .mce-menu-align.mce-rtl .mce-caret {
 	right: auto;
 	left: 0;
 }
 
-.${prefix}-rtl .${prefix}-menu-item .${prefix}-caret {
+.mce-rtl .mce-menu-item .mce-caret {
 	margin-left: 6px;
 	margin-right: 0;
 	border-right: 4px solid $menuitem-caret;
 	border-left: 0;
 }
 
-.${prefix}-rtl .${prefix}-menu-item.${prefix}-selected .${prefix}-caret, .${prefix}-rtl .${prefix}-menu-item:focus .${prefix}-caret, .${prefix}-rtl .${prefix}-menu-item:hover .${prefix}-caret {
+.mce-rtl .mce-menu-item.mce-selected .mce-caret, .mce-rtl .mce-menu-item:focus .mce-caret, .mce-rtl .mce-menu-item:hover .mce-caret {
 	border-left-color: transparent;
 	border-right-color: $menuitem-caret-selected;
 }
 // Menu
 
-.${prefix}-menu {
+.mce-menu {
 	position: absolute;
 	left: 0; top: 0;
 	@include reset-gradient();
@@ -1609,21 +1607,21 @@ div.${prefix}-menu .${prefix}-menu-item-sep, .${prefix}-menu-item-sep:hover {
 	overflow-x: hidden;
 }
 
-.${prefix}-menu i {
+.mce-menu i {
 	display: none;
 }
 
-.${prefix}-menu-has-icons i {
+.mce-menu-has-icons i {
 	display: inline-block;
 	*display: inline;
 }
 
-@include ${prefix}-menu-sub-tr-tl { margin: -6px 0 0 -1px; }
-@include ${prefix}-menu-sub-br-bl { margin: 6px 0 0 -1px; }
-@include ${prefix}-menu-sub-tl-tr { margin: -6px 0 0 1px; }
-@include ${prefix}-menu-sub-bl-br { margin: 6px 0 0 1px; }
+@include mce-menu-sub-tr-tl { margin: -6px 0 0 -1px; }
+@include mce-menu-sub-br-bl { margin: 6px 0 0 -1px; }
+@include mce-menu-sub-tl-tr { margin: -6px 0 0 1px; }
+@include mce-menu-sub-bl-br { margin: 6px 0 0 1px; }
 // Radio - not implemented yet
-.${prefix}-container-body .${prefix}-resizehandle {
+.mce-container-body .mce-resizehandle {
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -1634,75 +1632,75 @@ div.${prefix}-menu .${prefix}-menu-item-sep, .${prefix}-menu-item-sep:hover {
 	margin: 0;
 }
 
-.${prefix}-container-body .${prefix}-resizehandle-both {
+.mce-container-body .mce-resizehandle-both {
 	cursor: se-resize;
 }
 
-i.${prefix}-i-resize {
+i.mce-i-resize {
 	color: $text;
 }
 // Spacer
 
-.${prefix}-spacer {
+.mce-spacer {
 	visibility: hidden;
 }
 // SplitButton
 
-.${prefix}-splitbtn .${prefix}-open {
+.mce-splitbtn .mce-open {
 	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
 }
 
-.${prefix}-splitbtn:hover .${prefix}-open {
+.mce-splitbtn:hover .mce-open {
 	border-left-color: $btn-split-border;
 	border-right-color: $btn-split-border;
 }
 
-.${prefix}-splitbtn button {
+.mce-splitbtn button {
 	padding-right: 4px;
 }
 
-.${prefix}-splitbtn .${prefix}-open {
+.mce-splitbtn .mce-open {
 	padding-left: 4px;
 }
 
-.${prefix}-splitbtn .${prefix}-open.${prefix}-active {
+.mce-splitbtn .mce-open.mce-active {
 	@include box-shadow(inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0 ,.05));
 }
 
-.${prefix}-splitbtn.${prefix}-btn-small .${prefix}-open {
+.mce-splitbtn.mce-btn-small .mce-open {
 	padding: 0 3px 0 3px;
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-splitbtn {
+.mce-rtl .mce-splitbtn {
 	direction: rtl;
 	text-align: right;
 }
 
-.${prefix}-rtl .${prefix}-splitbtn button {
+.mce-rtl .mce-splitbtn button {
 	padding-right: 10px;
 	padding-left: 10px;
 }
 
-.${prefix}-rtl .${prefix}-splitbtn .${prefix}-open {
+.mce-rtl .mce-splitbtn .mce-open {
 	padding-left: 4px;
 	padding-right: 4px;
 }
 // StackLayout
 
-.${prefix}-stack-layout-item {
+.mce-stack-layout-item {
 	display: block;
 }
 // TabPanel
 
-.${prefix}-tabs {
+.mce-tabs {
 	display: block;
 	border-bottom: 1px solid $tab-border;
 }
 
-.${prefix}-tab {
+.mce-tab {
 	@include inline-block();
 	border: 1px solid $tab-border;
 	border-width: 0 1px 0 0;
@@ -1713,11 +1711,11 @@ i.${prefix}-i-resize {
 	cursor: pointer;
 }
 
-.${prefix}-tab:hover {
+.mce-tab:hover {
 	background: $tab-bg-hover;
 }
 
-.${prefix}-tab.${prefix}-active {
+.mce-tab.mce-active {
 	background: $tab-bg-active;
 	border-bottom-color: transparent;
 	margin-bottom: -1px;
@@ -1726,17 +1724,17 @@ i.${prefix}-i-resize {
 
 // RTL
 
-.${prefix}-rtl .${prefix}-tabs {
+.mce-rtl .mce-tabs {
 	text-align: right;
 	direction: rtl;
 }
 
-.${prefix}-rtl .${prefix}-tab {
+.mce-rtl .mce-tab {
 	border-width: 0 0 0 1px;
 }
 // TextBox
 
-.${prefix}-textbox {
+.mce-textbox {
 	background: $textbox-bg;
 	border: 1px solid $textbox-border;
 	@include border-radius(3px);
@@ -1751,32 +1749,32 @@ i.${prefix}-i-resize {
 	color: $text;
 }
 
-.${prefix}-textbox:focus, .${prefix}-textbox.${prefix}-focus {
+.mce-textbox:focus, .mce-textbox.mce-focus {
 	border-color: $textbox-border-focus;
 	@include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px fadeout($textbox-border-focus, 15%));
 }
 
-.${prefix}-placeholder .${prefix}-textbox {
+.mce-placeholder .mce-textbox {
 	color: $textbox-text-placeholder;
 }
 
-.${prefix}-textbox.${prefix}-multiline {
+.mce-textbox.mce-multiline {
 	padding: 4px;
 }
 
-.${prefix}-textbox.${prefix}-disabled {
+.mce-textbox.mce-disabled {
 	color: mix($text, $textbox-bg, 40%);
 }
 
 // RTL
 
-.${prefix}-rtl .${prefix}-textbox {
+.mce-rtl .mce-textbox {
 	text-align: right;
 	direction: rtl;
 }
 // Throbber
 
-.${prefix}-throbber {
+.mce-throbber {
 	position: absolute;
 	top: 0; left: 0;
 	width: 100%; height: 100%;
@@ -1784,7 +1782,7 @@ i.${prefix}-i-resize {
 	background: $throbber-bg;
 }
 
-.${prefix}-throbber-inline {
+.mce-throbber-inline {
 	position: static;
 	height: 50px;
 }
@@ -1814,7 +1812,7 @@ i.${prefix}-i-resize {
 
 $iconSize: 16px;
 
-.${prefix}-ico {
+.mce-ico {
 	font-family: 'tinymce';
 	font-style: normal;
 	font-weight: normal;
@@ -1831,73 +1829,73 @@ $iconSize: 16px;
 	-ie7-icon: ' ';
 }
 
-.${prefix}-btn-small .${prefix}-ico {
+.mce-btn-small .mce-ico {
 	font-family: 'tinymce-small';
 }
 
-// .${prefix}-i-checkbox needs to have zoom overridden since it's set by the gradient mixin
-.${prefix}-ico, i.${prefix}-i-checkbox {
+// .mce-i-checkbox needs to have zoom overridden since it's set by the gradient mixin
+.mce-ico, i.mce-i-checkbox {
 	zoom: ~"expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = this.currentStyle['-ie7-icon'].substr(1, 1) + '&nbsp;')";
 }
 
-@include ${prefix}-i-save           { -ie7-icon: "\e000"; }
-@include ${prefix}-i-newdocument    { -ie7-icon: "\e001"; }
-@include ${prefix}-i-fullpage       { -ie7-icon: "\e002"; }
-@include ${prefix}-i-alignleft      { -ie7-icon: "\e003"; }
-@include ${prefix}-i-aligncenter    { -ie7-icon: "\e004"; }
-@include ${prefix}-i-alignright     { -ie7-icon: "\e005"; }
-@include ${prefix}-i-alignjustify   { -ie7-icon: "\e006"; }
-@include ${prefix}-i-cut            { -ie7-icon: "\e007"; }
-@include ${prefix}-i-paste          { -ie7-icon: "\e008"; }
-@include ${prefix}-i-searchreplace  { -ie7-icon: "\e009"; }
-@include ${prefix}-i-bullist        { -ie7-icon: "\e00a"; }
-@include ${prefix}-i-numlist        { -ie7-icon: "\e00b"; }
-@include ${prefix}-i-indent         { -ie7-icon: "\e00c"; }
-@include ${prefix}-i-outdent        { -ie7-icon: "\e00d"; }
-@include ${prefix}-i-blockquote     { -ie7-icon: "\e00e"; }
-@include ${prefix}-i-undo           { -ie7-icon: "\e00f"; }
-@include ${prefix}-i-redo           { -ie7-icon: "\e010"; }
-@include ${prefix}-i-link           { -ie7-icon: "\e011"; }
-@include ${prefix}-i-unlink         { -ie7-icon: "\e012"; }
-@include ${prefix}-i-anchor         { -ie7-icon: "\e013"; }
-@include ${prefix}-i-image          { -ie7-icon: "\e014"; }
-@include ${prefix}-i-media          { -ie7-icon: "\e015"; }
-@include ${prefix}-i-help           { -ie7-icon: "\e016"; }
-@include ${prefix}-i-code           { -ie7-icon: "\e017"; }
-@include ${prefix}-i-insertdatetime { -ie7-icon: "\e018"; }
-@include ${prefix}-i-preview        { -ie7-icon: "\e019"; }
-@include ${prefix}-i-forecolor      { -ie7-icon: "\e01a"; }
-@include ${prefix}-i-backcolor      { -ie7-icon: "\e01a"; }
-@include ${prefix}-i-table          { -ie7-icon: "\e01b"; }
-@include ${prefix}-i-hr             { -ie7-icon: "\e01c"; }
-@include ${prefix}-i-removeformat   { -ie7-icon: "\e01d"; }
-@include ${prefix}-i-subscript      { -ie7-icon: "\e01e"; }
-@include ${prefix}-i-superscript    { -ie7-icon: "\e01f"; }
-@include ${prefix}-i-charmap        { -ie7-icon: "\e020"; }
-@include ${prefix}-i-emoticons      { -ie7-icon: "\e021"; }
-@include ${prefix}-i-print          { -ie7-icon: "\e022"; }
-@include ${prefix}-i-fullscreen     { -ie7-icon: "\e023"; }
-@include ${prefix}-i-spellchecker   { -ie7-icon: "\e024"; }
-@include ${prefix}-i-nonbreaking    { -ie7-icon: "\e025"; }
-@include ${prefix}-i-template       { -ie7-icon: "\e026"; }
-@include ${prefix}-i-pagebreak      { -ie7-icon: "\e027"; }
-@include ${prefix}-i-restoredraft   { -ie7-icon: "\e028"; }
-@include ${prefix}-i-untitled       { -ie7-icon: "\e029"; }
-@include ${prefix}-i-bold           { -ie7-icon: "\e02a"; }
-@include ${prefix}-i-italic         { -ie7-icon: "\e02b"; }
-@include ${prefix}-i-underline      { -ie7-icon: "\e02c"; }
-@include ${prefix}-i-strikethrough  { -ie7-icon: "\e02d"; }
-@include ${prefix}-i-visualchars    { -ie7-icon: "\e02e"; }
-@include ${prefix}-i-ltr            { -ie7-icon: "\e02f"; }
-@include ${prefix}-i-rtl            { -ie7-icon: "\e030"; }
-@include ${prefix}-i-copy           { -ie7-icon: "\e031"; }
-@include ${prefix}-i-resize         { -ie7-icon: "\e032"; }
-@include ${prefix}-i-browse         { -ie7-icon: "\e034"; }
-@include ${prefix}-i-pastetext      { -ie7-icon: "\e035"; }
+@include mce-i-save           { -ie7-icon: "\e000"; }
+@include mce-i-newdocument    { -ie7-icon: "\e001"; }
+@include mce-i-fullpage       { -ie7-icon: "\e002"; }
+@include mce-i-alignleft      { -ie7-icon: "\e003"; }
+@include mce-i-aligncenter    { -ie7-icon: "\e004"; }
+@include mce-i-alignright     { -ie7-icon: "\e005"; }
+@include mce-i-alignjustify   { -ie7-icon: "\e006"; }
+@include mce-i-cut            { -ie7-icon: "\e007"; }
+@include mce-i-paste          { -ie7-icon: "\e008"; }
+@include mce-i-searchreplace  { -ie7-icon: "\e009"; }
+@include mce-i-bullist        { -ie7-icon: "\e00a"; }
+@include mce-i-numlist        { -ie7-icon: "\e00b"; }
+@include mce-i-indent         { -ie7-icon: "\e00c"; }
+@include mce-i-outdent        { -ie7-icon: "\e00d"; }
+@include mce-i-blockquote     { -ie7-icon: "\e00e"; }
+@include mce-i-undo           { -ie7-icon: "\e00f"; }
+@include mce-i-redo           { -ie7-icon: "\e010"; }
+@include mce-i-link           { -ie7-icon: "\e011"; }
+@include mce-i-unlink         { -ie7-icon: "\e012"; }
+@include mce-i-anchor         { -ie7-icon: "\e013"; }
+@include mce-i-image          { -ie7-icon: "\e014"; }
+@include mce-i-media          { -ie7-icon: "\e015"; }
+@include mce-i-help           { -ie7-icon: "\e016"; }
+@include mce-i-code           { -ie7-icon: "\e017"; }
+@include mce-i-insertdatetime { -ie7-icon: "\e018"; }
+@include mce-i-preview        { -ie7-icon: "\e019"; }
+@include mce-i-forecolor      { -ie7-icon: "\e01a"; }
+@include mce-i-backcolor      { -ie7-icon: "\e01a"; }
+@include mce-i-table          { -ie7-icon: "\e01b"; }
+@include mce-i-hr             { -ie7-icon: "\e01c"; }
+@include mce-i-removeformat   { -ie7-icon: "\e01d"; }
+@include mce-i-subscript      { -ie7-icon: "\e01e"; }
+@include mce-i-superscript    { -ie7-icon: "\e01f"; }
+@include mce-i-charmap        { -ie7-icon: "\e020"; }
+@include mce-i-emoticons      { -ie7-icon: "\e021"; }
+@include mce-i-print          { -ie7-icon: "\e022"; }
+@include mce-i-fullscreen     { -ie7-icon: "\e023"; }
+@include mce-i-spellchecker   { -ie7-icon: "\e024"; }
+@include mce-i-nonbreaking    { -ie7-icon: "\e025"; }
+@include mce-i-template       { -ie7-icon: "\e026"; }
+@include mce-i-pagebreak      { -ie7-icon: "\e027"; }
+@include mce-i-restoredraft   { -ie7-icon: "\e028"; }
+@include mce-i-untitled       { -ie7-icon: "\e029"; }
+@include mce-i-bold           { -ie7-icon: "\e02a"; }
+@include mce-i-italic         { -ie7-icon: "\e02b"; }
+@include mce-i-underline      { -ie7-icon: "\e02c"; }
+@include mce-i-strikethrough  { -ie7-icon: "\e02d"; }
+@include mce-i-visualchars    { -ie7-icon: "\e02e"; }
+@include mce-i-ltr            { -ie7-icon: "\e02f"; }
+@include mce-i-rtl            { -ie7-icon: "\e030"; }
+@include mce-i-copy           { -ie7-icon: "\e031"; }
+@include mce-i-resize         { -ie7-icon: "\e032"; }
+@include mce-i-browse         { -ie7-icon: "\e034"; }
+@include mce-i-pastetext      { -ie7-icon: "\e035"; }
 
-.${prefix}-i-checkbox, .${prefix}-i-selected {
+.mce-i-checkbox, .mce-i-selected {
 	-ie7-icon: "\e033";
 }
 
-@include ${prefix}-i-selected              { visibility: hidden; }
-@include ${prefix}-i-backcolor             { background: #BBB; }
+@include mce-i-selected              { visibility: hidden; }
+@include mce-i-backcolor             { background: #BBB; }
