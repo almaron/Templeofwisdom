@@ -16,6 +16,7 @@ class RegistrationsController < ApplicationController
   def activate
     if @user = User.load_from_activation_token(params[:id])
       @user.activate!
+      auto_login(@user)
       redirect_to profile_path
     else
       not_authenticated
