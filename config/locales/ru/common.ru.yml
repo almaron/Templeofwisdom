@@ -7,3 +7,7 @@ ru:
     buttons:
       register: "Зарегистрироваться"
       login: "Войти"
+  mail:
+    user_mailer:
+      activation_needed:
+        subject: "Храм Мудрости - активация аккаунта"
