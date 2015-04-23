@@ -19,22 +19,22 @@
           .act-line
     - if current_user && current_user.is_in?(:admin)
       .act-head Полезные ссылки
-        %table.useful-links-table
-          %tr
-            %td
-              .act-line
-                %a{href: "/admin/chars"} Управление персонажами
-              .act-line
-                %a{href: "/admin/users"} Управление игроками
-              .act-line
-                %a{href:"/admin/forums"} Настройка форумов
-            %td
-              .act-line
-                %a{href: '/admin/pages'} Редактирование страниц
-              .act-line
-                %a{href: '/admin/journals'} Верстка газеты
-              .act-line
-                %a{href: '/admin/skill_requests'} Заявки на навыки/способности
+      %table.useful-links-table
+        %tr
+          %td
+            .act-line
+              %a{href: "/admin/chars"} Управление персонажами
+            .act-line
+              %a{href: "/admin/users"} Управление игроками
+            .act-line
+              %a{href:"/admin/forums"} Настройка форумов
+          %td
+            .act-line
+              %a{href: '/admin/pages'} Редактирование страниц
+            .act-line
+              %a{href: '/admin/journals'} Верстка газеты
+            .act-line
+              %a{href: '/admin/skill_requests'} Заявки на навыки/способности
     .act-head Меню Персонажа
     .act-line
       %a{href: new_char_path} Создать нового персонажа
