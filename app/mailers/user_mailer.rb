@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "noreply@templeofwisdom.ru"
+  default from: "Храм Мудрости <noreply@templeofwisdom.ru>"
 
   def activation_needed_email(user)
     @user = user
