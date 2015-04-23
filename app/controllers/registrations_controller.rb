@@ -14,7 +14,7 @@ class RegistrationsController < ApplicationController
   end
 
   def activate
-    if @user = load_from_activation_token(params[:id])
+    if @user = User.load_from_activation_token(params[:id])
       @user.activate!
       redirect_to profile_path
     else
