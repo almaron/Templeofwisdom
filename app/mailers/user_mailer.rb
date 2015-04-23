@@ -8,7 +8,8 @@ class UserMailer < ActionMailer::Base
   end
 
   def activation_success_email(user)
-
+    @user = user
+    mail(to: @user.email, subject: I18n.t('mail.user_mailer.activation_success.subject'))
   end
 
   def reset_password_email(user)

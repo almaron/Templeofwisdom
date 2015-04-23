@@ -11,3 +11,5 @@ ru:
     user_mailer:
       activation_needed:
         subject: "Храм Мудрости - активация аккаунта"
+      activation_success:
+        subject: "Храм Мудрости - аккаунт активирован"
