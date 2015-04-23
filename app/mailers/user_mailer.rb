@@ -3,6 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def activation_needed_email(user)
     @user = user
+    @url = activate_user_url(id: user.activation_token)
     mail(to: @user.email, subject: I18n.t('mail.user_mailer.activation_needed.subject'))
   end
 
