@@ -1,3 +1,9 @@
+- content_for :path do
+  = link_to "Личный кабинет", profile_path
+  %span.fa.fa-arrow-circle-right
+  %span
+    Список игроков
+
 .admin-wrapper{"ng-controller"=>"UserCtrl", "ng-init"=>""}
   .user-filter
     %input.form-control.inp.inp-type2{"ng-model" => "filter.$", type: "text", id:"user-filter"}
