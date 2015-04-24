@@ -20,5 +20,9 @@
             = link_to content_tag(:span, '', class: 'fa fa-check'), skill_request_path(request), method: :put, remote: true, class: 'request-btn'
             = link_to content_tag(:span, '', class: 'fa fa-times'), skill_request_path(request), method: :delete, remote: true, class: 'request-btn'
 
+- if @requests.empty?
+  .no-requests
+    Пока запросов не поступало
+
 
 
