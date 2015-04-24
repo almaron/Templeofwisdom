@@ -27,7 +27,7 @@ class GuestPost < ActiveRecord::Base
 
   def generate_captcha(length)
     o = [('a'..'z'), ('A'..'Z'),('0'..'9')].map { |i| i.to_a }.flatten
-    string = (0...length).map { o[rand(o.length)] }.join
+    (0...length).map { o[rand(o.length)] }.join
   end
 
 end
