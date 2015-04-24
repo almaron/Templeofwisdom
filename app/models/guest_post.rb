@@ -11,18 +11,18 @@ class GuestPost < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
   def validate_captcha
-    BCrypt::Password.new(@valid_captcha) == @captcha
+    BCrypt::Password.new(valid_captcha) == captcha
   end
 
   def write_captcha
-    @captcha.split(//).join(' ')
+    captcha.split(//).join(' ')
   end
 
   private
 
   def set_captcha
     self.captcha = generate_captcha 6+rand(2)
-    self.valid_captcha = BCrypt::Password.create(@captcha).to_s
+    self.valid_captcha = BCrypt::Password.create(captcha).to_s
   end
 
   def generate_captcha(length)
