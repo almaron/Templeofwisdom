@@ -188,6 +188,7 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_magick (4.2.3)
     mini_portile (0.6.2)
     minitest (5.6.0)
     modernizr-rails (2.7.1)
@@ -253,7 +254,6 @@ GEM
     ref (1.0.5)
     render_anywhere (0.0.11)
       rails (>= 3.0.7)
-    rmagick (2.14.0)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -376,6 +376,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   less-rails
+  mini_magick
   modernizr-rails
   mysql2
   puma
@@ -384,7 +385,6 @@ DEPENDENCIES
   rails (= 4.1.1)
   rb-inotify (~> 0.9)
   render_anywhere
-  rmagick
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

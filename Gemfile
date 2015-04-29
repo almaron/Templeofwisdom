@@ -68,7 +68,7 @@ group :development do
 end
 #gem 'rvm1-capistrano3', group: :development
 
-gem "rmagick"
+gem "mini_magick"
 gem "carrierwave"
 
 gem "puma", group: :development
