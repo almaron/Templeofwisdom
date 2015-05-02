@@ -138,7 +138,7 @@ class Char < ActiveRecord::Base
   end
 
   def profile_info
-    @info ||= profile || NoProfile
+    @info ||= profile || NoProfile.new
   end
 
   protected
