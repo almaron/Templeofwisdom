@@ -34,7 +34,7 @@
 //= require angular-ui-tree
 
 //= require angular_js
-//= require admin_angular
+// require admin_angular
 
 
 //= require jquery.turbolinks
