@@ -8,7 +8,8 @@ class Char < ActiveRecord::Base
   has_one :profile, class_name: CharProfile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
-  after_create :set_profile
+  after_create :create_new_profile
+  after_initialize :set_profile
 
   mount_uploader :avatar, AvatarUploader
 
@@ -147,10 +148,12 @@ class Char < ActiveRecord::Base
 
   private
 
+  def create_new_profile
+   self.create_profile unless profile.present? || group_id > 1
+  end
+
   def set_profile
-    unless profile.present?
-      group_id == 1 ? self.profile = NoProfile.new : self.create_profile
-    end
+    self.profile = NoProfile.new unless profile.present? || self.id.nil?
   end
 
 end
