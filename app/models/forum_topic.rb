@@ -46,7 +46,7 @@ class ForumTopic < ActiveRecord::Base
   end
 
   def other_chars(user)
-    play_chars - user.own_chars
+    play_chars - user.own_chars if user
   end
 
   private
