@@ -9,7 +9,7 @@ else
   json.avatar image_tag(@char.avatar_url(:thumb)) if @char.avatar?
   json.avatar? @char.avatar?
   json.profile do
-    json.(@char.profile, :real_age, :birth_date, :place, :beast, :person, :points, :phisics, :look,:bio, :character, :items, :other, :comment)
+    json.(@char.profile_info, :real_age, :birth_date, :place, :beast, :person, :points, :phisics, :look,:bio, :character, :items, :other, :comment)
   end
   json.group do
     json.id @char.group_id

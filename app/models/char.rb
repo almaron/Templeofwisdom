@@ -9,7 +9,6 @@ class Char < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   after_create :create_new_profile
-  after_initialize :set_profile
 
   mount_uploader :avatar, AvatarUploader
 
@@ -138,6 +137,10 @@ class Char < ActiveRecord::Base
     role_skills.where(skill_id:skill_id).order(:id).limit(number).update_all(done:1)
   end
 
+  def profile_info
+    @info ||= profile || NoProfile
+  end
+
   protected
 
   def delegate_to_creator
@@ -150,10 +153,6 @@ class Char < ActiveRecord::Base
 
   def create_new_profile
    self.create_profile unless profile.present? || group_id > 1
-  end
-
-  def set_profile
-    self.profile = NoProfile.new unless profile.present? || self.id.nil?
   end
 
 end
