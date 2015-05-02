@@ -51,7 +51,6 @@
 
   $scope.editItem = (scope) ->
     $scope.editPage = angular.copy scope.page
-    $scope.editPage.published = "" + $scope.editPage.published
 
   $scope.fullEdit = (page) ->
     window.location.assign('/admin/pages/'+page.id+'/edit')

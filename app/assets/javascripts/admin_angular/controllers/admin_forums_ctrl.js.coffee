@@ -23,9 +23,9 @@
   $scope.openAddForm = (scope) ->
     $scope.newForum = {
       parent_id: scope.forum.id,
-      technical: ""+scope.forum.technical,
-      is_category: "1",
-      hidden: ""+scope.forum.hidden,
+      technical: scope.forum.technical,
+      is_category: 1,
+      hidden: scope.forum.hidden,
     }
     scope.forum.addNew = true
 
@@ -51,9 +51,6 @@
 
   $scope.editItem = (scope) ->
     $scope.editForum = angular.copy scope.forum
-    $scope.editForum.is_category = "" + $scope.editForum.is_category
-    $scope.editForum.technical = "" + $scope.editForum.technical
-    $scope.editForum.hidden = "" + $scope.editForum.hidden
 
   $scope.cancelEdit = () ->
     $scope.editForum = {}
