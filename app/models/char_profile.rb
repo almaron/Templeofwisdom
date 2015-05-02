@@ -31,6 +31,4 @@ class CharProfile < ActiveRecord::Base
     self.points ||= 0
   end
 
-
-
 end
