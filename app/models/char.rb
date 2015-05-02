@@ -148,7 +148,9 @@ class Char < ActiveRecord::Base
   private
 
   def set_profile
-    self.create_profile unless profile.present? && group_id > 1
+    unless profile.present?
+      group_id == 1 ? self.profile = NoProfile.new : self.create_profile
+    end
   end
 
 end

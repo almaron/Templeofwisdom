@@ -5,7 +5,7 @@ json.avatar_img image_tag(char.avatar_url(:thumb)) if char.avatar?
 json.owner do
   json.(char.owner, :id, :name)
 end
-json.points char.profile.points if char.profile
+json.points char.profile.points
 json.createdAt I18n.l(char.created_at)
 
 json.delegations char.delegated_to do |user|
