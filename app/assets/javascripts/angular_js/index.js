@@ -1,8 +1,8 @@
 //= require ./app
-// require ./resources
+//= require ./resources
 
-// require ./services
-// require ./filters
-// require ./directives
+//= require ./services
+//= require ./filters
+//= require ./directives
 
-// require ./controllers
+//= require ./controllers
