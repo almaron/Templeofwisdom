@@ -28,8 +28,7 @@ class CharProfile < ActiveRecord::Base
   private
 
   def init_default
-    self.points = 0 unless self.points > 0
-    self.real_age if self.birth_date
+    self.points ||= 0
   end
 
 

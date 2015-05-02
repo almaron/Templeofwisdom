@@ -8,7 +8,7 @@ class Char < ActiveRecord::Base
   has_one :profile, class_name: CharProfile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
-  after_create { self.create_profile }
+  after_create :set_profile
 
   mount_uploader :avatar, AvatarUploader
 
@@ -143,6 +143,12 @@ class Char < ActiveRecord::Base
     if creator
       creator.default_char ? delegate_to(creator, owner:1) : delegate_to(creator, owner:1, default:1)
     end
+  end
+
+  private
+
+  def set_profile
+    self.create_profile unless profile.present? && group_id > 1
   end
 
 end
