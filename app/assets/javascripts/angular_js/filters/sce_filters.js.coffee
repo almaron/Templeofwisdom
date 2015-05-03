@@ -3,11 +3,6 @@
     $sce.trustAsHtml text
 ]
 
-@app.filter 'parseHtml', ["$sce", ($sce) ->
-  (text) ->
-    $sce.parseAsHtml text
-]
-
 @app.filter 'simpleFormat', ["$filter", ($filter) ->
   "use strict"
   linky = $filter 'linky'

@@ -11,7 +11,7 @@
     %td.f-message-content
       .message-date{} {{post.posted_at}}
       .message-text
-        %div{"ng-bind-html"=>"post.show_text | parseHtml"}
+        %div{"parse-html"=>"post.show_text"}
         .message-comment{"ng-if"=>"post.commented_at", "ng-hide"=>"post.editComment"}
           .date{} {{post.commented_at}}
           .bold

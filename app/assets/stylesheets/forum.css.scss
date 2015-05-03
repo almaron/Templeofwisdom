@@ -284,6 +284,14 @@
           background: $bgimg-beige;
           border: 1px dashed $color-brown1;
         }
+        .more_more_more {
+          .read_more {
+            cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
       }
       .message-buttons {
         margin-top: 20px;

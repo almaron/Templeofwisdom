@@ -4,7 +4,6 @@
     cutText: "@"
   replace: true
   transclude: true
-  template: '<div ng-transclude></div>'
   link: (scope, element, attrs) ->
     scope.cutText = scope.cutText || 'читать дальше'
     scope.show = false
@@ -13,4 +12,4 @@
       return
     return
 
-  # templateUrl: "<%= asset_path "read_more" %>"
+  templateUrl: "<%= asset_path "read_more" %>"
