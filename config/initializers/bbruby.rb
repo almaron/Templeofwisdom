@@ -17,10 +17,17 @@ module BBRuby
                             ],
                             'More' => [
                                 /\[more=(.*?)\](.*?)\[\/more\]/mi,
-                                '<div class="more"><b>\2</b>\3</div>',
-                                'Reply text',
+                                '<span class="read_more">\1</span><div class="more">\2</div>',
+                                'More block',
                                 '[more=cut]Original Text[/more]',
                                 :more
                             ],
+                            'More (With no cut text)' => [
+                                /\[more\](.*?)\[\/more\]/mi,
+                                '<span class="read_more">читать дальше</span><div class="more">\1</div>',
+                                'More block',
+                                '[more]Original Text[/more]',
+                                :more
+                            ]
                         })
 end
