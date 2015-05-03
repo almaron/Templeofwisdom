@@ -3,7 +3,7 @@
   .blog-entry-title
     .blog-entry-date{} {{onePost.dateLine}}
     .blog-entry-title-text{} {{onePost.head}}
-  .blog-text{"ng-bind-html"=>"onePost.content"}
+  .blog-text{"ng-bind-html"=>"onePost.content | trustHtml"}
   %span.blog-author{} {{onePost.author}}
   .block-adm
     %span.delete{title: "Удалить", "ng-show" => "currentUser.group=='admin'", "ng-click" => "deletePost($index)"} [&#21024;&#38500;]
