@@ -280,6 +280,10 @@
         .ooc {
           color: #FFF;
         }
+        fieldset {
+          background: $bgimg-beige;
+          border: 1px dashed $color-brown1;
+        }
       }
       .message-buttons {
         margin-top: 20px;

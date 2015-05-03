@@ -8,12 +8,12 @@
     {name:'Link', key:'L', openWith:'[url=]', closeWith:'[/url]', placeHolder:'Ссылка', faClass:"link"},
     {separator:'---------------' },
     {name:'Bulleted list', openWith:'[list]\n', closeWith:'\n[/list]', faClass:"list-ul"},
-    {name:'Numeric list', openWith:'[list=]\n', closeWith:'\n[/list]', faClass:"list-ol"},
+    {name:'Numeric list', openWith:'[list=1]\n', closeWith:'\n[/list]', faClass:"list-ol"},
     {name:'List item', openWith:'[*] ', span:'[*]', faClass:"list"},
     {separator:'---------------' },
     {name:'Quotes', openWith:'[quote]', closeWith:'[/quote]', faClass:"quote-left"},
     {name:'OOC', openWith:'[ooc]', closeWith:'[/ooc]', faClass:"user", span: 'OOC'},
-    {name:'MORE', openWith:'[more=]', closeWith:'[/more]', faClass:"cut",span:'MORE'}
+    {name:'MORE', openWith:'[more]', closeWith:'[/more]', faClass:"cut",span:'MORE'}
   ]
   factory = {}
   factory.create = (callback) ->
