@@ -1,0 +1,16 @@
+@app.directive 'more', ->
+  restrict: 'E'
+  scope:
+    cutText: "@"
+  replace: true
+  transclude: true
+  template: '<div ng-transclude></div>'
+  link: (scope, element, attrs) ->
+    scope.cutText = scope.cutText || 'читать дальше'
+    scope.show = false
+    scope.toggle = ->
+      scope.show = !scope.show
+      return
+    return
+
+  # templateUrl: "<%= asset_path "read_more" %>"
