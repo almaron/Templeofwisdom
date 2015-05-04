@@ -3,7 +3,7 @@ json.path @topic.forum.path do |forum|
 end
 
 json.topic do
-  json.(@topic, :id, :head, :hidden, :closed, :last_post_id)
+  json.(@topic, :id, :head, :hidden, :closed, :last_post_id, :posts_count)
   json.technical @topic.forum.technical > 0
   json.isHidden @topic.hidden && @topic.hidden > 0
   json.isClosed @topic.closed && @topic.closed > 0

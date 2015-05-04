@@ -20,7 +20,9 @@
   .topic-list-description{"ng-if"=>"topic.description"}
     .bold Описание локации:
     %div{"ng-bind-html"=>"topic.description | simpleFormat"}
-
+  .topic-posts-count
+    %span
+      Сообщений: {{topic.posts_count}}
   .forum-pagination
     %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
   %table.forum-tab.one-message-tab
