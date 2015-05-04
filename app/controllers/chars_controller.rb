@@ -116,7 +116,7 @@ class CharsController < ApplicationController
             :skill_id, :level_id
         ],
         profile_attributes: [
-            :birth_date, :real_age, :season_id, :beast, :place, :phisics, :look, :bio, :items, :character, :other
+            :birth_date, :real_age, :season_id, :beast, :place, :phisics, :look, :bio, :items, :character, :other, :person
         ]
     )
   end

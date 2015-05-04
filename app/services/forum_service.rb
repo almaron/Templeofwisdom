@@ -8,8 +8,10 @@ class ForumService
   # System forum topics and system_posts creation
 
   def create_char_profile_topic(char)
-    topic = ForumTopic.create char_profile_topic_params(char)
-    topic.id if topic
+    if admin_config('char_profile_forum_id_'+char.group_id.to_s)
+      topic = ForumTopic.create char_profile_topic_params(char)
+      topic.id if topic
+    end
   end
 
   def add_approve_post(char)
