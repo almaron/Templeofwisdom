@@ -11,9 +11,9 @@
           #{f.label :remote_avatar_url}:
         %td.anketa-ipt
           .input-line
-            = f.text_field :remote_avatar_url, class:"inp inp-type2", placeholder:"Avatar link"
+            = f.text_field :remote_avatar_url, class:"inp inp-type2", placeholder:"Ссылка на аватар"
           .input-line
-            = f.file_field :avatar, class:"inp inp-type2", placeholder:"Avatar file"
+            = f.file_field :avatar, class:"inp inp-type2", placeholder:"Файл аватара"
           - if @char.avatar?
             .show_avatar
               %span.show-avatar{href:@char.avatar_url, fancybox:''}
