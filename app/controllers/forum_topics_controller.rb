@@ -18,7 +18,7 @@ class ForumTopicsController < ApplicationController
       format.json {}
     end
   end
-  
+
   def show
     respond_to do |format|
       if @topic.is_available?(current_user) && topic_in_place
@@ -34,7 +34,7 @@ class ForumTopicsController < ApplicationController
       else
         format.json { render json: {redirect: forum_path(@topic.forum_id), param_forum_id: params[:forum_id], topic_forum_id: @topic.forum_id}, status: 500}
         format.html {
-          redirect_to forum_path(@topic.forum_id)
+          render template: 'application/error_404', status: 403
         }
       end
     end

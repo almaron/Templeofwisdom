@@ -58,16 +58,22 @@ class Forum < ActiveRecord::Base
   scope :categories, ->{where(is_category: 1)}
   scope :forums, ->{where(is_category: 0)}
 
-  def child_categories
-    self.children.categories
+  def visible_children(user)
+    children.select {|f| f.is_visible?(user)}
   end
 
-  def child_forums
-    self.children.forums
+  def child_categories(user)
+    self.visible_children(user).categories
   end
 
+  def child_forums(user)
+    self.visible_children(user).forums
+  end
 
+  private
 
-
+  def is_visible?(user)
+    !hidden? || (user.present? && (user.is_in?(:admin) || user.has_privilege?))
+  end
 
 end
