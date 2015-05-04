@@ -55,19 +55,19 @@ class Forum < ActiveRecord::Base
     end
   end
 
-  scope :categories, ->{where(is_category: 1)}
-  scope :forums, ->{where(is_category: 0)}
+  # scope :categories, ->{where(is_category: 1)}
+  # scope :forums, ->{where(is_category: 0)}
 
   def visible_children(user)
     children.select {|f| f.is_visible?(user)}
   end
 
   def child_categories(user)
-    self.visible_children(user).categories
+    self.children.select {|f| f.is_visible?(user) && f.is_category?}
   end
 
   def child_forums(user)
-    self.visible_children(user).forums
+    self.children.select {|f| f.is_visible?(user) && !f.is_category?}
   end
 
   def is_visible?(user)
