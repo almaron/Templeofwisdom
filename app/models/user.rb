@@ -84,4 +84,7 @@ class User < ActiveRecord::Base
 
   has_many :skill_requests
 
+  def has_privilige?(privilege = 'view_hidden')
+    false
+  end
 end

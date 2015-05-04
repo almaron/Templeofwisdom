@@ -15,7 +15,7 @@
         %td.f-sections
           .f-topics-section-name
             %a{href: "/temple/{{child.id}}"} {{child.name}}
-          .f-topics-subsections{"ng-if"=>"child.children"}
+          .f-topics-subsections{"ng-if"=>"count(child.children) > 0"}
             %span.bold Подфорумы:
             %a{"ng-repeat"=>"ch in child.children", href: "/temple/{{ch.id}}"}
               {{ch.name}},&nbsp

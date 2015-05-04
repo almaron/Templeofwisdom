@@ -6,7 +6,7 @@ class ForumsController < ApplicationController
     respond_to do |format|
       format.html { }
       format.json {
-        @forums = Forum.roots
+        @forums = Forum.roots.select{|f| f.is_visible?(current_user)}
       }
     end
   end
@@ -15,7 +15,7 @@ class ForumsController < ApplicationController
     @forum = Forum.find(params[:id])
     respond_to do |format|
       format.html {
-        #TODO add proper redirection for hidden forums
+        render template: 'application/error_404', status: :not_found unless @forum.is_visible?(current_user)
       }
       format.json {
 
