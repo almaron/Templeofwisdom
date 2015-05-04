@@ -8,12 +8,14 @@
   .act-line
     %span.bold Email:
     = @user.email
-  .act-line
-    %span.bold ICQ:
-    = @user.profile.icq
-  .act-line
-    %span.bold Skype
-    = @user.profile.skype
+  - if @user.profile.icq.present?
+    .act-line
+      %span.bold ICQ:
+      = @user.profile.icq
+  - if @user.profile.skype.present?
+    .act-line
+      %span.bold Skype
+      = @user.profile.skype
   .act-line{"ng-if"=>"user.profile_attributes.contacts"}
     .bold Другие контакты:
     %div
