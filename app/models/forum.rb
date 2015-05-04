@@ -70,8 +70,6 @@ class Forum < ActiveRecord::Base
     self.visible_children(user).forums
   end
 
-  private
-
   def is_visible?(user)
     !hidden? || (user.present? && (user.is_in?(:admin) || user.has_privilege?))
   end
