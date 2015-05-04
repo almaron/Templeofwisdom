@@ -18,6 +18,12 @@
         %select.inp.inp-type2.inp-short{'ng-model'=>'editedChar.group_id', 'ng-options'=>'group.id as group.name for group in acessibleGroups', id:'char_group'}
     %tr.form-line
       %td.label
+        %label{for:'char_status'}
+          Статус:
+      %td.input
+        %input.inp.inp-type2{type: 'text', 'ng-model'=>'editedChar.status_line', id:'char_status'}
+    %tr.form-line
+      %td.label
         %label{for:'profile_birth_date'}
           Дата рождения:
       %td.input
@@ -71,7 +77,7 @@
             %span.skills-added-level{} {{ch.level_name}}
             %span.skills-added-remove.fa.fa-times{title:'Удалить способность', 'ng-click'=>'removeSkill(editedChar.phisic_skills, ch)'}
         .skills-add-form
-          %select.inp.inp-type2.skills-addform-name{title: "Выберите способность", "ng-model"=>"newCharSkill.skill_id", "ng-options"=>"skill.id as skill.name for skill in magicSkills"}
+          %select.inp.inp-type2.skills-addform-name{title: "Выберите способность", "ng-model"=>"newCharSkill.skill_id", "ng-options"=>"skill.id as skill.name for skill in phisicSkills"}
           %select.inp.inp-type2.skills-addform-level{title: "Выберите уровень владения способностью", "ng-model"=>"newCharSkill.level_id", "ng-options"=>"level.id as level.name for level in levels"}
           %input.btn.btn-add{title: "Добавить выбранную способность в свою анкету", type: "button", value: "➔", "ng-click"=>"addPhisicSkill(newCharSkill)"}
     %tr.form-line

@@ -8,6 +8,13 @@
           = f.text_field :name, class: "inp inp-type2"
       %tr
         %td.anketa-tt
+        %td.anketa-ipt
+          = f.check_box :open_player
+          %label{for: 'char_open_player'}
+            %span
+            = t('activerecord.attributes.char.open_player')
+      %tr
+        %td.anketa-tt
           #{f.label :remote_avatar_url}:
         %td.anketa-ipt
           .input-line
@@ -126,6 +133,11 @@
             #{p.label :other}:
           %td.anketa-ipt
             = p.text_area :other, class: "inp-type2"
+        %tr
+          %td.anketa-tt
+            #{p.label :person}:
+          %td.anketa-ipt
+            = p.text_field :person, class: "inp inp-type2"
     %table
       %tr
         %td.anketa-tt
@@ -133,7 +145,7 @@
           %input{type:"checkbox", id:"status_id", name:"char[status_id]", value:1, "ng-checked"=>"char.status_id==1"}
           %label{for:"status_id"}
             %span
-          Сохранить персонажа, не отправлять на одобрение
+            Сохранить персонажа, не отправлять на одобрение
       %tr
         %td.anketa-tt
           = link_to "Удалить", char_path(@char), method: :delete, class:"" if @char.id
