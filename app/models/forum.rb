@@ -55,9 +55,6 @@ class Forum < ActiveRecord::Base
     end
   end
 
-  # scope :categories, ->{where(is_category: 1)}
-  # scope :forums, ->{where(is_category: 0)}
-
   def visible_children(user)
     children.select {|f| f.is_visible?(user)}
   end
