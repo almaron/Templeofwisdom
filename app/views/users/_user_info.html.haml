@@ -54,3 +54,10 @@
             %ul
               %li{"ng-repeat"=>"char in selectedUser.chars"}
                 %a{href:"/chars/{{char.id}}", target:"_blank"}{{char.name}}
+        .form-line
+          %span.form-head
+            Делегированы:
+          .form-input
+            %ul
+              %li{"ng-repeat"=>"char in selectedUser.delegated_chars"}
+                %a{href:"/chars/{{char.id}}", target:"_blank"}{{char.name}}
