@@ -111,7 +111,7 @@ class CharsController < ApplicationController
 
   def char_params
     params.require(:char).permit(
-        :name, :remote_avatar_url, :avatar, :group_id,
+        :name, :remote_avatar_url, :avatar, :group_id, :open_payer,
         char_skills_attributes:[
             :skill_id, :level_id
         ],
