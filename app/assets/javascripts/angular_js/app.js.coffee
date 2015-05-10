@@ -5,11 +5,6 @@ bootstrapAngular = ->
 
 $(document).on 'ready page:load', bootstrapAngular
 
-#@app.config(['$locationProvider', ($locationProvider) ->
-#  $locationProvider.disable()
-#])
-
-
 # @app.run (editableOptions, editableThemes) ->
 #   editableThemes.temple =
 #     formTpl: "<form class=\"form-inline editable-wrap\" role=\"form\"></form>"

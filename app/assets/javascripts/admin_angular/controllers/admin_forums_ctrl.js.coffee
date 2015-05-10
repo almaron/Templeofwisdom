@@ -1,4 +1,4 @@
-@app.controller "AdminForumsCtrl", ["$scope", "$filter", "$http", "AdminForum", ($scope, $filter, $http, Forum) ->
+@app.controller 'AdminForumsCtrl', ['$scope', "$filter", '$http', '$timeout', 'AdminForum', ($scope, $filter, $http, $timeout, Forum) ->
 
   $scope.removedItems = []
   $scope.newForum = {}
@@ -9,7 +9,7 @@
   $scope.forumsTreeOptions = {
     accept: (sourceNodeScope, destNodesScope, destIndex) ->
       ttt = typeof destNodesScope.forum
-      return (ttt == "undefined") || destNodesScope.forum.isCategory
+      return (ttt == 'undefined') || destNodesScope.forum.isCategory
     dropped: (event) ->
       event.source.nodeScope.$modelValue.sort_order = event.dest.index
     dragStart: (event) ->
@@ -46,8 +46,11 @@
 
   $scope.levelTree = () ->
     $scope.level_success = false
-    $http.put("/admin/forums.json", {tree:$filter('level_tree')($scope.forums)}).success (data) ->
+    $http.put('/admin/forums.json', {tree:$filter('level_tree')($scope.forums)}).success (data) ->
       $scope.level_success = data.success
+      $timeout (->
+        $scope.level_success = ''
+      ), 3000
 
   $scope.editItem = (scope) ->
     $scope.editForum = angular.copy scope.forum
