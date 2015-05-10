@@ -8,7 +8,8 @@ class ForumTopic < ActiveRecord::Base
 
   belongs_to :forum
 
-  scope :shown, ->{where(hidden:0)}
+  scope :shown, ->{ where(hidden:0) }
+  default_scope ->{ order last_post_at: :desc }
 
   def add_post(post)
     update_last_post post
