@@ -21,8 +21,15 @@ class AdminPagesController < ApplicationController
   end
 
   def update
-    @page.update page_params
-    render json: @page
+    respond_to do |format|
+      if @page.update page_params
+        format.json { render json: @page }
+        format.js   { @message = :success}
+      else
+        format.json { render json: @page }
+        format.js   { @message = :error  }
+      end
+    end
   end
 
   def save_tree

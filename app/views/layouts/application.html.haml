@@ -17,8 +17,9 @@
         .content
           = render "debug_params"
           - unless @only_content
-            .path
-              = yield :path if content_for? :path 
+            - if content_for? :path
+              .path
+                = yield :path
             %h1
               = content_for?(:pagetitle) ? yield(:pagetitle) : t("#{params[:controller]}.#{params[:action]}.pagetitle")
           = yield

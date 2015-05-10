@@ -1,3 +1,11 @@
+- content_for :path do
+  = link_to "Личный кабинет", profile_path
+  %span.fa.fa-arrow-circle-right
+  = link_to "Редактирование страниц", pages_path
+  %span.fa.fa-arrow-circle-right
+  %span
+    = @page.head
+
 = tinymce_assets
 .forum-admin.admin-wrapper
   .edit-item
@@ -28,5 +36,7 @@
           = f.submit raw("Сохранить"), class:"btn btn-standart"
           %button.btn.btn-standart{onclick:'window.location.assign("/admin/pages")'}
             Назад
+          %span#edit-result
+
 
 = tinymce

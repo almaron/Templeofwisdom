@@ -1,47 +1,50 @@
 ru:
   messages:
-
-      notice:
-        registrations:
-          destroy:
-            success: "Ваша учетная запись успешно удалена"
-        sessions:
-          destroy:
-            success: "Вы успешно вышли из системы"
-          create:
-            success: "Вы успешно вошли в систему"
-        users:
-          destroy:
-            success: "Игрок успешно удален"
-          update:
-            success: "Данные игрока успешно изменены"
-        chars:
-          update:
-            success: "Персонаж успешно сохранен."
-        skill_requests:
-          create:
-            success: "Заявка успешно отправлена"
-      alert:
-        sessions:
-          create:
-            failure: "Неправильное имя пользователя или пароль."
-        chars:
-          edit:
-            not_editable: "Персонажа нельзя редактировать"
-        skill_requests:
-          create:
-            failure: "Не хватает очков или ролевок"
-      errors:
-        forum:
-          topic_create: "Заголовок темы или текст поста пуст!"
-
-      char:
-        approve: "Анкета принимается. Добро пожаловать в Линь Ян Шо. Приятной игры."
-
+    notice:
+      registrations:
+        destroy:
+          success: "Ваша учетная запись успешно удалена"
+      sessions:
+        destroy:
+          success: "Вы успешно вышли из системы"
+        create:
+          success: "Вы успешно вошли в систему"
+      users:
+        destroy:
+          success: "Игрок успешно удален"
+        update:
+          success: "Данные игрока успешно изменены"
+      chars:
+        update:
+          success: "Персонаж успешно сохранен."
+      skill_requests:
+        create:
+          success: "Заявка успешно отправлена"
+    alert:
+      sessions:
+        create:
+          failure: "Неправильное имя пользователя или пароль."
+      chars:
+        edit:
+          not_editable: "Персонажа нельзя редактировать"
+      skill_requests:
+        create:
+          failure: "Не хватает очков или ролевок"
+    errors:
       forum:
-        commenter: "Мастер"
-        accept_skill_request: "Проставлено"
-        decline_skill_request: "Отклонено"
+        topic_create: "Заголовок темы или текст поста пуст!"
+
+    char:
+      approve: "Анкета принимается. Добро пожаловать в Линь Ян Шо. Приятной игры."
+
+    forum:
+      commenter: "Мастер"
+      accept_skill_request: "Проставлено"
+      decline_skill_request: "Отклонено"
+
+    save:
+      success: "Сохранено"
+      error: "Ошибка при сохранении"
 
   notifications:
     system:
