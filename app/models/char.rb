@@ -152,7 +152,7 @@ class Char < ActiveRecord::Base
   private
 
   def create_new_profile
-   self.create_profile unless profile.present? || group_id > 1
+   self.create_profile unless profile.present? || group_id == 1
   end
 
 end
