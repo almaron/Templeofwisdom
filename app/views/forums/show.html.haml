@@ -28,7 +28,8 @@
           %td.topic-list-description{colspan: "{{moderateOn ? 7 : 6}}"}
             .bold Описание локации:
             .forum-description
-              .image{'ng-bind-html'=>'forum.image_tag', 'ng-if'=>'forum.image_tag'}
+              .image{'ng-if'=>'forum.image'}
+                %img{'ng-src'=>'forum.image'}
               .text{"ng-bind-html"=>"forum.description | simpleFormat"}
         %tr
           %th.f-sections{colspan: "2"} Темы
