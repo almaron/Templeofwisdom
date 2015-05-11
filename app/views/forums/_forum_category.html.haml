@@ -16,7 +16,9 @@
           %a{href: "/temple/{{child.id}}"} {{child.name}}
         .f-topics-subsections{"ng-if"=>"child.children"}
           %span.bold Подфорумы:
-          %a{"ng-repeat"=>"ch in child.children", href: "/temple/{{ch.id}}"} {{ch.name}} ,
+          %span{"ng-repeat"=>"ch in child.children"}
+            %a{href: "/temple/{{ch.id}}"}{{ch.name}}
+            %span.separator{'ng-if'=>'ch != child.children[child.children.length-1]'}|
       %td.f-topics{} {{child.topics_count}}
       %td.f-messages{} {{child.posts_count}}
       %td.f-lastmessage
