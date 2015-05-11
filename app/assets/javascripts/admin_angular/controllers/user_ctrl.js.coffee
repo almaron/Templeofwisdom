@@ -37,9 +37,10 @@
       Service.reload($scope.tableParams)
 
   $scope.removeUser = (user) ->
-    User.delete {id:user.id}, ->
-      Service.reload($scope.tableParams)
-    $scope.destroyedUsers.push user
+    if confirm('Точно удалить?')
+      User.delete {id:user.id}, ->
+        Service.reload($scope.tableParams)
+      $scope.destroyedUsers.push user
 
 
 
