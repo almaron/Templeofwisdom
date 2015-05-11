@@ -17,7 +17,7 @@
 
 .forum-tab {
   width:100%;
-  border-collapse: collapse;
+//  border-collapse: collapse;
   @include box-shadow(0px 0px 5px 1px rgba(117,124,82,0.8));
   border:1px solid $color-green2;
   &:after {
@@ -223,6 +223,14 @@
   padding: 6px;
   border: 1px solid $color-brown1;
   font-size: 1.1em;
+  .forum-description {
+    .image {
+      img {
+        float: left;
+        padding: 5px 5px 5px 0;
+      }
+    }
+  }
 }
 
 .one-message-tab {
