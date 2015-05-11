@@ -10,7 +10,7 @@ gem 'sorcery'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails'
-gem 'less-rails'
+gem 'slim-rails'
 gem "compass-rails"
 
 gem 'hashie'

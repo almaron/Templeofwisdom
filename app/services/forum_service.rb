@@ -19,20 +19,20 @@ class ForumService
   end
 
   def add_role_check_post(role)
-    ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: admin_config('role_master_id'), user_id: @user.id, ip: @user.current_ip, text: render(partial:'forums/system_posts/role_check_post', locals:{role:role}) if admin_config('roles_apps_topic_id')
+    ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: admin_config('role_master_id'), user_id: @user.id, ip: @user.current_ip, text: render(partial:'shared/system_posts/role_check_post', locals:{role:role}) if admin_config('roles_apps_topic_id')
   end
 
   def create_role_app_post(role_app)
-    post = ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: role_app.char_id, user_id: @user.id, ip: @user.current_ip, text: render(partial:'forums/system_posts/role_app', locals:{role_app:role_app}) if admin_config('roles_apps_topic_id')
+    post = ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: role_app.char_id, user_id: @user.id, ip: @user.current_ip, text: render(partial:'shared/system_posts/role_app', locals:{role_app:role_app}) if admin_config('roles_apps_topic_id')
     post.try(:id)
   end
 
   def update_role_app_post(role_app)
-    ForumPost.find(role_app.post_id).update(text: render(partial:'forums/system_posts/role_app', locals:{role_app:role_app})) if role_app.post_id
+    ForumPost.find(role_app.post_id).update(text: render(partial:'shared/system_posts/role_app', locals:{role_app:role_app})) if role_app.post_id
   end
 
   def create_skill_request_post(request)
-    post = ForumPost.create topic_id: admin_config('skill_requests_topic_id'), char_id: request.char_id, user_id: @user.id, ip: @user.current_ip, text: render(partial: 'forums/system_posts/skill_request_post', locals: {request: request})
+    post = ForumPost.create topic_id: admin_config('skill_requests_topic_id'), char_id: request.char_id, user_id: @user.id, ip: @user.current_ip, text: render(partial: 'shared/system_posts/skill_request_post', locals: {request: request})
     post.id if post
   end
 
@@ -49,7 +49,7 @@ class ForumService
                 char_id: get_accept_master.id,
                 user_id: @user.id,
                 ip: @user.current_ip,
-                text: render(partial: 'forums/system_posts/profile_post', locals:{char:char})
+                text: render(partial: 'shared/system_posts/profile_post', locals:{char:char})
             }
         ]
     }
