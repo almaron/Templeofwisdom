@@ -4,6 +4,8 @@ class Forum < ActiveRecord::Base
 
   has_many :topics, class_name: ForumTopic
 
+  mount_uploader :image, ForumUploader
+
   default_scope {order(:sort_order)}
 
   def add_post(post)
