@@ -3,5 +3,5 @@ json.last_post_at I18n.l(forum.last_post_at, format: :full) if forum.last_post_a
 json.isCategory forum.is_category?
 unless forum.is_category?
   json.(forum, :description, :hidden, :technical)
-  json.image image_tag(forum.image_url) if forum.image?
+  json.image forum.image_url if forum.image?
 end

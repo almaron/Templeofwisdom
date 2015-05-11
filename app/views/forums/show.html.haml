@@ -29,7 +29,7 @@
             .bold Описание локации:
             .forum-description
               .image{'ng-if'=>'forum.image'}
-                %img{'ng-src'=>'forum.image'}
+                %img{'ng-src'=>'{{forum.image}}'}
               .text{"ng-bind-html"=>"forum.description | simpleFormat"}
         %tr
           %th.f-sections{colspan: "2"} Темы
