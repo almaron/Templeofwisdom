@@ -106,6 +106,7 @@ Rails.application.routes.draw do
   end
 
   get '/proverb' => 'proverb#show'
+  get '/weather' => 'weather#show'
 
   root 'pages#show', root: true
 

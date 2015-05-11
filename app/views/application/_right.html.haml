@@ -22,10 +22,7 @@
         %a{href: "/journals"} Газета
       %li
         %a{href: "/pages/contacts"} Контакты
-  .block.weather.winter
-    %h3 Погода
-    .season Зима
-    Осадков все также не наблюдается. Продолжаем работать ручками. Всего +7.
+  = ssi '/weather'
   .block.phrase
     = ssi '/proverb'
   .block.newsshort
