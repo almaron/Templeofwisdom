@@ -13,7 +13,7 @@ class ProverbController < ApplicationController
   end
 
   def proverb_array
-    File.readlines(Rails.root.join('public','pros.txt')).map {|line| line.gsub("\r\n","")}
+    File.readlines(Rails.root.join('public','pros.txt')).map {|line| line.gsub("\r\n",".")}
   end
 
 end
