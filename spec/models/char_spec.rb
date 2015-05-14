@@ -14,17 +14,19 @@ RSpec.describe Char, :type => :model do
 
 
   context 'delegate_to and undelegate' do
+    let(:char) { create :char}
+    let(:user) { create :user }
+
     it 'delegates and undelegates' do
-      user = create :user
-      char = build_stubbed :char
-      expect{ char.delegate_to user}.to change{char.users.size}.by(1)
-      expect{ char.undelegate user}.to change{char.users.size}.by(-1)
+      char.delegate_to user
+      expect(char.users.size).to eql 1
+      char.undelegate user
+      expect(char.users.size).to eql 0
     end
 
     it 'makes the user an owner' do
-      user = create :user
-      char = create :char
-      expect{ char.delegate_to user, owner:1}.to change{char.char_delegations.where(owner:1).size}.by(1)
+      char.delegate_to user, owner:1
+      expect(char.char_delegations.where(owner:1).size).to eql 1
     end
   end
 
