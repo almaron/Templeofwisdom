@@ -21,7 +21,7 @@
       %h4 Список выпусков
       %ol
         %li{'ng-repeat'=>'journal in journals'}
-          %span.head{'ng-click'=>'editJournal(journal, $index)'}
+          %span.head{'ng-click'=>'editJournal(journal)'}
             {{journal.head}}
           %span.description
             {{journal.description}}
