@@ -6,7 +6,7 @@ json.commented_at I18n.l(post.commented_at, format: :full) if post.commented_at
 json.char do
   json.(post.char, :id, :name)
   json.status post.char.status_line || I18n.t("char_groups.names.#{post.char.group.name}")
-  json.avatar_img image_tag(post.char.avatar_url(:thumb)) if post.char.avatar?
+  json.avatar post.avatar.image_url(:thumb) if post.avatar && post.avatar.image?
 end
 
 json.editable post_editable post

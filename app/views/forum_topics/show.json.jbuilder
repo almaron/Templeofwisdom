@@ -17,4 +17,5 @@ end
 
 json.chars @chars do |char|
   json.(char, :id, :name)
+  json.avatars char.avatars, partial: 'char_avatars/char_avatar', as: :avatar
 end

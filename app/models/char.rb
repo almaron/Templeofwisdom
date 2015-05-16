@@ -10,15 +10,31 @@ class Char < ActiveRecord::Base
 
   after_create :create_new_profile
 
-  mount_uploader :avatar, AvatarUploader
-
   scope :active, ->{where(status_id:5)}
+
+  has_many :avatars, class_name: CharAvatar, dependent: :destroy
+
+  def default_avatar
+    avatars.find_by(default: true)
+  end
+
+  def default_avatar=(avatar)
+    avatar_id = avatar.is_a? CharAvatar ? avatar.id : avatar.try(:to_i)
+    if avatar_id && (set_avatar = avatars.find(avatar_id))
+      avatars.update_all(default:false)
+      set_avatar.update(default:true)
+    end
+  end
+
+  def set_default_avatar_last
+    default_avatar = avatars.last if avatars.any?
+  end
 
   has_many :char_delegations
   has_many :users, :through => :char_delegations
 
   def delegate_to(user, options={})
-    user_id = user.is_a?(User) ? user.id : user
+    user_id = user.is_a?(User) ? user.id : userd
     @cd = self.char_delegations.find_or_initialize_by(:user_id => user_id)
     options.each_pair { |option, value| @cd.send(:"#{option}=", value) }
     @cd.save
