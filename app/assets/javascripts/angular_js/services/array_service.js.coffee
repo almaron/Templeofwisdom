@@ -1,10 +1,13 @@
 @app.factory "ArrayService", ->
-  findInArrayBy: (array, key, value) ->
-    flag = false
+
+  findBy: (array, key, value) ->
+    found = []
     angular.forEach array, (item, index) ->
-      flag = item if item[key] is value
-      return
-    flag
+      found.push item if item[key] is value
+    return false if found.length == 0
+    return found[0] if found.length == 1
+    found
+
 
   findIndex: (array, key, value) ->
     flag = false

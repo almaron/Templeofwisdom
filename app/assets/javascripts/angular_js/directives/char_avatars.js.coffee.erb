@@ -1,5 +1,55 @@
-@app.directive 'charAvatars', ->
-    restrict: 'E'
-    scope:
-      ngModel: '='
-      editable: '='
+@app.directive 'charAvatars', [ 'ArrayService', '$http', (Service, $http) ->
+  restrict: 'E'
+  scope:
+    ngModel: '='
+    editable: '='
+    collection: '='
+    charId: '='
+  replace: true
+  templateUrl: '<%= asset_path 'char_avatars' %>'
+  link: (scope, element, attrs) ->
+    scope.currentIndex = -1;
+    scope.newAvatar = {default: false, char_id: scope.charId}
+
+    scope.digestCollection = (collection) ->
+      scope.total = collection.length;
+      if scope.ngModel
+        scope.currentIndex = collection.indexOf Service.findBy(collection, 'id', scope.ngModel)
+
+
+      if !scope.ngModel || scope.currentIndex < 0
+        index = collection.indexOf Service.findBy(collection, 'default', true)
+        scope.setCurrentIndex(index);
+
+    scope.$watchCollection 'collection', scope.digestCollection
+
+    scope.setCurrentIndex = (index) ->
+      scope.currentIndex = index;
+      scope.ngModel = scope.collection[index].id;
+
+    scope.increase = ->
+      scope.setCurrentIndex(scope.currentIndex + 1) if (scope.currentIndex < scope.total - 1)
+
+
+    scope.decrease = ->
+      scope.setCurrentIndex(scope.currentIndex - 1) if (scope.currentIndex > 0)
+
+    scope.removeAvatar = ->
+      $http.delete(
+        '/char_avatars/'+scope.ngModel
+      ).success (data) ->
+        scope.collection.splice(scope.currentIntex, 1)
+
+    scope.addAvatar = ->
+      $http.post(
+        '/char_avatars', {char_avatar: scope.newAvatar}
+      ).success (data) ->
+        scope.collection.push data
+
+    scope.makeDefault = ->
+      $http.put(
+        '/char_avatars/'+scope.ngModel
+      ).success (data) ->
+        scope.collection = data
+
+]

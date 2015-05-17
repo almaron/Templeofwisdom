@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :char_avatars, only:[:create, :update, :destroy]
+
   # Forum routes
   resources :forums, path: 'temple', only:[:index, :show] do
     resources :topics, path: 't', controller: 'forum_topics' do
