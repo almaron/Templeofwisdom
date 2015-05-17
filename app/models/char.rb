@@ -19,15 +19,15 @@ class Char < ActiveRecord::Base
   end
 
   def default_avatar=(avatar)
-    avatar_id = avatar.is_a?(CharAvatar) ? avatar.id : avatar.try(:to_i)
-    if avatar_id && (set_avatar = avatars.find(avatar_id))
-      avatars.update_all(default:false)
-      set_avatar.update(default:true)
+    avatar = CharAvatar.find(avatar.to_i) unless avatar.is_a?(CharAvatar)
+    if avatar
+      self.avatars.update_all(default:false)
+      avatar.update(default:true)
     end
   end
 
   def set_default_avatar_last
-    default_avatar = avatars.last if avatars.any?
+    self.default_avatar = avatars.last if avatars.any?
   end
 
   has_many :char_delegations

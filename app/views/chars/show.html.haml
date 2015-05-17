@@ -3,7 +3,7 @@
     %tr
       %td.profile-col
         .profile-photo
-          %char-avatars{'ng-model'=>'char.currentAvatar', collection:'char.avatars', editable: 'true', 'char-id'=>'char.id'}
+          %char-avatars{'ng-model'=>'char.currentAvatar', collection:'char.avatars', editable: 'char.userEditable || char.adminEditable', 'char-id'=>'char.id'}
         .profile-name{} {{char.name}}
         .profile-status{} {{char.status_line || char.group.name}}
         .profile-element

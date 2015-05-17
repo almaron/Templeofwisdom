@@ -1,6 +1,8 @@
 [b]Имя: [/b] <%= char.name %>
 
-[b]Аватар: [/b] [url=<%= char.avatar_url %>]<%= char.avatar_url %>[/url]
+<% if char.avatars.any? %>
+[b]Аватар: [/b] [url=<%= char.avatar.image_url %>]<%= char.avatar.image_url %>[/url]
+<% end %>
 [b]Группа: [/b] <%= t "char_groups.names.#{char.group.name}" %>
 
 [b]Дата рождения: [/b] <%= char.profile.birth_date%>

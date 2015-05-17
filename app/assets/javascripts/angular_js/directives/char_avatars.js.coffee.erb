@@ -11,7 +11,7 @@
     scope.currentIndex = -1;
 
     scope.digestCollection = (collection) ->
-      if angular.isDefined collection
+      if angular.isDefined collection && collection.length > 0
         scope.total = collection.length;
         if scope.ngModel
           scope.currentIndex = collection.indexOf Service.findBy(collection, 'id', scope.ngModel)
@@ -24,7 +24,7 @@
 
     scope.setCurrentIndex = (index) ->
       scope.currentIndex = index;
-      scope.ngModel = scope.collection[index].id;
+      scope.ngModel = scope.collection[index].id if scope.collection[index]
 
     scope.increase = ->
       scope.setCurrentIndex(scope.currentIndex + 1) if (scope.currentIndex < scope.total - 1)
@@ -34,16 +34,19 @@
       scope.setCurrentIndex(scope.currentIndex - 1) if (scope.currentIndex > 0)
 
     scope.removeAvatar = ->
-      $http.delete(
-        '/char_avatars/'+scope.ngModel
-      ).success (data) ->
-        scope.collection.splice(scope.currentIntex, 1)
+      if confirm('Действительно удалить?')
+        $http.delete(
+          '/char_avatars/'+scope.ngModel
+        ).success (data) ->
+          scope.collection.splice(scope.currentIndex, 1)
+          scope.setCurrentIndex(scope.collection.length - 1)
 
     scope.addAvatar = ->
       $http.post(
         '/char_avatars', {char_avatar: scope.newAvatar}
       ).success (data) ->
         scope.collection.push data
+        scope.setCurrentIndex(scope.collection.length - 1)
         scope.newAvatar = {default: false, char_id: scope.charId}
 
     scope.makeDefault = ->

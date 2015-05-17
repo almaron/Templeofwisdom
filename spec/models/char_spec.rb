@@ -30,6 +30,21 @@ RSpec.describe Char, :type => :model do
     end
   end
 
+  context 'avatars' do
+    let(:char) { create :char }
+    let(:avatar) { create :char_avatar, char_id: char.id}
+
+    it 'should set default avatar' do
+      expect(CharAvatar.find(avatar.id).default).to eql true
+      expect(char.default_avatar).to eql avatar
+    end
+
+    it 'should set the last avatar as default' do
+      new_avatar = create :default_avatar, char_id: char.id
+      expect(char.default_avatar).to eql new_avatar
+    end
+  end
+
   context 'admin methods' do
 
     before :each do

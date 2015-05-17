@@ -7,7 +7,7 @@ class CharAvatarsController < ApplicationController
   end
 
   def update
-    @avatar.set_default
+    @avatar.set_default_avatar
     @avatars = CharAvatar.where(char_id: @avatar.char_id)
   end
 

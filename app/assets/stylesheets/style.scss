@@ -3102,6 +3102,42 @@ td.none,td.none:hover, tr:hover td.none {
   }
 }
 
+/* Char avatars */
+.avatar-wrap {
+  .avatar-img {
+    height: 310px;
+  }
+  .avatar-controls {
+    margin: 3px 0;
+    font-size: 1.3em;
+    height:20px;
+    text-align: center;
+    section {
+      display: inline-block;
+      span {
+        margin: 0 3px;
+      }
+    }
+    span {
+      height: 20px;
+      display: inline-block;
+      cursor: pointer;
+      &.right {
+        float: right;
+      }
+      &.left {
+        float: left;
+      }
+      &[disabled='disabled'] {
+        color: $color-grey;
+      }
+    }
+  }
+  .avatar-form {
+    padding: 0px;
+  }
+}
+
 /*
 
 */

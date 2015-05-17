@@ -1,18 +1,18 @@
 .avatar-wrap
-  img ng-src='{{collection[currentIndex].image}}'
+  .avatar-img ng-show='collection.length > 0'
+    img ng-src='{{collection[currentIndex].image}}' alt='Avatar №{{currentIndex}}'
   .avatar-controls
-    span.left.fa.fa-arrow-circle-o-left  ng-click='decrease()'
-    span ng-show='editable'
-      span.fa.fa-pencil
-      span.fa.fa-times
-      span.fa.fa-plus ng-click='newAvatar.show = !newAvatar.show'
-    span.right.fa.fa-arrow-circle-o-right ng-click='increase()'
-  .avatar-form ng-show='editable && newAvatar.show'
+    span.left.fa.fa-arrow-circle-o-left  ng-click='decrease()' ng-disabled='currentIndex == 0' ng-show='collection.length > 0'
+    section ng-show='editable'
+      span.fa.fa-plus ng-click='newAvatar.show = !newAvatar.show' title='Добавить новый'
+      span.fa ng-click='makeDefault()' ng-class="collection[currentIndex].default ? 'fa-check-circle' : 'fa-check-circle-o'" ng-disabled='collection[currentIndex].default' title='{{collection[currentIndex].default ? "Основной" : "Сделть основным"}}'
+      span.fa.fa-times ng-click='removeAvatar()' title='Удалить'
+    span.right.fa.fa-arrow-circle-o-right ng-click='increase()' ng-disabled='currentIndex == total - 1' ng-show='collection.length > 0'
+  .avatar-form.any-form ng-show='editable && newAvatar.show'
     .form-line
       span
-        label for='new-avatar-remote'
-          | URL:
-        input type='text' ng-model='newAvatar.remote_image_url' id='new-avatar-remote'
+        input.inp.inp-type2 type='text' ng-model='newAvatar.remote_image_url' id='new-avatar-remote' placeholder='http://url'
+    .form-line
       span
         input type='checkbox' ng-model='newAvatar.default' id='new-avatar-default'
         label for='new-avatar-default'
