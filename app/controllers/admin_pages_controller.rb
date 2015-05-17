@@ -34,7 +34,6 @@ class AdminPagesController < ApplicationController
 
   def save_tree
     tree_array = params[:tree]
-    byebug
     tree_array.each { |item| Page.find(item[:id]).update(item.permit(:sort_order, :parent_id)) }
     respond_to do |format|
       format.json {render json:{success:true} }
