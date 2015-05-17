@@ -1,5 +1,4 @@
 class CharAvatarsController < ApplicationController
-
   def create
   end
 

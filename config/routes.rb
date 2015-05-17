@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :char_avatars, only:[:create, :update, :destroy]
+  resources :char_avatars, only:[:create, :update, :destroy], defaults: {format: :json}
 
   # Forum routes
   resources :forums, path: 'temple', only:[:index, :show] do
