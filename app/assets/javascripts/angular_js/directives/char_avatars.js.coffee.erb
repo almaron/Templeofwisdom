@@ -9,17 +9,16 @@
   templateUrl: '<%= asset_path 'char_avatars' %>'
   link: (scope, element, attrs) ->
     scope.currentIndex = -1;
-    scope.newAvatar = {default: false, char_id: scope.charId}
 
     scope.digestCollection = (collection) ->
-      scope.total = collection.length;
-      if scope.ngModel
-        scope.currentIndex = collection.indexOf Service.findBy(collection, 'id', scope.ngModel)
-
-
-      if !scope.ngModel || scope.currentIndex < 0
-        index = collection.indexOf Service.findBy(collection, 'default', true)
-        scope.setCurrentIndex(index);
+      if angular.isDefined collection
+        scope.total = collection.length;
+        if scope.ngModel
+          scope.currentIndex = collection.indexOf Service.findBy(collection, 'id', scope.ngModel)
+        if !scope.ngModel || scope.currentIndex < 0
+          index = collection.indexOf Service.findBy(collection, 'default', true)
+          scope.setCurrentIndex(index);
+        scope.newAvatar = {default: false, char_id: scope.charId}
 
     scope.$watchCollection 'collection', scope.digestCollection
 
@@ -45,6 +44,7 @@
         '/char_avatars', {char_avatar: scope.newAvatar}
       ).success (data) ->
         scope.collection.push data
+        scope.newAvatar = {default: false, char_id: scope.charId}
 
     scope.makeDefault = ->
       $http.put(

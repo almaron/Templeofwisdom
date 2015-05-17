@@ -6,8 +6,6 @@ if params[:short]
   end
 else
   json.(@char, :id, :name, :status_line, :status_id, :open_player)
-  json.avatar image_tag(@char.avatar_url(:thumb)) if @char.avatar?
-  json.avatar? @char.avatar?
   json.profile do
     json.(@char.profile_info, :real_age, :birth_date, :place, :beast, :person, :points, :phisics, :look,:bio, :character, :items, :other, :comment)
   end
@@ -31,6 +29,8 @@ else
 
   json.userEditable @char.owned_by == current_user
   json.adminEditable current_user && current_user.is_in?([:admin, :master])
+
+  json.avatars @char.avatars, partial: 'char_avatars/char_avatar', as: :avatar
 
 end
 

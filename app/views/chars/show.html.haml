@@ -2,7 +2,8 @@
   %table.profile
     %tr
       %td.profile-col
-        .profile-photo{'ng-bind-html'=>'char.avatar'}
+        .profile-photo
+          %char-avatars{'ng-model'=>'char.currentAvatar', collection:'char.avatars', editable: 'true', 'char-id'=>'char.id'}
         .profile-name{} {{char.name}}
         .profile-status{} {{char.status_line || char.group.name}}
         .profile-element

@@ -1,0 +1,26 @@
+.avatar-wrap
+  img ng-src='{{collection[currentIndex].image}}'
+  .avatar-controls
+    span.left.fa.fa-arrow-circle-o-left  ng-click='decrease()'
+    span ng-show='editable'
+      span.fa.fa-pencil
+      span.fa.fa-times
+      span.fa.fa-plus ng-click='newAvatar.show = !newAvatar.show'
+    span.right.fa.fa-arrow-circle-o-right ng-click='increase()'
+  .avatar-form ng-show='editable && newAvatar.show'
+    .form-line
+      span
+        label for='new-avatar-remote'
+          | URL:
+        input type='text' ng-model='newAvatar.remote_image_url' id='new-avatar-remote'
+      span
+        input type='checkbox' ng-model='newAvatar.default' id='new-avatar-default'
+        label for='new-avatar-default'
+          span
+          | Основной
+      span
+        button.btn.btn-standart ng-click='addAvatar()'
+          | Отправить
+
+
+
