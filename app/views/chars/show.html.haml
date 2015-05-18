@@ -49,6 +49,10 @@
           %b.title Комментарии:
           %span{'ng-bind-html'=>'char.profile.comment | simpleFormat'}
         .profile-element
+          .edit{'ng-if'=>'char.adminEditable', 'ng-show'=>'char.adminEditable', 'ng-click'=>"openEditChar('signature')"} &#10548;
+          %b.title Подпись:
+          %div{'ng-bind-html'=>'char.signature | simpleFormat'}
+        .profile-element
           %a{href: '#'} ← Правила РПГ
       %td.profile-content
         %toggle-text{title:'Биография', content:'char.profile.bio'}
@@ -79,6 +83,7 @@
           = render partial: 'chars/mini_edit/edit_person'
           = render partial: 'chars/mini_edit/edit_comment'
           = render partial: 'chars/mini_edit/edit_skills'
+          = render partial: 'chars/mini_edit/edit_signature'
   %modal-dialog{show:"modalShown", head:"Запрос на добавление/повышение", width:"600px"}
     .skill_requests{'ng-class'=>'modalClass'}
       {{modalText}}

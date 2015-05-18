@@ -273,6 +273,12 @@
       }
       .message-text {
         min-height: 280px;
+        .signature {
+          margin-top: 10px;
+          padding-top: 10px;
+          font-style: italic;
+          border-top: 1px solid $color-brown1;
+        }
         .message-comment {
           padding-left: 30px;
           color: $color-orange2;

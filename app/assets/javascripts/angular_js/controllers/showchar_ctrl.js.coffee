@@ -12,6 +12,7 @@
       sign: 1,
       person: $scope.char.profile.person,
       comment: $scope.char.profile.comment
+      signature: $scope.char.signature
     }
 
   $scope.updatePoints = ->
@@ -36,6 +37,14 @@
       $scope.smallUpdatePath, {field:"comment", comment:$scope.editForm.comment}
     ).success (data) ->
       $scope.char.profile.comment = data.value
+      $scope.editForm = {}
+      $scope.editChar = null
+
+  $scope.updateSignature = ->
+    $http.post(
+      $scope.smallUpdatePath, {field:"signature", signature:$scope.editForm.signature}
+    ).success (data) ->
+      $scope.char.signature = data.value
       $scope.editForm = {}
       $scope.editChar = null
 

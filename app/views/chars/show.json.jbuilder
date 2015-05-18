@@ -5,7 +5,7 @@ if params[:short]
     json.birth_date @char.profile.birth_date
   end
 else
-  json.(@char, :id, :name, :status_line, :status_id, :open_player)
+  json.(@char, :id, :name, :status_line, :status_id, :open_player, :signature)
   json.profile do
     json.(@char.profile_info, :real_age, :birth_date, :place, :beast, :person, :points, :phisics, :look,:bio, :character, :items, :other, :comment)
   end

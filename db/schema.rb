@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518121032) do
+ActiveRecord::Schema.define(version: 20150518140825) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150518121032) do
     t.integer  "profile_topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "signature",        default: ""
   end
 
   create_table "forum_posts", force: true do |t|

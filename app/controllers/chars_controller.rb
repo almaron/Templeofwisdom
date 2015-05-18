@@ -95,6 +95,8 @@ class CharsController < ApplicationController
         @char.profile.person = params[:person]
       when "comment"
         @char.profile.comment = params[:comment]
+      when 'signature'
+        @char.signature = params[:signature]
       else
         nil
     end
