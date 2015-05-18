@@ -7,7 +7,7 @@ class ForumPost < ActiveRecord::Base
   belongs_to :user
 
   after_create :touch_topic
-  before_destroy :check_if_last
+  # before_destroy :check_if_last
   after_destroy :remove_post
 
   belongs_to :avatar, class_name: CharAvatar, foreign_key: :avatar_id
