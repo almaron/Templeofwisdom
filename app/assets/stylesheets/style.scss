@@ -92,6 +92,9 @@ body {
   z-index: 100;
   position: relative;
   margin: 0 auto;
+  &.fixed-width {
+    width: 1050px;
+  }
 }
 
 .header {
