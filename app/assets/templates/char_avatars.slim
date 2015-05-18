@@ -5,7 +5,7 @@
     span.left.fa.fa-arrow-circle-o-left  ng-click='decrease()' ng-disabled='currentIndex == 0' ng-show='collection.length > 0'
     section ng-show='editable'
       span.fa.fa-plus ng-click='newAvatar.show = !newAvatar.show' title='Добавить новый'
-      span.fa ng-click='makeDefault()' ng-class="collection[currentIndex].default ? 'fa-check-circle' : 'fa-check-circle-o'" ng-disabled='collection[currentIndex].default' title='{{collection[currentIndex].default ? "Основной" : "Сделть основным"}}'
+      span.fa ng-click='makeDefault()' ng-class="collection[currentIndex].default ? 'fa-check-circle' : 'fa-check-circle-o'" ng-disabled='collection[currentIndex].default' title='{{collection[currentIndex].default ? "Основной" : "Сделать основным"}}'
       span.fa.fa-times ng-click='removeAvatar()' title='Удалить'
     span.right.fa.fa-arrow-circle-o-right ng-click='increase()' ng-disabled='currentIndex == total - 1' ng-show='collection.length > 0'
   .avatar-form.any-form ng-show='editable && newAvatar.show'
