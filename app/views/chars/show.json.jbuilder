@@ -6,6 +6,7 @@ if params[:short]
   end
 else
   json.(@char, :id, :name, :status_line, :status_id, :open_player, :signature)
+  json.signature_show @char.signature.bbcode_to_html_with_formatting
   json.profile do
     json.(@char.profile_info, :real_age, :birth_date, :place, :beast, :person, :points, :phisics, :look,:bio, :character, :items, :other, :comment)
   end
