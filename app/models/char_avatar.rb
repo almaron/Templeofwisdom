@@ -7,6 +7,8 @@ class CharAvatar < ActiveRecord::Base
   after_destroy :set_default_destroy
   before_create :set_default_create
 
+  validates_presence_of :image
+
   def set_default_destroy
     self.class.where(char_id: self.char_id).last.update(default: true) if default?
   end

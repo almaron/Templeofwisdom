@@ -119,7 +119,7 @@ class ForumTopicsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:char_id, :text).merge!(user_id: current_user.id, ip: request.remote_ip)
+    params.require(:post).permit(:char_id, :text, :avatar_id).merge!(user_id: current_user.id, ip: request.remote_ip)
   end
 
   def topic_in_place

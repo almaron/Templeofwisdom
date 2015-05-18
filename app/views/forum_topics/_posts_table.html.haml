@@ -6,7 +6,7 @@
         %a{href:"/chars/{{post.char_id}}"} {{post.char.name}}
       .message-author-category{} {{post.char.status}}
       .message-author-avatar{'ng-show'=>'post.char.avatar'}
-        %img{'ng-src'=>'post.char.avatar'}
+        %img{'ng-src'=>'{{post.char.avatar}}'}
       .message-author-onoff.offline
       .message-author-count
     %td.f-message-content

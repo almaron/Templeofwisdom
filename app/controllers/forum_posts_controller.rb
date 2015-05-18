@@ -92,7 +92,7 @@ class ForumPostsController < ApplicationController
       p_params[:commented_at] = params[:post][:comment].present? ? DateTime.now : nil
       p_params
     else
-      params.require(:post).permit(:char_id, :text).merge(topic_id:params[:topic_id], user_id: current_user.id, ip: current_user.current_ip)
+      params.require(:post).permit(:char_id, :text, :avatar_id).merge(topic_id:params[:topic_id], user_id: current_user.id, ip: current_user.current_ip)
     end
   end
 

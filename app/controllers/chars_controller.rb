@@ -26,6 +26,7 @@ class CharsController < ApplicationController
   def new
     @char = Char.new
     @char.build_profile
+    @char.avatars << CharAvatar.new
   end
 
   def create
@@ -48,6 +49,7 @@ class CharsController < ApplicationController
     if @char.status_id > 1
       redirect_to profile_path, alert: t("messages.alert.chars.edit.not_editable")
     else
+      @char.avatars << CharAvatar.new if @char.avatars.empty?
       render :new
     end
   end
@@ -117,6 +119,9 @@ class CharsController < ApplicationController
         ],
         profile_attributes: [
             :birth_date, :real_age, :season_id, :beast, :place, :phisics, :look, :bio, :items, :character, :other, :person
+        ],
+        avatars_attributes: [
+          :remote_image_url, :default, :image
         ]
     )
   end

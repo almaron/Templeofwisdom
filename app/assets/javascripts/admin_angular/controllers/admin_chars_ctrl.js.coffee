@@ -61,6 +61,7 @@
   $scope.editChar = (char) ->
     $scope.editedChar = Char.get {id:char.id}
 
+
   $scope.closeModal = ->
     $scope.editedChar = {}
     $scope.showedChar = {}

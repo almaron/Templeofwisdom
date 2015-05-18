@@ -15,23 +15,25 @@
             = t('activerecord.attributes.char.open_player')
       %tr
         %td.anketa-tt
-          #{f.label :remote_avatar_url}:
-        %td.anketa-ipt
-          .input-line
-            = f.text_field :remote_avatar_url, class:"inp inp-type2", placeholder:"Ссылка на аватар"
-          .input-line
-            = f.file_field :avatar, class:"inp inp-type2", placeholder:"Файл аватара"
-          - if @char.avatar?
-            .show_avatar
-              %span.show-avatar{href:@char.avatar_url, fancybox:''}
-                %span.fa.fa-eye
-                Show avatar
-      %tr
-        %td.anketa-tt
           #{f.label :group}:
         %td.anketa-ipt
           %select.inp.inp-type2.inp-short{"ng-model"=>"char.group_id", "ng-options"=>"group.id as group.name for group in acessibleGroups"}
           = f.hidden_field :group_id, "ng-value"=>"char.group_id"
+    = f.fields_for :avatars do |p|
+      %table
+        %tr
+          %td.anketa-tt
+            #{p.label :remote_image_url}:
+          %td.anketa-ipt
+            .input-line
+              = p.text_field :remote_image_url, class:"inp inp-type2", placeholder:"Ссылка на аватар"
+            .input-line
+              = p.file_field :image, class:"inp inp-type2", placeholder:"Файл аватара"
+            - if @char.default_avatar && @char.default_avatar.image?
+              .show_avatar
+                %span.show-avatar{href:@char.default_avatar.image_url, fancybox:''}
+                  %span.fa.fa-eye
+                  Показать
     = f.fields_for :profile do |p|
       %table
         %tr

@@ -13,6 +13,7 @@ class Char < ActiveRecord::Base
   scope :active, ->{where(status_id:5)}
 
   has_many :avatars, class_name: CharAvatar, dependent: :destroy
+  accepts_nested_attributes_for :avatars, reject_if: proc { |ca| ca[:remote_image_url].blank? && ca[:image].blank? }
 
   def default_avatar
     avatars.find_by(default: true)
@@ -24,6 +25,10 @@ class Char < ActiveRecord::Base
       self.avatars.update_all(default:false)
       avatar.update(default:true)
     end
+  end
+
+  def new_avatar=(remote_url)
+    self.avatars.create(remote_url: remote_url)
   end
 
   def set_default_avatar_last

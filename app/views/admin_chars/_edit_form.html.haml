@@ -9,7 +9,7 @@
       %td.label
         %label{for:'char_avatar'} Аватар:
       %td.input
-        %input.inp.inp-type2{'ng-model'=>'editedChar.remote_avatar_url', id:'char_avatar'}
+        %char-avatars{'ng-model'=>'editedChar.avatar_id', collection:'editedChar.avatars', 'char-id'=>'editedChar.id', editable:'true'}
     %tr.form-line
       %td.label
         %label{for:'char_group'}
