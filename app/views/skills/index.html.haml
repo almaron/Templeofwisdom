@@ -4,7 +4,7 @@
 .skills-wrapper{'ng-controller'=>'SkillsCtrl'}
   .skill-list-wrap{'ng-hide'=>'editedSkill.id'}
     .skill-list-btn
-      %span{'ng-click'=>'sType=null', 'ng-class'=>'{active:!sType}'} Все
+      %span{'ng-click'=>'delete(sType)', 'ng-class'=>'{active:!sType}'} Все
       %span{'ng-click'=>'sType="phisic"', 'ng-class'=>'{active:sType=="phisic"}'} Навыки
       %span{'ng-click'=>'sType="magic"', 'ng-class'=>'{active:sType=="magic"}'} Способности
     %ol.skills-list
