@@ -10,7 +10,7 @@ class ForumPost < ActiveRecord::Base
   before_destroy :check_if_last
   after_destroy :remove_post
 
-  has_one :avatar, class_name: CharAvatar
+  belongs_to :avatar, class_name: CharAvatar, foreign_key: :avatar_id
 
   def touch_topic
     self.topic.add_post(self)

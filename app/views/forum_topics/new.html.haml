@@ -27,10 +27,11 @@
             %td.input.input-textarea
               %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:'', 'mark-it-up'=>''}
           %tr
-            %td.label
+            %td.label.label-char
               %label{for:"char_name"} Персонаж:
             %td.input.input-char
-              %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
+              %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, newPost.char_id)'}
+              %char-avatars{'ng-model'=>'newPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'newPost.char_id', 'ng-show'=>'newPost.char_id'}
           %tr
             %td.label{} Настройки:
             %td.input

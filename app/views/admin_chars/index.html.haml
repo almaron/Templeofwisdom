@@ -14,7 +14,7 @@
     .edit-close
       %span.fa.fa-times{"ng-click"=>"sChar = {}"}
     .info-wrap
-      %span{'ng-bind-html'=>'sChar.avatar_img | trustHtml'}
+      %char-avatars{'ng-model'=>'sChar.currentAvatar', collection:'sChar.avatars', editable: 'false', 'char-id'=>'sChar.id'}
     .info-wrap
       .line
         Имя:
@@ -38,7 +38,7 @@
   = render :partial => 'admin_chars/tables/pending_chars'
 
   = render :partial => 'admin_chars/tables/reviewed_chars'
-            
+
   = render :partial => 'admin_chars/tables/saved_chars'
 
   .ng-modal{'ng-show'=>'showedChar.id || editedChar.id'}

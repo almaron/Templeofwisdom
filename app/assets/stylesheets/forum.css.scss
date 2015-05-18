@@ -186,6 +186,11 @@
       vertical-align: middle;
       font-weight: bold;
       font-size: 1.1em;
+
+      &.label-char {
+        vertical-align: top;
+        padding-top: 8px;
+      }
     }
     .input{
       padding: 5px 0;
@@ -195,6 +200,7 @@
       &.input-char {
         select {
           width:auto;
+          margin-bottom: 5px;
         }
       }
     }
@@ -350,6 +356,9 @@
         vertical-align: top;
         text-align: left;
         width:200px;
+        .avatar-wrap {
+          margin-top: 5px;
+        }
       }
     }
     &.inline-edit {

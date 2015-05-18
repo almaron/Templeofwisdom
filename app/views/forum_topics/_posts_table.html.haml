@@ -5,7 +5,8 @@
       .message-author-name{}
         %a{href:"/chars/{{post.char_id}}"} {{post.char.name}}
       .message-author-category{} {{post.char.status}}
-      .message-author-avatar{"ng-bind-html"=>"post.char.avatar_img | trustHtml"}
+      .message-author-avatar{'ng-show'=>'post.char.avatar'}
+        %img{'ng-src'=>'post.char.avatar'}
       .message-author-onoff.offline
       .message-author-count
     %td.f-message-content
@@ -53,9 +54,10 @@
         -#  “”
   %tr.post-edit.inline-edit{"ng-if"=>"post.id == selectedPost.id"}
     %td.label
-      .select-char
+      .select-char{'ng-show'=>'selectedPost.user.id == currentUser.id'}
         %label{for:"char_name"} Персонаж:
-        %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
+        %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, selectedPost.char_id)'}
+        %char-avatars{'ng-model'=>'selectedPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'selectedPost.char_id', 'ng-show'=>'selectedPost.char_id'}
     %td.input.input-textarea
       %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"selectedPost.text", required:'', "mark-it-up"=>""}
       .input-btn

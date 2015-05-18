@@ -5,7 +5,8 @@
         %a{name:'newpost'}
         .select-char
           %label{for:"char_name"} Персонаж:
-          %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:""}
+          %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, newPost.char_id)'}
+          %char-avatars{'ng-model'=>'newPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'newPost.char_id', 'ng-show'=>'newPost.char_id'}
         .send-notifications
           Отправка уведомлений
           .line{'ng-repeat'=>'char in topic.chars'}

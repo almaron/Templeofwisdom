@@ -1,4 +1,4 @@
-@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "$location", "$anchorScroll", "Topic", "Post", ($scope, $http, $window, $location, $anchorScroll,Topic, Post) ->
+@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "$location", "$anchorScroll", "Topic", "Post", 'ArrayService', ($scope, $http, $window, $location, $anchorScroll,Topic, Post, Service) ->
 
   # Topic New
   $scope.newPost = {}
@@ -8,11 +8,14 @@
       $scope.path = data.path
       $scope.newTopic = data.topic
       $scope.chars = data.chars
+      $scope.sChar = Service.findBy($scope.chars, 'default', true)
+      $scope.newPost.char_id = $scope.sChar.id
     $scope.forumId = forum_id
 
-  $scope.$watch "currentUser.default_char.id", (newVal) ->
-    if typeof newVal != "undefined"
-      $scope.newPost.char_id = newVal
+  $scope.updateChar = (array, id) ->
+    if angular.isDefined id
+      console.log(id)
+      $scope.sChar = Service.findBy(array, 'id', id)
 
 
   $scope.createTopic = ->
@@ -24,6 +27,7 @@
     ).error((data) ->
       $scope.errors = data.errors
     )
+
 
   # Topic Show
 
@@ -47,6 +51,8 @@
         $scope.topic = data.topic
         $scope.path = data.path
         $scope.chars = data.chars
+        $scope.sChar = Service.findBy($scope.chars, 'default', true)
+        $scope.newPost.char_id = $scope.sChar.id
         $scope.postPagination.total = data.topic.pages_count
         if page == 'last' || page > data.topic.pages_count
           $scope.postPagination.cur = data.topic.pages_count
@@ -98,6 +104,7 @@
 
   $scope.editPost = (post) ->
     $scope.selectedPost = angular.copy post
+    $scope.sChar = Service.findBy($scope.chars, 'id', $scope.selectedPost.char_id)
 
   $scope.cancelEdit = ->
     $scope.selectedPost = {}

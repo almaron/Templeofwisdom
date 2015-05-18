@@ -1,6 +1,5 @@
 json.(@char, :id, :name, :group_id, :status_id, :status_line)
-json.avatar_img image_tag(@char.avatar_url(:thumb)) if @char.avatar?
-json.avatar_url @char.avatar_url(:thumb) if @char.avatar?
+json.avatar @char.default_avatar.image_url(:thumb) if @char.default_avatar && @char.default_avatar.image?
 json.group_name I18n.t("char_groups.names.#{@char.group.name}")
 
 json.profile_attributes do

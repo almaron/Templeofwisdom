@@ -22,7 +22,7 @@ class AdminCharsController < ApplicationController
                   else
                     {status_id:[5,6]}
                 end
-        @chars = Char.eager_load(:profile, :group, :status).where(where)
+        @chars = Char.eager_load(:profile, :group, :status, :avatars).where(where)
       }
     end
   end

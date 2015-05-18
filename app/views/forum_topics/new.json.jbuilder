@@ -12,5 +12,6 @@ end
 
 json.chars @chars do |char|
   json.(char, :id, :name)
-  json.avatar_img image_tag(char.avatar_url(:thumb))
+  json.default char.default?(current_user)
+  json.avatars char.avatars, partial: 'char_avatars/char_avatar', as: :avatar
 end

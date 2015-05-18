@@ -59,6 +59,10 @@ class Char < ActiveRecord::Base
     self.char_delegations.where(user_id:user_id).any?
   end
 
+  def default?(user)
+    self.char_delegations.find_by(user_id:user.id).try(:default?)
+  end
+
   has_many :char_skills, dependent: :destroy
   has_many :skills, through: :char_skills, dependent: :destroy
   accepts_nested_attributes_for :char_skills, allow_destroy: true
