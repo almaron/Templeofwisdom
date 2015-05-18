@@ -102,7 +102,7 @@ class CharsController < ApplicationController
     end
     @char.save
     respond_to do |format|
-      format.json { render json: {value: value}}
+      format.json { render json: {value: value, html_value: (value.to_s.bbcode_to_html_with_formatting if params[:field] == 'signature')}}
       format.js {}
     end
   end

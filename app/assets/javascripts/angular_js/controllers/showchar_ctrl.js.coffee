@@ -45,6 +45,7 @@
       $scope.smallUpdatePath, {field:"signature", signature:$scope.editForm.signature}
     ).success (data) ->
       $scope.char.signature = data.value
+      $scope.char.signature_show = data.html_value
       $scope.editForm = {}
       $scope.editChar = null
 

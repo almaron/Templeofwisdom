@@ -4,7 +4,8 @@ json.posted_at I18n.l(post.created_at, format: :full) if post.created_at
 json.commented_at I18n.l(post.commented_at, format: :full) if post.commented_at
 
 json.char do
-  json.(post.char, :id, :name, :signature)
+  json.(post.char, :id, :name)
+  json.signature post.char.signature.bbcode_to_html_with_formatting
   json.status post.char.status_line || I18n.t("char_groups.names.#{post.char.group.name}")
   json.avatar post.avatar.image_url(:thumb) if post.avatar && post.avatar.image?
 end

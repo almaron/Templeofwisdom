@@ -51,7 +51,7 @@
         .profile-element
           .edit{'ng-if'=>'char.adminEditable', 'ng-show'=>'char.adminEditable', 'ng-click'=>"openEditChar('signature')"} &#10548;
           %b.title Подпись:
-          %div{'ng-bind-html'=>'char.signature | simpleFormat'}
+          %div{'ng-bind-html'=>"char.signature_show | trustHtml"}
         .profile-element
           %a{href: '#'} ← Правила РПГ
       %td.profile-content
