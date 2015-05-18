@@ -5,7 +5,6 @@ FactoryGirl.define do
     name "She Bao"
     group_id 3
     status_line "Настоятель"
-    avatar ""
     status_id 2
     open_player ""
     profile_topic_id 1
