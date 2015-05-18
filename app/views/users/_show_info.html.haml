@@ -4,7 +4,7 @@
 .act-line
   %span.bold Дата рождения:
   = l @user.profile.birth_date if @user.profile.birth_date
-- if @user.profile.viewcontacts? || current_user.is_in?(:admin)
+- if @user.profile.viewcontacts? || (current_user && current_user.is_in?(:admin))
   .act-line
     %span.bold Email:
     = @user.email
