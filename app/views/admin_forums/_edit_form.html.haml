@@ -30,7 +30,7 @@
           %label{for:"remote_url"} Картинка:
         %span.input
           %input.inp.inp-type2{id:"remote_url", "ng-model"=>"editForum.remote_image_url"}
-        -#TODO add fancybox image link
+          %span.fa.fa-eye{href:'{{editForum.image}}', fancybox:'', 'ng-if'=>'editForum.image'}
         %span.preview{"ng-if"=>"editForm.image"}
           %span.fa.fa-eye
       .form-line
