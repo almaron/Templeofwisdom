@@ -21,5 +21,6 @@
  *= require forum
  *= require admin
  *= require added
+ *= require token-input
  *
  */

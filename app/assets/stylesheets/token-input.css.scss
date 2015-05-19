@@ -1,0 +1,115 @@
+@import "compass/css3/box-sizing";
+@import "compass/css3/images";
+
+li {
+  &.token-input-token-temple {
+    overflow: hidden;
+    height: auto !important;
+    height: 15px;
+    margin: 3px;
+    padding: 1px 3px;
+    background-color: #ede7d2;
+    color: #333;
+    cursor: default;
+    border: 1px solid #aaa;
+    font-size: 1em;
+    //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+    border-radius: 5px;
+    float: left;
+    white-space: nowrap;
+    p {
+      display: inline;
+      padding: 3px;
+      margin: 0;
+    }
+    span {
+      color: #b6a795;
+      margin-left: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+  &.token-input-selected-token-temple {
+    background-color: #3875d7;
+    @include background-image(linear-gradient(#3875d7 20%, #2a62bc 90%));
+    border: 1px solid #3b5998;
+    color: #fff;
+  }
+  &.token-input-input-token-temple {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+}
+
+ul.token-input-list-temple {
+  overflow: hidden;
+  height: auto !important;
+  width: 400px;
+  border: 1px solid #b6a795;
+  cursor: text;
+  font-size: 1 em;
+  min-height: 1px;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  display: inline-block;
+  background-color: #fbf5e8;
+  list-style-type: none;
+  clear: left;
+  li input {
+    border: 0;
+    width: 100px;
+    padding: 3px 8px;
+    font-family: inherit;
+    background-color: #fbf5e8;
+    margin: 2px 0;
+  }
+}
+
+div.token-input-dropdown-temple {
+  position: absolute;
+  width: 400px;
+  background-color: #fbf5e8;
+  overflow: hidden;
+  border-left: 1px solid #b6a795;
+  border-right: 1px solid #b6a795;
+  border-bottom: 1px solid #b6a795;
+  cursor: default;
+  font-size: 1em;
+  font-family: inherit;
+  z-index: 1;
+  p {
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    color: #777;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      background-color: #fbf5e8;
+      padding: 3px;
+      margin: 0;
+      list-style-type: none;
+      &.token-input-dropdown-item-temple {
+        background-color: #fbf5e8;
+      }
+      &.token-input-dropdown-item2-temple {
+        background-color: #fbf5e8;
+      }
+      em {
+        font-weight: bold;
+        font-style: normal;
+      }
+      &.token-input-selected-dropdown-item-temple {
+        background-color: #3875d7;
+        @include background-image(linear-gradient(#3875d7 20%, #2a62bc 90%));
+        color: #fff;
+      }
+    }
+  }
+}
