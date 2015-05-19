@@ -9,7 +9,9 @@
 
         apply = (results) ->
           scope.$apply ->
-            scope.ngModel = $(element).tokenInput('get')
+            console.log $(element).tokenInput('get')
+            tokens = $(element).tokenInput('get')
+            scope.ngModel = tokens
 
         options.theme = 'temple'
         options.onAdd = apply

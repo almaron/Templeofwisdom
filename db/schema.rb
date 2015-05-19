@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518140825) do
+ActiveRecord::Schema.define(version: 20150519150217) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -221,6 +221,16 @@ ActiveRecord::Schema.define(version: 20150518140825) do
 
   add_index "journal_images", ["page_id"], name: "index_journal_images_on_page_id", using: :btree
 
+  create_table "journal_page_tags", force: true do |t|
+    t.integer  "page_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "journal_page_tags", ["page_id"], name: "index_journal_page_tags_on_page_id", using: :btree
+  add_index "journal_page_tags", ["tag_id"], name: "index_journal_page_tags_on_tag_id", using: :btree
+
   create_table "journal_pages", force: true do |t|
     t.integer  "journal_id"
     t.string   "head"
@@ -233,6 +243,10 @@ ActiveRecord::Schema.define(version: 20150518140825) do
   end
 
   add_index "journal_pages", ["journal_id", "sort_index"], name: "index_journal_pages_on_journal_id_and_sort_index", using: :btree
+
+  create_table "journal_tags", force: true do |t|
+    t.string "name"
+  end
 
   create_table "journals", force: true do |t|
     t.string   "head"

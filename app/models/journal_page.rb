@@ -9,6 +9,9 @@ class JournalPage < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  has_many :journal_page_tags, foreign_key: :page_id, dependent: :destroy
+  has_many :tags, class_name: JournalTag, through: :journal_page_tags
+
   default_scope ->{ order(:sort_index, :id)}
 
   def self.types
@@ -19,6 +22,14 @@ class JournalPage < ActiveRecord::Base
     define_method "is_#{type}?" do
       page_type == type
     end
+  end
+
+  def tag_tokens=(tokens)
+    self.tag_ids = JournalTag.ids_from_tokens(tokens)
+  end
+
+  def tag_tokens
+    tags.to_a
   end
 
   def newbies

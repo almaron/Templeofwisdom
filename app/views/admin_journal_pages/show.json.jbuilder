@@ -1,4 +1,4 @@
-json.(@page, :id, :journal_id, :head, :content_line, :page_type)
+json.(@page, :id, :journal_id, :head, :content_line, :page_type, :tag_tokens)
 json.type_line I18n.t("journal.pages.page_type.#{@page.page_type}")
 
 if @page.is_article?

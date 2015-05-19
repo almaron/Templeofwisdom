@@ -76,6 +76,9 @@ Rails.application.routes.draw do
     member do
       get '/p/:page_id' => :page, as: :page
     end
+    collection do
+      get '/tag/:tag' => 'journal_tags#show', as: :tag
+    end
   end
 
 # Administration block
@@ -106,6 +109,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get '/journal_tags' => 'journal_tags#index', defaults: {format: :json}
 
   get '/proverb' => 'proverb#show'
   get '/weather' => 'weather#show'
