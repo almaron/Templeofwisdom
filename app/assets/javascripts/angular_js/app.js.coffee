@@ -1,7 +1,7 @@
 @app = angular.module('templeApp',["ngResource", "ngSanitize", "ngCookies","ngTable","xeditable","ui.tree",'duScroll'])
 
 bootstrapAngular = ->
-  angular.bootstrap("body", ["templeApp"])
+  angular.bootstrap('body', ["templeApp"])
 
 $(document).on 'ready page:load', bootstrapAngular
 

@@ -1,4 +1,4 @@
-@app.directive 'chosen', ->
+@app.directive 'chosen', ['$timeout', ($timeout) ->
 
   # This is stolen from Angular...
   NG_OPTIONS_REGEXP = /^\s*(.*?)(?:\s+as\s+(.*?))?(?:\s+group\s+by\s+(.*))?\s+for\s+(?:([\$\w][\$\w]*)|(?:\(\s*([\$\w][\$\w]*)\s*,\s*([\$\w][\$\w]*)\s*\)))\s+in\s+(.*?)(?:\s+track\s+by\s+(.*?))?$/
@@ -34,7 +34,7 @@
   terminal: true
   link: (scope, element, attr, ngModel) ->
 
-    element.addClass('localytics-chosen')
+    # element.addClass('localytics-chosen')
 
     # Take a hash of options from the chosen directive
     options = scope.$eval(attr.chosen) or {}
@@ -78,8 +78,8 @@
       if attr.multiple
         viewWatch = -> ngModel.$viewValue
         scope.$watch viewWatch, ngModel.$render, true
-      # If we're not using ngModel (and therefore also not using ngOptions, which requires ngModel),
-      # just initialize chosen immediately since there's no need to wait for ngOptions to render first
+    # If we're not using ngModel (and therefore also not using ngOptions, which requires ngModel),
+    # just initialize chosen immediately since there's no need to wait for ngOptions to render first
     else initOrUpdate()
 
     # Watch the disabled attribute (could be set by ngDisabled)
@@ -92,11 +92,16 @@
       valuesExpr = match[7]
 
       scope.$watchCollection valuesExpr, (newVal, oldVal) ->
-        # There's no way to tell if the collection is a promise since $parse hides this from us, so just
-        # assume it is a promise if undefined, and show the loader
-        if angular.isUndefined(newVal)
-          startLoading()
-        else
-          removeEmptyMessage() if empty
-          stopLoading()
-          disableWithMessage() if isEmpty(newVal)
+        # Defer execution until DOM is loaded
+        timer = $timeout(->
+          if angular.isUndefined(newVal)
+            startLoading()
+          else
+            removeEmptyMessage() if empty
+            stopLoading()
+            disableWithMessage() if isEmpty(newVal)
+        )
+
+      scope.$on '$destroy', (event) ->
+        $timeout.cancel timer if timer?
+]
