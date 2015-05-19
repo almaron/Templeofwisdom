@@ -150,7 +150,6 @@
       .form-line
         %label{for:'page_tags_{{current_page.id}}'}Тэги:
         %input{type:'text', 'ng-model'=>'current_page.tag_tokens', href:'/journal_tags.json', tokeninput:'', populate: 'current_page.tags'}
-        {{current_page.tag_tokens}}
       .form-line
         %button.btn.btn-standart{'ng-click'=>'updatePage()'}
           %span.fa.fa-check
