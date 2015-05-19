@@ -72,7 +72,7 @@
             %br/
             %span.more
               (
-              %a{href: "#", target: "_blank"}> список способностей
+              %a{href: "/skills/magic", target: "_blank"}> список способностей
               )
           %td.anketa-ipt
             .skills-added
@@ -93,7 +93,7 @@
             %br/
             %span.more
               (
-              %a{href: "#", target: "_blank"}> список навыков
+              %a{href: "/skills/phisic", target: "_blank"}> список навыков
               )
           %td.anketa-ipt
             .skills-added
@@ -148,6 +148,7 @@
           %label{for:"status_id"}
             %span
             Сохранить персонажа, не отправлять на одобрение
+          {{char.status_id}}
       %tr
         %td.anketa-tt
           = link_to "Удалить", char_path(@char), method: :delete, class:"" if @char.id

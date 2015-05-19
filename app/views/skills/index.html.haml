@@ -4,12 +4,12 @@
 .skills-wrapper{'ng-controller'=>'SkillsCtrl'}
   .skill-list-wrap{'ng-hide'=>'editedSkill.id'}
     .skill-list-btn
-      %span{'ng-click'=>'delete(sType)', 'ng-class'=>'{active:!sType}'} Все
+      %span{'ng-click'=>'sType="!T"', 'ng-class'=>'{active:sType=="!T"}'} Все
       %span{'ng-click'=>'sType="phisic"', 'ng-class'=>'{active:sType=="phisic"}'} Навыки
       %span{'ng-click'=>'sType="magic"', 'ng-class'=>'{active:sType=="magic"}'} Способности
     %ol.skills-list
-      %li{'ng-repeat'=>'skill in skills | filter:sType |orderBy:name'}
-        %a{href:'/skills/{{skill.id}}'} {{skill.name}}
+      %li{'ng-repeat'=>'skill in skills | filter:{skill_type: sType} |orderBy:name'}
+        %a{href:'/skills/{{skill.id}}', target:'_blank'} {{skill.name}}
         %span.skill-edit{'ng-click'=>'editSkill(skill)'}
           %span.fa.fa-pencil
         %span.skill-del{'ng-click'=>'deleteSkill(skill)'}

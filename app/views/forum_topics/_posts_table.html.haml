@@ -3,7 +3,8 @@
     %td.f-message-author
       %a{name:"p{{post.id}}"}
       .message-author-name{}
-        %a{href:"/chars/{{post.char_id}}"} {{post.char.name}}
+        %a{href:"/chars/{{post.char_id}}", target:'_blank', 'ng-if'=>'post.char.group_id > 1'} {{post.char.name}}
+        %span{'ng-if'=>'post.char.group_id == 1'} {{post.char.name}}
       .message-author-category{} {{post.char.status}}
       .message-author-avatar{'ng-show'=>'post.char.avatar'}
         %img{'ng-src'=>'{{post.char.avatar}}'}
@@ -44,12 +45,12 @@
     %td.f-message-more
       .message-author{"ng-if"=>"currentUser.group == 'admin'"}
         %span.message-user{}
-        %a{href:"/users/{{post.user.id}}"} {{post.user.name}}
+        %a{href:"/users/{{post.user.id}}", target: '_blank'} {{post.user.name}}
         %span.message-ip{} {{post.ip}}
     %td.f-message-options
       .message-options-div
         %a.opt-sendmessage{href: "#", title: "Отправить личное сообщение"} ЛС
-        %a.opt-profile{href: "/chars/{{post.char_id}}", title: "Посмотреть анкету персонажа"} Анкета
+        %a.opt-profile{href: "/chars/{{post.char_id}}", title: "Посмотреть анкету персонажа", 'ng-if'=>'post.char.group_id > 1', target: '_blank'} Анкета
         %a.opt-toadmin{href: "#", title: "Информировать мастера игры о посте (попросить отыграть реакцию или пожаловаться на сообщение)"} ❢
         -#%a.opt-quote{href: "#", title: "Процитировать сообщение"}
         -#  “”
