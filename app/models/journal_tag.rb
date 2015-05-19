@@ -13,9 +13,8 @@ class JournalTag < ActiveRecord::Base
   end
 
   def self.ids_from_tokens(tokens)
-    tokens.map do |token|
-      token['id'].to_i > 0 ? token['id'].to_i : token['id'].gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
-    end
+    tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
+    tokens.split(',')
   end
 
 end
