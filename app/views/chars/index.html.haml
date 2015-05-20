@@ -5,22 +5,22 @@
       %ul
         - @chars.where(group_id:2).each do |char|
           %li
-            = link_to char.name, char_path(char)
+            = link_to char.name, char_path(char), target: '_blank'
     %td.profile-list-col
       .profile-list-col-title.p-master Мастера
       %ul
         - @chars.where(group_id:3).each do |char|
           %li
-            = link_to char.name, char_path(char)
+            = link_to char.name, char_path(char), target: '_blank'
     %td.profile-list-col
       .profile-list-col-title.p-dweller Обитатели
       %ul
         - @chars.where(group_id:4).each do |char|
           %li
-            = link_to char.name, char_path(char)
+            = link_to char.name, char_path(char), target: '_blank'
     %td.profile-list-col
       .profile-list-col-title.p-quest Квестовые
       %ul
         - @chars.where(group_id:5).each do |char|
           %li
-            = link_to char.name, char_path(char)
+            = link_to char.name, char_path(char), target: '_blank'
