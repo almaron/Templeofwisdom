@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
     if (@user = login(params[:user_login],params[:user_password], true))
       redirect_back_or_to profile_path, notice: t("messages.notice.sessions.create.success")
     else
-      render :new, alert: t("messages.alert.sessions.create.failure")
+      flash.now[:alert] = t("messages.alert.sessions.create.failure")
+      render :new
     end
   end
 

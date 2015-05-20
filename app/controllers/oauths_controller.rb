@@ -14,7 +14,7 @@ class OauthsController < ApplicationController
         redirect_to profile_path, notice: t('messages.notice.sessions.create.success')
       else
         @user = new_from(provider)
-        redirect_to register_path
+        redirect_to register_path, alert: t('messages.alert.sessions.oauth.failure')
       end
     end
   end

@@ -8,4 +8,12 @@ module ApplicationHelper
     raw "<!--# include virtual='#{path}' stub='error' -->"
   end
 
+  def flash_div_class
+    "flash-div-#{flash.keys.first}"
+  end
+
+  def flash_div_message
+    flash[flash.keys.first]
+  end
+
 end

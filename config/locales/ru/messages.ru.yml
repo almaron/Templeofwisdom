@@ -3,37 +3,39 @@ ru:
     notice:
       registrations:
         destroy:
-          success: "Ваша учетная запись успешно удалена"
+          success: "Ваша учетная запись успешно удалена."
       sessions:
         destroy:
-          success: "Вы успешно вышли из системы"
+          success: "Вы успешно вышли из системы."
         create:
-          success: "Вы успешно вошли в систему"
+          success: "Вы успешно вошли в систему."
       users:
         destroy:
-          success: "Игрок успешно удален"
+          success: "Игрок успешно удален."
         update:
-          success: "Данные игрока успешно изменены"
+          success: "Данные игрока успешно изменены."
       chars:
         update:
           success: "Персонаж успешно сохранен."
       skill_requests:
         create:
-          success: "Заявка успешно отправлена"
+          success: "Заявка успешно отправлена."
       reset_password:
-        success: "Пароль успешно изменен"
+        success: "Пароль успешно изменен."
     alert:
       sessions:
         create:
           failure: "Неправильное имя пользователя или пароль."
+        oauth:
+          failure: "Кажется, у вас еще нет аккаунта на нашем сайте."
       chars:
         edit:
-          not_editable: "Персонажа нельзя редактировать"
+          not_editable: "Персонажа нельзя редактировать."
       skill_requests:
         create:
-          failure: "Не хватает очков или ролевок"
+          failure: "Не хватает очков или ролевок."
       reset_password:
-        failure: "Пароли не совпадают, попробуйте снова"
+        failure: "Пароли не совпадают, попробуйте снова."
 
     errors:
       forum:

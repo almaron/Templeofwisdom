@@ -11,6 +11,10 @@
       Notice: #{notice}
     .rails_alert
       Alert: #{alert}
+    .rails_flash
+      = flash.keys
+      = " -------- "
+      = flash[0]
     - unless flash.empty?
       .flash
         Flash:
