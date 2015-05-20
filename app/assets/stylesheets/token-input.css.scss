@@ -46,16 +46,16 @@ li {
 ul.token-input-list-temple {
   overflow: hidden;
   height: auto !important;
-  width: 400px;
+  width: 100%;
   border: 1px solid #b6a795;
   cursor: text;
-  font-size: 1 em;
+  font-size: 1em;
   min-height: 1px;
   z-index: 999;
   margin: 0;
   padding: 0;
   font-family: inherit;
-  display: inline-block;
+  display: block;
   background-color: #fbf5e8;
   list-style-type: none;
   clear: left;
