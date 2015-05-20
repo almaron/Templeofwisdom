@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     groups.include? self.group.to_sym
   end
 
+  def destroyed?
+    activation_state == 'destroyed'
+  end
+
   has_many :char_delegations
   has_many :chars, :through => :char_delegations
 

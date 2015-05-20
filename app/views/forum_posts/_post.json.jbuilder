@@ -16,4 +16,5 @@ json.commentable post_commentable
 
 json.user do
   json.(post.user, :id, :name)
+  json.destroyed post.user.destroyed?
 end

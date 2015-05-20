@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.update(activation_state:"destroyed")
+    @user.update(activation_state:"destroyed", email: 'destroyed')
     respond_to do |f|
       f.html { redirect_to users_path, notice: t("messages.notice.users.destroy.success") }
       f.json { render nothing:true }

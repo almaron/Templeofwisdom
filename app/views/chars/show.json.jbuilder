@@ -16,7 +16,10 @@ else
   end
 
   if (@char.open_player && @char.open_player > 0) || (current_user && (current_user.is_in? :admin || @char.owned_by == current_user))
-    json.owner { json.(@char.owned_by, :id, :name) }
+    json.owner do
+      json.(@char.owned_by, :id, :name)
+      json.destroyed @char.owned_by.destroyed?
+    end
   end
 
   json.roles @char.char_roles do |char_role|

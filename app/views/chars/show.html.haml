@@ -17,7 +17,8 @@
           {{char.profile.place}}
         .profile-element{'ng-show'=>'char.owner'}
           %b Игрок:
-          %a{href:"/users/{{char.owner.id}}", target:'_blank'} {{char.owner.name}}
+          %a{href:"/users/{{char.owner.id}}", target:'_blank', 'ng-if'=>'!char.owner.destroyed'} {{char.owner.name}}
+          %span{'ng-if'=>'char.owner.destroyed'} {{char.owner.name}}
         .profile-element
           .edit{'ng-if'=>'char.adminEditable', 'ng-show'=>'char.adminEditable', 'ng-click'=>"openEditChar('points')"} &#10548;
           %b Баллы:

@@ -45,8 +45,9 @@
     %td.f-message-more
       .message-author{"ng-if"=>"currentUser.group == 'admin'"}
         %span.message-user{}
-        %a{href:"/users/{{post.user.id}}", target: '_blank'} {{post.user.name}}
-        %span.message-ip{} {{post.ip}}
+          %a{href:"/users/{{post.user.id}}", target: '_blank', 'ng-if'=>'!post.user.destroyed'} {{post.user.name}}
+          %span{'ng-if'=>'post.user.destroyed'} {{post.user.name}}
+          %span.message-ip{} {{post.ip}}
     %td.f-message-options
       .message-options-div
         %a.opt-sendmessage{href: "#", title: "Отправить личное сообщение"} ЛС
