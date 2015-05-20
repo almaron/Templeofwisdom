@@ -47,7 +47,7 @@
   $scope.levelTree = () ->
     $scope.level_success = false
     $http.put("/admin/pages.json", {tree:$filter('level_tree')($scope.pages)}).success (data) ->
-      $scope.level_success = data.success
+      $scope.flashMessageTimeout 'Структура успешно сохранена', 'notice', 4000
 
   $scope.editItem = (scope) ->
     $scope.editPage = angular.copy scope.page

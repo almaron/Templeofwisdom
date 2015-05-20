@@ -28,7 +28,7 @@
             %span.fa.fa-check
   .tree-save{ 'ng-hide'=>'editPage.fullEdit'}
     %span.btn.btn-standart{"ng-click"=>"levelTree();"} Сохранить структуру
-    %span.level-success{"ng-if"=>"level_success"} Сохранено успешно
+    %span.level-success{"ng-if"=>"showFlash"} {{flash.message}}
 
 
 %script{id: "nodes_renderer.html", type: "text/ng-template"}
