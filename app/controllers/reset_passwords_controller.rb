@@ -2,14 +2,14 @@ class ResetPasswordsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])
-    @user.deliver_reset_password_instructions! if @user
+    @user.deliver_reset_password_instructions! if @user && !@user.destroyed?
   end
 
   def edit
     @token = params[:token]
     @user = User.load_from_reset_password_token(params[:token])
 
-    if @user.blank?
+    if @user.blank? || @user.destroyed?
       not_authenticated
       return
     end
@@ -19,7 +19,7 @@ class ResetPasswordsController < ApplicationController
     @token = params[:token]
     @user = User.load_from_reset_password_token(params[:token])
 
-    if @user.blank?
+    if @user.blank? || @user.destroyed?
       not_authenticated
       return
     end
