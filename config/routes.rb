@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   post 'register' => 'registrations#create'
   get 'activate_user' => 'registrations#activate', as: :activate_user
 
-  post 'reset_password' => 'reset_password#create', as: :reset_password_get
-  get 'reset_password/:token' => 'reset_password#edit', as: :reset_password_token
-  put 'reset_password/:token' => 'reset_password#update'
+  post 'reset_password' => 'reset_passwords#create', as: :reset_password_get
+  get 'reset_password/:token' => 'reset_passwords#edit', as: :reset_password_token
+  patch 'reset_password/:token' => 'reset_passwords#update'
 
   # Session routes
   get 'login' => 'sessions#new'

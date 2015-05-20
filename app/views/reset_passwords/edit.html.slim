@@ -1,0 +1,25 @@
+= content_for :pagetitle do
+  | Сброс пароля
+
+.password-reset-wrap
+  .login-form.any-form
+    = form_for @user, url: reset_password_token_path(@token) do |f|
+      .form-line
+        span.label
+          = f.label :name, 'Логин'
+        span.no-input
+          = @user.name
+      .form-line
+        span.label
+          = f.label :password
+        span.input
+          = f.password_field :password, class: 'inp inp-type2'
+      .form-line
+        span.label
+          = f.label :password_confirmation
+        span.input
+          = f.password_field :password_confirmation, class: 'inp inp-type2'
+      .form-line
+        span.label
+        span.submit
+          = f.submit 'Сбросить пароль', class: 'btn btn-standart'

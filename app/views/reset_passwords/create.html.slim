@@ -1,2 +1,14 @@
-h1 ResetPasswords#create
-p Find me in app/views/reset_passwords/create.html.slim
+= content_for :pagetitle do
+  | Восстановление пароля
+
+- if @user
+  .password-reset-message
+    .greeting
+      | Уважаемый(ая) #{@user.name},
+    .text
+      p
+        ' На Ваш адрес электронной почты #{@user.email} отправлено письмо
+        ' со ссылкой, по которой Вы сможете пересоздать Ваш пароль.
+      p
+        ' Если запрос на восстановление пароля был отправлен Вами по ошибке,
+        ' просто проигнорируйте это письмо.

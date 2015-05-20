@@ -3150,6 +3150,63 @@ td.none,td.none:hover, tr:hover td.none {
   }
 }
 
+.login-wrap {
+  .login-form {
+    .label {
+      width: 55px;
+      display: inline-block;
+    }
+    .submit {
+      .btn {
+        margin-left: 0;
+      }
+    }
+  }
+  .login-oauth-links {
+    margin-top:15px;
+    a {
+      font-size: 2em;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 10px;
+      color: $color-brown4;
+      &:hover {
+        color: $color-brown2;
+      }
+    }
+  }
+  .login-forgot-password {
+    margin-top: 20px;
+    .login-link {
+      margin-bottom: 10px;
+      text-decoration: underline;
+      cursor: pointer;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.password-reset-wrap {
+  .login-form {
+    .label {
+      width: 120px;
+      display: inline-block;
+    }
+    .submit {
+      .btn {
+        margin-left: 0;
+      }
+    }
+    .no-input {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+  }
+}
+
 /*
 
 */

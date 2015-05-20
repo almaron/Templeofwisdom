@@ -13,7 +13,9 @@ class UserMailer < ActionMailer::Base
   end
 
   def reset_password_email(user)
-
+    @user = User.find user.id
+    @url  = reset_password_token_url(@user.reset_password_token)
+    mail(:to => user.email, subject: I18n.t('mail.user_mailer.reset_password.subject')       )
   end
 
 end

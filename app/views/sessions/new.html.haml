@@ -1,2 +1,46 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+= content_for :pagetitle do
+  Вход на сайт
+
+.login-wrap
+  .login-form.any-form
+    = form_for User.new, url: login_path do |f|
+      .form-line
+        %span.label
+          = f.label :name, 'Логин:'
+        %span.input
+          = f.text_field :name, class: 'inp inp-type2'
+      .form-line
+        %span.label
+          = f.label :password, 'Пароль:'
+        %span.input
+          = f.password_field :password, class: 'inp inp-type2'
+      .form-line
+        %span.label
+        %span.submit
+          = f.submit 'Войти', class: 'btn btn-standart'
+  .login-oauth-links
+    .title
+      Войти через соцсети:
+    %a{title: "Войти через Facebook", href: auth_at_provider_path(provider: :facebook)}
+      %span.fa.fa-facebook-official
+    %a{title: "Войти через Вконтакте", href: auth_at_provider_path(provider: :vk)}
+      %span.fa.fa-vk
+    %a{title: "Войти через Google Mail", href: auth_at_provider_path(provider: :google)}
+      %span.fa.fa-google-plus
+    %a{title: "Войти через Twitter", href: auth_at_provider_path(provider: :twitter)}
+      %span.fa.fa-twitter
+
+  .login-forgot-password
+    .login-link
+      %span{'ng-click'=>'showForgot=!showForgot'}
+        Забыли логин или пароль? Давайте попробуем их восстановить!
+    .password-reset-form{'ng-if'=>'showForgot'}
+      .any-form.login-form
+        = form_tag reset_password_get_path do
+          .form-line
+            %span.label
+              = label_tag :email, 'Email:'
+            %span.input
+              = text_field_tag :email, '', class: 'inp inp-type2'
+            %span.submit
+              = submit_tag 'Восстановить', class: 'btn btn-standart'

@@ -20,6 +20,8 @@ ru:
       skill_requests:
         create:
           success: "Заявка успешно отправлена"
+      reset_password:
+        success: "Пароль успешно изменен"
     alert:
       sessions:
         create:
@@ -30,6 +32,9 @@ ru:
       skill_requests:
         create:
           failure: "Не хватает очков или ролевок"
+      reset_password:
+        failure: "Пароли не совпадают, попробуйте снова"
+
     errors:
       forum:
         topic_create: "Заголовок темы или текст поста пуст!"
