@@ -1,4 +1,4 @@
-.page-wrapper{'ng-controller'=>'JournalCtrl', 'ng-init'=>"initJournal(#{params[:id]}, #{params[:page] ? params[:page].to_i-1 : -1})"}
+.page-wrapper#wrapper{'ng-controller'=>'JournalCtrl', 'ng-init'=>"initJournal(#{params[:id]}, #{params[:page] ? params[:page].to_i-1 : -1})"}
   %journal-pager{journal:"journal", onset:'getPage(page)'}
   .main
     .col

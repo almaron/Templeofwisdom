@@ -35,11 +35,14 @@ class CharsController < ApplicationController
     respond_to do |format|
       if @char.save
         format.html { redirect_to profile_path, notice: t("messages.notice.chars.create.success") }
-        format.js {render js: "window.location = '#{profile_path}'", notice: t("messages.notice.chars.create.success") }
+        format.js {
+          flash.notice = t("messages.notice.chars.create.success")
+          render js: "window.location = '#{profile_path}'"
+        }
         format.json { render nothing: true }
       else
         format.html { render :new }
-        format.js   { render js: "$('span.form-errors').show();"}
+        format.js   { render partial: 'char_save_error'}
         format.json { render json: @char.errors.full_messages }
       end
     end
@@ -58,15 +61,21 @@ class CharsController < ApplicationController
     respond_to do |format|
       if @char.status_id > 1
         format.html { redirect_to profile_path, alert: t("messages.alert.chars.edit.not_editable") }
-        format.js { render js: "window.location = '#{profile_path}'", alert: t("messages.alert.chars.edit.not_editable")}
+        format.js {
+          flash.alert = t("messages.alert.chars.edit.not_editable")
+          render js: "window.location = '#{profile_path}'"
+        }
       else
         @char.char_skills.destroy_all
         if @char.update(char_params)
           format.html { redirect_to profile_path, notice: t("messages.notice.chars.update.success") }
-          format.js { render js: "window.location = '#{profile_path}'", alert: t("messages.alert.chars.edit.not_editable") }
+          format.js {
+            flash.alert = t("messages.alert.chars.edit.not_editable")
+            render js: "window.location = '#{profile_path}'"
+          }
         else
           format.html { render :new }
-          format.js { render js: "$('span.form-errors').show();" }
+          format.js { render partial: 'char_save_error' }
         end
       end
     end
@@ -115,7 +124,7 @@ class CharsController < ApplicationController
 
   def char_params
     params.require(:char).permit(
-        :name, :remote_avatar_url, :avatar, :group_id, :open_payer,
+        :name, :remote_avatar_url, :avatar, :group_id, :open_payer, :status_id,
         char_skills_attributes:[
             :skill_id, :level_id
         ],

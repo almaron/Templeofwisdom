@@ -1,0 +1,6 @@
+var scope = angular.element($('#wrapper')).scope()
+scope.$apply(function(){
+  scope.flashMessageTimeout("<%= I18n.t('messages.alert.chars.save.failure') -%>",'alert', 6000);
+})
+
+

@@ -1,4 +1,4 @@
-@app.controller 'AdminForumsCtrl', ['$scope', "$filter", '$http', '$timeout', 'AdminForum', ($scope, $filter, $http, $timeout, Forum) ->
+@app.controller 'AdminForumsCtrl', ['$scope', "$filter", '$http', 'AdminForum', ($scope, $filter, $http, Forum) ->
 
   $scope.removedItems = []
   $scope.newForum = {}
@@ -47,10 +47,7 @@
   $scope.levelTree = () ->
     $scope.level_success = false
     $http.put('/admin/forums.json', {tree:$filter('level_tree')($scope.forums)}).success (data) ->
-      $scope.level_success = data.success
-      $timeout (->
-        $scope.level_success = ''
-      ), 3000
+      $scope.flashMessageTimeout 'Структура успешно сохранена', 'notice', 4000
 
   $scope.editItem = (scope) ->
     $scope.editForum = angular.copy scope.forum

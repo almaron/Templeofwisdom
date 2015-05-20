@@ -1,4 +1,4 @@
-@app.controller "WrapperCtrl", ["$scope", "$cookies", "currentUser", "News", "BlogPost", ($scope, $cookies, currentUser, News, BlogPost) ->
+@app.controller "WrapperCtrl", ["$scope", "$cookies", "currentUser", "News", "BlogPost", '$timeout', ($scope, $cookies, currentUser, News, BlogPost, $timeout) ->
 
   $scope.currentUser = {}
 
@@ -30,5 +30,14 @@
   $scope.clearFlash = ->
     $scope.showFlash = false
     $scope.flash = {}
+
+  $scope.flashMessage = (message, message_class='notice') ->
+    $scope.flash = {message: message, class: message_class}
+    $scope.showFlash = true
+
+  $scope.flashMessageTimeout = (message, message_class='notice', timing = 4000) ->
+    $scope.flashMessage(message, message_class);
+    $timeout $scope.clearFlash, timing
+
 
 ]

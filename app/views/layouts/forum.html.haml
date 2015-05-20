@@ -9,7 +9,7 @@
 
   %body
     .top
-    .wrapper{"ng-controller" => "WrapperCtrl", "ng-init" => "initWrapper()", style:"font-size:{{currentFont}}"}
+    .wrapper#wrapper{"ng-controller" => "WrapperCtrl", "ng-init" => "initWrapper()", style:"font-size:{{currentFont}}"}
       = render "top"
       .forum
         = render "debug_params"
