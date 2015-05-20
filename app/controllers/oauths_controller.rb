@@ -11,7 +11,7 @@ class OauthsController < ApplicationController
       redirect_to profile_path
     else
       if @user = login_from(provider)
-        redirect_to root_path, notice: t('messages.notice.sessions.create.success')
+        redirect_to profile_path, notice: t('messages.notice.sessions.create.success')
       else
         @user = new_from(provider)
         redirect_to register_path

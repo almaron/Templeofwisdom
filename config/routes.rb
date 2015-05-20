@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   post 'register' => 'registrations#create'
   get 'activate_user' => 'registrations#activate', as: :activate_user
 
+  get 'reset_password' => 'reset_passwords#new', as: :reset_password
+  post 'reset_password' => 'reset_password#create'
+  get 'reset_password/:token' => 'reset_password#update', as: :reset_password_token
+
   # Session routes
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
 
   def create
     if (@user = login(params[:user_login],params[:user_password], true))
-      redirect_back_or_to root_path, notice: t("messages.notice.sessions.create.success")
+      redirect_back_or_to profile_path, notice: t("messages.notice.sessions.create.success")
     else
-      redirect_to root_path, alert: t("messages.alert.sessions.create.failure")
+      render :new, alert: t("messages.alert.sessions.create.failure")
     end
   end
 
