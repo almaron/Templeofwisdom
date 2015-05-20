@@ -3,21 +3,21 @@
 
 .login-wrap
   .login-form.any-form
-    = form_for User.new, url: login_path do |f|
+    = form_tag login_path, method: :post do
       .form-line
         %span.label
-          = f.label :name, 'Логин:'
+          = label_tag :user_login, 'Логин:'
         %span.input
-          = f.text_field :name, class: 'inp inp-type2'
+          = text_field_tag :user_login, '', class: 'inp inp-type2'
       .form-line
         %span.label
-          = f.label :password, 'Пароль:'
+          = label_tag :user_password, 'Пароль:'
         %span.input
-          = f.password_field :password, class: 'inp inp-type2'
+          = password_field_tag :user_password, '', class: 'inp inp-type2'
       .form-line
         %span.label
         %span.submit
-          = f.submit 'Войти', class: 'btn btn-standart'
+          = submit_tag 'Войти', class: 'btn btn-standart'
   .login-oauth-links
     .title
       Войти через соцсети:
