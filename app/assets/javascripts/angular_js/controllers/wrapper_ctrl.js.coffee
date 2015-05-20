@@ -5,11 +5,13 @@
   $scope.fontSizes = ["8px","10px","12px","14px","16px","18px","20px"]
   $scope.currentFont = $cookies.currentFont || "14px"
 
-  $scope.initWrapper = ->
+  $scope.initWrapper = (flash = false) ->
     $scope.currentUser = currentUser.get()
     $scope.currentUser.default_char = {name:""} unless $scope.currentUser.default_char
     $scope.wrapBlog = BlogPost.query {limit:4}
     $scope.updateMainNews()
+    $scope.showFlash = flash
+
 
   $scope.updateMainNews = ->
     $scope.wrapNews = News.query {limit:4}
@@ -24,5 +26,9 @@
 
   $scope.dropFont = ->
     $cookies.currentFont = $scope.currentFont = "14px"
+
+  $scope.clearFlash = ->
+    $scope.showFlash = false
+    $scope.flash = {}
 
 ]

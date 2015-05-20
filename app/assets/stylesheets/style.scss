@@ -3230,10 +3230,10 @@ td.none,td.none:hover, tr:hover td.none {
     }
   }
 
-  &.flash-div-alert {
+  &.alert {
     @include bg-gold;
   }
-  &.flash-div-notice {
+  &.notice {
     background-image: none;
     background-color: $color-green7;
   }

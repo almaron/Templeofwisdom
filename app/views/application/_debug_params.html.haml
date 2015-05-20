@@ -12,9 +12,7 @@
     .rails_alert
       Alert: #{alert}
     .rails_flash
-      = flash.keys
-      = " -------- "
-      = flash[0]
+      Flash Present: #{flash.present?}
     - unless flash.empty?
       .flash
         Flash:

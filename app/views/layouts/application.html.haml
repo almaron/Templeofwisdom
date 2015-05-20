@@ -10,7 +10,7 @@
   %body
     .top
     .bottom
-    .wrapper{"ng-controller" => "WrapperCtrl", "ng-init" => "initWrapper()", style:"font-size:{{currentFont}}"}
+    .wrapper{"ng-controller" => "WrapperCtrl", "ng-init" => "initWrapper(#{flash.present?})", style:"font-size:{{currentFont}}"}
       = render "top"
       .main{class: ("only-content" if @only_content)}
         = render "right" unless @only_content
@@ -25,5 +25,5 @@
           = yield
         .fish
       = render "bottom"
-  
-  
+
+

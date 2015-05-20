@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def flash_div_class
-    "flash-div-#{flash.keys.first}"
+    flash.keys.first.to_s
   end
 
   def flash_div_message

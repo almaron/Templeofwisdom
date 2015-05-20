@@ -27,11 +27,11 @@
       %a{href: "/pages/rules"} Правила монастыря
     %li
       %a{href: "/pages/rpg_rules"} Правила РПГ
-- if notice || alert
-  .flash-wrap{class: flash_div_class, 'ng-hide'=>'flashHide'}
-    .flash-block
-      .flash-message
-        = flash_div_message
-      .flash-close
-        .flash-btn
-          %span.fa.fa-times{'ng-click'=>'flashHide = true'}
+.flash-wrap{class: flash_div_class, 'ng-show'=>'showFlash', 'ng-class'=>'flash.class'}
+  .flash-block
+    .flash-message
+      = flash_div_message
+      {{flash.message}}
+    .flash-close
+      .flash-btn
+        %span.fa.fa-times{'ng-click'=>'clearFlash()'}
