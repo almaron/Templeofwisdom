@@ -3,8 +3,8 @@
     restrict: "EA",
     scope: {},
     link: (scope, element, attrs) ->
-      element.on 'click', (e) ->
-        $.fancybox attrs.href
-        e.preventDefault()
+        element.on 'click', (e) ->
+          $.fancybox { href:attrs.href, parent: 'body', type: 'image'}
+          e.preventDefault()
   }
 ]
