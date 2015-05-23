@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :journal_tag do
-    name "MyString"
+    name "tag"
   end
 
 end

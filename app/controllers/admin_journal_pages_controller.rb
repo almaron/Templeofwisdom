@@ -35,7 +35,7 @@ class AdminJournalPagesController < ApplicationController
   private
 
   def get_page
-    @page = JournalPage.includes(:images).find(params[:id] || params[:page_id])
+    @page = JournalPage.includes(:images, :blocks, :tags).find(params[:id] || params[:page_id])
   end
 
   def page_params

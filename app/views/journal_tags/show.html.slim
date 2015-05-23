@@ -1,2 +1,13 @@
-h1 JournalTags#show
-p Find me in app/views/journal_tags/show.html.slim
+.page-wrapper#wrapper ng-controller='JournalCtrl' ng-init="initTag(#{@tag.id})"
+  tag-pager tag="tag" onset='getTagPage(page)'
+  .main
+    .col
+      | &nbsp;
+    .mh-content ng-hide='tag.current_page >= 0'
+      h1 Тэг "#{@tag.name}"
+      .mh-tag-page-count
+        | Найдено страниц: {{ tag.page_ids.length }}
+    .mh-content ng-show='tag.current_page >= 0'
+      = render partial: 'journals/page'
+
+  tag-pager tag="tag" onset='getTagPage(page)'

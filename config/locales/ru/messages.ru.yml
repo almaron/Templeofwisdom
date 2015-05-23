@@ -41,6 +41,8 @@ ru:
       reset_password:
         failure: "Пароли не совпадают, попробуйте снова."
 
+      journal_tags:
+        not_found: "Этот тэг не найден"
     errors:
       forum:
         topic_create: "Заголовок темы или текст поста пуст!"

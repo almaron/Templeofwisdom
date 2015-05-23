@@ -1,7 +1,5 @@
 class JournalsController < ApplicationController
 
-
-
   def index
     @journals = Journal.published
   end
@@ -18,7 +16,7 @@ class JournalsController < ApplicationController
   end
 
   def page
-    @page = JournalPage.includes(:images).find(params[:page_id])
+    @page = JournalPage.includes(:images, :blocks, :tags, :journal).find(params[:page_id])
   end
 
 end

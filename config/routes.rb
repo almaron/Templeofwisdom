@@ -77,11 +77,12 @@ Rails.application.routes.draw do
   get '/skills/:skill_type' => 'skills#public_index', as: :skills_list, skill_type: /magic|phisic/
 
   resources :journals, only: [:index, :show] do
-    member do
-      get '/p/:page_id' => :page, as: :page
-    end
     collection do
       get '/tag/:tag' => 'journal_tags#show', as: :tag
+      get '/p/:page_id' => :page
+    end
+    member do
+      get '/p/:page_id' => :page, as: :page
     end
   end
 

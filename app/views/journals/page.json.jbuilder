@@ -1,10 +1,12 @@
-json.(@page, :id, :head, :content_line, :page_type)
+json.(@page, :id, :head, :content_line, :page_type, :journal_id)
 if @page.is_article?
   json.content @page.content_text.bbcode_to_html_with_formatting
   json.image_url @page.image_url 0
 end
 
 json.cached true
+
+json.journal @page.journal.head
 
 if @page.is_blocks?
   json.blocks @page.blocks do |block|
@@ -29,3 +31,5 @@ if @page.is_newbies?
     json.avatar char.avatar_url if char.avatar?
   end
 end
+
+json.tags @page.tags.map(&:name)

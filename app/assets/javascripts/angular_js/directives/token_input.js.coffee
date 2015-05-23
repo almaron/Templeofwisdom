@@ -17,7 +17,6 @@
         options.onDelete = apply
         options.hintText = 'Введите тэг'
         options.searchingText = 'Поиск...'
-        options.searchDelay = 20
 
         scope.$watchCollection 'populate', (newVal) ->
           if newVal
