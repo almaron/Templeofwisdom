@@ -1,0 +1,4 @@
+.gallery
+  .one-img ng-repeat='image in gallery'
+    a ng-click='imageClick($index)'
+      img.img ng-src='{{image.thumb}}'

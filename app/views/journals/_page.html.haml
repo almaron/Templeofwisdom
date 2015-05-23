@@ -24,10 +24,7 @@
       %span.text-block{'ng-if'=>'block.content', 'ng-bind-html'=>'block.content'}
   %div.mh-gallery-wrapper{'ng-if'=>'current_page.page_type=="gallery"'}
     .content{'ng-bind-html'=>'current_page.content'}
-    .gallery
-      .one-img{'ng-repeat'=>'image in current_page.images'}
-        %a{href:'{{image.path}}', fancybox:"", rel:'gallery'}
-          %img.img{'ng-src'=>'{{image.thumb}}'}
+    %fancy-gallery{gallery: 'current_page.images'}
 .mh-page-tags-wrap{ 'ng-show'=>'current_page.tags.length > 0' }
   .mh-page-tags
     Тэги:

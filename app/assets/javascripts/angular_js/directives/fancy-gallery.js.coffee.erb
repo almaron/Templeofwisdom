@@ -1,0 +1,25 @@
+@app.directive 'fancyGallery', [() ->
+  {
+    restrict: 'E'
+    scope: {
+      gallery: '='
+    }
+    replace: true
+    templateUrl: "<%= asset_path 'fancy_gallery' %>"
+    link: (scope, element, attrs) ->
+      scope.images = []
+      scope.setCollection = (images) ->
+        scope.images = []
+        angular.forEach images, (image, index) ->
+          scope.images.push({ href: image.path })
+
+      scope.$watchCollection 'gallery', scope.setCollection
+
+      scope.imageClick = (index) ->
+        $.fancybox.open scope.images, {
+          parent: 'body'
+          index: index
+        }
+
+  }
+]
