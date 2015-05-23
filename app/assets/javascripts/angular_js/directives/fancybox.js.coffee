@@ -1,8 +1,10 @@
 @app.directive "fancybox", [() ->
   {
-    restrict: "A",
+    restrict: "EA",
     scope: {},
     link: (scope, element, attrs) ->
-      angular.element(element).fancybox()
+      element.on 'click', (e) ->
+        $.fancybox attrs.href
+        e.preventDefault()
   }
 ]

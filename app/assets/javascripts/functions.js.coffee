@@ -1,3 +1,5 @@
 $ ->
   $('#forum-width').on 'click', ->
-    $('.wrapper').toggleClass('fixed-width');
+    $('.wrapper').toggleClass('fixed-width')
+
+  $('.fancybox-wp').fancybox()
