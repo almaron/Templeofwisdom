@@ -1,5 +1,5 @@
 class Forum < ActiveRecord::Base
-
+  trimmed_fields :name, :description
   has_ancestry
 
   has_many :topics, class_name: ForumTopic

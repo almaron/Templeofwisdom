@@ -1,5 +1,5 @@
 class ForumTopic < ActiveRecord::Base
-
+  trimmed_fields :head
   validates_presence_of :head
 
   has_many :posts, class_name: ForumPost, foreign_key: :topic_id

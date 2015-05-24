@@ -1,7 +1,4 @@
 class Char < ActiveRecord::Base
-
-  include Trimmer
-
   validates :name, :uniqueness => true, :presence => true
 
   belongs_to :group, :class_name => CharGroup

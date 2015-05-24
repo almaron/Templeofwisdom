@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  trimmed_fields :name, :email, :password, :password_confirmation
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end

@@ -1,4 +1,5 @@
 class UserProfile < ActiveRecord::Base
+  trimmed_fields :full_name, :skype, :icq, :contacts
   belongs_to :user
 
   # validate :birth_date_format

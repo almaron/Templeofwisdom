@@ -1,5 +1,4 @@
 class CharProfile < ActiveRecord::Base
-  include Trimmer
 
   belongs_to :char
 
