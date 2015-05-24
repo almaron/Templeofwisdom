@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519150217) do
+ActiveRecord::Schema.define(version: 20150524153826) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150519150217) do
   end
 
   create_table "char_avatars", force: true do |t|
-    t.integer  "char_id",                   null: false
+    t.integer  "char_id"
     t.string   "image"
     t.boolean  "default",    default: true, null: false
     t.datetime "created_at"

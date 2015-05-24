@@ -1,6 +1,7 @@
 class CharAvatar < ActiveRecord::Base
 
   belongs_to :char
+  has_many :forum_posts
 
   mount_uploader :image, AvatarUploader
 

@@ -12,7 +12,7 @@ class CharAvatarsController < ApplicationController
   end
 
   def destroy
-    @avatar.destroy
+    @avatar.forum_posts.any? ? @avatar.update(char_id: nil) : @avatar.destroy
     render json: {success: true}
   end
 
