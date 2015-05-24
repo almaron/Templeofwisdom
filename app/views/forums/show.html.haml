@@ -35,7 +35,7 @@
           %th.f-sections{colspan: "2"} Темы
           %th.f-author Автор
           %th.f-messages Постов
-          %th.f-messages Просмотров
+          -#%th.f-messages Просмотров
           %th.f-lastmessage Последнее сообщение
           %th.f-moderate{"ng-if"=>"moderateOn"}
             %input{type:"checkbox", "ng-click"=>"selectAll", id:"selectAll"}
@@ -54,7 +54,7 @@
           %td.f-author
             %a{href:"/chars/{{topic.char_id}}"} {{topic.poster_name}}
           %td.f-messages{} {{topic.posts_count}}
-          %td.f-messages{} {{topic.views_count}}
+          -#%td.f-messages{} {{topic.views_count}}
           %td.f-lastmessage
             .f-lastmessage-date{} {{topic.last_post_at}}
             .f-lastmessage-link
