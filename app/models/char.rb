@@ -1,5 +1,7 @@
 class Char < ActiveRecord::Base
 
+  include Trimmer
+
   validates :name, :uniqueness => true, :presence => true
 
   belongs_to :group, :class_name => CharGroup
@@ -7,6 +9,8 @@ class Char < ActiveRecord::Base
 
   has_one :profile, class_name: CharProfile, dependent: :destroy
   accepts_nested_attributes_for :profile
+
+  trimmed_fields :name, :status_line, :signature
 
   after_create :create_new_profile
 

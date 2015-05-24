@@ -1,8 +1,12 @@
 class CharProfile < ActiveRecord::Base
+  include Trimmer
+
   belongs_to :char
 
   validates :age, :numericality => true
   validates :birth_date, :format => /\A\d{2}\.\d{2}\z/
+
+  trimmed_fields :birth_date, :age, :real_age, :bio, :place, :beast, :phisics, :look, :character, :items, :person, :comment, :other
 
   after_initialize :init_default
 
