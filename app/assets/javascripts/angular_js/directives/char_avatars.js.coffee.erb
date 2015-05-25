@@ -19,6 +19,8 @@
           index = collection.indexOf Service.findBy(collection, 'default', true)
           scope.setCurrentIndex(index);
         scope.newAvatar = {default: false, char_id: scope.charId}
+      if collection.length == 0
+        scope.ngModel = null
 
     scope.$watchCollection 'collection', scope.digestCollection
 
@@ -28,7 +30,6 @@
 
     scope.increase = ->
       scope.setCurrentIndex(scope.currentIndex + 1) if (scope.currentIndex < scope.total - 1)
-
 
     scope.decrease = ->
       scope.setCurrentIndex(scope.currentIndex - 1) if (scope.currentIndex > 0)

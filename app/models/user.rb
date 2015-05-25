@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def own_chars
-    self.chars.where(char_delegations: {owner:1})
+    self.chars.where(char_delegations: {owner:1}).present
   end
 
   def delegated_chars

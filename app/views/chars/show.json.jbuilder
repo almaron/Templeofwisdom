@@ -15,7 +15,7 @@ else
     json.name I18n.t("char_groups.names.#{@char.group.name}")
   end
 
-  if (@char.open_player && @char.open_player > 0) || (current_user && (current_user.is_in? :admin || @char.owned_by == current_user))
+  if @char.owner && ((@char.open_player && @char.open_player > 0) || (current_user && (current_user.is_in? :admin || @char.owned_by == current_user)))
     json.owner do
       json.(@char.owned_by, :id, :name)
       json.destroyed @char.owned_by.destroyed?

@@ -13,8 +13,10 @@ class Char < ActiveRecord::Base
 
   scope :active, ->{where(status_id:5)}
 
-  has_many :avatars, class_name: CharAvatar, dependent: :destroy
+  has_many :avatars, class_name: CharAvatar, dependent: :nullify
   accepts_nested_attributes_for :avatars, reject_if: proc { |ca| ca[:remote_image_url].blank? && ca[:image].blank? }
+
+  scope :present, -> {where('status_id > 0')}
 
   def default_avatar
     avatars.find_by(default: true)
@@ -124,7 +126,12 @@ class Char < ActiveRecord::Base
   end
 
   def remove
-    self.posts.any? ? self.update(status_id:0) : self.destroy;
+    if self.posts.any?
+      self.update(status_id:0)
+      self.char_delegations.destroy_all
+    else
+      self.destroy
+    end
   end
 
   # Char roles
