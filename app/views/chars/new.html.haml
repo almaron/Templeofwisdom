@@ -144,11 +144,11 @@
       %tr
         %td.anketa-tt
         %td.anketa.ipt
-          %input{type:"checkbox", id:"status_id", name:"char[status_id]", value:1, "ng-checked"=>"char.status_id==1"}
+          %input{type:'hidden', name:'char[status_id]', value: 2}
+          %input{type:"checkbox", id:"status_id", name:"char[status_id]", "ng-model"=>"char.status_id", value:1, 'ng-true-value'=>'1', 'ng-false-value'=>'2'}
           %label{for:"status_id"}
             %span
             Сохранить персонажа, не отправлять на одобрение
-          {{char.status_id}}
       %tr
         %td.anketa-tt
           = link_to "Удалить", char_path(@char), method: :delete, class:"" if @char.id

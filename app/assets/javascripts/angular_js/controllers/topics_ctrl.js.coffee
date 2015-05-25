@@ -55,8 +55,7 @@
         $scope.topic = data.topic
         $scope.path = data.path
         $scope.chars = data.chars
-        $scope.sChar = Service.findBy($scope.chars, 'default', true)
-        $scope.newPost.char_id = $scope.sChar.id
+        flushNewPost()
         $scope.postPagination.total = data.topic.pages_count
         if options.post
           $scope.postPagination.cur = data.topic.current_page
@@ -64,7 +63,7 @@
           if options.page > data.topic.pages_count
             $scope.postPagination.cur = data.topic.pages_count
           else
-            $scope.postPagination.cur = page
+            $scope.postPagination.cur = options.page
         $scope.loadPosts($scope.postPagination.cur) if load_posts
     )
 
@@ -93,6 +92,9 @@
           0
         )
 
+  flushNewPost = ->
+    $scope.sChar = Service.findBy($scope.chars, 'default', true)
+    $scope.newPost = {char_id: $scope.sChar.id }
 
   $scope.addReply = ->
     $http.post($scope.currentPath+"/p.json", {post:$scope.newPost, inform:$scope.informChars, inform_master: $scope.informMaster}
@@ -101,7 +103,7 @@
         $scope.posts.push newPost
       else
         $scope.postPagination.cur = $scope.postPagination.total
-      $scope.newPost = {char_id: $scope.currentUser.default_char.id }
+      flushNewPost()
       $scope.topic.last_post_id = newPost.id
     ).error((errors) ->
       $scope.newPost.errors = errors
