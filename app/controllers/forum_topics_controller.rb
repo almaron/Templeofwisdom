@@ -31,7 +31,7 @@ class ForumTopicsController < ApplicationController
         }
       elsif !topic_in_place
         format.json { render json: { redirect: forum_topic_path(@topic.forum_id, @topic.id) }, status: 500 }
-        format.html { redirect_to "#{forum_topic_path(@topic.forum_id, @topic.id)}?page=#{params[:page]}&post=#{params[:post]}" }
+        format.html { redirect_to "#{forum_topic_path(@topic.forum_id, @topic.id)}?#{"page=#{params[:page]}&" if params[:page].present?}#{"post=#{params[:post]}" if params[:post].present?}" }
       else
         format.json { render json: {redirect: forum_path(@topic.forum_id), param_forum_id: params[:forum_id], topic_forum_id: @topic.forum_id}, status: 500}
         format.html {
