@@ -1,5 +1,4 @@
-- page = params[:page]=='last' ? '"last"' : (params[:page] || 1)
-.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{params[:forum_id]},#{params[:id]},#{page},#{params[:post] || -1})"}
+.forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{topic_init_params})"}
   .path
     %span
       %a{href:"/temple"} Список форумов

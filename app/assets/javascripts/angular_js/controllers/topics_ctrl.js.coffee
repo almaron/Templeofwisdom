@@ -35,16 +35,20 @@
   $scope.informMaster = false
   $scope.informChars = []
 
-  $scope.initTopic = (forum_id, topic_id, page, post_id) ->
-    $scope.topicInit = {forum_id: forum_id, topic_id:topic_id}
-    $scope.postId = post_id if post_id >= 0
-    $scope.initial = true
+  $scope.initTopic = (options) ->
+    $scope.topicInit = { forum_id: options.forum_id, topic_id: options.topic_id }
     $scope.currentPath = "/temple/"+$scope.topicInit.forum_id+"/t/"+$scope.topicInit.topic_id
-    $scope.loadTopic(page)
+    if options.post
+      $scope.loadTopic({post: options.post})
+      $scope.postId = options.post
+      $scope.initial = true
+    else
+      $scope.loadTopic({page: options.page || 1})
 
 
-  $scope.loadTopic = (page = 1, load_posts=false) ->
-    data = Topic.get({forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id}, ->
+  $scope.loadTopic = (options = {}, load_posts = false) ->
+    get_options = angular.extend({forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id}, options)
+    data = Topic.get(get_options, ->
       if data.redirect
         $window.location.assign data.redirect
       else
@@ -54,10 +58,13 @@
         $scope.sChar = Service.findBy($scope.chars, 'default', true)
         $scope.newPost.char_id = $scope.sChar.id
         $scope.postPagination.total = data.topic.pages_count
-        if page == 'last' || page > data.topic.pages_count
-          $scope.postPagination.cur = data.topic.pages_count
-        else
-          $scope.postPagination.cur = page
+        if options.post
+          $scope.postPagination.cur = data.topic.current_page
+        if options.page
+          if options.page > data.topic.pages_count
+            $scope.postPagination.cur = data.topic.pages_count
+          else
+            $scope.postPagination.cur = page
         $scope.loadPosts($scope.postPagination.cur) if load_posts
     )
 
@@ -68,7 +75,7 @@
   $scope.loadPosts = (page) ->
     console.log page
     $http.get(
-      '/temple/'+$scope.topicInit.forum_id+'/t/'+$scope.topicInit.topic_id+'/p.json?page=' + page
+      $scope.currentPath+'/p.json?page=' + page
     ).success (data) ->
       if data.length == 0
         $scope.postPagination.cur = $scope.postPagination.total
