@@ -63,10 +63,10 @@
 
   $scope.$watch "postPagination.cur", (newVal, oldVal) ->
     if angular.isDefined(newVal) && newVal && (newVal != oldVal)
-#      $window.history.pushState({page: newVal, prev:oldVal},"",$scope.currentPath+"?page="+newVal)
       $scope.loadPosts newVal
 
   $scope.loadPosts = (page) ->
+    console.log page
     $http.get(
       '/temple/'+$scope.topicInit.forum_id+'/t/'+$scope.topicInit.topic_id+'/p.json?page=' + page
     ).success (data) ->
