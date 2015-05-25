@@ -1,7 +1,7 @@
 .header
   = link_to "", root_path, class: "logo", title: "На главную"
   = link_to "Линь Ян Шо", "/temple", class: "ljs-text", title: "В Монастырь"
-  = render :partial => 'login_block'
+  = render 'shared/login_block'
 .menu
   .textsize{title: "Размер шрифта"}
     %span.textsize-a{"ng-click"=>"dropFont()"} A

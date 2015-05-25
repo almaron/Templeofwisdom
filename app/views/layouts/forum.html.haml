@@ -5,14 +5,14 @@
 / [if (gt IE 9)|!(IE)]><!
 %html.no-js{lang: "ru"}
   / <![endif]
-  = render :partial => 'head'
+  = render 'shared/head'
 
   %body
     .top
-    .wrapper#wrapper{"ng-controller" => "WrapperCtrl", "ng-init" => "initWrapper()", style:"font-size:{{currentFont}}"}
-      = render "top"
+    .wrapper#wrapper{'ng-controller' => 'WrapperCtrl', 'ng-init' => 'initWrapper()', style:'font-size:{{currentFont}}'}
+      = render 'shared/top'
       .forum
-        = render "debug_params"
+        = render 'shared/debug_params'
         .forum-in
           = yield
-      = render "bottom"
+      = render 'shared/bottom'

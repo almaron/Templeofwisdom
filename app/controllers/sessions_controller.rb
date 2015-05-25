@@ -1,23 +1,24 @@
 class SessionsController < ApplicationController
-  def new
+  def show
+    current_user ? render(partial: 'shared/current_user', locals: {user: current_user}) : render(nothing:true)
+  end
 
+  def new
   end
 
   def create
     if (@user = login(params[:user_login],params[:user_password], true))
-      redirect_back_or_to profile_path, notice: t("messages.notice.sessions.create.success")
+      redirect_back_or_to profile_path, notice: t('messages.notice.sessions.create.success')
     else
-      flash.now[:alert] = t("messages.alert.sessions.create.failure")
+      flash.now[:alert] = t('messages.alert.sessions.create.failure')
       render :new
     end
   end
 
   def destroy
     logout
-    redirect_to root_path, notice: t("messages.notice.sessions.destroy.success")
+    redirect_to root_path, notice: t('messages.notice.sessions.destroy.success')
   end
 
-  def get_current_user
-    current_user ? render(partial: "application/current_user", locals: {user: current_user}) : render(nothing:true)
-  end
+
 end

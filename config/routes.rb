@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # Session routes
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
-  get 'auth/current_user' => 'sessions#get_current_user'
+  get 'auth/current_user' => 'sessions#show'
   match 'logout' => 'sessions#destroy', via: [:get, :delete]
 
   # Page routes
