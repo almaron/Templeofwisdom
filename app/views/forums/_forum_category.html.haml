@@ -26,7 +26,7 @@
           .f-lastmessage-date{} {{child.last_post_at}}
           .f-lastmessage-link
             %a.f-lastmessage-author{href:"/chars/{{child.last_post_char_id}}"} {{child.last_post_char_name}}
-            %a.f-lastmessage-goto{href: "/temple/{{child.id}}/t/{{child.last_post_topic_id}}/post={{child.last_post_id}}"} ➜
+            %a.f-lastmessage-goto{href: "/temple/{{child.id}}/t/{{child.last_post_topic_id}}?post={{child.last_post_id}}"} ➜
 
 
 %table.forum-tab{"ng-if"=>"forum.child_forums.length > 0"}
@@ -52,4 +52,4 @@
           .f-lastmessage-date{} {{child.last_post_at}}
           .f-lastmessage-link
             %a.f-lastmessage-author{href:"/chars/{{child.last_post_char_id}}"} {{child.last_post_char_name}}
-            %a.f-lastmessage-goto{href: "/temple/{{child.id}}/t/{{child.last_post_topic_id}}/post={{child.last_post_id}}"} ➜
+            %a.f-lastmessage-goto{href: "/temple/{{child.id}}/t/{{child.last_post_topic_id}}?post={{child.last_post_id}}"} ➜
