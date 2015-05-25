@@ -68,9 +68,9 @@ class CharsController < ApplicationController
       else
         @char.char_skills.destroy_all
         if @char.update(char_params)
-          format.html { redirect_to profile_path, notice: t("messages.notice.chars.update.success") }
+          format.html { redirect_to profile_path, notice: t('messages.notice.chars.update.success') }
           format.js {
-            flash.alert = t("messages.alert.chars.edit.not_editable")
+            flash.notice = t('messages.notice.chars.update.success')
             render js: "window.location = '#{profile_path}'"
           }
         else
