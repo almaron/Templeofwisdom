@@ -1,4 +1,4 @@
-@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "$location", "$anchorScroll", "Topic", "Post", 'ArrayService', ($scope, $http, $window, $location, $anchorScroll,Topic, Post, Service) ->
+@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "$timeout", "Topic", "Post", 'ArrayService', ($scope, $http, $window, $timeout, Topic, Post, Service) ->
 
   # Topic New
   $scope.newPost = {}
@@ -67,18 +67,24 @@
       $scope.loadPosts newVal
 
   $scope.loadPosts = (page) ->
-    posts = Post.query {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, page: page}, ->
-      if posts.length == 0
+    $http.get(
+      '/temple/'+$scope.topicInit.forum_id+'/t/'+$scope.topicInit.topic_id+'/p.json?page=' + page
+    ).success (data) ->
+      if data.length == 0
         $scope.postPagination.cur = $scope.postPagination.total
       else
-        $scope.posts = posts
-        if $scope.initial && $scope.postId
-          $location.hash 'p'+$scope.postId
-          $anchorScroll()
-#          $window.scrollToElement 0, angular.element('#pid_'+$scope.postId).offset().top
-          $scope.initial = false
-        else
-          $window.scrollTo(0,270,270)
+        $scope.posts = data
+        $timeout(
+          () ->
+            if $scope.initial && $scope.postId
+              post = $('#pid_'+$scope.postId)
+              console.log post[0].offsetTop
+              $(document).scrollTop(post[0].offsetTop)
+              $scope.initial = false
+            else
+              $(document).scrollTop(270)
+          0
+        )
 
 
   $scope.addReply = ->

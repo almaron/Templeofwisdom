@@ -30,7 +30,6 @@
 //= require angular-resource
 //= require angular-sanitize
 //= require angular-cookies
-//= require angular-scroll
 //= require ng-table
 //= require xeditable
 //= require angular-ui-tree
