@@ -1,7 +1,7 @@
 class CharAvatar < ActiveRecord::Base
 
   belongs_to :char
-  has_many :forum_posts
+  has_many :forum_posts, foreign_key: :avatar_id
 
   mount_uploader :image, AvatarUploader
 
