@@ -266,9 +266,17 @@
       .message-date {
         text-align: right;
         color: $color-brown1;
-        &:hover {
+        a {
+          text-decoration: none;
+          color: $color-brown1;
+          cursor: pointer;
+          font-size: 0.8em;
+          &:hover {
+            color:$color-brown2;
+          }
+        }
+        span:hover {
           color:$color-brown2;
-          font-size: 1.1em;
         }
       }
       .message-text {

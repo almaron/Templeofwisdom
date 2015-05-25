@@ -22,7 +22,7 @@ class ForumTopicsController < ApplicationController
   def show
     respond_to do |format|
       if @topic.is_available?(current_user) && topic_in_place
-        @current_page = (@topic.post_ids.index(params[:post].to_i).to_f / 15).ceil if params[:post] && @topic.post_ids.include?(params[:post].to_i)
+        @current_page = ((@topic.post_ids.index(params[:post].to_i).to_f + 1)/ 15).ceil if params[:post] && @topic.post_ids.include?(params[:post].to_i)
         format.html { }
         format.json {
           if current_user
