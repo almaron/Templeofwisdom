@@ -6,7 +6,7 @@ class NewsController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json {
-        nt = params[:limit] || app_configs[:news_per_page] || 5
+        nt = app_configs[:news_per_page] || 5
         if params[:get_total]
           total = (News.count.to_f / nt).ceil
           render json:{total:total} if params[:get_total]

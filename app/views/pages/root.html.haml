@@ -33,6 +33,4 @@
    
 %hr.separator/
  
-.newsblock{"ng-controller"=>"NewsCtrl", "ng-init"=>"loadSomeNews(4)"}
-  %h2 Новости монастыря
-  =render :partial => 'news/news'
+= ssi '/mini_lists/news?temp=root_news'

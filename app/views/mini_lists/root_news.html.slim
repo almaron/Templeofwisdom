@@ -1,0 +1,13 @@
+.newsblock
+  h2 Новости монастыря
+  - @news.each do |news|
+    .news-single
+      .news_block
+        .news-single-title
+          span.news-single-date = I18n.l(news.created_at)
+          span.news-single-date-title-text = news.head
+        .news-single-text
+          .text
+            = simple_format(news.text)
+          .author
+            | / #{news.author}

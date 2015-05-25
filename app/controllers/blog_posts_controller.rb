@@ -6,7 +6,7 @@ class BlogPostsController < ApplicationController
     respond_to do |f|
       f.html { }
       f.json {
-        nt = params[:limit] || app_configs[:news_per_page] || 5
+        nt = app_configs[:news_per_page] || 5
         if params[:get_total]
           total = (BlogPost.count.to_f / nt).ceil
           render json:{total:total} if params[:get_total]

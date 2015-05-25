@@ -1,4 +1,4 @@
-@app.controller "WrapperCtrl", ["$scope", "$cookies", "currentUser", "News", "BlogPost", '$timeout', ($scope, $cookies, currentUser, News, BlogPost, $timeout) ->
+@app.controller "WrapperCtrl", ["$scope", "$cookies", "currentUser", '$timeout', ($scope, $cookies, currentUser, $timeout) ->
 
   $scope.currentUser = {}
 
@@ -8,8 +8,6 @@
   $scope.initWrapper = (flash = false) ->
     $scope.currentUser = currentUser.get()
     $scope.currentUser.default_char = {name:""} unless $scope.currentUser.default_char
-    $scope.wrapBlog = BlogPost.query {limit:4}
-    $scope.updateMainNews()
     $scope.showFlash = flash
 
 

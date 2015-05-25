@@ -1,0 +1,8 @@
+h3 Новости
+.news-single
+  - @news.each do |news|
+    .news-single-title
+      span.news-single-date = I18n.l(news.created_at)
+      span.news-single-date-title-text = news.head
+.news-all
+  a href="/news" Все новости

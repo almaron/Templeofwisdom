@@ -86,6 +86,11 @@ Rails.application.routes.draw do
     end
   end
 
+namespace :mini_lists do
+  get :news
+  get :blog
+end
+
 # Administration block
   scope '/admin' do
     resources :users, except: [:new, :create, :show]

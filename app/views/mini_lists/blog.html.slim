@@ -1,0 +1,7 @@
+h3 Блог
+- @posts.each do |post|
+  .news-single
+    .news-single-title
+      span.news-single-date = I18n.l(post.created_at)
+      span.news-single-date-title-text
+        a href="#{blog_posts_path}/#{post.id}" = post.head
