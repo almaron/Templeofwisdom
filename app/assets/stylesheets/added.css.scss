@@ -117,3 +117,15 @@
 .fa-times {
   cursor: pointer;
 }
+
+.form-meta {
+  .form-line {
+    label {
+      width: 200px;
+      display: inline-block;
+    }
+    input[type="text"] {
+      width: 500px;
+    }
+  }
+}

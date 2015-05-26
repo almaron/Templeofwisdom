@@ -53,7 +53,14 @@ class AdminPagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:head, :page_title, :page_alias, :content, :parent_id, :partial, :partial_params, :published, :hide_menu, :sort_order, :meta_title, :meta_description, :meta_keywords, :ancestry, :parent)
+    params.require(:page).permit(
+      :head, :page_title, :page_alias,
+      :content, :parent_id, :partial,
+      :partial_params, :published,
+      :hide_menu, :sort_order,
+      :meta_title, :meta_description, :meta_keywords,
+      :ancestry, :parent
+    )
   end
 
 end

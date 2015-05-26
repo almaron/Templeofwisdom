@@ -8,6 +8,18 @@
     - else
       = link_to page.page_title, page_url_path(page.page_alias)
 
+- if @page.meta_title.present?
+  - content_for :title do
+    = @page.meta_title+" - Форумная Ролевая Игра \"Храм Мудрости\""
+
+
+- if @page.meta_description.present?
+  - content_for :meta_description do
+    = @page.meta_description
+
+- if @page.meta_keywords.present?
+  - content_for :meta_keywords do
+    = @page.meta_keywords
 
 - content_for :pagetitle do
   = @page.page_title

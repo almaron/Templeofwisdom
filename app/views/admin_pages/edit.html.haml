@@ -31,7 +31,18 @@
         .form-line.text-area
           .text-area
             =f.text_area :content, class: "inp inp-type2 tinymce"
-        -#TODO add all the other page fields
+        %hr
+        .form-meta
+          .form-line
+            = f.label :meta_title
+            = f.text_field :meta_title, class: "inp inp-type2"
+          .form-line
+            = f.label :meta_description
+            = f.text_field :meta_description, class: "inp inp-type2"
+          .form-line
+            = f.label :meta_keywords
+            = f.text_field :meta_keywords, class: "inp inp-type2"
+        %hr
         .form-line
           = f.submit raw("Сохранить"), class:"btn btn-standart"
           %button.btn.btn-standart{onclick:'window.location.assign("/admin/pages")'}

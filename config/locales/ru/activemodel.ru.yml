@@ -32,6 +32,10 @@ ru:
         character: 'Характер'
         other: 'Прочее'
         person: 'Образ на аватаре'
+      page:
+        meta_title: 'META Title'
+        meta_description: 'META Description'
+        meta_keywords: 'META Keywords'
 
     errors:
       models:
