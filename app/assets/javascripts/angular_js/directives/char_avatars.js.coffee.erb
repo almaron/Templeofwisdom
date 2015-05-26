@@ -11,7 +11,7 @@
     scope.currentIndex = -1;
 
     scope.digestCollection = (collection) ->
-      if angular.isDefined collection && collection.length > 0
+      if angular.isDefined(collection) && collection.length > 0
         scope.total = collection.length;
         if scope.ngModel
           scope.currentIndex = collection.indexOf Service.findBy(collection, 'id', scope.ngModel)
@@ -19,7 +19,7 @@
           index = collection.indexOf Service.findBy(collection, 'default', true)
           scope.setCurrentIndex(index);
         scope.newAvatar = {default: false, char_id: scope.charId}
-      if angular.isDefined collection && collection.length == 0
+      if angular.isDefined(collection) && collection.length == 0
         scope.ngModel = null
 
     scope.$watchCollection 'collection', scope.digestCollection

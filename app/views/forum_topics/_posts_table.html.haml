@@ -1,7 +1,6 @@
 %table.forum-tab.one-message-tab{"ng-repeat"=>"post in posts", id:"pid_{{post.id}}", 'ng-class'=>'{active : post.id == postId, last : $last}'}
   %tr{"ng-hide"=>"selectedPost.id==post.id"}
     %td.f-message-author
-      %a{name:"p{{post.id}}"}
       .message-author-name{}
         %a{href:"/chars/{{post.char_id}}", target:'_blank', 'ng-if'=>'post.char.group_id > 1'} {{post.char.name}}
         %span{'ng-if'=>'post.char.group_id == 1'} {{post.char.name}}

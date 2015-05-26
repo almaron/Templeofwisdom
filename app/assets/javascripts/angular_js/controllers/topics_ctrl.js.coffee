@@ -72,7 +72,6 @@
       $scope.loadPosts newVal
 
   $scope.loadPosts = (page) ->
-    console.log page
     $http.get(
       $scope.currentPath+'/p.json?page=' + page
     ).success (data) ->
@@ -118,12 +117,10 @@
 
   $scope.editPost = (post) ->
     $scope.selectedPost = angular.copy post
-    console.log post
     if Service.findBy($scope.chars, 'id', post.char_id)
       $scope.eChar = Service.findBy($scope.chars, 'id', post.char_id)
     else
       $http.get('/chars/'+post.char_id+'.json?short=true').success (data) ->
-        console.log data
         $scope.eChar = data
         $scope.selectedPost.setChar = data.name
 
