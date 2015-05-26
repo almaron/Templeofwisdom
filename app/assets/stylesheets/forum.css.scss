@@ -70,17 +70,55 @@
 	}
 
 	&.f-icon {
-      width: 40px;
+    width: 40px;
 	  span {
-		display: block;
-		width:38px;
-		height:38px;
-		background-position: center center;
-		background-repeat: no-repeat;
-		margin: 0 auto;
-	  }
+  		display: block;
+  		width:38px;
+  		height:38px;
+  		background-position: center center;
+  		background-repeat: no-repeat;
+  		margin: 0 auto;
+      background-image: image-url('forum-sprite.png');
+
+      &.forum-f-read-hot {
+        background-position: 0 -38px;
+      }
+      &.forum-f-read-locked {
+        background-position: 0 0;
+      }
+      &.forum-f-read {
+        background-position: 0 -266px;
+      }
+      &.forum-f-unread-hot {
+        background-position: 0 -114px;
+      }
+      &.forum-f-unread-locked {
+        background-position: 0 -152px;
+      }
+      &.forum-f-unread {
+        background-position: 0 -304px;
+      }
+      &.forum-topic-read-hot {
+        background-position: 0 -228px;
+      }
+      &.forum-topic-read-locked {
+        background-position: 0 -342px;
+      }
+      &.forum-topic-read {
+        background-position: 0 -380px;
+      }
+      &.forum-topic-unread-hot {
+        background-position: 0 -76px;
+      }
+      &.forum-topic-unread-locked {
+        background-position: 0 -190px;
+      }
+      &.forum-topic-unread {
+        background-position: 0 -418px;
+      }
+    }
 	  &.f-icon-forum span {
-		background-image: image-url('forum/topic_unread.png');
+		  background-image: image-url('forum/topic-read.png');
 	  }
 	}
 

@@ -46,7 +46,7 @@
             Нет тем
         %tr{"ng-repeat"=>"topic in topics"}
           %td.f-icon.topic.unread
-            %span
+            %span.forum-topic-unread
           %td.f-topic
             .f-topic-name
               %a{href: "/temple/{{forum.id}}/t/{{topic.id}}"} {{topic.head}}
