@@ -129,10 +129,11 @@
     $scope.selectedPost = {}
 
   $scope.updatePost = ->
-    Post.update({forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: $scope.selectedPost.id, post: $scope.selectedPost})
-    $scope.cancelEdit()
-    flushNewPost()
-    $scope.loadPosts $scope.postPagination.cur
+    $http.put($scope.currentPath + '/p/' + $scope.selectedPost.id + '.json', {post: $scope.selectedPost}).success (data) ->
+#    Post.update({forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: $scope.selectedPost.id, })
+      $scope.cancelEdit()
+      flushNewPost()
+      $scope.loadPosts $scope.postPagination.cur
 
   $scope.toggleTopic = (hidden) ->
     Topic.update {forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id, topic:{ hidden:hidden }}

@@ -70,6 +70,7 @@ class ForumPostsController < ApplicationController
 
   #TODO Move this logic into ForumPost
   def post_editable(post)
+    Rails.logger.info 'Post editable'
     current_user && (current_user.is_in?([:admin, :master]) || post.char.delegated_to?(current_user))
   end
   helper_method :post_editable
@@ -87,6 +88,7 @@ class ForumPostsController < ApplicationController
   private
 
   def post_params
+    Rails.logger.info 'Params!!'
     if params[:post][:comment] && current_user.is_in?([:admin, :master])
       p_params = params.require(:post).permit(:comment, :commenter)
       p_params[:commented_at] = params[:post][:comment].present? ? DateTime.now : nil
