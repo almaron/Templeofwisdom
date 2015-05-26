@@ -70,7 +70,6 @@ class ForumPostsController < ApplicationController
 
   #TODO Move this logic into ForumPost
   def post_editable(post)
-    Rails.logger.info 'Post editable'
     current_user && (current_user.is_in?([:admin, :master]) || post.char.delegated_to?(current_user))
   end
   helper_method :post_editable
@@ -88,7 +87,6 @@ class ForumPostsController < ApplicationController
   private
 
   def post_params
-    Rails.logger.info 'Params!!'
     if params[:commenting] && current_user.is_in?([:admin, :master])
       p_params = params.require(:post).permit(:comment, :commenter)
       p_params[:commented_at] = params[:post][:comment].present? ? DateTime.now : nil
@@ -96,7 +94,6 @@ class ForumPostsController < ApplicationController
       p_params = params.require(:post).permit(:char_id, :text, :avatar_id).merge(topic_id:params[:topic_id])
       p_params.merge!(user_id: current_user.id, ip: current_user.current_ip) if params[:action] == 'create'
     end
-    Rails.logger.info p_params
     p_params
   end
 

@@ -130,7 +130,6 @@
 
   $scope.updatePost = ->
     $http.put($scope.currentPath + '/p/' + $scope.selectedPost.id + '.json', {post: $scope.selectedPost}).success (data) ->
-#    Post.update({forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: $scope.selectedPost.id, })
       $scope.cancelEdit()
       flushNewPost()
       $scope.loadPosts $scope.postPagination.cur
