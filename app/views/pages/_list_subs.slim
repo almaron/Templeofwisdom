@@ -1,0 +1,4 @@
+ul.any-list
+  - page.listed_children.each do |child|
+    li
+      = link_to child.page_title, page_url_path(child.page_alias)

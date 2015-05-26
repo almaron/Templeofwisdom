@@ -12,4 +12,4 @@
 - content_for :pagetitle do
   = @page.page_title
 
-= raw @page.content
+= render inline: @page.render_content
