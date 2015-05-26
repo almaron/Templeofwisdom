@@ -13,7 +13,7 @@
     %td.f-message-content
       .message-date{}
         %a.fa.fa-external-link{href:'{{currentPath+"/?post="+post.id}}'}
-        %span {{post.posted_at}}
+        %span{} {{post.posted_at}}
       .message-text
         %div{"parse-html"=>"post.show_text"}
         .signature{'parse-html'=>'post.char.signature'}
@@ -63,7 +63,7 @@
         %label{for:"char_name"} Персонаж:
         %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, selectedPost.char_id)', 'ng-hide'=>'selectedPost.setChar'}
         %span.set-char{'ng-show'=>'selectedPost.setChar'} {{selectedPost.setChar}}
-        %char-avatars{'ng-model'=>'selectedPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'selectedPost.char_id', 'ng-show'=>'selectedPost.char_id'}
+        %char-avatars{'ng-model'=>'selectedPost.avatar_id', collection:'eChar.avatars', editable: 'false', 'char-id'=>'selectedPost.char_id', 'ng-show'=>'selectedPost.char_id'}
     %td.input.input-textarea
       %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"selectedPost.text", required:'', "mark-it-up"=>""}
       .input-btn

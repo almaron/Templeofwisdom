@@ -120,11 +120,11 @@
     $scope.selectedPost = angular.copy post
     console.log post
     if Service.findBy($scope.chars, 'id', post.char_id)
-      $scope.sChar = Service.findBy($scope.chars, 'id', post.char_id)
+      $scope.eChar = Service.findBy($scope.chars, 'id', post.char_id)
     else
       $http.get('/chars/'+post.char_id+'.json?short=true').success (data) ->
         console.log data
-        $scope.sChar = data
+        $scope.eChar = data
         $scope.selectedPost.setChar = data.name
 
 
@@ -134,6 +134,7 @@
   $scope.updatePost = ->
     Post.update({forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: $scope.selectedPost.id, post: $scope.selectedPost})
     $scope.cancelEdit()
+    flushNewPost()
     $scope.loadPosts $scope.postPagination.cur
 
   $scope.toggleTopic = (hidden) ->

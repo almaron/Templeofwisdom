@@ -90,12 +90,12 @@ class ForumPostsController < ApplicationController
     if params[:post][:comment] && current_user.is_in?([:admin, :master])
       p_params = params.require(:post).permit(:comment, :commenter)
       p_params[:commented_at] = params[:post][:comment].present? ? DateTime.now : nil
-      p_params
     else
       p_params = params.require(:post).permit(:char_id, :text, :avatar_id).merge(topic_id:params[:topic_id])
-      p_params.merge(user_id: current_user.id, ip: current_user.current_ip) if params[:controller] == 'create'
-      p_params
+      p_params.merge!(user_id: current_user.id, ip: current_user.current_ip) if params[:action] == 'create'
     end
+    Rails.logger.debug p_params
+    p_params
   end
 
   def get_post

@@ -19,7 +19,7 @@
           index = collection.indexOf Service.findBy(collection, 'default', true)
           scope.setCurrentIndex(index);
         scope.newAvatar = {default: false, char_id: scope.charId}
-      if collection.length == 0
+      if angular.isDefined collection && collection.length == 0
         scope.ngModel = null
 
     scope.$watchCollection 'collection', scope.digestCollection
