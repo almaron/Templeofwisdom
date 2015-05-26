@@ -1,3 +1,14 @@
+- content_for :path do
+  = link_to 'Главная Страница', '/'
+  - @page.path.each do |page|
+    %span.fa.fa-arrow-circle-right
+    - if page.id == @page.id
+      %span
+        = page.page_title
+    - else
+      = link_to page.page_title, page_url_path(page.page_alias)
+
+
 - content_for :pagetitle do
   = @page.page_title
 
