@@ -1,7 +1,4 @@
-@app.controller 'NewsCtrl', ["$scope", "$window", "News", ($scope, $window, News) ->
-
-  $scope.loadSomeNews = (number) ->
-    $scope.news = News.query {limit: number}
+@app.controller 'NewsCtrl', ["$scope", "News", ($scope, News) ->
 
   $scope.newsPagination = { }
 
@@ -38,7 +35,6 @@
   $scope.$watch 'newsPagination.cur', (newVal) ->
     if angular.isDefined newVal
       $scope.loadNews newVal
-#      $window.history.pushState({controller:"news", action:"index", page:newVal},"","/news?page="+newVal)
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
     $scope.newNews.author = newVal.name if (angular.isDefined(newVal) && angular.isDefined($scope.newNews))
