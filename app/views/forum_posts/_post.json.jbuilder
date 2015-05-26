@@ -7,7 +7,7 @@ json.char do
   json.(post.char, :id, :name, :group_id)
   json.signature post.char.signature.bbcode_to_html_with_formatting
   json.status post.char.status_line || I18n.t("char_groups.names.#{post.char.group.name}")
-  json.avatar post.avatar.image_url(:thumb) if post.avatar && post.avatar.image?
+  json.avatar post.avatar.image_url(:thumb) if post.avatar_id &&
 end
 
 json.editable post_editable post

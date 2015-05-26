@@ -94,7 +94,7 @@ class ForumPostsController < ApplicationController
       p_params = params.require(:post).permit(:char_id, :text, :avatar_id).merge(topic_id:params[:topic_id])
       p_params.merge!(user_id: current_user.id, ip: current_user.current_ip) if params[:action] == 'create'
     end
-    Rails.logger.debug p_params
+    Rails.logger.info p_params
     p_params
   end
 
