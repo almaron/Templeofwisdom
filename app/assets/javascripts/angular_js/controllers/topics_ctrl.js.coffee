@@ -141,7 +141,7 @@
 
   $scope.commentPost = (post) ->
     comment = {comment: post.comment, commenter: post.commenter}
-    getPost = Post.update({forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: post.id, post: comment}, ->
+    getPost = Post.update({forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: post.id, post: comment, commenting: true}, ->
      $scope.posts[$scope.posts.indexOf(post)] = getPost
     )
 

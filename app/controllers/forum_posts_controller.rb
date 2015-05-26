@@ -89,7 +89,7 @@ class ForumPostsController < ApplicationController
 
   def post_params
     Rails.logger.info 'Params!!'
-    if params[:post][:comment] && current_user.is_in?([:admin, :master])
+    if params[:commenting] && current_user.is_in?([:admin, :master])
       p_params = params.require(:post).permit(:comment, :commenter)
       p_params[:commented_at] = params[:post][:comment].present? ? DateTime.now : nil
     else
