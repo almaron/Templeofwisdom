@@ -59,9 +59,10 @@
         -#  “”
   %tr.post-edit.inline-edit{"ng-if"=>"post.id == selectedPost.id"}
     %td.label
-      .select-char{'ng-show'=>'selectedPost.user.id == currentUser.id'}
+      .select-char{}
         %label{for:"char_name"} Персонаж:
-        %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, selectedPost.char_id)'}
+        %select.inp.inp-type2{"ng-model"=>"selectedPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, selectedPost.char_id)', 'ng-hide'=>'selectedPost.setChar'}
+        %span.set-char{'ng-show'=>'selectedPost.setChar'} {{selectedPost.setChar}}
         %char-avatars{'ng-model'=>'selectedPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'selectedPost.char_id', 'ng-show'=>'selectedPost.char_id'}
     %td.input.input-textarea
       %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"selectedPost.text", required:'', "mark-it-up"=>""}

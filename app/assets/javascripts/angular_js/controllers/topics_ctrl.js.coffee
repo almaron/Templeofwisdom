@@ -84,7 +84,6 @@
           () ->
             if $scope.initial && $scope.postId
               post = $('#pid_'+$scope.postId)
-              console.log post[0].offsetTop
               $(document).scrollTop(post[0].offsetTop)
               $scope.initial = false
             else
@@ -119,7 +118,15 @@
 
   $scope.editPost = (post) ->
     $scope.selectedPost = angular.copy post
-    $scope.sChar = Service.findBy($scope.chars, 'id', $scope.selectedPost.char_id)
+    console.log post
+    if Service.findBy($scope.chars, 'id', post.char_id)
+      $scope.sChar = Service.findBy($scope.chars, 'id', post.char_id)
+    else
+      $http.get('/chars/'+post.char_id+'.json?short=true').success (data) ->
+        console.log data
+        $scope.sChar = data
+        $scope.selectedPost.setChar = data.name
+
 
   $scope.cancelEdit = ->
     $scope.selectedPost = {}

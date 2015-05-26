@@ -4,6 +4,7 @@ if params[:short]
     json.season_id @char.profile.season_id
     json.birth_date @char.profile.birth_date
   end
+  json.avatars @char.avatars, partial: 'char_avatars/char_avatar', as: :avatar
 else
   json.(@char, :id, :name, :status_line, :status_id, :open_player, :signature)
   json.signature_show @char.signature.bbcode_to_html_with_formatting

@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     self.chars.where(char_delegations: {owner:0})
   end
 
+  def has_privilege?
+    false
+  end
+
   has_many :role_apps
 
   #Messages
