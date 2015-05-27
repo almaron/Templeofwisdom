@@ -36,7 +36,7 @@ class RolesController < ApplicationController
   def create
     respond_to do |format|
       if @role = Role.create(role_params)
-        SystemPosts::RoleCheckPost.new(current_user, @role).create
+        SystemPosts::RoleCheckPost.new(current_user, @role, params[:role]).create
         format.html { redirect_to roles_path }
         format.json { render json: {redirect: roles_path} }
       else

@@ -12,16 +12,18 @@ class CharRole < ActiveRecord::Base
   before_save :calculate_points
 
   def calculate_points
-    self.points = (logic_points + style_points + skill_points)/20 * volume_points + added_points if self.logic_points
+    self.points = (logic_points.to_i + style_points.to_i + skill_points.to_i)/20 * volume_points.to_i + added_points.to_i if self.logic_points
   end
 
   after_initialize :set_points
 
   def set_points
     if self.new_record?
-     self.logic_points = self.style_points = self.skill_points = 10
-     self.volume_points = 20
-     self.added_points = 0
+     self.logic_points  ||= 10
+     self.style_points  ||= 10
+     self.skill_points  ||= 10
+     self.volume_points ||= 20
+     self.added_points  ||= 0
     else
       self.staged_points = self.points
     end
