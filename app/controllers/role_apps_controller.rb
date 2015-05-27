@@ -1,9 +1,9 @@
 class RoleAppsController < ApplicationController
-  
+
   before_action :require_login
   before_action :master_access, only: :show
   before_action :get_app, only: [:update, :destroy]
-  
+
   def index
     @role_apps = current_user.role_apps
     respond_to do |format|

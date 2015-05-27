@@ -36,7 +36,7 @@ class RolesController < ApplicationController
   def create
     respond_to do |format|
       if @role = Role.create(role_params)
-        @role.create_post current_user
+        SystemPosts::RoleCheckPost.new(current_user, @role).create
         format.html { redirect_to roles_path }
         format.json { render json: {redirect: roles_path} }
       else
@@ -81,7 +81,7 @@ class RolesController < ApplicationController
   end
 
   def role_params
-    params.require(:role).permit(:head, :paths, char_roles_attributes: [:id, :char_id, :comment, :logic_points, :style_points, :skill_points, :volume_points, :added_points, :_destroy, role_skills_attributes: [:id, :skill_id, :done, :_destroy]])
+    params.require(:role).permit(:head, :paths, :comment, char_roles_attributes: [:id, :char_id, :comment, :logic_points, :style_points, :skill_points, :volume_points, :added_points, :_destroy, role_skills_attributes: [:id, :skill_id, :done, :_destroy]])
   end
 
 end

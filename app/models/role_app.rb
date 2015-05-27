@@ -10,15 +10,15 @@ class RoleApp < ActiveRecord::Base
   after_update :update_post
 
   def create_post(user)
-    self.update(post_id: ForumService.new(user).create_role_app_post(self))
+    self.update(post_id: SystemPosts::RoleAppPost.new(user, self).create)
   end
 
   def update_post
-    ForumService.new.update_role_app_post(self)
+    SystemPosts::RoleAppPost.new(self).update
   end
 
   def destroy_post
-    ForumPost.find_by(id:self.post_id).destroy if self.post_id
+    SystemPosts::RoleAppPost.new(self).destroy
   end
 
 end

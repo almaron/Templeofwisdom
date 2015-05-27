@@ -1,0 +1,21 @@
+[b]Название: [/b][url=/roles/<%= role.id %>]<%= role.head %>[/url]
+
+[b]Участники:[/b]
+<% role.char_roles.each do |char_role| %>
+[b]<%= char_role.char.name %>[/b]
+
+[b]Баллы:[/b]
+[i]Логика[/i] - <%= char_role.logic_points %>,
+[i]Стиль[/i] - <%= char_role.style_points %>,
+[i]Способности[/i] - <%= char_role.skill_points %>,
+[i]Объем[/i] - <%= char_role.volume_points %>
+<% if char_role.added_points > 0 %>, [i]Дополнительно[/i] - <%= char_role.added_points %><% end %>
+
+[b][i]Всего:[/i][/b]<%= char_role.points %>
+<% if char_role.skills.any? %>
+[b]Способности:[/b] <%= char_role.skills.map(&:name).join(', ') %>
+<% end %>
+[b]Комментарий:[/b] <%= char_role.comment %>
+<% end %>
+
+<%= role.comment %>

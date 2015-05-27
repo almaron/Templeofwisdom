@@ -35,6 +35,6 @@
     )
 
   $scope.removeApp = (role_app) ->
-    $http.delete('/role_apps/'+role_app+'.json').success ->
+    $http.delete('/role_apps/'+role_app.id+'.json').success ->
       $scope.roleApps.splice($scope.roleApps.indexOf(role_app),1)
 ]

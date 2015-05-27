@@ -14,7 +14,7 @@
     %select.inp.inp-type2{'ng-model'=>'sApp.char_id', id:'app_char_id', chosen:'', 'data-placeholder'=>'Персонаж...', 'ng-options'=>'char.id as char.name for char in currentUser.activeChars'}
       %option{value:''}
   .form-line.form-btn
-    %button.btn.btn-standart{'ng-click'=>'role_app ? updateApp(role_app) : createApp()'}
+    %button.btn.btn-standart{'ng-click'=>'sApp.id ? updateApp(sApp) : createApp()'}
       Отправить
     %button.btn.btn-standart{'ng-click'=>'closeEdit()'}
       Отменить

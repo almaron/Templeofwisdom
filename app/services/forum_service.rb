@@ -15,20 +15,7 @@ class ForumService
   end
 
   def add_approve_post(char)
-    ForumPost.create topic_id: char.profile_topic_id, char_id: admin_config('approve_master_id'), user_id: @user.id, ip: @user.current_ip, text: I18n.t("messages.char.approve") if char.profile_topic_id
-  end
-
-  def add_role_check_post(role)
-    ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: admin_config('role_master_id'), user_id: @user.id, ip: @user.current_ip, text: render(partial:'shared/system_posts/role_check_post', locals:{role:role}) if admin_config('roles_apps_topic_id')
-  end
-
-  def create_role_app_post(role_app)
-    post = ForumPost.create topic_id: admin_config('roles_apps_topic_id'), char_id: role_app.char_id, user_id: @user.id, ip: @user.current_ip, text: render(partial:'shared/system_posts/role_app', locals:{role_app:role_app}) if admin_config('roles_apps_topic_id')
-    post.try(:id)
-  end
-
-  def update_role_app_post(role_app)
-    ForumPost.find(role_app.post_id).update(text: render(partial:'shared/system_posts/role_app', locals:{role_app:role_app})) if role_app.post_id
+    ForumPost.create topic_id: char.profile_topic_id, char_id: admin_config('approve_master_id'), avatar_id: default_avatar_for(admin_config('approve_master_id')) user_id: @user.id, ip: @user.current_ip, text: I18n.t("messages.char.approve") if char.profile_topic_id
   end
 
   def create_skill_request_post(request)
@@ -55,12 +42,17 @@ class ForumService
     }
   end
 
+
   def admin_config(config)
     AdminConfig.find_by(name:config).value.to_i
   end
 
   def get_accept_master
     Char.find_by(id: admin_config('accept_master_id')) || Char.new(name:"Master")
+  end
+
+  def default_avatar_for(char_id)
+    CharAvatar.find_by(char_id: char_id, default: true).try(:id)
   end
 
 

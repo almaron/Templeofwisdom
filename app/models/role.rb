@@ -29,7 +29,7 @@ class Role < ActiveRecord::Base
 
   def get_chars_from_posts
     parse_paths
-    ForumPost.where(topic_id:self.topic_ids.split(',')).group(:char_id).map {|post| post.char_id}.inject([]) { |char_ids, char_id| char_ids.push char_id if Char.find(char_id).group_id > 1 }
+    all_char_ids.select { |char_id| get_char(char_id).group_id > 1 && get_char(char_id).status_id == 5 }
   end
 
   private
@@ -42,7 +42,13 @@ class Role < ActiveRecord::Base
     RoleApp.find(self.role_app_id).destroy if self.role_app_id
   end
 
+  def all_char_ids
+    ForumPost.where(topic_id: self.topic_ids.split(',')).pluck(:char_id).uniq
+  end
 
-
+  def get_char(id)
+    @char ||= []
+    @char[id] ||= Char.find(id)
+  end
 
 end
