@@ -9,13 +9,20 @@ class CharRole < ActiveRecord::Base
 
   attr_accessor :logic_points, :style_points, :skill_points, :volume_points, :added_points, :comment, :staged_points
 
+  after_initialize :set_points
   before_save :calculate_points
+  after_create :add_points_to_char
+  after_update :recalculate_points
+
+  private
 
   def calculate_points
     self.points = (logic_points.to_i + style_points.to_i + skill_points.to_i)/20 * volume_points.to_i + added_points.to_i if self.logic_points
   end
 
-  after_initialize :set_points
+  def add_points_to_char
+    profile.update(points: profile.points + points)
+  end
 
   def set_points
     if self.new_record?
@@ -29,12 +36,13 @@ class CharRole < ActiveRecord::Base
     end
   end
 
-  after_update :recalculate_points
-
   def recalculate_points
-    profile = CharProfile.find_by(char_id:self.char_id)
     diff_points = profile.points + self.points - self.staged_points
     profile.update(points: diff_points)
+  end
+
+  def profile
+    @profile ||= CharProfile.find_by(char_id: self.char_id)
   end
 
 
