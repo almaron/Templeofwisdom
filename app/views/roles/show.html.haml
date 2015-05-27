@@ -17,7 +17,7 @@
         .rol-left
           %b.rol-name
             = post.char.name
-          = image_tag(post.avatar.image_url(:thumb), class:'rol-ava') if post.avatar.image?
+          = image_tag(post.avatar.image_url(:thumb), class:'rol-ava') if post.avatar && post.avatar.image?
           .rol-count Символов: #{post.text.length}
         .rol-right
           = simple_format(post.text.bbcode_to_html)
