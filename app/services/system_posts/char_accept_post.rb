@@ -1,6 +1,6 @@
 module SystemPosts
   class CharAcceptPost < SystemPost
-    attr_accessible :char
+    attr_accessor :char
 
     def initiate(user = nil, char)
       @user = user
