@@ -54,7 +54,7 @@ class RoleAppsController < ApplicationController
   private
 
   def app_params
-    params.require(:role_app).permit(:head, :paths, :char_id)
+    params.require(:role_app).permit(:head, :paths, :char_id, :comment)
   end
 
   def get_app

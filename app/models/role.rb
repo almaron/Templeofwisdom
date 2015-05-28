@@ -17,7 +17,7 @@ class Role < ActiveRecord::Base
 
   def self.build_from_app(app_id)
     role_app = RoleApp.find(app_id)
-    role = self.new(head:role_app.head, paths:role_app.paths)
+    role = self.new(head:role_app.head, paths:role_app.paths, comment: role_app.comment)
     role.get_chars_from_posts.each {|char| role.char_roles.build char_id:char  }
     role
   end

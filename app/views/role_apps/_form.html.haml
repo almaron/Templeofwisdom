@@ -9,6 +9,11 @@
     .textarea
       %textarea.inp.inp-type2{'ng-model'=>'sApp.paths', id:'app_paths'}
   .form-line
+    %label{for: 'app_comment'}
+      Доп. данные:
+    .textarea
+      %textarea.inp.inp-type2{'ng-model'=>'sApp.comment', id:'app_comment'}
+  .form-line
     %label{for:'app_char_id'}
       От лица:
     %select.inp.inp-type2{'ng-model'=>'sApp.char_id', id:'app_char_id', chosen:'', 'data-placeholder'=>'Персонаж...', 'ng-options'=>'char.id as char.name for char in currentUser.activeChars'}
