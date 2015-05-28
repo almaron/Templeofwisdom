@@ -1,6 +1,6 @@
 module SystemPosts
   class SkillRequestPost < SystemPost
-    attr_accessible :request
+    attr_accessor :request
 
     def initialize(user = nil, request)
       @user = user
