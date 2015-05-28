@@ -44,6 +44,7 @@ class RoleAppsController < ApplicationController
 
   def destroy
     @role_app.destroy
+    @role_app.destroy_post
     respond_to do |format|
       format.html { redirect_to roles_path }
       format.json { render json: {success: true} }

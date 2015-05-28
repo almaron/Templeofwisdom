@@ -1,5 +1,5 @@
 [b]Название:[/b] <%= role_app.head %>
 
-[b]Ссылки:[/b]
-
-<%= role_app.paths %>
+[b]Ссылки:[/b] <% role_app.each_line do |path| %>
+[url=<%= path -%>]<%= path %>[/url]
+<% end %>

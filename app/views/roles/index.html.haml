@@ -24,7 +24,7 @@
         {{sRole.head}}
       .line
         .bold
-          %a{href:"/roles/{{sRole.id}}"}Читать всю
+          %a{href:"/roles/{{sRole.id}}", target: '_blank'}Читать всю
     .info-wrap
       .line.one-char-line{'ng-repeat'=>'char in sRole.char_roles_attributes'}
         .line
@@ -37,7 +37,7 @@
         .line
           %span.bold
             Способности:
-          {{char.skill_list || 'нет'}}
+          {{char.skills_list || 'нет'}}
 
   - if @role_apps.any?
     .role-apps-wrap

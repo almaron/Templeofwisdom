@@ -9,15 +9,21 @@ class RoleApp < ActiveRecord::Base
   after_update :update_post
 
   def create_post(user)
-    self.update(post_id: SystemPosts::RoleAppPost.new(user, self).create)
+    self.update(post_id: role_post(user).create)
   end
 
   def update_post
-    SystemPosts::RoleAppPost.new(self).update
+    role_post.update
   end
 
   def destroy_post
-    SystemPosts::RoleAppPost.new(self).destroy
+    role_post.destroy
+  end
+
+  private
+
+  def role_post(user=nil)
+    SystemPosts::RoleAppPost.new(user, self)
   end
 
 end

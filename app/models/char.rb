@@ -111,7 +111,7 @@ class Char < ActiveRecord::Base
   def approve(user=nil)
     if self.status_id == 3
       self.update(status_id: 5)
-      ForumService.new(user).add_approve_post self
+      SystemPosts::CharApprovePost.new(user, self).create
       NoteService.new.notify_char_approve self
       #   TODO send  email
     end
