@@ -22,7 +22,6 @@
 //= require markItUp
 //= require fancybox
 //= require token-input
-// require tinymce-jquery
 
 //= require functions
 
@@ -36,6 +35,5 @@
 
 //= require angular_js
 //= require admin_angular
-
 
 //= require jquery.turbolinks
