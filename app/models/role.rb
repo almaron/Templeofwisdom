@@ -24,7 +24,7 @@ class Role < ActiveRecord::Base
 
   def get_chars_from_posts
     parse_paths
-    all_char_ids.select { |char_id| get_char(char_id).group_id > 1 && get_char(char_id).status_id == 5 }
+    all_char_ids.select { |char_id| (2..4).include?(get_char(char_id).group_id) && get_char(char_id).status_id == 5 }
   end
 
   private
