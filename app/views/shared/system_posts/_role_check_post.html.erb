@@ -1,8 +1,7 @@
 [b]Название: [/b][url=/roles/<%= role.id %>]<%= role.head %>[/url]
-
 [b]Участники:[/b]
 <% params[:char_roles_attributes].each_with_index do |char_role, index| %>
-[b]<%= char_role[:char_name] %>[/b]
+[url=/chars/<%=char_role[:char_id] %>][b]<%= char_role[:char_name] %>[/b][/url]
 
 [b]Баллы:[/b]
 [i]Логика[/i] - <%= char_role[:logic_points] %>

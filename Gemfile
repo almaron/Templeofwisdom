@@ -71,11 +71,10 @@ end
 gem "mini_magick"
 gem "carrierwave"
 
-gem "puma", group: :development
+gem "thin", group: :development
 gem 'render_anywhere', :require => false
 #gem 'rack-mini-profiler'
 gem 'quiet_assets', group: :development
-gem 'byebug', group: [:development, :test]
 
 group :development, :test do
   gem "rspec-rails"
@@ -87,6 +86,12 @@ group :development, :test do
   gem 'guard-sidekiq'
   gem "guard-livereload"
   gem "rack-livereload"
+
+  gem 'better_errors'
+  gem 'awesome_print'
+  gem 'pry-rails'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
 end
 
 # Use debugger

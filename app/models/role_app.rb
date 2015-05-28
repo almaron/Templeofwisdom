@@ -6,7 +6,6 @@ class RoleApp < ActiveRecord::Base
 
   validates_presence_of :head, :paths
 
-  after_destroy :destroy_post
   after_update :update_post
 
   def create_post(user)

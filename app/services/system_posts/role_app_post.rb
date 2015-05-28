@@ -12,6 +12,7 @@ module SystemPosts
     end
 
     def destroy
+      binding.pry
       post.destroy if app.post_id && post
     end
 
@@ -29,7 +30,7 @@ module SystemPosts
     end
 
     def post
-      @post ||= ForumPost.find app.post_id
+      @post ||= ForumPost.find_by id: app.post_id
     end
   end
 end

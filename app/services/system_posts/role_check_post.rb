@@ -11,7 +11,6 @@ module SystemPosts
     private
 
     def post_params
-      byebug
       {
         topic_id: admin_config('roles_apps_topic_id'),
         char_id: admin_config('role_master_id'),
