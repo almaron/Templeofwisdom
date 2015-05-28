@@ -1,0 +1,25 @@
+- if current_user && current_user.is_in?(:admin)
+  .act-head Админский раздел
+  %table.useful-links-table
+    %tr
+      %td
+        .act-line
+          %a{href: "/admin/chars"} Управление персонажами
+        .act-line
+          %a{href: "/admin/users"} Управление игроками
+        .act-line
+          %a{href: '/admin/skill_requests'} Заявки на навыки/способности
+        .act-line
+          %a{href: '/admin/roles'} Оценивание ролевых
+        .act-line
+          %a{href:'/admin/configs'} Системные настройки
+      %td
+        .act-line
+          %a{href: '/admin/pages'} Редактирование страниц
+        .act-line
+          %a{href: '/admin/skills'} Редактирование скилов
+        .act-line
+          %a{href:"/admin/forums"} Настройка форумов
+        .act-line
+          %a{href: '/admin/journals'} Верстка газеты
+        .act-line
