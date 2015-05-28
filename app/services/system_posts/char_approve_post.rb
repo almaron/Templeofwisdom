@@ -2,7 +2,7 @@ module SystemPosts
   class CharApprovePost < SystemPost
     attr_accessor :char
 
-    def initiate(user=nil, char)
+    def initialize(user = nil, char)
       @user = user
       @char = char
     end
