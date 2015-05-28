@@ -12,7 +12,6 @@ module SystemPosts
     end
 
     def destroy
-      binding.pry
       post.destroy if app.post_id && post
     end
 
