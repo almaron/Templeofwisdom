@@ -101,7 +101,7 @@ class Char < ActiveRecord::Base
 
   def accept(user=nil)
     if self.status_id == 2
-      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: ForumService.new(user).create_char_profile_topic(self))
+      self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: SystemPosts::CharAcceptPost.new(user, self).create)
       NoteService.new.notify_char_accept self
       #   TODO send notification and email
       true

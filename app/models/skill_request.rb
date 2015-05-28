@@ -21,7 +21,7 @@ class SkillRequest < ActiveRecord::Base
   end
 
   def initiate!(user)
-    if acceptable? && (post_id = ForumService.new(user).create_skill_request_post self)
+    if acceptable? && ( post_id = SystemPosts::SkillRequestPost.new(user, self).create )
       self.forum_post_id = post_id
       save
     end

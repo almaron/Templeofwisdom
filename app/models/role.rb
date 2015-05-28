@@ -11,13 +11,8 @@ class Role < ActiveRecord::Base
 
   after_create :destroy_app
 
-
   def all_posts
     self.topic_ids.split(',').inject([]) { |posts, topic_id| posts + ForumPost.where(topic_id:topic_id) }
-  end
-
-  def create_post(user)
-    ForumService.new(user).add_role_check_post(self)
   end
 
   def self.build_from_app(app_id)
