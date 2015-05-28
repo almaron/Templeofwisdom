@@ -81,7 +81,7 @@ class RolesController < ApplicationController
   end
 
   def role_params
-    params.require(:role).permit(:head, :paths, :comment, char_roles_attributes: [:id, :char_id, :comment, :logic_points, :style_points, :skill_points, :volume_points, :added_points, :_destroy, role_skills_attributes: [:id, :skill_id, :done, :_destroy]])
+    params.require(:role).permit(:head, :paths, :comment, :role_app_id, char_roles_attributes: [:id, :char_id, :comment, :logic_points, :style_points, :skill_points, :volume_points, :added_points, :_destroy, role_skills_attributes: [:id, :skill_id, :done, :_destroy]])
   end
 
 end

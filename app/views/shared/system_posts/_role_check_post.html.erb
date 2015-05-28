@@ -1,20 +1,21 @@
 [b]Название: [/b][url=/roles/<%= role.id %>]<%= role.head %>[/url]
 
 [b]Участники:[/b]
-<% params[:char_roles_attributes].each do |char_role| %>
+<% params[:char_roles_attributes].each_with_index do |char_role, index| %>
 [b]<%= char_role[:char_name] %>[/b]
 
 [b]Баллы:[/b]
-[i]Логика[/i] - <%= char_role[:logic_points] %>,
-[i]Стиль[/i] - <%= char_role[:style_points] %>,
-[i]Способности[/i] - <%= char_role[:skill_points] %>,
+[i]Логика[/i] - <%= char_role[:logic_points] %>
+[i]Стиль[/i] - <%= char_role[:style_points] %>
+[i]Способности[/i] - <%= char_role[:skill_points] %>
 [i]Объем[/i] - <%= char_role[:volume_points] %>
-<% if char_role[:added_points].to_i > 0 %>, [i]Дополнительно[/i] - <%= char_role[:added_points] %><% end %>
+<% if char_role[:added_points].to_i > 0 %>[i]Дополнительно[/i] - <%= char_role[:added_points] %><% end %>
+[b][i]Всего:[/i][/b] <%= role.char_roles[index].points %>
 
-[b][i]Всего:[/i][/b]<%= char_role[:points] %>
-<% if char_role[:role_skills_attributes].any? %>
+<% if char_role[:role_skills_attributes].present? %>
 [b]Способности:[/b] <%= char_role[:role_skills_attributes].map{|rs| rs[:skill_name]}.join(', ') %>
 <% end %>
+
 [b]Комментарий:[/b] <%= char_role[:comment] %>
 <% end %>
 

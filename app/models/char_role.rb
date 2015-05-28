@@ -17,7 +17,7 @@ class CharRole < ActiveRecord::Base
   private
 
   def calculate_points
-    self.points = (logic_points.to_i + style_points.to_i + skill_points.to_i)/20 * volume_points.to_i + added_points.to_i if self.logic_points
+    self.points = (logic_points.to_i + style_points.to_i + skill_points.to_i).to_f/20 * volume_points.to_i + added_points.to_i if self.logic_points
   end
 
   def add_points_to_char

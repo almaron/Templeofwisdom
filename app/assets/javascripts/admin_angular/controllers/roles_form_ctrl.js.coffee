@@ -11,6 +11,7 @@
       url = ''
     $http.get('/admin/roles/new.json'+url).success (data) ->
       $scope.role = data.role
+      $scope.role.role_app_id = app_id if app_id > 0
 
   $http.get('/admin/roles/new.json?get_chars=true').success (data) ->
     $scope.allChars = data.chars
