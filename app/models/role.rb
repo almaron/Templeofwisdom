@@ -24,6 +24,7 @@ class Role < ActiveRecord::Base
   def order_posts
     posts = []
     topic_ids.split(',').each { |id| posts + ForumPost.where(topic_id: id).to_a }
+    posts
   end
 
   def parse_paths
