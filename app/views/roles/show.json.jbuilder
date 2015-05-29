@@ -1,5 +1,5 @@
 json.role do
-  json.(@role, :id, :head, :paths)
+  json.(@role, :id, :head, :paths, :comment)
   json.char_roles_attributes @role.char_roles do |char_role|
     json.(char_role, :id, :char_id, :points, :logic_points, :style_points, :skill_points, :volume_points, :post_count)
     json.char_name char_role.char.name

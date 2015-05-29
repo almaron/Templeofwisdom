@@ -1,2 +1,10 @@
+- content_for :path do
+  = link_to "Личный кабинет", profile_path
+  %span.fa.fa-arrow-circle-right
+  = link_to 'Администрирование ролевых', roles_path
+  %span.fa.fa-arrow-circle-right
+  %span
+    Новая ролка
+
 .admin-wrapper{'ng-controller'=>'RolesFormCtrl', 'ng-init'=>"initRole(#{params[:role_app_id]})"}
   = render partial: 'form'
