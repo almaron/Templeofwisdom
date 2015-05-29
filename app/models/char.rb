@@ -171,7 +171,7 @@ class Char < ActiveRecord::Base
   end
 
   def mark_skill_done(skill_id, number)
-    role_skills.where(skill_id:skill_id).order(:id).limit(number).update_all(done:1)
+    role_skills.where(skill_id:skill_id, done: 0).order(:id).limit(number).update_all(done: 1)
   end
 
   def profile_info
