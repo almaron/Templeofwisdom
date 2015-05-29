@@ -163,7 +163,11 @@ class Char < ActiveRecord::Base
   end
 
   def master_skill_ids
-    master_skills.map {|skill| skill.id}
+    master_skills.pluck(:id)
+  end
+
+  def magic_skill_ids
+    skills.magic.pluck(:skill_id)
   end
 
   def mark_skill_done(skill_id, number)

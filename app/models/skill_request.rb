@@ -8,7 +8,7 @@ class SkillRequest < ActiveRecord::Base
   belongs_to :level
   belongs_to :forum_post
 
-  after_initialize :calculate_points_and_roles, if: ->{new_record?}
+  after_initialize :calculate_points_and_roles, if: ->{ new_record? }
 
   ['char','skill','user','level'].each do |item|
     define_method "#{item}_name" do
@@ -74,7 +74,11 @@ class SkillRequest < ActiveRecord::Base
   end
 
   def points_column
-    "#{skill.skill_type}_points#{skill.has_discount?(char.master_skill_ids) ? "_discount" : ""}"
+    if skill.skill_type == 'phisic'
+      "phisic_points#{"_discount" if skill.has_discount?(char.master_skill_ids)}"
+    else
+      "magic_points#{"_discount" if skill.has_discount?(char.magic_skill_ids)}"
+    end
   end
 
   def roles_column
