@@ -27,7 +27,7 @@ class Role < ActiveRecord::Base
   end
 
   def collect_char_posts
-    posts = {}
+    posts = self.char_posts = {}
     all_posts.each do |post|
       cid = "ch#{post.char_id}"
       posts[cid] ||= 0
