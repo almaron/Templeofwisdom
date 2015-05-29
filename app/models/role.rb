@@ -14,7 +14,7 @@ class Role < ActiveRecord::Base
   def self.build_from_app(app_id)
     role_app = RoleApp.find(app_id)
     role = self.new(head:role_app.head, paths:role_app.paths, comment: role_app.comment)
-    role.parse_paths.build_char_roles
+    role.parse_paths.collect_char_posts.build_char_roles
   end
 
   def all_posts
@@ -23,6 +23,17 @@ class Role < ActiveRecord::Base
 
   def parse_paths
     self.topic_ids = paths.scan(/\/t\/(\d+)/).map {|item| item[0].to_i}.join(',')
+    self
+  end
+
+  def collect_char_posts
+    self.char_posts = {}
+    all_posts.each do |post|
+      cid = "ch#{post.char_id}"
+      self.char_posts[cid] ||= 0
+      self.char_posts[cid] += post.text.length
+    end
+    self.char_posts = self.char_posts.map { |cp| (cp.to_f / 600).round }
     self
   end
 
@@ -42,8 +53,6 @@ class Role < ActiveRecord::Base
     end
   end
 
-
-
   def destroy_app
     RoleApp.find(self.role_app_id).destroy if self.role_app_id
   end
@@ -57,13 +66,4 @@ class Role < ActiveRecord::Base
     @char[id] ||= Char.find(id)
   end
 
-  def collect_char_posts
-    self.char_posts = {}
-    all_posts.each do |post|
-      cid = "ch#{post.char_id}"
-      self.char_posts[cid] ||= 0
-      self.char_posts[cid] += post.text.length
-    end
-    self.char_posts = self.char_posts.map { |cp| (cp.to_f / 600).round }
-  end
 end
