@@ -22,9 +22,7 @@ class Role < ActiveRecord::Base
   end
 
   def order_posts
-    posts = []
-    topic_ids.split(',').each { |id| posts + ForumPost.where(topic_id: id).to_a }
-    posts
+    self.topic_ids.split(',').inject([]) { |posts, topic_id| posts + ForumPost.where(topic_id: topic_id) }
   end
 
   def parse_paths
