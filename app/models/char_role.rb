@@ -7,7 +7,7 @@ class CharRole < ActiveRecord::Base
   accepts_nested_attributes_for :role_skills, allow_destroy: true
   has_many :skills, through: :role_skills
 
-  attr_accessor :logic_points, :style_points, :skill_points, :volume_points, :added_points, :comment, :staged_points
+  attr_accessor :logic_points, :style_points, :skill_points, :volume_points, :added_points, :comment, :staged_points, :post_count
 
   after_initialize :set_points
   before_save :calculate_points

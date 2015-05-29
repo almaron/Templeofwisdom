@@ -46,7 +46,7 @@
           char_role._destroy = 0
           return
       if !found
-        $scope.role.char_roles_attributes.push {char_id:char.id, char_name:char.name, logic_points:10, style_points:10, skill_points:10, volume_points:10, role_skills_attributes:[], _destroy:0}
+        $scope.role.char_roles_attributes.push {char_id:char.id, char_name:char.name, logic_points:10, style_points:10, skill_points:10, volume_points:20, role_skills_attributes:[], _destroy:0}
 
   $scope.addRoleSkill = (char_role, skill) ->
     if angular.isDefined(skill) && skill.id

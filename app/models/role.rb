@@ -2,7 +2,7 @@ class Role < ActiveRecord::Base
 
   validates_presence_of :head, :paths
 
-  attr_accessor :paths, :comment, :role_app_id
+  attr_accessor :paths, :comment, :role_app_id, :char_posts
 
   has_many :char_roles, dependent: :destroy
   accepts_nested_attributes_for :char_roles, allow_destroy: true
@@ -11,26 +11,28 @@ class Role < ActiveRecord::Base
 
   after_create :destroy_app
 
-  def all_posts
-    self.topic_ids.split(',').inject([]) { |posts, topic_id| posts + ForumPost.where(topic_id:topic_id) }
-  end
-
   def self.build_from_app(app_id)
     role_app = RoleApp.find(app_id)
     role = self.new(head:role_app.head, paths:role_app.paths, comment: role_app.comment)
-    role.get_chars_from_posts.each {|char| role.char_roles.build char_id:char  }
-    role
+    role.parse_paths.build_char_roles
   end
 
-  def get_chars_from_posts
-    parse_paths
-    all_char_ids.select { |char_id| (2..4).include?(get_char(char_id).group_id) && get_char(char_id).status_id == 5 }
+  def all_posts
+    @posts ||= ForumPost.where(topic_id: topic_ids.split(',')).order(topic_id: :asc)
   end
 
   private
 
+  def get_chars_from_posts
+    @chars ||= all_char_ids.select do |char_id|
+      char = get_char(char_id)
+      (2..4).include?(char.group_id) && char.status_id == 5
+    end
+  end
+
   def parse_paths
-    self.topic_ids = self.paths.scan(/\/t\/(\d+)/).map {|item| item[0].to_i}.join(',')
+    self.topic_ids = paths.scan(/\/t\/(\d+)/).map {|item| item[0].to_i}.join(',')
+    self
   end
 
   def destroy_app
@@ -38,12 +40,30 @@ class Role < ActiveRecord::Base
   end
 
   def all_char_ids
-    ForumPost.where(topic_id: self.topic_ids.split(',')).pluck(:char_id).uniq
+    all_posts.pluck(:char_id).uniq
   end
 
   def get_char(id)
     @char ||= []
     @char[id] ||= Char.find(id)
   end
+
+  def collect_char_posts
+    self.char_posts = {}
+    all_posts.each do |post|
+      cid = "ch#{post.char_id}"
+      self.char_posts[cid] ||= 0
+      self.char_posts[cid] += post.text.length
+    end
+    self.char_posts = self.char_posts.map { |cp| (cp.to_f / 600).round }
+  end
+
+  def build_char_roles
+    get_chars_from_posts.each do |char|
+      self.char_roles.build char_id:char, post_count: char_posts["ch#{char}"]
+    end
+    self
+  end
+
 
 end
