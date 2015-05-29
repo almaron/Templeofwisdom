@@ -1,4 +1,4 @@
-%h1
+- content_for :pagetitle
   = @role.head
 
 .rol
@@ -12,7 +12,7 @@
     %div
       %b Количество постов: #{@role.all_posts.size}
   .rol-all
-    - @role.all_posts.each do |post|
+    - @role.order_posts.each do |post|
       .rol-one
         .rol-left
           %b.rol-name

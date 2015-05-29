@@ -2728,7 +2728,7 @@ td.none,td.none:hover, tr:hover td.none {
   }
 
   .rol-all {
-    width:80%;
+    width:100%;
 
     .rol-one {
       @include clearfix;
@@ -2788,6 +2788,7 @@ td.none,td.none:hover, tr:hover td.none {
     .rol-right {
       float: left;
       width:80%;
+      text-align: justify;
     }
 
   }
