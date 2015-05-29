@@ -27,13 +27,13 @@ class Role < ActiveRecord::Base
   end
 
   def collect_char_posts
-    self.char_posts = {}
+    posts = {}
     all_posts.each do |post|
       cid = "ch#{post.char_id}"
-      self.char_posts[cid] ||= 0
-      self.char_posts[cid] += post.text.length
+      posts[cid] ||= 0
+      posts[cid] += post.text.length
     end
-    self.char_posts = self.char_posts.map { |cp| (cp.to_f / 600).round }
+    posts.keys.each { |key| self.char_posts[key] = (posts[key].to_f / 600).round }
     self
   end
 
