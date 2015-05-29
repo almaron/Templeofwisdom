@@ -21,6 +21,18 @@ class Role < ActiveRecord::Base
     @posts ||= ForumPost.where(topic_id: topic_ids.split(',')).order(topic_id: :asc)
   end
 
+  def parse_paths
+    self.topic_ids = paths.scan(/\/t\/(\d+)/).map {|item| item[0].to_i}.join(',')
+    self
+  end
+
+  def build_char_roles
+    get_chars_from_posts.each do |char|
+      self.char_roles.build char_id:char, post_count: char_posts["ch#{char}"]
+    end
+    self
+  end
+
   private
 
   def get_chars_from_posts
@@ -30,10 +42,7 @@ class Role < ActiveRecord::Base
     end
   end
 
-  def parse_paths
-    self.topic_ids = paths.scan(/\/t\/(\d+)/).map {|item| item[0].to_i}.join(',')
-    self
-  end
+
 
   def destroy_app
     RoleApp.find(self.role_app_id).destroy if self.role_app_id
@@ -57,13 +66,4 @@ class Role < ActiveRecord::Base
     end
     self.char_posts = self.char_posts.map { |cp| (cp.to_f / 600).round }
   end
-
-  def build_char_roles
-    get_chars_from_posts.each do |char|
-      self.char_roles.build char_id:char, post_count: char_posts["ch#{char}"]
-    end
-    self
-  end
-
-
 end
