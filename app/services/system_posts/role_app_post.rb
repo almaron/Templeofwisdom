@@ -23,13 +23,20 @@ module SystemPosts
         char_id: app.char_id,
         avatar_id: default_avatar_for(app.char_id),
         user_id: user.id,
-        ip: user.current_ip,
-        text: render(partial:'shared/system_posts/role_app', locals: { role_app: app })
+        ip: user.current_ip
       }
     end
 
     def post
       @post ||= ForumPost.find_by id: app.post_id
+    end
+
+    def post_locals
+      { role_app: app }
+    end
+
+    def slug
+      'role_app'
     end
   end
 end

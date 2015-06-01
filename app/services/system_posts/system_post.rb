@@ -6,12 +6,23 @@ module SystemPosts
     attr_accessor :user
 
     def create
-      ForumPost.create(post_params).try(:id)
+      ForumPost.create(params).try(:id)
     end
 
     private
 
-    def post_params
+    def params
+      post_params.merge({ text: render(render_params) })
+    end
+
+    def render_params
+      {
+        partial: "/shared/system_posts/#{slug}",
+        locals: post_locals
+      }
+    end
+
+    def post_locals
       {}
     end
 
@@ -23,5 +34,8 @@ module SystemPosts
       CharAvatar.find_by(char_id: char_id, default: true).try(:id)
     end
 
+    def slug
+      ''
+    end
   end
 end

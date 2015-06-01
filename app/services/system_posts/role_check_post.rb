@@ -16,9 +16,16 @@ module SystemPosts
         char_id: admin_config('role_master_id'),
         avatar_id: default_avatar_for(admin_config('role_master_id')),
         user_id: user.id,
-        ip: user.current_ip,
-        text: render(partial:'shared/system_posts/role_check_post', locals:{role:role, params: params})
+        ip: user.current_ip
       }
+    end
+
+    def post_locals
+      { role:role, params: params }
+    end
+
+    def slug
+      'role_check_post'
     end
   end
 end

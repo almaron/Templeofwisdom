@@ -8,12 +8,12 @@ module SystemPosts
     end
 
     def create
-      ForumTopic.create(post_params).try(:id) if admin_config("char_profile_forum_id_#{char.group_id}")
+      ForumTopic.create(topic_params).try(:id) if admin_config("char_profile_forum_id_#{char.group_id}")
     end
 
     private
 
-    def post_params
+    def topic_params
       {
         head: char.name,
         forum_id: admin_config("char_profile_forum_id_#{char.group_id}"),

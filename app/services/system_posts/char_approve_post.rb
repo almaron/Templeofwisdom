@@ -9,7 +9,7 @@ module SystemPosts
 
     private
 
-    def post_params
+    def params
       return {} unless char.profile_topic_id
       {
         topic_id: char.profile_topic_id,
