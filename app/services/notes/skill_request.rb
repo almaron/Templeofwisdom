@@ -1,5 +1,5 @@
 module Notes
-  class SkillRequest < SytemNote
+  class SkillRequest < SystemNote
     def create(request, message="accept")
       Notification.create({
         user_id: request.user_id,
