@@ -67,6 +67,9 @@ ru:
         notify_char_accept: 'Ваш персонаж принят'
         notify_char_approve: 'Ваш персонаж одобрен'
         notify_char_decline: 'Ваш персонаж отклонен'
+        notify_skill_request:
+          accept:  'Заявка принята'
+          decline: 'Заявка отклонена'
 
   auto_link:
     url_link: "ссылка"
