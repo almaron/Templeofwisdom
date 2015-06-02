@@ -858,53 +858,63 @@ body {
 
 
 // РОЛЕВКИ
+  .role-buttons {
+    .profile-rglist-open {
+    	background: $color-brown3;
+    	padding:5px;
+    	min-width:150px;
+    	text-align: center;
+    	cursor: pointer;
+    	border:1px solid $color-brown4;
+      display: inline-block;
+    	&:hover {
+    	  background: $color-green7;
+    	}
+    }
+  }
 
-  .profile-rglist-open {
-	background: $color-brown3;
-	padding:5px;
-	width:150px;
-	text-align: center;
-	cursor: pointer;
-	border:1px solid $color-brown4;
-	&:hover {
-	  background: $color-green7;
-	}
+  .text.skill_text {
+    padding-left: 10px;
+    padding-top: 10px;
+    .one-skill {
+      padding-bottom: 3px;
+    }
   }
 
   .roll {
-	margin-top:5px;
-	margin-bottom:5px;
-	border-top:1px dashed $color-brown4;
-	padding:5px 10px;
-	&:first-child {
-	  border-top:none;
-	}
-	.rname {
-	  font-weight:bold;
-	  padding-right:5px;
-	  a {
-		text-decoration: none;
-		&:hover {
-		  text-decoration: underline;
-		}
-	  }
-	}
-	.rballs {
-	  font-size:0.9em;
-	  background: $color-green7 + 19;
-	  padding:2px 5px;
-	}
-	.rskills {
-	  display:block;
-	  padding-top:5px;
-	  span {
-		padding-right:10px;
-		&.don {
-		  color:$color-brown1 - 30;
-		  text-decoration: line-through;
-		}
-	  }
-	}
+  	margin-top:5px;
+  	margin-bottom:5px;
+  	border-top:1px dashed $color-brown4;
+  	padding:5px 10px;
+  	&:first-child {
+  	  border-top:none;
+  	}
+  	.rname {
+  	  font-weight:bold;
+  	  padding-right:5px;
+  	  a {
+    		text-decoration: none;
+    		&:hover {
+    		  text-decoration: underline;
+    		}
+  	  }
+  	}
+  	.rballs {
+  	  font-size:0.9em;
+  	  background: $color-green7 + 19;
+  	  padding:2px 5px;
+  	}
+  	.rskills {
+  	  display:block;
+  	  padding-top:5px;
+  	  span {
+    		padding-right:10px;
+    		&.don {
+    		  color:$color-brown1 - 30;
+    		  text-decoration: line-through;
+    		}
+  	  }
+  	}
   }
 }
 

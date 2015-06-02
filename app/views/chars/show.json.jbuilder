@@ -54,3 +54,8 @@ json.magic_skills @char.magic_skills do |skill|
   json.skill_name skill.skill.name
   json.level_name skill.level.name
 end
+
+json.role_skills @char.skill_list do |skill|
+  json.name skill[:skill_name]
+  json.count skill[:count]
+end

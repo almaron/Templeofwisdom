@@ -64,8 +64,15 @@
         %toggle-text{title:'Прочее', content:'char.profile.other'}
         .profile-content-one.profile-rglist
           .title Ролевые игры
-          .profile-rglist-open{'ng-hide'=>'showRolls', 'ng-click'=>'showRolls = !showRolls'} Посмотреть список ↓
-          .profile-rglist-open{'ng-show'=>'showRolls', 'ng-click'=>'showRolls = !showRolls'} Свернуть список ↑
+          .role-buttons
+            .profile-rglist-open{'ng-hide'=>'showRolls', 'ng-click'=>'showRolls = !showRolls'} Посмотреть список ↓
+            .profile-rglist-open{'ng-show'=>'showRolls', 'ng-click'=>'showRolls = !showRolls'} Свернуть список ↑
+            .profile-rglist-open{'ng-hide'=>'showSkills', 'ng-click'=>'showSkills = !showSkills'} Посмотреть способности ↓
+            .profile-rglist-open{'ng-show'=>'showSkills', 'ng-click'=>'showSkills = !showSkills'} Свернуть способности ↑
+          .text.skill_text{'ng-show'=>'showSkills'}
+            .one-skill{'ng-repeat'=>'skill in char.role_skills'}
+              %strong{} {{skill.name}}
+              \ - {{skill.count}}
           .text{'ng-show'=>'showRolls'}
             .roll{'ng-repeat'=>'role in char.roles'}
               %span.rname
@@ -73,6 +80,7 @@
               %span.rballs Баллы - {{role.points}}
               %span.rskills
                 %span{'ng-repeat'=>'skill in role.role_skills', 'ng-class'=>'{"don": skill.done > 0}'} {{skill.skill_name}}
+
 
   .over-wrapper{'ng-show'=>'editChar'}
     .over-top{'ng-click'=>'editChar = false'}

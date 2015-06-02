@@ -178,6 +178,16 @@ class Char < ActiveRecord::Base
     @info ||= profile || NoProfile.new
   end
 
+  def skill_list
+    return @skill_list if @skill_list
+    list = {}
+    role_skills.undone.each do |rs|
+      list["s_#{rs.skill_id}"] ||= { skill_id: rs.skill_id, skill_name: rs.skill.name, count: 0}
+      list["s_#{rs.skill_id}"][:count] += 1
+    end
+    @skill_list = list.values.sort { |a,b| a[:skill_name] <=> b[:skill_name] }
+  end
+
   protected
 
   def delegate_to_creator
