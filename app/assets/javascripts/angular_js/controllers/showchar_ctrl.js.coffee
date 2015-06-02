@@ -73,4 +73,17 @@
         $scope.modalShown = true
     )
 
+  $scope.upSkill = (skill_id) ->
+    $http.post('/chars/'+$scope.char.id+'/request_skill/'+skill_id+'.json').success(
+      (data) ->
+        $scope.modalText = data.success
+        $scope.modalClass = 'accept'
+        $scope.modalShown = true
+    ).error(
+      (data) ->
+        $scope.modalText = data.failure
+        $scope.modalClass = 'decline'
+        $scope.modalShown = true
+    )
+
 ]
