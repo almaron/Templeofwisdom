@@ -5,13 +5,15 @@ end
 json.topic do
   json.(@topic, :id, :head, :hidden, :closed, :last_post_id, :posts_count)
   json.technical @topic.forum.technical > 0
-  json.isHidden @topic.hidden && @topic.hidden > 0
-  json.isClosed @topic.closed && @topic.closed > 0
+  json.isHidden @topic.hidden?
+  json.isClosed @topic.closed?
+  json.moderated @topic.is_moderatable?(current_user)
   json.editable @topic.is_editable?(current_user)
   json.description @topic.forum.description
   json.pages_count (@topic.posts.count.to_f / 15).ceil
 
   json.current_page @current_page if @current_page
+
 
   json.chars @topic.other_chars(current_user) do |char|
     json.(char, :id, :name)

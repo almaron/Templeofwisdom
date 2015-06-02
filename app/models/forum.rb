@@ -70,7 +70,7 @@ class Forum < ActiveRecord::Base
   end
 
   def is_visible?(user)
-    !hidden? || (user.present? && (user.is_in?(:admin) || user.has_privilege?))
+    !hidden? || (user.present? && (user.is_in?(:admin) || user.can_view_hidden?))
   end
 
 end

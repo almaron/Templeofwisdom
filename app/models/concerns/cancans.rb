@@ -1,7 +1,7 @@
 module Cancans
   extend ActiveSupport::Concern
 
-  CANCANS = %i(view_closed moderate_forum)
+  CANCANS = %i(view_hidden moderate_forum)
 
   CANCANS.each do |can|
     define_method "can_#{can}?" do
