@@ -6,12 +6,12 @@ module SystemPosts
     attr_accessor :user
 
     def create
-      ForumPost.create(params.permit!).try(:id)
+      ForumPost.create(create_params).try(:id)
     end
 
     private
 
-    def params
+    def create_params
       post_params.merge({ text: render(render_params) })
     end
 
