@@ -30,8 +30,8 @@ class ForumPostsController < ApplicationController
   def create
     respond_to do |format|
       if @post = ForumPost.create(post_params)
-        Notes::Post.create params[:inform], @post.topic, @post
-        Note::PostMaster.create @post.topic, @post if params[:inform_master]
+        Notes::Post.new.create params[:inform], @post.topic, @post
+        Note::PostMaster.new.create @post.topic, @post if params[:inform_master]
         format.html { redirect_to_topic }
         format.json { render partial: 'post', locals: {post:@post}}
       else

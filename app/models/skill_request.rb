@@ -70,7 +70,7 @@ class SkillRequest < ActiveRecord::Base
   end
 
   def send_notification_to_user(message="accept")
-    Notes::SkillRequest.create self, message
+    Notes::SkillRequest.new.create self, message
   end
 
   def points_column

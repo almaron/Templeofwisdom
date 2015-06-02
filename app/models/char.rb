@@ -102,7 +102,7 @@ class Char < ActiveRecord::Base
   def accept(user=nil)
     if self.status_id == 2
       self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: SystemPosts::CharAcceptPost.new(user, self).create)
-      Notes::CharAccept.create self
+      Notes::CharAccept.new.create self
       #   TODO send notification and email
       true
     end
@@ -112,7 +112,7 @@ class Char < ActiveRecord::Base
     if self.status_id == 3
       self.update(status_id: 5)
       SystemPosts::CharApprovePost.new(user, self).create
-      Notes::CharApprove.create self
+      Notes::CharApprove.new.create self
       #   TODO send  email
     end
   end
@@ -120,7 +120,7 @@ class Char < ActiveRecord::Base
   def decline
     if self.status_id == 2
       self.destroy
-      Notes::CharDecline.create self
+      Notes::CharDecline.new.create self
     #  TODO send  email
     end
   end
