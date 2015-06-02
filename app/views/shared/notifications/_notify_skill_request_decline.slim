@@ -1,3 +1,3 @@
-' Ваша заявка на #{ request.level_id > 1 ? 'повышение' : 'добавление' }
-' #{ request.skill.phisic? ? 'навыка' : 'способности' } #{ request.skill_name }
-' персонажу #{ request.char.name } отклонена.
+' Ваша заявка на #{ request.add_new? ? 'добавление' : 'повышение'}
+' #{ request.skill.phisic? ? 'навыка' : 'способности' } [b]#{ request.skill_name }[/b]
+' персонажу [b]#{ request.char.name }[/b] отклонена.
