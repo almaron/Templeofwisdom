@@ -3271,6 +3271,17 @@ td.none,td.none:hover, tr:hover td.none {
     background-color: $color-green7;
   }
 }
+
+.skill_level_one {
+  .skill-description {
+    padding-bottom: 10px;
+  }
+  .skill-techniques {
+    p.head {
+      margin-top: 0px;
+    }
+  }
+}
 /*
 
 */
