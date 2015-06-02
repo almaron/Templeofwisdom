@@ -13,13 +13,16 @@
       %a{name: skl.level_id}
       %h4
         = skl.level.name
-      = raw skl.description
+      .skill-description
+        = raw skl.description
       - if skl.techniques.present?
-        %p
-          %strong
-            %em
-              Способности:
-        = raw skl.techniques.bbcode_to_html_with_formatting
+        .skill-techniques
+          %p
+            %strong
+              %em
+                Способности:
+          = raw skl.techniques.bbcode_to_html_with_formatting
       - if skl.advice.present?
-        %p.advice
-          Совет по игре: #{skl.advice}
+        .skill-advice
+          %p.advice
+            Совет по игре: #{skl.advice}
