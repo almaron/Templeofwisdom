@@ -6,7 +6,7 @@ module SystemPosts
     attr_accessor :user
 
     def create
-      ForumPost.create(params).try(:id)
+      ForumPost.create(params.permit!).try(:id)
     end
 
     private
