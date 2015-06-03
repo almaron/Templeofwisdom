@@ -3,16 +3,12 @@ require 'rails_helper'
 RSpec.describe SkillRequest, :type => :model do
 
   before do
-    @char = create :char
-    @char.profile.age = 20
-    @char.profile.birth_date = '20.01'
-    @char.save
+    @char = create :char_with_profile
 
-    @char.add_points 400
+    @char.add_points 370
     @skill = create :skill
     @level = Level.create(id:1, name:'Level1', phisic_roles:1, phisic_points: 400, phisic_points_discount: 200)
     @role = Role.create(attributes_for(:role).merge(char_roles_attributes:[char_id: @char.id, points:400, role_skills_attributes:[skill_id:@skill.id]]))
-
   end
 
   context 'after initialize' do
@@ -105,7 +101,7 @@ RSpec.describe SkillRequest, :type => :model do
     end
 
     it "removes the points from the char" do
-      @char.reload
+      @char.profile.reload
       expect(@char.profile.points).to eq 0
     end
 

@@ -137,7 +137,6 @@ RSpec.describe Char, :type => :model do
   end
 
   context "add and remove points" do
-
     before do
       @char = create :char
       @char.profile.age = 20
@@ -158,12 +157,12 @@ RSpec.describe Char, :type => :model do
       expect(@char.has_enough_points? 400).to eq true
       expect(@char.has_enough_points? 600).to eq false
     end
-
   end
+
   context 'skill and role methods' do
 
     before do
-      @char = create :char
+      @char = create :char_with_profile
       @skill = create :skill
       @level = Level.create(id:1, name:'Level1', phisic_roles:1, phisic_points: 400, phisic_points_discount: 200)
     end

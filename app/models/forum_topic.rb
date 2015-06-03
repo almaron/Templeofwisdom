@@ -31,7 +31,7 @@ class ForumTopic < ActiveRecord::Base
   end
 
   def is_editable?(user)
-    user && (user.is_in?([:admin, :master]) || self.posts.first.char.delegated_to?(user))
+    user && (user.is_in?([:admin, :master]) || char.delegated_to?(user))
   end
 
   after_destroy :remove_topic
