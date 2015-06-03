@@ -28,20 +28,20 @@
           %option
       .moder-part
         %button.btn.btn-mini.forum-btn{'ng-click'=>'moveTopics()'}
-          %span
-            Переместить в
+          %span.fa.fa-arrow-circle-o-right
+          %span Переместить в
       .moder-part
         %button.btn.btn-mini.forum-btn{'ng-click'=>'closeTopics()'}
-          %span
-            Закрыть
+          %span.fa.fa-lock
+          %span Закрыть
       .moder-part
         %button.btn.btn-mini.forum-btn{'ng-click'=>'openTopics()'}
-          %span
-            Открыть
+          %span.fa.fa-unlock
+          %span Открыть
       .moder-part
         %button.btn.btn-mini.forum-btn{'ng-click'=>'deleteTopics()'}
-          %span
-            Удалить
+          %span.fa.fa-times
+          %span Удалить
     %table.forum-tab.subforum-tab
       %tbody
         %tr{"ng-if"=>"forum.description"}
