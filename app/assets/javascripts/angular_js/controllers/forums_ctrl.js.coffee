@@ -60,4 +60,22 @@
       $http.delete('/temple/move_topic.json?forum_id='+$scope.forum_id+'&delete_topics='+ids.join(',')).success (data) ->
         $scope.loadTopics $scope.forumPagination.cur
 
+  $scope.openTopics = ->
+    angular.forEach $scope.topics, (topic) ->
+      if topic.selected == 1
+        $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 0 } })
+    $scope.loadTopics $scope.forumPagination.cur
+
+  $scope.closeTopics = ->
+    angular.forEach $scope.topics, (topic) ->
+      if topic.selected == 1
+        $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 1 } })
+    $scope.loadTopics $scope.forumPagination.cur
+
+  $scope.topicClass = (topic) ->
+    if topic.closed
+      return 'forum-topic-read-locked'
+    else
+      return 'forum-topic-unread'
+
 ]
