@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   # Forum routes
   resources :forums, path: 'temple', only:[:index, :show] do
     collection do
-      resource :move_topic, only: [:show, :update, :destroy]
+      resource :move_topic, only: [:show, :update, :destroy, :create], controller: :move_topic
     end
     resources :topics, path: 't', controller: 'forum_topics' do
       resources :posts, path: 'p', controller: 'forum_posts'

@@ -91,6 +91,10 @@ class Forum < ActiveRecord::Base
     @s_path ||= path
   end
 
+  def is_moderatable?(user)
+    user && (user.is_in?([:admin, :master]) || user.can_moderate_forum?)
+  end
+
   def visible_children(user)
     children.select {|f| f.is_visible?(user)}
   end

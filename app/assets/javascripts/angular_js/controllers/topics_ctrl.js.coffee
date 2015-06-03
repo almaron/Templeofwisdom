@@ -153,4 +153,6 @@
 
   $scope.toggleInformMaster = () ->
     $scope.informMaster = !$scope.informMaster
+
+
 ]

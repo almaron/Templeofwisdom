@@ -209,6 +209,23 @@
       margin-left: 5px;
     }
   }
+  .forum-moder-wrap {
+    text-align: right;
+    margin: 10px 0;
+    .moder-part {
+      display: inline-block;
+      .chosen-container {
+        margin-top: -18px;
+        text-align: left;
+      }
+      span.head {
+        font-weight: bold;
+      }
+    }
+    select {
+      width: 300px;
+    }
+  }
 }
 
 .forum-btn.disabled {
