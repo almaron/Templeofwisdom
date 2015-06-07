@@ -28,14 +28,23 @@
       $scope.topics = data.topics
       $scope.forumPagination.total = data.total
 
+  selected = 0
+
+  breakSelect = ->
+    selected = 0
+    angular.element($('#selectAll')).attr('checked',false)
+    $scope.loadTopics($scope.forumPagination.cur)
+
   $scope.clickModerate = ->
     $scope.moderateOn = !$scope.moderateOn
     if $scope.moderateOn
       $scope.moderateForums = $scope.all_forums
     else
       $scope.moderateForums = []
+      selected = 0
+      angular.element($('#selectAll')).attr('checked',false)
 
-  selected = 0
+
   $scope.selectAll = ->
     selected = (selected + 1) % 2
     angular.forEach $scope.topics, (topic) ->
@@ -51,7 +60,8 @@
       if topic.selected == 1
         posts.push $http.put('/temple/move_topic.json', { topic_id: topic.id, to_forum_id: toForumId })
     $q.all(posts).then ->
-      $scope.loadTopics($scope.forumPagination.cur)
+      $scope.toForumId = null
+      breakSelect()
 
 
   $scope.deleteTopics = ->
@@ -69,7 +79,7 @@
       if topic.selected == 1
         posts.push $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 0 } })
     $q.all(posts).then ->
-      $scope.loadTopics($scope.forumPagination.cur)
+      breakSelect()
 
 
   $scope.closeTopics = ->
@@ -78,7 +88,9 @@
       if topic.selected == 1
         posts.push $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 1 } })
     $q.all(posts).then ->
-      $scope.loadTopics($scope.forumPagination.cur)
+      breakSelect()
+
+
 
   $scope.topicClass = (topic) ->
     if topic.closed
