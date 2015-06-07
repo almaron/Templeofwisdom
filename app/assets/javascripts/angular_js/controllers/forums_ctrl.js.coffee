@@ -76,7 +76,7 @@
     posts = []
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
-        $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 1 } })
+        posts.push $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 1 } })
     $q.all(posts).then ->
       $scope.loadTopics($scope.forumPagination.cur)
 
