@@ -1,4 +1,4 @@
-@app.controller "ForumsCtrl", ["$scope", "$http", "Forum", ($scope, $http, Forum) ->
+@app.controller "ForumsCtrl", ["$scope", "$http", '$timeout', "Forum", ($scope, $http, $timeout, Forum) ->
 
   $scope.forumPagination = {}
   $scope.toForumId = 0
@@ -49,7 +49,9 @@
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
         $http.put('/temple/move_topic.json', { topic_id: topic.id, to_forum_id: toForumId })
-    $scope.loadTopics $scope.forumPagination.cur
+    $timeout ( ->
+      $scope.loadTopics($scope.forumPagination.cur)
+    ), 0
 
   $scope.deleteTopics = ->
     if confirm('Уверены?')
@@ -64,13 +66,17 @@
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
         $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 0 } })
-    $scope.loadTopics $scope.forumPagination.cur
+    $timeout ( ->
+      $scope.loadTopics($scope.forumPagination.cur)
+    ), 0
 
   $scope.closeTopics = ->
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
         $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 1 } })
-    $scope.loadTopics $scope.forumPagination.cur
+    $timeout ( ->
+      $scope.loadTopics($scope.forumPagination.cur)
+    ), 0
 
   $scope.topicClass = (topic) ->
     if topic.closed
