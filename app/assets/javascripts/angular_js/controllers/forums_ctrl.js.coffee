@@ -1,4 +1,4 @@
-@app.controller "ForumsCtrl", ["$scope", "$http", '$timeout', "Forum", ($scope, $http, $timeout, Forum) ->
+@app.controller "ForumsCtrl", ["$scope", "$http", '$q', "Forum", ($scope, $http, $q, Forum) ->
 
   $scope.forumPagination = {}
   $scope.toForumId = 0
@@ -46,12 +46,13 @@
     if toForumId == $scope.forum_id
       alert 'Некуда переносить!'
       return
+    posts = []
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
-        $http.put('/temple/move_topic.json', { topic_id: topic.id, to_forum_id: toForumId })
-    $timeout ( ->
+        posts.push $http.put('/temple/move_topic.json', { topic_id: topic.id, to_forum_id: toForumId })
+    $q.all(posts).then ->
       $scope.loadTopics($scope.forumPagination.cur)
-    ), 0
+
 
   $scope.deleteTopics = ->
     if confirm('Уверены?')
@@ -63,20 +64,21 @@
         $scope.loadTopics $scope.forumPagination.cur
 
   $scope.openTopics = ->
+    posts = []
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
-        $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 0 } })
-    $timeout ( ->
+        posts.push $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 0 } })
+    $q.all(posts).then ->
       $scope.loadTopics($scope.forumPagination.cur)
-    ), 0
+
 
   $scope.closeTopics = ->
+    posts = []
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
         $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 1 } })
-    $timeout ( ->
+    $q.all(posts).then ->
       $scope.loadTopics($scope.forumPagination.cur)
-    ), 0
 
   $scope.topicClass = (topic) ->
     if topic.closed
