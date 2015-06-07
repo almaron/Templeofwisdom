@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   trimmed_fields :name, :email, :password, :password_confirmation
+
+  include Cancans
+
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
@@ -96,4 +99,6 @@ class User < ActiveRecord::Base
   def has_privilige?(privilege = 'view_hidden')
     false
   end
+
+
 end

@@ -6,8 +6,8 @@ describe CharProfile, :type => :model do
 
     before :each do
       @conf = AdminConfig.create(name: "current_year", value: "3")
-      @profile = build :char_profile
-      @set = attributes_for :char_profile
+      @profile = build :real_age_profile
+      @set = attributes_for :real_age_profile
     end
 
     it "should not change the age on create" do

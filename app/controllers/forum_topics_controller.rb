@@ -80,18 +80,9 @@ class ForumTopicsController < ApplicationController
 
   def update
     respond_to do |format|
-      if params[:move] && current_user.is_in?(:admin, :master)
-        @topic.update(forum_id:params[:move])
-        format.html {}
-        format.json { render json: {moved: true} }
-      else
-        if current_user.is_in? [:admin, :master] || @topic.char.delegated_to?(current_user)
-          @topic.update topic_params
-          @topic.posts.first.update post_params if params[:post]
-        end
-        format.html { redirect_to forum_topic_path(@topic.forum_id, @topic.id)}
-        format.json { render :show }
-      end
+      @topic.update update_params if @topic.is_editable?(current_user)
+      format.html { redirect_to forum_topic_path(@topic.forum_id, @topic.id)}
+      format.json { render :show }
     end
   end
 
@@ -117,6 +108,10 @@ class ForumTopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:head, :hidden, :closed, :poster_name).merge!(forum_id:params[:forum_id])
+  end
+
+  def update_params
+    params.require(:topic).permit(:head, :hidden, :closed)
   end
 
   def post_params

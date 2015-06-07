@@ -4,8 +4,12 @@ FactoryGirl.define do
   factory :char_profile do
     char_id 1
     birth_date "25.04"
-    real_age 45
-    season_id 2
-    points 40
+    age 45
+    points 0
+
+    factory :real_age_profile do
+      real_age 45
+      season_id 2
+    end
   end
 end

@@ -23,11 +23,15 @@ class ForumTopic < ActiveRecord::Base
   end
 
   def is_available?(user)
-    self.hidden == 0 || (user && user.is_in?([:admin, :master]))
+    !hidden? || (user && (user.is_in?([:admin, :master]) || user.can_view_hidden?))
+  end
+
+  def is_moderatable?(user)
+    user && (user.is_in?([:admin, :master]) || user.can_moderate_forum?)
   end
 
   def is_editable?(user)
-    user && (user.is_in?([:admin, :master]) || self.posts.first.char.delegated_to?(user))
+    user && (user.is_in?([:admin, :master]) || char.delegated_to?(user))
   end
 
   after_destroy :remove_topic

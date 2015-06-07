@@ -54,6 +54,9 @@ Rails.application.routes.draw do
 
   # Forum routes
   resources :forums, path: 'temple', only:[:index, :show] do
+    collection do
+      resource :move_topic, only: [:show, :update, :destroy, :create], controller: :move_topic
+    end
     resources :topics, path: 't', controller: 'forum_topics' do
       resources :posts, path: 'p', controller: 'forum_posts'
     end
@@ -75,6 +78,7 @@ Rails.application.routes.draw do
 
   get '/skills/:id' => 'skills#show', as: :skill_show, id: /\d+/
   get '/skills/:skill_type' => 'skills#public_index', as: :skills_list, skill_type: /magic|phisic/
+
 
   resources :journals, only: [:index, :show] do
     collection do

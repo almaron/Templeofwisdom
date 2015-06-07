@@ -13,15 +13,35 @@
     = render partial: "forum_category"
 
 
-  .forum-wrap{"ng-if"=>"!forum.isCategory"}
+  .forum-wrap{"ng-hide"=>"forum.isCategory"}
     .forum-wrap-btn
-      %button.btn.btn-mini.forum-btn{"ng-if"=>"currentUser.group == 'admin'", "ng-click"=>"clickModerate()"}
+      %button.btn.btn-mini.forum-btn{"ng-if"=>"forum.moderatable", "ng-click"=>"clickModerate()"}
         %span
           Модерировать форум
       %button.btn.btn-mini.forum-btn
         %span Отметить темы как прочтенные
       %a.btn.btn-mini.forum-btn{href:"/temple/{{forum.id}}/t/new"}
         %span Новая тема
+    .forum-moder-wrap{'ng-show'=>'moderateOn'}
+      .moder-part
+        %select.inp.inp-type2{type: 'text', 'ng-model'=>'toForumId', 'ng-options'=>'forum.id as forum.name for forum in moderateForums', "data-placeholder"=>"Выбрать раздел для переноса", chosen: ''}
+          %option
+      .moder-part
+        %button.btn.btn-mini.forum-btn{'ng-click'=>'moveTopics()'}
+          %span.fa.fa-arrow-circle-o-right
+          %span Переместить в
+      .moder-part
+        %button.btn.btn-mini.forum-btn{'ng-click'=>'closeTopics()'}
+          %span.fa.fa-lock
+          %span Закрыть
+      .moder-part
+        %button.btn.btn-mini.forum-btn{'ng-click'=>'openTopics()'}
+          %span.fa.fa-unlock
+          %span Открыть
+      .moder-part
+        %button.btn.btn-mini.forum-btn{'ng-click'=>'deleteTopics()'}
+          %span.fa.fa-times
+          %span Удалить
     %table.forum-tab.subforum-tab
       %tbody
         %tr{"ng-if"=>"forum.description"}
@@ -37,16 +57,16 @@
           %th.f-messages Постов
           -#%th.f-messages Просмотров
           %th.f-lastmessage Последнее сообщение
-          %th.f-moderate{"ng-if"=>"moderateOn"}
-            %input{type:"checkbox", "ng-click"=>"selectAll", id:"selectAll"}
+          %th.f-moderate{"ng-show"=>"moderateOn"}
+            %input{type:"checkbox", id:"selectAll"}
             %label{for:"selectAll"}
-              %span
+              %span{"ng-click"=>"selectAll()"}
         %tr{"ng-if"=>"topics.length == 0"}
           %td.no-topics{colspan:"{{moderateOn ? 7 : 6}}"}
             Нет тем
         %tr{"ng-repeat"=>"topic in topics"}
           %td.f-icon.topic.unread
-            %span.forum-topic-unread
+            %span{'ng-class'=>'topicClass(topic)'}
           %td.f-topic
             .f-topic-name
               %a{href: "/temple/{{forum.id}}/t/{{topic.id}}"} {{topic.head}}
@@ -60,5 +80,9 @@
             .f-lastmessage-link
               %a.f-lastmessage-author{href:"/chars/{{topic.last_post_char_id}}"} {{topic.last_post_char_name}}
               %a.f-lastmessage-goto{href: "/temple/{{forum.id}}/t/{{topic.id}}?post={{topic.last_post_id}}"} ➜
+          %td.f-moderate{'ng-show'=>'moderateOn'}
+            %input{type:"checkbox", "ng-model"=>"topic.selected", id:"select{{topic.id}}", 'ng-true-value'=>'1', 'ng-false-value'=>'0'}
+            %label{for:"select{{topic.id}}"}
+              %span
 
 

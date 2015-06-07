@@ -54,6 +54,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :group, profile_attributes:[:full_name, :birth_date, :icq, :skype, :contacts, :viewcontacts])
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :group, cancans: User::CANCANS, profile_attributes:[:full_name, :birth_date, :icq, :skype, :contacts, :viewcontacts])
   end
 end

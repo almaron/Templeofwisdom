@@ -108,9 +108,10 @@
     )
 
   $scope.removePost = (post) ->
-    Post.delete {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: post.id}, ->
-      $scope.posts.splice($scope.posts.indexOf(post),1)
-      $scope.loadTopic $scope.postPagination.cur, true
+    if confirm 'Уверены?'
+      Post.delete {forum_id: $scope.topicInit.forum_id, topic_id: $scope.topicInit.topic_id, id: post.id}, ->
+        $scope.posts.splice($scope.posts.indexOf(post),1)
+        $scope.loadTopic $scope.postPagination.cur, true
 
   $scope.updateTopic = ->
     Topic.update {forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id, topic:{ head:$scope.topic.head }}
@@ -153,4 +154,6 @@
 
   $scope.toggleInformMaster = () ->
     $scope.informMaster = !$scope.informMaster
+
+
 ]

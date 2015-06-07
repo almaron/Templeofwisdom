@@ -9,5 +9,8 @@ FactoryGirl.define do
     open_player ""
     profile_topic_id 1
     # profile_attributes {[age: 20, birth_date: "20.01"]}
+    factory :char_with_profile do
+      association :profile, factory: :char_profile
+    end
   end
 end
