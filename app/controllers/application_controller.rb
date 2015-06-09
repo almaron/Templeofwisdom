@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   layout :set_layout
   before_action :add_user_ip, if: ->{current_user}
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   def app_configs
     @config ||= FIXED_CONFIG.merge(AdminConfig.to_hash)
   end
@@ -32,6 +34,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
+  def record_not_found
+    render 'error_404'
+  end
 
 end

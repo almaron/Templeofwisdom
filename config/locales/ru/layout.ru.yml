@@ -80,6 +80,13 @@ ru:
   admin_journals:
     index:
       pagetitle: "Верстка газеты"
+  directory:
+    stone:
+      index:
+        pagetitle: 'Справочник камней'
+    herb:
+      index:
+        pagetitle: 'Справочник трав'
 
   char_status:
     name:

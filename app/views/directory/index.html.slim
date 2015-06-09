@@ -1,0 +1,13 @@
+- content_for :pagetitle do
+  = t "directory.#{@dir_type}.index.pagetitle"
+
+.handbook-index
+  - group = ''
+  table.handbook-list
+    tr
+      - @list.each_slice((@list.size / 5)+1) do |column|
+        td
+          - column.each do |item|
+            - if item.group != group
+              span.handbook-lit = group = item.group
+            = render partial: 'item', locals: { item: item, dir_type: @dir_type }

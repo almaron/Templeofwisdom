@@ -10,3 +10,9 @@ class Fixnum
     arr
   end
 end
+
+class String
+  def mb_capitalize
+    mb_chars.capitalize.to_s
+  end
+end

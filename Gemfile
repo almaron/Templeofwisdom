@@ -46,6 +46,7 @@ gem 'spring',        group: :development
 gem "angularjs-rails"
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'unicode'
 
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'

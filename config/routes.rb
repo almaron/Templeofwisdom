@@ -90,10 +90,15 @@ Rails.application.routes.draw do
     end
   end
 
-namespace :mini_lists do
-  get :news
-  get :blog
-end
+  scope '/directory', only: [:index, :show] do
+    resources :stones, controller: 'directory', type: 'SprStone'
+    resources :herbs, controller: 'directory', type: 'SprHerb'
+  end
+
+  namespace :mini_lists do
+    get :news
+    get :blog
+  end
 
 # Administration block
   scope '/admin' do
