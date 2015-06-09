@@ -1,13 +1,13 @@
 require 'csv'
 
-namespace :fill_directory do
+namespace :fdir do
   desc 'Filling the stones'
   task stones: :environment do
     file = Rails.root.join('tmp','stones.csv')
     return unless File.exist? file
 
     CSV.foreach(file, headers: true) do |row|
-      SprStone.create({
+      spr = SprStone.create({
         name: row['name'],
         slug: row['logo'],
         remote_image_url: "http://templeofwisdom.ru/assets/images/stones/#{row['logo']}.jpg",
@@ -19,7 +19,7 @@ namespace :fill_directory do
         life: row['life'],
         other: row['other']
       })
-      puts "#{row['name']} записан"
+      puts "#{spr.id} записан в #{spr.spr}"
     end
   end
 
@@ -31,8 +31,8 @@ namespace :fill_directory do
     CSV.foreach(file, headers: true) do |row|
       spr = SprHerb.create({
         name: row['name'],
-        slug: row['logo'],
-        remote_image_url: "http://templeofwisdom.ru/assets/images/plants/#{row['logo']}.jpg",
+        slug: row['logo'].split('.')[0].downcase,
+        remote_image_url: "http://templeofwisdom.ru/assets/images/plants/#{row['logo']}",
         look: row['view'],
         place: row['place'],
         names: row['names'],
@@ -41,7 +41,7 @@ namespace :fill_directory do
         other: row['other']
       })
 
-      puts spr 
+      puts "#{spr.id} - #{spr.name} записан в #{spr.spr}"
     end
   end
 end

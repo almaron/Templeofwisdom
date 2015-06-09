@@ -103,3 +103,16 @@ ru:
   skill_type:
     phisic: 'Навыки'
     magic: 'Способности'
+
+  sprs:
+    headers:
+      structure: 'Состав'
+      look: 'Внешний вид'
+      place: 'Где найти'
+      names: 'Другие названия'
+
+      magic: 'В магии'
+      healing: 'Во врачевании'
+      life: 'В быту'
+
+      other: 'Еще кое-что'

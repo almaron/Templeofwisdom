@@ -1,2 +1,29 @@
 - content_for :pagetitle do
   = @item.name
+
+table.handbook-item
+  tr
+    td.handbook-left
+      = image_tag @item.image_url if @item.image?
+    td.handbook-info
+
+      - @item.main_params.each do |param|
+        - if @item.send(param).present?
+          span.handbook-param
+            strong
+              ' #{t "sprs.headers.#{param}"}:
+            = @item.send param
+      h4 Применение
+
+      - @item.use_params.each do |param|
+        - if @item.send(param).present?
+          span.handbook-param.handbook-more
+            strong
+              ' #{t "sprs.headers.#{param}"}:
+            = @item.send param
+
+      - if @item.other.present?
+        span.handbook-param.handbook-onemore
+          strong
+            ' #{t "sprs.headers.other"}:
+          = @item.other

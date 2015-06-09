@@ -19,5 +19,15 @@ class SprPage < ActiveRecord::Base
     unless find_by(slug: slug)
       raise ActiveRecord::RecordNotFound
     end
+    find_by(slug: slug)
   end
+
+  def main_params
+    %i(structure look place names)
+  end
+
+  def use_params
+    %i(magic healing life)
+  end
+
 end

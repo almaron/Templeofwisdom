@@ -5,7 +5,7 @@
   - group = ''
   table.handbook-list
     tr
-      - @list.each_slice((@list.size / 5)+1) do |column|
+      - @list.each_slice((@list.size / 5)+4) do |column|
         td
           - column.each do |item|
             - if item.group != group
