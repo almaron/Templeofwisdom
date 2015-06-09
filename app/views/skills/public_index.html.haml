@@ -10,4 +10,4 @@
   %ul.any-list
     - @skills.each do |skill|
       %li
-        = link_to skill.name, skill_show_path(skill)
+        = link_to skill.name, skill_show_path(skill), target: '_blank'
