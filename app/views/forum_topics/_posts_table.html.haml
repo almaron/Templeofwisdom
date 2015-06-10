@@ -51,7 +51,7 @@
           %span.message-ip{} {{post.ip}}
     %td.f-message-options
       .message-options-div
-        %a.opt-sendmessage{href: "#", title: "Отправить личное сообщение"} ЛС
+        %a.opt-sendmessage{href: "/messages?new={{post.char_id}}", title: "Отправить личное сообщение", target: '_blank'} ЛС
         %a.opt-profile{href: "/chars/{{post.char_id}}", title: "Посмотреть анкету персонажа", 'ng-if'=>'post.char.group_id > 1', target: '_blank'} Анкета
         %a.opt-toadmin{href: "#", title: "Информировать мастера игры о посте (попросить отыграть реакцию или пожаловаться на сообщение)"} ❢
         -#%a.opt-quote{href: "#", title: "Процитировать сообщение"}
