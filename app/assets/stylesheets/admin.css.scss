@@ -54,9 +54,18 @@
           }
         }
       }
-      .line-edit, .line-name {
+      .line-name {
         cursor: pointer;
         font-size: 1.1em;
+      }
+      .line-edit {
+        font-size: 1.1em;
+        text-align: center;
+        .user-edit {
+          cursor: pointer;
+          margin-left: 2px;
+          margin-right: 2px;
+        }
       }
       &:hover td {
         @include box-shadow(0px 0px 9px -1px rgba(0,0,0,0.5));
