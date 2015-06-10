@@ -28,8 +28,9 @@
     $scope.tableParams.reload()  if angular.isDefined(oldVal) && angular.isDefined(newVal)
     return
 
-  $scope.ifNew = (charId) ->
-    $scope.newMessage charId
+  $scope.ifNew = (charId=0) ->
+    if charId > 0
+      $scope.newMessage charId
 
   $scope.messageShowInbox = () ->
     if $scope.showOutbox
