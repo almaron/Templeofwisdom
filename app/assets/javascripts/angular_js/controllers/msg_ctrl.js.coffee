@@ -55,8 +55,6 @@
       url = '/messages/new.json'
     $http.get(url).success (data) ->
       $scope.nMsg = data
-      if !data.char_id
-        $scope.nMsg.char_id = $scope.currentUser.default_char.id
       $scope.showNew = true
       $scope.sMsg = {}
 

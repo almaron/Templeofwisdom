@@ -7,6 +7,7 @@ class Message < ActiveRecord::Base
 
   has_many :receivers, class_name: MessageReceiver
   has_many :chars, through: :receivers
+  attr_accessor :reply_ids
 
   before_create :set_receive_list
 
@@ -26,7 +27,7 @@ class Message < ActiveRecord::Base
 
   def self.reply(msg)
     message = msg.is_a?(Message) ? msg : self.find(msg)
-    mess = self.new head:"Re: "+message.head, text: reply_quote(message), char_ids:[message.char_id]
+    mess = self.new head:"Re: "+message.head, text: reply_quote(message), reply_ids:[message.char_id]
   end
 
   def self.reply_quote(msg)
