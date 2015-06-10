@@ -28,6 +28,9 @@
     $scope.tableParams.reload()  if angular.isDefined(oldVal) && angular.isDefined(newVal)
     return
 
+  $scope.ifNew = (charId) ->
+    $scope.newMessage charId
+
   $scope.messageShowInbox = () ->
     if $scope.showOutbox
       $scope.set_service_url('/messages.json')
@@ -45,8 +48,12 @@
     $scope.sMsg = {}
 
 
-  $scope.newMessage = () ->
-    $http.get('/messages/new.json').success (data) ->
+  $scope.newMessage = (charId = 0) ->
+    if charId > 0
+      url = '/messages/new.json?char_id='+charId
+    else
+      url = '/messages/new.json'
+    $http.get(url).success (data) ->
       $scope.nMsg = data
       if !data.char_id
         $scope.nMsg.char_id = $scope.currentUser.default_char.id
