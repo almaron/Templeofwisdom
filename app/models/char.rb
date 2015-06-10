@@ -127,11 +127,15 @@ class Char < ActiveRecord::Base
 
   def remove
     if self.posts.any?
-      self.update(status_id:0)
-      self.char_delegations.destroy_all
+      self.update(status_id: 6)
+      self.char_delegations.where(owner:0).destroy_all
     else
       self.destroy
     end
+  end
+
+  def restore
+    self.update(status_id: 5)
   end
 
   # Char roles

@@ -32,6 +32,10 @@
         $scope.loadBlock 'reviewed'
       )
 
+  $scope.restoreChar = (char) ->
+    $http.put('/admin/chars/'+char.id+'/restore.json', {}).success (data) ->
+      Service.reload($scope.tableParams)
+
   $scope.loadBlock = (scope) ->
     $scope.chars[scope] = Char.query {scope: scope}
 

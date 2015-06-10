@@ -1,28 +1,14 @@
 class AdminCharsController < ApplicationController
 
   before_action :admin_access
-  before_action :get_char, only: [:update, :destroy, :accept, :approve, :decline]
+  before_action :get_char, only: [:update, :destroy, :accept, :approve, :decline, :restore]
   # before_action :set_only_content
 
   def index
     respond_to do |format|
       format.html { }
       format.json {
-        where = case params[:scope]
-                  when 'playable'
-                    {status_id: 5}
-                  when 'pending'
-                    {status_id: 2}
-                  when 'reviewed'
-                    {status_id: [3,4]}
-                  when 'saved'
-                    {status_id: 1}
-                  when 'messagable'
-                    'status_id > 1'
-                  else
-                    {status_id:[5,6]}
-                end
-        @chars = Char.eager_load(:profile, :group, :status, :avatars).where(where)
+        @chars = Char.eager_load(:profile, :group, :status, :avatars).where(status_id: where_status)
       }
     end
   end
@@ -39,7 +25,6 @@ class AdminCharsController < ApplicationController
 
   end
 
-  # noinspection RubyResolve
   def update
     @char.char_skills.destroy_all
     respond_to do |format|
@@ -87,6 +72,14 @@ class AdminCharsController < ApplicationController
     end
   end
 
+  def restore
+    @char.restore
+    respond_to do |format|
+      format.html { redirect_to admin_chars_path }
+      format.json { render json: {success: true} }
+    end
+  end
+
   private
 
   def get_char
@@ -98,11 +91,19 @@ class AdminCharsController < ApplicationController
     params.require(:char).permit(:name, :group_id, :status_line, :status_id, :avatar, :remote_avatar_url, :open_player, profile_attributes:[:birth_date, :age, :real_age, :season_id, :place, :beast, :phisics, :bio, :look, :character, :items, :person, :comment, :points, :other], char_skills_attributes:[:skill_id, :level_id])
   end
 
-
-
   def set_only_content
     @only_content = true
   end
 
+  SCOPES = {
+    playable: 5,
+    pending: 2,
+    reviewed: [3,4],
+    saved: 1,
+    messagable: (2..5).to_a
+  }
 
+  def where_status
+    params[:scope] ? SCOPES[params[:scope].to_sym] || [5,6] : [5,6]
+  end
 end

@@ -107,6 +107,7 @@ Rails.application.routes.draw do
       put :accept
       put :approve
       put :decline
+      put :restore
     end
     resources :forums, controller: 'admin_forums' do
       collection do

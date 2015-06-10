@@ -2,8 +2,10 @@ json.(char, :id, :name, :group_id, :status_id)
 json.group_name I18n.t("char_groups.names.#{char.group.name}")
 json.status_name I18n.t("char_status.name.#{char.status.name}")
 json.avatars char.avatars, partial: 'char_avatars/char_avatar', as: :avatar
-json.owner do
-  json.(char.owner, :id, :name)
+if char.owner
+  json.owner do
+    json.(char.owner, :id, :name)
+  end
 end
 json.points char.profile_info.points
 json.createdAt I18n.l(char.created_at)
