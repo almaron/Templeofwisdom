@@ -10,8 +10,10 @@ class CharAvatar < ActiveRecord::Base
 
   validates_presence_of :image
 
+  before_destroy :remove_file
+
   def set_default_destroy
-    self.class.where(char_id: self.char_id).last.update(default: true) if default?
+    self.class.where(char_id: self.char_id).last.update(default: true) if default? if self.class.where(char_id: self.char_id).last
   end
 
   def set_default_create
@@ -26,6 +28,10 @@ class CharAvatar < ActiveRecord::Base
     self.class.where(char_id: self.char_id).update_all(default: false)
     self.default = true
     self
+  end
+
+  def remove_file
+    remove_image!
   end
 
 end

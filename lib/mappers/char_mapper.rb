@@ -51,7 +51,7 @@ module Mappers
     end
 
     def skill_map
-      @skill_map ||= SkillMapper.new(db).map
+      @skill_map ||= SkillMapper.map
     end
 
     def level_map

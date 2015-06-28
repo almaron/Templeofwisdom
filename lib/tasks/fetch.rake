@@ -1,5 +1,5 @@
 namespace :fetch do
-  db_params = { host: 'templeofwisdom.ru', username: 'bao', password: 'malkavian' }
+  db_params = { host: 'templeofwisdom.ru', username: 'bao', password: 'malkavian', reconnect: true }
   main_db = -> { Mysql2::Client.new db_params.merge database: 'temple_main' }
   forum_db = -> { Mysql2::Client.new db_params.merge database: 'temple_forum' }
 
@@ -11,8 +11,9 @@ namespace :fetch do
   end
 
   desc 'Fetching forum topics & posts'
-  task :forum do
-
+  task forum: :environment do
+    logger = Logger.new 'log/forum_mapping.log'
+    Mappers::TopicMapper.new(forum_db.call, logger).map
   end
 
   desc 'Fetching char roles'
