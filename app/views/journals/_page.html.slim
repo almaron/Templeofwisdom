@@ -16,9 +16,12 @@ h1
         td.ava
           img ng-src="{{char.avatar}}", ng-if='char.avatar' 
         td.info
-          h4 {{char.name} 
-          span.param {{char.group}}
-          span.param {{char.place}}
+          h4
+            | {{char.name}
+          span.param
+            | {{char.group}}
+          span.param
+            | {{char.place}}
   div.mh-blocks-wrapper ng-if='current_page.page_type=="blocks"' 
     div.one-block ng-repeat='block in current_page.blocks', ng-class-odd' => '"block-left"', ng-class-even='"block-right"'
       span.img-block ng-if='block.image_url' 
@@ -31,4 +34,5 @@ h1
   .mh-page-tags
     | Тэги:
     span.onetag ng-repeat='tag in current_page.tags' 
-      a href='/journals/tag/{{tag}}' target='_blank' {{'#'+tag}}
+      a href='/journals/tag/{{tag}}' target='_blank'
+        | {{'#'+tag}}
