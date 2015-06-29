@@ -1155,7 +1155,9 @@ body {
 
   .mh-blocks-wrapper {
     div.one-block {
-      display: inline;
+      border-bottom: 1px dashed;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
       text-align: justify;
       &.block-left .img-block {
         float: left;
