@@ -1,1 +1,1 @@
-//= require admin_angular
+//= require self
