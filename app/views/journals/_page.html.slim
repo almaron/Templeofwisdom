@@ -1,12 +1,12 @@
-h1 {{current_page.head} 
+h1 {{current_page.head}}
 .mh-journal-link ng-show='tag.name' 
   ' Выпуск:
   a href='/journals/{{current_page.journal_id}}' target='_blank'
-    | {{current_page.journal}
+    | {{current_page.journal}}
 .mh-newspaper
   div ng-if='current_page.page_type=="article"' 
     img.img align="left" ng-src='{{current_page.image_url}}' ng-if='current_page.image_url' 
-    div ng-bind-html="current_page.content"} 
+    div ng-bind-html="current_page.content"
     .article-author
       | {{current_page.content_line}}
   div.newbe ng-if='current_page.page_type=="newbies"' 
@@ -16,10 +16,10 @@ h1 {{current_page.head}
           img ng-src="{{char.avatar}}", ng-if='char.avatar' 
         td.info
           h4 {{char.name} 
-          span.param {{char.group} 
-          span.param {{char.place} 
+          span.param {{char.group}}
+          span.param {{char.place}}
   div.mh-blocks-wrapper ng-if='current_page.page_type=="blocks"' 
-    span.one-block ng-repeat='block in current_page.blocks', ng-class-odd' => '"block-left"', ng-class-even='"block-right"' 
+    div.one-block ng-repeat='block in current_page.blocks', ng-class-odd' => '"block-left"', ng-class-even='"block-right"'
       span.img-block ng-if='block.image_url' 
         img.img ng-src='{{block.image_url}}' 
       span.text-block ng-if='block.content', ng-bind-html='block.content' 
@@ -30,4 +30,4 @@ h1 {{current_page.head}
   .mh-page-tags
     | Тэги:
     span.onetag ng-repeat='tag in current_page.tags' 
-      a href='/journals/tag/{{tag}}' target='_blank' {{'#'+tag} 
+      a href='/journals/tag/{{tag}}' target='_blank' {{'#'+tag}}
