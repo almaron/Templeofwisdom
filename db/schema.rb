@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607112026) do
+ActiveRecord::Schema.define(version: 20150629174816) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -56,8 +56,10 @@ ActiveRecord::Schema.define(version: 20150607112026) do
     t.boolean  "default",    default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",    default: true
   end
 
+  add_index "char_avatars", ["char_id", "visible"], name: "index_char_avatars_on_char_id_and_visible", using: :btree
   add_index "char_avatars", ["char_id"], name: "index_char_avatars_on_char_id", using: :btree
 
   create_table "char_delegations", force: true do |t|

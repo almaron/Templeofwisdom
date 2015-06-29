@@ -35,7 +35,7 @@ else
   json.userEditable @char.owned_by == current_user
   json.adminEditable current_user && current_user.is_in?([:admin, :master])
 
-  json.avatars @char.avatars, partial: 'char_avatars/char_avatar', as: :avatar
+  json.avatars @char.avatars.visible, partial: 'char_avatars/char_avatar', as: :avatar
 
 end
 

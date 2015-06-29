@@ -10,6 +10,7 @@ class CharAvatar < ActiveRecord::Base
 
   validates_presence_of :image
 
+  scope :visible, -> { where(visible: true) }
   def set_default_destroy
     self.class.where(char_id: self.char_id).last.update(default: true) if default?
   end

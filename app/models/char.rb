@@ -11,7 +11,8 @@ class Char < ActiveRecord::Base
 
   after_create :create_new_profile
 
-  scope :active, ->{where(status_id:5)}
+  scope :active, -> { where(status_id: 5) }
+  scope :visible, -> { where('status_id < 6') }
 
   has_many :avatars, class_name: CharAvatar, dependent: :nullify
   accepts_nested_attributes_for :avatars, reject_if: proc { |ca| ca[:remote_image_url].blank? && ca[:image].blank? }
