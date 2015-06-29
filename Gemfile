@@ -11,7 +11,7 @@ gem 'sorcery'
 gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails'
 gem 'slim-rails'
-gem "compass-rails"
+gem 'compass-rails'
 
 gem 'hashie'
 # Use Uglifier as compressor for JavaScript assets
@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -33,8 +33,8 @@ gem 'modernizr-rails'
 
 gem 'jquery-ui-rails'
 gem 'chosen-rails'
-gem "jquery-fileupload-rails"
-gem "fancybox2-rails"
+gem 'jquery-fileupload-rails'
+gem 'fancybox2-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -43,7 +43,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem "angularjs-rails"
+gem 'angularjs-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'unicode'
@@ -54,7 +54,7 @@ gem 'bb-ruby'
 
 gem 'sidekiq'
 
-gem "will_paginate"
+gem 'will_paginate'
 gem 'ancestry'
 
 # Use unicorn as the app server
@@ -69,24 +69,24 @@ group :development do
 end
 #gem 'rvm1-capistrano3', group: :development
 
-gem "mini_magick"
-gem "carrierwave"
+gem 'mini_magick'
+gem 'carrierwave'
 
-gem "thin", group: :development
+gem 'thin', group: :development
 gem 'render_anywhere', :require => false
 #gem 'rack-mini-profiler'
 gem 'quiet_assets', group: :development
 
 group :development, :test do
-  gem "rspec-rails"
+  gem 'rspec-rails'
   gem 'rb-inotify', '~> 0.9'
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "guard-rspec"
-  gem "guard-rails"
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'guard-rails'
   gem 'guard-sidekiq'
-  gem "guard-livereload"
-  gem "rack-livereload"
+  gem 'guard-livereload'
+  gem 'rack-livereload'
 
   gem 'better_errors'
   gem 'awesome_print'
