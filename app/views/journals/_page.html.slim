@@ -24,10 +24,11 @@ h1
             | {{char.place}}
   .mh-blocks-wrapper ng-if='current_page.page_type=="blocks"'
     .one-block ng-repeat='block in current_page.blocks' ng-class-odd='"block-left"' ng-class-even='"block-right"'
-      span.img-block ng-if='block.image_url' 
-        img.img ng-src='{{block.image_url}}' 
-      span.text-block ng-if='block.content' ng-bind-html='block.content'
-    .clear
+      .block-inner
+        span.img-block ng-if='block.image_url'
+          img.img ng-src='{{block.image_url}}'
+        span.text-block ng-if='block.content' ng-bind-html='block.content'
+      .clear
   .mh-gallery-wrapper ng-if='current_page.page_type=="gallery"'
     .content ng-bind-html='current_page.content' 
     fancy-gallery gallery='current_page.images' 
