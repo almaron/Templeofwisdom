@@ -804,3 +804,55 @@
     }
   }
 }
+
+.logs-wrapper {
+  .log-nav {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    .one-nav {
+      display: inline-block;
+      margin-right: 10px;
+      a {
+        border: 1px solid $color-brown2;
+        padding: 3px 4px;
+        border-radius: 4px;
+        text-decoration: none;
+      }
+      span {
+        border: 1px solid $color-beage;
+        padding: 3px 4px;
+        border-radius: 4px;
+        background-color: $color-brown2;
+        color: $color-beage;
+      }
+    }
+  }
+
+  .log-paginate {
+
+  }
+  .logs-list {
+    margin: 10px;
+    .one-log {
+      padding: 7px 0;
+      &:hover {
+        background: $bgimg-beige;
+      }
+      span {
+        padding-right: 5px;
+        display: inline-block;
+        &.log-date {
+          font-weight: bold;
+          color: $color-orange;
+          width: 120px;
+        }
+        &.log-user {
+          font-weight: bold;
+        }
+        &.log-message {
+
+        }
+      }
+    }
+  }
+}
