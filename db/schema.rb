@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629174816) do
+ActiveRecord::Schema.define(version: 20150630055549) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -419,6 +419,16 @@ ActiveRecord::Schema.define(version: 20150629174816) do
 
   add_index "spr_pages", ["slug"], name: "index_spr_pages_on_slug", using: :btree
   add_index "spr_pages", ["spr"], name: "index_spr_pages_on_spr", using: :btree
+
+  create_table "sys_logs", force: true do |t|
+    t.string   "user"
+    t.string   "message"
+    t.integer  "log_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sys_logs", ["log_type_id"], name: "index_sys_logs_on_log_type_id", using: :btree
 
   create_table "user_ips", force: true do |t|
     t.integer "user_id"

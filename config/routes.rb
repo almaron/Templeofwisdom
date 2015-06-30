@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # OAuth routes
   match 'oauth/callback' => 'oauths#callback', via: [:get, :post]
   match 'oauth/delete/:provider' => 'oauths#destroy', as: :delete_auth, via: [:get, :delete]
@@ -99,6 +98,9 @@ Rails.application.routes.draw do
     get :news
     get :blog
   end
+
+  get '/logs' => 'logs#index', as: :logs
+  get '/logs/:category' => 'logs#show', as: :log
 
 # Administration block
   scope '/admin' do
