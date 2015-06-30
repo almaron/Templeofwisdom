@@ -1,18 +1,27 @@
 ru:
   common:
     meta:
-      title: "Форумная Ролевая Игра Храм Мудрости"
-      description: ""
-      keywords: ""
+      title: 'Форумная Ролевая Игра Храм Мудрости'
+      description: ''
+      keywords: ''
     buttons:
-      register: "Зарегистрироваться"
-      login: "Войти"
+      register: 'Зарегистрироваться'
+      login: 'Войти'
+
+    char:
+      actions:
+        accept:  'принят'
+        decline: 'отклонен'
+        approve: 'одобрен'
+        remove:  'отправлен в неактив'
+        destroy: 'удален'
+        restore: 'восстановлен'
 
   mail:
     user_mailer:
       activation_needed:
-        subject: "Храм Мудрости - активация аккаунта"
+        subject: 'Храм Мудрости - активация аккаунта'
       activation_success:
-        subject: "Храм Мудрости - аккаунт активирован"
+        subject: 'Храм Мудрости - аккаунт активирован'
       reset_password:
         subject: 'Храм Мудрости - восстановление пароля'

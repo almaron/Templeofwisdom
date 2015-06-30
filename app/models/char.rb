@@ -84,6 +84,10 @@ class Char < ActiveRecord::Base
     char_skills.magic
   end
 
+  def clear_skills
+    char_skills.destroy_all
+  end
+
   def get_char_skill(skill_id)
     char_skills.find_or_initialize_by(skill_id: skill_id)
   end
@@ -104,7 +108,7 @@ class Char < ActiveRecord::Base
     if self.status_id == 2
       self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: SystemPosts::CharAcceptPost.new(user, self).create)
       Notes::CharAccept.new.create self
-      #   TODO send notification and email
+      #   TODO send email
       true
     end
   end
@@ -114,29 +118,34 @@ class Char < ActiveRecord::Base
       self.update(status_id: 5)
       SystemPosts::CharApprovePost.new(user, self).create
       Notes::CharApprove.new.create self
+      Loggers::Char.new(user).log char_name: self.name, action: 'approve'
       #   TODO send  email
     end
   end
 
-  def decline
+  def decline(user=nil)
     if self.status_id == 2
       self.destroy
       Notes::CharDecline.new.create self
+      Loggers::Char.new(user).log char_name: self.name, action: 'decline'
     #  TODO send  email
     end
   end
 
-  def remove
+  def remove(user=nil)
     if self.posts.any?
       self.update(status_id: 6)
       self.char_delegations.where(owner:0).destroy_all
+      Loggers::Char.new(user).log char_name: self.name, action: 'remove'
     else
       self.destroy
+      Loggers::Char.new(user).log char_name: self.name, action: 'destroy'
     end
   end
 
-  def restore
+  def restore(user=nil)
     self.update(status_id: 5)
+    Loggers::Char.new(user).log char_name: self.name, action: 'restore'
   end
 
   # Char roles

@@ -5,7 +5,7 @@ class CharsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html { @chars = Char.where("group_id IN (?)", [2,3,4,5]).where(status_id:5) }
+      format.html { @chars = Char.where('group_id IN (?)', [2,3,4,5]).where(status_id:5) }
       format.json { @chars = Char.includes(:profile).all }
     end
   end
@@ -34,9 +34,9 @@ class CharsController < ApplicationController
     @char.creator = current_user
     respond_to do |format|
       if @char.save
-        format.html { redirect_to profile_path, notice: t("messages.notice.chars.create.success") }
+        format.html { redirect_to profile_path, notice: t('messages.notice.chars.create.success') }
         format.js {
-          flash.notice = t("messages.notice.chars.create.success")
+          flash.notice = t('messages.notice.chars.create.success')
           render js: "window.location = '#{profile_path}'"
         }
         format.json { render nothing: true }
@@ -50,7 +50,7 @@ class CharsController < ApplicationController
 
   def edit
     if @char.status_id > 1
-      redirect_to profile_path, alert: t("messages.alert.chars.edit.not_editable")
+      redirect_to profile_path, alert: t('messages.alert.chars.edit.not_editable')
     else
       @char.avatars << CharAvatar.new if @char.avatars.empty?
       render :new
@@ -60,9 +60,9 @@ class CharsController < ApplicationController
   def update
     respond_to do |format|
       if @char.status_id > 1
-        format.html { redirect_to profile_path, alert: t("messages.alert.chars.edit.not_editable") }
+        format.html { redirect_to profile_path, alert: t('messages.alert.chars.edit.not_editable') }
         format.js {
-          flash.alert = t("messages.alert.chars.edit.not_editable")
+          flash.alert = t('messages.alert.chars.edit.not_editable')
           render js: "window.location = '#{profile_path}'"
         }
       else
@@ -98,11 +98,12 @@ class CharsController < ApplicationController
 
   def small_update
     value = case params[:field]
-      when "points"
+      when 'points'
+        Loggers::CharPoints.new(current_user).log char_name: @char.name, value: params[:value]
         @char.profile.points += params[:value]
-      when "person"
+      when 'person'
         @char.profile.person = params[:person]
-      when "comment"
+      when 'comment'
         @char.profile.comment = params[:comment]
       when 'signature'
         @char.signature = params[:signature]

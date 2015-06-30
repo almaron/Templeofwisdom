@@ -11,7 +11,8 @@ class Role < ActiveRecord::Base
 
   after_create :destroy_app
 
-  def self.build_from_app(app_id)
+  def self.build_from_app(app_id=nil)
+    return new unless app_id
     role_app = RoleApp.find(app_id)
     role = self.new(head:role_app.head, paths:role_app.paths, comment: role_app.comment)
     role.parse_paths.collect_char_posts.build_char_roles

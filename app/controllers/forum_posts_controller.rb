@@ -29,7 +29,7 @@ class ForumPostsController < ApplicationController
 
   def create
     respond_to do |format|
-      if @post = ForumPost.create(post_params)
+      if (@post = ForumPost.create(post_params))
         Notes::Post.new.create params[:inform], @post.topic, @post
         Note::PostMaster.new.create @post.topic, @post if params[:inform_master]
         format.html { redirect_to_topic }
@@ -50,9 +50,10 @@ class ForumPostsController < ApplicationController
 
   def update
     @post.update(post_params) if post_editable(@post)
+    Logger::Post.new(current_user).log post: @post
     respond_to do |format|
       format.html { redirect to  }
-      format.json { render partial: "post", locals: {post:@post} }
+      format.json { render partial: 'post', locals: {post:@post} }
     end
   end
 

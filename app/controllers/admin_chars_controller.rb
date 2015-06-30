@@ -26,9 +26,10 @@ class AdminCharsController < ApplicationController
   end
 
   def update
-    @char.char_skills.destroy_all
+    @char.clear_skills
     respond_to do |format|
       if @char.update char_params
+        Loggers::CharProfile.new(current_user).log char_name: @char.name
         format.html { redirect_to admin_chars_path }
         format.json { render json: {success:true}  }
         format.js   {  }
@@ -57,7 +58,7 @@ class AdminCharsController < ApplicationController
   end
 
   def decline
-    @char.decline
+    @char.decline current_user
     respond_to do |f|
       f.html { redirect_to admin_chars_path }
       f.json { render :json => {success: true} }
@@ -65,7 +66,7 @@ class AdminCharsController < ApplicationController
   end
 
   def destroy
-    @char.remove
+    @char.remove current_user
     respond_to do |format|
       format.html { redirect_to admin_chars_path }
       format.json { render json: {success: true} }
@@ -73,7 +74,7 @@ class AdminCharsController < ApplicationController
   end
 
   def restore
-    @char.restore
+    @char.restore current_user
     respond_to do |format|
       format.html { redirect_to admin_chars_path }
       format.json { render json: {success: true} }
