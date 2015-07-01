@@ -18,6 +18,9 @@
         %a{href: "#{guest_posts_path}"} Гостевой свиток
       %li
         %a{href: "#{blog_posts_path}"} Блог Мастеров
+      - if current_user
+        %li
+          %a{href: '/questions'} Вопрос Мастеру
       %li
         %a{href: "/journals"} Газета
       %li
