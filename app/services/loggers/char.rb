@@ -3,7 +3,7 @@ module Loggers
     private
 
     def message(options={})
-      "Персонаж #{options[:char_name]} #{I18n.t("common.char.actions#{options[:action]}")}"
+      "Персонаж #{options[:char_name]} #{I18n.t("common.char.actions.#{options[:action]}")}"
     end
 
     def log_id

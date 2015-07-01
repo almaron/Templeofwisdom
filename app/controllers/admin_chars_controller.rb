@@ -43,6 +43,7 @@ class AdminCharsController < ApplicationController
 
   def accept
     @char.accept current_user
+    Loggers::Char.new(current_user).log char_name: self.name, action: 'accept'
     respond_to do |f|
       f.html { redirect_to admin_chars_path }
       f.json { render :json => {success: true} }
@@ -51,6 +52,7 @@ class AdminCharsController < ApplicationController
 
   def approve
     @char.approve current_user
+    Loggers::Char.new(user).log char_name: self.name, action: 'approve'
     respond_to do |f|
       f.html { redirect_to admin_chars_path }
       f.json { render :json => {success: true} }
@@ -59,6 +61,7 @@ class AdminCharsController < ApplicationController
 
   def decline
     @char.decline current_user
+    Loggers::Char.new(user).log char_name: self.name, action: 'decline'
     respond_to do |f|
       f.html { redirect_to admin_chars_path }
       f.json { render :json => {success: true} }
@@ -67,6 +70,7 @@ class AdminCharsController < ApplicationController
 
   def destroy
     @char.remove current_user
+    Loggers::Char.new(user).log char_name: self.name, action: 'destroy'
     respond_to do |format|
       format.html { redirect_to admin_chars_path }
       format.json { render json: {success: true} }
@@ -75,6 +79,7 @@ class AdminCharsController < ApplicationController
 
   def restore
     @char.restore current_user
+    Loggers::Char.new(user).log char_name: self.name, action: 'restore'
     respond_to do |format|
       format.html { redirect_to admin_chars_path }
       format.json { render json: {success: true} }

@@ -118,34 +118,29 @@ class Char < ActiveRecord::Base
       self.update(status_id: 5)
       SystemPosts::CharApprovePost.new(user, self).create
       Notes::CharApprove.new.create self
-      Loggers::Char.new(user).log char_name: self.name, action: 'approve'
       #   TODO send  email
     end
   end
 
-  def decline(user=nil)
+  def decline
     if self.status_id == 2
       self.destroy
       Notes::CharDecline.new.create self
-      Loggers::Char.new(user).log char_name: self.name, action: 'decline'
     #  TODO send  email
     end
   end
 
-  def remove(user=nil)
+  def remove
     if self.posts.any?
       self.update(status_id: 6)
       self.char_delegations.where(owner:0).destroy_all
-      Loggers::Char.new(user).log char_name: self.name, action: 'remove'
     else
       self.destroy
-      Loggers::Char.new(user).log char_name: self.name, action: 'destroy'
     end
   end
 
-  def restore(user=nil)
+  def restore
     self.update(status_id: 5)
-    Loggers::Char.new(user).log char_name: self.name, action: 'restore'
   end
 
   # Char roles

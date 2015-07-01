@@ -99,8 +99,6 @@ Rails.application.routes.draw do
     get :blog
   end
 
-  get '/logs' => 'logs#index', as: :logs
-  get '/logs/:category' => 'logs#show', as: :log
 
 # Administration block
   scope '/admin' do
@@ -130,6 +128,8 @@ Rails.application.routes.draw do
         post :reset
       end
     end
+    get '/logs' => 'logs#index', as: :logs
+    get '/logs/:category' => 'logs#show', as: :log
   end
 
   get '/journal_tags' => 'journal_tags#index', defaults: {format: :json}

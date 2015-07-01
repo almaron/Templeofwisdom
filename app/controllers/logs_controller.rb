@@ -1,5 +1,6 @@
 class LogsController < ApplicationController
   before_action :get_log_types
+  before_action :admin_access
 
   def index
     @logs = SysLog.paginate(page: params[:page], per_page: 20)
