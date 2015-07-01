@@ -78,7 +78,7 @@ ru:
         notify_skill_request:
           accept:  'Заявка принята'
           decline: 'Заявка отклонена'
-
+        notify_user_question_answer: 'Пользователь ответил на ваш вопрос'
   auto_link:
     url_link: "ссылка"
     email_link: "этот адрес"

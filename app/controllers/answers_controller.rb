@@ -16,7 +16,10 @@ class AnswersController < ApplicationController
   end
 
   def create
-    update_question_status if (@answer = MasterAnswer.create answer_params.merge(user_id: current_user.id, question_id: params[:question_id]))
+    if (@answer = MasterAnswer.create answer_params.merge(user_id: current_user.id, question_id: params[:question_id]))
+      update_question_status
+      send_notification
+    end
     respond_to do |format|
       format.html { redirect_to question_path(params[:question_id]) }
       format.json { render :show }
@@ -49,11 +52,20 @@ class AnswersController < ApplicationController
   private
 
   def update_question_status
-    q = MasterQuestion.eager_load(:user).find params[:question_id]
     status = 2 if current_user.is_in? [:admin, :master]
     status = 4 if current_user == q.user
     status ||= 3
-    q.update status_id: status
+    question.update status_id: status
+  end
+
+  def question
+    @question ||= MasterQuestion.eager_load(:user).find params[:question_id]
+  end
+
+  def send_notification
+    unless question.user_id == current_user.id
+      Notes::Question.new.create question, current_user
+    end
   end
 
   def get_answer
