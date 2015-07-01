@@ -53,7 +53,7 @@ class AnswersController < ApplicationController
 
   def update_question_status
     status = 2 if current_user.is_in? [:admin, :master]
-    status = 4 if current_user == q.user
+    status = 4 if current_user == question.user
     status ||= 3
     question.update status_id: status
   end
