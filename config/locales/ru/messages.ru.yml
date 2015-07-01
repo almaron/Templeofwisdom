@@ -24,6 +24,11 @@ ru:
           success: "Заявка успешно отправлена."
       reset_password:
         success: "Пароль успешно изменен."
+      questions:
+        create:
+          success: "Вопрос успешно задан. Ожидайте ответа."
+        update:
+          success: "Вопрос успешно изменен."
     alert:
       sessions:
         create:
@@ -43,6 +48,9 @@ ru:
 
       journal_tags:
         not_found: "Этот тэг не найден"
+      questions:
+        create:
+          failure: "Задать вопрос не удалось. Заполните все поля."
     errors:
       forum:
         topic_create: "Заголовок темы или текст поста пуст!"

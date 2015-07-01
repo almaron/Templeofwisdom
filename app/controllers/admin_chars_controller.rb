@@ -60,7 +60,7 @@ class AdminCharsController < ApplicationController
   end
 
   def decline
-    @char.decline current_user
+    @char.decline 
     Loggers::Char.new(user).log char_name: self.name, action: 'decline'
     respond_to do |f|
       f.html { redirect_to admin_chars_path }
@@ -69,7 +69,7 @@ class AdminCharsController < ApplicationController
   end
 
   def destroy
-    @char.remove current_user
+    @char.remove
     Loggers::Char.new(user).log char_name: self.name, action: 'destroy'
     respond_to do |format|
       format.html { redirect_to admin_chars_path }
@@ -78,7 +78,7 @@ class AdminCharsController < ApplicationController
   end
 
   def restore
-    @char.restore current_user
+    @char.restore
     Loggers::Char.new(user).log char_name: self.name, action: 'restore'
     respond_to do |format|
       format.html { redirect_to admin_chars_path }

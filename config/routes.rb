@@ -29,6 +29,14 @@ Rails.application.routes.draw do
     resources :comments, controller: :blog_comments, except: [:index, :show, :new]
   end
 
+  resources :questions do
+    collection do
+      get 'mine' => 'questions#index', as: :my, defaults: { mine: true }
+      get ':filter' => 'questions#index', as: :filter
+    end
+    resources :answers, except: [:index, :show, :new]
+  end
+
   resources :guest_posts, :path => 'guestbook', :except => [:show]
 
   get '/users/:id' => 'users#show', as: :show_user
