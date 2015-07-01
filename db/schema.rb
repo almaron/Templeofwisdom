@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630055549) do
+ActiveRecord::Schema.define(version: 20150701082755) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -275,6 +275,29 @@ ActiveRecord::Schema.define(version: 20150630055549) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "master_answers", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.string   "answer_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "master_answers", ["question_id"], name: "index_master_answers_on_question_id", using: :btree
+
+  create_table "master_questions", force: true do |t|
+    t.integer  "user_id",                null: false
+    t.integer  "status_id",  default: 1
+    t.string   "head",                   null: false
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "master_questions", ["status_id"], name: "index_master_questions_on_status_id", using: :btree
+  add_index "master_questions", ["user_id"], name: "index_master_questions_on_user_id", using: :btree
 
   create_table "message_receivers", force: true do |t|
     t.integer  "message_id"
