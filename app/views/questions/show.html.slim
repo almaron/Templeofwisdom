@@ -20,7 +20,7 @@
         = raw @question.text.bbcode_to_html_with_formatting
       .question-author
         = link_to @question.user.name, user_path(@question.user), target: '_blank'
-        - if current_user == @question.user || current_user.is_in?(:admin, :master)
+        - if current_user == @question.user || current_user.is_in?([:admin, :master])
           span.question-btns
             .question-edit
               = link_to edit_question_path(@question) do
