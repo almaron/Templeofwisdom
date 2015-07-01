@@ -1,0 +1,20 @@
+.log-nav
+  .one-nav
+    - if params[:mine] || params[:filter]
+      = link_to 'Все', questions_path
+    - else
+      span
+        | Все
+  .one-nav
+    - if params[:mine]
+      span
+        | Мои
+    - else
+      = link_to 'Мои', my_questions_path
+  - MasterQuestion::STATUSES.each do |status|
+    .one-nav
+      - if params[:filter] == status
+        span
+          = t "master.questions.status.#{status}"
+      - else
+        = link_to t("master.questions.status.#{status}"), filter_questions_path(status)

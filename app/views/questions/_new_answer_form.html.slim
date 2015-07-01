@@ -1,0 +1,7 @@
+.new_answer_form ng-hide='cAn.id'
+  = form_for @question.answers.new, url: question_answers_path(@question) do |form|
+    .any-form
+      .form-line
+        = form.text_area :text, class: 'inp inp-type2'
+      .form-line
+        = form.submit 'Отправить', class: 'btn btn-standart'

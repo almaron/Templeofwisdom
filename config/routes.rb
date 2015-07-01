@@ -31,10 +31,10 @@ Rails.application.routes.draw do
 
   resources :questions do
     collection do
-      get 'mine' => 'questions#index', as: :my, defaults: { mine: true }
-      get ':filter' => 'questions#index', as: :filter
+      get 'f/mine' => 'questions#index', as: :my, defaults: { mine: true }
+      get 'f/:filter' => 'questions#index', as: :filter
     end
-    resources :answers, except: [:index, :show, :new]
+    resources :answers, except: [:new]
   end
 
   resources :guest_posts, :path => 'guestbook', :except => [:show]

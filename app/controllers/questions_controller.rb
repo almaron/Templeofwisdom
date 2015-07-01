@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     if params[:mine]
       q = q.where user_id: current_user.id
     elsif params[:filter]
-      q = q.where status_id: MasterQuestion::STATUSES.index(params[:filter].to_sym)
+      q = q.where status_id: MasterQuestion::STATUSES.index(params[:filter])
     else
       q
     end
@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = MasterQuestion.eager_load(:user, answers: [:user]).find params[:id]
+    @question = MasterQuestion.eager_load(:user).find params[:id]
   end
 
   def create
@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question.destroy if @question.user == current_user || current_user.in?([:admin, :master])
+    @question.destroy if @question.user == current_user || current_user.is_in?([:admin, :master])
     redirect_to questions_path
   end
 
@@ -47,6 +47,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:status_id, :head, :text)
+    params.require(:master_question).permit(:status_id, :head, :text)
   end
 end

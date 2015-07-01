@@ -1861,70 +1861,6 @@ body {
 
 }
 
-
-// ЛОГИ
-
-.logs {
-
-  .logs-table {
-	width:100%;
-
-	.logs-table-1 {
-	  @extend .table-td-left;
-
-	  .llinks {
-		padding-right:10px;
-		font-size:1.2em;
-		a {
-		  display: block;
-		  text-decoration: none;
-		  padding:2px 2px;
-		  font-weight: bold;
-		  border-top:1px solid $color-brown1;
-		  &:first-child {
-			border: none;
-		  }
-		  &:hover {
-			color:$color-orange1;
-		  }
-		}
-	  }
-	}
-
-	.logs-table-2 {
-	  .llinks {
-		padding-left: 10px;
-	  }
-	  .paginator {
-		font-size: 1.1em;
-		padding:0 0 10px 0;
-	  }
-
-	  .loggs_list {
-
-		.log {
-		  border-bottom:1px dashed $color-brown1;
-		  padding:0 0 10px 0;
-		  margin-bottom:10px;
-		  .date {
-			color:$color-orange1;
-			padding-right:10px;
-			font-size:0.9em;
-		  }
-		  .name {
-			font-weight: bold;
-		  }
-		  .text {
-			display: block;
-		  }
-		}
-
-	  }
-	}
-  }
-
-}
-
 // HANDBOOK
 
 .handbook-list {
@@ -3289,6 +3225,48 @@ td.none,td.none:hover, tr:hover td.none {
     width: 100%;
   }
 }
+
+.question-form-wrap {
+  clear: both;
+
+  .form-show-btn {
+    margin-right: 10px;
+    text-align: right;
+  }
+  .question-form.any-form {
+    background: $bgimg-beige;
+    border: 1px solid;
+    float: right;
+    min-height: 170px;
+    margin-bottom: 20px;
+    margin-top: -14px;
+    padding: 10px;
+    width: 95%;
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+      width: 90%;
+    }
+
+    input[type=text] {
+      width: 50%;
+    }
+
+    .form-line {
+      margin-bottom: 12px;
+    }
+  }
+  &.edit-form {
+    .question-form.any-form {
+      width: 100%;
+      float: none;
+      border: none;
+      margin-top: 0;
+    }
+  }
+}
+
 /*
 
 */

@@ -1,2 +1,26 @@
-h1 Questions#index
-p Find me in app/views/questions/index.html.slim
+.logs-wrapper
+  = render 'new_form'
+  = render 'filters'
+  .log-paginate
+    .pagination.paginator.align-center
+      = will_paginate @questions
+
+  .question-list
+    - if @questions.empty?
+      .no-questions
+        | Вопросов нет
+    - @questions.each do |question|
+      .one-question
+        .question-head
+          span.date
+            = l question.created_at, format: :full
+          span.head
+            = link_to question.head, question_path(question)
+        .question-user
+          span.user
+            =' link_to question.user.name, user_path(question.user)
+          span class="question-status #{question.status}"
+            | :: #{t "master.questions.status.#{question.status}"}
+        .question-update
+          | Последний ответ: #{I18n.l question.updated_at, format: :full}
+

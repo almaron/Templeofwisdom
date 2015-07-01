@@ -1,0 +1,14 @@
+.form-line
+  span.label
+    = f.label :head
+    ' :
+  span.input
+    = f.text_field :head, class: 'inp inp-type2'
+.form-line
+  = f.text_area :text, class: 'inp inp-type2', 'mark-it-up'=> true
+.form-line
+  = f.submit 'Отправить', class: 'btn btn-standart'
+  - if @question
+    = link_to question_path(@question) do
+      button.btn.btn-standart
+        | Отмена

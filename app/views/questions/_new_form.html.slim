@@ -1,0 +1,11 @@
+.question-form-wrap
+  .form-show-btn
+    button.btn.btn-standart ng-click='showForm = true' ng-hide='showForm'
+      span.fa.fa-plus
+      |  Задать вопрос
+    button.btn.btn-standart ng-click='showForm = false' ng-show='showForm'
+      span.fa.fa-times
+      |  Отмена
+  .question-form.any-form ng-show = 'showForm'
+    = form_for MasterQuestion.new, url: questions_path do |form|
+      = render partial: 'form', locals: { f: form }
