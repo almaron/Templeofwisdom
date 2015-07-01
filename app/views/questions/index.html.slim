@@ -18,9 +18,9 @@
             = link_to question.head, question_path(question)
         .question-user
           span.user
-            =' link_to question.user.name, user_path(question.user)
+            =' link_to question.user.name, user_path(question.user), target: '_blank'
           span class="question-status #{question.status}"
             | :: #{t "master.questions.status.#{question.status}"}
         .question-update
-          | Последний ответ: #{I18n.l question.updated_at, format: :full}
+          | Последнее изменение: #{I18n.l question.updated_at, format: :full}
 

@@ -2059,7 +2059,7 @@ body {
     text-indent:-110px;
 
     span {
-      text-indent:0px;
+      text-indent: 0;
       display: block;
       position: absolute;
       width:15px;
@@ -2808,7 +2808,7 @@ td.none,td.none:hover, tr:hover td.none {
     margin-bottom: 5px;
     .form-label {
       width:140px;
-      font-weight: 1.2em;
+      font-size: 1.2em;
       display: inline-block;
       font-weight: bold;
     }
@@ -3265,6 +3265,153 @@ td.none,td.none:hover, tr:hover td.none {
       margin-top: 0;
     }
   }
+}
+
+.question-list {
+  .no-questions {
+    text-align: center;
+    font-size: 1.2em;
+    font-style: italic;
+    background: $bgimg-beige;
+    padding: 10px;
+  }
+  .one-question {
+    margin-bottom: 20px;
+    background: $bgimg-beige;
+    padding: 10px;
+    .question-head {
+      margin-bottom: 7px;
+      .date {
+        color: $color-orange2;
+        font-size: 0.9em;
+      }
+      .head {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+    }
+    .question-user {
+      margin-bottom: 7px;
+      .user {
+        a {
+          text-decoration: none;
+          color: $color-brown;
+        }
+      }
+      .question-status {
+        &.open {
+          color: green;
+        }
+        &.closed {
+          color: $color-grey;
+        }
+        &.user_answered, .self_answered, .master_answered {
+          color: $color-blue;
+        }
+      }
+    }
+    .question-update {
+      font-style: italic;
+    }
+  }
+}
+.question-wrapper {
+  .question-wrap {
+    background: $bgimg-beige;
+    padding: 15px;
+    border: 1px solid;
+    margin-bottom: 20px;
+
+    .question-inner {
+      .question-date {
+        text-align: right;
+        margin-bottom: 10px;
+      }
+      .question-text {
+        text-align: justify;
+      }
+      .question-author {
+        text-align: right;
+        a {
+          color: $color-brown;
+          text-decoration: none;
+          &:hover {
+            color: $color-brown2;
+          }
+        }
+        .question-btns {
+          margin-left: 8px;
+          display: inline-block;
+          div {
+            display: inline-block;
+            opacity: 0.2;
+            font-size: 1.2em;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .answers-wrap {
+    .one-answer {
+      background: $bgimg-beige;
+      padding: 15px;
+      margin-bottom: 10px;
+      .answer-show {
+        .answer-edit-btns {
+          float: right;
+          div {
+            display: inline-block;
+            cursor: pointer;
+            opacity: 0.2;
+            &:hover {
+              opacity: 1;
+            }
+          }
+          .answer-edit {
+
+          }
+          .answer-delete {
+            a {
+              text-decoration: none;
+            }
+          }
+        }
+        .answer-date {
+
+        }
+        .answer-text {
+
+        }
+        .answer-author {
+
+        }
+      }
+    }
+  }
+
+  .new_answer_form {
+    margin-top: 20px;
+  }
+
+  span.date {
+    color: $color-orange2;
+    font-size: 0.9em;
+  }
+
+  .any-form {
+    textarea {
+      width: 90%;
+      height: 100px;
+      resize: vertical;
+    }
+  }
+
 }
 
 /*

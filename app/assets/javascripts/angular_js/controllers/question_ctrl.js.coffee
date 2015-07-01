@@ -16,4 +16,8 @@
     $http.put('/questions/'+$scope.qId+'/answers/'+$scope.cAn.id+'.json', { master_answer: $scope.cAn }).success (data) ->
       $scope.setQ($scope.qId)
       $scope.cAn = {}
+
+  $scope.closeQuestion = ->
+    $http.put('/questions/'+$scope.qId+'.json', {master_question: {status_id: 0}}).success (data) ->
+      Turbolinks.visit data.url
 ]

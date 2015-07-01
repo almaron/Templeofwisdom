@@ -32,7 +32,10 @@ class QuestionsController < ApplicationController
 
   def update
     @question.update question_params
-    redirect_to question_path(@question), notice: t('messages.notice.questions.update.success')
+    respond_to do |format|
+      format.html { redirect_to question_path(@question), notice: t('messages.notice.questions.update.success') }
+      format.json { render json: { url: question_path(@question) } }
+    end
   end
 
   def destroy
