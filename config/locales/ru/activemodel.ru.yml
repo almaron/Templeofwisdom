@@ -36,6 +36,8 @@ ru:
         meta_title: 'META Title'
         meta_description: 'META Description'
         meta_keywords: 'META Keywords'
+      master_question:
+        head: 'Заголовок'
 
     errors:
       models:
