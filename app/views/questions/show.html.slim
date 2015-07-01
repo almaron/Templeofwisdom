@@ -60,5 +60,5 @@
               span.fa.fa-times
               |  Отмена
 
-  = render 'new_answer_form'
+  = render 'new_answer_form' unless @question.status == 'closed'
 
