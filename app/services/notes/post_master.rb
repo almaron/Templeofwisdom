@@ -7,7 +7,7 @@ module Notes
     private
 
     def masters
-      User.where(group:['master','admin'])
+      User.where group: %w(master admin)
     end
 
     def create_note(user, topic, post, comment)

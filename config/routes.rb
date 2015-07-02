@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   resources :forums, path: 'temple', only:[:index, :show] do
     collection do
       resource :move_topic, only: [:show, :update, :destroy, :create], controller: :move_topic
+      post 'master_note' => 'master_notifications#create', as: :master_note
     end
     resources :topics, path: 't', controller: 'forum_topics' do
       resources :posts, path: 'p', controller: 'forum_posts'

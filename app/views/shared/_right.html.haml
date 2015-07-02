@@ -3,17 +3,17 @@
     %h3 Двор монастыря
     %ul.sidemenu
       %li
-        = link_to "Как начать игру", "/pages/how_to_start"
+        = link_to 'Как начать игру', '/pages/how_to_start'
       %li
-        %a{href: "/skills/magic"} Способности
+        %a{href: '/skills/magic'} Способности
       %li
-        %a{href: "/skills/phisic"} Навыки
+        %a{href: '/skills/phisic'} Навыки
       %li
-        %a{href: "/chars"} Персонажи
+        %a{href: '/chars'} Персонажи
       %li
-        %a{href: "/pages/game_help"} Помощь по игре
+        %a{href: '/pages/game_help'} Помощь по игре
       %li
-        %a{href: "/pages/library"} Библиотека
+        %a{href: '/pages/library'} Библиотека
       %li
         %a{href: "#{guest_posts_path}"} Гостевой свиток
       %li
@@ -22,9 +22,9 @@
         %li
           %a{href: '/questions'} Вопрос Мастеру
       %li
-        %a{href: "/journals"} Газета
+        %a{href: '/journals'} Газета
       %li
-        %a{href: "/pages/contacts"} Контакты
+        %a{href: '/pages/contacts'} Контакты
   = ssi '/weather'
   .block.phrase
     = ssi '/proverb'
