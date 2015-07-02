@@ -162,7 +162,7 @@
       $scope.showPostInform = post.id
     $scope.informComment = ''
 
-  $scope.sendPostInform = () ->
-    $http.post('/temple/master_note.json', {post_id: $scope.showPostInform, topic_id: $scope.topicInit.topic_id, comment: $scope.informComment}).success (data) ->
+  $scope.sendPostInform = (comment) ->
+    $http.post('/temple/master_note.json', {post_id: $scope.showPostInform, topic_id: $scope.topicInit.topic_id, comment: comment}).success (data) ->
       $scope.togglePostInform()
 ]

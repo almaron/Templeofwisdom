@@ -59,7 +59,7 @@
           .form-line
             %textarea.inp.inp-type2{name: 'inform_comment', 'ng-model'=>'informComment', placeholder: 'Комментарий'}
           .form-line
-            %button.btn.btn-standart{'ng-click'=>'sendPostInform()'}
+            %button.btn.btn-standart{'ng-click'=>'sendPostInform(informComment)'}
               %span
                 Отправить
   %tr.post-edit.inline-edit{'ng-if'=>'post.id == selectedPost.id'}
