@@ -960,44 +960,6 @@
     }
   }
 
-// ЛОГИ
-  .logs-table {
-	.logs-table-1 {
-	  width:105px!important;
-	  @extend .table-td-left;
-	  .llinks {
-		padding-right:10px;
-		font-size:1em!important;
-		a {
-		  padding:2px 2px;
-		}
-	  }
-	}
-
-	.logs-table-2 {
-	  .llinks {
-		padding-left: 10px;
-	  }
-	  .paginator {
-		padding:0 0 10px 0;
-	  }
-
-	  .loggs_list {
-
-		.log {
-		  padding:0 0 10px 0;
-		  margin-bottom:10px;
-		  font-size:0.9em!important;
-		  .date {
-			padding-right:10px;
-			font-size:0.9em!important;
-		  }
-		}
-
-	  }
-	}
-  }
-
   .lib-entrance {
     @include clearfix;
     margin: 0 auto;
