@@ -155,5 +155,14 @@
   $scope.toggleInformMaster = () ->
     $scope.informMaster = !$scope.informMaster
 
+  $scope.togglePostInform = (post='hide') ->
+    if post == 'hide' || $scope.showPostInform == post.id
+      $scope.showPostInform = null
+    else
+      $scope.showPostInform = post.id
+    $scope.informComment = ''
 
+  $scope.sendPostInform = (comment) ->
+    $http.post('/temple/master_note.json', {post_id: $scope.showPostInform, topic_id: $scope.topicInit.topic_id, comment: comment}).success (data) ->
+      $scope.togglePostInform()
 ]

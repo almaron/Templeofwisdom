@@ -56,6 +56,9 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano-sidekiq (0.5.2)
+      capistrano
+      sidekiq
     capistrano-unicorn-nginx (3.3.2)
       capistrano (>= 3.1)
       sshkit (>= 1.2.0)
@@ -113,14 +116,14 @@ GEM
       railties (>= 3.1.0, < 5.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.8)
+    ffi (1.9.10)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     fssm (0.2.10)
-    guard (2.12.5)
+    guard (2.12.7)
       formatador (>= 0.2.4)
-      listen (~> 2.7)
+      listen (>= 2.7, <= 4.0)
       lumberjack (~> 1.0)
       nenv (~> 0.1)
       notiffany (~> 0.0)
@@ -179,8 +182,7 @@ GEM
     jwt (1.4.1)
     kgio (2.9.3)
     libv8 (3.16.14.7)
-    listen (2.10.0)
-      celluloid (~> 0.16.0)
+    listen (3.0.1)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     lumberjack (1.0.9)
@@ -193,7 +195,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.6.0)
     modernizr-rails (2.7.1)
-    multi_json (1.11.0)
+    multi_json (1.11.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.18)
@@ -222,7 +224,7 @@ GEM
       pry (>= 0.9.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.5.2)
+    rack (1.5.5)
     rack-livereload (0.3.15)
       rack
     rack-test (0.6.3)
@@ -244,7 +246,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.4.2)
-    rb-fsevent (0.9.4)
+    rb-fsevent (0.9.5)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
@@ -378,6 +380,7 @@ DEPENDENCIES
   capistrano-bundler (~> 1.1.2)
   capistrano-rails
   capistrano-rvm
+  capistrano-sidekiq
   capistrano-unicorn-nginx
   capybara
   carrierwave

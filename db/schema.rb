@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607112026) do
+ActiveRecord::Schema.define(version: 20150701082755) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -56,8 +56,10 @@ ActiveRecord::Schema.define(version: 20150607112026) do
     t.boolean  "default",    default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",    default: true
   end
 
+  add_index "char_avatars", ["char_id", "visible"], name: "index_char_avatars_on_char_id_and_visible", using: :btree
   add_index "char_avatars", ["char_id"], name: "index_char_avatars_on_char_id", using: :btree
 
   create_table "char_delegations", force: true do |t|
@@ -274,6 +276,29 @@ ActiveRecord::Schema.define(version: 20150607112026) do
     t.datetime "updated_at"
   end
 
+  create_table "master_answers", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.string   "answer_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "master_answers", ["question_id"], name: "index_master_answers_on_question_id", using: :btree
+
+  create_table "master_questions", force: true do |t|
+    t.integer  "user_id",                null: false
+    t.integer  "status_id",  default: 1
+    t.string   "head",                   null: false
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "master_questions", ["status_id"], name: "index_master_questions_on_status_id", using: :btree
+  add_index "master_questions", ["user_id"], name: "index_master_questions_on_user_id", using: :btree
+
   create_table "message_receivers", force: true do |t|
     t.integer  "message_id"
     t.integer  "user_id"
@@ -417,6 +442,16 @@ ActiveRecord::Schema.define(version: 20150607112026) do
 
   add_index "spr_pages", ["slug"], name: "index_spr_pages_on_slug", using: :btree
   add_index "spr_pages", ["spr"], name: "index_spr_pages_on_spr", using: :btree
+
+  create_table "sys_logs", force: true do |t|
+    t.string   "user"
+    t.string   "message"
+    t.integer  "log_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sys_logs", ["log_type_id"], name: "index_sys_logs_on_log_type_id", using: :btree
 
   create_table "user_ips", force: true do |t|
     t.integer "user_id"

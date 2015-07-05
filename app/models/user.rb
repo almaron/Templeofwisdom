@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications
 
+  has_many :questions, class_name: MasterQuestion
+  has_many :answers, class_name: MasterAnswer
+
   attr_accessor :current_ip
 
   validates_confirmation_of :password, :if => :password, message: I18n.t("activerecord.errors.models.user.attributes.password.confirmation")
@@ -56,7 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def own_chars
-    self.chars.where(char_delegations: {owner:1}).present
+    self.chars.where(char_delegations: {owner:1}).visible
   end
 
   def delegated_chars

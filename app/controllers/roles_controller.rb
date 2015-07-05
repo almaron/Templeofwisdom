@@ -19,7 +19,7 @@ class RolesController < ApplicationController
   end
 
   def new
-    @role = params[:role_app_id] ? Role.build_from_app(params[:role_app_id]) : Role.new
+    @role = Role.build_from_app(params[:role_app_id])
     respond_to do |format|
       format.html {}
       format.json {
@@ -35,8 +35,9 @@ class RolesController < ApplicationController
 
   def create
     respond_to do |format|
-      if @role = Role.create(role_params)
+      if (@role = Role.create(role_params))
         SystemPosts::RoleCheckPost.new(current_user, @role, params[:role]).create
+        Loggers::Role.new(current_user).log head: @role.head, id: @role.id, create: true
         format.html { redirect_to roles_path }
         format.json { render json: {redirect: roles_path} }
       else
@@ -56,6 +57,7 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
+        Loggers::Role.new(current_user).log head: @role.head, id: @role.id, create: false
         format.html { redirect_to roles_path }
         format.json { render json: {redirect: roles_path} }
       else

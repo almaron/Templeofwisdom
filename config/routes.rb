@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # OAuth routes
   match 'oauth/callback' => 'oauths#callback', via: [:get, :post]
   match 'oauth/delete/:provider' => 'oauths#destroy', as: :delete_auth, via: [:get, :delete]
@@ -30,6 +29,14 @@ Rails.application.routes.draw do
     resources :comments, controller: :blog_comments, except: [:index, :show, :new]
   end
 
+  resources :questions do
+    collection do
+      get 'f/mine' => 'questions#index', as: :my, defaults: { mine: true }
+      get 'f/:filter' => 'questions#index', as: :filter
+    end
+    resources :answers, except: [:new]
+  end
+
   resources :guest_posts, :path => 'guestbook', :except => [:show]
 
   get '/users/:id' => 'users#show', as: :show_user
@@ -56,6 +63,7 @@ Rails.application.routes.draw do
   resources :forums, path: 'temple', only:[:index, :show] do
     collection do
       resource :move_topic, only: [:show, :update, :destroy, :create], controller: :move_topic
+      post 'master_note' => 'master_notifications#create', as: :master_note
     end
     resources :topics, path: 't', controller: 'forum_topics' do
       resources :posts, path: 'p', controller: 'forum_posts'
@@ -100,6 +108,7 @@ Rails.application.routes.draw do
     get :blog
   end
 
+
 # Administration block
   scope '/admin' do
     resources :users, except: [:new, :create, :show]
@@ -128,6 +137,8 @@ Rails.application.routes.draw do
         post :reset
       end
     end
+    get '/logs' => 'logs#index', as: :logs
+    get '/logs/:category' => 'logs#show', as: :log
   end
 
   get '/journal_tags' => 'journal_tags#index', defaults: {format: :json}

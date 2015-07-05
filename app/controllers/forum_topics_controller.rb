@@ -1,10 +1,9 @@
 class ForumTopicsController < ApplicationController
-
-  layout "forum"
+  layout 'forum'
 
   before_action :require_login, except: [:show, :index]
   before_action :get_topic, except: [:new, :create, :index]
-  before_action :master_access, only: :update, if: lambda{ params[:move].present }
+  before_action :master_access, only: :update, if: lambda{ params[:move].present? }
   before_action :master_access, only: :destroy
 
   def index
@@ -26,7 +25,7 @@ class ForumTopicsController < ApplicationController
         format.html { }
         format.json {
           if current_user
-           @chars = @topic.forum.technical > 0 ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where('status_id = 5')
+           @chars = @topic.forum.technical > 0 ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where(status_id: 5)
           end
         }
       elsif !topic_in_place

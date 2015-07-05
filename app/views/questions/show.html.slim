@@ -1,0 +1,64 @@
+- content_for :pagetitle do
+  = @question.head
+
+- content_for :path do
+  =' link_to 'Вопрос Мастеру', questions_path
+  span.fa.fa-arrow-circle-right
+  span
+    '  #{@question.head}
+
+.question-wrapper ng-controller='QuestionCtrl' ng-init="setQ(#{params[:id]})"
+  .question-wrap
+    .question-inner
+      .question-date
+        span.date
+          = l @question.created_at, format: :full
+        '  ::
+        span.status
+          = t "master.questions.status.#{@question.status}"
+      .question-text
+        = raw @question.text.bbcode_to_html_with_formatting
+      .question-author
+        = link_to @question.user.name, user_path(@question.user), target: '_blank'
+        - if current_user == @question.user || current_user.is_in?([:admin, :master])
+          span.question-btns
+            .question-edit
+              = link_to edit_question_path(@question) do
+                span.fa.fa-pencil
+            - if @question.status_id > 0
+              .question-edit
+                a href='' ng-click='closeQuestion()'
+                  span.fa.fa-lock
+            .question-destroy
+              = link_to question_path(@question), method: :delete do
+                span.fa.fa-times
+
+  .answers-wrap
+    .one-answer ng-repeat='answer in answers'
+      .answer-show ng-hide='cAn.id == answer.id'
+        .answer-edit-btns
+          .answer-edit
+            span.fa.fa-pencil ng-click='editAnswer(answer)'
+          .answer-delete
+            = link_to '', "/questions/#{params[:id]}/answers/{{answer.id}}", method: :delete, class: 'fa fa-times'
+        .answer-date
+          span.date
+            | {{ answer.date }}
+        .answer-text parse-html='answer.show_text'
+        .answer-author
+          a href='/users{{answer.user.id}}' target='_blank'
+            | {{answer.user.name}}
+      .answer-edit ng-show='cAn.id == answer.id'
+        .any-form
+          .form-line
+            textarea.inp.inp-type2 ng-model='cAn.text' mark-it-up=''
+          .form-line
+            button.btn.btn-standart ng-click='updateAnswer()'
+              span.fa.fa-check
+              |  Отправить
+            button.btn.btn-standart ng-click='closeEdit()'
+              span.fa.fa-times
+              |  Отмена
+
+  = render 'new_answer_form' unless @question.status == 'closed'
+

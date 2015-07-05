@@ -87,6 +87,11 @@ ru:
     herb:
       index:
         pagetitle: 'Справочник трав'
+  questions:
+    index:
+      pagetitle: 'Вопрос Мастеру'
+    edit:
+      pagetitle: 'Редактирование вопроса'
 
   char_status:
     name:
@@ -116,3 +121,12 @@ ru:
       life: 'В быту'
 
       other: 'Еще кое-что'
+
+  master:
+    questions:
+      status:
+        closed: 'Закрыт'
+        open: 'Открыт'
+        master_answered: 'Ответ Мастера'
+        user_answered: 'Ответ Игрока'
+        self_answered: 'Дополнен'

@@ -1,0 +1,42 @@
+- content_for :pagetitle do
+  = params[:category] ? current_category.name : 'Логи сайта'
+
+- content_for :path do
+  =' link_to 'Личный кабинет', profile_path
+  span.fa.fa-arrow-circle-right
+  span
+    |  Логи сайта
+
+.logs-wrapper
+  .log-nav
+    .one-nav
+      - if params[:category]
+        = link_to 'Все', logs_path
+      - else
+        span
+          | Все
+    - @log_types.each do |type|
+      .one-nav
+        - if params[:category].to_i == type.id
+          span
+            = type.name
+        - else
+          = link_to type.name, log_path(type.id)
+
+  .log-paginate
+    .pagination.paginator.align-center
+      = will_paginate @logs
+
+  .logs-list
+    - @logs.each do |log|
+      .one-log
+        span.log-date
+          = l log.created_at, format: :full
+        span.log-user
+          = log.user
+        span.log-message
+          = log.message
+
+  .log-paginate
+    .pagination.paginator.align-center
+      = will_paginate @logs

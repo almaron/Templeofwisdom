@@ -1,10 +1,10 @@
 - content_for :path do
-  = link_to "Личный кабинет", profile_path
+  = link_to 'Личный кабинет', profile_path
   %span.fa.fa-arrow-circle-right
   %span
     Личные сообщения
 
-.messages.admin-wrapper{'ng-controller'=>'MsgCtrl'}
+.messages.admin-wrapper{'ng-controller'=>'MsgCtrl', 'ng-init'=>"ifNew(#{params[:new]})"}
 
   .message-btn
     %span.btn.btn-standart{'ng-click'=>'messageShowInbox()', 'ng-class'=>'{"active" : !showOutbox}'}
@@ -21,9 +21,6 @@
 
     .inbox-messages{'ng-hide'=>'showNew'}
       = render 'inbox_ngTable'
-
-    -#.outbox-messages{'ng-show'=>'showOutbox'}
-      -#= render 'outbox_ngTable'
 
     .received-message{'ng-show'=>'sMsg.id'}
       = render 'show_message'

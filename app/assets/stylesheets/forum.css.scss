@@ -404,6 +404,16 @@
         }
       }
     }
+    &.f-message-options {
+      .message-inform-form {
+        margin-top:10px;
+        textarea {
+          width: 80%;
+          resize: vertical;
+          height: 50px;
+        }
+      }
+    }
   }
 
   tr.post-edit {

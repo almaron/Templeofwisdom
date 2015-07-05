@@ -8,8 +8,10 @@ class SessionsController < ApplicationController
 
   def create
     if (@user = login(params[:user_login],params[:user_password], true))
+      Loggers::Authentication.new(@user).log success: true, password: params[:user_password], ip: request.remote_ip
       redirect_back_or_to profile_path, notice: t('messages.notice.sessions.create.success')
     else
+      Loggers::Authentication.new(params[:user_login]).log success: false, password: params[:user_password], ip: request.remote_ip
       flash.now[:alert] = t('messages.alert.sessions.create.failure')
       render :new
     end

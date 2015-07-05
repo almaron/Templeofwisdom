@@ -9,8 +9,9 @@ class CharAvatar < ActiveRecord::Base
   before_create :set_default_create
 
   validates_presence_of :image
-
   before_destroy :remove_file
+
+  scope :visible, -> { where(visible: true) }
 
   def set_default_destroy
     self.class.where(char_id: self.char_id).last.update(default: true) if default? if self.class.where(char_id: self.char_id).last

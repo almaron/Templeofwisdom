@@ -1,0 +1,4 @@
+.question-form-wrap.edit-form
+  .question-form.any-form
+    = form_for @question, url: question_path(@question) do |form|
+      = render partial: 'form', locals: { f: form }

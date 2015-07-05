@@ -11,7 +11,8 @@ class Char < ActiveRecord::Base
 
   after_create :create_new_profile
 
-  scope :active, ->{where(status_id:5)}
+  scope :active, -> { where(status_id: 5) }
+  scope :visible, -> { where('status_id < 6') }
 
   has_many :avatars, class_name: CharAvatar, dependent: :nullify
   accepts_nested_attributes_for :avatars, reject_if: proc { |ca| ca[:remote_image_url].blank? && ca[:image].blank? }
@@ -83,6 +84,10 @@ class Char < ActiveRecord::Base
     char_skills.magic
   end
 
+  def clear_skills
+    char_skills.destroy_all
+  end
+
   def get_char_skill(skill_id)
     char_skills.find_or_initialize_by(skill_id: skill_id)
   end
@@ -103,7 +108,7 @@ class Char < ActiveRecord::Base
     if self.status_id == 2
       self.group_id == 1 ? self.update(status_id:5): self.update(status_id: 3, profile_topic_id: SystemPosts::CharAcceptPost.new(user, self).create)
       Notes::CharAccept.new.create self
-      #   TODO send notification and email
+      #   TODO send email
       true
     end
   end
