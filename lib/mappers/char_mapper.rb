@@ -15,7 +15,7 @@ module Mappers
     def map_row(row, index)
       row['name'].strip!
       if Char.where(name: row['name']).any?
-        puts "#{row['name']} already present".green
+        puts "#{row['name']} already present"
         return
       end
       char = Char.new({
