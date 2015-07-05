@@ -42,9 +42,9 @@ module Mappers
       topic = ForumTopic.new head: row['head'], forum_id: forum_map[row['forum_id']], char_id: char.id, poster_name: char.name
       build_posts(topic, row['id'])
       if topic.save
-        puts "#{index} - #{topic.head} - success".green
+        puts "#{index} - #{topic.head} - success"
       else
-        puts "#{index} - #{row['id']} - failed".green
+        puts "#{index} - #{row['id']} - failed"
         log.error "#{row['id']} failed with #{topic.errors.count} errors"
         log.error topic.errors.full_messages.join "\n"
       end
