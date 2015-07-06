@@ -1,6 +1,7 @@
 .avatar-wrap
   .avatar-img ng-show='collection.length > 0'
     img ng-src='{{collection[currentIndex].image}}' alt='Avatar №{{currentIndex}}'
+    | {{charId}}
   .avatar-controls
     span.left.fa.fa-arrow-circle-o-left  ng-click='decrease()' ng-disabled='currentIndex == 0' ng-show='collection.length > 0'
     section ng-show='editable'
