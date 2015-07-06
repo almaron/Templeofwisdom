@@ -8,13 +8,13 @@ class AdminCharsController < ApplicationController
     respond_to do |format|
       format.html { }
       format.json {
-        @chars = Char.eager_load(:profile, :group, :status, :avatars).where(status_id: where_status)
+        @chars = Char.includes(:profile, :group, :status, :avatars, :owner, :delegated_to).where(status_id: where_status)
       }
     end
   end
 
   def show
-    @char = Char.eager_load(:profile, :char_skills, :char_delegations).find(params[:id])
+    @char = Char.eager_load(:profile, :char_skills, char_delegations: [:user]).find(params[:id])
     respond_to do |format|
       format.html {}
       format.json {}

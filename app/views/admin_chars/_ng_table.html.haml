@@ -8,13 +8,11 @@
       %a{href:'/users/{{char.owner.id}}'} {{char.owner.name}}
     %td.center{'data-title' => "'Группа'", sortable: "'group_name'", 'header-class'=>'center'}
       {{char.group_name}}
-    %td.center{'data-title' => "'Статус'", sortable: "'status_name'", 'header-class'=>'center'}
-      {{char.status_name}}
     %td{'data-title' => "'Зарегистрирован'", sortable: "'createdAt'"}
       {{char.createdAt}}
     %td.center{'data-title' => "'Баллов'", sortable: "'points'", 'header-class'=>'center'}
       {{char.points}}
-    %td.line-edit{}
+    %td.line-edit
       %span.user-edit.fa.fa-pencil{'ng-click'=>'editChar(char)', title: 'Редактировать'}
       %span.user-edit.fa.fa-reply.fa-rotate-90{'ng-click'=>'restoreChar(char)', title: 'Восстановить', 'ng-hide'=>'char.status_id < 6'}
       %span.user-edit.fa.fa-times{'ng-click'=>'removeChar(char)', title: 'Удалить', 'ng-hide'=>'char.status_id == 6'}

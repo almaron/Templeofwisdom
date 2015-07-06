@@ -57,11 +57,12 @@ class Char < ActiveRecord::Base
   def owned_by
     self.users.where(char_delegations: {owner:1}).first
   end
-  alias_method :owner, :owned_by
+  # alias_method :owner, :owned_by
 
-  def delegated_to
-    self.users.where(char_delegations: {owner:0})
-  end
+  has_one :ownership, -> { where(owner: 1) }, class_name: CharDelegation
+  has_one :owner, class_name: User, through: :ownership, source: :user
+
+  has_many :delegated_to, -> { where(char_delegations: {owner:0}) }, class_name: User, through: :char_delegations, source: :user
 
   def delegated_to?(user)
     user_id = user.is_a?(User) ? user.id : user
@@ -69,7 +70,7 @@ class Char < ActiveRecord::Base
   end
 
   def default?(user)
-    self.char_delegations.find_by(user_id:user.id).try(:default?)
+    self.char_delegations.find_by(user_id: user.id).try(:default?)
   end
 
   has_many :char_skills, dependent: :destroy
