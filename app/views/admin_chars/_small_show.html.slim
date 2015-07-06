@@ -1,0 +1,27 @@
+.edit-user-div ng-show ='sChar.id'
+  .edit-close
+    span.fa.fa-times ng-click="sChar = {}"
+  .info-wrap
+    char-avatars ng-model ='sChar.currentAvatar' collection='sChar.avatars' editable='false' char-id='sChar.id'
+  .info-wrap
+    .line
+      ' Имя:
+      a href='/chars/{{sChar.id}}' target='_blank'
+        | {{sChar.name}}
+    .line
+      ' Вдалелец:
+      a href='/users/{{sChar.owner.id}}' target='_blank'
+        | {{sChar.owner.name}}
+    .line
+      | Создан: {{sChar.createdAt}}
+    .line
+      | Группа: {{sChar.group_name}}
+    .line
+      | Статус: {{sChar.status_name}}
+    .line
+      ' Делегирован:
+      span ng-repeat ='user in sChar.delegations'
+        a href='/users/user.id' target='_blank'
+          | {{user.name}}
+      span ng-show ='sChar.delegations.length == 0'
+        |никому

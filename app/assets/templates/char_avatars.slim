@@ -8,7 +8,7 @@
       span.fa ng-click='makeDefault()' ng-class="collection[currentIndex].default ? 'fa-check-circle' : 'fa-check-circle-o'" ng-disabled='collection[currentIndex].default' title='{{collection[currentIndex].default ? "Основной" : "Сделать основным"}}'
       span.fa.fa-times ng-click='removeAvatar()' title='Удалить'
     span.right.fa.fa-arrow-circle-o-right ng-click='increase()' ng-disabled='currentIndex == total - 1' ng-show='collection.length > 0'
-  .avatar-form.any-form ng-show='editable && newAvatar.show'
+  .avatar-form.any-form ng-show='editable && newAvatar.show'+
     .form-line
       span
         input.inp.inp-type2 type='text' ng-model='newAvatar.remote_image_url' id='new-avatar-remote' placeholder='http://url'

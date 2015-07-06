@@ -312,6 +312,26 @@
       }
     }
   }
+
+  .admin-nav {
+    .one-nav {
+      padding: 4px;
+      display: inline-block;
+      margin-right: 5px;
+      font-size: 1.1em;
+      cursor: pointer;
+      border: 1px solid $color-brown2;
+      border-radius: 4px;
+      &.active, &:hover {
+        background-color: $color-brown2;
+        color: $color-brown3;
+        border-color: $color-brown3;
+      }
+      &.active {
+        cursor: default;
+      }
+    }
+  }
 }
 
 .admin-journal {

@@ -2,6 +2,27 @@
   $scope.showedChar = {}
   $scope.sChar = {}
   $scope.editedChar = {}
+  $scope.flaps = [
+    {
+      name: 'queue',
+      title: 'В очереди'
+    },
+    {
+      name: 'active',
+      title: 'Активные'
+    },
+    {
+      name: 'inactive',
+      title: 'Неактивные'
+    }
+  ]
+  currentFlap = $scope.flaps[0].name
+
+  $scope.setFlap = (flap) ->
+    currentFlap = flap.name
+
+  $scope.isFlap = (name) ->
+    currentFlap == name
 
   $scope.showChar = (char) ->
     $scope.sChar = angular.copy(char)

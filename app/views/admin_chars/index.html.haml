@@ -1,49 +1,28 @@
 - content_for :path do
-  = link_to "Личный кабинет", profile_path
+  = link_to 'Личный кабинет', profile_path
   %span.fa.fa-arrow-circle-right
   %span
     Управление персонажами
 
 .admin-wrapper{'ng-controller'=>'AdminCharsWrapperCtrl'}
-  .admin-wrapper{"ng-controller"=>"AdminCharsCtrl", "ng-init"=>"loadChars()", 'ng-show'=>'showAll'}
-    %h4 Активные персонажи
-    .user-filter
-      %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}
-      %label.fa.fa-search{for:'user-filter'} &nbsp;
-    = render partial: 'ng_table'
+  .admin-nav
+    %span.one-nav{'ng-repeat'=>'flap in flaps', 'ng-class'=>'{true:"active", false:""}[isFlap(flap.name)]', 'ng-click'=>'setFlap(flap)'}
+      {{flap.title}}
+  .ng-wrapper{'ng-controller'=>'AdminCharsCtrl', 'ng-init'=>'loadChars()', 'ng-show'=>'showAll'}
+    .wrap{'ng-show'=>'isFlap("active")'}
+      %h4 Активные персонажи
+      .user-filter
+        %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}
+        %label.fa.fa-search{for:'user-filter'} &nbsp;
+      = render partial: 'ng_table'
+      = render partial: 'small_show'
 
-    .edit-user-div{'ng-show'=>'sChar.id'}
-      .edit-close
-        %span.fa.fa-times{"ng-click"=>"sChar = {}"}
-      .info-wrap
-        %char-avatars{'ng-model'=>'sChar.currentAvatar', collection:'sChar.avatars', editable: 'false', 'char-id'=>'sChar.id'}
-      .info-wrap
-        .line
-          Имя:
-          %a{href:'/chars/{{sChar.id}}', target:'_blank'} {{sChar.name}}
-        .line
-          Вдалелец:
-          %a{href:'/users/{{sChar.owner.id}}', target:'_blank'} {{sChar.owner.name}}
-        .line
-          Создан: {{sChar.createdAt}}
-        .line
-          Группа: {{sChar.group_name}}
-        .line
-          Статус: {{sChar.status_name}}
-        .line
-          Делегирован:
-          %span{'ng-repeat'=>'user in sChar.delegations'}
-            %a{href:'/users/user.id', target:'_blank'} {{user.name}}
-          %span{'ng-show'=>'sChar.delegations.length == 0'}
-            никому
+    .wrap{'ng-show'=>'isFlap("queue")'}
+      = render :partial => 'admin_chars/tables/pending_chars'
+      = render :partial => 'admin_chars/tables/reviewed_chars'
+      = render :partial => 'admin_chars/tables/saved_chars'
 
-    = render :partial => 'admin_chars/tables/pending_chars'
-
-    = render :partial => 'admin_chars/tables/reviewed_chars'
-
-    = render :partial => 'admin_chars/tables/saved_chars'
-
-  .admin-wrapper{'ng-controller'=>'AdminCharsNaCtrl'}
+  .ng-wrapper{'ng-controller'=>'AdminCharsNaCtrl', 'ng-show'=>'isFlap("inactive")'}
     %h4 Неактивные персонажи
     .user-filter
       %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}

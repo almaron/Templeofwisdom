@@ -1,6 +1,6 @@
 .pending-wrap
-  %h4{'ng-click'=>'hidePending = !hidePending'} В очереди на одобрение
-  %table.penting-chars-tab.chars-tab.ngtable{'ng-hide'=>'hidePending'}
+  %h4 В очереди на одобрение
+  %table.penting-chars-tab.chars-tab.ngtable
     %thead
       %tr.char-head
         %th.char-id №
@@ -12,9 +12,9 @@
         %th.char-btn
     %tbody
       %tr.one-line{'ng-repeat'=>'char in chars.reviewed'}
-        %td.char-id{}
+        %td.char-id
           {{char.id}}
-        %td.char-name{}
+        %td.char-name
           %span{'ng-click'=>'showFull(char)'} {{char.name}}
         %td.char-owner
           %a{href:'/users/{{char.owner.id}}', target:'_blank'} {{char.owner.name}}
