@@ -1,7 +1,7 @@
 .avatar-wrap
+  | {{charId}}
   .avatar-img ng-show='collection.length > 0'
     img ng-src='{{collection[currentIndex].image}}' alt='Avatar №{{currentIndex}}'
-    | {{charId}}
   .avatar-controls
     span.left.fa.fa-arrow-circle-o-left  ng-click='decrease()' ng-disabled='currentIndex == 0' ng-show='collection.length > 0'
     section ng-show='editable'
@@ -10,6 +10,7 @@
       span.fa.fa-times ng-click='removeAvatar()' title='Удалить'
     span.right.fa.fa-arrow-circle-o-right ng-click='increase()' ng-disabled='currentIndex == total - 1' ng-show='collection.length > 0'
   .avatar-form.any-form ng-show='editable && newAvatar.show'
+    | {{newAvatar}}
     .form-line
       span
         input.inp.inp-type2 type='text' ng-model='newAvatar.remote_image_url' id='new-avatar-remote' placeholder='http://url'
