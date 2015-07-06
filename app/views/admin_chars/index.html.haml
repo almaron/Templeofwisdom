@@ -4,43 +4,52 @@
   %span
     Управление персонажами
 
-.admin-wrapper{"ng-controller"=>"AdminCharsCtrl", "ng-init"=>"loadChars()", 'ng-show'=>'showAll'}
-  %h4 Активные персонажи
-  .user-filter
-    %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}
-    %label.fa.fa-search{for:'user-filter'} &nbsp;
-  = render partial: 'ng_table'
+.ng-wrap{'ng-controller'=>'AdminCharsWrapperCtrl'}
+  {{sChar}}
+  .admin-wrapper{"ng-controller"=>"AdminCharsCtrl", "ng-init"=>"loadChars()", 'ng-show'=>'showAll'}
+    %h4 Активные персонажи
+    .user-filter
+      %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}
+      %label.fa.fa-search{for:'user-filter'} &nbsp;
+    = render partial: 'ng_table'
 
-  .edit-user-div{'ng-show'=>'sChar.id'}
-    .edit-close
-      %span.fa.fa-times{"ng-click"=>"sChar = {}"}
-    .info-wrap
-      %char-avatars{'ng-model'=>'sChar.currentAvatar', collection:'sChar.avatars', editable: 'false', 'char-id'=>'sChar.id'}
-    .info-wrap
-      .line
-        Имя:
-        %a{href:'/chars/{{sChar.id}}', target:'_blank'} {{sChar.name}}
-      .line
-        Вдалелец:
-        %a{href:'/users/{{sChar.owner.id}}', target:'_blank'} {{sChar.owner.name}}
-      .line
-        Создан: {{sChar.createdAt}}
-      .line
-        Группа: {{sChar.group_name}}
-      .line
-        Статус: {{sChar.status_name}}
-      .line
-        Делегирован:
-        %span{'ng-repeat'=>'user in sChar.delegations'}
-          %a{href:'/users/user.id', target:'_blank'} {{user.name}}
-        %span{'ng-show'=>'sChar.delegations.length == 0'}
-          никому
+    .edit-user-div{'ng-show'=>'sChar.id'}
+      .edit-close
+        %span.fa.fa-times{"ng-click"=>"sChar = {}"}
+      .info-wrap
+        %char-avatars{'ng-model'=>'sChar.currentAvatar', collection:'sChar.avatars', editable: 'false', 'char-id'=>'sChar.id'}
+      .info-wrap
+        .line
+          Имя:
+          %a{href:'/chars/{{sChar.id}}', target:'_blank'} {{sChar.name}}
+        .line
+          Вдалелец:
+          %a{href:'/users/{{sChar.owner.id}}', target:'_blank'} {{sChar.owner.name}}
+        .line
+          Создан: {{sChar.createdAt}}
+        .line
+          Группа: {{sChar.group_name}}
+        .line
+          Статус: {{sChar.status_name}}
+        .line
+          Делегирован:
+          %span{'ng-repeat'=>'user in sChar.delegations'}
+            %a{href:'/users/user.id', target:'_blank'} {{user.name}}
+          %span{'ng-show'=>'sChar.delegations.length == 0'}
+            никому
 
-  = render :partial => 'admin_chars/tables/pending_chars'
+    = render :partial => 'admin_chars/tables/pending_chars'
 
-  = render :partial => 'admin_chars/tables/reviewed_chars'
+    = render :partial => 'admin_chars/tables/reviewed_chars'
 
-  = render :partial => 'admin_chars/tables/saved_chars'
+    = render :partial => 'admin_chars/tables/saved_chars'
+
+  .admin-wrapper{'ng-controller'=>'AdminCharsNaCtrl'}
+    %h4 Неактивные персонажи
+    .user-filter
+      %input.form-control.inp.inp-type2{'ng-model' => 'filter.$', type: 'text', id:'user-filter'}
+      %label.fa.fa-search{for:'user-filter'} &nbsp;
+    = render partial: 'ng_table'
 
   .ng-modal{'ng-show'=>'showedChar.id || editedChar.id'}
     .ng-modal-overlay{'ng-click'=>'closeModal()'}
@@ -59,6 +68,5 @@
             {{showedChar.name}}
         .ng-modal-content
           = render partial: 'show_pending_profile'
-
 
 = render 'shared/ng_table_pager'

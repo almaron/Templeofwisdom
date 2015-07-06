@@ -1,10 +1,8 @@
-@app.controller "AdminCharsCtrl", ['$scope', '$http', 'AdminChar', "ngTableService", "ngTableParams", ($scope, $http, Char, Service, ngTableParams)->
+@app.controller "AdminCharsCtrl", ['$scope', '$http', 'AdminChar', "ngTableFactory", "ngTableParams", ($scope, $http, Char, Service, ngTableParams)->
 
-  data = Service.cachedData
-  Service.setUrl '/admin/chars.json'
+  service = new Service('/admin/chars.json')
+  data = service.cachedData
   $scope.chars = []
-  $scope.showedChar = {}
-  $scope.editedChar = {}
 
   $scope.tableParams = new ngTableParams(
     page: 1
@@ -14,7 +12,7 @@
   ,
     total: 0
     getData: ($defer, params) ->
-      Service.getData $defer, params, $scope.filter
+      service.getData $defer, params, $scope.filter
       return
   )
 
@@ -22,19 +20,17 @@
     $scope.tableParams.reload()  if angular.isDefined(oldVal) && angular.isDefined(newVal)
     return
 
-  $scope.showChar = (char) ->
-    $scope.sChar = angular.copy(char)
 
-  $scope.removeChar = (char) ->
-    if confirm("Точно удалить?")
-      Char.delete({id:char.id}, ->
-        Service.reload($scope.tableParams)
-        $scope.loadBlock 'reviewed'
-      )
+  $scope.$on 'reloadAllChars', () ->
+    service.reload($scope.tableParams)
+    $scope.loadBlock 'reviewed'
+
+  $scope.$on 'reloadTable', () ->
+    service.reload($scope.tableParams)
 
   $scope.restoreChar = (char) ->
     $http.put('/admin/chars/'+char.id+'/restore.json', {}).success (data) ->
-      Service.reload($scope.tableParams)
+      service.reload($scope.tableParams)
 
   $scope.loadBlock = (scope) ->
     $scope.chars[scope] = Char.query {scope: scope}
@@ -53,7 +49,7 @@
   $scope.approveChar = (char) ->
     $http.put('/admin/chars/'+char.id+'/approve.json', {approve_char_id: char.id}).success (data) ->
       $scope.loadBlock 'reviewed'
-      Service.reload($scope.tableParams)
+      service.reload($scope.tableParams)
 
   $scope.declineChar = (char) ->
     $http.put('/admin/chars/'+char.id+'/decline.json', {approve_char_id: char.id}).success (data) ->
@@ -62,22 +58,5 @@
   $scope.showFull = (char) ->
     $scope.showedChar = Char.get {id:char.id}
 
-  $scope.editChar = (char) ->
-    $scope.editedChar = Char.get {id:char.id}
-
-
-  $scope.closeModal = ->
-    $scope.editedChar = {}
-    $scope.showedChar = {}
-
-
-  $scope.updateChar = () ->
-    $scope.editedChar.char_skills_attributes = $scope.editedChar.magic_skills.concat $scope.editedChar.phisic_skills
-    $scope.editedChar.phisic_skills = $scope.editedChar.magic_skills = null
-    Char.update({id:$scope.editedChar.id, char:$scope.editedChar}, ->
-      Service.reload $scope.tableParams
-      $scope.loadBlock 'reviewed'
-      $scope.editedChar = {}
-    )
 
 ]

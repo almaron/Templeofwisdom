@@ -43,7 +43,7 @@ class AdminCharsController < ApplicationController
 
   def accept
     @char.accept current_user
-    Loggers::Char.new(current_user).log char_name: self.name, action: 'accept'
+    Loggers::Char.new(current_user).log char_name: @char.name, action: 'accept'
     respond_to do |f|
       f.html { redirect_to admin_chars_path }
       f.json { render :json => {success: true} }
@@ -52,7 +52,7 @@ class AdminCharsController < ApplicationController
 
   def approve
     @char.approve current_user
-    Loggers::Char.new(current_user).log char_name: self.name, action: 'approve'
+    Loggers::Char.new(current_user).log char_name: @char.name, action: 'approve'
     respond_to do |f|
       f.html { redirect_to admin_chars_path }
       f.json { render :json => {success: true} }
@@ -61,7 +61,7 @@ class AdminCharsController < ApplicationController
 
   def decline
     @char.decline
-    Loggers::Char.new(current_user).log char_name: self.name, action: 'decline'
+    Loggers::Char.new(current_user).log char_name: @char.name, action: 'decline'
     respond_to do |f|
       f.html { redirect_to admin_chars_path }
       f.json { render :json => {success: true} }
@@ -70,7 +70,7 @@ class AdminCharsController < ApplicationController
 
   def destroy
     @char.remove
-    Loggers::Char.new(current_user).log char_name: self.name, action: 'destroy'
+    Loggers::Char.new(current_user).log char_name: @char.name, action: 'destroy'
     respond_to do |format|
       format.html { redirect_to admin_chars_path }
       format.json { render json: {success: true} }
@@ -79,7 +79,7 @@ class AdminCharsController < ApplicationController
 
   def restore
     @char.restore
-    Loggers::Char.new(current_user).log char_name: self.name, action: 'restore'
+    Loggers::Char.new(current_user).log char_name: @char.name, action: 'restore'
     respond_to do |format|
       format.html { redirect_to admin_chars_path }
       format.json { render json: {success: true} }
@@ -106,10 +106,11 @@ class AdminCharsController < ApplicationController
     pending: 2,
     reviewed: [3,4],
     saved: 1,
-    messagable: (2..5).to_a
+    messagable: (2..5).to_a,
+    inactive: 6
   }
 
   def where_status
-    params[:scope] ? SCOPES[params[:scope].to_sym] || [5,6] : [5,6]
+    params[:scope] ? SCOPES[params[:scope].to_sym] || 5 : 5
   end
 end

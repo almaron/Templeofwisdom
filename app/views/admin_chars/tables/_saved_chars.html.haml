@@ -1,6 +1,6 @@
 .pending-wrap
-  %h4 Не опубликованные
-  %table.penting-chars-tab.chars-tab.ngtable
+  %h4{'ng-click'=>'hideSaved = !hideSaved'} Не опубликованные
+  %table.penting-chars-tab.chars-tab.ngtable{'ng-hide'=>'hideSaved'}
     %thead
       %tr.char-head
         %th.char-id №
