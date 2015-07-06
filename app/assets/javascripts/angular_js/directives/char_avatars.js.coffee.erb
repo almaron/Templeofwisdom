@@ -43,6 +43,7 @@
           scope.setCurrentIndex(scope.collection.length - 1)
 
     scope.addAvatar = ->
+      scope.newAvatar.char_id = scope.charid
       $http.post(
         '/char_avatars', {char_avatar: scope.newAvatar}
       ).success (data) ->
