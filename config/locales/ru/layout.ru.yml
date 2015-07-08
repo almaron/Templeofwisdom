@@ -92,6 +92,11 @@ ru:
       pagetitle: 'Вопрос Мастеру'
     edit:
       pagetitle: 'Редактирование вопроса'
+  mailings:
+    index:
+      pagetitle: 'Рассылки'
+    new:
+      pagetitle: 'Отправить Рассылку'
 
   char_status:
     name:

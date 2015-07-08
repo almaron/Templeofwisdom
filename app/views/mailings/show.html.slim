@@ -1,0 +1,13 @@
+- content_for :path do
+  =' link_to 'Личный кабинет', profile_path
+  span.fa.fa-arrow-circle-right
+  '  #{link_to 'Рассылки', mailings_path}
+  span.fa.fa-arrow-circle-right
+  span
+    |  #{@mailing.subject}
+
+- content_for  :pagetitle do
+  = @mailing.subject
+
+.mailing-wrapper
+  = simple_format(auto_link @mailing.text)

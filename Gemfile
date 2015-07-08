@@ -12,6 +12,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails'
 gem 'slim-rails'
 gem 'compass-rails'
+gem 'rails_autolink'
 
 gem 'hashie'
 # Use Uglifier as compressor for JavaScript assets

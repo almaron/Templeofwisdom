@@ -1,0 +1,22 @@
+- content_for :path do
+  =' link_to 'Личный кабинет', profile_path
+  span.fa.fa-arrow-circle-right
+  '  #{link_to 'Рассылки', mailings_path}
+  span.fa.fa-arrow-circle-right
+  span
+    |  Новая рассылка
+
+.mailing-wrapper
+  = form_for @mailing, url: mailings_path do |f|
+    .any-form
+      .form-line
+        span.label
+          ' #{f.label :subject}:
+        span.input
+          = f.text_field :subject, class: 'inp inp-type2'
+      .form-line
+        span.input
+          = f.text_area :text, placeholder: 'Текст рассылки', class: 'inp inp-type2'
+      .form-line
+        span.input
+          = f.submit 'Отправить', class: 'btn btn-standart'

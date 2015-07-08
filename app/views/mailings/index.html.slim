@@ -1,0 +1,22 @@
+- content_for :path do
+  =' link_to 'Личный кабинет', profile_path
+  span.fa.fa-arrow-circle-right
+  span
+    |  Рассылки
+
+.mailing-wrapper
+  .mailing-btns
+    = link_to 'Отправить Рассылку', new_mailing_path, class: 'btn btn-standart'
+  .list-wrapper
+    h4
+      | Отправленные рассылки
+    .list
+      - @mailings.each do |mailing|
+        .one-mailing class="#{'done' if mailing.done?}"
+          span.date
+            = l mailing.created_at, format: :full
+          span.name
+            = mailing.user.name
+          span.head
+            = link_to mailing.subject, mailing_path(mailing)
+
