@@ -3,6 +3,6 @@ class ListMailer < ActionMailer::Base
 
   def mailing(mailing, user)
     @mailing = mailing
-    mail to: "#{user.name} <#{user.email}>", subject: @mailing.subject
+    mail to: user.email, subject: @mailing.subject
   end
 end

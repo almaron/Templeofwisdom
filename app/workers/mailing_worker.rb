@@ -4,7 +4,7 @@ class MailingWorker
 
   def perform(mailing_id)
     mailing = MailingLetter.find mailing_id
-    User.all.each { |user| ListMailer.delay.mailing(mailing, user) }
+    User.where(activation_state: 'active').where(group: 'admin').each { |user| ListMailer.delay.mailing(mailing, user) }
     mailing.update done: true
   end
 

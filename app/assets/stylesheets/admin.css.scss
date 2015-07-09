@@ -904,4 +904,14 @@
       }
     }
   }
+  .any-form {
+    input[type=text] {
+      width: 60%;
+    }
+    textarea {
+      width: 80%;
+      resize: vertical;
+      min-height: 300px;
+    }
+  }
 }
