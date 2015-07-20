@@ -5,8 +5,8 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    if @user = User.create(user_params)
-      @user.authentications.create(session[:incomplete_user][:provider]) if session[:incomplete_user]
+    if (@user = User.create(user_params))
+      # @user.authentications.create(session[:incomplete_user][:provider]) if session[:incomplete_user]
       reset_session
     else
       redirect_to register_path
@@ -14,7 +14,7 @@ class RegistrationsController < ApplicationController
   end
 
   def activate
-    if @user = User.load_from_activation_token(params[:id])
+    if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
       auto_login(@user)
       redirect_to profile_path
