@@ -27,6 +27,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    airbrussh (0.6.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     angularjs-rails (1.3.15)
@@ -372,6 +374,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrussh
   ancestry
   angularjs-rails
   awesome_print
