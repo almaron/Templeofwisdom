@@ -1,0 +1,13 @@
+- if current_user && current_user.is_in?(:master)
+  .act-head Админский раздел
+  table.useful-links-table
+    tr
+      td
+        .act-line
+          a href='/admin/skill_requests' Заявки на навыки/способности
+        .act-line
+          a href='/admin/roles' Оценивание ролевых
+      td
+        .act-line
+          a href='/admin/journals' Верстка газеты
+        .act-line

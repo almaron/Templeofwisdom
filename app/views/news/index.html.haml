@@ -1,9 +1,9 @@
-.text-simple{"ng-controller" => "NewsCtrl", "ng-init" => "initNews(#{params[:page]})"}
-  .admin_add_btn{"ng-if" => "currentUser.group == 'admin' "}
-    %button.btn.btn-standart{"ng-click"=>"newNews.show = !newNews.show"}Добавить новость
-  = render partial: "news/form", locals: {news:"newNews"}
-  %ui-pagination{cur:"newsPagination.cur", total:"newsPagination.total", display:"9"}
+.text-simple{'ng-controller' => 'NewsCtrl', 'ng-init' => "initNews(#{params[:page]})"}
+  .admin_add_btn{'ng-if' => "currentUser.group == 'admin' || currentUser.group == 'master' "}
+    %button.btn.btn-standart{'ng-click'=>'newNews.show = !newNews.show'}Добавить новость
+  = render partial: 'news/form', locals: {news:'newNews'}
+  %ui-pagination{cur:'newsPagination.cur', total:'newsPagination.total', display:'9'}
   .newsblock
-    = render "news/news"
-  %ui-pagination{cur:"newsPagination.cur", total:"newsPagination.total", display:"9"}
+    = render 'news/news'
+  %ui-pagination{cur:'newsPagination.cur', total:'newsPagination.total', display:'9'}
 

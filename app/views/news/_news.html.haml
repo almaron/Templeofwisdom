@@ -1,17 +1,17 @@
-.news-single{"ng-repeat"=>"oneNews in news"}
-  .news_block{"ng-hide"=>"oneNews.show"}
+.news-single{'ng-repeat'=>'oneNews in news'}
+  .news_block{'ng-hide'=>'oneNews.show'}
     .news-single-title
       %span.news-single-date{} {{oneNews.dateLine}}
       %span.news-single-date-title-text{} {{oneNews.head}}
     .news-single-text
-      .text{"ng-bind-html"=>"oneNews.content"}
+      .text{'ng-bind-html'=>'oneNews.content'}
       .author
         \/ {{oneNews.author}}
     .block-adm
-      %span.delete{title: "Удалить", "ng-click" => "removeNews(oneNews)", "ng-if" => "currentUser.group == 'admin'" } [&#21024;&#38500;]
-      - if params[:controller] == "news"
-        %span.edit{title: "Редактировать", "ng-click" => "oneNews.show = !oneNews.show", "ng-if" => "currentUser.group == 'admin'" } [ &#21464;&#26356; ]
+      %span.delete{title: 'Удалить', 'ng-click' => 'removeNews(oneNews)', 'ng-if' => "currentUser.group == 'admin' || currentUser.group == 'master'" } [&#21024;&#38500;]
+      - if params[:controller] == 'news'
+        %span.edit{title: 'Редактировать', 'ng-click' => 'oneNews.show = !oneNews.show', 'ng-if' => "currentUser.group == 'admin' || currentUser.group == 'master'" } [ &#21464;&#26356; ]
 
-  = render(partial: "news/form", locals: {news:"oneNews"}) if params[:controller] == "news"
+  = render(partial: 'news/form', locals: {news:'oneNews'}) if params[:controller] == 'news'
 
 
