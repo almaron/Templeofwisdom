@@ -15,7 +15,7 @@ module Mappers
     def map_row(row, index)
       row['name'].strip!
       if Char.where(name: row['name']).any?
-        puts "#{row['name']} already present".green
+        puts "#{row['name']} already present"
         return
       end
       char = Char.new({
@@ -43,9 +43,9 @@ module Mappers
       end
       if char.save
         char.avatars.create remote_image_url: row['ava'], default: true
-        puts "#{index}: #{char.name} save success".green
+        puts "#{index}: #{char.name} save success"
       else
-        puts "#{index}: #{char.name} save failed with #{char.errors.count} errors".red
+        puts "#{index}: #{char.name} save failed with #{char.errors.count} errors"
         log.error char.errors.full_messages.join("\n\n") + " - #{row['id']} - #{row['date']}"
       end
     end
