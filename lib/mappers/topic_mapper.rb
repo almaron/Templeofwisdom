@@ -9,7 +9,7 @@ module Mappers
 
     def map
       load_chars
-      db.query('select topic_id as id, forum_id, topic_title as head, topic_first_poster_name as poster from hor_topics').each_with_index do |row, index|
+      db.query('SELECT topic_id as id, forum_id, topic_title as head, topic_first_poster_name as poster FROM hor_topics').each_with_index do |row, index|
         map_topic row, index
       end
       dump_chars
