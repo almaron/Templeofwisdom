@@ -5,7 +5,7 @@ class CharsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html { @chars = Char.where('group_id IN (?)', [2,3,4,5]).where(status_id:5) }
+      format.html { @chars = Char.where('group_id IN (?)', [2,3,4,5]).where(status_id:5).order(:name) }
       format.json { @chars = Char.includes(:profile).all }
     end
   end
