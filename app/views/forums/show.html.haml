@@ -42,6 +42,8 @@
         %button.btn.btn-mini.forum-btn{'ng-click'=>'deleteTopics()'}
           %span.fa.fa-times
           %span Удалить
+    .forum-pagination
+      %ui-pagination{cur:'forumPagination.cur', total:'forumPagination.total', display:'9'}
     %table.forum-tab.subforum-tab
       %tbody
         %tr{"ng-if"=>"forum.description"}
@@ -84,5 +86,7 @@
             %input{type:"checkbox", "ng-model"=>"topic.selected", id:"select{{topic.id}}", 'ng-true-value'=>'1', 'ng-false-value'=>'0'}
             %label{for:"select{{topic.id}}"}
               %span
+    .forum-pagination
+      %ui-pagination{cur:'forumPagination.cur', total:'forumPagination.total', display:'9'}
 
 

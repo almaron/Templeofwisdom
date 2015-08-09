@@ -59,7 +59,7 @@ class Forum < ActiveRecord::Base
 
   def recalculate_ancestry
     s_path.each do |f|
-      last_post = ForumPost.joins(:topic).where(forum_topics: { forum_id: f.sub_ids }).last
+      last_post = ForumPost.joins(:topic).where(forum_topics: { forum_id: f.sub_ids }).order(created_at: :desc).first
       posts_count = ForumPost.joins(:topic).where(forum_topics: { forum_id: f.sub_ids }).count
       topics_count = ForumTopic.where(forum_id: f.sub_ids).count
       update_params = if last_post
