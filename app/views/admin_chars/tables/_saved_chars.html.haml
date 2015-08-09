@@ -10,9 +10,9 @@
         %th.char-created Создан
     %tbody
       %tr.one-line{'ng-repeat'=>'char in chars.saved'}
-        %td.char-id{}
+        %td.char-id
           {{char.id}}
-        %td.char-name{}
+        %td.char-name
           %span{'ng-click'=>'showFull(char)'} {{char.name}}
         %td.char-owner
           %a{href:'/users/{{char.owner.id}}', target:'_blank'} {{char.owner.name}}

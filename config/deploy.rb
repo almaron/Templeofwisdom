@@ -14,7 +14,7 @@ set :use_sudo,          false
 
 set :linked_files, %w{ config/database.yml config/secrets.yml  config/settings.yml}
 
-set :linked_dirs, %w{ bin log tmp/pids tmp/cache tmp/sockets public/system public/uploads }
+set :linked_dirs, %w{ log tmp/pids tmp/cache tmp/sockets public/system public/uploads }
 
 set :rvm_ruby_version, '2.1.2@temple'
 # Default value for default_env is {}

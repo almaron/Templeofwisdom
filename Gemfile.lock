@@ -27,6 +27,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    airbrussh (0.6.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     angularjs-rails (1.3.15)
@@ -239,6 +241,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.1)
       sprockets-rails (~> 2.0)
+    rails_autolink (1.1.6)
+      rails (> 3.1)
     railties (4.1.1)
       actionpack (= 4.1.1)
       activesupport (= 4.1.1)
@@ -370,6 +374,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrussh
   ancestry
   angularjs-rails
   awesome_print
@@ -408,6 +413,7 @@ DEPENDENCIES
   quiet_assets
   rack-livereload
   rails (= 4.1.1)
+  rails_autolink
   rb-inotify (~> 0.9)
   render_anywhere
   rspec-rails

@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
 
   before_action :get_news, only: [:edit, :update, :destroy]
+  before_action :master_access, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     respond_to do |format|

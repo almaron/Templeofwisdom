@@ -12,6 +12,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails'
 gem 'slim-rails'
 gem 'compass-rails'
+gem 'rails_autolink'
 
 gem 'hashie'
 # Use Uglifier as compressor for JavaScript assets
@@ -66,6 +67,7 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rvm'
   gem 'capistrano-sidekiq'
+  gem 'airbrussh', require: false
   gem 'capistrano-unicorn-nginx'
 end
 #gem 'rvm1-capistrano3', group: :development
@@ -74,7 +76,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 
 gem 'thin', group: :development
-gem 'render_anywhere', :require => false
+gem 'render_anywhere', require: false
 #gem 'rack-mini-profiler'
 gem 'quiet_assets', group: :development
 

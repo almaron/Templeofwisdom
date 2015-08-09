@@ -1,0 +1,29 @@
+.myaccount ng-controller='ProfileCtrl' ng-init='loadProfile()' ng-show='user'
+  .act-block
+    .act-head
+      | Мои данные
+    table.myaccount-table
+      tr
+        td.left
+          .act-subhead
+            | Контактная информация
+          div ng-hide='user.editProfile'
+            = render partial: 'info'
+          div ng-show='user.editProfile'
+            = render :partial => 'form'
+        td.right
+          .act-subhead Социальные сети
+          .act-line ng-repeat='provider in authProviders'
+            span.act-social ng-class="authentications.indexOf(provider.provider)>=0 ? 'on' : 'off'"
+              | {{provider.name}}
+              span ng-if='authentications.indexOf(provider.provider)>=0' ng-click='removeAuth(provider.provider)'
+                | отключить
+              a ng-if='authentications.indexOf(provider.provider)<0' href='/oauth/{{provider.provider}}'
+                | включить
+          .act-line
+
+    = render 'admin_links'
+    = render 'master_links'
+    = render 'user_links'
+
+    = render 'profile_chars'

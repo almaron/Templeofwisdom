@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     end
     member do
       post :small_update
-      post "request_skill/:skill_id" => "skill_requests#create", as: :skill_request
+      post 'request_skill/:skill_id' => 'skill_requests#create', as: :skill_request
     end
   end
 
@@ -139,6 +139,7 @@ Rails.application.routes.draw do
     end
     get '/logs' => 'logs#index', as: :logs
     get '/logs/:category' => 'logs#show', as: :log
+    resources :mailings, except: [:edit, :update]
   end
 
   get '/journal_tags' => 'journal_tags#index', defaults: {format: :json}

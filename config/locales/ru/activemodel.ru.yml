@@ -38,6 +38,8 @@ ru:
         meta_keywords: 'META Keywords'
       master_question:
         head: 'Заголовок'
+      mailing_letter:
+        subject: 'Заголовок'
 
     errors:
       models:

@@ -9,8 +9,12 @@ class User < ActiveRecord::Base
 
   default_scope {order(:name)}
   scope :present, ->{where("activation_state != 'destroyed'")}
-  scope :active, ->{where(activation_state: "active")}
-  scope :destroyed, ->{where(activation_state: "destroyed")}
+  scope :active, ->{where(activation_state: 'active')}
+  scope :destroyed, ->{where(activation_state: 'destroyed')}
+
+  def pending?
+    activation_state == 'pending'
+  end
 
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications
@@ -21,8 +25,8 @@ class User < ActiveRecord::Base
   attr_accessor :current_ip
 
   validates_confirmation_of :password, :if => :password, message: I18n.t("activerecord.errors.models.user.attributes.password.confirmation")
-  validates :name, :presence => true, :uniqueness => true
-  validates :email, :presence => true, :email => true
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, email: true
 
   has_one :profile, class_name: UserProfile, dependent: :destroy
   accepts_nested_attributes_for :profile

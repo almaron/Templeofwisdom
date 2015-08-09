@@ -8,9 +8,9 @@ class UsersController < ApplicationController
       format.html { }
       format.json {
         @users = case params[:scope]
-                   when "short"
+                   when 'short'
                      User.active.where("id != ?", current_user.id)
-                   when "destroyed"
+                   when 'destroyed'
                      User.destroyed
                    else
                      User.includes(:char_delegations, :profile).present
@@ -40,7 +40,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.update(activation_state:"destroyed", email: 'destroyed')
+    if @user.pending?
+      @user.destroy
+    else
+      @user.update(activation_state: 'destroyed', email: 'destroyed')
+    end
     respond_to do |f|
       f.html { redirect_to users_path, notice: t("messages.notice.users.destroy.success") }
       f.json { render nothing:true }

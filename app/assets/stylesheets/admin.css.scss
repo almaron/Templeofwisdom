@@ -312,6 +312,26 @@
       }
     }
   }
+
+  .admin-nav {
+    .one-nav {
+      padding: 4px;
+      display: inline-block;
+      margin-right: 5px;
+      font-size: 1.1em;
+      cursor: pointer;
+      border: 1px solid $color-brown2;
+      border-radius: 4px;
+      &.active, &:hover {
+        background-color: $color-brown2;
+        color: $color-brown3;
+        border-color: $color-brown3;
+      }
+      &.active {
+        cursor: default;
+      }
+    }
+  }
 }
 
 .admin-journal {
@@ -853,6 +873,45 @@
 
         }
       }
+    }
+  }
+}
+
+.mailing-wrapper {
+  .mailing-btns {
+    text-align: right;
+    a {
+      text-align: center;
+      display: inline-block;
+      padding: 3px 5px;
+    }
+  }
+  .list-wrapper {
+    .list {
+      .one-mailing {
+        margin-bottom: 5px;
+        &.done {
+          opacity: 0.9;
+        }
+        span {
+          display: inline-block;
+          margin-right: 5px;
+        }
+        .date {
+          color: $color-brown1;
+        }
+
+      }
+    }
+  }
+  .any-form {
+    input[type=text] {
+      width: 60%;
+    }
+    textarea {
+      width: 80%;
+      resize: vertical;
+      min-height: 300px;
     }
   }
 }
