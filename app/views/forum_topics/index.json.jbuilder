@@ -5,4 +5,4 @@ json.topics @topics do |topic|
   json.closed topic.closed?
 end
 
-json.total (@all_topics.count.to_f / 10).ceil if @all_topics
+json.total (@all_topics.count.to_f / 25).ceil if @all_topics
