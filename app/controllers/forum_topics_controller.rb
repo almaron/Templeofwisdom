@@ -10,7 +10,7 @@ class ForumTopicsController < ApplicationController
     @forum = Forum.find(params[:forum_id])
     #TODO change the clause for displaying hidden topics
     @all_topics = (current_user && current_user.is_in?(:admin)) ? @forum.topics : @forum.topics.shown
-    per_page = params[:per_page] || 10
+    per_page = params[:per_page] || 25
     @topics = @all_topics.paginate(page: params[:page], per_page: per_page) if @all_topics
     respond_to do |format|
       format.html {}
