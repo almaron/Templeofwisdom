@@ -11,7 +11,7 @@ module Mappers
       load_chars
       puts 'Введите старт (0):'
       start_id = STDIN.gets.strip || 0
-      db.query("SELECT topic_id as id, forum_id, topic_title as head, topic_first_poster_name as poster FROM hor_topics WHERE topic_id >= #{start_id}").each_with_index do |row, index|
+      db.query("SELECT topic_id as id, forum_id, topic_title as head, topic_first_poster_name as poster FROM hor_topics WHERE topic_id >= #{start_id} ORDER BY topic_id").each_with_index do |row, index|
         map_topic row, index
       end
       dump_chars
