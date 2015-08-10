@@ -50,7 +50,7 @@ class ForumPostsController < ApplicationController
 
   def update
     @post.update(post_params) if post_editable(@post)
-    Logger::Post.new(current_user).log post: @post
+    Loggers::Post.new(current_user).log post: @post
     respond_to do |format|
       format.html { redirect to  }
       format.json { render partial: 'post', locals: {post:@post} }
