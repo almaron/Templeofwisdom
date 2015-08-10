@@ -2,6 +2,7 @@
 
   $scope.forumPagination = {}
   $scope.toForumId = 0
+  $scope.loadedForum = false
 
   $http.get('/temple/move_topic.json').success (data) ->
     $scope.all_forums = data
@@ -18,6 +19,7 @@
       $scope.forum = data.forum
       $scope.path = data.path
       $scope.forumPagination.cur = page unless $scope.forum.isCategory
+      $scope.loadedForum = true
 
 
   $scope.$watch "forumPagination.cur", (newVal) ->

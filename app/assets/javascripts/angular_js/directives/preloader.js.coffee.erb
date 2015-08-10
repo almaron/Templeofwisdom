@@ -1,0 +1,10 @@
+@app.directive 'preloader', ->
+  restrict: 'E'
+  scope:
+    hideSpan: "="
+  replace: true
+  transclude: false
+  link: (scope, element, attrs) ->
+    scope.hideSpan = scope.hideSpan || false
+
+  templateUrl: "<%= asset_path "preloader" %>"

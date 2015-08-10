@@ -86,6 +86,7 @@
             %input{type:"checkbox", "ng-model"=>"topic.selected", id:"select{{topic.id}}", 'ng-true-value'=>'1', 'ng-false-value'=>'0'}
             %label{for:"select{{topic.id}}"}
               %span
+    %preloader{'hide-span'=>'loadedForum'}
     .forum-pagination
       %ui-pagination{cur:'forumPagination.cur', total:'forumPagination.total', display:'9'}
 
