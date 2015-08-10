@@ -10,9 +10,12 @@ module Mappers
       role = Role.new
       db.query('SELECT * FROM temple_main.a_rolls ORDER BY head').each do |row|
         unless role.head == row['head']
-          role.head = role.head.strip
-          role.save
-
+          if role.head.present?
+            role.head = role.head.strip
+            role.save
+            puts "#{role.head} сохранена"
+            logger.info "#{role.head} сохранена"
+          end
           role = set_role(row)
         end
         cr = role.char_roles.build char_id: char_map.index(row['char_id'])
@@ -20,11 +23,15 @@ module Mappers
           cr.role_skills.build rs
         end
       end
+      role.head = role.head.strip
+      role.save
+      puts "#{role.head} сохранена"
     end
 
     private
 
     def set_role(row)
+      logger.info "Парсим '#{row['head']}'"
       role = Role.new head: row['head']
       role.topic_ids = parse_ids(row['links'])
     end

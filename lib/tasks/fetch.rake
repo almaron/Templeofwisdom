@@ -17,7 +17,7 @@ namespace :fetch do
   end
 
   desc 'Fetching char roles'
-  task :roles do
+  task roles: :environment do
     logger = Logger.new 'log/role_mapping.log'
     Mappers::RoleMapper.new(main_db.call, forum_db.call, logger)
   end
