@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   validates_confirmation_of :password, :if => :password, message: I18n.t("activerecord.errors.models.user.attributes.password.confirmation")
   validates :name, presence: true, uniqueness: true
-  validates :email, presence: true, email: true
+  validates :email, presence: true, email: true, uniqueness: true
 
   has_one :profile, class_name: UserProfile, dependent: :destroy
   accepts_nested_attributes_for :profile
