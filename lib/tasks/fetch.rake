@@ -18,6 +18,7 @@ namespace :fetch do
 
   desc 'Fetching char roles'
   task :roles do
-
+    logger = Logger.new 'log/role_mapping.log'
+    Mappers::RoleMapper.new(main_db.call, forum_db.call, logger)
   end
 end

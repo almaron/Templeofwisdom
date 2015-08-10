@@ -9,10 +9,10 @@ class CharRole < ActiveRecord::Base
 
   attr_accessor :logic_points, :style_points, :skill_points, :volume_points, :added_points, :comment, :staged_points, :post_count
 
-  after_initialize :set_points
-  before_save :calculate_points
-  after_create :add_points_to_char
-  after_update :recalculate_points
+  # after_initialize :set_points
+  # before_save :calculate_points
+  # after_create :add_points_to_char
+  # after_update :recalculate_points
 
   private
 

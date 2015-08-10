@@ -12,7 +12,7 @@ module Mappers
       private
 
       def db
-        @db ||= Mysql2::Client.new host: 'templeofwisdom.ru', username: 'bao', password: 'malkavian', database: 'temple_main'
+        @db ||= Mysql2::Client.new host: 'old.templeofwisdom.ru', username: 'bao', password: 'malkavian', database: 'temple_main'
       end
     end
   end

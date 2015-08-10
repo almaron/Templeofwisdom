@@ -12,7 +12,7 @@ module Mappers
       ForumTopic.unscoped.order(:id).pluck(:id).each_with_index do |id, index|
         map[id] = temple_ids[index]
       end
-      map 
+      map
     end
   end
 end
