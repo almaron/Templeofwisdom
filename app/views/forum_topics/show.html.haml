@@ -25,10 +25,16 @@
     %span.fa.fa-arrows-h#forum-width
   .forum-pagination
     %ui-pagination{cur:"postPagination.cur", total:"postPagination.total", display:"9"}
+  .forum-preloader{'ng-hide'=>'loadedTopic'}
+    .preloader
+      %span.fa.fa-spinner.fa-pulse
   %table.forum-tab.one-message-tab
     %tr
       %th.f-message-author Автор
       %th.f-message-content Пост
+  .forum-preloader{'ng-hide'=>'loadedPosts'}
+    .preloader
+      %span.fa.fa-spinner.fa-pulse
   = render :partial => 'posts_table'
 
   .forum-pagination

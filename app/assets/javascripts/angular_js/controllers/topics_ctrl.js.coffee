@@ -34,6 +34,8 @@
   $scope.postPagination = {}
   $scope.informMaster = false
   $scope.informChars = []
+  $scope.loadedTopic = false
+  $scope.loadedPosts = false
 
   $scope.initTopic = (options) ->
     $scope.topicInit = { forum_id: options.forum_id, topic_id: options.topic_id }
@@ -65,6 +67,7 @@
           else
             $scope.postPagination.cur = options.page
         $scope.loadPosts($scope.postPagination.cur) if load_posts
+        $scope.loadedTopic = true
     )
 
   $scope.$watch "postPagination.cur", (newVal, oldVal) ->
@@ -72,6 +75,7 @@
       $scope.loadPosts newVal
 
   $scope.loadPosts = (page) ->
+    $scope.loadedPosts = false
     $http.get(
       $scope.currentPath+'/p.json?page=' + page
     ).success (data) ->
@@ -79,6 +83,7 @@
         $scope.postPagination.cur = $scope.postPagination.total
       else
         $scope.posts = data
+        $scope.loadedPosts = true
         $timeout(
           () ->
             if $scope.initial && $scope.postId
