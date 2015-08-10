@@ -8,7 +8,7 @@ module Mappers
 
     def map
       role = Role.new
-      db.query('SELECT * FROM temple_main.a_rolls ORDER BY head').each do |row|
+      mdb.query('SELECT * FROM a_rolls ORDER BY head').each do |row|
         unless role.head == row['head']
           if role.head.present?
             role.head = role.head.strip
