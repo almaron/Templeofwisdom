@@ -7,7 +7,7 @@
           %label{for:"char_name"} Персонаж:
           %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, newPost.char_id)'}
           %char-avatars{'ng-model'=>'newPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'newPost.char_id', 'ng-show'=>'newPost.char_id'}
-        .send-notifications
+        .send-notifications{'ng-show'=>'topic.chars.length <= 6'}
           Отправка уведомлений
           .line{'ng-repeat'=>'char in topic.chars'}
             %input{type:'checkbox', value:"{{char.id}}", 'ng-checked'=>'informChars.indexOf(char.id) > -1', 'ng-click'=>'toggleInform(char.id)', id:"chinf{{char.id}}"}
