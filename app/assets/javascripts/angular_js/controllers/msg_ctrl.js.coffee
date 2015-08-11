@@ -5,7 +5,7 @@
   $scope.set_service_url = (url) ->
     Service.setUrl url
 
-  $http.get('/admin/chars.json?scope=messagable&short=true').success (data) ->
+  $http.get('/get_chars/messages').success (data) ->
     $scope.allChars = data
 
   $scope.set_service_url '/messages.json'
