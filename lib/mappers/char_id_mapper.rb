@@ -16,8 +16,8 @@ module Mappers
         else
           puts "#{name} не найден"
         end
-        map
       end
+      map
     end
   end
 end

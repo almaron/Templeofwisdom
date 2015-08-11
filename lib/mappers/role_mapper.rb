@@ -22,7 +22,7 @@ module Mappers
           end
           role = set_role(row)
         end
-        cr = role.char_roles.build char_id: char_map.index(row['char_id']), points: row['balls']
+        cr = role.char_roles.build char_id: char_map.index(row['char_id'].to_i), points: row['balls']
         role_skills(row['skills']).each do |rs|
           cr.role_skills.build rs
         end
