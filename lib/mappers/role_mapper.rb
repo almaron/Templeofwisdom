@@ -14,7 +14,7 @@ module Mappers
             role.head = role.head.strip
             if role.save
               puts "#{role.head} сохранена"
-              logger.info "#{role.head} сохранена"
+              logger.info "#{role.paths} - #{role.topic_ids}"
             else
               puts "#{role.head} не сохранена"
               logger.error role.errors.full_messages.join(' -- ')
@@ -37,7 +37,7 @@ module Mappers
     def set_role(row)
       logger.info "Парсим '#{row['head']}'"
       role = Role.new head: row['head']
-      role.paths = parse_ids(row['link']).map {|id| "/t/#{id}"}.join("\n")
+      role.paths = parse_ids(row['link']).map {|id| "/t/#{id}"}.join('   ')
       role 
     end
 
@@ -61,11 +61,11 @@ module Mappers
     end
 
     def topics_map
-      @topics_map ||= TopicIdMapper.new(fdb).map
+      @topics_map ||= TopicIdMapper.new.map
     end
 
     def char_map
-      @char_map ||= CharIdMapper.new(mdb).map
+      @char_map ||= CharIdMapper.new.map
     end
 
     def skill_map

@@ -2,8 +2,10 @@ module Mappers
   class TopicIdMapper
     attr_reader :db
 
-    def initialize(db)
-      @db = db
+    def initialize
+      db_params = { host: '104.131.201.9', username: 'bao', password: 'malkavian', reconnect: true }
+      forum_db = -> { Mysql2::Client.new db_params.merge database: 'temple_forum' }
+      @db = forum_db.call
     end
 
     def map
