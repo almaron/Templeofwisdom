@@ -12,9 +12,13 @@ module Mappers
         unless role.head == row['head']
           if role.head.present?
             role.head = role.head.strip
-            role.save
-            puts "#{role.head} сохранена"
-            logger.info "#{role.head} сохранена"
+            if role.save
+              puts "#{role.head} сохранена"
+              logger.info "#{role.head} сохранена"
+            else
+              puts "#{role.head} не сохранена"
+              logger.error role.errors.full_messages.join(' -- ')
+            end
           end
           role = set_role(row)
         end
