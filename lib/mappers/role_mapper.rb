@@ -8,7 +8,7 @@ module Mappers
 
     def map
       role = Role.new
-      mdb.query('SELECT * FROM a_rolls ORDER BY head').each do |row|
+      mdb.query('SELECT * FROM a_rolls ORDER BY id asc').each do |row|
         unless role.head == row['head']
           if role.head.present?
             role.head = role.head.strip
@@ -18,7 +18,7 @@ module Mappers
           end
           role = set_role(row)
         end
-        cr = role.char_roles.build char_id: char_map.index(row['char_id'])
+        cr = role.char_roles.build char_id: char_map.index(row['char_id']), points: row['balls']
         role_skills(row['skills']).each do |rs|
           cr.role_skills.build rs
         end
@@ -33,7 +33,8 @@ module Mappers
     def set_role(row)
       logger.info "Парсим '#{row['head']}'"
       role = Role.new head: row['head']
-      role.topic_ids = parse_ids(row['links'])
+      role.paths = parse_ids(row['link']).map {|id| "/t/#{id}"}.join("\n")
+      role 
     end
 
     def parse_ids(links)
