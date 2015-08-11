@@ -1,4 +1,18 @@
 <span class="counters">
+  <div id='li'>
+    <script type='text/javascript'>
+      var el = document.createElement('img');
+      var attr = "//counter.yadro.ru/hit?t26.6;r"+
+        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+        ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+          screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+        ";h"+escape(document.title.substring(0,80))+";"+Math.random();
+      el.setAttribute('src', attr);
+      var li = document.getElementById('li');
+      li.appendChild(el);
+    </script>
+  </div>
+
 <!-- Yandex.Metrika counter -->
 <div style="display:none;"><script type="text/javascript">
   (function(w, c) {
