@@ -57,6 +57,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/get_chars/messages' => 'get_chars#messages', defaults: {format: :json}
+
   resources :char_avatars, only:[:create, :update, :destroy], defaults: {format: :json}
 
   # Forum routes
