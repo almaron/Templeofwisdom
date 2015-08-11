@@ -44,7 +44,7 @@ module Mappers
     def parse_ids(links)
       URI.extract(links).map do |link|
         params = Rack::Utils.parse_nested_query(URI(link).query).symbolize_keys
-        unless (topic_id = params[:t])
+        unless (topic_id = params[:t].to_i  )
           topic_id = fdb.query("SELECT topic_id FROM hor_posts WHERE post_id = #{params[:p]}").first['topic_id']
         end
         topics_map.index topic_id
