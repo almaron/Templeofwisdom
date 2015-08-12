@@ -7,7 +7,7 @@ json.cancans do
   json.moderate_forum user.cancans[:moderate_forum]
 end
 
-json.chars user.own_chars do |char|
+json.chars user.owned_chars do |char|
   json.(char, :id, :name, :status_id)
 end
 

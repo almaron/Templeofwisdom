@@ -62,8 +62,12 @@ class User < ActiveRecord::Base
     self.chars.where(char_delegations: {owner:1, default:1}).first
   end
 
+  def owned_chars
+    self.chars.where(char_delegations: {owner:1})
+  end
+
   def own_chars
-    self.chars.where(char_delegations: {owner:1}).visible
+    owned_chars.visible
   end
 
   def delegated_chars
