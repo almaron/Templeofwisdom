@@ -50,7 +50,7 @@
           %b.title Комментарии:
           %span{'ng-bind-html'=>'char.profile.comment | simpleFormat'}
         .profile-element
-          .edit{'ng-if'=>'char.adminEditable', 'ng-show'=>'char.adminEditable', 'ng-click'=>"openEditChar('signature')"} &#10548;
+          .edit{'ng-if'=>'char.userEditable', 'ng-show'=>'char.userEditable', 'ng-click'=>"openEditChar('signature')"} &#10548;
           %b.title Подпись:
           %div{'ng-bind-html'=>"char.signature_show | trustHtml"}
         .profile-element
