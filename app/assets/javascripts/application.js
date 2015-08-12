@@ -25,6 +25,7 @@
 
 //= require functions
 
+
 //= require angular
 //= require angular-resource
 //= require angular-sanitize
@@ -37,3 +38,4 @@
 //= require admin_angular
 
 //= require jquery.turbolinks
+//= require banners
