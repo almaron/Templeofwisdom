@@ -1,21 +1,23 @@
-- content_for :pagetitle do
+h1
   = @role.head
 
 .rol
   .summary
-    %b
-      Участники (#{@role.char_roles.size})
-      %ul
+    b
+      | Участники (#{@role.char_roles.size})
+      ul
         - @role.char_roles.each do |ch|
-          %li
-            %a{href:"/chars/#{ch.char_id}", target:'_blank'} #{ch.char.name}
-    %div
-      %b Количество постов: #{@role.all_posts.size}
+          li
+            a href="/chars/#{ch.char_id}" target='_blank'
+              | #{ch.char.name}
+    div
+      b
+        | Количество постов: #{@role.all_posts.size}
   .rol-all
     - @role.order_posts.each do |post|
       .rol-one
         .rol-left
-          %b.rol-name
+          b.rol-name
             = post.char.name
           = image_tag(post.avatar.image_url(:thumb), class:'rol-ava') if post.avatar && post.avatar.image?
         .rol-right
