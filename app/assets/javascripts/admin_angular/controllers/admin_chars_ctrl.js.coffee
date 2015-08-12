@@ -56,7 +56,6 @@
       $scope.loadBlock 'pending'
 
   $scope.showFull = (char) ->
-    $scope.showedChar = Char.get {id:char.id}
-
-
+    $http.get('/admin/chars/'+char.id+'.json').success (data) ->
+      $scope.$parent.showedChar = data
 ]
