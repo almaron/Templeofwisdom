@@ -34,6 +34,7 @@ class CharsController < ApplicationController
     @char.creator = current_user
     respond_to do |format|
       if @char.save
+        NewCharMailer.delay.new_char(@char) if @char.status_id == 2
         format.html { redirect_to profile_path, notice: t('messages.notice.chars.create.success') }
         format.js {
           flash.notice = t('messages.notice.chars.create.success')
@@ -68,6 +69,7 @@ class CharsController < ApplicationController
       else
         @char.char_skills.destroy_all
         if @char.update(char_params)
+          NewCharMailer.delay.new_char(@char).deliver_later if @char.status_id == 2
           format.html { redirect_to profile_path, notice: t('messages.notice.chars.update.success') }
           format.js {
             flash.notice = t('messages.notice.chars.update.success')

@@ -1,0 +1,4 @@
+ru:
+  new_char_mailer:
+    new_char:
+      subject: "Новая анкета - %{name}"
