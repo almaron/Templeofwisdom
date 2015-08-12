@@ -1,5 +1,5 @@
 class NewCharMailer < ActionMailer::Base
-  default from: 'noreply@templeofwisdom.ru'
+  default from: 'Храм Мудрости <noreply@templeofwisdom.ru>'
 
   def new_char(char)
     @char = char
