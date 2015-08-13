@@ -67,6 +67,9 @@
             %input{type:"checkbox", id:"selectAll"}
             %label{for:"selectAll"}
               %span{"ng-click"=>"selectAll()"}
+        %tr{'ng-if'=>'!loadedTopics'}
+          %td.no-topics{colspan: 6}
+            %preloader{'hide-span'=>'loadedTopics'}
         %tr{"ng-if"=>"topics.length == 0"}
           %td.no-topics{colspan:"{{moderateOn ? 7 : 6}}"}
             Нет тем

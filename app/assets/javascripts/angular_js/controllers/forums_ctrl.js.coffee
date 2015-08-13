@@ -3,6 +3,7 @@
   $scope.forumPagination = {}
   $scope.toForumId = 0
   $scope.loadedForum = false
+  $scope.loadedTopics = false
 
   $http.get('/temple/move_topic.json').success (data) ->
     $scope.all_forums = data
@@ -26,9 +27,11 @@
     $scope.loadTopics(newVal) unless typeof(newVal) == "undefined"
 
   $scope.loadTopics = (page) ->
+    $scope.loadedTopics = false
     $http.get("/temple/"+$scope.forum_id+"/t.json?page="+page).success (data)->
       $scope.topics = data.topics
       $scope.forumPagination.total = data.total
+      $scope.loadedTopics = true
 
   selected = 0
 
