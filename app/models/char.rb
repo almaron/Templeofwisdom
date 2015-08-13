@@ -169,15 +169,19 @@ class Char < ActiveRecord::Base
   end
 
   def master_skills
-    skills.where("level_id >= ?", 5)
+    skills.where('level_id >= ?', 5)
   end
 
   def master_skill_ids
-    master_skills.pluck(:id)
+    master_skills.pluck :id
+  end
+
+  def higher_magic_skill_ids(base_level=0)
+    skills.magic.where('char_skills.level_id > ?',base_level).pluck :id
   end
 
   def magic_skill_ids
-    skills.magic.pluck(:skill_id)
+    skills.magic.pluck :id
   end
 
   def mark_skill_done(skill_id, number)

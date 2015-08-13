@@ -77,7 +77,7 @@ class SkillRequest < ActiveRecord::Base
     if skill.skill_type == 'phisic'
       "phisic_points#{"_discount" if skill.has_discount?(char.master_skill_ids)}"
     else
-      "magic_points#{"_discount" if skill.has_discount?(char.magic_skill_ids)}"
+      "magic_points#{"_discount" if skill.has_discount?(char.higher_magic_skill_ids(level_id - 1))}"
     end
   end
 
