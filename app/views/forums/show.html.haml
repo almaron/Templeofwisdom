@@ -30,18 +30,22 @@
         %button.btn.btn-mini.forum-btn{'ng-click'=>'moveTopics()'}
           %span.fa.fa-arrow-circle-o-right
           %span Переместить в
+          %span.fa.fa-spinner.fa-pulse{'ng-show'=>'moderateProgress'}
       .moder-part
         %button.btn.btn-mini.forum-btn{'ng-click'=>'closeTopics()'}
           %span.fa.fa-lock
           %span Закрыть
+          %span.fa.fa-spinner.fa-pulse{'ng-show'=>'moderateProgress'}
       .moder-part
         %button.btn.btn-mini.forum-btn{'ng-click'=>'openTopics()'}
           %span.fa.fa-unlock
           %span Открыть
+          %span.fa.fa-spinner.fa-pulse{'ng-show'=>'moderateProgress'}
       .moder-part
         %button.btn.btn-mini.forum-btn{'ng-click'=>'deleteTopics()'}
           %span.fa.fa-times
           %span Удалить
+          %span.fa.fa-spinner.fa-pulse{'ng-show'=>'moderateProgress'}
     .forum-pagination
       %ui-pagination{cur:'forumPagination.cur', total:'forumPagination.total', display:'9'}
     %table.forum-tab.subforum-tab

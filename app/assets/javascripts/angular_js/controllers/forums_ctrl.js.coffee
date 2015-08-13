@@ -53,6 +53,7 @@
       topic.selected = selected
 
   $scope.moveTopics = ->
+    $scope.moderateProgress = true
     toForumId = $scope.toForumId
     if toForumId == $scope.forum_id
       alert 'Некуда переносить!'
@@ -64,33 +65,40 @@
     $q.all(posts).then ->
       $scope.toForumId = null
       breakSelect()
+      $scope.moderateProgress = false
 
 
   $scope.deleteTopics = ->
     if confirm('Уверены?')
+      $scope.moderateProgress = true
       ids = []
       angular.forEach $scope.topics, (topic) ->
         if topic.selected == 1
           ids.push topic.id
       $http.delete('/temple/move_topic.json?forum_id='+$scope.forum_id+'&delete_topics='+ids.join(',')).success (data) ->
         $scope.loadTopics $scope.forumPagination.cur
+        $scope.moderateProgress = false
 
   $scope.openTopics = ->
     posts = []
+    $scope.moderateProgress = true
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
         posts.push $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 0 } })
     $q.all(posts).then ->
       breakSelect()
+      $scope.moderateProgress = false
 
 
   $scope.closeTopics = ->
     posts = []
+    $scope.moderateProgress = true
     angular.forEach $scope.topics, (topic) ->
       if topic.selected == 1
         posts.push $http.put('/temple/'+$scope.forum_id+'/t/'+topic.id+'.json', { topic: { closed: 1 } })
     $q.all(posts).then ->
       breakSelect()
+      $scope.moderateProgress = false
 
 
 
