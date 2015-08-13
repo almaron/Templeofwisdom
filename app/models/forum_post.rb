@@ -9,6 +9,7 @@ class ForumPost < ActiveRecord::Base
   after_create :touch_topic
   # before_destroy :check_if_last
   after_destroy :remove_post
+  before_update :change_char, if: :char_id_changed?
 
   belongs_to :avatar, class_name: CharAvatar, foreign_key: :avatar_id
 
@@ -22,6 +23,11 @@ class ForumPost < ActiveRecord::Base
 
   def check_if_last
     self.topic.last_post_id == self.id
+  end
+
+  def change_char
+    topic.update last_post_char_name: char.name if topic.last_post_id == id
+    Forum.where(last_post_id: id).update_all last_post_char_name: char.name
   end
 
   after_update :set_topic_char
