@@ -1,4 +1,4 @@
-.char_edit_skills{"ng-if"=>"char.userEditable", "ng-show"=>"editChar=='skills'"}
+.char_edit_skills{"ng-if"=>"char.userEditable || char.adminEditable", "ng-show"=>"editChar=='skills'"}
    %h4{}
       {{skillForm.head}}
    .skill_up
