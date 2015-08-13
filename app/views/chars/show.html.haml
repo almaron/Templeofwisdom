@@ -27,14 +27,14 @@
           %b Животное:
           {{char.profile.beast}}
         .profile-element.skills
-          .edit{'ng-if'=>'char.userEditable', 'ng-click'=>'editSkills("phisic")'} &#10548;
+          .edit{'ng-if'=>'char.userEditable || char.adminEditable', 'ng-click'=>'editSkills("phisic")'} &#10548;
           %b.title Навыки:
           %ul
             %li{'ng-repeat'=>'skill in char.phisic_skills'}
               %a.skill-name{href: '#'} {{skill.skill_name}}
               — {{skill.level_name}}
         .profile-element.skills
-          .edit{'ng-if'=>'char.userEditable', 'ng-click'=>'editSkills("magic")'} &#10548;
+          .edit{'ng-if'=>'char.userEditable || char.adminEditable ', 'ng-click'=>'editSkills("magic")'} &#10548;
           %b.title Способности:
           %ul
             %li{'ng-repeat'=>'skill in char.magic_skills'}
