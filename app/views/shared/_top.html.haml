@@ -2,6 +2,13 @@
   = link_to "", root_path, class: "logo", title: "На главную"
   = link_to "Линь Ян Шо", "/temple", class: "ljs-text", title: "В Монастырь"
   = render 'shared/login_block'
+- if Rails.env == 'staging'
+  .menu.upper-menu
+    .center
+      Это тестовая версия сайта. Пожалуйста, воспользуйтесь
+      %a{href:'http://templeofwisdom.ru'}
+        основным сайтом
+      для игры.
 .menu
   .textsize{title: "Размер шрифта"}
     %span.textsize-a{"ng-click"=>"dropFont()"} A
