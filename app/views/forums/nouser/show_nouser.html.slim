@@ -1,0 +1,25 @@
+.forum-ctrl
+  .path
+    span
+      a href= "/temple"
+        ' Список форумов
+      span.fa.fa-angle-double-right
+      '
+    - @forum.path.each do |item|
+      span
+        => link_to item.name, forum_path(item)
+        - unless item == @forum.path.last
+          span.fa.fa-angle-double-right
+        '
+
+  h1
+    = @forum.name
+
+  - if @forum.is_category?
+    .category-wrap
+      = render 'forums/nouser/forum_category'
+
+  - else
+    = render 'forums/nouser/forum_topics'
+
+
