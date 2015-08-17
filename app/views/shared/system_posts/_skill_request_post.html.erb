@@ -1,3 +1,5 @@
 Персонажу [b]<%= request.char_name %>[/b] <%= request.add_new? ? 'добавить' : 'поднять' %> <%= request.skill.skill_type=='phisic' ? 'навык' : 'способность' %> [b]<%= request.skill_name %>[/b] <%= "до уровня [b]#{request.level_name}[/b]" unless request.add_new? %>.
 
+<% if request.level_id > 3 %>[url=<%= request.comment %>]Ссылка на отыгрыш[/url]<% end %>
+
 Текущее количество баллов: [b]<%= request.char.profile.points %>[/b]

@@ -9,6 +9,7 @@ class SkillRequest < ActiveRecord::Base
   belongs_to :forum_post
 
   after_initialize :calculate_points_and_roles, if: ->{ new_record? }
+  validates_presence_of :comment, if: -> { level_id > 3 }
 
   ['char','skill','user','level'].each do |item|
     define_method "#{item}_name" do
@@ -21,7 +22,7 @@ class SkillRequest < ActiveRecord::Base
   end
 
   def initiate!(user)
-    if acceptable? && ( post_id = SystemPosts::SkillRequestPost.new(user, self).create )
+    if valid? && acceptable? && ( post_id = SystemPosts::SkillRequestPost.new(user, self).create )
       self.forum_post_id = post_id
       save
     end

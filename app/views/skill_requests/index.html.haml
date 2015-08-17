@@ -19,7 +19,11 @@
         %span.separator{} -
         %strong.request-level
           #{request.level.name}
-        ( Очков: #{request.points}, Ролевок: #{request.roles} )
+        ( Очков: #{request.points}, Ролевок: #{request.roles}
+        - if request.comment.present?
+          &nbsp;
+          = link_to '', request.comment, target: '_blank', class: 'fa fa-comment', alt: 'Ссылка на отыгрыш'
+        &nbsp;)
         - if params[:action] == 'index'
           %span.separator{} -
           %span.request-button

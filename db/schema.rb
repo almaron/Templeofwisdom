@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708173551) do
+ActiveRecord::Schema.define(version: 20150817170731) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -423,6 +423,7 @@ ActiveRecord::Schema.define(version: 20150708173551) do
     t.integer  "roles"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment"
   end
 
   add_index "skill_requests", ["char_id"], name: "index_skill_requests_on_char_id", using: :btree

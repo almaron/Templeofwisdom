@@ -45,6 +45,7 @@ ru:
       skill_requests:
         create:
           failure: "Не хватает очков или ролевок."
+          invalid: 'Нет ссылки на отыгрыш'
       reset_password:
         failure: "Пароли не совпадают, попробуйте снова."
 

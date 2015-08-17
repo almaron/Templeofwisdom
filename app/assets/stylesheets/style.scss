@@ -472,7 +472,6 @@ body {
   right:20px;
   bottom:0px;
   width:280px;
-  height:300px;
   background: $color-brown3 - 10;
   border: 2px solid $color-brown4;
   border-bottom:0px;
@@ -499,29 +498,37 @@ body {
 	padding:2px 0;
   }
 
-  .skill_row {
-	padding: 5px 0;
-	display: block;
-	form {
-	  display: inline;
-	}
-	[type="submit"] {
-	  border: none;
-	  background: $color-green8;
-	  padding:1px;
-	  padding-bottom: 2px;
-	  padding-top: 0px;
-	  width:17px;
-	  height:17px;
-	  font-size:0.9em;
-	  line-height: 19px;
-	  position: relative;
-	  cursor: pointer;
-	  &:hover {
-		background: $color-green8 - 10;
-	  }
-	}
-  }
+    .skill_up {
+      .skill_row {
+        padding: 5px 0;
+        display: block;
+        form {
+          display: inline;
+        }
+        [type="submit"] {
+          border: none;
+          background: $color-green8;
+          padding: 1px;
+          padding-bottom: 2px;
+          padding-top: 0px;
+          width: 17px;
+          height: 17px;
+          font-size: 0.9em;
+          line-height: 19px;
+          position: relative;
+          cursor: pointer;
+          &:hover {
+            background: $color-green8 - 10;
+          }
+        }
+      }
+      .skill_link {
+        padding-bottom: 20px;
+        span {
+          display: block;
+        }
+      }
+    }
 
   .div_edit {
     textarea {
@@ -3082,6 +3089,9 @@ td.none,td.none:hover, tr:hover td.none {
         .fa-times:hover {
           color: $color-red;
         }
+      }
+      a.fa {
+        text-decoration: none;
       }
     }
   }

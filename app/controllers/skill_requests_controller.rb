@@ -14,12 +14,13 @@ class SkillRequestsController < ApplicationController
   def create
     char = Char.find(params[:id])
     level = char.get_skill_level(params[:skill_id]) + 1
-    @request = SkillRequest.new(char_id: char.id, user_id: char.owner.id, skill_id: params[:skill_id], level_id: level)
+    @request = SkillRequest.new(char_id: char.id, user_id: char.owner.id, skill_id: params[:skill_id], level_id: level, comment: params[:link])
     respond_to do |format|
       if @request.initiate! current_user
         format.json { render json: {success: I18n.t('messages.notice.skill_requests.create.success')} }
       else
-        format.json { render json: {failure: I18n.t('messages.alert.skill_requests.create.failure')}, status: :unprocessable_entity}
+        message = @request.valid? ? 'failure' : 'invalid'
+        format.json { render json: {failure: I18n.t("messages.alert.skill_requests.create.#{message}")}, status: :unprocessable_entity}
       end
     end
   end

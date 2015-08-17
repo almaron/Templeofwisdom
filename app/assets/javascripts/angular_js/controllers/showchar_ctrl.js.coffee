@@ -1,5 +1,6 @@
 @app.controller "ShowCharCtrl", [ "$scope", "$http", "Char", ($scope, $http, Char) ->
 
+  $scope.upSkillLink = ''
 
   $scope.loadChar = (char_id) ->
     char = Char.get {id: char_id}, ->
@@ -68,8 +69,8 @@
       $(document).scrollTop 200
     $scope.editChar = false
 
-  $scope.upSkill = (skill_id) ->
-    $http.post('/chars/'+$scope.char.id+'/request_skill/'+skill_id+'.json').success(
+  $scope.upSkill = (skill_id, link) ->
+    $http.post('/chars/'+$scope.char.id+'/request_skill/'+skill_id+'.json', {link: link}).success(
       (data) ->
         $scope.flashMessage data.success
         showMessage()
@@ -78,4 +79,5 @@
         $scope.flashMessage data.failure, 'alert'
         showMessage()
     )
+    angular.element($('#upSkillLink')).scope().upSkillLink = ''
 ]
