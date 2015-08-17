@@ -7,6 +7,7 @@ class Forum < ActiveRecord::Base
   mount_uploader :image, ForumUploader
 
   default_scope {order(:sort_order)}
+  scope :visible, -> { where(hidden: false) }
 
   def add_post(post)
     s_path.update_all({
@@ -16,21 +17,21 @@ class Forum < ActiveRecord::Base
       last_post_char_id: post.char_id,
       last_post_at: post.created_at
     })
-    s_path.update_all("posts_count = posts_count + 1")
+    s_path.update_all('posts_count = posts_count + 1')
   end
 
   def add_topic
-    s_path.update_all("topics_count = topics_count + 1")
+    s_path.update_all('topics_count = topics_count + 1')
   end
 
 
   def remove_post(post)
     s_path.each { |f| f.update_last_post if post.id == f.last_post_id }
-    s_path.update_all("posts_count = posts_count - 1")
+    s_path.update_all('posts_count = posts_count - 1')
   end
 
   def remove_topic(topic = nil)
-    s_path.update_all("topics_count = topics_count - 1")
+    s_path.update_all('topics_count = topics_count - 1')
     if topic
       s_path.each { |f| f.update_last_post if topic.id == f.last_post_topic_id }
     end
@@ -99,11 +100,11 @@ class Forum < ActiveRecord::Base
     children.select {|f| f.is_visible?(user)}
   end
 
-  def child_categories(user)
+  def child_categories(user=nil)
     self.children.select {|f| f.is_visible?(user) && f.is_category?}
   end
 
-  def child_forums(user)
+  def child_forums(user=nil)
     self.children.select {|f| f.is_visible?(user) && !f.is_category?}
   end
 

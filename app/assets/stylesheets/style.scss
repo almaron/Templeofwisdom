@@ -2843,6 +2843,9 @@ td.none,td.none:hover, tr:hover td.none {
           color: $color-grey;
         }
       }
+      a {
+        text-decoration: none;
+      }
     }
   }
   &.align-right {

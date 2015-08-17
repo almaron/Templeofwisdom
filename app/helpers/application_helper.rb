@@ -16,4 +16,12 @@ module ApplicationHelper
     flash[flash.keys.first]
   end
 
+  def forum_navigation(pages)
+    will_paginate pages, class: 'pagination paginator align-center', renderer: PageRenderer
+  end
+
+  def forum_link(forum)
+    link_to forum.name, forum_path(forum)
+  end
+
 end

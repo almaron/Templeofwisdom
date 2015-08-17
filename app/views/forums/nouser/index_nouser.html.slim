@@ -21,11 +21,12 @@
             td.f-sections
               .f-topics-section-name
                 = link_to child.name, forum_path(child)
-              - if child.children.count > 0
+              - subforums = child.children.visible
+              - if subforums.count > 0
               .f-topics-subsections
                 span.bold
                   ' Подфорумы:
-                - child.children.each do |subforum|
+                - subforums.each do |subforum|
                   span
                     = link_to subforum.name, forum_path(subforum)
                     - unless subforum == child.children.last
