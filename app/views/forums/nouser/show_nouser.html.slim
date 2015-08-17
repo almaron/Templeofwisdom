@@ -16,8 +16,7 @@
     = @forum.name
 
   - if @forum.is_category?
-    .category-wrap
-      = render 'forums/nouser/forum_category'
+    = render 'forums/nouser/forum_category'
 
   - else
     = render 'forums/nouser/forum_topics'

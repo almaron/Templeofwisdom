@@ -1,31 +1,60 @@
-- if @forum.child_categories.count > 0
-  table.forum-tab
-    - @forum.child_categories.each do |cat|
+.category-wrap
+  - if @forum.child_categories.count > 0
+    table.forum-tab
+      - @forum.child_categories.each do |cat|
+        tbody
+          tr
+            th.f-sections colspan="2" Форумы
+            th.f-topics Темы
+            th.f-messages Сообщения
+            th.f-lastmessage Последнее сообщение
+          tr
+            td.f-section-name colspan="5"
+              = forum_link cat
+          - cat.children.visible.each do |child|
+            tr
+              td.f-icon.iforum.read
+                span.forum-f-read
+              td.f-sections
+                .f-topics-section-name
+                  = forum_link child
+                - children = child.children.visible
+                - if children.any?
+                  .f-topics-subsections
+                    span.bold Подфорумы:
+                    - children.each do |ch|
+                      span
+                        = forum_link ch
+                        - unless ch == children.last
+                          span.separator |
+              td.f-topics
+                = child.topics_count
+              td.f-messages
+                = child.posts_count
+              td.f-lastmessage
+                - if child.last_post_id
+                  .last_post-wrap
+                    .f-lastmessage-date
+                      = l child.last_post_at, format: :full
+                    .f-lastmessage-link
+                      => link_to child.last_post_char_name, char_path(child.last_post_char_name), class: 'f-lastmessage-author'
+                      => link_to ' ➜ ', "/temple/#{child.id}/t/#{child.last_post_topic_id}?post=#{child.last_post_id}", class: 'f-lastmessage-goto'
+
+  - if @forum.child_forums.count > 0
+    table.forum-tab
       tbody
         tr
           th.f-sections colspan="2" Форумы
           th.f-topics Темы
           th.f-messages Сообщения
           th.f-lastmessage Последнее сообщение
-        tr
-          td.f-section-name colspan="5"
-            = forum_link cat
-        - cat.children.visible.each do |child|
+        - @forum.child_forums.each do |child|
           tr
             td.f-icon.iforum.read
               span.forum-f-read
             td.f-sections
               .f-topics-section-name
                 = forum_link child
-              - children = child.children.visible
-              - if children.any?
-                .f-topics-subsections
-                  span.bold Подфорумы:
-                  - children.each do |ch|
-                    span
-                      = forum_link ch
-                      - unless ch == children.last
-                        span.separator |
             td.f-topics
               = child.topics_count
             td.f-messages
@@ -38,31 +67,3 @@
                   .f-lastmessage-link
                     => link_to child.last_post_char_name, char_path(child.last_post_char_name), class: 'f-lastmessage-author'
                     => link_to ' ➜ ', "/temple/#{child.id}/t/#{child.last_post_topic_id}?post=#{child.last_post_id}", class: 'f-lastmessage-goto'
-
-- if @forum.child_forums.count > 0
-  table.forum-tab
-    tbody
-      tr
-        th.f-sections colspan="2" Форумы
-        th.f-topics Темы
-        th.f-messages Сообщения
-        th.f-lastmessage Последнее сообщение
-      - @forum.child_forums.each do |child|
-        tr
-          td.f-icon.iforum.read
-            span.forum-f-read
-          td.f-sections
-            .f-topics-section-name
-              = forum_link child
-          td.f-topics
-            = child.topics_count
-          td.f-messages
-            = child.posts_count
-          td.f-lastmessage
-            - if child.last_post_id
-              .last_post-wrap
-                .f-lastmessage-date
-                  = l child.last_post_at, format: :full
-                .f-lastmessage-link
-                  => link_to child.last_post_char_name, char_path(child.last_post_char_name), class: 'f-lastmessage-author'
-                  => link_to ' ➜ ', "/temple/#{child.id}/t/#{child.last_post_topic_id}?post=#{child.last_post_id}", class: 'f-lastmessage-goto'
