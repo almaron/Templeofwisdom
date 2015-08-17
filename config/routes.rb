@@ -62,6 +62,9 @@ Rails.application.routes.draw do
   resources :char_avatars, only:[:create, :update, :destroy], defaults: {format: :json}
 
   # Forum routes
+  get '/temple/viewtopic.php' => 'redirects/topic_redirects#show'
+  get '/temple/viewforum.php' => 'redirects/forum_redirects#show'
+
   resources :forums, path: 'temple', only:[:index, :show] do
     collection do
       resource :move_topic, only: [:show, :update, :destroy, :create], controller: :move_topic

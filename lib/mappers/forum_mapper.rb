@@ -4,8 +4,17 @@ module Mappers
       def map
         map = []
         db.query(query).each do |f|
-          forum = Forum.find_or_create_by name: f['name']
-          map[f['id']] = forum.id
+          forum = Forum.find_by name: f['name']
+          until false do
+            if forum
+              map[f['id']] = forum.id
+              break
+            else
+              puts 'Форум не найден, введите id форума: '
+              fid = STDIN.gets.strip.to_i
+              forum = Forum.find_by id: fid
+            end
+          end
         end
         map
       end
@@ -20,7 +29,7 @@ module Mappers
       end
 
       def db
-        @db ||= Mysql2::Client.new host: 'templeofwisdom.ru', username: 'bao', password: 'malkavian', database: 'temple_forum'
+        @db ||= Mysql2::Client.new host: 'old.templeofwisdom.ru', username: 'bao', password: 'malkavian', database: 'temple_forum'
       end
     end
   end
