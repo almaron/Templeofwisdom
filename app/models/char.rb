@@ -149,7 +149,9 @@ class Char < ActiveRecord::Base
   has_many :char_roles, dependent: :destroy
   has_many :role_skills, :through => :char_roles
 
-  #Skill Requests
+  # Skill Requests
+
+  has_many :skill_requests
 
   def has_enough_points?(amount)
     prof = CharProfile.find_or_create_by char_id: self.id
