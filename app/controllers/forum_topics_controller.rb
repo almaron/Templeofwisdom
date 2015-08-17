@@ -21,8 +21,14 @@ class ForumTopicsController < ApplicationController
   def show
     respond_to do |format|
       if @topic.is_available?(current_user) && topic_in_place
-        @current_page = ((@topic.post_ids.index(params[:post].to_i).to_f + 1)/ 15).ceil if params[:post] && @topic.post_ids.include?(params[:post].to_i)
-        format.html { }
+        @current_page = params[:post] && @topic.post_ids.include?(params[:post].to_i) ? ((@topic.post_ids.index(params[:post].to_i).to_f + 1)/ 15).ceil : nil
+        format.html {
+          unless current_user
+            @posts = @topic.posts.eager_load(:char, :avatar).paginate(page: @current_page || params[:page], per_page: 15)
+            @path = @topic.forum.path
+            render 'forum_topics/nouser/show'
+          end
+        }
         format.json {
           if current_user
            @chars = @topic.forum.technical > 0 ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where(status_id: 5)
@@ -96,7 +102,7 @@ class ForumTopicsController < ApplicationController
   private
 
   def get_topic
-    @topic = ForumTopic.find_by(id:params[:id])
+    @topic = ForumTopic.eager_load(:forum).find_by(id:params[:id])
     unless @topic
       respond_to do |format|
         format.html { redirect_to forum_path(params[:forum_id]) }

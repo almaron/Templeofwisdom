@@ -1,0 +1,36 @@
+.forum-ctrl
+  .path
+    span
+      a href="/temple"
+        ' Список форумов
+      span.fa.fa-angle-double-right
+      '
+    - @path.each do |item|
+      span
+        => forum_link item
+        - unless item == @path.last
+          span.fa.fa-angle-double-right
+          '
+
+  h1.forum-topic-head
+    span.h1 #{@topic.head}
+
+  - if @topic.forum.description
+    .topic-list-description
+      .bold Описание локации:
+      div
+        = simple_format @topic.forum.description
+  .topic-posts-count
+    span
+      | Сообщений: #{@topic.posts_count}
+    span.fa.fa-arrows-h#forum-width
+  .forum-pagination
+    = forum_navigation @posts
+  table.forum-tab.one-message-tab
+    tr
+      th.f-message-author Автор
+      th.f-message-content Пост
+  = render 'forum_topics/nouser/posts_table'
+
+  .forum-pagination
+    = forum_navigation @posts

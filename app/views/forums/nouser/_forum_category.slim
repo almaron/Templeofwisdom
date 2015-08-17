@@ -21,12 +21,14 @@
                 - children = child.children.visible
                 - if children.any?
                   .f-topics-subsections
-                    span.bold Подфорумы:
+                    span.bold
+                      ' Подфорумы:
                     - children.each do |ch|
                       span
                         = forum_link ch
                         - unless ch == children.last
-                          span.separator |
+                          span.separator
+                            '  |
               td.f-topics
                 = child.topics_count
               td.f-messages

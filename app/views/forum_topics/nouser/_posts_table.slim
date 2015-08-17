@@ -1,0 +1,38 @@
+- @posts.each do |post|
+  table.forum-tab.one-message-tab id="pid_#{post.id}" class="#{'active ' if params[:post] == post.id.to_s}#{'last' if post == @posts.last}"
+    tr
+      td.f-message-author
+        .message-author-name
+          - if post.char.group_id > 1
+            = link_to post.char.name, char_path(post.char), target: '_blank'
+          - else
+            span
+              = post.char.name
+        .message-author-category
+          = post.char.status_line || I18n.t("char_groups.names.#{post.char.group.name}")
+        - if post.avatar.image?
+          .message-author-avatar
+            = image_tag post.avatar.image_url(:thumb)
+        .message-author-onoff.offline
+        .message-author-count
+      td.f-message-content
+        .message-date
+          = link_to '', "#{forum_topic_path(@topic.forum_id, @topic.id)}?post=#{post.id}", class: 'fa fa-external-link'
+          span
+            = l post.created_at, format: :full
+        .message-text
+          div
+            = raw post.text.bbcode_to_html_with_formatting
+          .signature
+            = raw post.char.signature.bbcode_to_html_with_formatting
+          - if post.commented_at
+            .message-comment
+              .date #{ l post.commented_at, format: :full }
+              .bold
+                ' #{post.commenter}:
+              .comment
+                = simple_format post.comment
+    tr
+      td.f-message-more
+      td.f-message-options
+

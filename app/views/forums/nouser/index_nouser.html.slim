@@ -23,15 +23,15 @@
                 = link_to child.name, forum_path(child)
               - subforums = child.children.visible
               - if subforums.count > 0
-              .f-topics-subsections
-                span.bold
-                  ' Подфорумы:
-                - subforums.each do |subforum|
-                  span
-                    = link_to subforum.name, forum_path(subforum)
-                    - unless subforum == child.children.last
-                      span.separator 
-                        '  |
+                .f-topics-subsections
+                  span.bold
+                    ' Подфорумы:
+                  - subforums.each do |subforum|
+                    span
+                      = link_to subforum.name, forum_path(subforum)
+                      - unless subforum == child.children.last
+                        span.separator
+                          '  |
             td.f-topics
               = child.topics_count
             td.f-messages
