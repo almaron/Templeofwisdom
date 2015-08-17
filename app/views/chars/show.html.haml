@@ -31,14 +31,14 @@
           %b.title Навыки:
           %ul
             %li{'ng-repeat'=>'skill in char.phisic_skills'}
-              %a.skill-name{href: '#'} {{skill.skill_name}}
+              %a.skill-name{href: '/skills/{{skill.skill_id}}#{{skill.level_id}}', target: '_blank'} {{skill.skill_name}}
               — {{skill.level_name}}
         .profile-element.skills
           .edit{'ng-if'=>'char.userEditable || char.adminEditable ', 'ng-click'=>'editSkills("magic")'} &#10548;
           %b.title Способности:
           %ul
             %li{'ng-repeat'=>'skill in char.magic_skills'}
-              %a.skill-name{href: '#'} {{skill.skill_name}}
+              %a.skill-name{href: '/skills/{{skill.skill_id}}#{{skill.level_id}}', target: '_blank'} {{skill.skill_name}}
               — {{skill.level_name}}
         .profile-element
           %b.title Образ на аватаре:
@@ -54,7 +54,7 @@
           %b.title Подпись:
           %div{'ng-bind-html'=>"char.signature_show | trustHtml"}
         .profile-element
-          %a{href: '#'} ← Правила РПГ
+          %a{href: '/pages/rpg_rules', target: '_blank'} ← Правила РПГ
       %td.profile-content
         %toggle-text{title:'Биография', content:'char.profile.bio'}
         %toggle-text{title:'Физические данные', content:'char.profile.phisics'}
