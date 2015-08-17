@@ -152,6 +152,8 @@ Rails.application.routes.draw do
   get '/proverb' => 'proverb#show'
   get '/weather' => 'weather#show'
 
+  get '/ankets/profile.html' => 'redirects/char_redirects#show'
+
   root 'pages#show', root: true
 
 end

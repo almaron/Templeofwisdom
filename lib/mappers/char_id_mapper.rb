@@ -10,7 +10,7 @@ module Mappers
 
     def map
       map = []
-      db.query('SELECT id, name FROM anketa WHERE id IN (SELECT DISTINCT char_id FROM a_rolls)').each do |row|
+      db.query('SELECT id, name FROM anketa').each do |row|
         name = row['name'].strip
         char = Char.find_by name: name
         if char
