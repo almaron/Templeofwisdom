@@ -13,8 +13,7 @@ class CharRole < ActiveRecord::Base
 
   after_initialize :set_points
   before_save :calculate_points
-  after_create :add_points_to_char
-  after_update :recalculate_points
+  after_save :add_points_to_char
 
   private
 
@@ -23,25 +22,23 @@ class CharRole < ActiveRecord::Base
   end
 
   def add_points_to_char
-    profile.update(points: profile.points + points)
+    diff_points = profile.points + self.points - self.staged_points
+    profile.update(points: diff_points)
   end
 
   def set_points
     if self.new_record?
-     self.logic_points  ||= 10
-     self.style_points  ||= 10
-     self.skill_points  ||= 10
-     self.volume_points ||= 20
-     self.added_points  ||= 0
+      self.logic_points  ||= 10
+      self.style_points  ||= 10
+      self.skill_points  ||= 10
+      self.volume_points ||= 20
+      self.added_points  ||= 0
+      self.staged_points = 0
     else
       self.staged_points = self.points
     end
   end
 
-  def recalculate_points
-    diff_points = profile.points + self.points - self.staged_points
-    profile.update(points: diff_points)
-  end
 
   def profile
     @profile ||= CharProfile.find_by(char_id: self.char_id)
