@@ -10,6 +10,7 @@ class Role < ActiveRecord::Base
   before_save :parse_paths
 
   after_create :destroy_app
+  after_initialize :set_paths
 
   def self.build_from_app(app_id=nil)
     return new unless app_id
@@ -29,6 +30,10 @@ class Role < ActiveRecord::Base
   def parse_paths
     self.topic_ids = paths.scan(/\/t\/(\d+)/).map {|item| item[0].to_i}.join(',')
     self
+  end
+
+  def set_paths
+    self.paths = topic_ids.split(',').map {|id| "/temple/t/#{id}"}.join("\n") if topic_ids.present?
   end
 
   def collect_char_posts
