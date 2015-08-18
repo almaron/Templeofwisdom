@@ -8,11 +8,11 @@
     %form{"ng-submit"=>(post == "newPost") ? "createPost(newPost)" : "updatePost(onePost)", name: "blog_form", "ng-model" => post, "novalidate"=>""}
       %span.bold Заголовок поста:
       %br/
-      %input.inp.inp-type2{name: "head", type: "text", "ng-model"=>"#{post}.head", "ng-required" => "true", "ng-minlength"=>"8"}
+      %input.inp.inp-type2{name: "head", type: "text", "ng-model"=>"#{post}.head"}
       .clear
       %span.bold Текст поста:
       %br/
-      %textarea.inp.inp-type2{name: "text", "ng-model"=>"#{post}.text", "ng-required" => "true", "ng-minlength"=>"16"}
+      %textarea.inp.inp-type2{name: "text", "ng-model"=>"#{post}.text", "ng-required" => "true", "ng-minlength"=>"8"}
       %br/
       %span.bold Подпись:
       %br/
