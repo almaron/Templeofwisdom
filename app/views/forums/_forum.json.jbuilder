@@ -4,6 +4,6 @@ json.isCategory forum.is_category?
 json.moderatable forum.is_moderatable?(current_user)
 unless forum.is_category?
   json.(forum, :hidden, :technical)
-  json.description forum.description.bbcode_to_html_with_formatting
+  json.description forum.description.bbcode_to_html_with_formatting if forum.description.present?
   json.image forum.image_url if forum.image?
 end
