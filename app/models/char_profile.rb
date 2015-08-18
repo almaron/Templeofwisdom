@@ -13,7 +13,7 @@ class CharProfile < ActiveRecord::Base
     if self.birth_date.present?
       this_year = AdminConfig.find_by(name: 'current_year').value.to_i
       this_season = SeasonTime.where("begins <= #{Time.now.strftime('%m%d')}").last.try(:season_id) || 1
-      new_age = this_season <= read_season_id ? self.age + (this_year - 2) : self.age + (this_year - 1)
+      new_age = this_season < read_season_id ? self.age + (this_year - 2) : self.age + (this_year - 1)
     else
       new_age = self.age
     end
@@ -24,7 +24,7 @@ class CharProfile < ActiveRecord::Base
     number = number.to_i
     this_year = AdminConfig.find_by(name: 'current_year').value.to_i
     this_season = SeasonTime.where("begins <= #{Time.now.strftime('%m%d')}").last.try(:season_id) || 1
-    self.age = this_season <= read_season_id ? number - (this_year-2) : number - (this_year - 1)
+    self.age = this_season < read_season_id ? number - (this_year-2) : number - (this_year - 1)
   end
 
   private
