@@ -14,7 +14,7 @@
         tr
           td.f-section-name colspan="5"
             = link_to forum.name, forum_path(forum)
-        - forum.children.each do |child|
+        - forum.children.visible.each do |child|
           tr
             td.f-icon.iforum.read
               span.forum-f-read
