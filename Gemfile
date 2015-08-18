@@ -54,6 +54,7 @@ gem 'tinymce-rails-langs'
 gem 'bb-ruby'
 
 gem 'sidekiq'
+gem 'whenever'
 
 gem 'will_paginate'
 gem 'ancestry'

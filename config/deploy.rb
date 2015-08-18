@@ -22,6 +22,8 @@ set :rvm_ruby_version, '2.1.2@temple'
 
 set :keep_releases, 8
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 namespace :deploy do
 
   desc 'Restart application'

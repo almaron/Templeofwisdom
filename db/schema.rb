@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817170731) do
+ActiveRecord::Schema.define(version: 20150818164713) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -452,6 +452,13 @@ ActiveRecord::Schema.define(version: 20150817170731) do
 
   add_index "spr_pages", ["slug"], name: "index_spr_pages_on_slug", using: :btree
   add_index "spr_pages", ["spr"], name: "index_spr_pages_on_spr", using: :btree
+
+  create_table "statistics_post_counts", force: true do |t|
+    t.date    "date"
+    t.integer "count"
+  end
+
+  add_index "statistics_post_counts", ["date"], name: "index_statistics_post_counts_on_date", using: :btree
 
   create_table "sys_logs", force: true do |t|
     t.string   "user"

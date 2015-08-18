@@ -1,0 +1,43 @@
+- content_for :path do
+  => link_to 'Личный кабинет', profile_path
+  span.fa.fa-arrow-circle-right
+  '
+  span
+    ' Статистика форума
+
+
+.posts-counts-wrap
+  .pagination
+    = forum_navigation @counts
+  .posts-count-list
+    .one-line.head-line
+      span.date
+        | Дата
+      span.count
+        | Число постов
+
+    .one-line.today
+      span.date
+        = l Date.today
+      span.count
+        = @today
+
+    - @counts.each do |count|
+      .one-line.other
+        span.date
+          = l count.date
+        span.count
+          = count.count
+  .pagination
+    = forum_navigation @counts
+
+  .posts-count-form.any-form
+    = form_tag statistics_post_counts_path, mathod: :post, remote: true, id: 'statsForm' do
+      .form-line
+        span.label
+          => label_tag :date, 'Введите дату:'
+        span.input
+          = text_field_tag :date, '', class: 'inp inp-type2', placeholder: 'дд.мм.гггг'
+        span.submit
+          = submit_tag 'Узнать число постов', class: 'btn btn-mini'
+

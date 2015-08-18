@@ -145,6 +145,9 @@ Rails.application.routes.draw do
     get '/logs' => 'logs#index', as: :logs
     get '/logs/:category' => 'logs#show', as: :log
     resources :mailings, except: [:edit, :update]
+    namespace :statistics do
+      resources :post_counts, only: [:index, :create]
+    end
   end
 
   get '/journal_tags' => 'journal_tags#index', defaults: {format: :json}
@@ -155,5 +158,7 @@ Rails.application.routes.draw do
   get '/ankets/profile.html' => 'redirects/char_redirects#show'
 
   root 'pages#show', root: true
+
+  get '/*path' => 'pages#show', defaults: {url: '404'}
 
 end
