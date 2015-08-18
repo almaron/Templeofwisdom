@@ -12,7 +12,7 @@
                 .image
                   = image_tag @forum.image_url
               .text
-                = simple_format @forum.description
+                = raw @forum.description.bbcode_to_html_with_formatting
       tr
         th.f-sections colspan="2" Темы
         th.f-author  Автор

@@ -3,6 +3,7 @@ json.last_post_at I18n.l(forum.last_post_at, format: :full) if forum.last_post_a
 json.isCategory forum.is_category?
 json.moderatable forum.is_moderatable?(current_user)
 unless forum.is_category?
-  json.(forum, :description, :hidden, :technical)
+  json.(forum, :hidden, :technical)
+  json.description forum.description.bbcode_to_html_with_formatting
   json.image forum.image_url if forum.image?
 end

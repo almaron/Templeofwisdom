@@ -56,7 +56,7 @@
             .forum-description
               .image{'ng-if'=>'forum.image'}
                 %img{'ng-src'=>'{{forum.image}}'}
-              .text{"ng-bind-html"=>"forum.description | simpleFormat"}
+              .text{"ng-bind-html"=>"forum.description"}
         %tr
           %th.f-sections{colspan: "2"} Темы
           %th.f-author Автор
