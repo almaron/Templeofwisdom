@@ -129,7 +129,7 @@ module Mappers
 
     def sub_content(text)
       text = text.gsub('<p>{{yandex_share}}</p>','')
-      text = text.gsub(/<p.*?>/,'').gsub('</p>',"\n").gsub('<br />', "\n").gsub("\r\n","\n").gsub("\n",'<brrrrrr>')
+      text = text.gsub(/<p.*?>/,'').gsub('</p>',"\n\n").gsub('<br />', "\n").gsub("\r\n",'').gsub("\n",'<brrrrrr>')
 
       text = text.gsub(/<strong>(.*?)<\/strong>/,'[b]\1[/b]')
       text = text.gsub(/<em>(.*?)<\/em>/,'[i]\1[/i]')
