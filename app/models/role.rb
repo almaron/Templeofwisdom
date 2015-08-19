@@ -30,6 +30,7 @@ class Role < ActiveRecord::Base
   def parse_paths
     self.topic_ids = paths.scan(/\/t\/(\d+)/).map {|item| item[0].to_i}.join(',')
     self.char_roles.each { |ch| ch.points_will_change! }
+    self
   end
 
   def set_paths
