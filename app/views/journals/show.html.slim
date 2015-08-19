@@ -5,7 +5,7 @@
       '
     - unless @page
       .mh-content
-        h1 #{@journal.head}
+        h1 #{@journal.description || @journal.head}
         .mh-newspaper
           = image_tag(@journal.cover_url) if @journal.cover?
     - else
