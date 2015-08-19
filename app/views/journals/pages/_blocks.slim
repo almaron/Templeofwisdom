@@ -1,0 +1,10 @@
+.mh-blocks-wrapper
+  - @page.blocks.each_with_index do |block, index|
+    .one-block class="#{index % 2 == 1 ? 'block-right' : 'block-left'}"
+      .block-inner
+        - if block.image?
+          span.img-block
+            = image_tag block.image_url, class: 'img'
+        span.text-block
+          = raw block.content.bbcode_to_html_with_formatting
+      .clear

@@ -1,0 +1,18 @@
+head
+  meta charset="UTF-8"
+  meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+  meta content="" name="description"
+  meta content="" name="author"
+  meta content="width=device-width; initial-scale=1.0" name="viewport"
+  meta content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" name="SKYPE_TOOLBAR"
+  link href="/apple-touch-icon.png" rel="apple-touch-icon"
+  link href="/favicon.ico" rel="icon" type="image/x-icon"
+  link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"
+  = javascript_include_tag :modernizr
+  title
+    = content_for?(:title) ? yield(:title) : t('common.meta.journal_title')
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  meta content="#{(content_for?(:meta_description) ? yield(:meta_description) : t('common.meta.journal_description'))}" type="description"
+  meta content="#{(content_for?(:meta_keywords) ? yield(:meta_keywords) : t('common.meta.journal_keywords'))}" type="keywords"

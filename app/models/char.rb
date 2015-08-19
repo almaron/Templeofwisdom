@@ -20,7 +20,7 @@ class Char < ActiveRecord::Base
   scope :present, -> {where('status_id > 0')}
 
   def default_avatar
-    avatars.find_by(default: true)
+    avatars.find_by(default: true) || avatars.first
   end
 
   def default_avatar=(avatar)

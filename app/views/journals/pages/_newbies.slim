@@ -1,0 +1,10 @@
+.newbe
+  table.newbe_tab
+    - @page.newbies.each do |char|
+      tr
+        td.ava
+          = image_tag char.default_avatar.image_url(:thumb) if char.default_avatar && char.default_avatar.image?
+        td.info
+          h4 #{char.name}
+          span.param #{t("char_groups.names.#{char.group.name}")}
+          span.param #{char.profile.place}

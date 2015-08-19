@@ -4,6 +4,9 @@ ru:
       title: 'Форумная Ролевая Игра Храм Мудрости'
       description: ''
       keywords: ''
+      journal_title: 'Монастырские Хроники'
+      journal_description: ''
+      journal_keywords: ''
     buttons:
       register: 'Зарегистрироваться'
       login: 'Войти'

@@ -1,13 +1,18 @@
-.page-wrapper#wrapper ng-controller='JournalCtrl' ng-init="initTag(#{@tag.id})"
-  tag-pager tag="tag" onset='getTagPage(page)'
+.page-wrapper#wrapper
+  = render 'journals/journal_pager'
   .main
     .col
       | &nbsp;
     .mh-content ng-hide='tag.current_page >= 0'
       h1 Тэг "#{@tag.name}"
       .mh-tag-page-count
-        | Найдено страниц: {{ tag.page_ids.length }}
-    .mh-content ng-show='tag.current_page >= 0'
-      = render partial: 'journals/page'
+        | Найдено страниц: #{@tag.page_ids.count}
+        - if @tag.page_ids.count > 0
+        .mh-tag-pages
+          ol
+            - @tag.pages.each do |page|
+              li
+                = link_to page.head, page_journal_path(page.journal_id, page.id, tag: @tag.id)
 
-  tag-pager tag="tag" onset='getTagPage(page)'
+
+  = render 'journals/journal_pager'

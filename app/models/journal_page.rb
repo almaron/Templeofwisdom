@@ -33,7 +33,7 @@ class JournalPage < ActiveRecord::Base
   end
 
   def newbies
-    content_line.present? ? Char.includes(:profile).where(id: content_line.split(',').map(&:to_i)) : []
+    content_line.present? ? Char.eager_load(:profile, :group).where(id: content_line.split(',').map(&:to_i)) : []
   end
 
   def add_image(url)
@@ -46,8 +46,12 @@ class JournalPage < ActiveRecord::Base
     self.blocks.destroy_all
   end
 
-  def image_url(index)
+  def image_url(index=0)
     images[index].image_url if images[index]
+  end
+
+  def thumb_url
+    images.first.image_url(:thumb) if images.any? && images.first.image?
   end
 
   def set_defaults(hit=false)
