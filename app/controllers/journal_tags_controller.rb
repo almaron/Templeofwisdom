@@ -15,7 +15,10 @@ class JournalTagsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render layout: 'journal' }
+      format.html {
+        @pages = @tag.pages
+        render layout: 'journal'
+      }
       format.json {
         render json: { page_ids: @tag.page_ids, name: @tag.name, pages: [], current_page: -1 }
       }

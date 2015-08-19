@@ -1,0 +1,7 @@
+.paginator.journal-pager
+  span.cover_link class="#{'active' unless @page}"
+    = link_to "Выпуск №#{@journal.id}", @journal
+  '  Страницы:
+  - @journal.pages.each_with_index do |page, index|
+    span class="#{'active' if @page && page.id == @page.id}"
+      = link_to "#{index+1}", page_journal_path(@journal, page.id)

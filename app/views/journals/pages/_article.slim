@@ -1,0 +1,5 @@
+= image_tag(@page.thumb_url, class:'img', align: 'left') if @page.thumb_url
+div
+  = raw @page.content_text.bbcode_to_html_with_formatting
+.article-author
+  => @page.content_line
