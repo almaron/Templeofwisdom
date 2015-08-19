@@ -1156,7 +1156,24 @@ body {
 //    font-weight: bold;
     font-size: 1.3em;
     font-style: italic;
+    .mh-tag-pages {
+      margin-top: 20px;
+      font-size: 0.9em;
+      font-style: normal;
+      ol {
+        margin-left: 15px;
+        li {
+          margin: 2px 0;
+          padding: 3px 0 3px 5px ;
+          &:hover {
+            background: $bgimg-beige;
+          }
+        }
+      }
+    }
   }
+
+
 
   .mh-newspaper {
 	padding: 20px 0;

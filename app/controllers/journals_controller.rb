@@ -18,7 +18,7 @@ class JournalsController < ApplicationController
 
   def page
     @page = JournalPage.includes(:images, :blocks, :tags, :journal).find(params[:page_id])
-    @journal = @page.journal
+    params[:tag] ? @tag = JournalTag.find(params[:tag]) : @journal = @page.journal
     respond_to do |format|
       format.html { render :show, layout: 'journal' }
       format.json {}

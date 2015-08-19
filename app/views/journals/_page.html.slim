@@ -32,7 +32,6 @@ h1
   .mh-gallery-wrapper ng-if='current_page.page_type=="gallery"'
     .content ng-bind-html='current_page.content' 
     fancy-gallery gallery='current_page.images'
-    = render 'yandex_share'
 .mh-page-tags-wrap  ng-show='current_page.tags.length > 0'  
   .mh-page-tags
     | Тэги:

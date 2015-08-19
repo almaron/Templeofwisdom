@@ -14,6 +14,14 @@
         .mh-newspaper
           = render "journals/pages/#{@page.page_type}"
           = render 'journals/pages/yandex_share'
+        - if @page.tags.any?
+          .mh-page-tags-wrap
+            .mh-page-tags
+              | Тэги:
+              - @page.tags.each do |tag|
+                span.onetag
+                  a href="/journals/tag/#{tag.name}" target='_blank'
+                    ' ##{tag.name}
 
   = render 'journal_pager'
 

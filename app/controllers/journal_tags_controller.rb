@@ -25,4 +25,5 @@ class JournalTagsController < ApplicationController
     end
   end
 
+
 end
