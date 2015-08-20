@@ -15,6 +15,7 @@ class ForumPost < ActiveRecord::Base
 
   def touch_topic
     self.topic.add_post(self)
+    ForumTopicRead.create(user_id: self.user_id, forum_topic_id: self.topic_id)
   end
 
   def remove_post
