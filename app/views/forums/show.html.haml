@@ -18,7 +18,7 @@
       %button.btn.btn-mini.forum-btn{"ng-if"=>"forum.moderatable", "ng-click"=>"clickModerate()"}
         %span
           Модерировать форум
-      %button.btn.btn-mini.forum-btn
+      %button.btn.btn-mini.forum-btn{'ng-click'=>'readTopics(forum.id)'}
         %span Отметить темы как прочтенные
       %a.btn.btn-mini.forum-btn{href:"/temple/{{forum.id}}/t/new"}
         %span Новая тема
@@ -61,7 +61,6 @@
           %th.f-sections{colspan: "2"} Темы
           %th.f-author Автор
           %th.f-messages Постов
-          -#%th.f-messages Просмотров
           %th.f-lastmessage Последнее сообщение
           %th.f-moderate{"ng-show"=>"moderateOn"}
             %input{type:"checkbox", id:"selectAll"}
@@ -83,7 +82,6 @@
           %td.f-author
             %a{href:"/chars/{{topic.char_id}}"} {{topic.poster_name}}
           %td.f-messages{} {{topic.posts_count}}
-          -#%td.f-messages{} {{topic.views_count}}
           %td.f-lastmessage
             .f-lastmessage-date{} {{topic.last_post_at}}
             .f-lastmessage-link

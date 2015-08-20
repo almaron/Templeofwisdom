@@ -7,7 +7,7 @@ module Mappers
     end
 
     def map
-      db.query('SELECT * FROM anketa ORDER BY name').each_with_index { |row, index| map_row row, index}
+      db.forum_query('SELECT * FROM anketa ORDER BY name').each_with_index { |row, index| map_row row, index}
     end
 
     private

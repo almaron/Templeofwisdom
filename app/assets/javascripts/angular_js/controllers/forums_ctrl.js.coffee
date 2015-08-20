@@ -4,6 +4,12 @@
   $scope.toForumId = 0
   $scope.loadedForum = false
   $scope.loadedTopics = false
+  $scope.unread_forums = []
+  $scope.unread_topics = []
+
+  $http.get('/temple/forum_reads.json').success (data) ->
+    $scope.unread_forums = data
+
 
   $http.get('/temple/move_topic.json').success (data) ->
     $scope.all_forums = data
@@ -21,6 +27,9 @@
       $scope.path = data.path
       $scope.forumPagination.cur = page unless $scope.forum.isCategory
       $scope.loadedForum = true
+    $http.get('/temple/forum_reads/'+id+'.json').success (data) ->
+      $scope.unread_topics = data
+
 
 
   $scope.$watch "forumPagination.cur", (newVal) ->
@@ -103,12 +112,30 @@
       breakSelect()
       $scope.moderateProgress = false
 
+  $scope.readAllTopics = ->
+    $http.post('/temple/forum_reads.json').success (data) ->
+      $scope.unread_forums = []
 
+  $scope.readTopics = (forum_id) ->
+    $http.post('/temple/forum_reads.json', {forum: forum_id}).success (data) ->
+      $scope.unread_topics = []
+
+  $scope.forumClass = (forum) ->
+    if $scope.unread_forums.indexOf(forum.id) > -1
+      si = 'unread'
+    else
+      si = 'read'
+    'forum-f-'+si
 
   $scope.topicClass = (topic) ->
-    if topic.closed
-      return 'forum-topic-read-locked'
+    if $scope.unread_topics.indexOf(topic.id) > -1
+      si = 'unread'
     else
-      return 'forum-topic-unread'
+      si = 'read'
+    if topic.closed
+      sc = '-locked'
+    else
+      sc = ''
+    'forum-topic-'+si+sc
 
 ]

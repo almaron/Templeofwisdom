@@ -5,7 +5,7 @@ module Cancans
 
   CANCANS.each do |can|
     define_method "can_#{can}?" do
-      cancans[can] > 0
+      cancans[can] > 0 || is_in?([:admin, :master])
     end
   end
 

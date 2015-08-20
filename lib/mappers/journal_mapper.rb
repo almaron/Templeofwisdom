@@ -13,7 +13,7 @@ module Mappers
     end
 
     def map_one(id)
-      raw = db.query("SELECT #{fields} FROM temple_main.hm_site_content WHERE parent = 113 AND `pagetitle` LIKE '%#{id}%'")
+      raw = db.forum_query("SELECT #{fields} FROM temple_main.hm_site_content WHERE parent = 113 AND `pagetitle` LIKE '%#{id}%'")
       map_journal raw.first if raw.any?
     end
 
@@ -84,46 +84,46 @@ module Mappers
     end
 
     def get_children(id=113, template = false)
-      db.query "SELECT #{fields} FROM temple_main.hm_site_content WHERE parent = #{id} #{'AND template > 12 ' if template}ORDER BY menuindex"
+      db.forum_query "SELECT #{fields} FROM temple_main.hm_site_content WHERE parent = #{id} #{'AND template > 12 ' if template}ORDER BY menuindex"
     end
 
     def first_child(id=113)
-      db.query("SELECT * FROM temple_main.hm_site_content where parent = #{id} order by menuindex LIMIT 1").first
+      db.forum_query("SELECT * FROM temple_main.hm_site_content where parent = #{id} order by menuindex LIMIT 1").first
     end
 
     def journal_image_url(id)
       id = first_child(id)['id']
-      raw = db.query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 14;")
+      raw = db.forum_query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 14;")
       raw.first['value'] if raw.any?
     end
 
     def newbies(id)
-      raw = db.query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 15;")
+      raw = db.forum_query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 15;")
       raw.first['value'].split(',').map {|i| char_map.index(i.to_i)}.join(',')
     end
 
     def article_image_url(id)
-      raw = db.query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 16")
+      raw = db.forum_query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 16")
       raw.first['value'] if raw.any?
     end
 
     def aticle_author(id)
-      raw = db.query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 17")
+      raw = db.forum_query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 17")
       raw.first['value'] if raw.any?
     end
 
     def blocks_content(id)
-      raw = db.query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid in (18,19,20) order by tmplvarid;")
+      raw = db.forum_query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid in (18,19,20) order by tmplvarid;")
       raw.to_a.map { |row| row['value'] }
     end
 
     def blocks_images(id)
-      raw = db.query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid in (21, 22, 23) order by tmplvarid;")
+      raw = db.forum_query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid in (21, 22, 23) order by tmplvarid;")
       raw.to_a.map { |row| row['value'] }
     end
 
     def gallery_urls(id)
-      raw = db.query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 28")
+      raw = db.forum_query("SELECT * FROM temple_main.hm_site_tmplvar_contentvalues where contentid = #{id} and tmplvarid = 28")
       raw.first['value'].split("\r\n").map { |r| r.split('|')[1]} if raw.any?
     end
 

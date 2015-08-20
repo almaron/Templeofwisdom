@@ -10,7 +10,7 @@
         %a{href: "/temple/{{cat.id}}"} {{cat.name}}
     %tr{"ng-repeat"=>"child in cat.children"}
       %td.f-icon.iforum.read
-        %span.forum-f-read
+        %span{'ng-class'=>'forumClass(child)'}
       %td.f-sections
         .f-topics-section-name
           %a{href: "/temple/{{child.id}}"} {{child.name}}
@@ -38,7 +38,7 @@
       %th.f-lastmessage Последнее сообщение
     %tr{"ng-repeat"=>"child in forum.child_forums"}
       %td.f-icon.iforum.read
-        %span.forum-f-read
+        %span{'ng-class'=>'forumClass(child)'}
       %td.f-sections
         .f-topics-section-name
           %a{href: "/temple/{{child.id}}"} {{child.name}}

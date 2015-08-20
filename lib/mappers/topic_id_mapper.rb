@@ -9,7 +9,7 @@ module Mappers
     end
 
     def map
-      temple_ids = db.query('SELECT topic_id from hor_topics order by topic_id asc').map {|row| row['topic_id']}
+      temple_ids = db.forum_query('SELECT topic_id from hor_topics order by topic_id asc').map {|row| row['topic_id']}
       map = []
       ForumTopic.unscoped.order(:id).pluck(:id).each_with_index do |id, index|
         map[id] = temple_ids[index]

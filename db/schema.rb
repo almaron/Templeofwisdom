@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818164713) do
+ActiveRecord::Schema.define(version: 20150819185144) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -157,6 +157,16 @@ ActiveRecord::Schema.define(version: 20150818164713) do
     t.datetime "updated_at"
     t.integer  "avatar_id"
   end
+
+  create_table "forum_topic_reads", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "forum_topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forum_topic_reads", ["forum_topic_id"], name: "index_forum_topic_reads_on_forum_topic_id", using: :btree
+  add_index "forum_topic_reads", ["user_id"], name: "index_forum_topic_reads_on_user_id", using: :btree
 
   create_table "forum_topics", force: true do |t|
     t.integer  "forum_id"

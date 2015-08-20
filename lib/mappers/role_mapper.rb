@@ -8,7 +8,7 @@ module Mappers
 
     def map
       role = Role.new
-      mdb.query('SELECT * FROM a_rolls ORDER BY id asc').each do |row|
+      mdb.forum_query('SELECT * FROM a_rolls ORDER BY id asc').each do |row|
         unless role.head == row['head']
           if role.head.present?
             role.head = role.head.strip
@@ -43,9 +43,9 @@ module Mappers
 
     def parse_ids(links)
       URI.extract(links).map do |link|
-        params = Rack::Utils.parse_nested_query(URI(link).query).symbolize_keys
+        params = Rack::Utils.parse_nested_query(URI(link).forum_query).symbolize_keys
         unless (topic_id = params[:t].to_i  )
-          topic_id = fdb.query("SELECT topic_id FROM hor_posts WHERE post_id = #{params[:p]}").first['topic_id']
+          topic_id = fdb.forum_query("SELECT topic_id FROM hor_posts WHERE post_id = #{params[:p]}").first['topic_id']
         end
         topics_map.index topic_id
       end

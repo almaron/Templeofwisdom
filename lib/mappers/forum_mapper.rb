@@ -3,7 +3,7 @@ module Mappers
     class << self
       def map
         map = []
-        db.query(query).each do |f|
+        db.forum_query(query).each do |f|
           forum = Forum.find_by name: f['name']
           until false do
             if forum

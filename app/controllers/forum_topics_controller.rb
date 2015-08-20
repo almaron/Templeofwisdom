@@ -23,7 +23,9 @@ class ForumTopicsController < ApplicationController
       if @topic.is_available?(current_user) && topic_in_place
         @current_page = params[:post] && @topic.post_ids.include?(params[:post].to_i) ? ((@topic.post_ids.index(params[:post].to_i).to_f + 1)/ 15).ceil : nil
         format.html {
-          unless current_user
+          if current_user
+            @topic.forum_topic_reads.find_or_create_by(user_id: current_user.id)
+          else
             @posts = @topic.posts.eager_load(:char, :avatar).paginate(page: @current_page || params[:page], per_page: 15)
             @path = @topic.forum.path
             render 'forum_topics/nouser/show'

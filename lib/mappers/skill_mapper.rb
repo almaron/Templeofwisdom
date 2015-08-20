@@ -3,7 +3,7 @@ module Mappers
     class << self
       def map
         map = []
-        db.query('SELECT id, name FROM a_skills').each do |sk|
+        db.forum_query('SELECT id, name FROM a_skills').each do |sk|
           map[sk['id']] = Skill.find_by(name: sk['name']).id
         end
         map

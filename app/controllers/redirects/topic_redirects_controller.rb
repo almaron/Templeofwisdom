@@ -18,7 +18,7 @@ class Redirects::TopicRedirectsController < ApplicationController
     @topic_id ||= if params[:t]
       params[:t].to_i
     elsif params[:p]
-      raw = db.query("select topic_id from hor_posts where post_id = #{params[:p]}")
+      raw = db.forum_query("select topic_id from hor_posts where post_id = #{params[:p]}")
       raw.first['topic_id'].to_i
     else
       0

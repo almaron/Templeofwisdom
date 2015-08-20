@@ -11,7 +11,7 @@ module Mappers
       load_chars
       puts 'Введите старт (0):'
       start_id = STDIN.gets.strip || 0
-      db.query("SELECT topic_id as id, forum_id, topic_title as head, topic_first_poster_name as poster FROM hor_topics WHERE topic_id >= #{start_id} ORDER BY topic_id").each_with_index do |row, index|
+      db.forum_query("SELECT topic_id as id, forum_id, topic_title as head, topic_first_poster_name as poster FROM hor_topics WHERE topic_id >= #{start_id} ORDER BY topic_id").each_with_index do |row, index|
         map_topic row, index
       end
       dump_chars
@@ -53,7 +53,7 @@ module Mappers
     end
 
     def build_posts(topic, id)
-      db.query(posts_query(id)).each do |row|
+      db.forum_query(posts_query(id)).each do |row|
         char = selected_char row['username']
         time = Time.at(row['post_time']).to_datetime
         topic.posts.build({
@@ -117,7 +117,7 @@ module Mappers
     end
 
     def create_avatar(char, name)
-      unless (row = db.query("select user_avatar from hor_users where username = '#{name}'").first)
+      unless (row = db.forum_query("select user_avatar from hor_users where username = '#{name}'").first)
         char.avatars.create({
           default: true,
           remote_image_url: "http://templeofwisdom.ru/temple/download/file.php?avatar=#{row['user_avatar']}"

@@ -8,12 +8,15 @@ class ForumTopic < ActiveRecord::Base
 
   belongs_to :forum
 
+  has_many :forum_topic_reads
+
   scope :shown, ->{ where(hidden:0) }
   default_scope ->{ order last_post_at: :desc }
 
   def add_post(post)
     update_last_post post
     forum.add_post post
+    flush_reads
   end
 
 
@@ -23,11 +26,11 @@ class ForumTopic < ActiveRecord::Base
   end
 
   def is_available?(user)
-    (!hidden? && !forum.hidden?)|| (user && (user.is_in?([:admin, :master]) || user.can_view_hidden?))
+    (!hidden? && !forum.hidden?)|| (user && user.can_view_hidden?)
   end
 
   def is_moderatable?(user)
-    user && (user.is_in?([:admin, :master]) || user.can_moderate_forum?)
+    user && user.can_moderate_forum?
   end
 
   def is_editable?(user)
@@ -64,6 +67,10 @@ class ForumTopic < ActiveRecord::Base
                     last_post_at: post.created_at,
                     posts_count: self.posts_count + inc
                 })
+  end
+
+  def flush_reads
+    forum_topic_reads.delete_all
   end
 
 end
