@@ -3448,7 +3448,37 @@ td.none,td.none:hover, tr:hover td.none {
   }
 
 }
+ // Черновики постов
 
+.drafts-wrapper {
+  font-size: 1.2em;
+  ol {
+    li {
+      margin-bottom: 7px;
+      padding: 3px 0 3px 10px;
+      &:hover {
+        //background: $bgimg-beige;
+      }
+      margin-left: 10px;
+      a {
+        text-decoration: none;
+        &:hover {
+          color: $color-brown1;
+        }
+        &.draft-link-head {
+          font-weight: bold;
+        }
+        &.fa {
+
+        }
+      }
+    }
+  }
+  .no-drafts {
+    font-style: italic;
+    text-align: center;
+  }
+}
 /*
 
 */

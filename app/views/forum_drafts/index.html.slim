@@ -1,0 +1,17 @@
+- content_for :path do
+  => link_to "Личный кабинет", profile_path
+  span.fa.fa-arrow-circle-right
+  '
+  span
+    ' Черновики постов
+
+.drafts-wrapper
+  - if @drafts.any?
+    ol.drafts-list
+      - @drafts.each do |draft|
+        li.one-draft id="draft_#{draft.id}"
+          => link_to draft.topic.head, forum_topic_path(draft.topic.forum_id, draft.topic_id), target: '_blank', class: 'draft-link-head'
+          => link_to '', draft_profile_path(draft), method: :delete, remote: true, class: 'fa fa-times', title: 'Удалить черновик', data: { confirm: 'Уверены?' }
+  - else
+    .no-drafts
+      ' У вас пока нет черновиков

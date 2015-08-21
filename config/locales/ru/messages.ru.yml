@@ -88,3 +88,7 @@ ru:
   auto_link:
     url_link: "ссылка"
     email_link: "этот адрес"
+  messagrs:
+    notice:
+      draft:
+        deleted: "Черновик успешно удален"

@@ -100,6 +100,9 @@ ru:
   statistics/post_counts:
     index:
       pagetitle: 'Статистика форума'
+  forum_drafts:
+    index:
+      pagetitle: 'Черновики постов'
 
   char_status:
     name:

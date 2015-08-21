@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     get 'skill_requests' => 'skill_requests#user_index', as: :skill_requests
     get 'drafts' => 'forum_drafts#index', as: :drafts
     post 'drafts' => 'forum_drafts#create'
+    delete 'drafts/:id' => 'forum_drafts#delete', as: :draft
   end
   resources :delegations, only: [:create, :destroy]
 
