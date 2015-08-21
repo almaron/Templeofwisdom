@@ -17,7 +17,6 @@ class ForumTopic < ActiveRecord::Base
     update_last_post post
     forum.add_post post
     flush_reads
-    flush_draft
   end
 
 
