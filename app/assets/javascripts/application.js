@@ -15,6 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 
 //= require lib/abstract-chosen
 //= require lib/select-parser
@@ -37,5 +38,4 @@
 //= require angular_js
 //= require admin_angular
 
-//= require jquery.turbolinks
 //= require banners

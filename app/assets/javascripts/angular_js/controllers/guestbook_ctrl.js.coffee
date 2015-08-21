@@ -1,4 +1,4 @@
-@app.controller "GuestBookCtrl", ["$scope","$window","GuestPost", ($scope, $window, GuestPost) ->
+@app.controller "GuestBookCtrl", ["$scope","GuestPost", ($scope, GuestPost) ->
 
   $scope.guestPagination = {}
 
@@ -34,7 +34,6 @@
   $scope.$watch 'guestPagination.cur', (newVal) ->
     if typeof newVal != 'undefined'
       $scope.loadPosts newVal
-#      $window.history.pushState({controller:"guestbook", action:"index", page:newVal},"","/guestbook?page="+newVal)
 
   $scope.getTotal = ->
     data = GuestPost.get_total {}, ->
