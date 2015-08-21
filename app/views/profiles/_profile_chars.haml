@@ -10,7 +10,7 @@
         Нет персонажей
     %tr{'ng-repeat'=>'char in own_chars'}
       %td.act-default
-        %span.fa{'ng-class'=>'isDefault(char)', 'ng-click'=>'setDefaultChar(char)'}
+        %span.fa{'ng-class'=>'isDefault(char)', 'ng-click'=>'setDefaultChar(char)', title:'Назначить по умолчанию'}
       %td.act-name
         %a{href: '{{char.char_url}}'} {{char.name}}
       %td.act-date-create{} {{char.regDate}}
