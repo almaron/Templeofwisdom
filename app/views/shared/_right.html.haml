@@ -33,4 +33,4 @@
   .block.blogshort
     = ssi '/mini_lists/blog'
   .block.banners
-    = render '/shared/banners'
+    = render '/shared/banners' if Rails.env.production?

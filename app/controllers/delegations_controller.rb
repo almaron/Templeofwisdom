@@ -17,6 +17,11 @@ class DelegationsController < ApplicationController
     end
   end
 
+  def update
+    current_user.default_char = params[:id]
+    render json: { success: true }
+  end
+
   def destroy
     @delegation = CharDelegation.find(params[:id]).destroy
     respond_to do |format|

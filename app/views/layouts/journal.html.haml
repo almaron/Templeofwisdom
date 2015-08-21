@@ -16,3 +16,4 @@
       .journal-wrapper
         = yield
       = render 'shared/bottom'
+    = render 'shared/counters' if Rails.env.production?

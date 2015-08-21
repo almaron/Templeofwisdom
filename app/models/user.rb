@@ -54,14 +54,14 @@ class User < ActiveRecord::Base
 
   def default_char=(char)
     char_id = char.is_a?(Char) ? char.id : char
-    if (cd = self.char_delegations.where(owner:1, char_id:char_id))
-      self.char_delegations.update_all(default:nil)
-      cd.first.update(default:1)
+    if (cd = self.char_delegations.find_by(owner:true, char_id:char_id))
+      self.char_delegations.update_all(default:false)
+      cd.update(default:true)
     end
   end
 
   def default_char
-    self.chars.where(char_delegations: {owner:1, default:1}).first
+    @default_char ||= self.chars.where(char_delegations: {owner:1, default:1}).first
   end
 
   def owned_chars

@@ -17,6 +17,17 @@
       $scope.allUsers = users
     )
 
+  $scope.setDefaultChar = (char) ->
+    if !char.default
+      $http.put('/delegations/'+char.id+'.json').success (data) ->
+        $scope.loadProfile()
+
+  $scope.isDefault = (char) ->
+    if char.default
+      'fa-circle'
+    else
+      'fa-circle-thin'
+
   $scope.authProviders = [
       {name:"ВКонтакте", provider:"vk"},
       {name:"Facebook", provider:"facebook"},

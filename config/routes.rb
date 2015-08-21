@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     post 'drafts' => 'forum_drafts#create'
     delete 'drafts/:id' => 'forum_drafts#delete', as: :draft
   end
-  resources :delegations, only: [:create, :destroy]
+  resources :delegations, only: [:create, :destroy, :update]
 
   # Chars routes
   resources :chars do
