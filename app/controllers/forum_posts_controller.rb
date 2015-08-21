@@ -32,6 +32,7 @@ class ForumPostsController < ApplicationController
       if (@post = ForumPost.create(post_params))
         Notes::Post.new.create params[:inform], @post.topic, @post
         Note::PostMaster.new.create @post.topic, @post if params[:inform_master]
+        ForumDraft.kill(@post.topic_id, current_user)
         format.html { redirect_to_topic }
         format.json { render partial: 'post', locals: {post:@post}}
       else

@@ -24,6 +24,11 @@
         .input-btn
           %button.btn.btn-mini{"ng-click"=>"addReply()"}
             Ответить
+          %button.btn.btn-mini{"ng-click"=>"sendDraft()"}
+            Сохранить черновик
+            %span.fa.fa-spinner.fa-pulse{'ng-show'=>'sendingDraft'}
+          %span.draft-save{'ng-show'=>'draftSent'}
+            {{draftSent}}
 
 
 

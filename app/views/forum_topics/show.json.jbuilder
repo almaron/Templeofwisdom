@@ -20,6 +20,10 @@ json.topic do
   end
 end
 
+if @draft
+  json.draft @draft.to_post
+end
+
 json.chars @chars do |char|
   json.(char, :id, :name)
   json.default char.default?(current_user)

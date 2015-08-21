@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
     groups.include? self.group.to_sym
   end
 
+  has_many :forum_drafts, dependent: :delete_all
+
   def destroyed?
     activation_state == 'destroyed'
   end

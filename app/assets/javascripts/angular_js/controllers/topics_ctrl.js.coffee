@@ -57,7 +57,11 @@
         $scope.topic = data.topic
         $scope.path = data.path
         $scope.chars = data.chars
-        flushNewPost()
+        if data.draft
+          $scope.sChar = Service.findBy($scope.chars, 'id', data.draft.char_id)
+          $scope.newPost = data.draft
+        else
+          flushNewPost()
         $scope.postPagination.total = data.topic.pages_count
         if options.post
           $scope.postPagination.cur = data.topic.current_page
@@ -127,9 +131,8 @@
       $scope.eChar = Service.findBy($scope.chars, 'id', post.char_id)
     else
       $http.get('/chars/'+post.char_id+'.json?short=true').success (data) ->
-        $scope.eChar = data
+        $scope.eresultChar = data
         $scope.selectedPost.setChar = data.name
-
 
   $scope.cancelEdit = ->
     $scope.selectedPost = {}
@@ -139,6 +142,25 @@
       $scope.cancelEdit()
       flushNewPost()
       $scope.loadPosts $scope.postPagination.cur
+
+  $scope.sendDraft = () ->
+    $scope.sendingDraft = true
+    $http.post(
+      '/profile/drafts.json?topic='+$scope.topic.id, {draft: $scope.newPost}
+    ).success(
+      (data) ->
+        $scope.sendingDraft = false
+        $scope.draftSent = data.success
+    ).error(
+      (data) ->
+        $scope.sendingDraft = false
+        $scope.draftSent = "Черновик не сохранен"
+    )
+    $timeout(
+      () ->
+        $scope.draftSent = null
+      2000
+    )
 
   $scope.toggleTopic = (hidden) ->
     Topic.update {forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id, topic:{ hidden:hidden }}
@@ -170,4 +192,5 @@
   $scope.sendPostInform = (comment) ->
     $http.post('/temple/master_note.json', {post_id: $scope.showPostInform, topic_id: $scope.topicInit.topic_id, comment: comment}).success (data) ->
       $scope.togglePostInform()
+
 ]

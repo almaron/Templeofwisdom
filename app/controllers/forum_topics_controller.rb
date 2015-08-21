@@ -33,7 +33,8 @@ class ForumTopicsController < ApplicationController
         }
         format.json {
           if current_user
-           @chars = @topic.forum.technical > 0 ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where(status_id: 5)
+            @draft = current_user.forum_drafts.find_by(topic_id: @topic.id)
+            @chars = @topic.forum.technical > 0 ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where(status_id: 5)
           end
         }
       elsif !topic_in_place

@@ -17,6 +17,7 @@ class ForumTopic < ActiveRecord::Base
     update_last_post post
     forum.add_post post
     flush_reads
+    flush_draft
   end
 
 
@@ -72,5 +73,4 @@ class ForumTopic < ActiveRecord::Base
   def flush_reads
     forum_topic_reads.delete_all
   end
-
 end

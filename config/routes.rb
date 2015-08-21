@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   get '/user_groups' => 'user_groups#index'
   resource :profile, only:[:show, :edit, :update] do
     get 'skill_requests' => 'skill_requests#user_index', as: :skill_requests
+    get 'drafts' => 'forum_drafts#index', as: :drafts
+    post 'drafts' => 'forum_drafts#create'
   end
   resources :delegations, only: [:create, :destroy]
 
