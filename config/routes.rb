@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   resource :profile, only:[:show, :edit, :update] do
     get 'skill_requests' => 'skill_requests#user_index', as: :skill_requests
   end
-  resources :delegations, only: [:create, :destroy]
+  resources :delegations, only: [:create, :destroy, :update]
 
   # Chars routes
   resources :chars do

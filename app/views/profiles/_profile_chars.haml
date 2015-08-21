@@ -5,42 +5,44 @@
   Мои персонажи
 .act-line
   %table.act-table
-    %tr{"ng-if"=>"own_chars.length<1"}
+    %tr{'ng-if'=>'own_chars.length < 1'}
       %td.nochars{}
         Нет персонажей
-    %tr{"ng-repeat"=>"char in own_chars"}
+    %tr{'ng-repeat'=>'char in own_chars'}
+      %td.act-default
+        %span.fa{'ng-class'=>'isDefault(char)', 'ng-click'=>'setDefaultChar(char)'}
       %td.act-name
-        %a{href: "{{char.char_url}}"} {{char.name}}
+        %a{href: '{{char.char_url}}'} {{char.name}}
       %td.act-date-create{} {{char.regDate}}
-      %td.act-status{"ng-class"=>"char.status_class"}
+      %td.act-status{'ng-class'=>'char.status_class'}
         %span{} {{char.status}}
       %td.act-delegate
         Делегирован игрокам:
-        %span.italic{"ng-if"=>"char.delegated_to.length<1"} никому
-        %span.player-one{"ng-repeat"=>"user in char.delegated_to"}
-          %a{href: "#{users_path}/{{user.user_id}}", title: "Окончание делегирования: {{user.end_date}}", target:"_blank"} {{user.username}}
-          %span.delete{title: "Отменить делегирование", "ng-click"=>"removeDelegation(char, user)"} ×
+        %span.italic{'ng-if'=>'char.delegated_to.length<1'} никому
+        %span.player-one{'ng-repeat'=>'user in char.delegated_to'}
+          %a{href: "#{users_path}/{{user.user_id}}", title: 'Окончание делегирования: {{user.end_date}}', target:'_blank'} {{user.username}}
+          %span.delete{title: 'Отменить делегирование', 'ng-click'=>'removeDelegation(char, user)'} ×
           |
-        %span{"ng-click"=>"newDelegation(char)", title:"Делегировать"}
+        %span{'ng-click'=>'newDelegation(char)', title:'Делегировать'}
           +
-%modal-dialog{show:"modalShown", head:"Делегирование персонажа", width:"600px"}
+%modal-dialog{show:'modalShown', head:'Делегирование персонажа', width:'600px'}
   .new_delegation_form
     .act-line
       Делегировать персонажа {{newChar.name}} игроку
-      %select{"ng-model"=>"newChar.user_id", "ng-options" => "user.id as user.name for user in newChar.users", chosen:"", "data-placeholder"=>" "}
+      %select{'ng-model'=>'newChar.user_id', 'ng-options' => 'user.id as user.name for user in newChar.users', chosen:'', 'data-placeholder'=>' '}
         %option
-      %input.btn.btn-standart{type:"submit", value:"ОК", "ng-click"=>"delegateChar(newChar)"}
+      %input.btn.btn-standart{type:'submit', value:'ОК', 'ng-click'=>'delegateChar(newChar)'}
 .act-subhead Переданные мне персонажи
 .act-line
   %table.act-table
-    %tr{"ng-if"=>"delegated_chars.length<1"}
+    %tr{'ng-if'=>'delegated_chars.length<1'}
       %td.nochars{}
         Нет персонажей
-    %tr{"ng-repeat"=>"char in delegated_chars"}
+    %tr{'ng-repeat'=>'char in delegated_chars'}
       %td.act-name
-        %a{href: "{{char.char_url}}"} {{char.name}}
+        %a{href: '{{char.char_url}}'} {{char.name}}
         %span.owner
           (владелец:
-          = succeed ")" do
+          = succeed ')' do
             %a{href: "#{users_path}/{{char.owner_id}}"} {{char.owner_name}}
       %td.act-date-end-of{} Дата окончания делегирования: {{char.end_date}}

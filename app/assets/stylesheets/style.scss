@@ -2220,6 +2220,12 @@ body {
         color: #847563;
       }
     }
+    .act-default {
+      width: 20px;
+      .fa-circle-thin {
+        cursor: pointer;
+      }
+    }
     .act-date-create {
       width:60px;
       text-align: center;
