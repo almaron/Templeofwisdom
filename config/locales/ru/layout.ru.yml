@@ -103,6 +103,9 @@ ru:
   forum_drafts:
     index:
       pagetitle: 'Черновики постов'
+  current_roles:
+    index:
+      pagetitle: 'Текущие сюжеты'
 
   char_status:
     name:

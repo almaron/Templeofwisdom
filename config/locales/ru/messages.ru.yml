@@ -57,6 +57,8 @@ ru:
       questions:
         create:
           failure: "Задать вопрос не удалось. Заполните все поля."
+      current_roles:
+        nochar: "Нет активных персонажей"
     errors:
       forum:
         topic_create: "Заголовок темы или текст поста пуст!"

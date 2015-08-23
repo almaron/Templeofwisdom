@@ -3,12 +3,12 @@
   span.fa.fa-arrow-circle-right
   '
   span
-    ' Текущие ролевки
+    ' Текущие сюжеты
 
 .topics-wrapper.drafts-wrapper
   - if @topics.any?
     = temple_navigation @topics
-    ol.drafts-list start=((params[:page].to_i || 1) - 1)*25+1
+    ol.drafts-list start=((params[:page] || 1).to_i - 1)*25+1
       - @topics.each do |topic|
         li.one-draft
           => link_to topic.head, forum_topic_path(topic.forum_id, topic.id, post: topic.last_post_id), target: '_blank', class: 'topic-link'

@@ -15,7 +15,7 @@ class CurrentRolesController < ApplicationController
   private
 
   def char_ids
-    current_user.chars.where('group_id > 1').pluck :id
+    current_user.chars.where('group_id > 1 AND status_id >= 5').pluck :id
   end
 
   def forum_ids
