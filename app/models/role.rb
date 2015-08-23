@@ -10,6 +10,7 @@ class Role < ActiveRecord::Base
   before_save :parse_paths
 
   after_create :destroy_app
+  after_create :close_topics
   after_initialize :set_paths
 
   def self.build_from_app(app_id=nil)
@@ -77,4 +78,7 @@ class Role < ActiveRecord::Base
     @char[id] ||= Char.find(id)
   end
 
+  def close_topics
+    ForumTopic.where('id IN (?)', topic_ids).update_all closed: true
+  end
 end
