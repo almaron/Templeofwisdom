@@ -1,6 +1,6 @@
 .forum-wrap
   .forum-pagination
-    = forum_navigation @topics
+    = temple_navigation @topics
   table.forum-tab.subforum-tab
     tbody
       - if @forum.description
@@ -39,4 +39,4 @@
               => link_to topic.last_post_char_name, char_path(topic.last_post_char_id), class: 'f-lastmessage-author'
               => link_to ' ➜ ', "/temple/#{@forum.id}/t/#{topic.id}?post=#{topic.last_post_id}", class: 'f-lastmessage-goto'
   .forum-pagination
-    = forum_navigation @topics
+    = temple_navigation @topics

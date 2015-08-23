@@ -3469,7 +3469,7 @@ td.none,td.none:hover, tr:hover td.none {
       a {
         text-decoration: none;
         &:hover {
-          color: $color-brown1;
+          color: $color-orange1;
         }
         &.draft-link-head {
           font-weight: bold;
@@ -3483,6 +3483,22 @@ td.none,td.none:hover, tr:hover td.none {
   .no-drafts {
     font-style: italic;
     text-align: center;
+  }
+  &.topics-wrapper {
+    font-size: 1em;
+    ol {
+      li {
+        margin-bottom: 3px;
+        .topic-link {
+          font-weight: bold;
+          font-size: 1.1em;
+        }
+        .last-post-info, .last-post-info a {
+          color: $color-orange2;
+          font-style: italic;
+        }
+      }
+    }
   }
 }
 /*

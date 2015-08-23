@@ -9,7 +9,7 @@ json.topic do
   json.isClosed @topic.closed?
   json.moderated @topic.is_moderatable?(current_user)
   json.editable @topic.is_editable?(current_user)
-  json.description @topic.forum.description.bbcode_to_html_with_formatting
+  json.description @topic.forum.description.try(:bbcode_to_html_with_formatting)
   json.pages_count (@topic.posts.count.to_f / 15).ceil
 
   json.current_page @current_page if @current_page

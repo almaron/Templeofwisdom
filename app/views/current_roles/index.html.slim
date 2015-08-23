@@ -1,0 +1,22 @@
+- content_for :path do
+  => link_to "Личный кабинет", profile_path
+  span.fa.fa-arrow-circle-right
+  '
+  span
+    ' Текущие ролевки
+
+.topics-wrapper.drafts-wrapper
+  - if @topics.any?
+    = temple_navigation @topics
+    ol.drafts-list start=((params[:page].to_i || 1) - 1)*25+1
+      - @topics.each do |topic|
+        li.one-draft
+          => link_to topic.head, forum_topic_path(topic.forum_id, topic.id, post: topic.last_post_id), target: '_blank', class: 'topic-link'
+          ' -
+          span.last-post-info
+            => l topic.last_post_at, format: :full
+            => link_to topic.last_post_char_name, char_path(topic.last_post_char_id)
+    = temple_navigation @topics
+  - else
+    .no-topics
+      ' Нет текущих ролевок

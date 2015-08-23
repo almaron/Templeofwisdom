@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     get 'drafts' => 'forum_drafts#index', as: :drafts
     post 'drafts' => 'forum_drafts#create'
     delete 'drafts/:id' => 'forum_drafts#delete', as: :draft
+    get 'roles' => 'current_roles#index', as: :roles
   end
   resources :delegations, only: [:create, :destroy, :update]
 

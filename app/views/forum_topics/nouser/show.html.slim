@@ -25,7 +25,7 @@
       | Сообщений: #{@topic.posts_count}
     span.fa.fa-arrows-h#forum-width
   .forum-pagination
-    = forum_navigation @posts
+    = temple_navigation @posts
   table.forum-tab.one-message-tab
     tr
       th.f-message-author Автор
@@ -33,4 +33,4 @@
   = render 'forum_topics/nouser/posts_table'
 
   .forum-pagination
-    = forum_navigation @posts
+    = temple_navigation @posts

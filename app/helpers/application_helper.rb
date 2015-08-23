@@ -16,7 +16,7 @@ module ApplicationHelper
     flash[flash.keys.first]
   end
 
-  def forum_navigation(pages)
+  def temple_navigation(pages)
     will_paginate pages, class: 'pagination paginator align-center', renderer: PageRenderer
   end
 

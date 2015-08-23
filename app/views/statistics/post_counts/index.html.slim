@@ -8,7 +8,7 @@
 
 .posts-counts-wrap
   .pagination
-    = forum_navigation @counts
+    = temple_navigation @counts
   .posts-count-list
     .one-line.head-line
       span.date
@@ -29,7 +29,7 @@
         span.count
           = count.count
   .pagination
-    = forum_navigation @counts
+    = temple_navigation @counts
 
   .posts-count-form.any-form
     = form_tag statistics_post_counts_path, mathod: :post, remote: true, id: 'statsForm' do
