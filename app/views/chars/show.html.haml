@@ -75,6 +75,8 @@
               \ - {{skill.count}}
           .text{'ng-show'=>'showRolls'}
             .roll{'ng-repeat'=>'role in char.roles'}
+              %span.index
+                {{$index + 1}}.
               %span.rname
                 %a{href: '/roles/{{role.role_id}}', target: '_blank'} {{role.head}}
               %span.rballs Баллы - {{role.points}}
