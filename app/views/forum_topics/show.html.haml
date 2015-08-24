@@ -1,3 +1,6 @@
+- content_for :title do
+  #{@topic.head} - ФРПГ Храм Мудрости
+
 .forum-ctrl{"ng-controller"=>"TopicsCtrl", "ng-init"=>"initTopic(#{topic_init_params})"}
   .path
     %span

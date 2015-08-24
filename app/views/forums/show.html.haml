@@ -1,3 +1,6 @@
+- content_for :title do
+  #{@forum.name} - ФРПГ Храм Мудрости
+
 .forum-ctrl{"ng-controller"=>"ForumsCtrl", "ng-init"=>"initForum(#{params[:id]}, #{params[:page] || 1})"}
   .path
     %span

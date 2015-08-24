@@ -76,7 +76,7 @@ ru:
       pagetitle: "Редактирование страницы"
   journals:
     index:
-      pagetitle: "Выпуски газеты"
+      pagetitle: "Газета \"Монастырские Хроники\""
   admin_journals:
     index:
       pagetitle: "Верстка газеты"

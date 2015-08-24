@@ -12,7 +12,7 @@
       %td.act-default
         %span.fa{'ng-class'=>'isDefault(char)', 'ng-click'=>'setDefaultChar(char)', title:'Назначить по умолчанию'}
       %td.act-name
-        %a{href: '{{char.char_url}}'} {{char.name}}
+        %a{href: '{{char.char_url}}', target: '_blank'} {{char.name}}
       %td.act-date-create{} {{char.regDate}}
       %td.act-status{'ng-class'=>'char.status_class'}
         %span{} {{char.status}}
@@ -40,7 +40,7 @@
         Нет персонажей
     %tr{'ng-repeat'=>'char in delegated_chars'}
       %td.act-name
-        %a{href: '{{char.char_url}}'} {{char.name}}
+        %a{href: '{{char.char_url}}', target: '_blank'} {{char.name}}
         %span.owner
           (владелец:
           = succeed ')' do

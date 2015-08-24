@@ -1,3 +1,8 @@
+- content_for :title do
+  - if @page
+    ' #{@page.head} -
+  ' #{@journal.description || @journal.head} - Монастырские Хроники
+
 .page-wrapper#wrapper
   = render 'journal_pager'
   .main

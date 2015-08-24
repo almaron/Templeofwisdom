@@ -1,6 +1,25 @@
 - content_for :pagetitle do
   = t "directory.#{@dir_type}.index.pagetitle"
 
+- content_for :title do
+  ' #{t "directory.#{@dir_type}.index.pagetitle"} - ФРПГ Храм Мудрости
+
+- content_for :path do
+  => link_to 'Главная Страница', '/'
+  span class="fa fa-arrow-circle-right"
+  '
+  a href="/pages/library"
+    ' Библиотека
+  span class="fa fa-arrow-circle-right"
+  '
+  a href="/pages/directory"
+    ' Справочники Монастыря
+  span class="fa fa-arrow-circle-right"
+  '
+  span
+    = t "directory.#{@dir_type}.index.pagetitle"
+
+
 .handbook-index
   - group = ''
   table.handbook-list

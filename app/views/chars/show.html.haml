@@ -1,3 +1,6 @@
+- content_for :title do
+  #{@char.name} - Анкета персонажа - ФРПГ Храм Мудрости
+
 %div{'ng-controller'=>'ShowCharCtrl', 'ng-init'=>"loadChar(#{@char.id})", style:'width:100%;'}
   %table.profile
     %tr

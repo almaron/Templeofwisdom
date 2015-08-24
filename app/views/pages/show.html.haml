@@ -8,9 +8,9 @@
     - else
       = link_to page.page_title, page_url_path(page.page_alias)
 
-- if @page.meta_title.present?
-  - content_for :title do
-    = @page.meta_title+" - Форумная Ролевая Игра \"Храм Мудрости\""
+- content_for :title do
+  #{@page.meta_title.present? ? @page.meta_title : @page.page_title} - ФРПГ Храм Мудрости
+
 
 
 - if @page.meta_description.present?
