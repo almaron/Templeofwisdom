@@ -24,6 +24,7 @@ module SystemPosts
                 char_id: accept_master.id,
                 user_id: user.id,
                 ip: user.current_ip,
+                avatar_id: default_avatar_for(accept_master.id),
                 text: render(partial: 'shared/system_posts/profile_post', locals: { char:char })
             }
         ]
