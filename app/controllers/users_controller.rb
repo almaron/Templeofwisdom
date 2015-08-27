@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :admin_access, except: [:show]
+  before_action :admin_access, except: [:show, :index]
   before_action :get_user, only: [:show, :edit, :update, :destroy]
 
   def index

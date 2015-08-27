@@ -1,5 +1,7 @@
 @app.controller "ProfileCtrl", ["$scope", "Profile",  "AdminUser", "Delegation", "$http", "$sce", "ArrayService", ($scope, Profile, User, Delegation, $http, $sce, ArrayService) ->
 
+  $scope.allUsers = $scope.freeUsers = []
+
   $scope.loadProfile = ->
     data = Profile.get({}, () ->
       $scope.user = data.user
@@ -13,9 +15,8 @@
     $sce.trustAsHtml embeded
 
   $scope.getAllUsers = ->
-    users = User.query({scope:"short"}, ->
-      $scope.allUsers = users
-    )
+    $http.get('/admin/users.json?scope=short').success (data) ->
+      $scope.allUsers = data
 
   $scope.setDefaultChar = (char) ->
     if !char.default
