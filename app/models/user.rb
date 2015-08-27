@@ -76,6 +76,10 @@ class User < ActiveRecord::Base
     self.chars.where(char_delegations: {owner:0})
   end
 
+  def has_char?(char_id)
+    char_ids.include? char_id
+  end
+
   def has_privilege?
     false
   end
