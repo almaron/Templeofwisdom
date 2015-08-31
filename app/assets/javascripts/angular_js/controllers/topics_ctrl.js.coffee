@@ -131,7 +131,7 @@
       $scope.eChar = Service.findBy($scope.chars, 'id', post.char_id)
     else
       $http.get('/chars/'+post.char_id+'.json?short=true').success (data) ->
-        $scope.eresultChar = data
+        $scope.eChar = data
         $scope.selectedPost.setChar = data.name
 
   $scope.cancelEdit = ->

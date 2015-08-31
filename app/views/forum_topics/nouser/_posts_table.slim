@@ -10,7 +10,7 @@
               = post.char.name
         .message-author-category
           = post.char.status_line || I18n.t("char_groups.names.#{post.char.group.name}")
-        - if post.avatar.image?
+        - if post.avatar && post.avatar.image?
           .message-author-avatar
             = image_tag post.avatar.image_url(:thumb)
         .message-author-onoff.offline

@@ -14,6 +14,7 @@ class RoleAppsController < ApplicationController
 
   def show
     @role = Role.build_from_app(params[:id])
+    @only_content = true
     render 'roles/show'
   end
 
