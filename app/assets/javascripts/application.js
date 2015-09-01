@@ -14,8 +14,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require jquery.turbolinks
+// require turbolinks
+// require jquery.turbolinks
 
 //= require lib/abstract-chosen
 //= require lib/select-parser
