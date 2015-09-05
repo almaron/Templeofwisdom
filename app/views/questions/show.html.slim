@@ -36,7 +36,7 @@
   .answers-wrap
     .one-answer ng-repeat='answer in answers'
       .answer-show ng-hide='cAn.id == answer.id'
-        .answer-edit-btns
+        .answer-edit-btns ng-show='currentUser.group != "user"'
           .answer-edit
             span.fa.fa-pencil ng-click='editAnswer(answer)'
           .answer-delete
