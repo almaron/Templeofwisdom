@@ -1,4 +1,4 @@
-@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "$timeout", "Topic", "Post", 'ArrayService', ($scope, $http, $window, $timeout, Topic, Post, Service) ->
+@app.controller "TopicsCtrl", ["$scope", "$http", "$window", "$timeout", '$interval', "Topic", "Post", 'ArrayService', ($scope, $http, $window, $timeout, $interval, Topic, Post, Service) ->
 
   # Topic New
   $scope.newPost = {}
@@ -144,6 +144,8 @@
       $scope.loadPosts $scope.postPagination.cur
 
   $scope.sendDraft = () ->
+    if !angular.isDefined($scope.newPost.text) || $scope.newPost.text == ''
+      return true
     $scope.sendingDraft = true
     $http.post(
       '/profile/drafts.json?topic='+$scope.topic.id, {draft: $scope.newPost}
@@ -161,6 +163,8 @@
         $scope.draftSent = null
       2000
     )
+
+  $interval $scope.sendDraft, 600000
 
   $scope.toggleTopic = (hidden) ->
     Topic.update {forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id, topic:{ hidden:hidden }}
