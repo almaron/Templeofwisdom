@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821102108) do
+ActiveRecord::Schema.define(version: 20150916091715) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -405,6 +405,7 @@ ActiveRecord::Schema.define(version: 20150821102108) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "topic_ids"
+    t.boolean  "hidden",     default: false
   end
 
   create_table "season_times", force: true do |t|

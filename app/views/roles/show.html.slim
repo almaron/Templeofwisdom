@@ -5,25 +5,33 @@
 h1
   = @role.head
 
-.rol
-  .summary
-    b
-      | Участники (#{@role.char_roles.size})
-      ul
-        - @role.char_roles.each do |ch|
-          li
-            a href="/chars/#{ch.char_id}" target='_blank'
-              | #{ch.char.name}
-    div
+- if @role.is_available? current_user
+  .rol
+    .summary
       b
-        | Количество постов: #{@role.all_posts.size}
-  .rol-all
-    - @role.order_posts.each do |post|
-      .rol-one
-        .rol-left
-          b.rol-name
-            = post.char.name
-          = image_tag(post.avatar.image_url(:thumb), class:'rol-ava') if post.avatar && post.avatar.image?
-        .rol-right
-          = simple_format(post.text.bbcode_to_html)
-          .rol-post-number #{post.id}
+        | Участники (#{@role.char_roles.size})
+        ul.chars
+          - @role.char_roles.each do |ch|
+            li
+              a href="/chars/#{ch.char_id}" target='_blank'
+                | #{ch.char.name}
+      div
+        b
+          | Количество постов: #{@role.all_posts.size}
+    .rol-all
+      - @role.order_posts.each do |post|
+        .rol-one
+          .rol-left
+            b.rol-name
+              = post.char.name
+            = image_tag(post.avatar.image_url(:thumb), class:'rol-ava') if post.avatar && post.avatar.image?
+          .rol-right
+            = simple_format(post.text.bbcode_to_html)
+            .rol-post-number #{post.id}
+- else
+  .rol
+    .rol-error
+      ' Вы пытаетесь открыть сюжет, находящийся в закрытом разделе. Если у вас есть доступ к данному разделу, пожалуйста, залогиньтесь на сайте. Для получения доступа обратитесь в
+      a href='http://templeofwisdom.ru/temple/78/t/799'
+        | тему на форуме
+      |  и, если вам уже есть 18 лет, мастера вам его предоставят.

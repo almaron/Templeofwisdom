@@ -26,7 +26,7 @@ class ForumTopic < ActiveRecord::Base
   end
 
   def is_available?(user)
-    (!hidden? && !forum.hidden?)|| (user && user.can_view_hidden?)
+    (!hidden? && !forum.hidden?) || (user && user.can_view_hidden?)
   end
 
   def is_moderatable?(user)

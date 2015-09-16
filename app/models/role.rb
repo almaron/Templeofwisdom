@@ -7,7 +7,7 @@ class Role < ActiveRecord::Base
   has_many :char_roles, dependent: :destroy
   accepts_nested_attributes_for :char_roles, allow_destroy: true
 
-  before_save :parse_paths
+  before_save :prepare_save
 
   after_create :destroy_app
   after_create :close_topics
@@ -17,7 +17,7 @@ class Role < ActiveRecord::Base
     return new unless app_id
     role_app = RoleApp.find(app_id)
     role = self.new(head:role_app.head, paths:role_app.paths, comment: role_app.comment)
-    role.parse_paths.collect_char_posts.build_char_roles
+    role.prepare_save.collect_char_posts.build_char_roles
   end
 
   def all_posts
@@ -25,13 +25,27 @@ class Role < ActiveRecord::Base
   end
 
   def order_posts
+
     self.topic_ids.split(',').inject([]) { |posts, topic_id| posts + ForumPost.where(topic_id: topic_id) }
   end
 
-  def parse_paths
+  def prepare_save
     self.topic_ids = paths.scan(/\/t\/(\d+)/).map {|item| item[0].to_i}.join(',')
-    self.char_roles.each { |ch| ch.points_will_change! }
+    char_roles.each { |ch| ch.points_will_change! }
+    set_hidden
     self
+  end
+
+  def set_hidden
+    self.hidden = ForumTopic.where(id: topic_ids_arr).eager_load(:forum).select { |topic| topic.hidden? || topic.forum.hidden }.any?
+  end
+
+  def topic_ids_arr
+    @tid ||= topic_ids.split(',').map &:to_i
+  end
+
+  def is_available?(user)
+    !hidden? || (user && user.can_view_hidden?)
   end
 
   def set_paths
