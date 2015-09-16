@@ -12,6 +12,7 @@ json.own_chars @user.own_chars do |char|
   json.regDate I18n.l(char.created_at)
   json.status I18n.t "char_status.name.#{char.status.name}"
   json.status_class char.status.name
+  json.openPlayer char.open_player?
 
   json.delegated_to char.char_delegations.delegated.all.to_a do |delegation|
     json.partial! 'delegations/delegation', delegation: delegation

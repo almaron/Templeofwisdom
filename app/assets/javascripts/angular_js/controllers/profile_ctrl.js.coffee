@@ -29,6 +29,22 @@
     else
       'fa-circle-thin'
 
+  $scope.isOpen = (char) ->
+    if char.openPlayer
+      'fa-eye'
+    else
+      'fa-eye-slash'
+
+  $scope.isOpenTitle = (char) ->
+    if char.openPlayer
+      'Скрыть игрока'
+    else
+      'Открыть игрока'
+
+  $scope.setOpen = (char) ->
+    $http.post('/chars/'+char.id+'/small_update.json', {field: 'open_player'}).success (data) ->
+      char.openPlayer = !char.openPlayer
+
   $scope.authProviders = [
       {name:"ВКонтакте", provider:"vk"},
       {name:"Facebook", provider:"facebook"},

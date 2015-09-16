@@ -2221,9 +2221,15 @@ body {
       }
     }
     .act-default {
-      width: 20px;
+      width: 11px;
       .fa-circle-thin {
         cursor: pointer;
+      }
+      .fa-eye, .fa-eye-slash {
+        cursor: pointer;
+      }
+      .fa-eye-slash {
+        opacity: 0.7;
       }
     }
     .act-date-create {

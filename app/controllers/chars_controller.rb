@@ -109,6 +109,8 @@ class CharsController < ApplicationController
         @char.profile.comment = params[:comment]
       when 'signature'
         @char.signature = params[:signature]
+      when 'open_player'
+        @char.open_player = !@char.open_player?
       else
         nil
     end
