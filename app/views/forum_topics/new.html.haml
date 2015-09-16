@@ -45,8 +45,10 @@
               %button.btn.btn-mini.forum-btn{"ng-click"=>"createTopic()", "ng-disabled"=>"newTopic.create_disabled", "ng-class"=>"newTopic.create_disabled ? 'disabled' : ''"}
                 %span
                   Создать тему
-              %button.btn.btn-mini.forum-btn{'ng-click'=>'sendDraft()'}
+              %button.btn.btn-mini.forum-btn{'ng-click'=>'sendTopicDraft()'}
                 %span
                   Сохранить черновик
                 %span.fa.fa-spinner.fa-pulse{'ng-show'=>'sendingDraft'}
+              %span.draft-save{'ng-show'=>'draftSent'}
+                {{draftSent}}
               %a.btn.btn-mini.forum-btn{href:"/temple/{{forumId}}/"} Назад

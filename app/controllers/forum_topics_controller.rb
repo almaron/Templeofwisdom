@@ -60,8 +60,8 @@ class ForumTopicsController < ApplicationController
           @topic = @forum.topics.new
           @post = @topic.posts.new
         else
-          @topic = draft.to_topic
-          @post = draft.to_post
+          @topic = ForumTopic.new draft.to_topic
+          @post = @topic.posts.new draft.to_post
         end
         @chars = @forum.technical? ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where(status_id: 5)
       }
