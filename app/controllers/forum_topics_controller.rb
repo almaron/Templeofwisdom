@@ -55,9 +55,15 @@ class ForumTopicsController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json {
-        @topic = @forum.topics.new
-        @post = @topic.posts.new
-        @chars = @forum.technical > 0 ? current_user.chars.where("status_id IN (3,4,5)") : current_user.chars.where("status_id = 5")
+        draft = current_user.forum_topic_drafts.find_by(forum_id: params[:forum_id])
+        if draft.nil?
+          @topic = @forum.topics.new
+          @post = @topic.posts.new
+        else
+          @topic = draft.to_topic
+          @post = draft.to_post
+        end
+        @chars = @forum.technical? ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where(status_id: 5)
       }
     end
   end

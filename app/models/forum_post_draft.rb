@@ -1,10 +1,12 @@
-class ForumDraft < ActiveRecord::Base
+class ForumPostDraft < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :topic, class_name: ForumTopic
 
   belongs_to :char
   belongs_to :avatar
+
+  attr_accessor :head, :forum_id
 
   validates_presence_of :user_id, :char_id, :topic_id, :text
 

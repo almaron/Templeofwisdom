@@ -148,7 +148,7 @@
       return true
     $scope.sendingDraft = true
     $http.post(
-      '/profile/drafts.json?topic='+$scope.topic.id, {draft: $scope.newPost}
+      '/profile/drafts/post.json?topic='+$scope.topic.id, {draft: $scope.newPost}
     ).success(
       (data) ->
         $scope.sendingDraft = false

@@ -44,8 +44,8 @@ Rails.application.routes.draw do
   resource :profile, only:[:show, :edit, :update] do
     get 'skill_requests' => 'skill_requests#user_index', as: :skill_requests
     get 'drafts' => 'forum_drafts#index', as: :drafts
-    post 'drafts' => 'forum_drafts#create'
-    delete 'drafts/:id' => 'forum_drafts#delete', as: :draft
+    post 'drafts/:type' => 'forum_drafts#create', as: :create_draft, defaults: {type: 'post'}
+    delete 'drafts/:type/:id' => 'forum_drafts#delete', as: :draft, defaults: {type: 'post'}
     get 'roles' => 'current_roles#index', as: :roles
   end
   resources :delegations, only: [:create, :destroy, :update]

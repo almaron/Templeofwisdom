@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916091715) do
+ActiveRecord::Schema.define(version: 20150916185746) do
 
   create_table "admin_configs", force: true do |t|
     t.string   "name"
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 20150916091715) do
     t.string   "signature",        default: ""
   end
 
-  create_table "forum_drafts", force: true do |t|
+  create_table "forum_post_drafts", force: true do |t|
     t.integer  "user_id"
     t.integer  "topic_id"
     t.integer  "char_id"
@@ -154,8 +154,8 @@ ActiveRecord::Schema.define(version: 20150916091715) do
     t.datetime "updated_at"
   end
 
-  add_index "forum_drafts", ["user_id", "topic_id"], name: "index_forum_drafts_on_user_id_and_topic_id", unique: true, using: :btree
-  add_index "forum_drafts", ["user_id"], name: "index_forum_drafts_on_user_id", using: :btree
+  add_index "forum_post_drafts", ["user_id", "topic_id"], name: "index_forum_post_drafts_on_user_id_and_topic_id", unique: true, using: :btree
+  add_index "forum_post_drafts", ["user_id"], name: "index_forum_post_drafts_on_user_id", using: :btree
 
   create_table "forum_posts", force: true do |t|
     t.integer  "topic_id"
@@ -170,6 +170,20 @@ ActiveRecord::Schema.define(version: 20150916091715) do
     t.datetime "updated_at"
     t.integer  "avatar_id"
   end
+
+  create_table "forum_topic_drafts", force: true do |t|
+    t.integer  "user_id",                 null: false
+    t.integer  "forum_id",                null: false
+    t.integer  "char_id",                 null: false
+    t.integer  "avatar_id"
+    t.string   "head",       default: ""
+    t.text     "text",                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forum_topic_drafts", ["forum_id", "user_id"], name: "index_forum_topic_drafts_on_forum_id_and_user_id", unique: true, using: :btree
+  add_index "forum_topic_drafts", ["user_id"], name: "index_forum_topic_drafts_on_user_id", using: :btree
 
   create_table "forum_topic_reads", force: true do |t|
     t.integer  "user_id"
