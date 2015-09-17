@@ -3471,7 +3471,7 @@ td.none,td.none:hover, tr:hover td.none {
  // Черновики постов
 
 .drafts-wrapper {
-  font-size: 1.2em;
+  font-size: 1.1em;
   ol {
     li {
       margin-bottom: 7px;
@@ -3486,7 +3486,7 @@ td.none,td.none:hover, tr:hover td.none {
           color: $color-orange1;
         }
         &.draft-link-head {
-          font-weight: bold;
+          //font-weight: bold;
         }
         &.fa {
 

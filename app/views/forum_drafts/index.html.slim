@@ -6,12 +6,22 @@
     ' Черновики постов
 
 .drafts-wrapper
-  - if @drafts.any?
+  - if @post_drafts.any?
     ol.drafts-list
-      - @drafts.each do |draft|
-        li.one-draft id="draft_#{draft.id}"
+      - @post_drafts.each do |draft|
+        li.one-draft id="post_draft_#{draft.id}"
           => link_to draft.topic.head, forum_topic_path(draft.topic.forum_id, draft.topic_id), target: '_blank', class: 'draft-link-head'
-          => link_to '', draft_profile_path(draft), method: :delete, remote: true, class: 'fa fa-times', title: 'Удалить черновик', data: { confirm: 'Уверены?' }
+          => link_to '', draft_profile_path('post', draft), method: :delete, remote: true, class: 'fa fa-times', title: 'Удалить черновик', data: { confirm: 'Уверены?' }
   - else
     .no-drafts
       ' У вас пока нет черновиков
+
+- if @topic_drafts.any?
+  h1 Черновики тем
+  .drafts-wrapper
+    ol.drafs-list
+      - @topic_drafts.each do |draft|
+        li.one-draft id="topic_draft_#{draft.id}"
+          => link_to "#{draft.head} (#{draft.forum.name})", new_forum_topic_path(draft.forum_id), target: '_blank', class: 'draft-link-head'
+          => link_to '', draft_profile_path('topic', draft), method: :delete, remote: true, class: 'fa fa-times', title: 'Удалить черновик', data: {confirm: 'Уверены?'}
+

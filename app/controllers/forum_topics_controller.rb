@@ -33,7 +33,7 @@ class ForumTopicsController < ApplicationController
         }
         format.json {
           if current_user
-            @draft = current_user.forum_drafts.find_by(topic_id: @topic.id)
+            @draft = current_user.forum_post_drafts.find_by(topic_id: @topic.id)
             @chars = @topic.forum.technical > 0 ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where(status_id: 5)
           end
         }
@@ -55,9 +55,15 @@ class ForumTopicsController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json {
-        @topic = @forum.topics.new
-        @post = @topic.posts.new
-        @chars = @forum.technical > 0 ? current_user.chars.where("status_id IN (3,4,5)") : current_user.chars.where("status_id = 5")
+        draft = current_user.forum_topic_drafts.find_by(forum_id: params[:forum_id])
+        if draft.nil?
+          @topic = @forum.topics.new
+          @post = @topic.posts.new
+        else
+          @topic = ForumTopic.new draft.to_topic
+          @post = @topic.posts.new draft.to_post
+        end
+        @chars = @forum.technical? ? current_user.chars.where('status_id IN (3,4,5)') : current_user.chars.where(status_id: 5)
       }
     end
   end
@@ -69,6 +75,7 @@ class ForumTopicsController < ApplicationController
       @topic.poster_name = @post.char.name
       @topic.char_id = @post.char_id
       if @topic.save
+        ForumTopicDraft.find_by(user_id: current_user.id, forum_id: @topic.forum_id).try(:destroy)
         format.html { redirect_to forum_topic_path(params[:forum_id], @topic.id) }
         format.json { render json: {redirect: forum_topic_path(@topic.forum_id, @topic.id)} }
       else

@@ -2,14 +2,19 @@
 
   # Topic New
   $scope.newPost = {}
+  $scope.sendingDraft = false
 
   $scope.initNewTopic = (forum_id) ->
     $http.get("/temple/"+forum_id+"/t/new.json").success (data) ->
       $scope.path = data.path
       $scope.newTopic = data.topic
       $scope.chars = data.chars
-      $scope.sChar = Service.findBy($scope.chars, 'default', true)
-      $scope.newPost.char_id = $scope.sChar.id
+      if data.post.text
+        $scope.newPost = data.post
+        $scope.sChar = Service.findBy($scope.chars, 'id', data.post.char_id)
+      else
+        $scope.sChar = Service.findBy($scope.chars, 'default', true)
+        $scope.newPost.char_id = $scope.sChar.id
     $scope.forumId = forum_id
 
   $scope.updateChar = (array, id) ->
@@ -26,6 +31,28 @@
       $window.location.assign data.redirect
     ).error((data) ->
       $scope.errors = data.errors
+    )
+
+  $scope.sendTopicDraft = () ->
+    if !angular.isDefined($scope.newPost.text) || $scope.newPost.text == ''
+      return true
+    $scope.sendingDraft = true
+    $scope.newPost.head = $scope.newTopic.head
+    $http.post(
+      '/profile/drafts/topic.json?forum='+$scope.forumId, {draft: $scope.newPost}
+    ).success(
+      (data) ->
+        $scope.sendingDraft = false
+        $scope.draftSent = data.success
+    ).error(
+      (data) ->
+        $scope.sendingDraft = false
+        $scope.draftSent = "Черновик не сохранен"
+    )
+    $timeout(
+      () ->
+        $scope.draftSent = null
+      2000
     )
 
 
@@ -148,7 +175,7 @@
       return true
     $scope.sendingDraft = true
     $http.post(
-      '/profile/drafts.json?topic='+$scope.topic.id, {draft: $scope.newPost}
+      '/profile/drafts/post.json?topic='+$scope.topic.id, {draft: $scope.newPost}
     ).success(
       (data) ->
         $scope.sendingDraft = false
@@ -165,6 +192,7 @@
     )
 
   $interval $scope.sendDraft, 600000
+  $interval $scope.sendTopicDraft, 600000
 
   $scope.toggleTopic = (hidden) ->
     Topic.update {forum_id: $scope.topicInit.forum_id, id: $scope.topicInit.topic_id, topic:{ hidden:hidden }}
