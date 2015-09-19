@@ -37,7 +37,7 @@ class Role < ActiveRecord::Base
   end
 
   def set_hidden
-    self.hidden = ForumTopic.where(id: topic_ids_arr).eager_load(:forum).select { |topic| topic.hidden? || topic.forum.hidden }.any?
+    self.hidden = ForumTopic.where(id: topic_ids_arr).eager_load(:forum).select { |topic| topic.hidden? || topic.forum.hidden? }.any?
   end
 
   def topic_ids_arr
