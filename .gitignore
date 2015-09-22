@@ -11,10 +11,13 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+/spring
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 /public/uploads/*
+/public/assets
 /config/secrets.yml
 config/settings.yml
 config/database.yml
