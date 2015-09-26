@@ -38,4 +38,9 @@ class ApplicationController < ActionController::Base
     render 'error_404'
   end
 
+  def redirect_back_or_to(url, flash_hash = {})
+    redirect_to(session[:return_to_url] || request.referer || url, :flash => flash_hash)
+    session[:return_to_url] = nil
+  end
+
 end
