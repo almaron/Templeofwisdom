@@ -1,6 +1,7 @@
 class OauthsController < ApplicationController
 
   def auth
+    session[:return_to_url] = request.referer
     login_at params[:provider]
   end
 
