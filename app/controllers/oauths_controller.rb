@@ -12,7 +12,7 @@ class OauthsController < ApplicationController
     else
       if (@user = login_from(provider))
         Loggers::Omniauth.new(@user).log success: true, provider: provider, ip: request.remote_ip
-        redirect_to profile_path, notice: t('messages.notice.sessions.create.success')
+        redirect_back_or_to profile_path, notice: t('messages.notice.sessions.create.success')
       else
         @user = new_from(provider)
         Loggers::Omniauth.new(@user.name || @user.email || '').log success: false, provider: provider, ip: request.remote_ip
