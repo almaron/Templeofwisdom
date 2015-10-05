@@ -32,6 +32,7 @@ class CharsController < ApplicationController
   def create
     @char = Char.new(char_params)
     @char.creator = current_user
+    @char.avatars = [] if @char.avatars.any? && !@char.avatars[0].valid?
     respond_to do |format|
       if @char.save
         NewCharMailer.delay.new_char(@char) if @char.status_id == 2
@@ -42,6 +43,7 @@ class CharsController < ApplicationController
         }
         format.json { render nothing: true }
       else
+        binding.pry
         format.html { render :new }
         format.js   { render partial: 'char_save_error'}
         format.json { render json: @char.errors.full_messages }
@@ -129,7 +131,7 @@ class CharsController < ApplicationController
 
   def char_params
     params.require(:char).permit(
-        :name, :remote_avatar_url, :avatar, :group_id, :open_payer, :status_id,
+        :name, :remote_avatar_url, :avatar, :group_id, :open_player, :status_id,
         char_skills_attributes:[
             :skill_id, :level_id
         ],
