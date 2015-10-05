@@ -7,7 +7,7 @@ class CharGroup < ActiveRecord::Base
       when "master"
         self.where("id != ?", 1).to_a
       else
-        self.where("id IN (2,4,6)").to_a
+        self.where("id IN (2,3,4)").to_a
     end
   end
 
