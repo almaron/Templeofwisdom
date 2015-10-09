@@ -1,6 +1,5 @@
 class Sitemap::SprHerbsBuilder < Sitemap::Worker
   class << self
-    
     private
     
     def collection
@@ -10,6 +9,5 @@ class Sitemap::SprHerbsBuilder < Sitemap::Worker
     def path(object)
       helper.herb_path(object.id)
     end
-    
   end
 end

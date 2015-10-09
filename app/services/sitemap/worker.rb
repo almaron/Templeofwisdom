@@ -14,7 +14,7 @@ class Sitemap::Worker
       object.class.to_s.downcase
     end
 
-    def lastmod
+    def date(object)
       object.updated_at
     end
 
