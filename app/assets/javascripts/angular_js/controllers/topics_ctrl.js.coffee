@@ -225,4 +225,7 @@
     $http.post('/temple/master_note.json', {post_id: $scope.showPostInform, topic_id: $scope.topicInit.topic_id, comment: comment}).success (data) ->
       $scope.togglePostInform()
 
+  $scope.postCharCount = (text) ->
+    return '0 / 0' if !angular.isDefined(text)
+    '' + text.length + ' / ' + Math.floor((text.length)/600)
 ]

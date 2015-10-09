@@ -70,6 +70,8 @@
         %span.set-char{'ng-show'=>'selectedPost.setChar'} {{selectedPost.setChar}}
         %char-avatars{'ng-model'=>'selectedPost.avatar_id', collection:'eChar.avatars', editable: 'false', 'char-id'=>'selectedPost.char_id', 'ng-show'=>'selectedPost.char_id'}
     %td.input.input-textarea
+      .inp-count
+        {{postCharCount(selectedPost.text)}}
       %textarea.inp.inp-type2{name:'post_text', 'ng-model'=>'selectedPost.text', required:'', 'mark-it-up'=>''}
       .input-btn
         %button.btn.btn-mini{'ng-click'=>'updatePost()'}
