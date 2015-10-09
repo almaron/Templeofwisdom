@@ -1,12 +1,12 @@
 class Sitemap::Worker
   class << self
-    def gather
-      gather_objects.map {|object| {url: path(object), lastmod: date(object)}}
+    def collect
+      collection.map {|object| {path: path(object), lastmod: date(object)}}
     end
 
     private
 
-    def gather_objects
+    def collection
       []
     end
 
@@ -16,6 +16,10 @@ class Sitemap::Worker
 
     def lastmod
       object.updated_at
+    end
+
+    def helper
+      Rails.application.routes.url_helpers
     end
   end
 end

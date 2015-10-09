@@ -21,7 +21,7 @@ class Sitemap::Sitemap
   end
 
   def xml_line(url)
-    "<url>\n  <loc>#{url[:url]}</loc>\n  <lastmod>#{to_string(url[:lastmod])}</lastmod>\n<url>"
+    "<url>\n  <loc>http://templeofwisdom.ru#{url[:path]}</loc>\n  <lastmod>#{to_string(url[:lastmod])}</lastmod>\n<url>"
   end
 
   def to_string(date)
