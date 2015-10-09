@@ -7,7 +7,8 @@ module Sitemap
       PagesBuilder,
       CharsBuilder,
       RolesBuilder,
-      SprsBuilder
+      SprStonesBuilder,
+      SprHerbs
     ]
   end
 end

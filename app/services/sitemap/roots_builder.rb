@@ -10,7 +10,9 @@ class Sitemap::RootsBuilder < Sitemap::Worker
         [:skills_list_path, 'magic', Skill.magic],
         [:skills_list_path, 'phisic', Skill.phisic],
         [:guest_posts_path, nil, GuestPost],
-        [:journals_path, nil, Journal]
+        [:journals_path, nil, Journal],
+        [:stones_path, nil, SprStone],
+        [:herbs_path, nil, SprHerb]
       ]
     end
 
