@@ -10,6 +10,5 @@ class Sitemap::SprStonesBuilder < Sitemap::Worker
     def path(object)
       helper.stone_path(object.id)
     end
-    
   end
 end
