@@ -8,6 +8,7 @@ class CharProfile < ActiveRecord::Base
   trimmed_fields :birth_date, :age, :real_age, :bio, :place, :beast, :phisics, :look, :character, :items, :person, :comment, :other
 
   after_initialize :init_default
+  after_update -> {char.touch}
 
   def real_age
     if self.birth_date.present?
