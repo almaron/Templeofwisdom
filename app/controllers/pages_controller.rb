@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     else
       @page = Page.find_by(:page_alias => params[:url].split('/')[-1])
       unless @page && @page.published?
-        render 'application/error_404'
+        render 'application/error_404', status: 404
       end
     end
   end
