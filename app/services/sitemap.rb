@@ -1,5 +1,13 @@
 module Sitemap
   def self.builders
-    [ForumsBuilder, PagesBuilder, CharsBuilder, ]
+    [
+      RootsBuilder,
+      ForumsBuilder,
+      TopicsBuilder,
+      PagesBuilder,
+      CharsBuilder,
+      RolesBuilder,
+      SprsBuilder
+    ]
   end
 end
