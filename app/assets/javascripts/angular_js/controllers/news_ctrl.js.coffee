@@ -1,4 +1,4 @@
-@app.controller 'NewsCtrl', ["$scope", "News", ($scope, News) ->
+@app.controller 'NewsCtrl', ["$scope", "$http", "News", ($scope, $http, News) ->
 
   $scope.newsPagination = { }
 
@@ -12,25 +12,24 @@
   $scope.updateNews = (newNews) ->
     sin = $scope.news.indexOf(newNews)
     $scope.news[sin] = News.update({id: newNews.id, news: newNews} )
-    $scope.newNews = {}
-    $scope.updateMainNews()
+    $scope.initNewNews()
 
   $scope.removeNews = (news) ->
     News.delete({id:news.id})
     $scope.news.splice($scope.news.indexOf(news),1)
-    $scope.updateMainNews()
     $scope.getTotal()
 
 
   $scope.createNews = ->
+    newNews = angular.copy($scope.newNews)
     news = News.save {news: $scope.newNews}, ->
       if news
         $scope.news.unshift news
         $scope.initNewNews()
-        $scope.updateMainNews()
         $scope.getTotal()
       else
         $scope.errors = news.errors
+    $scope.sendMaker(newNews)
 
   $scope.$watch 'newsPagination.cur', (newVal) ->
     if angular.isDefined newVal
@@ -38,6 +37,12 @@
 
   $scope.$watch 'currentUser.default_char', (newVal) ->
     $scope.newNews.author = newVal.name if (angular.isDefined(newVal) && angular.isDefined($scope.newNews))
+
+  $scope.sendMaker = (news) ->
+    $http.post('/news/maker', {news: news}).success (data) ->
+      console.log data
+      $scope.makerShow = true
+      $scope.maker = data
 
   # Private methods
 

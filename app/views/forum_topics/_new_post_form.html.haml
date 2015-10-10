@@ -1,32 +1,32 @@
-.topic-form.topic-reply-form{"ng-if"=>"!topic.isClosed && !selectedPost.id && chars.length > 0"}
+.topic-form.topic-reply-form{'ng-if'=>'!topic.isClosed && !selectedPost.id && chars.length > 0'}
   %table.forum-tab.one-message-tab.form-tab
     %tr.post-edit
       %td.label
         %a{name:'newpost'}
         .select-char
-          %label{for:"char_name"} Персонаж:
-          %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, newPost.char_id)'}
+          %label{for:'char_name'} Персонаж:
+          %select.inp.inp-type2{'ng-model'=>'newPost.char_id', 'ng-options'=>'char.id as char.name for char in chars', required:'', 'ng-change'=>'updateChar(chars, newPost.char_id)'}
           %char-avatars{'ng-model'=>'newPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'newPost.char_id', 'ng-show'=>'newPost.char_id'}
         .send-notifications{'ng-show'=>'topic.chars.length <= 6'}
           Отправка уведомлений
           .line{'ng-repeat'=>'char in topic.chars'}
-            %input{type:'checkbox', value:"{{char.id}}", 'ng-checked'=>'informChars.indexOf(char.id) > -1', 'ng-click'=>'toggleInform(char.id)', id:"chinf{{char.id}}"}
-            %label{for:"chinf{{char.id}}"}
+            %input{type:'checkbox', value:'{{char.id}}', 'ng-checked'=>'informChars.indexOf(char.id) > -1', 'ng-click'=>'toggleInform(char.id)', id:'chinf{{char.id}}'}
+            %label{for:'chinf{{char.id}}'}
               %span
               {{char.name}}
           .line
-            %input{type:'checkbox', 'ng-checked'=>'informMaster', id:"infm", 'ng-click'=>'toggleInformMaster()'}
-            %label{for:"infm"}
+            %input{type:'checkbox', 'ng-checked'=>'informMaster', id:'infm', 'ng-click'=>'toggleInformMaster()'}
+            %label{for:'infm'}
               %span
               Мастер игры
       %td.input.input-textarea
         .inp-count
           {{postCharCount(newPost.text)}}
-        %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:'', "mark-it-up"=>""}
+        %textarea.inp.inp-type2{name:'post_text', 'ng-model'=>'newPost.text', required:'', 'mark-it-up'=>''}
         .input-btn
-          %button.btn.btn-mini{"ng-click"=>"addReply()"}
+          %button.btn.btn-mini{'ng-click'=>'addReply()'}
             Ответить
-          %button.btn.btn-mini{"ng-click"=>"sendDraft()"}
+          %button.btn.btn-mini{'ng-click'=>'sendDraft()'}
             Сохранить черновик
             %span.fa.fa-spinner.fa-pulse{'ng-show'=>'sendingDraft'}
           %span.draft-save{'ng-show'=>'draftSent'}

@@ -24,4 +24,8 @@ module ApplicationHelper
     link_to forum.name, forum_path(forum)
   end
 
+  def temple_format(text)
+    text.gsub("\n","<br>\n").html_safe
+  end
+
 end

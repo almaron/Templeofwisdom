@@ -8,6 +8,6 @@
           span.news-single-date-title-text = news.head
         .news-single-text
           .text
-            = simple_format(news.text)
+            = temple_format(news.text.bbcode_to_html)
           .author
             | / #{news.author}

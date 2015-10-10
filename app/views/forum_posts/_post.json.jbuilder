@@ -1,5 +1,5 @@
 json.(post, :id, :text, :comment, :commenter, :char_id, :ip, :avatar_id)
-json.show_text post.text.bbcode_to_html_with_formatting
+json.show_text temple_format(post.text.bbcode_to_html)
 json.posted_at I18n.l(post.created_at, format: :full) if post.created_at
 json.commented_at I18n.l(post.commented_at, format: :full) if post.commented_at
 

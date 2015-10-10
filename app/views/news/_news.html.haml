@@ -4,7 +4,7 @@
       %span.news-single-date{} {{oneNews.dateLine}}
       %span.news-single-date-title-text{} {{oneNews.head}}
     .news-single-text
-      .text{'ng-bind-html'=>'oneNews.content'}
+      .text{'parse-html'=>'oneNews.content'}
       .author
         \/ {{oneNews.author}}
     .block-adm

@@ -24,14 +24,14 @@
           div
             = raw post.text.bbcode_to_html_with_formatting
           .signature
-            = raw post.char.signature.bbcode_to_html_with_formatting
+            = temple_format post.char.signature.bbcode_to_html
           - if post.commented_at
             .message-comment
               .date #{ l post.commented_at, format: :full }
               .bold
                 ' #{post.commenter}:
               .comment
-                = simple_format post.comment
+                = temple_format post.comment
     tr
       td.f-message-more
       td.f-message-options

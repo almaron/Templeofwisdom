@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   # Page routes
   get 'pages/*url' => 'pages#show', :as => 'page_url'
 
+  namespace :news, defaults: {format: :json} do
+    post 'maker' => 'news_makers#create'
+  end
+
   resources :news
 
   resources :blog_posts, :path => 'blog' do

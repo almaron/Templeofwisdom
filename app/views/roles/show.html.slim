@@ -26,7 +26,7 @@ h1
               = post.char.name
             = image_tag(post.avatar.image_url(:thumb), class:'rol-ava') if post.avatar && post.avatar.image?
           .rol-right
-            = simple_format(post.text.bbcode_to_html)
+            = temple_format(post.text.bbcode_to_html)
             .rol-post-number #{post.id}
 - else
   .rol
