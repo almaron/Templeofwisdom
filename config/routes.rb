@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   # Forum routes
   get '/temple/viewtopic.php' => 'redirects/topic_redirects#show'
   get '/temple/viewforum.php' => 'redirects/forum_redirects#show'
+  get '/journal/:journal/:page' => 'redirects/journal_redirects#show'
 
   resources :forums, path: 'temple', only:[:index, :show] do
     collection do
