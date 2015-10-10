@@ -7,25 +7,34 @@ module Redirects
     end
 
     def redirect
-      page_id > 0 ? page_redirect : journal_redirect
+      page_id ? page_redirect : journal_redirect
     end
 
     private
-
-    def routes
-      Rails.application.routes.url_helpers
-    end
 
     def journal_redirect
       routes.journal_path journal_id
     end
 
     def page_redirect
-      routes.page_journal_path page_id
+      routes.page_journal_path journal_id, page_id
     end
 
+    def journal_id
+      @journal_id ||= search_hash[journal_slug]['id']
+    end
 
+    def page_id
+      @page_id ||= search_hash[journal_slug]['pages'][page_slug]
+    end
+    
+    def search_hash
+      @hash = YAML.load_file(Rails.root.join('config', 'journals.yml'))
+    end
 
+    def routes
+      Rails.application.routes.url_helpers
+    end
   end
 end
 
