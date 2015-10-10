@@ -27,8 +27,9 @@ class Redirects::JournalGetter
     def pages_collection(j_id, journal)
       pages = {}
       pages_batch(j_id).to_a.each do |page|
-        p = journal.pages.select {|p| p.head == page['longtitle']}[0]
-        pages[page['alias']] = p.id if p
+        p = journal.pages.select {|p| p.head == page['longtitle'] || p.head == page['pagetitle']}[0]
+        pa = page['alias'].present? ? page['alias'] : page['id'].to_s
+        pages[pa] = p.id if p
       end
       pages
     end
@@ -46,7 +47,7 @@ class Redirects::JournalGetter
     end
 
     def pages_batch(journal)
-      db.query("SELECT id, longtitle, alias FROM temple_main.hm_site_content where parent = #{journal} order by id")
+      db.query("SELECT id, pagetitle, longtitle, alias FROM temple_main.hm_site_content where parent = #{journal} order by id")
     end
   end
 end
