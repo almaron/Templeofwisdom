@@ -67,10 +67,16 @@
           %button.btn.btn-standart{'ng-click'=>'createPage()'}
             %span.fa.fa-check
             Добавить страницу
-      %ol
-        %li{'ng-repeat'=>'page in current_journal.pages'}
-          %span.head{'ng-click'=>'editPage(page)'} {{page.head}}
-          %span.page_type{} ({{page.type_line}})
+      #tree-root{"ui-tree" => 'journalTreeOptions'}
+        %ol{'ng-model'=>'current_journal.pages', 'ui-tree-nodes' => ''}
+          %li{'ng-repeat'=>'page in current_journal.pages', 'ui-tree-node'=>''}
+            .tree-node.tree-node-content{"ui-tree-handle" => ""}
+              %span.head{'ng-click'=>'editPage(page)'} {{page.head}}
+              %span.page_type{} ({{page.type_line}})
+      .page-btn
+        %button.btn.btn-standart{'ng-click'=>'updateTree(current_journal.pages)'}
+          Сохранить порядок страниц
+
 
   .page-edit-wrap{'ng-show'=>'current_page.id'}
     .page-edit-form.any-form

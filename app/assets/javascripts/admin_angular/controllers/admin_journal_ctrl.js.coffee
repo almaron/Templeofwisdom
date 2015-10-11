@@ -1,4 +1,4 @@
-@app.controller "AdminJournalCtrl", ["$scope", "$http", ($scope, $http) ->
+@app.controller "AdminJournalCtrl", ["$scope", "$http", '$filter', ($scope, $http, $filter) ->
 
   $scope.loadJournals = () ->
     $http.get('/admin/journals.json').success (data) ->
@@ -12,6 +12,16 @@
     {name:'Новички', alias:'newbies'},
     {name:'Галлерея', alias:'gallery'}
   ]
+
+  $scope.journalTreeOptions = {
+    accept: (sourceNodeScope, destNodesScope, destIndex) ->
+      ttt = typeof destNodesScope.forum
+      return ttt == 'undefined'
+    dropped: (event) ->
+      event.source.nodeScope.$modelValue.sort_index = event.dest.index
+    dragStart: (event) ->
+      $scope.editForum = {}
+  }
 
   $scope.createJournal = ->
     $http.post('/admin/journals.json', {journal: $scope.newJ}).success (data) ->
@@ -59,6 +69,11 @@
     $http.put('/admin/journals/'+$scope.current_journal.id+'/pages/'+$scope.current_page.id+'.json', {page: $scope.current_page}).success (data) ->
       $scope.editJournal($scope.current_journal)
       $scope.closePage()
+
+  $scope.updateTree = (pages) ->
+    tree = $filter('level_tree')($scope.current_journal.pages)
+    angular.forEach tree, (item, index) ->
+      $http.put('/admin/journals/'+$scope.current_journal.id+'/pages/'+item.id+'.json', {page: {sort_index: item.sort_order}})
 
   $scope.addPageBlock = ->
     $scope.current_page.blocks_attributes.push {content:"", remote_url:""}

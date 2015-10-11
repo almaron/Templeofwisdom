@@ -39,7 +39,7 @@ class AdminJournalPagesController < ApplicationController
   end
 
   def page_params
-    par = params.require(:page).permit(:id, :journal_id, :head, :content_text, :content_line, :page_type, :tag_tokens, images_attributes:[:remote_image_url, :remote_url, :id], blocks_attributes: [:id, :content, :remote_image_url, :remote_url ])
+    par = params.require(:page).permit(:id, :journal_id, :head, :content_text, :sort_index, :content_line, :page_type, :tag_tokens, images_attributes:[:remote_image_url, :remote_url, :id], blocks_attributes: [:id, :content, :remote_image_url, :remote_url ])
     Rails.logger.info par['images_attributes']
     par['images_attributes'].reject! { |image| image['remote_url'].blank? && image['remote_image_url'].blank? } if par['images_attributes']
     par['blocks_attributes'].reject! { |block| block['content'].blank? && !block['_destroy'] } if par['blocks_attributes']

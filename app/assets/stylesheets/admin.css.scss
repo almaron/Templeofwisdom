@@ -410,6 +410,13 @@
         border: 1px solid $color-green1;
         margin-bottom: 10px;
       }
+      .page-btn {
+        margin-top: 15px;
+      }
+      #tree-root ol.angular-ui-tree-nodes {
+        list-style: outside none decimal;
+        padding-left: 20px;
+      }
     }
   }
 
