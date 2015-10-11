@@ -74,6 +74,7 @@
     tree = $filter('level_tree')($scope.current_journal.pages)
     angular.forEach tree, (item, index) ->
       $http.put('/admin/journals/'+$scope.current_journal.id+'/pages/'+item.id+'.json', {page: {sort_index: item.sort_order}})
+    $scope.flashMessageTimeout 'Порядок страниц сохранен'
 
   $scope.addPageBlock = ->
     $scope.current_page.blocks_attributes.push {content:"", remote_url:""}
