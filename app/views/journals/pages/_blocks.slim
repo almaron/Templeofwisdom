@@ -6,5 +6,5 @@
           span.img-block
             = image_tag block.image_url, class: 'img'
         span.text-block
-          = raw block.content.bbcode_to_html_with_formatting
+          = temple_format block.content.bbcode_to_html
       .clear
