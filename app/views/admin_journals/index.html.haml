@@ -71,7 +71,7 @@
         %ol{'ng-model'=>'current_journal.pages', 'ui-tree-nodes' => ''}
           %li{'ng-repeat'=>'page in current_journal.pages', 'ui-tree-node'=>''}
             .tree-node.tree-node-content{"ui-tree-handle" => ""}
-              %span.head{'ng-click'=>'editPage(page)'} {{page.head}}
+              %span.head{'ng-click'=>'editPage(page)', 'data-nodrag'=>''} {{page.head}}
               %span.page_type{} ({{page.type_line}})
       .page-btn
         %button.btn.btn-standart{'ng-click'=>'updateTree(current_journal.pages)'}
