@@ -196,15 +196,6 @@
 
   &.one-message-tab {
     margin-bottom: 7px;
-    .inp-count.ng-binding {
-      background: $bgimg-beige;
-      border-radius: 12px;
-      float: right;
-      font-size: 0.9em;
-      margin-right: 30px;
-      margin-top: -3px;
-      padding: 3px 10px;
-    }
   }
 }
 
@@ -500,6 +491,15 @@
       font-size: 0.5em;
       margin-left: 7px;
     }
+  }
+  .inp-count.ng-binding {
+    background: $bgimg-beige;
+    border-radius: 12px;
+    float: right;
+    font-size: 0.9em;
+    margin-right: 30px;
+    margin-top: -3px;
+    padding: 3px 10px;
   }
 }
 
