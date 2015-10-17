@@ -7,7 +7,11 @@ class Redirects::TopicRedirect
   end
 
   def redirect
-    topic ? routes.forum_topic_path(topic.forum_id, topic.id, page) : routes.forums_path
+    begin
+      topic ? routes.forum_topic_path(topic.forum_id, topic.id, page) : routes.forums_path
+    rescue StandardError => e
+      routes.forums_path
+    end
   end
 
   private

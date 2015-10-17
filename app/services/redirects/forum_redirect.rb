@@ -1,8 +1,12 @@
 class Redirects::ForumRedirect
   class << self
     def redirect(forum_id)
-      rid = real_id(forum_id)
-      rid ? routes.forum_path(rid) : routes.forums_path
+      begin
+        rid = real_id(forum_id)
+        rid ? routes.forum_path(rid) : routes.forums_path
+      rescue StandardError => e
+        routes.forums_path
+      end
     end
 
     private
