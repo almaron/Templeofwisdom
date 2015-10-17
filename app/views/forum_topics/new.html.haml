@@ -8,9 +8,9 @@
     = I18n.t("forum_topics.show.pagetitle")
 
   .new-topic-wrap
-    .topic-form.any-form
+    .topic-form.any-form.topic-reply-form
       %form{name:"NewTopic", novalidate:"", "ng-model"=>"newTopic"}
-        %table.form-tab
+        %table.form-tab.one-message-tab
           %tr
             %td.label
             %td.input
@@ -22,18 +22,16 @@
               %label{for:"topic_head"} Заголовок:
             %td.input.input-head
               %input.inp.inp-type2{name:"topic_head", id:"topic_head", "ng-model"=>"newTopic.head", required:""}
-          %tr
+          %tr.new_topic_post
             %td.label
+              .select-char
+                %label{for:'char_name'} Персонаж:
+                %select.inp.inp-type2{'ng-model'=>'newPost.char_id', 'ng-options'=>'char.id as char.name for char in chars', required:'', 'ng-change'=>'updateChar(chars, newPost.char_id)'}
+                %char-avatars{'ng-model'=>'newPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'newPost.char_id', 'ng-show'=>'newPost.char_id'}
             %td.input.input-textarea
               .inp-count
                 {{postCharCount(newPost.text)}}
               %textarea.inp.inp-type2{name:"post_text", "ng-model"=>"newPost.text", required:'', 'mark-it-up'=>''}
-          %tr
-            %td.label.label-char
-              %label{for:"char_name"} Персонаж:
-            %td.input.input-char
-              %select.inp.inp-type2{"ng-model"=>"newPost.char_id", "ng-options"=>"char.id as char.name for char in chars", required:"", 'ng-change'=>'updateChar(chars, newPost.char_id)'}
-              %char-avatars{'ng-model'=>'newPost.avatar_id', collection:'sChar.avatars', editable: 'false', 'char-id'=>'newPost.char_id', 'ng-show'=>'newPost.char_id'}
           %tr
             %td.label{} Настройки:
             %td.input

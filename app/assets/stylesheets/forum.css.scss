@@ -502,7 +502,18 @@
     padding: 3px 10px;
   }
 }
-
+.new-topic-wrap {
+  .topic-form .form-tab {
+    tr.new_topic_post {
+      td {
+        vertical-align: top;
+        select {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
 .topic-reply-form {
   margin-top: 15px;
   .one-message-tab.form-tab {
