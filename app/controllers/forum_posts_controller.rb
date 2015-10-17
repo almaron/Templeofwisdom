@@ -5,7 +5,7 @@ class ForumPostsController < ApplicationController
 
   def index
     per_page = app_configs[:forum_posts_per_page] || 15
-    posts = ForumPost.where(topic_id: params[:topic_id])
+    posts = ForumPost.eager_load(:char, :avatar).where(topic_id: params[:topic_id])
     page = params[:page] == 'last' ? (posts.count / per_page).ceil : params[:page]
     @posts = posts.includes(:char,:user).paginate(page:page, per_page: per_page)
     respond_to do |format|
