@@ -2,11 +2,11 @@ ru:
   common:
     meta:
       title: 'Форумная Ролевая Игра Храм Мудрости'
-      description: ''
-      keywords: ''
+      description: 'Форумная ролевая игра (ФРПГ) "Храм Мудрости"'
+      keywords: 'форумная ролевая игра, фрпг, ролевая игра, форумка, лрпг, китай, тибет, магия, превращения, боевые искусства'
       journal_title: 'Монастырские Хроники'
-      journal_description: ''
-      journal_keywords: ''
+      journal_description: 'Газета "Монастырские Хроники"'
+      journal_keywords: 'газета, фрпг, статьи, галереи, интервью'
     buttons:
       register: 'Зарегистрироваться'
       login: 'Войти'
