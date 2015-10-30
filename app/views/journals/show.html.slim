@@ -3,6 +3,16 @@
     ' #{@page.head} -
   ' #{@journal.description || @journal.head} - Монастырские Хроники
 
+- content_for :og_title do
+  = yield :title
+
+- content_for :og_image do
+  = og_image
+- content_for :og_tags do
+  - if @page
+    meta property='og:article:published_time' content="#{@page.created_at}"
+    meta property='og:article:author' content="#{og_author}"
+
 .page-wrapper#wrapper
   = render 'journal_pager'
   .main
