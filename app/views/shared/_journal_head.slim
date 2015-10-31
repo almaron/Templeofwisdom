@@ -19,4 +19,5 @@ head
   meta property='og:image' content="#{request.protocol + request.host_with_port}#{content_for?(:og_image) ? yield(:og_image) : image_path('logo.png')}"
   meta property='og:url'   content="#{request.original_url}"
   meta property='og:type'  content='article'
+  meta proprty='og:site_name' content='ФРПГ "Храм Мудрости"'
   = yield(:og_tags)
