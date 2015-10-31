@@ -8,10 +8,7 @@
 
 - content_for :og_image do
   = og_image
-- content_for :og_tags do
-  - if @page
-    meta property='article:published_time' content="#{@page.created_at.to_i}"
-    meta property='article:author' content="#{og_author}"
+
 
 .page-wrapper#wrapper
   = render 'journal_pager'
