@@ -16,6 +16,7 @@ head
   meta content="#{(content_for?(:meta_keywords) ? yield(:meta_keywords) : t('common.meta.journal_keywords'))}" type='keywords'
 
   meta property='og:title' content="#{content_for?(:og_title) ? yield(:og_title) : 'Монастырские Хроники'}"
-  meta property='og:image' content="#{request.protocol + request.host_with_port}#{content_for?(:og_image) ? yield(:og_image) : 'apple-touch-icon.png'}"
+  meta property='og:image' content="#{request.protocol + request.host_with_port}#{content_for?(:og_image) ? yield(:og_image) : image_path('logo.png')}"
   meta property='og:url'   content="#{request.original_url}"
+  meta property='og:type'  content='article'
   = yield(:og_tags)
