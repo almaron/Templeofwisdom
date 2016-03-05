@@ -1,7 +1,7 @@
 %table.users-table.ngtable{'ng-table' => 'tableParams', 'template-pagination'=>'custom/pager'}
   %tr.one-line{'ng-repeat' => 'msg in $data', 'ng-class'=>'{"unread": !msg.read, "read" : msg.read }'}
     %td.message-date{'data-title' => "'Дата'", 'data-header-class'=>'message-date'}
-      %span{'ng-click'=>'showMessage(msg)'}{{msg.createdAt}}
+      %span{'ng-click'=>'showMessage(msg)'}{{msg.date}}
     %td.message-from{'data-title' => "'От кого:'", 'data-header-class'=>'message-from'}
       %span{'ng-click'=>'showMsg(msg)'} {{msg.author}}
     %td.message-to{'data-title' => "'Кому:'", 'data-header-class'=>'message-to'}

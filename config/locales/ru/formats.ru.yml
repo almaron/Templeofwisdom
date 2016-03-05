@@ -8,6 +8,7 @@ ru:
     formats:
       default: "%d.%m.%Y"
       full: "%d.%m.%Y %H:%M"
+      back: "%Y/%m/%d %H:%M"
 
   date:
     formats:
