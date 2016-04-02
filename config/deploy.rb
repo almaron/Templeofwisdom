@@ -16,7 +16,7 @@ set :linked_files, %w{ config/database.yml config/secrets.yml  config/settings.y
 
 set :linked_dirs, %w{ log tmp/pids tmp/cache tmp/sockets public/system public/uploads }
 
-set :rvm_ruby_version, '2.1.2@temple'
+set :rvm_ruby_version, '2.2.4@temple'
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
