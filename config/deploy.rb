@@ -12,7 +12,7 @@ set :default_stage,     'staging'
 set :current_path,      File.join(deploy_to, 'current')
 set :use_sudo,          false
 
-set :linked_files, %w{ config/database.yml config/secrets.yml  config/settings.yml config/journals.yml}
+set :linked_files, %w{ config/database.yml config/secrets.yml  config/settings.yml config/journals.yml }
 
 set :linked_dirs, %w{ log tmp/pids tmp/cache tmp/sockets public/system public/uploads }
 
