@@ -26,6 +26,6 @@ end
 
 json.chars @chars do |char|
   json.(char, :id, :name)
-  json.default char.default?(current_user)
-  json.avatars char.avatars.visible, partial: 'char_avatars/char_avatar', as: :avatar
+  json.default char.id == current_user.default_char.id
+  json.avatars char.avatars, partial: 'char_avatars/char_avatar', as: :avatar
 end
